@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+//Basically just waits for two secons and then starts the next activity
 public class SplashActivity extends Activity {
     /** Duration of wait **/
     private final int SPLASH_DISPLAY_LENGTH = 2000;

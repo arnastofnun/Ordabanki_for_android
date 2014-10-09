@@ -10,6 +10,10 @@
     <string name="selectlanguage">Please choose your language</string>
     <string name="title_activity_select_language">Select Language</string>
     <string name="hello_world">Hello world!</string>
+
     <color name="white">#FFFFFF</color>
+
+    <string name="search_tab">Search</string>
+    <string name="pick_glossary_tab">Pick Glossary</string>
 
 </resources>

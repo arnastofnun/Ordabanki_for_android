@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cthulhu.ordabankiforandroid" >
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +25,10 @@
             android:label="@string/title_activity_select_language"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
         </activity>
-
+        <activity
+            android:name=".SearchScreen"
+            android:label="@string/search_tab" >
+        </activity>
     </application>
 
 </manifest>

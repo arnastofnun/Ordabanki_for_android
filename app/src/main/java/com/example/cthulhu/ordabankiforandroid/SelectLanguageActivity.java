@@ -1,17 +1,37 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-
+/*
+*   Holds the functions that are implemented in
+*   the select language screen
+*/
 public class SelectLanguageActivity extends Activity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_language);
+    }
+
+
+    public void chooseEnglish(View view){
+        Intent intent = new Intent(SelectLanguageActivity.this, SearchScreen.class);
+        //intent.putExtra("lang","en");
+        SelectLanguageActivity.this.startActivity(intent);
+    }
+
+    public void chooseIcelandic(View view){
+        Intent intent = new Intent(SelectLanguageActivity.this, SearchScreen.class);
+    //    intent.putExtra("lang","en");
+        SelectLanguageActivity.this.startActivity(intent);
     }
 
 
