@@ -29,6 +29,12 @@
             android:name=".SearchScreen"
             android:label="@string/search_tab" >
         </activity>
+        <activity
+            android:name=".ResultsScreen"
+            android:parentActivityName=".ResultsScreen"
+            android:label="@string/title_activity_results_screen">
+
+            </activity>
     </application>
 
 </manifest>

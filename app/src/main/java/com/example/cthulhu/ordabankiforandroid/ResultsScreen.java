@@ -1,10 +1,11 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.example.cthulhu.ordabankiforandroid.R;
+import android.widget.TextView;
 
 public class ResultsScreen extends Activity {
 
@@ -12,6 +13,13 @@ public class ResultsScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_screen);
+
+        /*Just so we have something going throught the intent*/
+        Intent intent = getIntent();
+        String searchquery = intent.getStringExtra("searchquery");
+
+        TextView textview = (TextView) findViewById(R.id.resultText);
+        textview.setText(searchquery);
     }
 
 

@@ -2,55 +2,83 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:layout_margin="10dp">
 
     <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
         android:id="@+id/searchView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:queryHint="Type in search word" />
-
-    <Spinner
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:queryHint="Type in search word"
+        />
+    <LinearLayout
+        android:id="@+id/sourceWrapper"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/sourceSpinner"
-        android:spinnerMode="dropdown"
-        android:layout_below="@+id/sourceLang"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@id/searchView"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="Source language:"
+            android:id="@+id/sourceLang"
+            android:gravity="center"
+            android:textSize="20sp"
+            />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Source language:"
-        android:id="@+id/sourceLang"
-        android:layout_below="@+id/searchView"
-        android:layout_centerHorizontal="true" />
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/sourceSpinner"
+            android:padding="5dp"
+            android:spinnerMode="dropdown"
+            android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Target language:"
-        android:id="@+id/targetLang"
-        android:layout_below="@+id/sourceSpinner"
-        android:layout_centerHorizontal="true" />
+    </LinearLayout>
 
-    <Spinner
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/targetWrapper"
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/targetSpinner"
-        android:spinnerMode="dropdown"
-        android:layout_below="@+id/targetLang"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@id/sourceWrapper"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="Target language:"
+            android:id="@+id/targetLang"
+            android:gravity="center"
+            android:textSize="20sp"
+            />
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/targetSpinner"
+            android:padding="5dp"
+            android:spinnerMode="dropdown"
+            android:layout_below="@+id/targetLang"
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:text="Search"
         android:id="@+id/search_button"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="search"/>
 
 </RelativeLayout>
