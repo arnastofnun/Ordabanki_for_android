@@ -2,6 +2,7 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -11,9 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
 
@@ -33,18 +31,17 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
 
-    private Spinner sourceSpinner;
-    private Spinner targetSpinner;
-    //Tab titles
-    //For some strange reason it won't work when I try to fetch the strings from string.xml
-    //private String[] tabs = {this.getString(R.string.search_tab),this.getString(R.string.pick_glossary_tab)};
-    private String[] tabs = {"Search","Pick Glossary"};
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
+
+        //Tab titles
+        List<String> tabs = new ArrayList<String>();
+        tabs.add(this.getString(R.string.search_tab));
+        tabs.add(this.getString(R.string.pick_glossary_tab));
 
         //Initilize
         viewPager = (ViewPager) findViewById(R.id.searchscreen);
@@ -56,34 +53,7 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         //Add items to source language dropdown spinner
-        sourceSpinner = (Spinner) findViewById(R.id.sourceSpinner);
-        List<String> listSource = new ArrayList<String>();
-        listSource.add("All");
-        listSource.add("example");
-        listSource.add("spinner");
 
-        ArrayAdapter<String> dataAdapterSource = new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_item,listSource);
-
-        dataAdapterSource.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
-
-        sourceSpinner.setAdapter(dataAdapterSource);
-
-        //Add items to target language dropdown spinner
-        targetSpinner = (Spinner) findViewById(R.id.targetSpinner);
-        List<String> listTarget = new ArrayList<String>();
-        listTarget.add("All");
-        listTarget.add("example");
-        listTarget.add("spinner");
-
-        ArrayAdapter<String> dataAdapterTarget = new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_item,listTarget);
-
-        dataAdapterTarget.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
-
-        targetSpinner.setAdapter(dataAdapterTarget);
 
         //Adding Tabs
         for(String tab_name : tabs){
@@ -109,7 +79,13 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     }
 
 
+    /* Handle the button on the search screen fragment */
+    public void search(View view){
+        Intent intent = new Intent(this, ResultsScreen.class);
 
+        intent.putExtra("searchquery", "something");
+        this.startActivity(intent);
+    }
 
 
     @Override
