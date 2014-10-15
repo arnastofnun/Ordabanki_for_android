@@ -8,6 +8,10 @@ import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
 /**
  * Created by cthulhu on 13/10/14.
  */
@@ -56,10 +60,29 @@ class OrdabankiRestClientActions {
         }
         return resultsJava;
     }
+    private static String createURL(String sTerm, String sLang, String tLang) {
+        //takes base URL and appends search constraints
+        final String delim = ";"; //change when find out right delimiter
+        final String baseURL = "http://apiordabanki.arnastofnun.is/request.php?word=";
+        String relURL = baseURL+ sTerm;
+        relURL = relURL + "&sLang="+sLang;
+        //change when see right syntax for request, format is right
+        relURL = relURL + "&tLang=" + tLang;
+        relURL = relURL + "&gloss=";
+        ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
+        if (selectedGlossaries.size()==1) {relURL=relURL+selectedGlossaries.get(0)+".json";}
+        else {
+            Iterator<String> iterator = selectedGlossaries.iterator();
+            while(iterator.hasNext()&&!iterator.next().equals(selectedGlossaries.get(selectedGlossaries.size()-1))){
+                relURL= relURL+ iterator.next()+delim;
+            }
+            relURL = relURL+selectedGlossaries.get(selectedGlossaries.size()-1)+".json";
+        }
+        return relURL;
+    }
+    public ResultFields getSearchResult(String sTerm, String sLang, String tLang) throws JSONException {
 
-    public ResultFields getSearchResult(String sTerm, int sLangInt, int[] tLangInt, int[] glossInt) throws JSONException {
-
-        String relURL = URLgen.createURL(sTerm, sLangInt, tLangInt,glossInt);
+        String relURL = createURL(sTerm, sLang, tLang);
         RequestParams params = new RequestParams();
         setResultsJSON(relURL,params);
         ResultFields resultsJava = parseResults();

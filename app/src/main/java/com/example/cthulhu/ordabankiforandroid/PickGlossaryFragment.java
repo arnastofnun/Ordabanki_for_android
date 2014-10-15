@@ -23,7 +23,7 @@ import java.util.Iterator;
  */
 public class PickGlossaryFragment extends Fragment {
     //Initialize
-    private ArrayList<Glossary> glossaryList = new ArrayList<Glossary>();
+    private static ArrayList<Glossary> glossaryList = new ArrayList<Glossary>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -76,11 +76,16 @@ public class PickGlossaryFragment extends Fragment {
      * ---------------------------------------------------------------------------------
      * @autor Bill
      * @date 14.10.2014
-     * @param glossaryList
      * @return selectedGlossaries
      */
-    public ArrayList<String> getSelectedGlossaries(ArrayList<Glossary> glossaryList){
-        Iterator<Glossary> iterator = glossaryList.iterator();
+    public static ArrayList<Glossary> getGlossaryList(){
+        ArrayList<Glossary> activeGlossaryList = glossaryList;
+        return activeGlossaryList;
+    }
+
+    public static ArrayList<String> getSelectedGlossaries(){
+        ArrayList<Glossary> activeGlossaryList = getGlossaryList();
+        Iterator<Glossary> iterator = activeGlossaryList.iterator();
         ArrayList<String> selectedGlossaries = new ArrayList<String>();
         while(iterator.hasNext()){
             if (iterator.next().isSelected()){
