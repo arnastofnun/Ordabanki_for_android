@@ -18,7 +18,7 @@ import java.util.Iterator;
 
 class OrdabankiRestClientActions {
     //holders for JSON results to work around enforced void return typing of onSuccess
-    private int resultType = 0;
+
     private static ArrayList<Result> resultArr = new ArrayList<Result>();
 
 
