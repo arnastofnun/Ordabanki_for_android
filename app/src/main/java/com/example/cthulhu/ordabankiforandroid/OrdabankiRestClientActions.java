@@ -19,47 +19,30 @@ import java.util.Iterator;
 class OrdabankiRestClientActions {
     //holders for JSON results to work around enforced void return typing of onSuccess
     private int resultType = 0;
-    private JSONArray resultsJSONArray = new JSONArray();
-    private JSONObject resultsJSONObject = new JSONObject();
+    private ArrayList<Result> resultArr = new ArrayList<Result>();
+
 
     public void setResultsJSON(String relURL, RequestParams params) throws JSONException {
         OrdabankiRESTClient.get(relURL, params, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                resultsJSONObject = response;
-                resultType = 1;
+                Gson gson = new Gson();
+                //need to parse response into string. Empty one as placeholder, digging later, report now.
+                String jsonStr = "";
+                Result resultObj = gson.fromJson(jsonStr, Result.class);
+                resultArr.add(resultObj);
+
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                resultsJSONArray = response;
-                resultType=2;
+            //more to do in this one need to see format of json arrays
+
             }
         });
     }
-    //parse resultsJSON with GSON and return
-    private ResultFields parseResults() {
-        Gson gson = new Gson();
-        ResultFields resultsJava = new ResultFields();
-        switch(resultType) {
-            case 0:
-                //throw exception?
-                break;
-            case 1:
-                //parse resultsJSONObject with GSON and return
-                //resultsJava = gson.fromJson();
-                resultType = 0;
-                break;
-            case 2:
-                //parse resultsJSONArray with GSON and return
-                //reset result type
-                //resultsJava = gson.fromJson(resultsJSONArray, ResultFields.class);
-                resultType = 0;
-                break;
-        }
-        return resultsJava;
-    }
+
     private static String createURL(String sTerm, String sLang, String tLang) {
         //takes base URL and appends search constraints
         final String delim = ";"; //change when find out right delimiter
@@ -80,13 +63,12 @@ class OrdabankiRestClientActions {
         }
         return relURL;
     }
-    public ResultFields getSearchResult(String sTerm, String sLang, String tLang) throws JSONException {
+    public ArrayList<Result> getSearchResult(String sTerm, String sLang, String tLang) throws JSONException {
 
         String relURL = createURL(sTerm, sLang, tLang);
         RequestParams params = new RequestParams();
         setResultsJSON(relURL,params);
-        ResultFields resultsJava = parseResults();
-        return resultsJava;
+        return resultArr;
     }
 }
 
