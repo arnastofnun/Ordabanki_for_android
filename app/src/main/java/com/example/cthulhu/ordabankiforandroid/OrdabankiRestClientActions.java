@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * Created by cthulhu on 13/10/14.
+ * Created by cthulhu on 13/10/14. not default any more, go away last yellow block
  */
 
 class OrdabankiRestClientActions {
-    //holders for JSON results to work around enforced void return typing of onSuccess
 
+    //holder for JSON results to work around enforced void return typing of onSuccess
     private static ArrayList<Result> resultArr = new ArrayList<Result>();
 
 
@@ -28,8 +28,7 @@ class OrdabankiRestClientActions {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Gson gson = new Gson();
-                //need to parse response into string. Empty one as placeholder, digging later, report now.
-                String jsonStr = "";
+                String jsonStr = response.toString();
                 Result resultObj = gson.fromJson(jsonStr, Result.class);
                 ArrayList<Result> tempArr = new ArrayList<Result>();
                 tempArr.add(resultObj);
@@ -57,6 +56,7 @@ class OrdabankiRestClientActions {
         if (selectedGlossaries.size()==1) {relURL=relURL+selectedGlossaries.get(0)+".json";}
         else {
             Iterator<String> iterator = selectedGlossaries.iterator();
+            //iterate until last but one member, There is probably a less verbose way to do that
             while(iterator.hasNext()&&!iterator.next().equals(selectedGlossaries.get(selectedGlossaries.size()-1))){
                 relURL= relURL+ iterator.next()+delim;
             }
