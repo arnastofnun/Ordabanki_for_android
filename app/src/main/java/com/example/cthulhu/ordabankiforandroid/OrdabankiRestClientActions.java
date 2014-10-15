@@ -32,6 +32,7 @@ class OrdabankiRestClientActions {
     }
     //parse resultsJSON with GSON and return
     private ResultFields parseResults() {
+        Gson gson = new Gson();
         ResultFields resultsJava = new ResultFields();
         switch(resultType) {
             case 0:
@@ -39,11 +40,13 @@ class OrdabankiRestClientActions {
                 break;
             case 1:
                 //parse resultsJSONObject with GSON and return
+                //resultsJava = gson.fromJson();
                 resultType = 0;
                 break;
             case 2:
                 //parse resultsJSONArray with GSON and return
                 //reset result type
+                //resultsJava = gson.fromJson(resultsJSONArray, ResultFields.class);
                 resultType = 0;
                 break;
         }
