@@ -1,12 +1,15 @@
 package com.example.cthulhu.ordabankiforandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +24,7 @@ public class SearchScreenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.fragment_search_screen,container,false);
+
         sourceSpinner = (Spinner) rootView.findViewById(R.id.sourceSpinner);
         List<String> listSource = new ArrayList<String>();
         listSource.add("All");
@@ -53,9 +57,10 @@ public class SearchScreenFragment extends Fragment {
 
 
 
-
-
         return rootView;
     }
+
+
+
 
 }

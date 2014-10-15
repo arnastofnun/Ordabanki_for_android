@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
 
@@ -37,6 +38,7 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
+
 
         //Tab titles
         List<String> tabs = new ArrayList<String>();
@@ -79,11 +81,15 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     }
 
 
+
+
+
     /* Handle the button on the search screen fragment */
     public void search(View view){
         Intent intent = new Intent(this, ResultsScreen.class);
-
-        intent.putExtra("searchquery", "something");
+        EditText editText =(EditText) findViewById(R.id.searchView);
+        String searchQuery = editText.getText().toString();
+        intent.putExtra("searchQuery", searchQuery);
         this.startActivity(intent);
     }
 

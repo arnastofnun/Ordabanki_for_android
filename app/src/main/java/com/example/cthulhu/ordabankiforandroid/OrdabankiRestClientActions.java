@@ -1,9 +1,13 @@
 package com.example.cthulhu.ordabankiforandroid;
 
-import com.loopj.android.http.*;
+import com.google.gson.Gson;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
 import org.apache.http.Header;
-import org.json.*;
-import com.google.gson.*;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 /**
  * Created by cthulhu on 13/10/14.
  */

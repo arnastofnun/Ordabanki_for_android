@@ -14,11 +14,17 @@ import com.example.cthulhu.ordabankiforandroid.R;
 import java.util.ArrayList;
 
 /**
- * Created by karlasgeir on 14.10.2014.
+ * An adapter that implements most of the functions for the
+ * glossary list view
+ * --------------------------------------------------------
+ * @author Karl Ásgeir Geirsson
+ * @date 14.10.2014.
  */
 public class GlossaryAdapter extends ArrayAdapter<Glossary> {
 
+    //Initialize a list for the glossaries
     private ArrayList<Glossary> glossaryList;
+
 
     public GlossaryAdapter(Context context, int textViewResourceID){
         super(context, textViewResourceID);
@@ -30,28 +36,53 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
         this.glossaryList.addAll(glossaryList);
     }
 
+    /**
+     * A simple class to hold the checkbox
+     * and text view of each item in the
+     * glossary list
+     * ------------------------------------
+     * @author Karl Ásgeir Geirsson
+     * @date 14.10.2014
+     */
     private class ViewHolder{
-        TextView code;
-        CheckBox name;
+        TextView name;
+        CheckBox checkBox;
     }
 
+
+    /**
+     * This function implements the glossary list layout and
+     * sets an on click listener to set the selected glossary to selected.
+     * It also sets the name of the glossary in the glossary list
+     * -------------------------------
+     * @author Karl Ásgeir Geirsson
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return view
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
+        //Initialize
         View view = convertView;
-
         ViewHolder holder = null;
 
+
         if(view == null){
+            //inflate the layout
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
             view = vi.inflate(R.layout.glossary_list,null);
 
+            //Set the view holder
             holder = new ViewHolder();
-            holder.code = (TextView) view.findViewById(R.id.GlossaryText);
-            holder.name = (CheckBox) view.findViewById(R.id.GlossaryCheckbox);
+            holder.name = (TextView) view.findViewById(R.id.GlossaryText);
+            holder.checkBox = (CheckBox) view.findViewById(R.id.GlossaryCheckbox);
             view.setTag(holder);
 
-            holder.name.setOnClickListener( new View.OnClickListener() {
+            //Set the on click listener on the checkbox
+            holder.checkBox.setOnClickListener( new View.OnClickListener() {
+                //if the checkbox is clicked set the selected glossary to selected
                 public void onClick(View v) {
                     CheckBox checkbox = (CheckBox) v ;
                     Glossary glossary = (Glossary) checkbox.getTag();
@@ -69,11 +100,12 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
             holder = (ViewHolder) view.getTag();
         }
 
+        //Set the current glossary name and checkbox status
         Glossary glossary = glossaryList.get(position);
-        holder.code.setText(" (" +  glossary.getCode() + ")");
         holder.name.setText(glossary.getName());
-        holder.name.setChecked(glossary.isSelected());
-        holder.name.setTag(glossary);
+        holder.checkBox.setChecked(glossary.isSelected());
+        holder.checkBox.setTag(glossary);
+
         return view;
     }
 
