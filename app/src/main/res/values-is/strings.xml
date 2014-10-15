@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Orðabankinn</string>
+    <string name="title_activity_splash">Orðabankinn</string>
+    <string name="action_settings">Stillingar</string>
+    <string name="splashimage">Upphafsmynd</string>
+    <string name="splashtext">Hleð upp</string>
+    <string name="welcometext">Velkomin í Orðabanka appið</string>
+    <string name="selectlanguage">Vinsamlegast veldu tungumál</string>
+    <string name="title_activity_select_language">Veldu tungumál</string>
+
+    <color name="white">#FFFFFF</color>
+    <string name="search_button">Leita</string>
+    <string name="targetlang">Leitarmál:</string>
+    <string name="sourcelang">Markmál:</string>
+    <string name="all_languages">Öll</string>
+
+    <string name="search_tab">Leita</string>
+    <string name="searchpreterm">niðurstöður fyrir</string>
+    <string name="search_hint">Skrifaðu leitarorð</string>
+    <string name="pick_glossary_tab">Veldu orðasafn</string>
+    <string name="title_activity_results_screen">Niðurstöður</string>
+</resources>
