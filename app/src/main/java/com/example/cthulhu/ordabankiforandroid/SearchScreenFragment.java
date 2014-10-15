@@ -25,7 +25,7 @@ public class SearchScreenFragment extends Fragment {
 
         sourceSpinner = (Spinner) rootView.findViewById(R.id.sourceSpinner);
         List<String> listSource = new ArrayList<String>();
-        listSource.add("All");
+        listSource.add(getResources().getString(R.string.all_languages));
         listSource.add("example");
         listSource.add("spinner");
 

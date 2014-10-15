@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
 
@@ -31,6 +32,9 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
+    private Spinner sourceLangSpinner;
+    private Spinner targetLangSpinner;
+    private ArrayList<Result> resultList = new ArrayList<Result>();
 
 
 
@@ -38,6 +42,7 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
+
 
 
         //Tab titles
@@ -53,8 +58,9 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         viewPager.setAdapter(mAdapter);
         actionBar.setHomeButtonEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        sourceLangSpinner = (Spinner) findViewById(R.id.sourceSpinner);
+        targetLangSpinner = (Spinner) findViewById(R.id.targetSpinner);
 
-        //Add items to source language dropdown spinner
 
 
         //Adding Tabs
@@ -89,6 +95,13 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         Intent intent = new Intent(this, ResultsScreen.class);
         EditText editText =(EditText) findViewById(R.id.searchView);
         String searchQuery = editText.getText().toString();
+
+        //String sLang = sourceLangSpinner.getSelectedItem().toString();
+        //String tLang =  targetLangSpinner.getSelectedItem().toString();
+        //resultList = OrdabankiRestClientActions.getSearchResult(searchQuery, sLang, tLang);
+        //languages will be handled elsewhere when this is ready to go
+        //pass resultArr to result screen and move focus there
+
         intent.putExtra("searchQuery", searchQuery);
         this.startActivity(intent);
     }
