@@ -17,6 +17,8 @@ import android.widget.Spinner;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
 
+import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,14 +93,15 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
 
 
     /* Handle the button on the search screen fragment */
-    public void search(View view){
+    public void search(View view) throws JSONException {
         Intent intent = new Intent(this, ResultsScreen.class);
         EditText editText =(EditText) findViewById(R.id.searchView);
         String searchQuery = editText.getText().toString();
 
-        //String sLang = sourceLangSpinner.getSelectedItem().toString();
-        //String tLang =  targetLangSpinner.getSelectedItem().toString();
-        //resultList = OrdabankiRestClientActions.getSearchResult(searchQuery, sLang, tLang);
+        String sLang = sourceLangSpinner.getSelectedItem().toString();
+        String tLang =  targetLangSpinner.getSelectedItem().toString();
+        OrdabankiRestClientActions.setSearchResult(searchQuery, sLang, tLang);
+        OrdabankiRestClientActions.getResultArray();
         //languages will be handled elsewhere when this is ready to go
         //pass resultArr to result screen and move focus there
 

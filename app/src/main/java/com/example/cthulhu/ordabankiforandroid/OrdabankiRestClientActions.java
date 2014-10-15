@@ -19,10 +19,10 @@ import java.util.Iterator;
 class OrdabankiRestClientActions {
     //holders for JSON results to work around enforced void return typing of onSuccess
     private int resultType = 0;
-    private ArrayList<Result> resultArr = new ArrayList<Result>();
+    private static ArrayList<Result> resultArr = new ArrayList<Result>();
 
 
-    public void setResultsJSON(String relURL, RequestParams params) throws JSONException {
+    public static void setResultsJSON(String relURL, RequestParams params) throws JSONException {
         OrdabankiRESTClient.get(relURL, params, new JsonHttpResponseHandler() {
 
             @Override
@@ -31,8 +31,9 @@ class OrdabankiRestClientActions {
                 //need to parse response into string. Empty one as placeholder, digging later, report now.
                 String jsonStr = "";
                 Result resultObj = gson.fromJson(jsonStr, Result.class);
-                resultArr.add(resultObj);
-
+                ArrayList<Result> tempArr = new ArrayList<Result>();
+                tempArr.add(resultObj);
+                resultArr = tempArr;
             }
 
             @Override
@@ -63,11 +64,14 @@ class OrdabankiRestClientActions {
         }
         return relURL;
     }
-    public ArrayList<Result> getSearchResult(String sTerm, String sLang, String tLang) throws JSONException {
+    public static void setSearchResult(String sTerm, String sLang, String tLang) throws JSONException {
 
         String relURL = createURL(sTerm, sLang, tLang);
         RequestParams params = new RequestParams();
         setResultsJSON(relURL,params);
+
+    }
+    public static ArrayList<Result> getResultArray(){
         return resultArr;
     }
 }
