@@ -33,7 +33,6 @@
             android:name=".ResultsScreen"
             android:parentActivityName=".ResultsScreen"
             android:label="@string/title_activity_results_screen">
-
             </activity>
     </application>
 

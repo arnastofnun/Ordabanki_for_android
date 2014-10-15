@@ -2,15 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#ff8400" >
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    >
 
-    <TextView android:layout_width="fill_parent"
+    <ListView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="PICK GLOSSARY"
         android:textSize="20dp"
-        android:layout_centerInParent="true"/>
+        android:id="@+id/GlossaryList"
+        />
 
 
 </RelativeLayout>
