@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.cthulhu.ordabankiforandroid.adapter.GlossaryAdapter;
 
 import java.util.ArrayList;
-
+import java.util.Iterator;
 /**
  * This class contains functions for the
  * pick glossary tab of the search screen
@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 public class PickGlossaryFragment extends Fragment {
 
-
+    private ArrayList<Glossary> glossaryList = new ArrayList<Glossary>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         //Load the .xml file for the pick glossary fragment
@@ -36,7 +36,7 @@ public class PickGlossaryFragment extends Fragment {
 
     private void displayListView(View rootView){
         //List of glossaries
-        ArrayList<Glossary> glossaryList = new ArrayList<Glossary>();
+
         Glossary glossary = new Glossary("MATH","Mathematics",true);
         glossaryList.add(glossary);
         glossary = new Glossary("PHYS","Physics",true);
@@ -59,5 +59,15 @@ public class PickGlossaryFragment extends Fragment {
 
     }
 
+    public ArrayList<String> getSelectedGlossaries(ArrayList<Glossary> glossaryList){
+        Iterator<Glossary> iterator = glossaryList.iterator();
+        ArrayList<String> selectedGlossaries = new ArrayList<String>();
+        while(iterator.hasNext()){
+            if (iterator.next().isSelected()){
+                selectedGlossaries.add(iterator.next().getName());
+            }
+        }
+        return selectedGlossaries;
+    }
 
 }
