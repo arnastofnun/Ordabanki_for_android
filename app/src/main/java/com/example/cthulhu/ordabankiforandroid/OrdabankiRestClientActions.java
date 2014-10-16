@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * This class parses data received after a search query has been made to the Ordabanki DB.
- *
- * Created by cthulhu on 13/10/14. not default any more, go away last yellow block
+ * <h1>Orðabanki Rest Client Actions</h1>
+ * <p>This class parses data received after a search query has been made to the Ordabanki DB.</p>
+ * @author Bill
+ * @since 13.10.14
  */
-
 class OrdabankiRestClientActions {
 
     //holder for JSON results to work around enforced void return typing of onSuccess
@@ -26,7 +26,7 @@ class OrdabankiRestClientActions {
     //use: setResultsJSON(relURL,params);
     //pre: relUrl is a String, params is a RequestParams
     //post: fills resultArr with results for search query if connection is successful,
-    //      throws an exception otherwise
+    //  todo onFailure
     public static void setResultsJSON(String relURL, RequestParams params) throws JSONException {
         OrdabankiRESTClient.get(relURL, params, new JsonHttpResponseHandler() {
 

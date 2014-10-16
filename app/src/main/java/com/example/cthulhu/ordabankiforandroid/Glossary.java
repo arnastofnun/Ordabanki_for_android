@@ -6,7 +6,7 @@ package com.example.cthulhu.ordabankiforandroid;
  * and ways to access glossary information
  * ------------------------------------------------
  * @author Karl Ásgeir Geirsson
- * @date 14.10.2014.
+ * @since 14.10.2014.
  */
 public class Glossary{
     /*

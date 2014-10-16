@@ -14,24 +14,28 @@ import com.example.cthulhu.ordabankiforandroid.R;
 import java.util.ArrayList;
 
 /**
- * An adapter that implements most of the functions for the
- * glossary list view
+ * <h1>Glossary adapter</h1>
+ * <p>An adapter that implements most of the functions for the
+ * glossary list view</p>
  * --------------------------------------------------------
  * @author Karl Ásgeir Geirsson
- * @date 14.10.2014.
+ * @since 14.10.2014.
  */
 public class GlossaryAdapter extends ArrayAdapter<Glossary> {
 
     //Initialize a list for the glossaries
     private ArrayList<Glossary> glossaryList;
 
-
-    public GlossaryAdapter(Context context, int textViewResourceID){
-        super(context, textViewResourceID);
-    }
-
-    public GlossaryAdapter(Context context, int textViewResourceId, ArrayList<Glossary> glossaryList){
-        super(context,textViewResourceId,glossaryList);
+    /**
+     * Invoke the overwritten methods in superclass
+     * -----------------------------------------------
+     * Written by Karl Ásgeir
+     * @param context the current context
+     * @param listViewResourceId the resource Id of the list view that the adapter is being added to
+     * @param glossaryList the glossary list that is to be added to the list view
+     */
+    public GlossaryAdapter(Context context, int listViewResourceId, ArrayList<Glossary> glossaryList){
+        super(context,listViewResourceId,glossaryList);
         this.glossaryList = new ArrayList<Glossary>();
         this.glossaryList.addAll(glossaryList);
     }
@@ -41,8 +45,8 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
      * and text view of each item in the
      * glossary list
      * ------------------------------------
-     * @author Karl Ásgeir Geirsson
-     * @date 14.10.2014
+     * Written by Karl Ásgeir
+     * @since 14.10.2014
      */
     private class ViewHolder{
         TextView name;
@@ -54,25 +58,25 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
      * This function implements the glossary list layout and
      * sets an on click listener to set the selected glossary to selected.
      * It also sets the name of the glossary in the glossary list
-     * -------------------------------
-     * @author Karl Ásgeir Geirsson
-     * @param position
-     * @param convertView
-     * @param parent
+     * --------------------------------------------------------------------
+     * Written by Karl Ásgeir
+     * @param position position of item in list
+     * @param convertView the list view to convert
+     * @param parent the parent view group
      * @return view
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         //Initialize
         View view = convertView;
-        ViewHolder holder = null;
+        ViewHolder holder;
 
 
         if(view == null){
             //inflate the layout
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
-            view = vi.inflate(R.layout.glossary_list,null);
+            view = vi.inflate(R.layout.glossary_list,parent,false);
 
             //Set the view holder
             holder = new ViewHolder();

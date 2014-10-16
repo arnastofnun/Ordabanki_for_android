@@ -11,10 +11,15 @@ import com.example.cthulhu.ordabankiforandroid.PickGlossaryFragment;
  * tabs to switch between fragments
  * -------------------------------------------------------
  * @author Karl Ásgeir Geirsson
- * @date 9.10.2014
+ * @since 9.10.2014
  */
 public class TabsPagerAdapter extends FragmentPagerAdapter {
-
+    /**
+     * Invoke the overwritten methods in superclass
+     * --------------------------------------------
+     * Written by Karl Ásgeir
+     * @param fm the fragment manager for the fragments
+     */
     public TabsPagerAdapter(FragmentManager fm){
         super(fm);
     }
@@ -23,6 +28,14 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     private final int count = 2;
 
     //Gets the fragment at a specific index
+
+    /**
+     * This method returns a fragment based on a specific index
+     * ----------------------------------------------------------
+     * Written by Karl Ásgeir Geirsson
+     * @param index the index to get the
+     * @return fragment, the fragment based on the index (null if no fragment has that index)
+     */
     @Override
     public Fragment getItem(int index){
         Fragment fragment = null;
@@ -38,7 +51,12 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         return fragment;
     }
 
-    //Return the total count of tabs
+    /**
+     * Simple way to get the total number of tabs
+     * ------------------------------------------
+     * Written by Karl Ásgeir Geirsson
+     * @return count the number of tabs
+     */
     @Override
     public int getCount(){
         return count;

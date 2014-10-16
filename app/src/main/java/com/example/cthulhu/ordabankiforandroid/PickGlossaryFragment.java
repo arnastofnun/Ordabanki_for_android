@@ -19,7 +19,7 @@ import java.util.Iterator;
  * pick glossary tab of the search screen
  * --------------------------------------
  * @author  Karl Ásgeir Geirsson
- * @date 9.10.2014
+ * @since 9.10.2014
  */
 public class PickGlossaryFragment extends Fragment {
    /*
@@ -47,14 +47,14 @@ public class PickGlossaryFragment extends Fragment {
      * This function is supposed to loop through the glossaries and add them to the glossary list.
      * For now it just puts some test glossaries in.
      * It also sets an on click listener that displays a toast for now.
-     * It should open a link to the url of the glossary later
+     * Todo open a link to the url of the glossary later
+     * todo get glossaries from API and put into glossary list
      * -------------------------------------------------------------------------------------------
-     * @autor Karl Ásgeir Geirsson
-     * @date 09.10.2014
+     * Written by Karl Ásgeir Geirsson
+     * @param rootView the root view
+     * @since 09.10.2014
      */
     private void displayListView(View rootView){
-        //todo add url to the glossary list
-        //todo get glossaries from API and put into glossary list
         //List of glossaries
         Glossary glossary = new Glossary("MED","Medicine",true, "http://www.ismal.hi.is/ob/uppl/laekn.html");
         glossaryList.add(glossary);
@@ -83,17 +83,22 @@ public class PickGlossaryFragment extends Fragment {
     /**
      * use: ArrayList<Glossary> glossaryList = getGlossaryList();
      * pre: nothing
-     * post: This function returns an array of all selected glossaries from the glossary list
+     * post: This function returns an array list of all glossaries from the glossary list
      * ---------------------------------------------------------------------------------
-     * @autor Bill
-     * @date 14.10.2014
-     * @return selectedGlossaries
+     * Written by Bill
+     * @since 14.10.2014
+     * @return glossaryList
      */
     public static ArrayList<Glossary> getGlossaryList(){
-        ArrayList<Glossary> activeGlossaryList = glossaryList;
-        return activeGlossaryList;
+        return glossaryList;
     }
 
+    /**
+     * use: ArrayList<Glossary> glossaryList = getSelectedGlossaries();
+     * pre: nothing
+     * post: his function returns an array list of all selected glossaries from the glossary list
+     * @return selectedGlossaries
+     */
     public static ArrayList<String> getSelectedGlossaries(){
         ArrayList<Glossary> activeGlossaryList = getGlossaryList();
         Iterator<Glossary> iterator = activeGlossaryList.iterator();

@@ -13,22 +13,27 @@ import com.example.cthulhu.ordabankiforandroid.Result;
 import java.util.ArrayList;
 
 /**
- * An adapter that implements most of the functions for the
- * results list view
+ * <h1>Results Adapter</h1>
+ * <p>An adapter that implements most of the functions for the
+ * results list view</p>
  * --------------------------------------------------------
  * @author Karl Ásgeir Geirsson
- * @date 15.10.2014.
+ * @since 15.10.2014.
  */
 public class ResultsAdapter extends ArrayAdapter<Result> {
     //Initialize a list for the results
     private ArrayList<Result> resultsList;
 
-    public ResultsAdapter(Context context, int textViewResourceID){
-        super(context, textViewResourceID);
-    }
-
-    public ResultsAdapter(Context context, int textViewResourceId, ArrayList<Result> resultsList){
-        super(context,textViewResourceId,resultsList);
+    /**
+     * Invoke the overwritten methods in superclass
+     * -----------------------------------------------
+     * Written by Karl Ásgeir
+     * @param context the current context
+     * @param listViewResourceId the resource Id of the list view that the adapter is being added to
+     * @param resultsList the glossary list that is to be added to the list view
+     */
+    public ResultsAdapter(Context context, int listViewResourceId, ArrayList<Result> resultsList){
+        super(context,listViewResourceId,resultsList);
         this.resultsList = new ArrayList<Result>();
         this.resultsList.addAll(resultsList);
     }
@@ -38,7 +43,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
      * for the text views in each list item
      * ------------------------------------
      * @author Karl Ásgeir Geirsson
-     * @date 14.10.2014
+     * @since 14.10.2014
      */
     private class ViewHolder{
         TextView term;
@@ -51,24 +56,24 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
      * sets the correct values for the results in the results
      * list
      * -------------------------------
-     * @author Karl Ásgeir Geirsson
-     * @param position
-     * @param convertView
-     * @param parent
+     * Written by Karl Ásgeir Geirsson
+     * @param position position of item in list
+      *@param convertView the list view to convert
+     * @param parent the parent view group
      * @return view
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         //Initialize
         View view = convertView;
-        ViewHolder holder = null;
+        ViewHolder holder;
 
 
         if(view == null){
             //inflate the layout
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
-            view = vi.inflate(R.layout.results_list,null);
+            view = vi.inflate(R.layout.results_list,parent,false);
 
             //Set the view holder
             holder = new ViewHolder();
