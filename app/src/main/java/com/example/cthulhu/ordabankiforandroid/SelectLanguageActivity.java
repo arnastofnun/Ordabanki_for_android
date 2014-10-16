@@ -21,16 +21,13 @@ public class SelectLanguageActivity extends Activity {
         setContentView(R.layout.activity_select_language);
     }
 
-    //pre:view is of type View
-    //post:starts the activity that sets the language of the UI to English
+
     public void chooseEnglish(View view){
         Intent intent = new Intent(SelectLanguageActivity.this, SearchScreen.class);
         //intent.putExtra("lang","en");
         SelectLanguageActivity.this.startActivity(intent);
     }
 
-    //pre:view is of type View
-    //post:starts the activity that sets the language of the UI to Icelandic
     public void chooseIcelandic(View view){
         Intent intent = new Intent(SelectLanguageActivity.this, SearchScreen.class);
     //    intent.putExtra("lang","en");

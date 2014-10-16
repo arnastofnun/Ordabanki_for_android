@@ -13,44 +13,53 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * This class parses data received after a search query has been made to the Ordabanki DB.
- *
- * Created by cthulhu on 13/10/14. not default any more, go away last yellow block
+ * Created by cthulhu on 13/10/14.
  */
 
 class OrdabankiRestClientActions {
+    //holders for JSON results to work around enforced void return typing of onSuccess
+    private int resultType = 0;
+    private JSONArray resultsJSONArray = new JSONArray();
+    private JSONObject resultsJSONObject = new JSONObject();
 
-    //holder for JSON results to work around enforced void return typing of onSuccess
-    private static ArrayList<Result> resultArr = new ArrayList<Result>();
-
-    //use: setResultsJSON(relURL,params);
-    //pre: relUrl is a String, params is a RequestParams
-    //post: fills resultArr with results for search query if connection is successful,
-    //      throws an exception otherwise
-    public static void setResultsJSON(String relURL, RequestParams params) throws JSONException {
+    public void setResultsJSON(String relURL, RequestParams params) throws JSONException {
         OrdabankiRESTClient.get(relURL, params, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Gson gson = new Gson();
-                String jsonStr = response.toString();
-                Result resultObj = gson.fromJson(jsonStr, Result.class);
-                ArrayList<Result> tempArr = new ArrayList<Result>();
-                tempArr.add(resultObj);
-                resultArr = tempArr;
+                resultsJSONObject = response;
+                resultType = 1;
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                //more to do in this one need to see format of json arrays
-
+                resultsJSONArray = response;
+                resultType=2;
             }
         });
     }
-
-    //use: createURL(sTerm,sLang,tLang)
-    //pre: sTerm,sLang,tLang are strings, they form the search query
-    //post: returns the url for search results, a string
+    //parse resultsJSON with GSON and return
+    private ResultFields parseResults() {
+        Gson gson = new Gson();
+        ResultFields resultsJava = new ResultFields();
+        switch(resultType) {
+            case 0:
+                //throw exception?
+                break;
+            case 1:
+                //parse resultsJSONObject with GSON and return
+                //resultsJava = gson.fromJson();
+                resultType = 0;
+                break;
+            case 2:
+                //parse resultsJSONArray with GSON and return
+                //reset result type
+                //resultsJava = gson.fromJson(resultsJSONArray, ResultFields.class);
+                resultType = 0;
+                break;
+        }
+        return resultsJava;
+    }
     private static String createURL(String sTerm, String sLang, String tLang) {
         //takes base URL and appends search constraints
         final String delim = ";"; //change when find out right delimiter
@@ -64,7 +73,6 @@ class OrdabankiRestClientActions {
         if (selectedGlossaries.size()==1) {relURL=relURL+selectedGlossaries.get(0)+".json";}
         else {
             Iterator<String> iterator = selectedGlossaries.iterator();
-            //iterate until last but one member, There is probably a less verbose way to do that
             while(iterator.hasNext()&&!iterator.next().equals(selectedGlossaries.get(selectedGlossaries.size()-1))){
                 relURL= relURL+ iterator.next()+delim;
             }
@@ -72,18 +80,16 @@ class OrdabankiRestClientActions {
         }
         return relURL;
     }
-
-    //use: setSearchResult(sTerm,sLang,tLang)
-    //pre: sTerm,sLang,tLang are strings, they form the search query
-    //post: returns an ArrayList that contain the search results
-    public static void setSearchResult(String sTerm, String sLang, String tLang) throws JSONException {
+    public ResultFields getSearchResult(String sTerm, String sLang, String tLang) throws JSONException {
 
         String relURL = createURL(sTerm, sLang, tLang);
         RequestParams params = new RequestParams();
         setResultsJSON(relURL,params);
-
-    }
-    public static ArrayList<Result> getResultArray(){
-        return resultArr;
+        ResultFields resultsJava = parseResults();
+        return resultsJava;
     }
 }
+
+
+
+

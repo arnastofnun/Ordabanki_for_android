@@ -5,7 +5,6 @@ package com.example.cthulhu.ordabankiforandroid;
  */
 public class ResultFields {
     //field declaration
-
     private String foo;
     private String bar;
 
