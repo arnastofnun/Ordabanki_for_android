@@ -9,45 +9,61 @@ package com.example.cthulhu.ordabankiforandroid;
  * @date 14.10.2014.
  */
 public class Result{
-    //Initialize
+    //Data invariants:
+    //  term: term of search result
+    //  language: language of search result
+    //  glossary: glossary of search result
     String term = null;
     String language = null;
     String glossary = null;
-
-    //Creates the result object
+    
+    //Result result = new Result(term,language,glossary)
+    //pre:term,language and glossary are of type String
+    //post:Creates the result object
     public Result(String term, String language, String glossary) {
         super();
         this.term = term;
         this.language = language;
         this.glossary = glossary;
     }
-
-    //Returns the term for the result
+    
+    //use:result.getTerm();
+    //pre:nothing
+    //post:Returns the term for the result
     public String getTerm() {
         return term;
     }
-
-    //Sets the term for the result
+    //use:result.setTerm(term);
+    //pre: term is a string
+    //post:sets the term for the result
     public void setTerm(String term) {
         this.term = term;
     }
-
-    //Returns the language of the result
+    
+    //use:result.getLanguage();
+    //pre:nothing
+    //post:Returns the language of the result
     public String getLanguage() {
         return language;
     }
 
-    //Sets the language of the glossary
+    //use:result.setLanguage(language);
+    //pre:language is a string
+    //post:sets the language of the glossary
     public void setLanguage(String language) {
         this.language = language;
     }
-
-    //Returns the glossary of the result
+    
+    //use:result.getGlossary();
+    //pre: nothing
+    //post:returns the glossary of the result
     public String getGlossary() {
         return glossary;
     }
-
-    //Sets the glossary of the result
+    
+    //use:result.setUrl(glossary);
+    //pre:glossary is a string
+    //post:sets the glossary of the result
     public void setUrl(String glossary) {
         this.glossary = glossary;
     }
