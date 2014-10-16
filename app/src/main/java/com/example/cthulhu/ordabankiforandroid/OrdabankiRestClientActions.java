@@ -56,7 +56,7 @@ class OrdabankiRestClientActions {
         if (selectedGlossaries.size()==1) {relURL=relURL+selectedGlossaries.get(0)+".json";}
         else {
             Iterator<String> iterator = selectedGlossaries.iterator();
-            //iterate until last but one member, There is probably a less verbose way to do that
+            //iterate until last but one member, There is probably a less verbose way to do this
             while(iterator.hasNext()&&!iterator.next().equals(selectedGlossaries.get(selectedGlossaries.size()-1))){
                 relURL= relURL+ iterator.next()+delim;
             }
