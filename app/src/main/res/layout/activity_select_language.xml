@@ -38,7 +38,6 @@
         android:scaleType="fitXY"
         android:layout_marginStart="50dp"
         android:background="@color/white"
-        android:onClick="chooseIcelandic"
         />
 
     <ImageButton
@@ -53,7 +52,6 @@
         android:layout_marginBottom="100dp"
         android:scaleType="fitXY"
         android:layout_marginEnd="50dp"
-        android:onClick="chooseEnglish"
         />
 
     <TextView

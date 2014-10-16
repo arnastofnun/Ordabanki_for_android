@@ -12,6 +12,10 @@
     <string name="hello_world">Hello world!</string>
 
     <color name="white">#FFFFFF</color>
+    <string name="search_button">Search</string>
+    <string name="targetlang">Target language:</string>
+    <string name="sourcelang">Source language:</string>
+    <string name="all_languages">All</string>
 
     <string name="search_tab">Search</string>
     <string name="searchpreterm">results for</string>
