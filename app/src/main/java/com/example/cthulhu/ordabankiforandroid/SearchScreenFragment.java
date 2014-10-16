@@ -15,9 +15,15 @@ import java.util.List;
 
 
 /**
+ * This class sets creates the search screen UI
  * Created by karlasgeir on 9.10.2014.
  */
 public class SearchScreenFragment extends Fragment {
+    //Data invarians:
+    //sourceSpinner and targetSpinner are UI components;drop down menu list
+    //sourceSpinner contains source language selections
+    //targetSpinner contains target language selections
+
     private Spinner sourceSpinner;
     private Spinner targetSpinner;
 

@@ -83,7 +83,6 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
 
 
 
-
     /* Handle the button on the search screen fragment */
     public void search(View view){
         Intent intent = new Intent(this, ResultsScreen.class);

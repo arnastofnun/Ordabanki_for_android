@@ -22,8 +22,13 @@ import java.util.Iterator;
  * @date 9.10.2014
  */
 public class PickGlossaryFragment extends Fragment {
-    //Initialize
-    private static ArrayList<Glossary> glossaryList = new ArrayList<Glossary>();
+    /*
+    * Data invariants:
+    *   glossaryList is a list that contains all the glossaries to be used
+    *   in the Orðabanki app
+    */
+
+     private static ArrayList<Glossary> glossaryList = new ArrayList<Glossary>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -35,6 +40,8 @@ public class PickGlossaryFragment extends Fragment {
         return rootView;
     }
     /**
+     * use:displayListView(rootView)
+     * pre: rootView is of type View
      * This function is supposed to loop through the glossaries and add them to the glossary list.
      * For now it just puts some test glossaries in.
      * It also sets an on click listener that displays a toast for now.
@@ -72,7 +79,9 @@ public class PickGlossaryFragment extends Fragment {
     }
 
     /**
-     * This function returns an array of all selected glossaries from the glossary list
+     * use: ArrayList<Glossary> glossaryList = getGlossaryList();
+     * pre: nothing
+     * post: This function returns an array of all selected glossaries from the glossary list
      * ---------------------------------------------------------------------------------
      * @autor Bill
      * @date 14.10.2014
