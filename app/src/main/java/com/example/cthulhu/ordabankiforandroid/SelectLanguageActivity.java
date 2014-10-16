@@ -45,7 +45,8 @@ public class SelectLanguageActivity extends Activity {
 
     }
 
-
+    //pre:view is of type View
+    //post:starts the activity that sets the language of the UI 
     public void setLocale(String lang){
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
