@@ -30,7 +30,14 @@ import java.util.List;
  * Created by karlasgeir on 9.10.2014.
  */
 public class SearchScreen extends FragmentActivity implements ActionBar.TabListener{
-    //Variables
+    /*
+    *   Data invariants:
+    *   viewPager: ViewPager object
+    *   mAdaptar: Adapter for tabs pager
+    *   sourceLangSpinner: source language drop down menu items
+    *   targetLangSpinner: target language drop down menu items    
+    *   resultList: list of search results  
+    */
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
