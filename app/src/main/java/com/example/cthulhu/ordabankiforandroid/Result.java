@@ -14,7 +14,9 @@ public class Result{
     String language = null;
     String glossary = null;
 
-    //Creates the result object
+    //Result result = new Result(term,language,glossary)
+    //pre:term,language and glossary are of type String
+    //post:Creates the result object
     public Result(String term, String language, String glossary) {
         super();
         this.term = term;

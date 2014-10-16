@@ -13,11 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
-
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +31,6 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
-    private Spinner sourceLangSpinner;
-    private Spinner targetLangSpinner;
-    private ArrayList<Result> resultList = new ArrayList<Result>();
 
 
 
@@ -44,7 +38,6 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
-
 
 
         //Tab titles
@@ -60,9 +53,8 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         viewPager.setAdapter(mAdapter);
         actionBar.setHomeButtonEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        sourceLangSpinner = (Spinner) findViewById(R.id.sourceSpinner);
-        targetLangSpinner = (Spinner) findViewById(R.id.targetSpinner);
 
+        //Add items to source language dropdown spinner
 
 
         //Adding Tabs
@@ -91,20 +83,11 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
 
 
 
-
     /* Handle the button on the search screen fragment */
-    public void search(View view) throws JSONException {
+    public void search(View view){
         Intent intent = new Intent(this, ResultsScreen.class);
         EditText editText =(EditText) findViewById(R.id.searchView);
         String searchQuery = editText.getText().toString();
-
-        String sLang = sourceLangSpinner.getSelectedItem().toString();
-        String tLang =  targetLangSpinner.getSelectedItem().toString();
-        OrdabankiRestClientActions.setSearchResult(searchQuery, sLang, tLang);
-        OrdabankiRestClientActions.getResultArray();
-        //languages will be handled elsewhere when this is ready to go
-        //pass resultArr to result screen and move focus there
-
         intent.putExtra("searchQuery", searchQuery);
         this.startActivity(intent);
     }

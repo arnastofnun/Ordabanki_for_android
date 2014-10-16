@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
+ * This class parses data received after a search query has been made to the Ordabanki DB.
+ *
  * Created by cthulhu on 13/10/14. not default any more, go away last yellow block
  */
 
@@ -21,7 +23,10 @@ class OrdabankiRestClientActions {
     //holder for JSON results to work around enforced void return typing of onSuccess
     private static ArrayList<Result> resultArr = new ArrayList<Result>();
 
-
+    //use: setResultsJSON(relURL,params);
+    //pre: relUrl is a String, params is a RequestParams
+    //post: fills resultArr with results for search query if connection is successful,
+    //      throws an exception otherwise
     public static void setResultsJSON(String relURL, RequestParams params) throws JSONException {
         OrdabankiRESTClient.get(relURL, params, new JsonHttpResponseHandler() {
 
@@ -37,12 +42,15 @@ class OrdabankiRestClientActions {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-            //more to do in this one need to see format of json arrays
+                //more to do in this one need to see format of json arrays
 
             }
         });
     }
 
+    //use: createURL(sTerm,sLang,tLang)
+    //pre: sTerm,sLang,tLang are strings, they form the search query
+    //post: returns the url for search results, a string
     private static String createURL(String sTerm, String sLang, String tLang) {
         //takes base URL and appends search constraints
         final String delim = ";"; //change when find out right delimiter
@@ -64,6 +72,10 @@ class OrdabankiRestClientActions {
         }
         return relURL;
     }
+
+    //use: setSearchResult(sTerm,sLang,tLang)
+    //pre: sTerm,sLang,tLang are strings, they form the search query
+    //post: returns an ArrayList that contain the search results
     public static void setSearchResult(String sTerm, String sLang, String tLang) throws JSONException {
 
         String relURL = createURL(sTerm, sLang, tLang);
@@ -75,7 +87,3 @@ class OrdabankiRestClientActions {
         return resultArr;
     }
 }
-
-
-
-
