@@ -2,10 +2,16 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+
+import java.util.Locale;
 
 /*
 *   Holds the functions that are implemented in
@@ -19,23 +25,39 @@ public class SelectLanguageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_language);
+
+        ImageButton enButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_english);
+        ImageButton isButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_icelandic);
+
+        enButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                setLocale("en");
+            }
+        });
+
+        isButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                setLocale("is");
+            }
+        });
+
     }
 
-    //pre:view is of type View
-    //post:starts the activity that sets the language of the UI to English
-    public void chooseEnglish(View view){
-        Intent intent = new Intent(SelectLanguageActivity.this, SearchScreen.class);
-        //intent.putExtra("lang","en");
-        SelectLanguageActivity.this.startActivity(intent);
+
+    public void setLocale(String lang){
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf,dm);
+        Intent intent = new Intent(this,SearchScreen.class);
+        startActivity(intent);
     }
 
-    //pre:view is of type View
-    //post:starts the activity that sets the language of the UI to Icelandic
-    public void chooseIcelandic(View view){
-        Intent intent = new Intent(SelectLanguageActivity.this, SearchScreen.class);
-    //    intent.putExtra("lang","en");
-        SelectLanguageActivity.this.startActivity(intent);
-    }
+
 
 
     @Override

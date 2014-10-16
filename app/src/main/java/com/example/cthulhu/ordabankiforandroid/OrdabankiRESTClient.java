@@ -1,7 +1,6 @@
 package com.example.cthulhu.ordabankiforandroid;
 import com.loopj.android.http.*;
 /**
- * This class makes an Aynchronous connection to the Orðabanki DB with the REST protocol
  * Created by cthulhu on 13/10/14.
  */
 public class OrdabankiRESTClient {
