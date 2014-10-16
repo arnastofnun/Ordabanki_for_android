@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * This class implements functions for the results screen
  * ------------------------------------------------------
  * @author Trausti
- * @date 08.10.2014
+ * @since 08.10.2014
  */
 public class ResultsScreen extends Activity {
     //Initialize
@@ -30,8 +30,12 @@ public class ResultsScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_screen);
 
-        /*Just so we have something going throught the intent*/
+        /*Just so we have something going through the intent*/
         Intent intent = getIntent();
+        //This will be used to get the results from the intent
+        //ArrayList <Result> resultList = getIntent().getStringArrayListExtra("resultList")
+
+        //This is just for now untill we get the API
         String searchquery = intent.getStringExtra("searchQuery");
         String searchpreterm = getResources().getString(R.string.searchpreterm);
         int resultscount = 5;
@@ -47,14 +51,15 @@ public class ResultsScreen extends Activity {
      * For now it just puts some test glossaries in.
      * It also sets an on click listener that displays a toast for now.
      * It should open a link to the url of the glossary later
+     * todo add url to the glossary list
+     * todo get glossaries from API and put into glossary list
      * -------------------------------------------------------------------------------------------
-     * @autor Karl Ásgeir Geirsson
-     * @date 09.10.2014
+     * Written by Karl Ásgeir Geirsson
+     * @since 09.10.2014
+     * @param rootView the root view
      */
     private void displayListView(View rootView){
-        //todo add url to the glossary list
-        //todo get glossaries from API and put into glossary list
-        //List of glossaries
+        //Placeholder values for the glossaries
         Result result = new Result("lobe", "english", "Medicine");
         resultList.add(result);
         result = new Result("blade", "english", "Metallurgy");

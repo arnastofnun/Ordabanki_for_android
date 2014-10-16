@@ -100,7 +100,10 @@ public class PickGlossaryFragment extends Fragment {
      * @return selectedGlossaries
      */
     public static ArrayList<String> getSelectedGlossaries(){
+        //Get the glossary list
         ArrayList<Glossary> activeGlossaryList = getGlossaryList();
+
+        //Go through the glossaries and add the selected ones to selectedGlossaries
         Iterator<Glossary> iterator = activeGlossaryList.iterator();
         ArrayList<String> selectedGlossaries = new ArrayList<String>();
         while(iterator.hasNext()){
