@@ -11,11 +11,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ListIterator;
 
 /**
- * This class parses data received after a search query has been made to the Ordabanki DB.
+ * This class handles queries and parses data received after search query has been made to DB.
  *
- * Created by cthulhu on 13/10/14. not default any more, go away last yellow block
+ * Created by cthulhu on 13/10/14.
  */
 
 class OrdabankiRestClientActions {
@@ -26,7 +27,7 @@ class OrdabankiRestClientActions {
     //use: setResultsJSON(relURL,params);
     //pre: relUrl is a String, params is a RequestParams
     //post: fills resultArr with results for search query if connection is successful,
-    //      throws an exception otherwise
+    //todo onFailure() handling
     public static void setResultsJSON(String relURL, RequestParams params) throws JSONException {
         OrdabankiRESTClient.get(relURL, params, new JsonHttpResponseHandler() {
 
@@ -63,10 +64,10 @@ class OrdabankiRestClientActions {
         ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
         if (selectedGlossaries.size()==1) {relURL=relURL+selectedGlossaries.get(0)+".json";}
         else {
-            Iterator<String> iterator = selectedGlossaries.iterator();
-            //iterate until last but one member, There is probably a less verbose way to do this
-            while(iterator.hasNext()&&!iterator.next().equals(selectedGlossaries.get(selectedGlossaries.size()-1))){
-                relURL= relURL+ iterator.next()+delim;
+            ListIterator<String> it = selectedGlossaries.listIterator();
+            //iterate until last but one member,
+            while(it.hasNext()&& it.nextIndex()!=selectedGlossaries.size()-1){
+                relURL= relURL+ it.next()+delim;
             }
             relURL = relURL+selectedGlossaries.get(selectedGlossaries.size()-1)+".json";
         }
