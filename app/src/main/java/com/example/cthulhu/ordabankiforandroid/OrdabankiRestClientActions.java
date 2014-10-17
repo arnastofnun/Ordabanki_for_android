@@ -23,10 +23,13 @@ class OrdabankiRestClientActions {
     //holder for JSON results to work around enforced void return typing of onSuccess
     private static ArrayList<Result> resultArr = new ArrayList<Result>();
 
-    //use: setResultsJSON(relURL,params);
-    //pre: relUrl is a String, params is a RequestParams
-    //post: fills resultArr with results for search query if connection is successful,
-    //      throws an exception otherwise
+    
+     /**
+     * use: setResultsJSON(relURL,params);
+     * @param relUrl is of type String
+     * @param params is of type RequestParams
+     * @return nothing, fills resultArr with results for search query if connection is successful,
+     */
     public static void setResultsJSON(String relURL, RequestParams params) throws JSONException {
         OrdabankiRESTClient.get(relURL, params, new JsonHttpResponseHandler() {
 
@@ -48,9 +51,14 @@ class OrdabankiRestClientActions {
         });
     }
 
-    //use: createURL(sTerm,sLang,tLang)
-    //pre: sTerm,sLang,tLang are strings, they form the search query
-    //post: returns the url for search results, a string
+
+    /**
+    * use: createURL(sTerm,sLang,tLang)
+    * @param sTerm is a string, part of the search query
+    * @param sLang is a string, part of the search query
+    * @param tLang is a string, part of the search query
+    * @return url for search results, a string
+    */
     private static String createURL(String sTerm, String sLang, String tLang) {
         //takes base URL and appends search constraints
         final String delim = ";"; //change when find out right delimiter
@@ -72,10 +80,14 @@ class OrdabankiRestClientActions {
         }
         return relURL;
     }
-
-    //use: setSearchResult(sTerm,sLang,tLang)
-    //pre: sTerm,sLang,tLang are strings, they form the search query
-    //post: returns an ArrayList that contain the search results
+    
+    /**
+    * use: setSearchResult(sTerm,sLang,tLang)
+    * @param sTerm is a string, part of the search query
+    * @param sLang is a string, part of the search query
+    * @param tLang is a string, part of the search query
+    * @return  an ArrayList that contains the search results
+    */
     public static void setSearchResult(String sTerm, String sLang, String tLang) throws JSONException {
 
         String relURL = createURL(sTerm, sLang, tLang);
