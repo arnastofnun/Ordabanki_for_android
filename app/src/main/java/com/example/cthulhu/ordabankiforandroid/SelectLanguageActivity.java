@@ -16,7 +16,16 @@ import java.util.Locale;
 /*
 *   Holds the functions that are implemented in
 *   the select language screen
+*
 */
+
+/**
+ * This class holds the functions that are implemented
+ * in the select language screen
+ * It handles actions for the choose language buttons
+ * ----------------------------------------------------
+ * @author Karl Ásgeir Geirsson
+ */
 public class SelectLanguageActivity extends Activity {
 
 
@@ -26,6 +35,7 @@ public class SelectLanguageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_language);
 
+        //Get the image buttons
         ImageButton enButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_english);
         ImageButton isButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_icelandic);
 
@@ -45,8 +55,14 @@ public class SelectLanguageActivity extends Activity {
 
     }
 
-    //pre:view is of type View
-    //post:starts the activity that sets the language of the UI 
+    /**
+     * pre:lang is of type String
+     * post:starts the activity that sets the language of the UI
+     * todo move this into a LocaleSettings class
+     * ----------------------------------------------------------
+     * Written by Karl Ásgeir Geirsson
+     * @param lang is the language locale string ("en" or "is")
+     */
     public void setLocale(String lang){
         Locale myLocale = new Locale(lang);
         Resources res = getResources();

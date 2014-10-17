@@ -36,13 +36,12 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     *   mAdaptar: Adapter for tabs pager
     *   sourceLangSpinner: source language drop down menu items
     *   targetLangSpinner: target language drop down menu items    
-    *   resultList: list of search results  
+    *   resultList: list of search results
     */
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
-    private Spinner sourceLangSpinner;
-    private Spinner targetLangSpinner;
+
     private ArrayList<Result> resultList = new ArrayList<Result>();
 
 
@@ -67,8 +66,7 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         viewPager.setAdapter(mAdapter);
         actionBar.setHomeButtonEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        sourceLangSpinner = (Spinner) findViewById(R.id.sourceSpinner);
-        targetLangSpinner = (Spinner) findViewById(R.id.targetSpinner);
+
 
 
 
@@ -99,20 +97,48 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
 
 
 
-    /* Handle the button on the search screen fragment */
+    // Handle the button on the search screen fragment
+
+    /**
+     * This method handles the search. It gets the search query,
+     * the source and target languages, sends a request to the API and gets an
+     * array of results.
+     * The results are then sent to the ResultsScreen, and the
+     * ResultScreen activity is started
+     * ----------------------------------------------------------------------
+     * Written by Bill
+     * @param view the current view
+     * @throws JSONException
+     */
     public void search(View view) throws JSONException {
+        //Create the Intent
         Intent intent = new Intent(this, ResultsScreen.class);
+        //Get the search query
         EditText editText =(EditText) findViewById(R.id.searchView);
         String searchQuery = editText.getText().toString();
 
+        //Get the currently selected language from the source language spinner
+        Spinner sourceLangSpinner = (Spinner) findViewById(R.id.sourceSpinner);
         String sLang = sourceLangSpinner.getSelectedItem().toString();
+
+        //Get the currently selected language from the target language spinner
+        Spinner targetLangSpinner = (Spinner) findViewById(R.id.targetSpinner);
         String tLang =  targetLangSpinner.getSelectedItem().toString();
+
+        //Get the search results
         OrdabankiRestClientActions.setSearchResult(searchQuery, sLang, tLang);
-        OrdabankiRestClientActions.getResultArray();
+        resultList = OrdabankiRestClientActions.getResultArray();
         //languages will be handled elsewhere when this is ready to go
         //pass resultArr to result screen and move focus there
 
+        //For now we just put the search query through
         intent.putExtra("searchQuery", searchQuery);
+
+        //This will be used to put the result list through
+        //intent.putExtra("resultList", resultList);
+        //use getIntent().getStringArrayListExtra("resultList") to get the extra
+
+        //Start the results screen
         this.startActivity(intent);
     }
 
