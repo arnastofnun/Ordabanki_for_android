@@ -10,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.ListIterator;
 
 /**
@@ -33,11 +32,8 @@ class OrdabankiRestClientActions {
     //use: setResultsJSON(relURL,params);
     //pre: relUrl is a String, params is a RequestParams
     //post: fills resultArr with results for search query if connection is successful,
-<<<<<<< HEAD
     //todo onFailure() handling
-=======
     //  todo onFailure
->>>>>>> 2cf123108b0d0eabf47d440a2855eda3cc2b2737
     public static void setResultsJSON(String relURL, RequestParams params) throws JSONException {
         OrdabankiRESTClient.get(relURL, params, new JsonHttpResponseHandler() {
 

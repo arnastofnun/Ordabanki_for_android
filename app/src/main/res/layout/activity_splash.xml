@@ -1,33 +1,37 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context="com.example.cthulhu.ordabankiforandroid.SplashActivity">
+    tools:context="com.example.cthulhu.ordabankiforandroid.SplashActivity"
+    android:orientation="vertical">
 
     <ImageView
         android:contentDescription="@string/splashimage"
         android:id="@+id/splashImage"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:layout_marginBottom="100dp"
+        android:layout_height="0dp"
+        android:layout_weight=".60"
+        android:padding="20dp"
+        android:paddingBottom="30dp"
         android:gravity="center"
-        android:paddingTop="50dp"
-        android:paddingLeft="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:paddingBottom="50dp"
+        android:layout_gravity="center"
         android:scaleType="fitCenter"
         android:src="@drawable/splash"/>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:indeterminate="true"
+        android:layout_weight="0.3"
+        android:layout_gravity="center"/>
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
         android:layout_marginBottom="50dp"
         android:gravity="center"
-        android:layout_alignParentBottom="true"
         android:textSize="25sp"
         android:text="@string/splashtext"
         />
 
-</RelativeLayout>
+</LinearLayout>
