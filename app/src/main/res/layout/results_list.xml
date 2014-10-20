@@ -17,7 +17,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/resultTerm">
+        android:layout_below="@id/resultTerm"
+        android:id="@+id/linearLayout">
     <TextView
         android:id="@+id/resultLanguage"
         android:layout_weight="1"
@@ -40,6 +41,59 @@
 
         />
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="48dp">
+        <TextView
+            android:id="@+id/resultSynonyms"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:text="syn"
+            android:textSize="16sp"
+            android:singleLine="false"
+            android:gravity="top|start"
+            android:layout_width="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/resultDefinition"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:text="def"
+            android:textSize="16sp"
+            android:singleLine="false"
+            android:gravity="top|start"
+            android:layout_width="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/resultExample"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:text="exa"
+            android:textSize="16sp"
+            android:singleLine="false"
+            android:gravity="top|start"
+            android:layout_width="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/resultLexical_category"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:text="lex"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:gravity="top|start"
+            android:layout_width="wrap_content"
+            />
+        </LinearLayout>
 
 
 </RelativeLayout>

@@ -124,7 +124,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
             List<Result.Synonym> synonymList = Arrays.asList(result.getSynonyms());
             Iterator it = synonymList.iterator();
             while(it.hasNext()){
-                holder.synonyms.setText((String)it.next()+"\n");
+                holder.synonyms.setText(holder.synonyms.getText() + (String)it.next() + "\n");
             }
         }
         if(hasDef){
