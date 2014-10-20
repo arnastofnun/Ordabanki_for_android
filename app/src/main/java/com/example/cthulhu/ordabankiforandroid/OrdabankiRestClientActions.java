@@ -26,7 +26,7 @@ import java.util.ListIterator;
 class OrdabankiRestClientActions {
 
     //holder for JSON results to work around enforced void return typing of onSuccess
-    private static ArrayList<Result> resultArr = new ArrayList<Result>();
+    private static Result result = new Result();
 
     //use: setResultsJSON(relURL,params);
     //pre: relUrl is a String, params is a RequestParams
@@ -38,21 +38,23 @@ class OrdabankiRestClientActions {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Gson gson = new Gson();
-                String jsonStr = response.toString();
-                Result resultObj = gson.fromJson(jsonStr, Result.class);
-                ArrayList<Result> tempArr = new ArrayList<Result>();
-                tempArr.add(resultObj);
-                resultArr = tempArr;
+                result = gson.fromJson(response.toString(), Result.class);
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                //more to do in this one need to see format of json arrays
-
+                Gson gson = new Gson();
+                result = gson.fromJson(response.toString(), Result.class);
             }
         });
     }
 
+
+    private static String createWordOnlyURL(String sTerm){
+            //takes base URL and appends search constraints
+            final String baseURL = "http://apiordabanki.arnastofnun.is/request.php?word=";
+            return baseURL+ sTerm;
+    }
     //use: createURL(sTerm,sLang,tLang)
     //pre: sTerm,sLang,tLang are strings, they form the search query
     //post: returns the url for search results, a string
@@ -66,14 +68,14 @@ class OrdabankiRestClientActions {
         relURL = relURL + "&tLang=" + tLang;
         relURL = relURL + "&gloss=";
         ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
-        if (selectedGlossaries.size()==1) {relURL=relURL+selectedGlossaries.get(0)+".json";}
+        if (selectedGlossaries.size()==1) {relURL=relURL+selectedGlossaries.get(0);}
         else {
             ListIterator<String> it = selectedGlossaries.listIterator();
             //iterate until last but one member,
             while(it.hasNext()&& it.nextIndex()!=selectedGlossaries.size()-1){
                 relURL= relURL+ it.next()+delim;
             }
-            relURL = relURL+selectedGlossaries.get(selectedGlossaries.size()-1)+".json";
+            relURL = relURL+selectedGlossaries.get(selectedGlossaries.size()-1);
         }
         return relURL;
     }
@@ -88,8 +90,16 @@ class OrdabankiRestClientActions {
         setResultsJSON(relURL,params);
 
     }
-    public static ArrayList<Result> getResultArray(){
-        return resultArr;
+
+    public static void setSearchResultWordOnly(String sTerm) throws JSONException {
+
+        String relURL = createWordOnlyURL(sTerm);
+        RequestParams params = new RequestParams();
+        setResultsJSON(relURL,params);
+
+    }
+    public static Result getResult(){
+        return result;
     }
 }
 
