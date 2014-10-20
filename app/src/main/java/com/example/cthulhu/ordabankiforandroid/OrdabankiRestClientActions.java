@@ -32,7 +32,7 @@ class OrdabankiRestClientActions {
     //pre: relUrl is a String, params is a RequestParams
     //post: fills resultArr with results for search query if connection is successful,
 
-    public static void setResultsJSON(String relURL, RequestParams params) throws JSONException {
+    public static void setResultsObj(String relURL, RequestParams params) throws JSONException {
         OrdabankiRESTClient.get(relURL, params, new JsonHttpResponseHandler() {
 
             @Override
@@ -87,7 +87,7 @@ class OrdabankiRestClientActions {
 
         String relURL = createURL(sTerm, sLang, tLang);
         RequestParams params = new RequestParams();
-        setResultsJSON(relURL,params);
+        setResultsObj(relURL,params);
 
     }
 
@@ -95,7 +95,7 @@ class OrdabankiRestClientActions {
 
         String relURL = createWordOnlyURL(sTerm);
         RequestParams params = new RequestParams();
-        setResultsJSON(relURL,params);
+        setResultsObj(relURL,params);
 
     }
     public static Result getResult(){

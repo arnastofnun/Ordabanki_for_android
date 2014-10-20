@@ -28,7 +28,7 @@ public class Result implements Serializable{
     Synonym[] synonyms;
     String definition;
     String example;
-        static class Synonym {
+        public static class Synonym {
             public String synonym;
 
             public Synonym(){
