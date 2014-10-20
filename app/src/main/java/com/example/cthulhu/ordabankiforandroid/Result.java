@@ -1,7 +1,7 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 
 /**
  * This class is the Result object, which holds
@@ -25,7 +25,7 @@ public class Result implements Serializable{
     String word;
     String lexical_category;
     //need to check this, json array: synonyms contains json entities: synonym.
-    Synonym[] synonyms;
+    ArrayList <Synonym> synonyms;
     String definition;
     String example;
         public static class Synonym {
@@ -81,8 +81,8 @@ public class Result implements Serializable{
     public void setWord(String word) { this.word = word; }
     public String getLexical_category() { return lexical_category; }
     public void setLexical_category(String lexical_category) { this.lexical_category = lexical_category; }
-    public Synonym[] getSynonyms() { return synonyms; }
-    public void setSynonyms(Synonym[] synonyms) { this.synonyms = synonyms; }
+    public ArrayList<Synonym> getSynonyms() { return synonyms; }
+    public void setSynonyms(ArrayList<Synonym> synonyms) { this.synonyms = synonyms; }
     public String getDefinition() { return definition; }
     public void setDefinition(String definition) { this.definition = definition; }
     public String getExample() { return example; }

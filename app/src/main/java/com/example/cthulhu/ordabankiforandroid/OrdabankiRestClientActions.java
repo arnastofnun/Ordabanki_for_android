@@ -26,25 +26,26 @@ import java.util.ListIterator;
 class OrdabankiRestClientActions {
 
     //holder for JSON results to work around enforced void return typing of onSuccess
-    private static Result result = new Result();
+    private static Result[] result;
+//    private static Result resultObj;
 
     //use: setResultsJSON(relURL,params);
     //pre: relUrl is a String, params is a RequestParams
     //post: fills resultArr with results for search query if connection is successful,
 
-    public static void setResultsObj(String relURL, RequestParams params) throws JSONException {
+    public static void setResults(String relURL, RequestParams params) throws JSONException {
         OrdabankiRESTClient.get(relURL, params, new JsonHttpResponseHandler() {
 
-            @Override
+/*            @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Gson gson = new Gson();
-                result = gson.fromJson(response.toString(), Result.class);
-            }
+                resultObj = gson.fromJson(response.toString(), Result.class);
+            }*/
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 Gson gson = new Gson();
-                result = gson.fromJson(response.toString(), Result.class);
+                result = gson.fromJson(response.toString(), Result[].class);
             }
         });
     }
@@ -87,7 +88,7 @@ class OrdabankiRestClientActions {
 
         String relURL = createURL(sTerm, sLang, tLang);
         RequestParams params = new RequestParams();
-        setResultsObj(relURL,params);
+        setResults(relURL, params);
 
     }
 
@@ -95,10 +96,10 @@ class OrdabankiRestClientActions {
 
         String relURL = createWordOnlyURL(sTerm);
         RequestParams params = new RequestParams();
-        setResultsObj(relURL,params);
+        setResults(relURL, params);
 
     }
-    public static Result getResult(){
+    public static Result[] getResult(){
         return result;
     }
 }
