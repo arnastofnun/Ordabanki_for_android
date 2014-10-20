@@ -1,73 +1,82 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * This class is the Result object, which holds
  * important information about the results
  * and ways to access result information
  * ------------------------------------------------
- * @author Karl Ásgeir Geirsson
- * @since 14.10.2014.
+ * @author Karl Ásgeir Geirsson, Bill Hayhurst
+ * @since 14.10.2014.modified 20/11/14
  */
 public class Result implements Serializable{
     //Data invariants:
     //  term: term of search result
     //  language: language of search result
     //  glossary: glossary of search result
-    String term = null;
-    String language = null;
-    String glossary = null;
-    
-    //Result result = new Result(term,language,glossary)
-    //pre:term,language and glossary are of type String
-    //post:Creates the result object
-    public Result(String term, String language, String glossary) {
+
+    String id_word = null;
+    String id_term = null;
+    String language_code = null;
+    String language_name = null;
+    String terminology_dictionary = null;
+    String word = null;
+    String lexical_category = null;
+    //need to check this, json array: synonyms contains json entities: synonym.
+    ArrayList<String> synonyms = null;
+    String definition = null;
+    String example = null;
+    /*use: Result result = new Result(String id_word, String id_term, String language_code, String language_name,
+    *                           String terminology_dictionary, String word, String lexical_category,
+    *                           ArrayList<String> synonyms, String definition, String example)
+    *pre:synonyms is of type ArrayList<String> and all others are of type String
+    *post:Creates the result object
+    */
+    public Result(String id_word, String id_term, String language_code, String language_name,
+                  String terminology_dictionary, String word, String lexical_category,
+                  ArrayList<String> synonyms, String definition, String example) {
         super();
-        this.term = term;
-        this.language = language;
-        this.glossary = glossary;
-    }
-    
-    //use:result.getTerm();
-    //pre:nothing
-    //post:Returns the term for the result
-    public String getTerm() {
-        return term;
-    }
-    //use:result.setTerm(term);
-    //pre: term is a string
-    //post:sets the term for the result
-    public void setTerm(String term) {
-        this.term = term;
-    }
-    
-    //use:result.getLanguage();
-    //pre:nothing
-    //post:Returns the language of the result
-    public String getLanguage() {
-        return language;
+        this.id_word = id_word;
+        this.id_term = id_term;
+        this.language_code = language_code;
+        this.language_name = language_name;
+        this.terminology_dictionary = terminology_dictionary;
+        this.word = word;
+        this.lexical_category = lexical_category;
+        this.synonyms = synonyms;
+        this.definition = definition;
+        this.example = example;
     }
 
-    //use:result.setLanguage(language);
-    //pre:language is a string
-    //post:sets the language of the glossary
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-    
-    //use:result.getGlossary();
-    //pre: nothing
-    //post:returns the glossary of the result
-    public String getGlossary() {
-        return glossary;
-    }
-    
-    //use:result.setUrl(glossary);
-    //pre:glossary is a string
-    //post:sets the glossary of the result
-    public void setUrl(String glossary) {
-        this.glossary = glossary;
-    }
-
+    /* getters and setters
+    *  use: result.get*Var*()  where *Var* is the variable of interest
+    *  pre: nothing
+    *  post: returns *Var*
+    *
+    *  use: result.set*Var*(String *Var*)
+    *  pre: *Var* is a string
+    *  post: sets *Var* for result
+     */
+    public String getId_word() { return id_word; }
+    public void setId_word(String id_word) { this.id_word = id_word; }
+    public String getId_term() { return id_term; }
+    public void setId_term(String id_term) { this.id_term = id_term; }
+    public String getLanguage_code() { return language_code; }
+    public void setLanguage_code(String language_code) { this.language_code = language_code; }
+    public String getLanguage_name() { return language_name; }
+    public void setLanguage_name(String language_name) { this.language_name = language_name; }
+    public String getTerminology_dictionary() { return terminology_dictionary; }
+    public void setTerminology_dictionary(String terminology_dictionary) { this.terminology_dictionary = terminology_dictionary; }
+    public String getWord() { return word; }
+    public void setWord(String word) { this.word = word; }
+    public String getLexical_category() { return lexical_category; }
+    public void setLexical_category(String lexical_category) { this.lexical_category = lexical_category; }
+    public ArrayList<String> getSynonyms() { return synonyms; }
+    public void setSynonyms(ArrayList<String> synonyms) { this.synonyms = synonyms; }
+    public String getDefinition() { return definition; }
+    public void setDefinition(String definition) { this.definition = definition; }
+    public String getExample() { return example; }
+    public void setExample(String example) { this.example = example; }
 }
