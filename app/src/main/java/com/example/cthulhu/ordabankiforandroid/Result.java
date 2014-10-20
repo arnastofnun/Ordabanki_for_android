@@ -1,7 +1,7 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+
 
 /**
  * This class is the Result object, which holds
@@ -17,26 +17,34 @@ public class Result implements Serializable{
     //  language: language of search result
     //  glossary: glossary of search result
 
-    String id_word = null;
-    String id_term = null;
-    String language_code = null;
-    String language_name = null;
-    String terminology_dictionary = null;
-    String word = null;
-    String lexical_category = null;
+    String id_word;
+    String id_term;
+    String language_code;
+    String language_name;
+    String terminology_dictionary;
+    String word;
+    String lexical_category;
     //need to check this, json array: synonyms contains json entities: synonym.
-    ArrayList<String> synonyms = null;
-    String definition = null;
-    String example = null;
-    /*use: Result result = new Result(String id_word, String id_term, String language_code, String language_name,
+    Synonym[] synonyms;
+    String definition;
+    String example;
+        static class Synonym {
+            public String synonym;
+
+            public Synonym(){
+                //noargs constructor
+            }
+        }
+/*  unnecessary, gson takes care of this
+    *  *//*use: Result result = new Result(String id_word, String id_term, String language_code, String language_name,
     *                           String terminology_dictionary, String word, String lexical_category,
     *                           ArrayList<String> synonyms, String definition, String example)
     *pre:synonyms is of type ArrayList<String> and all others are of type String
     *post:Creates the result object
-    */
+    *//*
     public Result(String id_word, String id_term, String language_code, String language_name,
                   String terminology_dictionary, String word, String lexical_category,
-                  ArrayList<String> synonyms, String definition, String example) {
+                  Synonym[] synonyms, String definition, String example) {
         super();
         this.id_word = id_word;
         this.id_term = id_term;
@@ -48,9 +56,9 @@ public class Result implements Serializable{
         this.synonyms = synonyms;
         this.definition = definition;
         this.example = example;
-    }
+    }*/
 
-    /* getters and setters
+    /* getters and setters (setters not really needed but here anyway just in case)
     *  use: result.get*Var*()  where *Var* is the variable of interest
     *  pre: nothing
     *  post: returns *Var*
@@ -73,8 +81,8 @@ public class Result implements Serializable{
     public void setWord(String word) { this.word = word; }
     public String getLexical_category() { return lexical_category; }
     public void setLexical_category(String lexical_category) { this.lexical_category = lexical_category; }
-    public ArrayList<String> getSynonyms() { return synonyms; }
-    public void setSynonyms(ArrayList<String> synonyms) { this.synonyms = synonyms; }
+    public Synonym[] getSynonyms() { return synonyms; }
+    public void setSynonyms(Synonym[] synonyms) { this.synonyms = synonyms; }
     public String getDefinition() { return definition; }
     public void setDefinition(String definition) { this.definition = definition; }
     public String getExample() { return example; }
