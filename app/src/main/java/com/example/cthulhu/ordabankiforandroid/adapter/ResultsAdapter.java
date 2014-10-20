@@ -68,7 +68,6 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
         View view = convertView;
         ViewHolder holder;
 
-
         if(view == null){
             //inflate the layout
             LayoutInflater vi;
@@ -88,9 +87,9 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
 
         //Set the current glossary name and checkbox status
         Result result = resultsList.get(position);
-        holder.term.setText(result.getTerm());
-        holder.language.setText("(" + result.getLanguage()+")");
-        holder.glossary.setText("["+result.getGlossary()+"]");
+        holder.term.setText(result.getWord());
+        holder.language.setText("(" + result.getLanguage_name()+")");
+        holder.glossary.setText("["+result.getTerminology_dictionary()+"]");
 
         return view;
     }
