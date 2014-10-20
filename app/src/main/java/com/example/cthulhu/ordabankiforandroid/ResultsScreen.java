@@ -33,16 +33,16 @@ public class ResultsScreen extends Activity {
         /*Just so we have something going through the intent*/
         Intent intent = getIntent();
         //This will be used to get the results from the intent
-        //ArrayList <Result> resultList = getIntent().getStringArrayListExtra("resultList")
+        resultList = (ArrayList<Result>) getIntent().getSerializableExtra("resultList");
 
         //This is just for now untill we get the API
         String searchquery = intent.getStringExtra("searchQuery");
         String searchpreterm = getResources().getString(R.string.searchpreterm);
-        int resultscount = 5;
+        int resultscount = resultList.size();
         TextView textview = (TextView) findViewById(R.id.resultText);
         textview.setText(resultscount + " " + searchpreterm + " " + searchquery);
 
-       displayListView(findViewById(android.R.id.content));
+       displayListView(findViewById(android.R.id.content), resultList);
     }
 
 
@@ -58,12 +58,12 @@ public class ResultsScreen extends Activity {
      * @since 09.10.2014
      * @param rootView the root view
      */
-    private void displayListView(View rootView){
+    private void displayListView(View rootView, ArrayList<Result> resultList){
         //Placeholder values for the glossaries
-        Result result = new Result("lobe", "english", "Medicine");
-        resultList.add(result);
-        result = new Result("blade", "english", "Metallurgy");
-        resultList.add(result);
+        //Result result = new Result("lobe", "english", "Medicine");
+        //resultList.add(result);
+        //result = new Result("blade", "english", "Metallurgy");
+        //resultList.add(result);
 
         //Creating a new glossary adapter
         ResultsAdapter resultsAdapter = new ResultsAdapter(this, R.layout.results_list, resultList);

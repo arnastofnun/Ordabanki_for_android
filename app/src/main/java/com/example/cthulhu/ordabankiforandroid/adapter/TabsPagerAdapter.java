@@ -4,8 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.cthulhu.ordabankiforandroid.SearchScreenFragment;
 import com.example.cthulhu.ordabankiforandroid.PickGlossaryFragment;
+import com.example.cthulhu.ordabankiforandroid.SearchScreenFragment;
 /**
  * This class contains a Tabs-Pager adapter that enables
  * tabs to switch between fragments
@@ -45,6 +45,8 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
                 //returns the search screen fragment
                 return new SearchScreenFragment();
             case 1:
+                //Hide the keyboard
+
                 //returns the pick glossary fragment
                 return new PickGlossaryFragment();
         }

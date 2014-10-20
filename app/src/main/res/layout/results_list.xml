@@ -12,7 +12,7 @@
         android:gravity="center"
         android:layout_height="wrap_content"
         android:text="Term"
-        android:textSize="24sp"
+        android:textSize="20sp"
         />
     <LinearLayout
         android:layout_width="fill_parent"
@@ -24,7 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="(Language)"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:gravity="center"
         />
 
@@ -34,7 +34,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="[Glossary]"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:singleLine="true"
         android:gravity="center"
 

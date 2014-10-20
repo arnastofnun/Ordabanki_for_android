@@ -1,5 +1,7 @@
 package com.example.cthulhu.ordabankiforandroid;
 
+import java.io.Serializable;
+
 /**
  * This class is the Result object, which holds
  * important information about the results
@@ -8,7 +10,7 @@ package com.example.cthulhu.ordabankiforandroid;
  * @author Karl Ásgeir Geirsson
  * @since 14.10.2014.
  */
-public class Result{
+public class Result implements Serializable{
     //Data invariants:
     //  term: term of search result
     //  language: language of search result

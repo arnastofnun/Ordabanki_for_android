@@ -39,10 +39,9 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     *   resultList: list of search results
     */
     private ViewPager viewPager;
-    private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
 
-    private ArrayList<Result> resultList = new ArrayList<Result>();
+
 
 
 
@@ -61,7 +60,7 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         //Initilize
         viewPager = (ViewPager) findViewById(R.id.searchscreen);
         actionBar = getActionBar();
-        mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+        TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
         viewPager.setAdapter(mAdapter);
         actionBar.setHomeButtonEnabled(false);
@@ -91,6 +90,8 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+
+
     }
 
 
@@ -114,43 +115,45 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         //Create the Intent
         Intent intent = new Intent(this, ResultsScreen.class);
         //Get the search query
-        EditText editText =(EditText) findViewById(R.id.searchView);
-        String searchQuery = editText.getText().toString();
+        EditText searchView =(EditText) findViewById(R.id.searchView);
+        String searchQuery = searchView.getText().toString();
+        if(!searchQuery.equals("")) {
+            //Get the currently selected language from the source language spinner
+            Spinner sourceLangSpinner = (Spinner) findViewById(R.id.sourceSpinner);
+            String sLang = sourceLangSpinner.getSelectedItem().toString();
 
-        //Get the currently selected language from the source language spinner
-        Spinner sourceLangSpinner = (Spinner) findViewById(R.id.sourceSpinner);
-        String sLang = sourceLangSpinner.getSelectedItem().toString();
+            //Get the currently selected language from the target language spinner
+            Spinner targetLangSpinner = (Spinner) findViewById(R.id.targetSpinner);
+            String tLang = targetLangSpinner.getSelectedItem().toString();
 
-        //Get the currently selected language from the target language spinner
-        Spinner targetLangSpinner = (Spinner) findViewById(R.id.targetSpinner);
-        String tLang =  targetLangSpinner.getSelectedItem().toString();
+            //Get the search results
+            OrdabankiRestClientActions.setSearchResult(searchQuery, sLang, tLang);
+            ArrayList<Result> resultList = new ArrayList<Result>();
+            //For now, just put in some placeholer values
+            Result result = new Result("lobe", "english", "Medicine");
+            resultList.add(result);
+            result = new Result("blade", "english", "Metallurgy");
+            resultList.add(result);
+            //resultList = OrdabankiRestClientActions.getResultArray();
+            //languages will be handled elsewhere when this is ready to go
 
-        //Get the search results
-        OrdabankiRestClientActions.setSearchResult(searchQuery, sLang, tLang);
-        resultList = OrdabankiRestClientActions.getResultArray();
-        //languages will be handled elsewhere when this is ready to go
-        //pass resultArr to result screen and move focus there
+            //For now we just put the search query through
+            intent.putExtra("searchQuery", searchQuery);
 
-        //For now we just put the search query through
-        intent.putExtra("searchQuery", searchQuery);
-
-        //This will be used to put the result list through
-        //intent.putExtra("resultList", resultList);
-        //use getIntent().getStringArrayListExtra("resultList") to get the extra
-
-        //Start the results screen
-        this.startActivity(intent);
+            //Put the result list through the intent
+            intent.putExtra("resultList", resultList);
+            //Start the results screen
+            this.startActivity(intent);
+        }
     }
 
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft){
-        return;
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft){
-        return;
     }
 
     //Make sure the viewPager changes fragments when tab is pressed

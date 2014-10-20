@@ -1,12 +1,15 @@
 package com.example.cthulhu.ordabankiforandroid.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.TextView;
+import android.widget.ImageButton;
 
 import com.example.cthulhu.ordabankiforandroid.Glossary;
 import com.example.cthulhu.ordabankiforandroid.R;
@@ -49,8 +52,8 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
      * @since 14.10.2014
      */
     private class ViewHolder{
-        TextView name;
         CheckBox checkBox;
+        ImageButton link;
     }
 
 
@@ -80,16 +83,23 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
 
             //Set the view holder
             holder = new ViewHolder();
-            holder.name = (TextView) view.findViewById(R.id.GlossaryText);
             holder.checkBox = (CheckBox) view.findViewById(R.id.GlossaryCheckbox);
+            holder.link = (ImageButton) view.findViewById(R.id.GlossaryLink);
             view.setTag(holder);
 
             //Set the on click listener on the checkbox
             holder.checkBox.setOnClickListener( new View.OnClickListener() {
                 //if the checkbox is clicked set the selected glossary to selected
+                @Override
                 public void onClick(View v) {
                     CheckBox checkbox = (CheckBox) v ;
                     Glossary glossary = (Glossary) checkbox.getTag();
+                    if(glossary == null){
+                        Log.v("glossary", "null");
+                    }
+                    else{
+                        Log.v("glossary","OK");
+                    }
                     /*
                     Toast.makeText(context.getApplicationContext(),
                             "Clicked on Checkbox: " + checkbox.getText() +
@@ -99,6 +109,19 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
                     glossary.setSelected(checkbox.isChecked());
                 }
             });
+
+            //Set the on click listener on the link
+            holder.link.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    Glossary glossary = (Glossary) v.getTag();
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                    intent.setData(Uri.parse(glossary.getUrl()));
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
         else {
             holder = (ViewHolder) view.getTag();
@@ -106,7 +129,8 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
 
         //Set the current glossary name and checkbox status
         Glossary glossary = glossaryList.get(position);
-        holder.name.setText(glossary.getName());
+        holder.link.setTag(glossary);
+        holder.checkBox.setText(glossary.getName());
         holder.checkBox.setChecked(glossary.isSelected());
         holder.checkBox.setTag(glossary);
 
