@@ -130,11 +130,13 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
             OrdabankiRestClientActions.setSearchResult(searchQuery, sLang, tLang);
             ArrayList<Result> resultList = new ArrayList<Result>();
             //For now, just put in some placeholer values
+            /*
             Result result = new Result("lobe", "english", "Medicine");
             resultList.add(result);
             result = new Result("blade", "english", "Metallurgy");
             resultList.add(result);
-            //resultList = OrdabankiRestClientActions.getResultArray();
+            */
+            resultList = OrdabankiRestClientActions.getResultArray();
             //languages will be handled elsewhere when this is ready to go
 
             //For now we just put the search query through

@@ -78,7 +78,7 @@ public class ResultsScreen extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Result result = (Result) parent.getItemAtPosition(position);
                 //For now just display a toast for testing
-                Toast.makeText(getApplicationContext(), "Clicked on: " + result.getTerm(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Clicked on: " + result.getWord(), Toast.LENGTH_LONG).show();
             }
         });
 
