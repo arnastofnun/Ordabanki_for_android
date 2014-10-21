@@ -15,7 +15,6 @@ import com.example.cthulhu.ordabankiforandroid.Glossary;
 import com.example.cthulhu.ordabankiforandroid.R;
 
 import java.util.ArrayList;
-
 /**
  * <h1>Glossary adapter</h1>
  * <p>An adapter that implements most of the functions for the
@@ -57,22 +56,17 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
     }
 
 
-    /**
-     * This function implements the glossary list layout and
-     * sets an on click listener to set the selected glossary to selected.
-     * It also sets the name of the glossary in the glossary list
-     * --------------------------------------------------------------------
-     * Written by Karl Ásgeir
-     * @param position position of item in list
-     * @param convertView the list view to convert
-     * @param parent the parent view group
-     * @return view
-     */
-    @Override
+
+
+
     public View getView(int position, View convertView, ViewGroup parent){
         //Initialize
         View view = convertView;
         ViewHolder holder;
+
+
+
+
 
 
         if(view == null){
@@ -88,27 +82,43 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
             view.setTag(holder);
 
             //Set the on click listener on the checkbox
-            holder.checkBox.setOnClickListener( new View.OnClickListener() {
+            /*
+            holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (buttonView == null) {
+                        Log.v("buttonView", "null");
+                    } else {
+                        Log.v("buttonView", "OK");
+                    }
+                    Glossary glossary = (Glossary) buttonView.getTag();
+                    if (glossary == null) {
+                        Log.v("glossary", "null");
+                    } else {
+                        Log.v("glossary", "OK");
+                    }
+                    glossary.setSelected(isChecked);
+                }
+            });
+            */
+
+
+
+            holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 //if the checkbox is clicked set the selected glossary to selected
                 @Override
                 public void onClick(View v) {
-                    CheckBox checkbox = (CheckBox) v ;
+                    CheckBox checkbox = (CheckBox) v;
                     Glossary glossary = (Glossary) checkbox.getTag();
-                    if(glossary == null){
+                    if (glossary == null) {
                         Log.v("glossary", "null");
+                    } else {
+                        Log.v("glossary", "OK");
                     }
-                    else{
-                        Log.v("glossary","OK");
-                    }
-                    /*
-                    Toast.makeText(context.getApplicationContext(),
-                            "Clicked on Checkbox: " + checkbox.getText() +
-                                    " is " + checkbox.isChecked(),
-                            Toast.LENGTH_LONG).show();
-                     */
                     glossary.setSelected(checkbox.isChecked());
                 }
             });
+
 
             //Set the on click listener on the link
             holder.link.setOnClickListener(new View.OnClickListener(){
@@ -126,6 +136,9 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
         else {
             holder = (ViewHolder) view.getTag();
         }
+
+
+
 
         //Set the current glossary name and checkbox status
         Glossary glossary = glossaryList.get(position);

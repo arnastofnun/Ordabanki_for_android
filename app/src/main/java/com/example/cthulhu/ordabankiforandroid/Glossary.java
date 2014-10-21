@@ -28,12 +28,12 @@ public class Glossary{
     //use: Glossary glossary = new Glossary(code,name,selected,url);
     //pre: code,name and url are Strings, selected is a boolean
     //post: creates the glossary object
-    public Glossary(String code, String name, boolean selected, String url) {
+    public Glossary(String code, String name, String url) {
         super();
         this.code = code;
         this.name = name;
         this.url = url;
-        this.selected = selected;
+        this.selected = true;
     }
 
      //use: glossary.getCode()
