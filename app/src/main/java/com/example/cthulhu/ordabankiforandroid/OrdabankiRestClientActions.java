@@ -7,7 +7,6 @@ import com.loopj.android.http.RequestParams;
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
@@ -73,15 +72,17 @@ class OrdabankiRestClientActions {
         relURL = relURL + "&tLang=" + tLang;
         relURL = relURL + "&gloss=";
         ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
-        if (selectedGlossaries.size()==1) {relURL=relURL+selectedGlossaries.get(0);}
-        else {
+        if (selectedGlossaries.size() == 1) {
+            relURL = relURL + selectedGlossaries.get(0);
+        } else {
             ListIterator<String> it = selectedGlossaries.listIterator();
             //iterate until last but one member,
-            while(it.hasNext()&& it.nextIndex()!=selectedGlossaries.size()-1){
-                relURL= relURL+ it.next()+delim;
+            while (it.hasNext() && it.nextIndex() != selectedGlossaries.size() - 1) {
+                relURL = relURL + it.next() + delim;
             }
-            relURL = relURL+selectedGlossaries.get(selectedGlossaries.size()-1);
+            relURL = relURL + selectedGlossaries.get(selectedGlossaries.size() - 1);
         }
+
         return relURL;
     }
 

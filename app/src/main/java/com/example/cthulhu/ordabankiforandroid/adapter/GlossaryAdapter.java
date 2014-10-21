@@ -64,11 +64,6 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
         View view = convertView;
         ViewHolder holder;
 
-
-
-
-
-
         if(view == null){
             //inflate the layout
             LayoutInflater vi;

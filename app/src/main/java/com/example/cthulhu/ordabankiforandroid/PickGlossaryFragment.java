@@ -172,7 +172,7 @@ public class PickGlossaryFragment extends Fragment {
         ArrayList<Glossary> activeGlossaryList = getGlossaryList();
 
         //Go through the glossaries and add the selected ones to selectedGlossaries
-        Iterator<Glossary> iterator = activeGlossaryList.iterator();
+        Iterator<Glossary> iterator = glossaryList.iterator();
         ArrayList<String> selectedGlossaries = new ArrayList<String>();
         while(iterator.hasNext()){
             if (iterator.next().isSelected()){
