@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -56,17 +58,84 @@ public class PickGlossaryFragment extends Fragment {
      */
     private void displayListView(View rootView){
         //List of glossaries
-        Glossary glossary = new Glossary("MED","Medicine",true, "http://www.ismal.hi.is/ob/uppl/laekn.html");
+        Glossary glossary = new Glossary("ARC","Architecture","http://ismal.hi.is/ob/uppl/arkitekt.html");
         glossaryList.add(glossary);
-        glossary = new Glossary("PHYS","Physics",true, "http://www.ismal.hi.is/ob/uppl/edlisfr.html");
+        glossary = new Glossary("ART","ARTS","");
         glossaryList.add(glossary);
+        glossary = new Glossary("MED","Medicine", "http://www.ismal.hi.is/ob/uppl/laekn.html");
+        glossaryList.add(glossary);
+        glossary = new Glossary("PHYS","Physics", "http://www.ismal.hi.is/ob/uppl/edlisfr.html");
+        glossaryList.add(glossary);
+
 
         //Creating a new glossary adapter
         GlossaryAdapter glossaryAdapter = new GlossaryAdapter(this.getActivity(), R.layout.glossary_list, glossaryList);
 
+
+
+
+
         //Getting the glossary list and setting it's adapter to my custom glossary adapter
-        ListView listView = (ListView) rootView.findViewById(R.id.GlossaryList);
+        final ListView listView = (ListView) rootView.findViewById(R.id.GlossaryList);
         listView.setAdapter(glossaryAdapter);
+
+        //Button to check all glossaries
+        Button checkallbutton = (Button) rootView.findViewById(R.id.select_all_glossaries);
+        //Button to uncheck all glossaries
+        Button decheckallbutton = (Button) rootView.findViewById(R.id.deselect_all_glossaries);
+        //On click listener to select all glossaries
+        checkallbutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                //variables
+                int index=0;
+                View cbview;
+                CheckBox cbx;
+                //Go through the glossary list
+                for(Glossary glossary : glossaryList){
+                    //If glossary is checked
+                    if(!glossary.isSelected()){
+                        //Set the selected status of the glossary
+                        glossary.setSelected(true);
+                        //Get the correct item in the list
+                        cbview =  listView.getChildAt(index);
+                        //Get the checkbox
+                        cbx = (CheckBox)cbview.findViewById(R.id.GlossaryCheckbox);
+                        //Set the checkbox
+                        cbx.setChecked(glossary.isSelected());
+
+                    }
+                    index++;
+                }
+            }
+        });
+
+        //On click listener to deselect all glossaries
+        decheckallbutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                //variables
+                int index=0;
+                View cbview;
+                CheckBox cbx;
+                //Go through the glossary list
+                for(Glossary glossary : glossaryList){
+                    //If glossary is checked
+                    if(glossary.isSelected()){
+                        //Set the selected status of the glossary
+                        glossary.setSelected(false);
+                        //Get the correct item in the list
+                        cbview =  listView.getChildAt(index);
+                        //Get the checkbox
+                        cbx = (CheckBox)cbview.findViewById(R.id.GlossaryCheckbox);
+                        //Set the checkbox
+                        cbx.setChecked(glossary.isSelected());
+
+                    }
+                    index++;
+                }
+            }
+        });
 
         //Setting the on item click listener to be ready for later use
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -74,7 +143,7 @@ public class PickGlossaryFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Glossary glossary = (Glossary) parent.getItemAtPosition(position);
                 //For now just display a toast for testing
-                Toast.makeText(getActivity().getApplicationContext(), "Clicked on: " + glossary.getName(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity().getApplicationContext(), "Clicked on: " + glossary.getName() + " checked: " + glossary.isSelected(), Toast.LENGTH_LONG).show();
             }
         });
 

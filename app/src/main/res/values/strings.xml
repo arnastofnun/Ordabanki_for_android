@@ -27,5 +27,6 @@
     <string name="deselect_all">Select none</string>
     <string name="database_error">Could not connect to database</string>
     <string name="no_result">No</string>
+    <string name="link_unaccessable">There is no website for this glossary</string>
 
 </resources>

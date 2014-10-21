@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.Glossary;
 import com.example.cthulhu.ordabankiforandroid.R;
@@ -125,11 +126,16 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
                 @Override
                 public void onClick(View v){
                     Glossary glossary = (Glossary) v.getTag();
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_VIEW);
-                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                    intent.setData(Uri.parse(glossary.getUrl()));
-                    v.getContext().startActivity(intent);
+                    if(!glossary.getUrl().equals("")) {
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_VIEW);
+                        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                        intent.setData(Uri.parse(glossary.getUrl()));
+                        v.getContext().startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(v.getContext(),v.getResources().getString(R.string.link_unaccessable),Toast.LENGTH_LONG).show();
+                    }
                 }
             });
         }
