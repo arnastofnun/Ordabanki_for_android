@@ -45,8 +45,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
                 //returns the search screen fragment
                 return new SearchScreenFragment();
             case 1:
-                //Hide the keyboard
-
                 //returns the pick glossary fragment
                 return new PickGlossaryFragment();
         }

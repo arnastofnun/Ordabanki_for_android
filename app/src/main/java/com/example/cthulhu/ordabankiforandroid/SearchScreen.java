@@ -2,19 +2,21 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
 
@@ -140,30 +142,42 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
             */
             resultList = OrdabankiRestClientActions.getResult();
             if(resultList == null){
-                Log.v("resultlist","null");
+                Toast.makeText(this,getResources().getString(R.string.database_error),Toast.LENGTH_LONG).show();
             }
             else{
-                Log.v("resultList","okey");
+                //For now we just put the search query through
+                intent.putExtra("searchQuery", searchQuery);
+
+                //Put the result list through the intent
+                intent.putExtra("resultList", resultList);
+                //Start the results screen
+                this.startActivity(intent);
             }
             //languages will be handled elsewhere when this is ready to go
 
-            //For now we just put the search query through
-            intent.putExtra("searchQuery", searchQuery);
 
-            //Put the result list through the intent
-            intent.putExtra("resultList", resultList);
-            //Start the results screen
-            this.startActivity(intent);
         }
     }
 
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft){
+        View focus = getCurrentFocus();
+        if(focus != null){
+            InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            keyboard.hideSoftInputFromWindow(focus.getWindowToken(),0);
+        }
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft){
+        if(tab.getPosition() == 0){
+            View focus = getCurrentFocus();
+            if(focus != null){
+                InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                keyboard.showSoftInput(focus,0);
+            }
+        }
     }
 
     //Make sure the viewPager changes fragments when tab is pressed
