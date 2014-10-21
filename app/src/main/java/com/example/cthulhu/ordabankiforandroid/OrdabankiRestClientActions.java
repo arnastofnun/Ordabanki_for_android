@@ -52,9 +52,11 @@ class OrdabankiRestClientActions {
 
 
     private static String createWordOnlyURL(String sTerm){
-            //takes base URL and appends search constraints
-            final String baseURL = "http://apiordabanki.arnastofnun.is/request.php?word=";
-            return baseURL+ sTerm;
+        //takes base URL and appends search constraints
+        final String baseURL = "http://apiordabanki.arnastofnun.is/request.php?word=";
+        sTerm = sTerm.replaceAll("\\*", "%");
+        sTerm = sTerm.replaceAll("\\+", "_");
+        return baseURL+ sTerm;
     }
     //use: createURL(sTerm,sLang,tLang)
     //pre: sTerm,sLang,tLang are strings, they form the search query
@@ -63,6 +65,8 @@ class OrdabankiRestClientActions {
         //takes base URL and appends search constraints
         final String delim = ";"; //change when find out right delimiter
         final String baseURL = "http://apiordabanki.arnastofnun.is/request.php?word=";
+        sTerm = sTerm.replaceAll("\\*", "%");
+        sTerm = sTerm.replaceAll("\\+", "_");
         String relURL = baseURL+ sTerm;
         relURL = relURL + "&sLang="+sLang;
         //change when see right syntax for request, format is right
