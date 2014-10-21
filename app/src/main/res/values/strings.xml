@@ -25,5 +25,7 @@
     <string name="action_help">Help</string>
     <string name="select_all">Select all</string>
     <string name="deselect_all">Select none</string>
+    <string name="database_error">Could not connect to database</string>
+    <string name="no_result">No</string>
 
 </resources>

@@ -1,7 +1,6 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,8 +12,6 @@ import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.ResultsAdapter;
 
-import java.util.ArrayList;
-
 /**
  * This class implements functions for the results screen
  * ------------------------------------------------------
@@ -23,7 +20,7 @@ import java.util.ArrayList;
  */
 public class ResultsScreen extends Activity {
     //Initialize
-    private ArrayList<Result> resultList = new ArrayList<Result>();
+    private Result[] resultList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +28,27 @@ public class ResultsScreen extends Activity {
         setContentView(R.layout.activity_results_screen);
 
         /*Just so we have something going through the intent*/
-        Intent intent = getIntent();
+        Bundle data = getIntent().getExtras();
         //This will be used to get the results from the intent
-        resultList = (ArrayList<Result>) getIntent().getSerializableExtra("resultList");
-
-        //This is just for now untill we get the API
-        String searchquery = intent.getStringExtra("searchQuery");
+        resultList = (Result[]) data.getParcelableArray("resultList");
+        String searchquery = data.getString("searchQuery");
         String searchpreterm = getResources().getString(R.string.searchpreterm);
-        int resultscount = resultList.size();
         TextView textview = (TextView) findViewById(R.id.resultText);
-        textview.setText(resultscount + " " + searchpreterm + " " + searchquery);
+        if(resultList == null){
+            String databaseerror = getResources().getString(R.string.database_error);
+            textview.setText(databaseerror);
 
-       displayListView(findViewById(android.R.id.content), resultList);
+        }
+        else if(resultList.length == 0){
+            String noresult = getResources().getString(R.string.no_result);
+            textview.setText(noresult + " " + searchpreterm + " " + searchquery);
+        }
+        else {
+            //This is just for now untill we get the API
+            int resultscount = resultList.length;
+            textview.setText(resultscount + " " + searchpreterm + " " + searchquery);
+            displayListView(findViewById(android.R.id.content), resultList);
+        }
     }
 
 
@@ -58,7 +64,7 @@ public class ResultsScreen extends Activity {
      * @since 09.10.2014
      * @param rootView the root view
      */
-    private void displayListView(View rootView, ArrayList<Result> resultList){
+    private void displayListView(View rootView, Result[] resultList){
         //Placeholder values for the glossaries
         //Result result = new Result("lobe", "english", "Medicine");
         //resultList.add(result);

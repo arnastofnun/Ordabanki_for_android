@@ -1,6 +1,8 @@
 package com.example.cthulhu.ordabankiforandroid;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**
@@ -11,7 +13,7 @@ import java.util.ArrayList;
  * @author Karl Ásgeir Geirsson, Bill Hayhurst
  * @since 14.10.2014.modified 20/11/14
  */
-public class Result implements Serializable{
+public class Result implements Parcelable {
     //Data invariants:
     //  term: term of search result
     //  language: language of search result
@@ -28,11 +30,35 @@ public class Result implements Serializable{
     ArrayList <Synonym> synonyms;
     String definition;
     String example;
-        public static class Synonym {
+        public static class Synonym implements Parcelable{
             public String synonym;
 
-            public Synonym(){
+            public Synonym(Parcel in){
                 //noargs constructor
+                this.synonym = in.readString();
+            }
+
+            //Parcelling part
+            @Override
+            public void writeToParcel(Parcel dest, int flags){
+                dest.writeString(synonym);
+            }
+
+            static final Parcelable.Creator<Synonym> CREATOR
+                    = new Parcelable.Creator<Synonym>() {
+
+                public Synonym createFromParcel(Parcel in) {
+                    return new Synonym(in);
+                }
+
+                public Synonym[] newArray(int size) {
+                    return new Synonym[size];
+                }
+            };
+
+            @Override
+            public int describeContents(){
+                return 0;
             }
         }
 /*  unnecessary, gson takes care of this
@@ -87,4 +113,54 @@ public class Result implements Serializable{
     public void setDefinition(String definition) { this.definition = definition; }
     public String getExample() { return example; }
     public void setExample(String example) { this.example = example; }
+
+
+    //Parcelling part
+    public Result(Parcel in){
+        this.id_word = in.readString();
+        this.id_term = in.readString();
+        this.language_code = in.readString();
+        this.language_name = in.readString();
+        this.terminology_dictionary = in.readString();
+        this.word = in.readString();
+        this.lexical_category = in.readString();
+        in.readTypedList(this.synonyms,Synonym.CREATOR);
+        this.definition = in.readString();
+        this.example = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags){
+        dest.writeString(id_word);
+        dest.writeString(id_term);
+        dest.writeString(language_code);
+        dest.writeString(terminology_dictionary);
+        dest.writeString(word);
+        dest.writeString(lexical_category);
+        dest.writeTypedList(synonyms);
+        dest.writeString(definition);
+        dest.writeString(example);
+    }
+
+
+
+    @Override
+    public int describeContents(){
+        return 0;
+    }
+
+    static final Parcelable.Creator<Result> CREATOR
+            = new Parcelable.Creator<Result>() {
+
+        public Result createFromParcel(Parcel in) {
+            return new Result(in);
+        }
+
+        public Result[] newArray(int size) {
+            return new Result[size];
+        }
+    };
+
+
+
 }

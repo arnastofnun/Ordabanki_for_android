@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -128,7 +129,8 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
 
             //Get the search results
             OrdabankiRestClientActions.setSearchResult(searchQuery, sLang, tLang);
-            ArrayList<Result> resultList = new ArrayList<Result>();
+
+            Result[] resultList;
             //For now, just put in some placeholer values
             /*
             Result result = new Result("lobe", "english", "Medicine");
@@ -136,7 +138,13 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
             result = new Result("blade", "english", "Metallurgy");
             resultList.add(result);
             */
-            resultList = OrdabankiRestClientActions.getResultArray();
+            resultList = OrdabankiRestClientActions.getResult();
+            if(resultList == null){
+                Log.v("resultlist","null");
+            }
+            else{
+                Log.v("resultList","okey");
+            }
             //languages will be handled elsewhere when this is ready to go
 
             //For now we just put the search query through

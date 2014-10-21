@@ -23,7 +23,7 @@ import java.util.Iterator;
  */
 public class ResultsAdapter extends ArrayAdapter<Result> {
     //Initialize a list for the results
-    private ArrayList<Result> resultsList;
+    private Result[] resultsList;
 
     /**
      * Invoke the overwritten methods in superclass
@@ -33,10 +33,9 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
      * @param listViewResourceId the resource Id of the list view that the adapter is being added to
      * @param resultsList the glossary list that is to be added to the list view
      */
-    public ResultsAdapter(Context context, int listViewResourceId, ArrayList<Result> resultsList){
+    public ResultsAdapter(Context context, int listViewResourceId, Result[] resultsList){
         super(context,listViewResourceId,resultsList);
-        this.resultsList = new ArrayList<Result>();
-        this.resultsList.addAll(resultsList);
+        this.resultsList = resultsList;
     }
 
     /**
@@ -88,19 +87,19 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
             holder.term = (TextView) view.findViewById(R.id.resultTerm);
             holder.language = (TextView) view.findViewById(R.id.resultLanguage);
             holder.glossary = (TextView) view.findViewById(R.id.resultGlossary);
-            if(resultsList.get(position).getLexical_category()!=null){
+            if(resultsList[position].getLexical_category()!=null){
                 holder.lexical_category = (TextView) view.findViewById(R.id.resultLexical_category);
                 hasLex = true;
             }
-            if(resultsList.get(position).getSynonyms()!=null){
+            if(resultsList[position].getSynonyms()!=null){
                 holder.synonyms = (TextView) view.findViewById(R.id.resultSynonyms);
                 hasSyn = true;
             }
-            if(resultsList.get(position).getDefinition()!=null){
+            if(resultsList[position].getDefinition()!=null){
                 holder.definition = (TextView) view.findViewById(R.id.resultDefinition);
                 hasDef = true;
             }
-            if(resultsList.get(position).getExample()!=null){
+            if(resultsList[position].getExample()!=null){
                 holder.example = (TextView) view.findViewById(R.id.resultExample);
                 hasEx = true;
             }
@@ -111,7 +110,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
         }
 
         //Set the current glossary name and checkbox status
-        Result result = resultsList.get(position);
+        Result result = resultsList[position];
         holder.term.setText(result.getWord());
         holder.language.setText("(" + result.getLanguage_name()+")");
         holder.glossary.setText("["+result.getTerminology_dictionary()+"]");
