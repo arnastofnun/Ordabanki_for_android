@@ -38,8 +38,8 @@
             android:src="@drawable/ic_iceland"
             android:layout_marginRight="20dp"
             android:layout_marginEnd="20dp"
-            android:scaleType="fitXY"
-            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:background="@null"
             />
         <ImageButton
             android:id="@+id/SelectLanguageActivity.english"
@@ -49,8 +49,8 @@
             android:layout_marginStart="20dp"
             android:layout_height="fill_parent"
             android:src="@drawable/ic_united_kingdom"
-            android:background="@color/white"
-            android:scaleType="fitXY"
+            android:background="@null"
+            android:scaleType="fitCenter"
             />
         </LinearLayout>
 

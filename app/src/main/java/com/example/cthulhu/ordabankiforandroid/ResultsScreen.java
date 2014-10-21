@@ -57,7 +57,6 @@ public class ResultsScreen extends Activity {
      * For now it just puts some test glossaries in.
      * It also sets an on click listener that displays a toast for now.
      * It should open a link to the url of the glossary later
-     * todo add url to the glossary list
      * todo get glossaries from API and put into glossary list
      * -------------------------------------------------------------------------------------------
      * Written by Karl Ásgeir Geirsson

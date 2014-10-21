@@ -49,7 +49,6 @@ public class PickGlossaryFragment extends Fragment {
      * This function is supposed to loop through the glossaries and add them to the glossary list.
      * For now it just puts some test glossaries in.
      * It also sets an on click listener that displays a toast for now.
-     * Todo open a link to the url of the glossary later
      * todo get glossaries from API and put into glossary list
      * -------------------------------------------------------------------------------------------
      * Written by Karl Ásgeir Geirsson

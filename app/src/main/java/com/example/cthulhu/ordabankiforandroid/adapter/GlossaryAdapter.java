@@ -39,8 +39,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
      */
     public GlossaryAdapter(Context context, int listViewResourceId, ArrayList<Glossary> glossaryList){
         super(context,listViewResourceId,glossaryList);
-        this.glossaryList = new ArrayList<Glossary>();
-        this.glossaryList.addAll(glossaryList);
+        this.glossaryList = glossaryList;
     }
 
     /**
