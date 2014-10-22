@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.cthulhu.ordabankiforandroid.ChooseLanguagesFragment"
+    android:gravity="center"
+    android:background="@color/darkred"
+    android:id="@+id/choose_language_fragment">
+
+    <LinearLayout
+        android:id="@+id/sourceWrapper"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/sourcelang"
+            android:id="@+id/sourceLang"
+            android:maxLines="2"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            />
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/sourceSpinner"
+            android:textSize="20sp"
+            android:padding="5dp"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/targetWrapper"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sourceWrapper"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:text="@string/targetlang"
+            android:id="@+id/targetLang"
+            android:maxLines="2"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            />
+
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/targetSpinner"
+            android:textSize="20sp"
+            android:padding="5dp"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+</RelativeLayout>

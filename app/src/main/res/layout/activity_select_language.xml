@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.cthulhu.ordabankiforandroid.SelectLanguageActivity"
     android:padding="20dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/greenblue">
 
     <ImageView
         android:contentDescription="@string/splashimage"
@@ -22,9 +23,11 @@
         android:text="@string/welcometext"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
+        android:textColor="@color/white"
         android:layout_weight="0.5"
         android:textSize="30sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -61,7 +64,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:gravity="center" />
 

@@ -7,15 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
  //Created by karlasgeir on 9.10.2014.
@@ -31,13 +26,10 @@ import java.util.List;
  * @since 09.10.2014
  */
 public class SearchScreenFragment extends Fragment {
-    //Data invarians:
-    //sourceSpinner and targetSpinner are UI components;drop down menu list
-    //sourceSpinner contains source language selections
-    //targetSpinner contains target language selections
-    
-    private Spinner sourceSpinner;
-    private Spinner targetSpinner;
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -63,46 +55,7 @@ public class SearchScreenFragment extends Fragment {
             }
         });
 
-        //Get the source language spinner
-        sourceSpinner = (Spinner) rootView.findViewById(R.id.sourceSpinner);
-        //Create a list to place the source languages in
-        List<String> listSource = new ArrayList<String>();
 
-        //Making "All" the first item
-        listSource.add(getResources().getString(R.string.all_languages));
-        //Adding some placeholder values until we get the API
-        //todo add source languages from api
-        listSource.add("Icelandic");
-        listSource.add("English");
-
-        //Create an array adapter to put the source list into the spinner
-        ArrayAdapter<String> dataAdapterSource = new ArrayAdapter<String>
-                (this.getActivity(), android.R.layout.simple_spinner_item,listSource);
-        dataAdapterSource.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
-
-        //Set the adapter to the source language spinner
-        sourceSpinner.setAdapter(dataAdapterSource);
-
-        //Add items to target language dropdown spinner
-        targetSpinner = (Spinner) rootView.findViewById(R.id.targetSpinner);
-        //Create a list to place the target languages in
-        List<String> listTarget = new ArrayList<String>();
-        //Making "All" the first item
-        listTarget.add(getResources().getString(R.string.all_languages));
-        //Adding some placeholder values until we get the API
-        //todo add target languages from api
-        listTarget.add("Icelandic");
-        listTarget.add("English");
-
-        //Create an array adapter to put the target list into the spinner
-        ArrayAdapter<String> dataAdapterTarget = new ArrayAdapter<String>
-                (this.getActivity(), android.R.layout.simple_spinner_item,listTarget);
-        dataAdapterTarget.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
-
-        //Set the adapter to the target language spinner
-        targetSpinner.setAdapter(dataAdapterTarget);
 
 
 

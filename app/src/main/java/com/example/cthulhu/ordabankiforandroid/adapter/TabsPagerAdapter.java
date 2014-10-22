@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.cthulhu.ordabankiforandroid.ChooseLanguagesFragment;
 import com.example.cthulhu.ordabankiforandroid.PickGlossaryFragment;
 import com.example.cthulhu.ordabankiforandroid.SearchScreenFragment;
 /**
@@ -25,7 +26,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     }
 
     //Count of tabs
-    private final int count = 2;
+    private final int count = 3;
 
     //Gets the fragment at a specific index
 
@@ -47,6 +48,8 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 //returns the pick glossary fragment
                 return new PickGlossaryFragment();
+            case 2:
+                return new ChooseLanguagesFragment();
         }
         return fragment;
     }

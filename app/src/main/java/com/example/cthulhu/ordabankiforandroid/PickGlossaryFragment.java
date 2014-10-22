@@ -24,20 +24,30 @@ import java.util.Iterator;
  * @since 9.10.2014
  */
 public class PickGlossaryFragment extends Fragment {
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+    }
+
    /*
     * Data invariants:
     *   glossaryList is a list that contains all the glossaries to be used
     *   in the Orðabanki app
     */
-    private static ArrayList<Glossary> glossaryList = new ArrayList<Glossary>();
+    private static ArrayList<Glossary> glossaryList;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         //Load the .xml file for the pick glossary fragment
-        View rootView = inflater.inflate(R.layout.fragment_pick_glossary,container,false);
-        //Display the pick glossary list
-        displayListView(rootView);
 
+        View rootView = inflater.inflate(R.layout.fragment_pick_glossary,container,false);
+
+        if(savedInstanceState == null) {
+            //Display the pick glossary list
+            displayListView(rootView);
+        }
         return rootView;
     }
     /**use:displayListView(rootView)
@@ -57,6 +67,7 @@ public class PickGlossaryFragment extends Fragment {
      */
     private void displayListView(View rootView){
         //List of glossaries
+        glossaryList = new ArrayList<Glossary>();
         Glossary glossary = new Glossary("ARC","Architecture","http://ismal.hi.is/ob/uppl/arkitekt.html");
         glossaryList.add(glossary);
         glossary = new Glossary("ART","ARTS","");
@@ -69,10 +80,6 @@ public class PickGlossaryFragment extends Fragment {
 
         //Creating a new glossary adapter
         GlossaryAdapter glossaryAdapter = new GlossaryAdapter(this.getActivity(), R.layout.glossary_list, glossaryList);
-
-
-
-
 
         //Getting the glossary list and setting it's adapter to my custom glossary adapter
         final ListView listView = (ListView) rootView.findViewById(R.id.GlossaryList);

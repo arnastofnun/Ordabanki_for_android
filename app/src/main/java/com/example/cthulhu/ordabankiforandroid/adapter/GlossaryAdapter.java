@@ -27,7 +27,8 @@ import java.util.ArrayList;
 public class GlossaryAdapter extends ArrayAdapter<Glossary> {
 
     //Initialize a list for the glossaries
-    private ArrayList<Glossary> glossaryList;
+    private static ArrayList<Glossary> glossaryList;
+
 
     /**
      * Invoke the overwritten methods in superclass
@@ -39,6 +40,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
      */
     public GlossaryAdapter(Context context, int listViewResourceId, ArrayList<Glossary> glossaryList){
         super(context,listViewResourceId,glossaryList);
+        this.glossaryList = new ArrayList<Glossary>();
         this.glossaryList = glossaryList;
     }
 

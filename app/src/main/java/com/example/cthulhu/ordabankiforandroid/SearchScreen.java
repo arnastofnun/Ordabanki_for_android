@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
@@ -52,52 +52,53 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
+        if(savedInstanceState == null) {
+
+
+            //Tab titles
+            List<String> tabs = new ArrayList<String>();
+            tabs.add(this.getString(R.string.search_tab));
+            tabs.add(this.getString(R.string.pick_glossary_tab));
+            tabs.add(this.getString(R.string.languages_tab_name));
+
+            //Initilize
+            viewPager = (ViewPager) findViewById(R.id.searchscreen);
+            actionBar = getActionBar();
+            TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+
+            viewPager.setAdapter(mAdapter);
+            actionBar.setHomeButtonEnabled(false);
+            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+
+            //Adding Tabs
+            for (String tab_name : tabs) {
+                actionBar.addTab(actionBar.newTab().setText(tab_name).setTabListener(this));
+            }
 
 
 
-        //Tab titles
-        List<String> tabs = new ArrayList<String>();
-        tabs.add(this.getString(R.string.search_tab));
-        tabs.add(this.getString(R.string.pick_glossary_tab));
 
-        //Initilize
-        viewPager = (ViewPager) findViewById(R.id.searchscreen);
-        actionBar = getActionBar();
-        TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+            //Change the tabs when swiping between fragments
+            viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-        viewPager.setAdapter(mAdapter);
-        actionBar.setHomeButtonEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+                @Override
+                public void onPageSelected(int position) {
+                    // when page is selected also select correct tab
+                    actionBar.setSelectedNavigationItem(position);
+                }
 
+                @Override
+                public void onPageScrolled(int arg0, float arg1, int arg2) {
+                }
 
-
-
-        //Adding Tabs
-        for(String tab_name : tabs){
-            actionBar.addTab(actionBar.newTab().setText(tab_name).setTabListener(this));
+                @Override
+                public void onPageScrollStateChanged(int arg0) {
+                }
+            });
         }
-        //Change the tabs when swiping between fragments
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                // when page is selected also select correct tab
-                actionBar.setSelectedNavigationItem(position);
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-            }
-        });
-
 
     }
-
-
 
 
 
@@ -121,13 +122,15 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         EditText searchView =(EditText) findViewById(R.id.searchView);
         String searchQuery = searchView.getText().toString();
         if(!searchQuery.equals("")) {
-            //Get the currently selected language from the source language spinner
-            Spinner sourceLangSpinner = (Spinner) findViewById(R.id.sourceSpinner);
-            String sLang = sourceLangSpinner.getSelectedItem().toString();
 
-            //Get the currently selected language from the target language spinner
-            Spinner targetLangSpinner = (Spinner) findViewById(R.id.targetSpinner);
-            String tLang = targetLangSpinner.getSelectedItem().toString();
+            String sLang = ChooseLanguagesFragment.getSourceLanguage();
+            String tLang = ChooseLanguagesFragment.getTargetLanguage();
+
+            Log.v("sLang",sLang);
+            Log.v("tLang",tLang);
+
+
+
 
             //Get the search results
             OrdabankiRestClientActions.setSearchResult(searchQuery, sLang, tLang);

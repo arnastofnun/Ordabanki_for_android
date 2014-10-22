@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Orðabankinn</string>
-    <string name="title_activity_splash">Orðabankinn</string>
+    <string name="app_name">Íðorðabankinn</string>
+    <string name="title_activity_splash">Íðorðabankinn</string>
     <string name="action_settings">Settings</string>
     <string name="splashimage">Splash image</string>
     <string name="splashtext">Initializing</string>
-    <string name="welcometext">Welcome to the Orðabanki app</string>
+    <string name="welcometext">Welcome to the Íðorðabanki app</string>
     <string name="selectlanguage">Please choose your language</string>
     <string name="title_activity_select_language">Select Language</string>
     <string name="hello_world">Hello world!</string>
 
     <color name="white">#FFFFFF</color>
+    <color name="greenblue">#588C7E</color>
+    <color name="lightyellow">#F2E394</color>
+    <color name="lightorange">#F2AE72</color>
+    <color name="darkorange">#D96459</color>
+    <color name="darkred">#8C4646</color>
+
     <string name="search_button">Search</string>
     <string name="targetlang">Target language:</string>
     <string name="sourcelang">Source language:</string>
     <string name="all_languages">All</string>
-
     <string name="search_tab">Search</string>
     <string name="searchpreterm">results for</string>
     <string name="search_hint">Type in search query</string>
-    <string name="pick_glossary_tab">Pick Glossary</string>
+    <string name="pick_glossary_tab">Glossaries</string>
     <string name="title_activity_results_screen">Results</string>
     <string name="action_help">Help</string>
     <string name="select_all">Select all</string>
@@ -28,5 +33,7 @@
     <string name="database_error">Could not connect to database</string>
     <string name="no_result">No</string>
     <string name="link_unaccessable">There is no website for this glossary</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="languages_tab_name">Languages</string>
 
 </resources>
