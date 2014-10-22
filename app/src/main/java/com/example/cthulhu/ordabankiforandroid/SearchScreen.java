@@ -52,9 +52,6 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
-        if(savedInstanceState == null) {
-
-
             //Tab titles
             List<String> tabs = new ArrayList<String>();
             tabs.add(this.getString(R.string.search_tab));
@@ -96,8 +93,6 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
                 public void onPageScrollStateChanged(int arg0) {
                 }
             });
-        }
-
     }
 
 
@@ -116,12 +111,26 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
      * @throws JSONException
      */
     public void search(View view) throws JSONException {
+        Boolean allowsearch = true;
         //Create the Intent
         Intent intent = new Intent(this, ResultsScreen.class);
         //Get the search query
         EditText searchView =(EditText) findViewById(R.id.searchView);
         String searchQuery = searchView.getText().toString();
-        if(!searchQuery.equals("")) {
+        if(searchQuery.equals("")){
+            allowsearch = false;
+            Toast.makeText(this,this.getString(R.string.no_search_term),Toast.LENGTH_LONG).show();
+        }
+
+
+
+        if(PickGlossaryFragment.getSelectedGlossaries().isEmpty()){
+            Log.v("selected glossaries","null");
+            allowsearch = false;
+            Toast.makeText(this,this.getString(R.string.no_glossary_picked),Toast.LENGTH_LONG).show();
+        }
+
+        if(allowsearch) {
 
             String sLang = ChooseLanguagesFragment.getSourceLanguage();
             String tLang = ChooseLanguagesFragment.getTargetLanguage();

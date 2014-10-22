@@ -3,13 +3,13 @@ package com.example.cthulhu.ordabankiforandroid.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.Glossary;
@@ -53,8 +53,9 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
      * @since 14.10.2014
      */
     private class ViewHolder{
-        CheckBox checkBox;
+        TextView glossaryName;
         ImageButton link;
+        ImageView tick;
     }
 
 
@@ -74,8 +75,9 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
 
             //Set the view holder
             holder = new ViewHolder();
-            holder.checkBox = (CheckBox) view.findViewById(R.id.GlossaryCheckbox);
+            holder.glossaryName = (TextView) view.findViewById(R.id.GlossaryName);
             holder.link = (ImageButton) view.findViewById(R.id.GlossaryLink);
+            holder.tick = (ImageView) view.findViewById(R.id.checked_image);
             view.setTag(holder);
 
             //Set the on click listener on the checkbox
@@ -101,18 +103,26 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
 
 
 
-            holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            holder.glossaryName.setOnClickListener(new View.OnClickListener() {
                 //if the checkbox is clicked set the selected glossary to selected
                 @Override
                 public void onClick(View v) {
-                    CheckBox checkbox = (CheckBox) v;
-                    Glossary glossary = (Glossary) checkbox.getTag();
-                    if (glossary == null) {
-                        Log.v("glossary", "null");
-                    } else {
-                        Log.v("glossary", "OK");
+                    TextView glossaryName = (TextView) v;
+                    Glossary glossary = (Glossary) glossaryName.getTag();
+                    View row = (View) v.getParent();
+                    ImageView tick = (ImageView) row.findViewById(R.id.checked_image);
+                    if(glossary.isSelected()) {
+                        row.setBackgroundResource(R.color.glossary_notselected);
+                        tick.setImageResource(0);
+                        glossary.setSelected(false);
                     }
-                    glossary.setSelected(checkbox.isChecked());
+                   else{
+                        row.setBackgroundResource(R.color.glossary_selected);
+                        tick.setImageResource(R.drawable.ic_action_accept);
+                        glossary.setSelected(true);
+
+                    }
+
                 }
             });
 
@@ -145,9 +155,23 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
         //Set the current glossary name and checkbox status
         Glossary glossary = glossaryList.get(position);
         holder.link.setTag(glossary);
-        holder.checkBox.setText(glossary.getName());
-        holder.checkBox.setChecked(glossary.isSelected());
-        holder.checkBox.setTag(glossary);
+        if(glossary.getUrl().equals("")){
+            holder.link.setImageResource(android.R.color.transparent);
+        }
+        else{
+            holder.link.setImageResource(R.drawable.ic_action_web_site);
+        }
+        holder.glossaryName.setText(glossary.getName());
+        View row = (View) holder.glossaryName.getParent();
+        if(glossary.isSelected()){
+            row.setBackgroundResource(R.color.glossary_selected);
+            holder.tick.setImageResource(R.drawable.ic_action_accept);
+        }
+        else{
+            row.setBackgroundResource(R.color.glossary_notselected);
+            holder.tick.setImageResource(0);
+        }
+        holder.glossaryName.setTag(glossary);
 
         return view;
     }

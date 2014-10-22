@@ -3,19 +3,19 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.GlossaryAdapter;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 /**
  * This class contains functions for the
  * pick glossary tab of the search screen
@@ -25,10 +25,7 @@ import java.util.Iterator;
  */
 public class PickGlossaryFragment extends Fragment {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-    }
+
 
    /*
     * Data invariants:
@@ -44,10 +41,8 @@ public class PickGlossaryFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_pick_glossary,container,false);
 
-        if(savedInstanceState == null) {
             //Display the pick glossary list
             displayListView(rootView);
-        }
         return rootView;
     }
     /**use:displayListView(rootView)
@@ -95,8 +90,7 @@ public class PickGlossaryFragment extends Fragment {
             public void onClick(View v){
                 //variables
                 int index=0;
-                View cbview;
-                CheckBox cbx;
+                View listitemview;
                 //Go through the glossary list
                 for(Glossary glossary : glossaryList){
                     //If glossary is checked
@@ -104,12 +98,10 @@ public class PickGlossaryFragment extends Fragment {
                         //Set the selected status of the glossary
                         glossary.setSelected(true);
                         //Get the correct item in the list
-                        cbview =  listView.getChildAt(index);
-                        //Get the checkbox
-                        cbx = (CheckBox)cbview.findViewById(R.id.GlossaryCheckbox);
-                        //Set the checkbox
-                        cbx.setChecked(glossary.isSelected());
-
+                        listitemview =  listView.getChildAt(index);
+                        ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                        listitemview.setBackgroundResource(R.color.glossary_selected);
+                        tick.setImageResource(R.drawable.ic_action_accept);
                     }
                     index++;
                 }
@@ -122,8 +114,7 @@ public class PickGlossaryFragment extends Fragment {
             public void onClick(View v){
                 //variables
                 int index=0;
-                View cbview;
-                CheckBox cbx;
+                View listitemview;
                 //Go through the glossary list
                 for(Glossary glossary : glossaryList){
                     //If glossary is checked
@@ -131,11 +122,10 @@ public class PickGlossaryFragment extends Fragment {
                         //Set the selected status of the glossary
                         glossary.setSelected(false);
                         //Get the correct item in the list
-                        cbview =  listView.getChildAt(index);
-                        //Get the checkbox
-                        cbx = (CheckBox)cbview.findViewById(R.id.GlossaryCheckbox);
-                        //Set the checkbox
-                        cbx.setChecked(glossary.isSelected());
+                        listitemview =  listView.getChildAt(index);
+                        ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                        listitemview.setBackgroundResource(R.color.glossary_notselected);
+                        tick.setImageResource(0);
 
                     }
                     index++;
@@ -165,7 +155,7 @@ public class PickGlossaryFragment extends Fragment {
      * @return glossaryList
      */
     public static ArrayList<Glossary> getGlossaryList(){
-        return glossaryList;
+            return glossaryList;
     }
 
     /**
@@ -175,15 +165,12 @@ public class PickGlossaryFragment extends Fragment {
      * @return selectedGlossaries
      */
     public static ArrayList<String> getSelectedGlossaries(){
-        //Get the glossary list
-        ArrayList<Glossary> activeGlossaryList = getGlossaryList();
-
         //Go through the glossaries and add the selected ones to selectedGlossaries
-        Iterator<Glossary> iterator = glossaryList.iterator();
         ArrayList<String> selectedGlossaries = new ArrayList<String>();
-        while(iterator.hasNext()){
-            if (iterator.next().isSelected()){
-                selectedGlossaries.add(iterator.next().getName());
+        for(Glossary glossary : glossaryList) {
+            if(glossary.isSelected()){
+                Log.v("selected glossary: ", glossary.getName());
+                selectedGlossaries.add(glossary.getName());
             }
         }
         return selectedGlossaries;

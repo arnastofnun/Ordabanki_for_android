@@ -21,10 +21,7 @@ public class ChooseLanguagesFragment extends Fragment {
     private static Spinner sourceSpinner;
     private static Spinner targetSpinner;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

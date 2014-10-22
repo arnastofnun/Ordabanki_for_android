@@ -17,6 +17,8 @@
     <color name="lightorange">#F2AE72</color>
     <color name="darkorange">#D96459</color>
     <color name="darkred">#8C4646</color>
+    <color name="glossary_selected">#588C7E</color>
+    <color name="glossary_notselected">#0000</color>
 
     <string name="search_button">Search</string>
     <string name="targetlang">Target language:</string>
@@ -35,5 +37,7 @@
     <string name="link_unaccessable">There is no website for this glossary</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="languages_tab_name">Languages</string>
+    <string name="no_search_term">You have to type in a search query</string>
+    <string name="no_glossary_picked">You have to pick at least one glossary</string>
 
 </resources>

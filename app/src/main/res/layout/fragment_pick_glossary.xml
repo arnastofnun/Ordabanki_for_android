@@ -9,7 +9,7 @@
         android:id="@+id/checkboxselect"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+
         style="?android:attr/buttonBarStyle">
          <Button
              style="?android:attr/buttonBarButtonStyle"
@@ -38,7 +38,6 @@
         android:layout_below="@id/checkboxselect"
         android:textSize="20sp"
         android:id="@+id/GlossaryList"
-        android:layout_margin="10dp"
         android:fastScrollEnabled="true"
         />
 
