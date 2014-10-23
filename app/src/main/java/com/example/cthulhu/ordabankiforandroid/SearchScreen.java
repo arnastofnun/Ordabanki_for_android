@@ -142,17 +142,17 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
 
 
             //Get the search results
-            OrdabankiRestClientActions.setSearchResult(searchQuery, sLang, tLang);
-
-            Result[] resultList;
-            //For now, just put in some placeholer values
+            //OrdabankiRestClientActions.setSearchResult(searchQuery);
+            //Todo: This is a testing function until API is ready, remove and uncomment call above later
+             OrdabankiRestClientActions.setSearchResultTestPage();
+            //For now, just put in some placeholder values
             /*
             Result result = new Result("lobe", "english", "Medicine");
             resultList.add(result);
             result = new Result("blade", "english", "Metallurgy");
             resultList.add(result);
             */
-            resultList = OrdabankiRestClientActions.getResult();
+            Result[] resultList = OrdabankiRestClientActions.getResult();
             if(resultList == null){
                 Toast.makeText(this,getResources().getString(R.string.database_error),Toast.LENGTH_LONG).show();
             }

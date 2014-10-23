@@ -60,16 +60,16 @@ class OrdabankiRestClientActions {
     //use: createURL(sTerm,sLang,tLang)
     //pre: sTerm,sLang,tLang are strings, they form the search query
     //post: returns the url for search results, a string
-    private static String createURL(String sTerm, String sLang, String tLang) {
+    private static String createURL(String sTerm) {
         //takes base URL and appends search constraints
-        final String delim = ";"; //change when find out right delimiter
+        final String delim = "&"; //change when find out right delimiter
         final String baseURL = "http://apiordabanki.arnastofnun.is/request.php?word=";
         sTerm = sTerm.replaceAll("\\*", "%");
         sTerm = sTerm.replaceAll("\\+", "_");
         String relURL = baseURL+ sTerm;
-        relURL = relURL + "&sLang="+sLang;
+        relURL = relURL + "&sLang="+ChooseLanguagesFragment.getSourceLanguage();
         //change when see right syntax for request, format is right
-        relURL = relURL + "&tLang=" + tLang;
+        relURL = relURL + "&tLang=" + ChooseLanguagesFragment.getTargetLanguage();
         relURL = relURL + "&gloss=";
         ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
         if (selectedGlossaries.size() == 1) {
@@ -91,7 +91,7 @@ class OrdabankiRestClientActions {
     //post: returns an ArrayList that contain the search results
     public static void setSearchResult(String sTerm, String sLang, String tLang) throws JSONException {
 
-        String relURL = createURL(sTerm, sLang, tLang);
+        String relURL = createURL(sTerm);
         RequestParams params = new RequestParams();
         setResults(relURL, params);
 
@@ -102,6 +102,14 @@ class OrdabankiRestClientActions {
         String relURL = createWordOnlyURL(sTerm);
         RequestParams params = new RequestParams();
         setResults(relURL, params);
+
+    }
+    //todo: add URL for test page
+    public static void setSearchResultTestPage() throws JSONException {
+
+
+        RequestParams params = new RequestParams();
+        setResults("TraustiURL", params);
 
     }
     public static Result[] getResult(){
