@@ -109,7 +109,7 @@ class OrdabankiRestClientActions {
 
 
         RequestParams params = new RequestParams();
-        setResults("TraustiURL", params);
+        setResults("https://notendur.hi.is/tka2/JSONdata.json", params);
 
     }
     public static Result[] getResult(){
