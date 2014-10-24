@@ -48,6 +48,7 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -152,9 +153,20 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
             result = new Result("blade", "english", "Metallurgy");
             resultList.add(result);
             */
+            int counter =0;
+            while(counter<10){
+                if(OrdabankiRestClientActions.getConnectedFlag()){
+                    break;
+                }
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
             Result[] resultList = OrdabankiRestClientActions.getResult();
             if(resultList == null){
-                Toast.makeText(this,getResources().getString(R.string.database_error),Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Connected="+Boolean.toString(OrdabankiRestClientActions.getConnectedFlag()),Toast.LENGTH_LONG).show();
             }
             else{
                 //For now we just put the search query through

@@ -26,6 +26,7 @@ class OrdabankiRestClientActions {
 
     //holder for JSON results to work around enforced void return typing of onSuccess
     private static Result[] result;
+    private static boolean connectedFlag = false;
 //    private static Result resultObj;
 
     //use: setResultsJSON(relURL,params);
@@ -44,6 +45,7 @@ class OrdabankiRestClientActions {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 Gson gson = new Gson();
+                connectedFlag = true;
                 result = gson.fromJson(response.toString(), Result[].class);
             }
         });
@@ -108,13 +110,14 @@ class OrdabankiRestClientActions {
     public static void setSearchResultTestPage() throws JSONException {
 
 
-        RequestParams params = new RequestParams();
-        setResults("https://notendur.hi.is/tka2/JSONdata.json", params);
+        //RequestParams params = new RequestParams();
+        setResults("https://notendur.hi.is/tka2/JSONdata.json", null);
 
     }
     public static Result[] getResult(){
         return result;
     }
+    public static boolean getConnectedFlag(){return connectedFlag;}
 }
 
 
