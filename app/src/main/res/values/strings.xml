@@ -12,6 +12,12 @@
     <string name="hello_world">Hello world!</string>
 
     <color name="white">#FFFFFF</color>
+    <color name="lightgray">#ECDFBD</color>
+    <color name="blue">#20457C</color>
+    <color name="dargray">#3B3A35</color>
+    <color name="orange">#FB6648</color>
+    <color name="purple">#5E3448</color>
+
     <color name="greenblue">#588C7E</color>
     <color name="lightyellow">#F2E394</color>
     <color name="lightorange">#F2AE72</color>
