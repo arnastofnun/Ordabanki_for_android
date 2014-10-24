@@ -27,6 +27,7 @@ class OrdabankiRestClientActions {
     //holder for JSON results to work around enforced void return typing of onSuccess
     private static Result[] result;
     private static boolean connectedFlag = false;
+    private static boolean responseObtained = false;
 //    private static Result resultObj;
 
     //use: setResultsJSON(relURL,params);
@@ -45,6 +46,7 @@ class OrdabankiRestClientActions {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 Gson gson = new Gson();
+                if (response!=null){responseObtained=true;}
                 connectedFlag = true;
                 result = gson.fromJson(response.toString(), Result[].class);
             }
@@ -118,8 +120,8 @@ class OrdabankiRestClientActions {
         return result;
     }
     public static boolean getConnectedFlag(){return connectedFlag;}
-
-    public static void resetConnectedFlag(){connectedFlag=false;}
+    public static boolean hasResponse(){return responseObtained;}
+    public static void resetFlags(){connectedFlag=false; responseObtained=false;}
 }
 
 
