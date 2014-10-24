@@ -9,7 +9,7 @@
     <string name="welcometext">Welcome to the Íðorðabanki app</string>
     <string name="selectlanguage">Please choose your language</string>
     <string name="title_activity_select_language">Select Language</string>
-    <string name="hello_world">Hello world!</string>
+
 
     <color name="white">#FFFFFF</color>
     <color name="lightgray">#ECDFBD</color>
@@ -41,7 +41,6 @@
     <string name="database_error">Could not connect to database</string>
     <string name="no_result">No</string>
     <string name="link_unaccessable">There is no website for this glossary</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="languages_tab_name">Languages</string>
     <string name="no_search_term">You have to type in a search query</string>
     <string name="no_glossary_picked">You have to pick at least one glossary</string>
