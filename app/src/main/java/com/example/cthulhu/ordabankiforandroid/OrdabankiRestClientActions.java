@@ -118,6 +118,8 @@ class OrdabankiRestClientActions {
         return result;
     }
     public static boolean getConnectedFlag(){return connectedFlag;}
+
+    public static void resetConnectedFlag(){connectedFlag=false;}
 }
 
 

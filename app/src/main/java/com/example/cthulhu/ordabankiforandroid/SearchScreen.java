@@ -165,8 +165,10 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
                 }
             }
             Result[] resultList = OrdabankiRestClientActions.getResult();
+            Toast.makeText(this,"Connected="+Boolean.toString(OrdabankiRestClientActions.getConnectedFlag()),Toast.LENGTH_LONG).show();
+            OrdabankiRestClientActions.resetConnectedFlag();
             if(resultList == null){
-                Toast.makeText(this,"Connected="+Boolean.toString(OrdabankiRestClientActions.getConnectedFlag()),Toast.LENGTH_LONG).show();
+
             }
             else{
                 //For now we just put the search query through
