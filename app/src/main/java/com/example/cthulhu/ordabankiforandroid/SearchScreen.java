@@ -154,21 +154,23 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
             resultList.add(result);
             */
             int counter =0;
-            while(counter<10){
+            //waits for up to 3 seconds for connection to be established
+            while(counter<30){
                 if(OrdabankiRestClientActions.getConnectedFlag()){
+                    Toast.makeText(this,"Connected",Toast.LENGTH_LONG).show();
                     break;
                 }
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(100);
+                    counter++;
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
             }
             Result[] resultList = OrdabankiRestClientActions.getResult();
-            Toast.makeText(this,"Connected="+Boolean.toString(OrdabankiRestClientActions.getConnectedFlag()),Toast.LENGTH_LONG).show();
-            OrdabankiRestClientActions.resetConnectedFlag();
-            if(resultList == null){
 
+            if(resultList == null){
+                Toast.makeText(this,"Response="+Boolean.toString(OrdabankiRestClientActions.hasResponse()),Toast.LENGTH_LONG).show();
             }
             else{
                 //For now we just put the search query through
@@ -180,7 +182,7 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
                 this.startActivity(intent);
             }
             //languages will be handled elsewhere when this is ready to go
-
+            OrdabankiRestClientActions.resetFlags();
 
         }
     }
