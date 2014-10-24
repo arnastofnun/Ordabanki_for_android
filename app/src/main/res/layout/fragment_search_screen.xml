@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/greenblue">
+    android:background="@color/purple">
 
     <EditText
         android:layout_width="fill_parent"
@@ -16,14 +16,19 @@
         android:drawableEnd="@drawable/ic_action_search"
         android:imeOptions="actionSearch"
         android:layout_alignParentTop="true"
-        android:textColorHint="@color/lightyellow"
+        android:textColorHint="@color/lightgray"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:hint="@string/search_hint"
         android:textColor="@color/white"
         />
 
-
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchView"
+        android:layout_alignParentBottom="true"
+        >
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,5 +39,6 @@
         android:layout_centerHorizontal="true"
         android:onClick="search"
         android:textColor="@color/white"/>
+    </RelativeLayout>
 
 </RelativeLayout>
