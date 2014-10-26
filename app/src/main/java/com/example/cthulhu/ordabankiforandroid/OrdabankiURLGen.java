@@ -36,7 +36,7 @@ class OrdabankiURLGen {
         //takes base URL and appends search constraints
         final String baseURL = "http://api.arnastofnun.is/ordabanki.php?word=";
         sTerm = sTerm.replaceAll("\\*", "%");
-        sTerm = sTerm.replaceAll("\\+", "_");
+        sTerm = sTerm.replaceAll("\\?", "_");
         return baseURL+ sTerm;
     }
     //use: createURL(sTerm,sLang,tLang)
