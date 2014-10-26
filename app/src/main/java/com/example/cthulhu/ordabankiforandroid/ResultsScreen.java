@@ -12,44 +12,68 @@ import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.ResultsAdapter;
 
+import org.json.JSONException;
+
 /**
  * This class implements functions for the results screen
  * ------------------------------------------------------
  * @author Trausti
  * @since 08.10.2014
  */
-public class ResultsScreen extends Activity {
-    //Initialize
-    private Result[] resultList;
+public class ResultsScreen extends Activity implements OnResultObtainedListener{
+    OrdabankiJsonHandler jsonHandler;
+    private String searchQuery;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_screen);
-
-        /*Just so we have something going through the intent*/
+        jsonHandler = new OrdabankiJsonHandler(this);
+        final OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
         Bundle data = getIntent().getExtras();
+        searchQuery = data.getString("searchQuery");
+        new Thread(new Runnable() {
+            public void run() {
+            try {
+                client.setResults("https://notendur.hi.is/tka2/JSONdata.json", jsonHandler);
+                //client.setResults(OrdabankiRestClientActions.createWordOnlyURL(searchQuery), jsonHandler);
+                //client.setResults(OrdabankiRestClientActions.createURL(searchQuery), jsonHandler);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        }).start();
+    }
+
+    @Override
+    public void onResultObtained(Result[] result){
+        /*Just so we have something going through the intent*/
+
         //This will be used to get the results from the intent
-        resultList = (Result[]) data.getParcelableArray("resultList");
-        String searchquery = data.getString("searchQuery");
+        /*resultList = (Result[]) data.getParcelableArray("resultList");
+        String searchquery = data.getString("searchQuery");*/
         String searchpreterm = getResources().getString(R.string.searchpreterm);
         TextView textview = (TextView) findViewById(R.id.resultText);
-        if(resultList == null){
+        if(result == null){
             String databaseerror = getResources().getString(R.string.database_error);
             textview.setText(databaseerror);
 
         }
-        else if(resultList.length == 0){
+        else if(result.length == 0){
             String noresult = getResources().getString(R.string.no_result);
-            textview.setText(noresult + " " + searchpreterm + " " + searchquery);
+            textview.setText(noresult + " " + searchpreterm + " " + searchQuery);
         }
         else {
             //This is just for now untill we get the API
-            int resultscount = resultList.length;
-            textview.setText(resultscount + " " + searchpreterm + " " + searchquery);
-            displayListView(findViewById(android.R.id.content), resultList);
+            int resultscount = result.length;
+            textview.setText(resultscount + " " + searchpreterm + " " + searchQuery);
+            displayListView(findViewById(android.R.id.content), result);
         }
     }
+    @Override
+    public void onResultFailure(int statusCode){
+        TextView textview = (TextView) findViewById(R.id.resultText);
+        textview.setText("Error:"+Integer.toString(statusCode));}
 
 
     /**
@@ -72,7 +96,6 @@ public class ResultsScreen extends Activity {
 
         //Creating a new glossary adapter
         ResultsAdapter resultsAdapter = new ResultsAdapter(this, R.layout.results_list, resultList);
-
         //Getting the glossary list and setting it's adapter to my custom glossary adapter
         ListView listView = (ListView) findViewById(R.id.resultsList);
         listView.setAdapter(resultsAdapter);
@@ -104,9 +127,6 @@ public class ResultsScreen extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 }

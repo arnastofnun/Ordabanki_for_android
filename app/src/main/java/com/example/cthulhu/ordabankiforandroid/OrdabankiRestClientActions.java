@@ -1,6 +1,7 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import com.google.gson.Gson;
+import com.loopj.android.http.BaseJsonHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -24,34 +25,18 @@ import java.util.ListIterator;
  */
 class OrdabankiRestClientActions {
 
-    //holder for JSON results to work around enforced void return typing of onSuccess
-    private static Result[] result;
-    private static boolean connectedFlag = false;
-    private static boolean responseObtained = false;
+
 //    private static Result resultObj;
 
     //use: setResultsJSON(relURL,params);
     //pre: relUrl is a String, params is a RequestParams
     //post: fills resultArr with results for search query if connection is successful,
 
-    public static void setResults(String relURL, RequestParams params) throws JSONException {
-        OrdabankiRESTClient.get(relURL, params, new JsonHttpResponseHandler() {
+/*    public static void setResults(String relURL) throws JSONException {
+        OrdabankiRESTClient.get(relURL, null, OrdabankiJsonHandler jsonHandler);
 
-/*            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                Gson gson = new Gson();
-                resultObj = gson.fromJson(response.toString(), Result.class);
-            }*/
 
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-                Gson gson = new Gson();
-                if (response!=null){responseObtained=true;}
-                connectedFlag = true;
-                result = gson.fromJson(response.toString(), Result[].class);
-            }
-        });
-    }
+    }*/
 
 
     private static String createWordOnlyURL(String sTerm){
@@ -93,35 +78,32 @@ class OrdabankiRestClientActions {
     //use: setSearchResult(sTerm,sLang,tLang)
     //pre: sTerm,sLang,tLang are strings, they form the search query
     //post: returns an ArrayList that contain the search results
-    public static void setSearchResult(String sTerm, String sLang, String tLang) throws JSONException {
+    public static void setSearchResult(String sTerm, OrdabankiJsonHandler jsonHandler) throws JSONException {
 
         String relURL = createURL(sTerm);
-        RequestParams params = new RequestParams();
-        setResults(relURL, params);
+        OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
+        //RequestParams params = new RequestParams();
+        client.setResults(relURL, jsonHandler);
 
     }
 
-    public static void setSearchResultWordOnly(String sTerm) throws JSONException {
+    public static void setSearchResultWordOnly(String sTerm, OrdabankiJsonHandler jsonHandler) throws JSONException {
 
         String relURL = createWordOnlyURL(sTerm);
-        RequestParams params = new RequestParams();
-        setResults(relURL, params);
+        OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
+        client.setResults(relURL, jsonHandler);
 
     }
-    //todo: add URL for test page
-    public static void setSearchResultTestPage() throws JSONException {
+
+    public static void setSearchResultTestPage(OrdabankiJsonHandler jsonHandler) throws JSONException {
 
 
         //RequestParams params = new RequestParams();
-        setResults("https://notendur.hi.is/tka2/JSONdata.json", null);
+        OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
+
 
     }
-    public static Result[] getResult(){
-        return result;
-    }
-    public static boolean getConnectedFlag(){return connectedFlag;}
-    public static boolean hasResponse(){return responseObtained;}
-    public static void resetFlags(){connectedFlag=false; responseObtained=false;}
+
 }
 
 
