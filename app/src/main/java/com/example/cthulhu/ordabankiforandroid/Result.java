@@ -39,7 +39,9 @@ public class Result {
         }
     }
 
+    public Result(){
 
+    }
     //Parcelling part
  /*           @Override
             public void writeToParcel(Parcel dest, int flags){
@@ -69,10 +71,10 @@ public class Result {
     *                           ArrayList<String> synonyms, String definition, String example)
     *pre:synonyms is of type ArrayList<String> and all others are of type String
     *post:Creates the result object
-    *//**//*
+    *//**/
     public Result(String id_word, String id_term, String language_code, String language_name,
                   String terminology_dictionary, String word, String lexical_category,
-                  Synonym[] synonyms, String definition, String example) {
+                  ArrayList<Synonym> synonyms, String definition, String example) {
         super();
         this.id_word = id_word;
         this.id_term = id_term;
@@ -81,10 +83,10 @@ public class Result {
         this.terminology_dictionary = terminology_dictionary;
         this.word = word;
         this.lexical_category = lexical_category;
-        this.synonyms = synonyms;
+        this.synonyms= synonyms;
         this.definition = definition;
         this.example = example;
-    }*//*
+    }/*
 
     *//* getters and setters (setters not really needed but here anyway just in case)
     *  use: result.get*Var*()  where *Var* is the variable of interest

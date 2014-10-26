@@ -29,20 +29,24 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_screen);
         jsonHandler = new OrdabankiJsonHandler(this);
-        final OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
         Bundle data = getIntent().getExtras();
         searchQuery = data.getString("searchQuery");
-        new Thread(new Runnable() {
-            public void run() {
+        OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
+/*        new Thread(new Runnable() {
+            public void run() {*/
             try {
-                client.setResults("https://notendur.hi.is/tka2/JSONdata.json", jsonHandler);
-                //client.setResults(OrdabankiRestClientActions.createWordOnlyURL(searchQuery), jsonHandler);
+                Toast.makeText(this, "Requesting connection", Toast.LENGTH_LONG).show();
+                //crashes here
+                //client.setResults("http://api.arnastofnun.is/ordabanki.php?word=abyssin%C3%ADubanani", jsonHandler);
+                //Toast.makeText(this, "notCrashingYet", Toast.LENGTH_LONG).show();
+                client.setResults(OrdabankiURLGen.createWordOnlyURL(searchQuery), jsonHandler);
                 //client.setResults(OrdabankiRestClientActions.createURL(searchQuery), jsonHandler);
             } catch (JSONException e) {
+                Toast.makeText(this, "JSON exception", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
-        }
-        }).start();
+  /*      }
+        }).start();*/
     }
 
     @Override
@@ -52,30 +56,30 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         //This will be used to get the results from the intent
         /*resultList = (Result[]) data.getParcelableArray("resultList");
         String searchquery = data.getString("searchQuery");*/
-        String searchpreterm = getResources().getString(R.string.searchpreterm);
+        Toast.makeText(this, "connected", Toast.LENGTH_LONG).show();
+        String searchPreTerm = getResources().getString(R.string.searchpreterm);
         TextView textview = (TextView) findViewById(R.id.resultText);
         if(result == null){
-            String databaseerror = getResources().getString(R.string.database_error);
-            textview.setText(databaseerror);
+            String databaseError = getResources().getString(R.string.database_error);
+            textview.setText(databaseError);
 
         }
         else if(result.length == 0){
-            String noresult = getResources().getString(R.string.no_result);
-            textview.setText(noresult + " " + searchpreterm + " " + searchQuery);
+            String noResult = getResources().getString(R.string.no_result);
+            textview.setText(noResult + " " + searchPreTerm + " " + searchQuery);
         }
         else {
             //This is just for now untill we get the API
             int resultscount = result.length;
-            textview.setText(resultscount + " " + searchpreterm + " " + searchQuery);
+            textview.setText(resultscount + " " + searchPreTerm + " " + searchQuery);
             displayListView(findViewById(android.R.id.content), result);
         }
     }
     @Override
-    public void onResultFailure(int statusCode){
-        TextView textview = (TextView) findViewById(R.id.resultText);
-        textview.setText("Error:"+Integer.toString(statusCode));}
+    public void onResultFailure(int statusCode) {
 
-
+        Toast.makeText(this, "Error: "+Integer.toString(statusCode), Toast.LENGTH_LONG).show();
+    }
     /**
      * This function is supposed to loop through the glossaries and add them to the glossary list.
      * For now it just puts some test glossaries in.

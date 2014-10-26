@@ -1,19 +1,19 @@
 package com.example.cthulhu.ordabankiforandroid;
 
-import android.app.Activity;
+
 
 import com.google.gson.Gson;
-import com.loopj.android.http.BaseJsonHttpResponseHandler;
+
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
-import org.apache.http.HttpStatus;
 import org.json.JSONArray;
 
 /**
  * Created by cthulhu on 26/10/14.
  */
 public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
+
     ResultsScreen activity;
 
     public OrdabankiJsonHandler(ResultsScreen activity)

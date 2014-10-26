@@ -126,11 +126,11 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
 
         if (allowsearch) {
 
-            String sLang = ChooseLanguagesFragment.getSourceLanguage();
+        /*   String sLang = ChooseLanguagesFragment.getSourceLanguage();
             String tLang = ChooseLanguagesFragment.getTargetLanguage();
 
             Log.v("sLang", sLang);
-            Log.v("tLang", tLang);
+            Log.v("tLang", tLang);*/
 
 
             //Get the search results
