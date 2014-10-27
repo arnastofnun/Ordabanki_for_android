@@ -35,62 +35,12 @@ public class Result {
 
         public Synonym() {
             //noargs constructor
-            //this.synonym = in.readString();
-
         }
         public String getSynonym(){return synonym;}
     }
+/*
 
-    public Result(){
-
-    }
-    //Parcelling part
- /*           @Override
-            public void writeToParcel(Parcel dest, int flags){
-                dest.writeString(synonym);
-            }
-
-            static final Parcelable.Creator<Synonym> CREATOR
-                    = new Parcelable.Creator<Synonym>() {
-
-                public Synonym createFromParcel(Parcel in) {
-                    return new Synonym(in);
-                }
-
-                public Synonym[] newArray(int size) {
-                    return new Synonym[size];
-                }
-            };
-
-            @Override
-            public int describeContents(){
-                return 0;
-            }
-        }
-*//*  unnecessary, gson takes care of this
-    *  *//**//*use: Result result = new Result(String id_word, String id_term, String language_code, String language_name,
-    *                           String terminology_dictionary, String word, String lexical_category,
-    *                           ArrayList<String> synonyms, String definition, String example)
-    *pre:synonyms is of type ArrayList<String> and all others are of type String
-    *post:Creates the result object
-    *//**/
-    public Result(String id_word, String id_term, String language_code, String language_name,
-                  String terminology_dictionary, String word, String lexical_category,
-                  ArrayList<Synonym> synonyms, String definition, String example) {
-        super();
-        this.id_word = id_word;
-        this.id_term = id_term;
-        this.language_code = language_code;
-        this.language_name = language_name;
-        this.terminology_dictionary = terminology_dictionary;
-        this.word = word;
-        this.lexical_category = lexical_category;
-        this.synonyms= synonyms;
-        this.definition = definition;
-        this.example = example;
-    }/*
-
-    *//* getters and setters (setters not really needed but here anyway just in case)
+    * getters and setters (setters not really needed but here anyway just in case)
     *  use: result.get*Var*()  where *Var* is the variable of interest
     *  pre: nothing
     *  post: returns *Var*
@@ -181,54 +131,3 @@ public class Result {
     }
 }
 
-/*
-    //Parcelling part
-    public Result(Parcel in){
-        this.id_word = in.readString();
-        this.id_term = in.readString();
-        this.language_code = in.readString();
-        this.language_name = in.readString();
-        this.terminology_dictionary = in.readString();
-        this.word = in.readString();
-        this.lexical_category = in.readString();
-        in.readTypedList(this.synonyms,Synonym.CREATOR);
-        this.definition = in.readString();
-        this.example = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags){
-        dest.writeString(id_word);
-        dest.writeString(id_term);
-        dest.writeString(language_code);
-        dest.writeString(terminology_dictionary);
-        dest.writeString(word);
-        dest.writeString(lexical_category);
-        dest.writeTypedList(synonyms);
-        dest.writeString(definition);
-        dest.writeString(example);
-    }
-
-
-
-    @Override
-    public int describeContents(){
-        return 0;
-    }
-
-    static final Parcelable.Creator<Result> CREATOR
-            = new Parcelable.Creator<Result>() {
-
-        public Result createFromParcel(Parcel in) {
-            return new Result(in);
-        }
-
-        public Result[] newArray(int size) {
-            return new Result[size];
-        }
-    };
-
-
-
-}
-*/

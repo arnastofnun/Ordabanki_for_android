@@ -24,6 +24,11 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
     OrdabankiJsonHandler jsonHandler;
     private String searchQuery;
 
+    /**
+     * Takes search term from intent and passes to Rest client
+     * Bill
+     * @param savedInstanceState what it says on the tin
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +46,11 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
             }
     }
 
+    /**
+     * Passes result to list view on successful connection.
+     * Bill
+     * @param result Result array
+     */
     @Override
     public void onResultObtained(Result[] result){
         String searchPreTerm = getResources().getString(R.string.searchpreterm);
@@ -55,6 +65,13 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
             displayListView(result);
         }
     }
+
+    /**
+     *shows no result screen if connection established and no result or connection error and HTTP
+     *error code if connection not established
+     *  Bill
+     *  @param statusCode HTTP status code
+     */
     @Override
     public void onResultFailure(int statusCode) {
         if (statusCode==200) {
