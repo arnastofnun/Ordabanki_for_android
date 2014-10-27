@@ -5,15 +5,15 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.LayoutInflater;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,7 +32,7 @@ import java.util.List;
  * It allows you to swipe and tab between fragments
  * Created by karlasgeir on 9.10.2014.
  */
-public class SearchScreen extends FragmentActivity implements ActionBar.TabListener{
+public class SearchScreen extends FragmentActivity implements ActionBar.TabListener {
     /*
     *   Data invariants:
     *   viewPager: ViewPager object
@@ -45,57 +45,50 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     private ActionBar actionBar;
 
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
-            //Tab titles
-            List<String> tabs = new ArrayList<String>();
-            tabs.add(this.getString(R.string.search_tab));
-            tabs.add(this.getString(R.string.pick_glossary_tab));
-            tabs.add(this.getString(R.string.languages_tab_name));
+        //Tab titles
+        List<String> tabs = new ArrayList<String>();
+        tabs.add(this.getString(R.string.search_tab));
+        tabs.add(this.getString(R.string.pick_glossary_tab));
+        tabs.add(this.getString(R.string.languages_tab_name));
 
-            //Initilize
-            viewPager = (ViewPager) findViewById(R.id.searchscreen);
-            actionBar = getActionBar();
-            TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+        //Initilize
+        viewPager = (ViewPager) findViewById(R.id.searchscreen);
+        actionBar = getActionBar();
+        TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 
-            viewPager.setAdapter(mAdapter);
-            actionBar.setHomeButtonEnabled(false);
-            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        viewPager.setAdapter(mAdapter);
+        actionBar.setHomeButtonEnabled(false);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 
-            //Adding Tabs
-            for (String tab_name : tabs) {
-                actionBar.addTab(actionBar.newTab().setText(tab_name).setTabListener(this));
+        //Adding Tabs
+        for (String tab_name : tabs) {
+            actionBar.addTab(actionBar.newTab().setText(tab_name).setTabListener(this));
+        }
+
+
+        //Change the tabs when swiping between fragments
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                // when page is selected also select correct tab
+                actionBar.setSelectedNavigationItem(position);
             }
 
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
 
-
-
-            //Change the tabs when swiping between fragments
-            viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-                @Override
-                public void onPageSelected(int position) {
-                    // when page is selected also select correct tab
-                    actionBar.setSelectedNavigationItem(position);
-                }
-
-                @Override
-                public void onPageScrolled(int arg0, float arg1, int arg2) {
-                }
-
-                @Override
-                public void onPageScrollStateChanged(int arg0) {
-                }
-            });
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+            }
+        });
     }
-
 
 
     // Handle the button on the search screen fragment
@@ -108,6 +101,7 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
      * ResultScreen activity is started
      * ----------------------------------------------------------------------
      * Written by Bill
+     *
      * @param view the current view
      * @throws JSONException
      */
@@ -116,36 +110,33 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         //Create the Intent
         Intent intent = new Intent(this, ResultsScreen.class);
         //Get the search query
-        EditText searchView =(EditText) findViewById(R.id.searchView);
+        EditText searchView = (EditText) findViewById(R.id.searchView);
         String searchQuery = searchView.getText().toString();
-        if(searchQuery.equals("")){
+        if (searchQuery.equals("")) {
             allowsearch = false;
-            Toast.makeText(this,this.getString(R.string.no_search_term),Toast.LENGTH_LONG).show();
+            Toast.makeText(this, this.getString(R.string.no_search_term), Toast.LENGTH_LONG).show();
         }
 
 
-
-        if(PickGlossaryFragment.getSelectedGlossaries().isEmpty()){
-            Log.v("selected glossaries","null");
+        if (PickGlossaryFragment.getSelectedGlossaries().isEmpty()) {
+            Log.v("selected glossaries", "null");
             allowsearch = false;
-            Toast.makeText(this,this.getString(R.string.no_glossary_picked),Toast.LENGTH_LONG).show();
+            Toast.makeText(this, this.getString(R.string.no_glossary_picked), Toast.LENGTH_LONG).show();
         }
 
-        if(allowsearch) {
+        if (allowsearch) {
 
-            String sLang = ChooseLanguagesFragment.getSourceLanguage();
+        /*   String sLang = ChooseLanguagesFragment.getSourceLanguage();
             String tLang = ChooseLanguagesFragment.getTargetLanguage();
 
-            Log.v("sLang",sLang);
-            Log.v("tLang",tLang);
-
-
+            Log.v("sLang", sLang);
+            Log.v("tLang", tLang);*/
 
 
             //Get the search results
             //OrdabankiRestClientActions.setSearchResult(searchQuery);
-            //Todo: This is a testing function until API is ready, remove and uncomment call above later
-             OrdabankiRestClientActions.setSearchResultTestPage();
+
+            // OrdabankiRestClientActions.setSearchResultTestPage();
             //For now, just put in some placeholder values
             /*
             Result result = new Result("lobe", "english", "Medicine");
@@ -153,64 +144,67 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
             result = new Result("blade", "english", "Metallurgy");
             resultList.add(result);
             */
-            int counter =0;
-            while(counter<10){
+          /*  int counter =0;
+            //waits for up to 3 seconds for connection to be established
+            while(counter<30){
                 if(OrdabankiRestClientActions.getConnectedFlag()){
+                    Toast.makeText(this,"Connected",Toast.LENGTH_LONG).show();
                     break;
                 }
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(100);
+                    counter++;
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
             }
             Result[] resultList = OrdabankiRestClientActions.getResult();
+
             if(resultList == null){
-                Toast.makeText(this,"Connected="+Boolean.toString(OrdabankiRestClientActions.getConnectedFlag()),Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Response="+Boolean.toString(OrdabankiRestClientActions.hasResponse()),Toast.LENGTH_LONG).show();
             }
             else{
-                //For now we just put the search query through
-                intent.putExtra("searchQuery", searchQuery);
-
+                //For now we just put the search query through*/
+            intent.putExtra("searchQuery", searchQuery);
+            this.startActivity(intent);
+/*
                 //Put the result list through the intent
                 intent.putExtra("resultList", resultList);
                 //Start the results screen
                 this.startActivity(intent);
             }
             //languages will be handled elsewhere when this is ready to go
-
+            OrdabankiRestClientActions.resetFlags();*/
 
         }
     }
 
 
     @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft){
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
         View focus = getCurrentFocus();
-        if(focus != null){
+        if (focus != null) {
             InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            keyboard.hideSoftInputFromWindow(focus.getWindowToken(),0);
+            keyboard.hideSoftInputFromWindow(focus.getWindowToken(), 0);
         }
     }
 
     @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft){
-        if(tab.getPosition() == 0){
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+        if (tab.getPosition() == 0) {
             View focus = getCurrentFocus();
-            if(focus != null){
+            if (focus != null) {
                 InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                keyboard.showSoftInput(focus,0);
+                keyboard.showSoftInput(focus, 0);
             }
         }
     }
 
     //Make sure the viewPager changes fragments when tab is pressed
     @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft){
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         viewPager.setCurrentItem(tab.getPosition());
     }
-
-
 
 
     @Override
@@ -226,16 +220,13 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
-
+}
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+ /*   public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
         }
@@ -248,3 +239,4 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         }
     }
 }
+*/
