@@ -76,6 +76,8 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
         boolean hasSyn = false;
         boolean hasDef = false;
         boolean hasEx = false;
+        Result result = resultsList[position];
+
         if(view == null){
             //inflate the layout
             LayoutInflater vi;
@@ -83,25 +85,51 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
             view = vi.inflate(R.layout.results_list,parent,false);
 
             //Set the view holder
+
             holder = new ViewHolder();
             holder.term = (TextView) view.findViewById(R.id.resultTerm);
             holder.language = (TextView) view.findViewById(R.id.resultLanguage);
             holder.glossary = (TextView) view.findViewById(R.id.resultGlossary);
-            if(resultsList[position].getLexical_category()!=null){
-                holder.lexical_category = (TextView) view.findViewById(R.id.resultLexical_category);
+            TextView lexicalCategory= (TextView) view.findViewById(R.id.resultLexical_category);
+            TextView synonymsView = (TextView) view.findViewById(R.id.resultSynonyms);
+            TextView resDefinitions = (TextView) view.findViewById(R.id.resultDefinition);
+            TextView resExamples = (TextView) view.findViewById(R.id.resultExample);
+
+            if(result.getLexical_category()!=null){
+                lexicalCategory.setVisibility(View.VISIBLE);
+                holder.lexical_category = lexicalCategory;
                 hasLex = true;
             }
-            if(resultsList[position].getSynonyms()!=null){
-                holder.synonyms = (TextView) view.findViewById(R.id.resultSynonyms);
+            else{
+               lexicalCategory.setVisibility(View.GONE);
+               hasLex=false;
+            }
+            if(result.getSynonyms().get(0) != null){
+                synonymsView.setVisibility(View.VISIBLE);
+                holder.synonyms = synonymsView;
                 hasSyn = true;
             }
-            if(resultsList[position].getDefinition()!=null){
-                holder.definition = (TextView) view.findViewById(R.id.resultDefinition);
+            else{
+                synonymsView.setVisibility(View.GONE);
+                hasSyn=false;
+            }
+            if(!result.getDefinition().equals("")){
+                resDefinitions.setVisibility(View.VISIBLE);
+                holder.definition = resDefinitions;
                 hasDef = true;
             }
-            if(resultsList[position].getExample()!=null){
-                holder.example = (TextView) view.findViewById(R.id.resultExample);
+            else{
+                resDefinitions.setVisibility(View.GONE);
+                hasDef = false;
+            }
+            if(!result.getExample().equals("")){
+                resExamples.setVisibility(View.VISIBLE);
+                holder.example = resExamples;
                 hasEx = true;
+            }
+            else{
+                resExamples.setVisibility(View.GONE);
+                hasEx = false;
             }
             view.setTag(holder);
         }
@@ -110,7 +138,8 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
         }
 
         //Set the current glossary name and checkbox status
-        Result result = resultsList[position];
+
+
         holder.term.setText(result.getWord());
         holder.language.setText("(" + result.getLanguage_name()+")");
         holder.glossary.setText("["+result.getTerminology_dictionary()+"]");
@@ -122,7 +151,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
             ArrayList<Result.Synonym> synonymList = result.getSynonyms();
             Iterator it = synonymList.iterator();
             while(it.hasNext()){
-                holder.synonyms.setText(holder.synonyms.getText() + (String)it.next() + "\n");
+                holder.synonyms.setText(holder.synonyms.getText() + it.next().toString() + "\n");
             }
         }
         if(hasDef){
