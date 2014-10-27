@@ -8,6 +8,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Created by cthulhu on 26/10/14.**
@@ -31,5 +32,16 @@ public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse){
         activity.onResultFailure(statusCode);
     }
-
+    @Override
+    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable){
+        activity.onResultFailure(statusCode);
+    }
+/*    @Override
+    public void onFailure(int statusCode, Header[] headers, byte[] responseBytes, Throwable throwable){
+        activity.onResultFailure(statusCode);
+    }*/
+    @Override
+    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse){
+        activity.onResultFailure(statusCode);
+    }
 }

@@ -57,7 +57,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
     }
     @Override
     public void onResultFailure(int statusCode) {
-        if (statusCode==404) {
+        if (statusCode==200) {
             String searchPreTerm = getResources().getString(R.string.searchpreterm);
             TextView textView = (TextView) findViewById(R.id.resultText);
             String noResult = getResources().getString(R.string.no_result);
@@ -65,7 +65,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         }
         else{
             TextView textView = (TextView) findViewById(R.id.resultText);
-            String connectionError = getResources().getString(R.string.connection_error);
+            String connectionError = getResources().getString(R.string.connection_error) +": "+ statusCode;
             textView.setText(connectionError);
         }
     }
