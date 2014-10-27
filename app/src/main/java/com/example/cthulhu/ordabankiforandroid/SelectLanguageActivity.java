@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-
 import java.util.Locale;
 
 /*
@@ -38,6 +37,8 @@ public class SelectLanguageActivity extends Activity {
         //Get the image buttons
         ImageButton enButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_english);
         ImageButton isButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_icelandic);
+        ImageButton daButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_danish);
+        ImageButton svButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_swedish);
 
         enButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -52,6 +53,20 @@ public class SelectLanguageActivity extends Activity {
                 setLocale("is");
             }
         });
+        daButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                setLocale("da");
+            }
+        });
+
+        svButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                setLocale("sv");
+            }
+        });
+
 
     }
 

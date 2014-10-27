@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Íðorðabankinn</string>
+    <string name="title_activity_splash">Orðabankinn</string>
+    <string name="action_settings">Stillingar</string>
+    <string name="splashimage">Upphafsmynd</string>
+    <string name="splashtext">Hleð upp</string>
+    <string name="welcometext">Velkomin í Íðorðabanka appið</string>
+    <string name="selectlanguage">Vinsamlegast veldu tungumál</string>
+    <string name="title_activity_select_language">Veldu tungumál</string>
+
+    <string name="search_button">Leita</string>
+    <string name="targetlang">Leitarmál:</string>
+    <string name="sourcelang">Markmál:</string>
+    <string name="all_languages">Öll</string>
+
+    <string name="search_tab">Leita</string>
+    <string name="searchpreterm">niðurstöður fyrir</string>
+    <string name="search_hint">Skrifaðu leitarorð</string>
+    <string name="pick_glossary_tab">Orðasöfn</string>
+    <string name="title_activity_results_screen">Niðurstöður</string>
+    <string name="action_help">Hjálp</string>
+    <string name="select_all">Velja allt</string>
+    <string name="deselect_all">Velja ekkert</string>
+    <string name="database_error">Gat ekki tengst gagnasafni</string>
+    <string name="no_result">Engar</string>
+    <string name="link_unaccessable">Það er engin vefsíða fyrir þetta orðasafn</string>
+    <string name="languages_tab_name">Tungumál</string>
+    <string name="no_search_term">Þú verður að skrifa inn leitarorð</string>
+    <string name="no_glossary_picked">Þú verður að velja að minnsta kosti eitt orðasafn</string>
+    <string name="connection_error">Sambandsslit. Reyndu aftur.</string>
+    <string name="definition">Skilgreining: </string>
+    <string name="synonyms">Samheiti: </string>
+    <string name="lexical_category">Orðaflokkur: </string>
+    <string name="example">Dæmi: </string>
+</resources>

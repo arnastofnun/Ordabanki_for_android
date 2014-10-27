@@ -24,48 +24,68 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:textColor="@color/white"
-        android:layout_weight="0.5"
+        android:layout_weight="0.18"
         android:textSize="30sp"
         android:gravity="center"
         />
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3">
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayout">
         <ImageButton
             android:id="@+id/SelectLanguageActivity.icelandic"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_weight="0.3"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_iceland"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
             android:scaleType="fitCenter"
             android:background="@null"
-            />
+            android:layout_gravity="right" />
         <ImageButton
             android:id="@+id/SelectLanguageActivity.english"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_weight="0.3"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:src="@drawable/ic_united_kingdom"
             android:background="@null"
             android:scaleType="fitCenter"
-            />
-        </LinearLayout>
+            android:layout_gravity="right" />
 
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/SelectLanguageActivity.selectlanguagetext"
-        android:text="@string/selectlanguage"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:gravity="center" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160sp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayoutBottom">
+
+        <ImageButton
+            android:id="@+id/SelectLanguageActivity.danish"
+            android:layout_width="wrap_content"
+            android:layout_weight="0.3"
+            android:layout_marginLeft="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_denmark"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:textAlignment="center"
+            android:layout_gravity="right" />
+
+        <ImageButton
+            android:id="@+id/SelectLanguageActivity.swedish"
+            android:layout_width="wrap_content"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_sweden"
+            android:scaleType="fitCenter"
+            android:background="@null"
+            android:focusableInTouchMode="false"
+            android:layout_gravity="right" />
+    </LinearLayout>
+
 
 </LinearLayout>
