@@ -52,4 +52,6 @@
     <string name="synonyms">Synonyms: </string>
     <string name="lexical_category">Lexical category: </string>
     <string name="example">Example: </string>
+    <string name="settings_about">foo</string>
+    <string name="settings_contact">bar</string>
 </resources>

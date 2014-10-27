@@ -36,4 +36,6 @@
     <string name="example">Dæmi: </string>
     <string name="help_title">Hjálp</string>
     <string name="close_help">Loka</string>
+    <string name="settings_about">foo</string>
+    <string name="settings_contact">bar</string>
 </resources>
