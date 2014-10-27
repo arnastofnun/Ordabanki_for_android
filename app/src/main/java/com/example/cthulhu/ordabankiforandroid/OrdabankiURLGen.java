@@ -1,6 +1,7 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.ListIterator;
@@ -35,8 +36,9 @@ class OrdabankiURLGen {
     public static String createWordOnlyURL(String sTerm){
         //takes base URL and appends search constraints
         final String baseURL = "http://api.arnastofnun.is/ordabanki.php?word=";
-        sTerm = sTerm.replaceAll("\\*", "%");
+        sTerm = sTerm.replaceAll("\\*", "%25");
         sTerm = sTerm.replaceAll("\\?", "_");
+        Log.v("link: ",baseURL + sTerm);
         return baseURL+ sTerm;
     }
     //use: createURL(sTerm,sLang,tLang)
