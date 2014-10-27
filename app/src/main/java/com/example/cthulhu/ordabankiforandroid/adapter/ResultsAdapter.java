@@ -24,6 +24,7 @@ import java.util.Iterator;
 public class ResultsAdapter extends ArrayAdapter<Result> {
     //Initialize a list for the results
     private Result[] resultsList;
+    private Context context;
 
     /**
      * Invoke the overwritten methods in superclass
@@ -36,6 +37,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
     public ResultsAdapter(Context context, int listViewResourceId, Result[] resultsList){
         super(context,listViewResourceId,resultsList);
         this.resultsList = resultsList;
+        this.context = context;
     }
 
     /**
@@ -144,10 +146,10 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
         holder.language.setText("(" + result.getLanguage_name()+")");
         holder.glossary.setText("["+result.getTerminology_dictionary()+"]");
         if(hasLex){
-            holder.lexical_category.setText("Lexical category: " + result.getLexical_category());
+            holder.lexical_category.setText(context.getString(R.string.lexical_category)+ result.getLexical_category());
         }
         if(hasSyn){
-            holder.synonyms.setText("Synonyms:\n");
+            holder.synonyms.setText(context.getString(R.string.synonyms)+"\n");
             ArrayList<Result.Synonym> synonymList = result.getSynonyms();
             Iterator it = synonymList.iterator();
             while(it.hasNext()){
@@ -155,10 +157,10 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
             }
         }
         if(hasDef){
-            holder.definition.setText("Definition: " + result.getDefinition());
+            holder.definition.setText(context.getString(R.string.definition) + result.getDefinition());
         }
         if(hasEx){
-            holder.example.setText("Example: " + result.getExample());
+            holder.example.setText(context.getString(R.string.example) + result.getExample());
         }
         return view;
     }
