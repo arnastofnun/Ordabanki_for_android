@@ -3,6 +3,7 @@ package com.example.cthulhu.ordabankiforandroid;
 import org.json.JSONException;
 
 /**
+ * Creates instance of rest client
  * Created by Bill on 26/10/14
  */
 public class OrdabankiRestClientUsage {
