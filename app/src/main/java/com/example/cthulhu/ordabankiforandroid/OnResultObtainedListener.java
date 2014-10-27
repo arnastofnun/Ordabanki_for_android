@@ -5,5 +5,5 @@ package com.example.cthulhu.ordabankiforandroid;
  */
 public interface OnResultObtainedListener {
     public void onResultObtained(Result[] result);
-    public void onResultFailure(int statusCode);
+    public void onResultFailure();
 }

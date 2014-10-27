@@ -29,7 +29,7 @@ public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
     }
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse){
-        activity.onResultFailure(statusCode);
+        activity.onResultFailure();
     }
 
 }
