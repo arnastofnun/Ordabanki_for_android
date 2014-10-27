@@ -1,8 +1,6 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.ListIterator;
 
@@ -38,7 +36,6 @@ class OrdabankiURLGen {
         final String baseURL = "http://api.arnastofnun.is/ordabanki.php?word=";
         sTerm = sTerm.replaceAll("\\*", "%25");
         sTerm = sTerm.replaceAll("\\?", "_");
-        Log.v("link: ",baseURL + sTerm);
         return baseURL+ sTerm;
     }
     //use: createURL(sTerm,sLang,tLang)
