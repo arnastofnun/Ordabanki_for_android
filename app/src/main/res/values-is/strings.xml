@@ -29,4 +29,6 @@
     <string name="languages_tab_name">Tungumál</string>
     <string name="no_search_term">Þú verður að skrifa inn leitarorð</string>
     <string name="no_glossary_picked">Þú verður að velja að minnsta kosti eitt orðasafn</string>
+    <string name="help_title">Hjálp</string>
+    <string name="close_help">Loka</string>
 </resources>

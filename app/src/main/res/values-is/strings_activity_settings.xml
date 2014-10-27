@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_settings">Stillingar</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Change language settings -->
+    <string name="change_language_header">Change Language</string>
+
+    <string name="change_language">Change language</string>
+    <string-array name="change_language_titles">
+        <item>Íslenska</item>
+        <item>Enska</item>
+    </string-array>
+    <string-array name="change_language__values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string name="language_default">0</string>
+
+
+
+</resources>

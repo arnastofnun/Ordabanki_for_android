@@ -2,10 +2,13 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -64,6 +67,11 @@ public class SelectLanguageActivity extends Activity {
      * @param lang is the language locale string ("en" or "is")
      */
     public void setLocale(String lang){
+        SharedPreferences sharedpref = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sharedpref.edit();
+        editor.putString("lang",lang);
+        editor.apply();
+        Log.v("lang: ",sharedpref.getString("lang","DEFAULT"));
         Locale myLocale = new Locale(lang);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
@@ -73,6 +81,8 @@ public class SelectLanguageActivity extends Activity {
         Intent intent = new Intent(this,SearchScreen.class);
         startActivity(intent);
     }
+
+
 
 
 

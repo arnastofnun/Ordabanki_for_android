@@ -44,5 +44,7 @@
     <string name="languages_tab_name">Languages</string>
     <string name="no_search_term">You have to type in a search query</string>
     <string name="no_glossary_picked">You have to pick at least one glossary</string>
+    <string name="help_title">Help</string>
+    <string name="close_help">Close</string>
 
 </resources>
