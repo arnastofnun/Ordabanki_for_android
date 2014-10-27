@@ -6,33 +6,23 @@ import java.util.ListIterator;
 
 /**
 
- * This class handles queries and parses data received after search query has been made to DB.
+ * This class creates URLs to be passed to the client from paramters within the app
  *
  * Created by cthulhu on 13/10/14.
- * <h1>Orðabanki Rest Client Actions</h1>
- * <p>This class parses data received after a search query has been made to the Ordabanki DB.</p>
+ * <h1>OrðabankiURLGen</h1>
+ * <p>Creates URLs to be passed into the rest client</p>
  * @author Bill
  * @since 13.10.14
 
  */
 class OrdabankiURLGen {
-
-
-//    private static Result resultObj;
-
-    //use: setResultsJSON(relURL,params);
-    //pre: relUrl is a String, params is a RequestParams
-    //post: fills resultArr with results for search query if connection is successful,
-
-/*    public static void setResults(String relURL) throws JSONException {
-        OrdabankiRESTClient.get(relURL, null, OrdabankiJsonHandler jsonHandler);
-
-
-    }*/
-
-
+    /**
+     * creates url with only search term as a parameter. Default later maybe?
+     * @param sTerm search term
+     * @return relative url
+     */
     public static String createWordOnlyURL(String sTerm){
-        //takes base URL and appends search constraints
+        //takes base URL and appends search term
         final String baseURL = "http://api.arnastofnun.is/ordabanki.php?word=";
         sTerm = sTerm.replaceAll("\\*", "%25");
         sTerm = sTerm.replaceAll("\\?", "%5F");
@@ -41,12 +31,18 @@ class OrdabankiURLGen {
     //use: createURL(sTerm,sLang,tLang)
     //pre: sTerm,sLang,tLang are strings, they form the search query
     //post: returns the url for search results, a string
+
+    /**
+     * creates URL with all parameters
+     * @param sTerm search term
+     * @return relative url
+     */
     public static String createURL(String sTerm) {
         //takes base URL and appends search constraints
         final String delim = "&"; //change when find out right delimiter
         final String baseURL = "http://api.arnastofnun.is/ordabanki.php?word=";
-        sTerm = sTerm.replaceAll("\\*", "%");
-        sTerm = sTerm.replaceAll("\\?", "_");
+        sTerm = sTerm.replaceAll("\\*", "%25");
+        sTerm = sTerm.replaceAll("\\?", "%5F");
         String relURL = baseURL+ sTerm;
         relURL = relURL + "&sLang="+ChooseLanguagesFragment.getSourceLanguage();
         //change when see right syntax for request, format is right
@@ -66,36 +62,7 @@ class OrdabankiURLGen {
 
         return relURL;
     }
-/*
-    //use: setSearchResult(sTerm,sLang,tLang)
-    //pre: sTerm,sLang,tLang are strings, they form the search query
-    //post: returns an ArrayList that contain the search results
-    public static void setSearchResult(String sTerm, OrdabankiJsonHandler jsonHandler) throws JSONException {
 
-        String relURL = createURL(sTerm);
-        OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
-        //RequestParams params = new RequestParams();
-        client.setResults(relURL, jsonHandler);
-
-    }
-
-    public static void setSearchResultWordOnly(String sTerm, OrdabankiJsonHandler jsonHandler) throws JSONException {
-
-        String relURL = createWordOnlyURL(sTerm);
-        OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
-        client.setResults(relURL, jsonHandler);
-
-    }
-
-    public static void setSearchResultTestPage(OrdabankiJsonHandler jsonHandler) throws JSONException {
-
-
-        //RequestParams params = new RequestParams();
-        OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
-
-
-    }
-*/
 }
 
 

@@ -125,57 +125,8 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         }
 
         if (allowsearch) {
-
-        /*   String sLang = ChooseLanguagesFragment.getSourceLanguage();
-            String tLang = ChooseLanguagesFragment.getTargetLanguage();
-
-            Log.v("sLang", sLang);
-            Log.v("tLang", tLang);*/
-
-
-            //Get the search results
-            //OrdabankiRestClientActions.setSearchResult(searchQuery);
-
-            // OrdabankiRestClientActions.setSearchResultTestPage();
-            //For now, just put in some placeholder values
-            /*
-            Result result = new Result("lobe", "english", "Medicine");
-            resultList.add(result);
-            result = new Result("blade", "english", "Metallurgy");
-            resultList.add(result);
-            */
-          /*  int counter =0;
-            //waits for up to 3 seconds for connection to be established
-            while(counter<30){
-                if(OrdabankiRestClientActions.getConnectedFlag()){
-                    Toast.makeText(this,"Connected",Toast.LENGTH_LONG).show();
-                    break;
-                }
-                try {
-                    Thread.sleep(100);
-                    counter++;
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-            Result[] resultList = OrdabankiRestClientActions.getResult();
-
-            if(resultList == null){
-                Toast.makeText(this,"Response="+Boolean.toString(OrdabankiRestClientActions.hasResponse()),Toast.LENGTH_LONG).show();
-            }
-            else{
-                //For now we just put the search query through*/
             intent.putExtra("searchQuery", searchQuery);
             this.startActivity(intent);
-/*
-                //Put the result list through the intent
-                intent.putExtra("resultList", resultList);
-                //Start the results screen
-                this.startActivity(intent);
-            }
-            //languages will be handled elsewhere when this is ready to go
-            OrdabankiRestClientActions.resetFlags();*/
-
         }
     }
 
@@ -223,20 +174,3 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 }
-    /**
-     * A placeholder fragment containing a simple view.
-     */
- /*   public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_search_screen, container, false);
-            return rootView;
-        }
-    }
-}
-*/
