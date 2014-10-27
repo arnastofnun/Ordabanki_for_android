@@ -45,8 +45,8 @@ class OrdabankiURLGen {
         //takes base URL and appends search constraints
         final String delim = "&"; //change when find out right delimiter
         final String baseURL = "http://api.arnastofnun.is/ordabanki.php?word=";
-        sTerm = sTerm.replaceAll("\\*", "%");
-        sTerm = sTerm.replaceAll("\\?", "_");
+        sTerm = sTerm.replaceAll("\\*", "%25");
+        sTerm = sTerm.replaceAll("\\?", "%5F");
         String relURL = baseURL+ sTerm;
         relURL = relURL + "&sLang="+ChooseLanguagesFragment.getSourceLanguage();
         //change when see right syntax for request, format is right

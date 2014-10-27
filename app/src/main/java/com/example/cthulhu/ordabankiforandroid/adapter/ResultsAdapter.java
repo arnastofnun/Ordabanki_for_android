@@ -12,6 +12,7 @@ import com.example.cthulhu.ordabankiforandroid.Result;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.ListIterator;
 
 /**
  * <h1>Results Adapter</h1>
@@ -151,9 +152,9 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
         if(hasSyn){
             holder.synonyms.setText(context.getString(R.string.synonyms)+"\n");
             ArrayList<Result.Synonym> synonymList = result.getSynonyms();
-            Iterator it = synonymList.iterator();
+            ListIterator<Result.Synonym> it = synonymList.listIterator();
             while(it.hasNext()){
-                holder.synonyms.setText(holder.synonyms.getText() + it.next().toString() + "\n");
+                holder.synonyms.setText(holder.synonyms.getText() + it.next().getSynonym() + "\n");
             }
         }
         if(hasDef){

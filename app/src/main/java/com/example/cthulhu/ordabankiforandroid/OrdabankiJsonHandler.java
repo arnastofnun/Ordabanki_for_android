@@ -10,7 +10,7 @@ import org.apache.http.Header;
 import org.json.JSONArray;
 
 /**
- * Created by cthulhu on 26/10/14.
+ * Created by cthulhu on 26/10/14.**
  */
 public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
 
@@ -29,7 +29,7 @@ public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
     }
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse){
-        activity.onResultFailure();
+        activity.onResultFailure(statusCode);
     }
 
 }

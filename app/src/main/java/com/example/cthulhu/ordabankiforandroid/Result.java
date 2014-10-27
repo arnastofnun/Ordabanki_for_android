@@ -36,7 +36,9 @@ public class Result {
         public Synonym() {
             //noargs constructor
             //this.synonym = in.readString();
+
         }
+        public String getSynonym(){return synonym;}
     }
 
     public Result(){

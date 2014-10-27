@@ -32,69 +32,54 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         Bundle data = getIntent().getExtras();
         searchQuery = data.getString("searchQuery");
         OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
- /*       new Thread(new Runnable() {
-            public void run() {*/
             try {
-                //Toast.makeText(this, "Requesting connection", Toast.LENGTH_LONG).show();
-                //crashes here
-                //client.setResults("http://api.arnastofnun.is/ordabanki.php?word=abyssin%C3%ADubanani", jsonHandler);
-                //Toast.makeText(this, "notCrashingYet", Toast.LENGTH_LONG).show();
                 client.setResults(OrdabankiURLGen.createWordOnlyURL(searchQuery), jsonHandler);
+                //when glossaries and languages implemented in api use:
                 //client.setResults(OrdabankiRestClientActions.createURL(searchQuery), jsonHandler);
             } catch (JSONException e) {
-                //Toast.makeText(this, "JSON exception", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
     }
-   /*     }).start();
-    }*/
 
     @Override
     public void onResultObtained(Result[] result){
-        /*Just so we have something going through the intent*/
-
-        //This will be used to get the results from the intent
-        /*resultList = (Result[]) data.getParcelableArray("resultList");
-        String searchquery = data.getString("searchQuery");*/
-        //Toast.makeText(this, "connected", Toast.LENGTH_LONG).show();
         String searchPreTerm = getResources().getString(R.string.searchpreterm);
-        TextView textview = (TextView) findViewById(R.id.resultText);
+        TextView textView = (TextView) findViewById(R.id.resultText);
         if(result == null){
             String databaseError = getResources().getString(R.string.database_error);
-            textview.setText(databaseError);
-
-        }
-        else if(result.length == 0){
-            String noResult = getResources().getString(R.string.no_result);
-            textview.setText(noResult + " " + searchPreTerm + " " + searchQuery);
+            textView.setText(databaseError);
         }
         else {
-            //This is just for now untill we get the API
-            int resultscount = result.length;
-            textview.setText(resultscount + " " + searchPreTerm + " " + searchQuery);
-            displayListView(findViewById(android.R.id.content), result);
+            int resultsCount = result.length;
+            textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery);
+            displayListView(result);
         }
     }
     @Override
-    public void onResultFailure() {
-        String searchPreTerm = getResources().getString(R.string.searchpreterm);
-        TextView textview = (TextView) findViewById(R.id.resultText);
-        String noResult = getResources().getString(R.string.no_result);
-        textview.setText(noResult + " " + searchPreTerm + " " + searchQuery);
-        //Toast.makeText(this, "Error: "+Integer.toString(statusCode), Toast.LENGTH_LONG).show();
+    public void onResultFailure(int statusCode) {
+        if (statusCode==404) {
+            String searchPreTerm = getResources().getString(R.string.searchpreterm);
+            TextView textView = (TextView) findViewById(R.id.resultText);
+            String noResult = getResources().getString(R.string.no_result);
+            textView.setText(noResult + " " + searchPreTerm + " " + searchQuery);
+        }
+        else{
+            TextView textView = (TextView) findViewById(R.id.resultText);
+            String connectionError = getResources().getString(R.string.connection_error);
+            textView.setText(connectionError);
+        }
     }
     /**
      * This function is supposed to loop through the glossaries and add them to the glossary list.
      * For now it just puts some test glossaries in.
      * It also sets an on click listener that displays a toast for now.
      * It should open a link to the url of the glossary later
-     * todo get glossaries from API and put into glossary list
+     *
      * -------------------------------------------------------------------------------------------
      * Written by Karl Ásgeir Geirsson
      * @since 09.10.2014
-     * @param rootView the root view
      */
-    private void displayListView(View rootView, Result[] resultList){
+    private void displayListView(Result[] resultList){
         //Placeholder values for the glossaries
         //Result result = new Result("lobe", "english", "Medicine");
         //resultList.add(result);
