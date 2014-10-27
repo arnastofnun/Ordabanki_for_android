@@ -39,9 +39,6 @@
                 android:value=".ResultsScreen"
             />
          </activity>
-	<activity
-	  android:name=".unittests.TestFragmentActivity">
-	 </activity>
     </application>
 
 </manifest>
