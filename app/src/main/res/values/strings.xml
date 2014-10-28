@@ -56,12 +56,36 @@
         <item>Icelandic</item>
         <item>English</item>
     </string-array>
+    <string name="help_search_fragment">
+        Type in a word in the search box and click search\n\n
+        You can use the ? character to substitute one character\n(m?nni would result in minni, mynni and munni)\n\n
+        You can use the * character to substitute 0 or more characters\n(m*nni would result in minni, misminni,myndminni,…)\n\n
+        When using the asterisk (*) you have to specify at least two other characters in the search\n\n
+        The search is not case sensitive\n\n
+        Go to the glossaries tab to restrict search to selected glosaries\n\n
+        Go to the languages tab to restrict search to certain search- or target languages
+    </string>
+    <string name="help_glossary_fragment">
+        By default all the glossaries are searched but the search can be restricted to one or more particular glossaries\n\n
+        Just tap one or more glossary to select or deselect it, the glossaries with a check mark on the left are selected\n\n
+        You have to select at least one glossary\n\n
+        You can press the select all button to select all glossaries\n\n
+        The button to the right of some glossaries is a link to a description of the glossary
+    </string>
+    <string name="help_language_fragment">
+        Search language\n\n
+        By default the search searches in all languages\n
+        You can restrict the search to a particular search language by pressing the drop down list for the search language and selecting a language\n
+        You can only select one or all search languages\n\n
+        Target language\n\n
+        By default the search displays results in all languages\n
+        You can restrict the search to a particular target language by pressing the drop down list for the target language and selecting a language\n
+        You can only select one or all target languages
+    </string>
 
     <string name="connection_error">Connection Error. Try again.</string>
     <string name="definition">Definition: </string>
     <string name="synonyms">Synonyms: </string>
     <string name="lexical_category">Lexical category: </string>
     <string name="example">Example: </string>
-    <string name="settings_about">foo</string>
-    <string name="settings_contact">bar</string>
 </resources>

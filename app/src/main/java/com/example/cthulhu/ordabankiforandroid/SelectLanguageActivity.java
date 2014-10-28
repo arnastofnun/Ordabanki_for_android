@@ -1,20 +1,9 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-
-import java.util.Locale;
 
 /*
 *   Holds the functions that are implemented in
@@ -42,67 +31,50 @@ public class SelectLanguageActivity extends Activity {
         ImageButton enButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_english);
         ImageButton isButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_icelandic);
 
-        enButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                setLocale("en");
-            }
-        });
+        //create new locale settings object
+        final LocaleSettings localeSettings = new LocaleSettings(this);
 
-        isButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                setLocale("is");
-            }
-        });
+        //Create on click listeners for the buttons
+        languageOnClickListener(enButton,localeSettings);
+        languageOnClickListener(isButton,localeSettings);
 
     }
+
 
     /**
-     * pre:lang is of type String
-     * post:starts the activity that sets the language of the UI
-     * todo move this into a LocaleSettings class
-     * ----------------------------------------------------------
+     * use: languageOnClickListener(imageButton, localeSettings)
+     * pre: imageButton is of type ImageButton, localeSettings is of type LocaleSettings
+     * post: the language has been set to the language that the image button defines
+     * -----------------------------------------------------------------------------------
      * Written by Karl Ásgeir Geirsson
-     * @param lang is the language locale string ("en" or "is")
+     * @param imageButton an image button that is supposed to change language
+     * @param localeSettings a locale settings object
      */
-    public void setLocale(String lang){
-        SharedPreferences sharedpref = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = sharedpref.edit();
-        editor.putString("lang",lang);
-        editor.apply();
-        Log.v("lang: ",sharedpref.getString("lang","DEFAULT"));
-        Locale myLocale = new Locale(lang);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf,dm);
-        Intent intent = new Intent(this,SearchScreen.class);
-        startActivity(intent);
-    }
-
-
-
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.select_language, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+    private void languageOnClickListener(ImageButton imageButton, final LocaleSettings localeSettings){
+        final String lang;
+        //Switch to choose language from the buttons
+        switch(imageButton.getId()){
+            case R.id.SelectLanguageActivity_english:
+                lang="en";
+                break;
+            case R.id.SelectLanguageActivity_icelandic:
+                lang="is";
+                break;
+            default:
+                lang="";
+                break;
         }
-        return super.onOptionsItemSelected(item);
+
+        //create on click listener for the button
+        imageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                //start the activity in the correct language
+                localeSettings.setLanguage(lang,SearchScreen.class);
+            }
+        });
     }
+
+
+
 }

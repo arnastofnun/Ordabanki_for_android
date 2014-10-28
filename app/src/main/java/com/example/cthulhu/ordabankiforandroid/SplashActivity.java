@@ -3,16 +3,10 @@ package com.example.cthulhu.ordabankiforandroid;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import java.util.Locale;
 
 //Basically just waits for two secons and then starts the next activity
 
@@ -41,38 +35,23 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-
-        sharedpref = PreferenceManager.getDefaultSharedPreferences(this);
+        final LocaleSettings localeSettings = new LocaleSettings(this);
 
 
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                if(sharedpref.contains("lang")){
-                    lang=sharedpref.getString("lang","DEFAULT");
-                    setLocale(lang);
+                if(localeSettings.getLocaleStatus()){
+                    localeSettings.setLanguageFromPref(SearchScreen.class);
                 }
                 else {
                 /* Create an Intent that will start the Menu-Activity. */
                     Intent intent = new Intent(SplashActivity.this, SelectLanguageActivity.class);
                     SplashActivity.this.startActivity(intent);
                     SplashActivity.this.finish();
-                /*Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();*/
                 }
             }
         }, SPLASH_DISPLAY_LENGTH);
-    }
-
-
-    public void setLocale(String lang){
-        Locale myLocale = new Locale(lang);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf,dm);
-        Intent intent = new Intent(this,SearchScreen.class);
-        startActivity(intent);
     }
 
     @Override

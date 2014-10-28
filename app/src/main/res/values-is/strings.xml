@@ -45,4 +45,31 @@
         <item>Íslenska</item>
         <item>Enska</item>
     </string-array>
+    <string name="help_search_fragment">
+        Skrifaðu orð í leitargluggann og ýttu á leita\n\n
+        Þú getur notað ? algildistáknið til að skipta út einum staf í leitarorðinu\n(m?nni yrði minni, mynni og munni)\n\n
+        Þú getur notað * algildistáknið til að skipta út 0 eða fleiri stöfum í leitarorðinu\n(m*nni yrði minni, misminni,myndminni,…)\n\n
+        Þegar algildistáknið * er notað þá þarf að taka fram a.m.k. tvo aðra stafi í leitarorðinu\n\n
+        Leitin gerir ekki greinarmun á há- og lágstöfum\n\n
+        Hægt er að takmarka leitina við ákveðið orðasafn í orðasafns flipanum\n\n
+        Hægt er að takmarka leitar- og markmál í tungumál flipanum
+    </string>
+    <string name="help_glossary_fragment">
+        Sjálfgefið er leitað í öllum orðasöfnum samtímis, en einnig er hægt að takmarka leitina við eitt eða fleiri orðasöfn\n\n
+        Ýttu á eitt eða fleiri orðasafn til að velja það, en ef orðasafn er valið birtist hak vinstra megin við það\n\n
+        Þú verður að velja a.m.k. eitt orðasafn\n\n
+        Þú getur ýtt á velja allt til að velja öll orðasöfn\n\n
+        Það er takki hægra megin við sum orðasöfn sem leiðir þig inn á nánari lýsingu á orðasafninu
+    </string>
+    <string name="help_language_fragment">
+        Leitarmál\n\n
+        Sjálfgefið er leitað í öllum tungumálum\n
+        Hægt er að takmarka leitina við ákveðið leitarmál með því að ýta á valgluggann fyrir leitarmál og velja tungumál\n
+        Aðeins er hægt að velja öll eða eitt leitarmál\n\n
+        Markmál\n\n
+        Sjálfgefið er niðurstöðum skilað á öllum tungumálum\n
+        Hægt er að takmarka leitina á þann hátt að hún skili aðeins niðurstöðum á ákveðnum markmálum.\n
+        Þetta er gert með því að ýta á valgluggann fyrir markmál og velja tungumál\n
+        Aðeins er hægt að velja öll eða eitt markmál
+    </string>
 </resources>

@@ -177,10 +177,21 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
             case R.id.action_help:
 
                 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+                int currFragment = viewPager.getCurrentItem();
+
                 //Todo set text for help  based on active fragment
-                helpBuilder.
-                        setTitle(R.string.help_title)
-                        .setMessage("test");
+                helpBuilder.setTitle(R.string.help_title);
+                switch(currFragment){
+                    case 0:
+                        helpBuilder.setMessage(getResources().getString(R.string.help_search_fragment));
+                        break;
+                    case 1:
+                        helpBuilder.setMessage(getResources().getString(R.string.help_glossary_fragment));
+                        break;
+                    case 2:
+                        helpBuilder.setMessage(getResources().getString(R.string.help_language_fragment));
+                        break;
+                }
                 helpBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id){
 
