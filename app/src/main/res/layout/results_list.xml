@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="10dp"
+    android:background="@color/lightGreen200"
     >
     <TextView
         android:id="@+id/resultTerm"
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Term"
         android:textSize="20sp"
+        android:textColor="@color/darkgrey"
         />
     <LinearLayout
         android:layout_width="fill_parent"
@@ -27,6 +29,7 @@
         android:layout_height="wrap_content"
         android:text="(Language)"
         android:textSize="16sp"
+        android:textColor="@color/darkgrey"
         android:gravity="center"
         />
 
@@ -37,6 +40,7 @@
         android:layout_height="wrap_content"
         android:text="[Glossary]"
         android:textSize="16sp"
+        android:textColor="@color/darkgrey"
         android:singleLine="true"
         android:gravity="center"
 
@@ -57,6 +61,7 @@
             android:layout_height="wrap_content"
             android:text="syn"
             android:textSize="16sp"
+            android:textColor="@color/darkgrey"
             android:singleLine="false"
             android:gravity="center"
             android:layout_width="0dp"
@@ -68,6 +73,7 @@
             android:layout_height="wrap_content"
             android:text="def"
             android:textSize="16sp"
+            android:textColor="@color/darkgrey"
             android:singleLine="false"
             android:gravity="center"
             android:layout_width="0dp"
@@ -79,6 +85,7 @@
             android:layout_height="wrap_content"
             android:text="exa"
             android:textSize="16sp"
+            android:textColor="@color/darkgrey"
             android:singleLine="false"
             android:gravity="center"
             android:layout_width="0dp"
@@ -90,6 +97,7 @@
             android:layout_height="wrap_content"
             android:text="lex"
             android:textSize="16sp"
+            android:textColor="@color/darkgrey"
             android:singleLine="true"
             android:gravity="center"
             android:layout_width="0dp"

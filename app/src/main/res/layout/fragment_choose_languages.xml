@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.cthulhu.ordabankiforandroid.ChooseLanguagesFragment"
     android:gravity="center"
-    android:background="@android:color/holo_green_dark"
+    android:background="@color/lightGreen200"
     android:id="@+id/choose_language_fragment">
 
     <LinearLayout
@@ -23,7 +23,7 @@
             android:maxLines="2"
             android:gravity="center"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             />
 
         <Spinner
@@ -34,7 +34,7 @@
             android:textSize="20sp"
             android:padding="5dp"
             android:spinnerMode="dropdown"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             />
 
     </LinearLayout>
@@ -57,7 +57,7 @@
             android:maxLines="2"
             android:gravity="center"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="@color/darkgrey"
             />
 
         <Spinner
@@ -68,7 +68,7 @@
             android:textSize="20sp"
             android:padding="5dp"
             android:spinnerMode="dropdown"
-            android:textColor="@color/white"/>
+            android:textColor="@color/darkgrey"/>
     </LinearLayout>
 
 </RelativeLayout>

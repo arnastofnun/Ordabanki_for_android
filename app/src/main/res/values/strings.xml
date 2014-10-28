@@ -15,17 +15,20 @@
     <color name="white">#FFFFFF</color>
     <color name="lightgray">#ECDFBD</color>
     <color name="blue">#20457C</color>
-    <color name="dargray">#3B3A35</color>
+    <color name="darkgrey">#616161</color>
     <color name="orange">#FB6648</color>
     <color name="purple">#5E3448</color>
-
+    <color name="lightGreen200">#c5e1a5</color>
+    <color name="lightGreen400">#9ccc65</color>
+    <color name="green300">#42bd41</color>
+    <color name="grey200">#eeeeee</color>
     <color name="greenblue">#588C7E</color>
     <color name="lightyellow">#F2E394</color>
     <color name="lightorange">#F2AE72</color>
     <color name="darkorange">#D96459</color>
     <color name="darkred">#8C4646</color>
-    <color name="glossary_selected">@android:color/holo_green_dark</color>
-    <color name="glossary_notselected">#0000</color>
+    <color name="glossary_selected">@color/lightGreen400</color>
+    <color name="glossary_notselected">@color/lightGreen200</color>
 
     <string name="search_button">Search</string>
     <string name="targetlang">Target language:</string>
@@ -38,7 +41,7 @@
     <string name="title_activity_results_screen">Results</string>
     <string name="action_help">Help</string>
     <string name="select_all">Select all</string>
-    <string name="deselect_all">Select none</string>
+    <string name="deselect_all">Clear all</string>
     <string name="database_error">Could not connect to database</string>
     <string name="no_result">No</string>
     <string name="link_unaccessable">There is no website for this glossary</string>
