@@ -1,21 +1,24 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
@@ -170,7 +173,93 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
+        switch(item.getItemId()){
+            case R.id.action_help:
+
+                AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+                //Todo set text for help  based on active fragment
+                helpBuilder.
+                        setTitle(R.string.help_title)
+                        .setMessage("test");
+                helpBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+
+                    }
+                });
+                AlertDialog helpDialog = helpBuilder.create();
+                helpDialog.show();
+
+                return true;
+            case R.id.action_settings:
+                View v = findViewById(R.id.action_settings);
+                createOptionsPopupMenu(v);
+                return true;
+
+
+
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+
+
+    private void createOptionsPopupMenu(View v){
+        PopupMenu popup = new PopupMenu(this,v);
+        MenuInflater inflater = popup.getMenuInflater();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.settings_change_language:
+                        AlertDialog.Builder languageBuilder = new AlertDialog.Builder(SearchScreen.this);
+                        languageBuilder
+                                .setTitle(R.string.change_language)
+                                //Todo set default value for select language settings
+                                .setSingleChoiceItems(R.array.language_array, -1, new DialogInterface.OnClickListener(){
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which){
+                                    //Todo implement on click functions for select language settings
+                                    }
+                                });
+                        //Todo implement accept button
+                        languageBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+                        AlertDialog languageDialog = languageBuilder.create();
+                        languageDialog.show();
+                        return true;
+
+                    case R.id.settings_about:
+                        AlertDialog.Builder aboutBuilder = new AlertDialog.Builder(SearchScreen.this);
+                        aboutBuilder
+                                .setTitle(R.string.change_language)
+                                .setMessage("test");
+                        aboutBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+                        AlertDialog aboutDialog = aboutBuilder.create();
+                        aboutDialog.show();
+                        return true;
+                    case R.id.settings_contact:
+                        Intent email = new Intent(Intent.ACTION_SEND);
+                        email.setData(Uri.parse("mailto:"));
+                        email.setType("message/rfc822");
+                        //Todo doesn't seem to put the email to address through
+                        email.putExtra(Intent.EXTRA_EMAIL,getResources().getString(R.string.contact_email));
+                        try{
+                            startActivity(Intent.createChooser(email,getResources().getString(R.string.choose_email_client)));
+                        } catch (ActivityNotFoundException e) {
+                            Toast.makeText(SearchScreen.this,getResources().getString(R.string.error_no_email_client), Toast.LENGTH_LONG).show();
+                        }
+                        return true;
+                }
+                return true;
+            }
+        });
+        inflater.inflate(R.menu.settings_menu,popup.getMenu());
+        popup.show();
     }
 }

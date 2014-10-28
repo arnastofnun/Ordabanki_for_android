@@ -36,4 +36,13 @@
     <string name="example">Dæmi: </string>
     <string name="help_title">Hjálp</string>
     <string name="close_help">Loka</string>
+    <string name="change_language">Breyta tungumáli</string>
+    <string name="settings_about">Um Íðorðabankann</string>
+    <string name="settings_contact">Hafið samband</string>
+    <string name="choose_email_client">Vinsamlegast veldu email app</string>
+    <string name="error_no_email_client">Þú hefur ekkert email app</string>
+    <string-array name="language_array">
+        <item>Íslenska</item>
+        <item>Enska</item>
+    </string-array>
 </resources>
