@@ -1,11 +1,14 @@
 package com.example.cthulhu.ordabankiforandroid.unittests;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.ChooseLanguagesFragment;
 import com.example.cthulhu.ordabankiforandroid.R;
 import com.example.cthulhu.ordabankiforandroid.SearchScreen;
 import com.robotium.solo.Solo;
+import junit.framework.Assert;
 
 /**
  * @author Trausti
@@ -14,7 +17,8 @@ import com.robotium.solo.Solo;
 public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScreen> {
 
     private Solo solo;
-    private SearchScreen activity;
+   // private SearchScreen activity;
+   // private EditText searchView;
 
     public SearchScreenTest() {
         super(SearchScreen.class);
@@ -23,6 +27,18 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
     public void setUp() throws Exception {
         solo = new Solo(getInstrumentation(), getActivity());
 
+
+        /* The following commented-out code is a workaround used by
+        / Kristján for unit tests to work in his system.
+
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+            }
+        });
+
+        */
     }
 
     //Are we testing the correct activity?
@@ -51,6 +67,30 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         assertTrue(solo.isSpinnerTextSelected("English"));//spinner item 0
         assertTrue(solo.isSpinnerTextSelected("Icelandic"));//spinner item 1
     }
+
+    /**
+     * This method tests if a search string can be entered and sent
+     * from the search screen
+     * Written by Kristján
+     */
+
+    public void testEditText() /* throws Exception */ {
+        // Validates the Search Bar starts Empty
+        Assert.assertTrue(solo.searchText(""));
+        // Enters a word into the Search Bar
+        solo.enterText(0, "Autodefenestration");
+        // Asserts the word has been entered
+        Assert.assertTrue(solo.searchText("Autodefenestration"));
+        // TODO confirm the search query has been passed onwards
+        // Clicks the search button
+        // solo.clickOnButton(solo.getString(R.id.searchView));
+        solo.goBack();
+
+        //
+
+    }
+
+
 
 
 
