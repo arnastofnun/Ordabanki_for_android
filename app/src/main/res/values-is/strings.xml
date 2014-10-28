@@ -29,9 +29,4 @@
     <string name="languages_tab_name">Tungumál</string>
     <string name="no_search_term">Þú verður að skrifa inn leitarorð</string>
     <string name="no_glossary_picked">Þú verður að velja að minnsta kosti eitt orðasafn</string>
-    <string name="connection_error">Sambandsslit. Reyndu aftur.</string>
-    <string name="definition">Skilgreining: </string>
-    <string name="synonyms">Samheiti: </string>
-    <string name="lexical_category">Orðaflokkur: </string>
-    <string name="example">Dæmi: </string>
 </resources>

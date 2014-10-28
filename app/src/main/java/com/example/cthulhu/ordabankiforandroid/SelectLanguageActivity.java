@@ -4,14 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import java.util.Locale;
 
@@ -36,14 +34,10 @@ public class SelectLanguageActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_language);
-        initTypeFace();
-
 
         //Get the image buttons
         ImageButton enButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_english);
         ImageButton isButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_icelandic);
-        ImageButton daButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_english);
-        ImageButton svButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_icelandic);
 
         enButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -59,26 +53,6 @@ public class SelectLanguageActivity extends Activity {
             }
         });
 
-        enButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                setLocale("da");
-            }
-        });
-
-        isButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                setLocale("sv");
-            }
-        });
-
-    }
-
-    private void initTypeFace() {
-        /*TextView textView = (TextView)findViewById(R.id.welcometext);
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Walkway_SemiBold.ttf");
-        textView.setTypeface(font);*/
     }
 
     /**

@@ -44,9 +44,5 @@
     <string name="languages_tab_name">Languages</string>
     <string name="no_search_term">You have to type in a search query</string>
     <string name="no_glossary_picked">You have to pick at least one glossary</string>
-    <string name="connection_error">Connection Error. Try again.</string>
-    <string name="definition">Definition: </string>
-    <string name="synonyms">Synonyms: </string>
-    <string name="lexical_category">Lexical category: </string>
-    <string name="example">Example: </string>
+
 </resources>
