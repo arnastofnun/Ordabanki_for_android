@@ -1,19 +1,22 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
-
+<<<<<<< HEAD
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Typeface;
-
+=======
+>>>>>>> branch 'it_2' of https://github.com/Shub1000Young/Ordabanki_for_android.git
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-
+<<<<<<< HEAD
 import android.widget.TextView;
 
 import java.util.Locale;
+=======
+>>>>>>> branch 'it_2' of https://github.com/Shub1000Young/Ordabanki_for_android.git
 
 /*
 *   Holds the functions that are implemented in
