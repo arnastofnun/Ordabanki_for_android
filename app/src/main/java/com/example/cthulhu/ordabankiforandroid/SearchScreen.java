@@ -93,6 +93,12 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         });
     }
 
+    //Disable the back button
+    @Override
+    public void onBackPressed() {
+    }
+
+
 
     // Handle the button on the search screen fragment
 
@@ -242,24 +248,12 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
                         return true;
 
                     case R.id.settings_about:
-                        AlertDialog.Builder aboutBuilder = new AlertDialog.Builder(SearchScreen.this);
-                        aboutBuilder
-                                .setTitle(R.string.change_language)
-                                .setMessage("test");
-                        aboutBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                            }
-                        });
-                        AlertDialog aboutDialog = aboutBuilder.create();
-                        aboutDialog.show();
+                        Intent intent = new Intent(SearchScreen.this, AboutActivity.class);
+                        SearchScreen.this.startActivity(intent);
                         return true;
                     case R.id.settings_contact:
-                        Intent email = new Intent(Intent.ACTION_SEND);
-                        email.setData(Uri.parse("mailto:"));
-                        email.setType("message/rfc822");
+                        Intent email = new Intent(Intent.ACTION_SENDTO,Uri.fromParts("mailto",getResources().getString(R.string.contact_email),null));
                         //Todo doesn't seem to put the email to address through
-                        email.putExtra(Intent.EXTRA_EMAIL,getResources().getString(R.string.contact_email));
                         try{
                             startActivity(Intent.createChooser(email,getResources().getString(R.string.choose_email_client)));
                         } catch (ActivityNotFoundException e) {

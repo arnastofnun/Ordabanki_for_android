@@ -40,6 +40,11 @@ public class SelectLanguageActivity extends Activity {
 
     }
 
+    //disable the back button
+    @Override
+    public void onBackPressed() {
+    }
+
 
     /**
      * use: languageOnClickListener(imageButton, localeSettings)
