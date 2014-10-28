@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="6dip"
     android:descendantFocusability="blocksDescendants"
-    android:background="@color/darkorange"
+    android:background="@android:color/holo_green_light"
     >
 
     <ImageView
@@ -25,8 +25,10 @@
         android:layout_height="fill_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="10sp"
-        android:layout_marginEnd="10sp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:src="@drawable/ic_action_web_site"
         />
 
@@ -37,6 +39,8 @@
 
         android:focusable="false"
         android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_toEndOf="@id/checked_image"
         android:layout_toRightOf="@id/checked_image"
         android:layout_toStartOf="@id/GlossaryLink"

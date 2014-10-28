@@ -2,9 +2,7 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.Toast;
@@ -26,7 +23,6 @@ import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -35,7 +31,7 @@ import java.util.List;
  * It allows you to swipe and tab between fragments
  * Created by karlasgeir on 9.10.2014.
  */
-public class SearchScreen extends FragmentActivity implements ActionBar.TabListener {
+public class SearchScreen extends FragmentActivity {
     /*
     *   Data invariants:
     *   viewPager: ViewPager object
@@ -52,8 +48,9 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
+
         //Tab titles
-        List<String> tabs = new ArrayList<String>();
+        ArrayList<String> tabs = new ArrayList<String>();
         tabs.add(this.getString(R.string.search_tab));
         tabs.add(this.getString(R.string.pick_glossary_tab));
         tabs.add(this.getString(R.string.languages_tab_name));
@@ -62,9 +59,11 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         viewPager = (ViewPager) findViewById(R.id.searchscreen);
         actionBar = getActionBar();
         TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
-
+        mAdapter.setTabTitles(tabs);
         viewPager.setAdapter(mAdapter);
         actionBar.setHomeButtonEnabled(false);
+
+        /*
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 
@@ -91,6 +90,7 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+        */
     }
 
     //Disable the back button
@@ -139,7 +139,7 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
         }
     }
 
-
+    /*
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
         View focus = getCurrentFocus();
@@ -165,6 +165,8 @@ public class SearchScreen extends FragmentActivity implements ActionBar.TabListe
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
         viewPager.setCurrentItem(tab.getPosition());
     }
+
+    */
 
 
     @Override

@@ -2,4 +2,15 @@
     android:id="@+id/searchscreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <android.support.v4.view.PagerTabStrip
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:background="@android:color/background_dark"
+        android:textColor="@android:color/primary_text_dark"
+        >
+    </android.support.v4.view.PagerTabStrip>
+
 </android.support.v4.view.ViewPager>

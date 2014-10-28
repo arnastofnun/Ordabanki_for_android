@@ -7,6 +7,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.cthulhu.ordabankiforandroid.ChooseLanguagesFragment;
 import com.example.cthulhu.ordabankiforandroid.PickGlossaryFragment;
 import com.example.cthulhu.ordabankiforandroid.SearchScreenFragment;
+
+import java.util.ArrayList;
+
 /**
  * This class contains a Tabs-Pager adapter that enables
  * tabs to switch between fragments
@@ -27,6 +30,10 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
 
     //Count of tabs
     private final int count = 3;
+
+    //Tab titles
+    private ArrayList<String> tabtitles = new ArrayList<String>();
+
 
     //Gets the fragment at a specific index
 
@@ -63,6 +70,15 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount(){
         return count;
+    }
+
+    public void setTabTitles(ArrayList<String> tabs){
+        tabtitles = tabs;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position){
+        return tabtitles.get(position);
     }
 
 }

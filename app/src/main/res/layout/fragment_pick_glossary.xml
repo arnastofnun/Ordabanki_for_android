@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@color/darkorange"
+    android:background="@android:color/background_dark"
     android:id="@+id/pick_glossary_fragment">
     <LinearLayout
         android:id="@+id/checkboxselect"
@@ -18,7 +18,7 @@
              android:layout_height="wrap_content"
              android:layout_weight="1"
              android:text="@string/select_all"
-             android:textColor="@color/white"
+             android:background="@android:color/background_light"
          />
         <Button
             style="?android:attr/buttonBarButtonStyle"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/deselect_all"
-            android:textColor="@color/white"
+            android:background="@android:color/background_light"
         />
 
     </LinearLayout>
