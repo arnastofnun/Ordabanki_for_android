@@ -42,8 +42,8 @@ public class SelectLanguageActivity extends Activity {
         //Get the image buttons
         ImageButton enButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_english);
         ImageButton isButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_icelandic);
-        ImageButton daButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_english);
-        ImageButton svButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_icelandic);
+        ImageButton daButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_danish);
+        ImageButton svButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_swedish);
 
         //create new locale settings object
         final LocaleSettings localeSettings = new LocaleSettings(this);
@@ -51,20 +51,9 @@ public class SelectLanguageActivity extends Activity {
         //Create on click listeners for the buttons
         languageOnClickListener(enButton,localeSettings);
         languageOnClickListener(isButton,localeSettings);
+        languageOnClickListener(daButton,localeSettings);
+        languageOnClickListener(svButton,localeSettings);
 
-        enButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                setLocale("da");
-            }
-        });
-
-        isButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                setLocale("sv");
-            }
-        });
 
     }
 
