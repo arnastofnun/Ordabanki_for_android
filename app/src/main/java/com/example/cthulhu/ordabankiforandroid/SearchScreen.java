@@ -41,7 +41,6 @@ public class SearchScreen extends FragmentActivity {
     *   resultList: list of search results
     */
     private ViewPager viewPager;
-    private ActionBar actionBar;
 
 
     @Override
@@ -57,11 +56,13 @@ public class SearchScreen extends FragmentActivity {
 
         //Initilize
         viewPager = (ViewPager) findViewById(R.id.searchscreen);
-        actionBar = getActionBar();
+        ActionBar actionBar = getActionBar();
         TabsPagerAdapter mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
         mAdapter.setTabTitles(tabs);
         viewPager.setAdapter(mAdapter);
-        actionBar.setHomeButtonEnabled(false);
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(false);
+        }
 
         /*
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);

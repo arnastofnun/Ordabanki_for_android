@@ -157,7 +157,8 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
             }
         }
         if(hasDef){
-            holder.definition.setText(context.getString(R.string.definition) + result.getDefinition());
+            String def = result.getDefinition().replaceAll("<.*>", "");
+            holder.definition.setText(context.getString(R.string.definition) + def);
         }
         if(hasEx){
             holder.example.setText(context.getString(R.string.example) + result.getExample());
