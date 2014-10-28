@@ -83,6 +83,12 @@ public class SelectLanguageActivity extends Activity {
             case R.id.SelectLanguageActivity_icelandic:
                 lang="is";
                 break;
+            case R.id.SelectLanguageActivity_danish:
+                lang="da";
+                break;
+            case R.id.SelectLanguageActivity_swedish:
+                lang="sv";
+                break;
             default:
                 lang="";
                 break;
