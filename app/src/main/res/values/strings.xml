@@ -18,7 +18,10 @@
     <color name="darkgrey">#616161</color>
     <color name="orange">#FB6648</color>
     <color name="purple">#5E3448</color>
+    <color name="lightGreen50">#f1f8e9</color>
+    <color name="lightGreen100">#dcedc8</color>
     <color name="lightGreen200">#c5e1a5</color>
+    <color name="lightGreen300">#aed581</color>
     <color name="lightGreen400">#9ccc65</color>
     <color name="green300">#42bd41</color>
     <color name="grey200">#eeeeee</color>
@@ -27,8 +30,8 @@
     <color name="lightorange">#F2AE72</color>
     <color name="darkorange">#D96459</color>
     <color name="darkred">#8C4646</color>
-    <color name="glossary_selected">@color/lightGreen400</color>
-    <color name="glossary_notselected">@color/lightGreen200</color>
+    <color name="glossary_selected">@color/lightGreen100</color>
+    <color name="glossary_notselected">@color/lightGreen50</color>
 
     <string name="search_button">Search</string>
     <string name="targetlang">Target language:</string>
