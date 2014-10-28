@@ -9,7 +9,6 @@
     <string name="selectlanguage">Vinsamlegast veldu tungumál</string>
     <string name="title_activity_select_language">Veldu tungumál</string>
 
-    <color name="white">#FFFFFF</color>
     <string name="search_button">Leita</string>
     <string name="targetlang">Leitarmál:</string>
     <string name="sourcelang">Markmál:</string>
