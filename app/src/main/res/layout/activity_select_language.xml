@@ -43,13 +43,6 @@
             android:orientation="vertical"
             android:id="@+id/linearLayout">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:id="@+id/imageView3"
-                android:focusableInTouchMode="false"
-                android:src="@drawable/border_green" />
-
             <ImageButton
                 android:id="@+id/SelectLanguageActivity.icelandic"
                 android:layout_width="match_parent"
@@ -59,13 +52,6 @@
                 android:scaleType="fitCenter"
                 android:background="@null"
                 />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:id="@+id/border_green"
-                android:focusableInTouchMode="false"
-                android:src="@drawable/border_green" />
 
             <ImageButton
                 android:id="@+id/SelectLanguageActivity.english"
@@ -77,13 +63,6 @@
                 android:scaleType="fitCenter"
                 />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:id="@+id/imageView4"
-                android:focusableInTouchMode="false"
-                android:src="@drawable/border_green" />
-
             <ImageButton
                 android:id="@+id/SelectLanguageActivity.danish"
                 android:layout_width="match_parent"
@@ -93,13 +72,6 @@
                 android:scaleType="fitCenter"
                 android:background="@null"
                 android:focusableInTouchMode="false" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:id="@+id/imageView5"
-                android:focusableInTouchMode="false"
-                android:src="@drawable/border_green" />
 
             <ImageButton
                 android:id="@+id/SelectLanguageActivity.swedish"
@@ -111,12 +83,6 @@
                 android:scaleType="fitCenter"
                 android:focusableInTouchMode="false" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:id="@+id/imageView6"
-                android:focusableInTouchMode="false"
-                android:src="@drawable/border_green" />
         </LinearLayout>
     </ScrollView>
 
