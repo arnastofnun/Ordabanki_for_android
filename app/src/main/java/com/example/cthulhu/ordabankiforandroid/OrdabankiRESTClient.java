@@ -1,5 +1,6 @@
 package com.example.cthulhu.ordabankiforandroid;
 import com.loopj.android.http.*;
+
 //13/10/14.
 
 
@@ -16,9 +17,9 @@ public class OrdabankiRESTClient {
 
     /**
      * send a get request
-     * @param url
-     * @param params
-     * @param responseHandler
+     * @param url url to connect to
+     * @param params parameters object
+     * @param responseHandler response handler
      */
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler){
         client.get(url, params, responseHandler);
@@ -27,11 +28,13 @@ public class OrdabankiRESTClient {
 
     /**
      * send a post request
-     * @param url
-     * @param params
-     * @param responseHandler
+     * @param url url to connect to
+     * @param params parameters object
+     * @param responseHandler response handler
      */
     public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
         client.post(url, params, responseHandler);
     }
+
+
 }

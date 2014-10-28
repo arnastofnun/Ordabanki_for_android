@@ -44,5 +44,72 @@
     <string name="languages_tab_name">Languages</string>
     <string name="no_search_term">You have to type in a search query</string>
     <string name="no_glossary_picked">You have to pick at least one glossary</string>
+    <string name="help_title">Help</string>
+    <string name="close_help">Close</string>
+    <string name="change_language">Change language</string>
+    <string name="settings_about">About</string>
+    <string name="settings_contact">Contact us</string>
+    <string name="contact_email">agustath\@islenskan.is</string>
+    <string name="choose_email_client">Please choose an email client</string>
+    <string name="error_no_email_client">You don\'t have an email client installed</string>
+    <string-array name="language_array">
+        <item>Icelandic</item>
+        <item>English</item>
+    </string-array>
+    <string name="help_search_fragment">
+        Type in a word in the search box and click search\n\n
+        You can use the ? character to substitute one character\n(m?nni would result in minni, mynni and munni)\n\n
+        You can use the * character to substitute 0 or more characters\n(m*nni would result in minni, misminni,myndminni,…)\n\n
+        When using the asterisk (*) you have to specify at least two other characters in the search\n\n
+        The search is not case sensitive\n\n
+        Go to the glossaries tab to restrict search to selected glosaries\n\n
+        Go to the languages tab to restrict search to certain search- or target languages
+    </string>
+    <string name="help_glossary_fragment">
+        By default all the glossaries are searched but the search can be restricted to one or more particular glossaries\n\n
+        Just tap one or more glossary to select or deselect it, the glossaries with a check mark on the left are selected\n\n
+        You have to select at least one glossary\n\n
+        You can press the select all button to select all glossaries\n\n
+        The button to the right of some glossaries is a link to a description of the glossary
+    </string>
+    <string name="help_language_fragment">
+        Search language\n\n
+        By default the search searches in all languages\n
+        You can restrict the search to a particular search language by pressing the drop down list for the search language and selecting a language\n
+        You can only select one or all search languages\n\n
+        Target language\n\n
+        By default the search displays results in all languages\n
+        You can restrict the search to a particular target language by pressing the drop down list for the target language and selecting a language\n
+        You can only select one or all target languages
+    </string>
+    <string name="about_header_purpose">Purpose</string>
+    <string name="about_body_purpose">
+        One purpose of a word bank is to coordinate the terminological usage in both related and different fields; to collect terms, define and unify them to avoid the use of different names of the same concept.\n
+        The Icelandic Word Bank does serve this purpose. It can give a general survey of Icelandic terminology and contemporary neologisms, thus adding to the coordination of both usage and definitions.
+    </string>
+    <string name="about_header_structure">Structure</string>
+    <string name="about_body_structure">
+        The Icelandic Word Bank is divided into two main sections, processing section and display section.Each section contains glossaries in different fields.\n\n
+        The display section is publicly searchable/accessible on the World Wide Web and the processing section is the part where the owners and editors of different glossaries can update their work and create new glossaries.\n
+        When the owner of a particular glossary is ready to publish his/her work the editor of the Word Bank can copy the glossary from the processing section to the display section and thus either add a new glossary or update an existing one.\n
+        All glossaries contain terms in Icelandic. In the bilingual glossaries, apart from the Icelandic, the most common language is English, but many of the glossaries are multilingual and the most frequent additional languages are Danish, German, Norwegian, Swedish and French.\n
+        Today there are 36 glossaries containing about 125.000 terms in the display section, all accessible to the user in a single search, and additional 13 glossaries at different stages in the processing section.\n\n
+        The Icelandic Word Bank on the World Wide Web can be updated at all times wherever the editors of its data bases are located in the world, as long as they are connected to the Internet, and the editors and other users can use their favourite WWW browsers for editing and searching as they are not bound to one platform.
+    </string>
+    <string name="about_header_history">History</string>
+    <string name="about_body_history">
+        In 1979 the first ideas about a computerized Term Bank in a network emerged in the Icelandic Language Institute. The main idea was to store the data in a mainframe computer with access from terminals.\n
+        Since then there has been a technical revolution in the field of computing; still the main idea is the same, the only difference ist that now the network is the computer.
+    </string>
+    <string name="about_header_theapp">The Íðorðabanki app</string>
+    <string name="about_body_theapp">
+        In 2014 four students at the University of Iceland made an App for the Íðorðabanki.\n
+        The App allows users access to the display section of the íðorðabanki on Android smart phones and tablets.
+    </string>
 
+    <string name="connection_error">Connection Error. Try again.</string>
+    <string name="definition">Definition: </string>
+    <string name="synonyms">Synonyms: </string>
+    <string name="lexical_category">Lexical category: </string>
+    <string name="example">Example: </string>
 </resources>
