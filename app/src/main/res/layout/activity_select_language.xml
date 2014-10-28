@@ -5,13 +5,13 @@
     tools:context="com.example.cthulhu.ordabankiforandroid.SelectLanguageActivity"
     android:padding="20dp"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@drawable/background">
 
     <ImageView
         android:contentDescription="@string/splashimage"
         android:id="@+id/SelectLanguageActivity.logo"
         android:layout_width="140dp"
-        android:layout_height="50dp"
+        android:layout_height="20dp"
         android:layout_weight="0.3"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
@@ -22,16 +22,19 @@
         android:id="@+id/SelectLanguageActivity.welcometext"
         android:text="@string/welcometext"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:textColor="#009F00"
-        android:layout_weight="0.5"
-        android:textSize="30sp"
+        android:layout_weight="0.2"
+        android:textSize="43dp"
         android:gravity="center"
-        />
+        android:typeface="normal"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold|normal"
+        android:textIsSelectable="false" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="110dp"
         android:id="@+id/scrollView"
         android:layout_weight="0.3"
         android:fadeScrollbars="false">
@@ -50,8 +53,7 @@
                 android:layout_height="120dp"
                 android:src="@drawable/ic_iceland"
                 android:scaleType="fitCenter"
-                android:background="@null"
-                />
+                android:background="@null" />
 
             <ImageButton
                 android:id="@+id/SelectLanguageActivity.english"
@@ -93,7 +95,8 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:textColor="#009F00"
+        android:textColor="#000000"
+        android:textStyle="bold"
         android:textSize="20sp"
         android:gravity="center"
         android:autoText="false" />
