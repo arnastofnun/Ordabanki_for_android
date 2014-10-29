@@ -42,9 +42,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         searchQuery = data.getString("searchQuery");
         OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
             try {
-                client.setResults(OrdabankiURLGen.createWordOnlyURL(searchQuery), jsonHandler);
-                //when glossaries and languages implemented in api use:
-                //client.setResults(OrdabankiRestClientActions.createURL(searchQuery), jsonHandler);
+                client.setResults(OrdabankiURLGen.createURL(searchQuery), jsonHandler);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

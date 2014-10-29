@@ -50,7 +50,7 @@ class OrdabankiURLGen {
             if (!tLang.equals("ALL")){
                 relURL = relURL + "&tlang=" + tLang;
         }*/
-        if (PickGlossaryFragment.areAllSelected()){
+        if (!PickGlossaryFragment.areAllSelected()){
             ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
             if (selectedGlossaries.size() == 1) {
                 relURL = relURL + "&dict=";

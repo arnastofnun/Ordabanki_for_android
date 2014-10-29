@@ -19,7 +19,7 @@
          <string name = "pick_glossary_tab"> Ordbøger </string>
          <string name = "title_activity_results_screen"> Resultater </string>
          <string name = "action_help"> Hjælp </string>
-         <string name = "SELECT_ALL"> Vælg alt </string>
+         <string name = "select_all"> Vælg alt </string>
          <string name = "deselect_all"> Fjern markeringen </string>
          <string name = "database_error"> Kunne ikke forbinde til databasen </string>
          <string name = "no_result"> Nej </string>
@@ -51,15 +51,15 @@
              <item> svensk </item>
              <item> Dansk </item>
          </string-array>
-         <string name = "help_search_fragment">
+         <string name = "help_search_fragment"><![CDATA[
              Indtast ordet i søgefeltet og tryk søg \n\n
              ? er et wildcard og repræsenterer blot et brev eller mellanrum\n\n
-             * Er et wildcard og repræsenterer ingen (0) eller flere bogstaver eller mellemrum. \n (m * NNI yrði Minni, misminni, myndminni, ...) \n \n
+             * Er et wildcard og repræsenterer ingen (0) eller flere bogstaver eller mellemrum. \n (m * NNI yrði Minni, misminni, myndminni, …) \n \n
 
              Hvis du bruger * i søgestrengen skal være mindst to andre bogstaver. \n \n
              Skelner ikke Søgningen mellem store og små bogstaver \n \n
     Gå til ordbogen for at begrænse søgningen til de udvalgte ordbøger \n \n
-             Gå til sproget for at begrænse søgningen til bestemte søgning eller målsprog</string>
+             Gå til sproget for at begrænse søgningen til bestemte søgning eller målsprog]]></string>
          <string name = "help_glossary_fragment">
     Som standard, alle ordbøger, men søgningen kan begrænses til et eller flere specifikke ordforråd. \n \n
     Bare tryk en eller flere ordliste for at vælge eller fravælge det, ordlister med et flueben til den valgte venstre. \n \n
