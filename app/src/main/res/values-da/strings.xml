@@ -54,6 +54,7 @@
         Skrifaðu orð í leitargluggann og ýttu á leita\n\n
         Þú getur notað ? algildistáknið til að skipta út einum staf í leitarorðinu\n(m?nni yrði minni, mynni og munni)\n\n
         Þú getur notað * algildistáknið til að skipta út 0 eða fleiri stöfum í leitarorðinu\n(m*nni yrði minni, misminni,myndminni,…)\n\n
+
         Þegar algildistáknið * er notað þá þarf að taka fram a.m.k. tvo aðra stafi í leitarorðinu\n\n
         Leitin gerir ekki greinarmun á há- og lágstöfum\n\n
         Hægt er að takmarka leitina við ákveðið orðasafn í orðasafns flipanum\n\n

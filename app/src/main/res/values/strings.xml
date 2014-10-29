@@ -51,7 +51,7 @@
     <string name="languages_tab_name">Languages</string>
     <string name="no_search_term">You have to type in a search query</string>
     <string name="no_glossary_picked">You have to pick at least one glossary</string>
-    <string name="ast_char_limit">You have to type in at least to other characters when using *</string>
+    <string name="ast_char_limit">You have to type in at least two other characters when using *</string>
     <string name="help_title">Help</string>
     <string name="close_help">Close</string>
     <string name="settings_changelanguage_confirm">Select</string>
@@ -73,7 +73,7 @@
         You can use the * character to substitute 0 or more characters\n(m*nni would result in minni, misminni,myndminni,…)\n\n
         When using the asterisk (*) you have to specify at least two other characters in the search\n\n
         The search is not case sensitive\n\n
-        Go to the glossaries tab to restrict search to selected glosaries\n\n
+        Go to the glossaries tab to restrict search to selected glossaries\n\n
         Go to the languages tab to restrict search to certain search- or target languages
     </string>
     <string name="help_glossary_fragment">
