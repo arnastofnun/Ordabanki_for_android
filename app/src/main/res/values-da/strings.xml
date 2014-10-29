@@ -3,96 +3,110 @@
     tools:ignore="MissingTranslation">
     <string name="app_name">Íðorðabankinn</string>
     <string name="title_activity_splash">Orðabankinn</string>
-    <string name="action_settings">Stillingar</string>
-    <string name="splashimage">Upphafsmynd</string>
-    <string name="splashtext">Hleð upp</string>
-    <string name="welcometext">Velkomin í Íðorðabanka appið</string>
-    <string name="selectlanguage">Vinsamlegast veldu tungumál</string>
-    <string name="title_activity_select_language">Veldu tungumál</string>
+    <string name="action_settings">Indstillinger</string>
+    <string name="splashimage">Splash billede </string>
+    <string name="splashtext">Initialiserer </string>
+    <string name="welcometext">Velkommen til Íðorðabanki app</string>
+    <string name="selectlanguage">Vælg dit sprog</string>
+    <string name="title_activity_select_language">Vælg sprog</string>
+    <string name="search_button">Søg</string>
+    <string name="targetlang">Målsproget:</string>
+    <string name="sourcelang">Kilde sprog:</string>
+    <string name="all_languages">Alle</string>
+    <string name="search_tab"> Søg</string>
+    <string name="searchpreterm">resultater for </string>
+         <string name = "search_hint"> Indtast forespørgslen </string>
+         <string name = "pick_glossary_tab"> Ordbøger </string>
+         <string name = "title_activity_results_screen"> Resultater </string>
+         <string name = "action_help"> Hjælp </string>
+         <string name = "SELECT_ALL"> Vælg alt </string>
+         <string name = "deselect_all"> Fjern markeringen </string>
+         <string name = "database_error"> Kunne ikke forbinde til databasen </string>
+         <string name = "no_result"> Nej </string>
+         <string name = "link_unaccessable"> Der er ingen hjemmeside for denne ordliste </string>
+         <string name = "languages_tab_name"> Sprog </string>
+         <string name = "no_search_term"> Du skal indtaste en søgning </string>
+         <string name = "no_glossary_picked"> Du skal vælge en ordbog </string>
+         <string name = "connection_error"> Connection Error. Prøv igen. </string>
+    <string name="definition">Definition: </string>
+    <string name="synonyms">Synonymer: </string>
+    <string name="lexical_category">Leksikalsk kategori::</string>
+    <string name="example">Exempel: </string>
+    <string name="settings_changelanguage_confirm">Vælg</string>
+    <string name="help_result_screen">Implementere Hjælp her </string>
 
-    <color name="white">#FFFFFF</color>
-    <string name="search_button">Leita</string>
-    <string name="targetlang">Leitarmál:</string>
-    <string name="sourcelang">Markmál:</string>
-    <string name="all_languages">Öll</string>
 
-    <string name="search_tab">Leita</string>
-    <string name="searchpreterm">niðurstöður fyrir</string>
-    <string name="search_hint">Skrifaðu leitarorð</string>
-    <string name="pick_glossary_tab">Orðasöfn</string>
-    <string name="title_activity_results_screen">Niðurstöður</string>
-    <string name="action_help">Hjálp</string>
-    <string name="select_all">Velja allt</string>
-    <string name="deselect_all">Velja ekkert</string>
-    <string name="database_error">Gat ekki tengst gagnasafni</string>
-    <string name="no_result">Engar</string>
-    <string name="link_unaccessable">Það er engin vefsíða fyrir þetta orðasafn</string>
-    <string name="languages_tab_name">Tungumál</string>
-    <string name="no_search_term">Þú verður að skrifa inn leitarorð</string>
-    <string name="no_glossary_picked">Þú verður að velja að minnsta kosti eitt orðasafn</string>
-    <string name="ast_char_limit">Þú þarft að nota a.m.k. tvo stafi með *</string>
-    <string name="connection_error">Sambandsslit. Reyndu aftur.</string>
-    <string name="definition">Skilgreining: </string>
-    <string name="synonyms">Samheiti: </string>
-    <string name="lexical_category">Orðaflokkur: </string>
-    <string name="example">Dæmi: </string>
-    <string name="help_title">Hjálp</string>
-    <string name="close_help">Loka</string>
-    <string name="settings_changelanguage_confirm">Velja</string>
-    <string name="change_language">Breyta tungumáli</string>
-    <string name="settings_about">Um Íðorðabankann</string>
-    <string name="settings_contact">Hafið samband</string>
-    <string name="choose_email_client">Vinsamlegast veldu email app</string>
-    <string name="error_no_email_client">Þú hefur ekkert email app</string>
-    <string-array name="language_array">
-        <item>Íslenska</item>
-        <item>Enska</item>
-        <item>Sænska</item>
-        <item>Danska</item>
-    </string-array>
-    <string name="help_search_fragment">
-        Skrifaðu orð í leitargluggann og ýttu á leita\n\n
-        Þú getur notað ? algildistáknið til að skipta út einum staf í leitarorðinu\n(m?nni yrði minni, mynni og munni)\n\n
-        Þú getur notað * algildistáknið til að skipta út 0 eða fleiri stöfum í leitarorðinu\n(m*nni yrði minni, misminni,myndminni,…)\n\n
+    <string name = "ast_char_limit"> Du skal indtaste mindst to andre tegn, når du bruger * </string>
+         <string name = "help_title"> Hjælp </string>
+         <string name = "close_help"> Luk </string>
+         <string name = "change_language"> Skift sprog </string>
+         <string name = "settings_about"> Om </string>
+         <string name = "settings_contact"> Kontakt </string>
+         <string name = "contact_email"> agustath \ @ islenskan.is </string>
+         <string name = "choose_email_client"> Vælg en e-mail-klient </string>
+         <string name = "error_no_email_client"> Du har ikke en e-mail-klient installeret </string>
+         <string-array name = "language_array">
+             <item> Islandsk </item>
+             <item> Engelsk </item>
+             <item> Svensk </item>
+             <item> Dansk </item>
+         </string-array>
+         <string name = "help_search_fragment">
+             Indtast ordet i søgefeltet og tryk søg \n\n
+             ? er et wildcard og repræsenterer blot et brev eller mellanrum\n\n
+             * Er et wildcard og repræsenterer ingen (0) eller flere bogstaver eller mellemrum. \n (m * NNI yrði Minni, misminni, myndminni, ...) \n \n
 
-        Þegar algildistáknið * er notað þá þarf að taka fram a.m.k. tvo aðra stafi í leitarorðinu\n\n
-        Leitin gerir ekki greinarmun á há- og lágstöfum\n\n
-        Hægt er að takmarka leitina við ákveðið orðasafn í orðasafns flipanum\n\n
-        Hægt er að takmarka leitar- og markmál í tungumál flipanum
-    </string>
-    <string name="help_glossary_fragment">
-        Sjálfgefið er leitað í öllum orðasöfnum samtímis, en einnig er hægt að takmarka leitina við eitt eða fleiri orðasöfn\n\n
-        Ýttu á eitt eða fleiri orðasafn til að velja það, en ef orðasafn er valið birtist hak vinstra megin við það\n\n
-        Þú verður að velja a.m.k. eitt orðasafn\n\n
-        Þú getur ýtt á velja allt til að velja öll orðasöfn\n\n
-        Það er takki hægra megin við sum orðasöfn sem leiðir þig inn á nánari lýsingu á orðasafninu
-    </string>
-    <string name="help_language_fragment">
-        Leitarmál\n\n
-        Sjálfgefið er leitað í öllum tungumálum\n
-        Hægt er að takmarka leitina við ákveðið leitarmál með því að ýta á valgluggann fyrir leitarmál og velja tungumál\n
-        Aðeins er hægt að velja öll eða eitt leitarmál\n\n
-        Markmál\n\n
-        Sjálfgefið er niðurstöðum skilað á öllum tungumálum\n
-        Hægt er að takmarka leitina á þann hátt að hún skili aðeins niðurstöðum á ákveðnum markmálum.\n
-        Þetta er gert með því að ýta á valgluggann fyrir markmál og velja tungumál\n
-        Aðeins er hægt að velja öll eða eitt markmál
-    </string>
-    <string name="help_result_screen">Implement Help here</string>
-    <string name="about_header_purpose">Tilgangur Orðabanka og notendur hans</string>
-    <string name="about_body_purpose">
-        Eitt af hlutverkum orðabanka er að samræma orðanotkun innan skyldra og óskyldra greina. Hann á að safna fræðiheitum og sameina þau þannig að ekki séu á kreiki mörg heiti um sama fyrirbærið.\n
-        Orðabanki Íslenskrar málstöðvar sinnir þessu hlutverki. Hann getur veitt yfirsýn yfir íslenskan íðorðaforða og nýyrði úr almennu máli, sem eru efst á baugi, og stuðlað með því að auknu samræmi bæði í orðanotkun og skilgreiningum. Auk þess veitir hann aðgang að íslenskum þýðingum á erlendum íðorðum, og jafnframt því aðgang að hugtakaskilgreiningum íðorða á íslensku og fleiri tungumálum.\n
-        Orðabankinn getur því gagnast vel öllum þeim sem fjalla um sérfræðileg efni, þýðendum, kennurum, nemendum, fjölmiðlafólki, opinberum stofnunum, fyrirtækjum svo og hvers kyns áhugafólki, og síðast en ekki síst orðabókarhöfundum þar sem hann er sérstaklega ætlaður til orðabókasmíða.\n\n
-        Orðabankinn er líka langþráður vettvangur orðanefnda og annarra orðabókarhöfunda til að bera saman bækur sínar. Í honum fæst góð yfirsýn yfir merkingarsvið þess flettiorðs sem leitað er að hverju sinni. Ef flettiorðið er að finna í fleiri en einu safni eða merkingarsvið þess eru fleiri en eitt koma þær upplýsingar fram á skjánum því að hægt er að leita í öllum söfnum bankans samtímis.\n
-        Þetta auðveldar þeim, sem eru að búa til íðorðasöfn, að átta sig á þeim íslenska íðorðaforða sem fyrir er í ýmsum greinum. Þeir geta jafnframt séð hvort merking orðanna, sem þeir eru að fást við hverju sinni, skarast við merkingu einhverra flettiorða í bankanum.\n\n
-        Orðabankinn er á Vefnum og þar af leiðandi getur fólk um allan heim flett upp í söfnunum. Mörg hver eru með þýðingum á fleiri en einu tungumáli, auk íslensku, og ekkert er því til fyrirstöðu að útlendingar geti nýtt sér þau. Fólk um allan heim getur líka nýtt sér vinnsluhluta bankans.\n
-        Það er hægt að búa til íðorðasöfn, t.d. í samvinnu við erlendar íðorðanefndir og sameinast um vinnusvæði í vinnsluhlutanum þar sem hver gæti skráð upplýsingar á sínu tungumáli í bankann.
-    </string>
-    <string name="about_header_theapp">Íðorðabanka appið</string>
-    <string name="about_body_theapp">
-        Árið 2014 tóku fjórir nemendur við Háskóla Íslands að sér að búa til forrit í snjallsíma fyrir Íðorðabankann.\n
-        Forritið veitir almennum notendum aðgang að birtingarhluta orðabankans í gegnum Android snjallsíma og spjaldtölvur.
-    </string>
+             Hvis du bruger * i søgestrengen skal være mindst to andre bogstaver. \n \n
+             Skelner ikke Søgningen mellem store og små bogstaver \n \n
+    Gå til ordbogen for at begrænse søgningen til de udvalgte ordbøger \n \n
+             Gå til sproget for at begrænse søgningen til bestemte søgning eller målsprog</string>
+         <string name = "help_glossary_fragment">
+    Som standard, alle ordbøger, men søgningen kan begrænses til et eller flere specifikke ordforråd. \n \n
+    Bare tryk en eller flere ordliste for at vælge eller fravælge det, ordlister med et flueben til den valgte venstre. \n \n
+    Du skal vælge en ordbog. \n \n
+    Du kan trykke på knappen Vælg alt for at vælge alle ordbøger. \n \n
+    Knappen til højre for nogle ordbøger er et link til en beskrivelse af ordlisten.
+         </string>
+         <string name = "help_language_fragment">
+    Søg sprog \n \n
+    Som standard søgeforespørgsler på alle sprog.
+    Kan du begrænse søgningen til en bestemt søgning efter et sprog, skal du trykke på drop down menu af søgningen sprog, og vælg sprog \n
+    Du kan kun vælge en eller alle søge sprog \n \n
+    Target \n \n
+    Som standard søgning Vis resultater på alle sprog \n
+    Kan du begrænse søgningen til en specifik målgruppe sprog ved at trykke på drop-down menu til målsproget, og vælg sprog \n
+    Du kan kun vælge en eller alle af målsproget
+         </string>
+         <string name = "about_header_purpose"> Formål </string>
+         <string name = "about_body_purpose">
+    Et af formålene med et ord bank er at koordinere den terminologi, der anvendes i både beslægtede og forskellige områder: indsamling vilkår, definere og samle dem for at undgå anvendelsen af ​​forskellige navne for det samme koncept. \n
+    Den islandske Word Bank tjener dette formål. Det kan give en generel oversigt over moderne islandsk terminologi og neologismer, som bidrager til koordinering af både forbrug og definitioner.
+</string>
+         <string name = "about_header_structure"> Struktur </string>
+         <string name = "about_body_structure">
+    Den islandske ord bank er opdelt i to hoveddele, forarbejdning sektion og show section.Each afsnit indeholder ordlister inden for forskellige områder. \n \n
+    Afsnittet display er offentligt søgbar / tilgængelig på World Wide Web og afsnittet behandlingen er den del, hvor ejere og redaktører af forskellige ordforråd kan opdatere deres arbejde og skabe nye ordbøger. \n
+    Når ejeren af et bestemt ordbog er klar til at udgive hans / hendes arbejde, kan redaktøren af ​​Word Bank kopiere ordbogen fra afsnittet forarbejdning til del af displayet, og dermed enten tilføje en ny ordbog eller opdatere en eksisterende. \n
+    Alle ordbog indeholder vilkår i islandsk. I tosprogede ordbøger, bortset fra den islandske, er det mest udbredte sprog er engelsk, men mange af de ordbøger er flersprogede og de ​​hyppigste yderligere sprog er dansk, tysk, norsk, svensk og fransk. \n
+    I dag er der 36 ordbøger indeholder omkring 125.000 vilkår i afsnittet display, alle til rådighed for brugeren i en enkelt søgning, og en anden 13 ordbøger i forskellige stadier i afsnittet forarbejdning. \n \n
+    Den islandske ord bank på World Wide Web kan opdateres hele tiden, uanset hvor redaktørerne af deres databaser i verden, så længe de er forbundet til internettet og redaktører og andre brugere kan bruge deres foretrukne webbrowser til redigering og søge, fordi de ikke er bundet til en platform.
+</string>
+         <string name = "about_header_history"> Historik </string>
+         <string name = "about_body_history">
+    I 1979 voksede de første ideer om et edb-Term Bank på et netværk ud af det islandske Language Institute. Den grundlæggende idé var at lagre data i en mainframe med adgang fra terminalerne. \n
+    Siden da har der været en teknologisk revolution inden for databehandling; Hovedidéen er stadig den samme, den eneste forskel, at nu ist netværk er computeren.
+</string>
+         <string name = "about_header_theapp"> The Íðorðabankinn app </string>
+         <string name = "about_body_theapp">
+    I 2014, fire studerende ved Islands Universitet lavet en App til Íðorðabanki. \n
+    Den app giver brugerne adgang til displayet del af íðorðabanki på Android-smartphones og tablets.
+</string>
 
+    <string name="about_body_addragandi">Á fundi Íslenskrar málnefndar með orðanefndum 22. nóvember 1979 kom fyrst fram hugmynd um íslenskan orðabanka eða íðorðabanka.\n         Íslensk málnefnd hlutaðist til um að koma á fót undirbúningsnefnd um slíkan orðabanka þegar árið 1980 og hefur verið hugað að gerð hans með hléum allar götur síðan.\n         Fyrsti undirbúningur orðabanka var í því fólginn að gera sér grein fyrir efnisatriðum íðorðasafna og tölvuskráningu þeirra með vélræna úrvinnslu í huga. Öll orðasöfn, sem unnið hefur verið að á vegum málnefndarinnar sjálfrar eða í húsakynnum Íslenskrar málstöðvar, hafa verið tölvuskráð eftir sérstöku kerfi í þessu skyni.\n         Í Reglugerð um Íslenska málnefnd og starfsemi Íslenskrar málstöðvar, nr. 159/1987, segir í 7. gr.: ,,Málstöðin skal fylgjast með þróun íðorðabanka í öðrum löndum, undirbúa slíkan banka hér og sjá um rekstur hans.“ Ýmsar ástæður töfðu og torvelduðu samfellda þróun hugmyndarinnar um orðabanka en með tilkomu Netsins varð til muna einfaldara tæknilega að hrinda verkefninu í framkvæmd þannig að öll fyrirtæki, stofnanir og einstaklingar, hvar sem er í heiminum, gætu nýtt sér slíkan orðabanka á Veraldarvefnum.\n         Skriður komst á málið þegar íslensk málnefnd hlaut þriggja milljóna króna styrk úr Lýðveldissjóði 1995 til að undirbúa íðorðabanka og þriggja milljóna króna styrk úr sama sjóði til þjónustu við þýðendur. Styrkir þessir áttu að greiðast á þremur árum.\n         Einn starfsmaður var ráðinn til Íslenskrar málstöðvar í október 1995 til að sinna þessum verkefnum. Verkefnin tvö eru efnislega samtvinnuð enda lítur málstöðin svo á að orðabanki á tölvuneti geti verið þýðendum ómetanlegt hjálpartæki.\n         Árið 1996 fékk Íslensk málstöð að auki einnar milljónar króna styrk úr Málræktarsjóði til að hanna tölvukerfi fyrir orðabankann og árið 1997 fékkst 400 þús. kr. styrkur úr sama sjóði sem m.a. mátti nota til að færa orðasöfn milli tölvukerfa.\n         Verkefnið naut jafnframt góðs af nýjum tölvubúnaði sem málstöðin eignaðist 1994. Það var gjöf frá Mjólkursamsölunni í Reykjavík sem hafði ákveðið að verja hluta af auglýsingafé sínu til að styrkja íslenska málrækt á þennan hátt.\n         Samkvæmt samningi við tungutækniverkefni á vegum menntamálaráðuneytisins fékk Íslensk málstöð styrk úr tungutæknisjóði 2003–2004 til að endurforrita orðabankann.\n\n         Orðabanki Íslenskrar málstöðvar var opnaður á Vefnum 15. nóvember 1997, í tengslum við dag íslenskrar tungu, nánast réttum 18 árum eftir að hugmyndin um íðorðabanka kom fyrst fram á fundi málnefndarinnar með orðanefndunum. Á þeim fundi hugsuðu menn sér að bankinn yrði geymdur í miðlægri tölvu með nettengdum aðgangi um útstöðvar. Síðan hefur orðið tæknibylting í tölvuheiminum. Þrátt fyrir það er þessi hugmynd um skipulag bankans eins í grundvallaratriðum. Munurinn er sá að tölvunetið er margfalt stærra og útstöðvarnar fleiri því að miðlæga tölvan er tengd Netinu.</string>
+    <string name="about_body_innraskipulag">Skipulag orðabankans er miðað við að efnið í honum margfaldist og verði sífellt fjölbreytilegra.\n         Bankinn skiptist í tvo meginhluta, vinnsluhluta og birtingarhluta.\n\n          Almennir notendur hafa engan aðgang að vinnsluhluta orðabankans. Þar er efninu safnað saman til úrvinnslu, bæði orðasöfnum í frumvinnslu og söfnum í endurskoðun.\n         Vinnsluhlutinn skiptist í mismunandi svæði sem hvert og eitt tilheyrir höfundi tiltekins orðasafns (einstaklingi eða t.d. orðanefnd) og engum öðrum.\n         Orðabankastjóri í Íslenskri málstöð hefur raunar lesaðgang að vinnsluhlutanum í eftirlitsskyni en aðeins sérfræðingur í viðkomandi grein, höfundur orðasafnsins, getur breytt því.\n         Þegar vinnu við gerð orðasafns lýkur flytur orðabankastjóri það í birtingarhlutann; raunar er unnt að birta einstaka hluta orðasafns jafnóðum og þeir eru tilbúnir (þannig má m.a. kynna ný orð fyrr en tíðkast við hefðbunda (bóka)útgáfu).\n\n          Birtingarhluti orðabankans er hinn sýnilegi orðabanki, þ.e. sá hluti bankans sem almennir notendur hafa aðgang að.\n         Með skjótvirku leitarkerfi má finna þar íslensk eða erlend orð, í einu eða fleiri orðasöfnum í einu, fá margs konar upplýsingar um hvert flettiorð, bæði á íslensku og þeim tungumálum öðrum sem um ræðir.</string>
+    <string name="about_body_rekstur">Íslensk málstöð annast orðabankann og fellur starfsemin undir verksvið íðorðadeildar málstöðvarinnar.\n         Ókeypis aðgangur var að bankanum í tæplega eitt ár frá opnun hans en gjaldtaka hófst 15. október 1998.\n         Gjaldtöku var aflétt 3. janúar 2001 og aðgangur er öllum frjáls.</string>
+    <string name="about_header_addragandi">Aðdragandi</string>
+    <string name="about_header_innraskipulag">Innra skipulag orðabankans</string>
+    <string name="about_header_resktur">Rekstur</string>
+    <string name="about_prologue">Orðabankinn er í eigu Íslenskrar málstöðvar.\n Hann hefur að geyma sérhæfðan hugbúnað fyrir skráningu og birtingu orðasafna.\n         Höfundar fá aðgang að skráningarkerfi til þess að vinna að söfnum sínum og bætast þau síðan í hóp annarra orðasafna sem almennir notendur orðabankans geta leitað í.\n         Íslensk málstöð gerir samning við höfunda orðasafna um að þeir fái endurgjaldslausan aðgang að skráningarkerfinu gegn því að málstöðin megi birta orðasöfnin í orðabankanum á Netinu.\n         Höfundar hafa eftir sem áður allan rétt til verka sinna og geta birt þau hvar og hvenær sem þeir vilja.</string>
 </resources>
