@@ -18,7 +18,7 @@
              android:layout_height="wrap_content"
              android:layout_weight="1"
              android:text="@string/select_all"
-             android:background="@color/lightGreen200"
+             android:background="@color/lightGreen50"
          />
         <Button
             style="?android:attr/buttonBarButtonStyle"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/deselect_all"
-            android:background="@color/lightGreen200"
+            android:background="@color/lightGreen50"
         />
 
     </LinearLayout>

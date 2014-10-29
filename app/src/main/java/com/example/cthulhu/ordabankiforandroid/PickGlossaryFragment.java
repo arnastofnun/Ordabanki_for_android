@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
+
 
 import com.example.cthulhu.ordabankiforandroid.adapter.GlossaryAdapter;
 
@@ -33,6 +33,7 @@ public class PickGlossaryFragment extends Fragment {
     *   in the Orðabanki app
     */
     private static ArrayList<Glossary> glossaryList;
+    private static boolean allSelected;
 
 
     @Override
@@ -82,6 +83,7 @@ public class PickGlossaryFragment extends Fragment {
 
         //Button to check all glossaries
         Button checkallbutton = (Button) rootView.findViewById(R.id.select_all_glossaries);
+
         //Button to uncheck all glossaries
         Button decheckallbutton = (Button) rootView.findViewById(R.id.deselect_all_glossaries);
         //On click listener to select all glossaries
@@ -105,6 +107,7 @@ public class PickGlossaryFragment extends Fragment {
                     }
                     index++;
                 }
+                allSelected = true;
             }
         });
 
@@ -130,6 +133,7 @@ public class PickGlossaryFragment extends Fragment {
                     }
                     index++;
                 }
+                allSelected = false;
             }
         });
 
@@ -138,8 +142,11 @@ public class PickGlossaryFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Glossary glossary = (Glossary) parent.getItemAtPosition(position);
+                if(glossary.isSelected()){
+                    allSelected=false;
+                }
                 //For now just display a toast for testing
-                Toast.makeText(getActivity().getApplicationContext(), "Clicked on: " + glossary.getName() + " checked: " + glossary.isSelected(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity().getApplicationContext(), "Clicked on: " + glossary.getName() + " checked: " + glossary.isSelected(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -158,6 +165,9 @@ public class PickGlossaryFragment extends Fragment {
             return glossaryList;
     }
 
+    public static boolean areAllSelected(){
+        return allSelected;
+    }
     /**
      * use: ArrayList<Glossary> glossaryList = getSelectedGlossaries();
      * pre: nothing
