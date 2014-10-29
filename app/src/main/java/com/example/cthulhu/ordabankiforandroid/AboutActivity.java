@@ -19,6 +19,8 @@ public class AboutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_activity);
+        LocaleSettings localeSettings = new LocaleSettings(this);
+        localeSettings.setCurrLocaleFromPrefs();
 
     }
     @Override

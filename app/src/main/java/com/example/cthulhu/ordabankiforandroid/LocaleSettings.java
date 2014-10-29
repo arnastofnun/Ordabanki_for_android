@@ -134,6 +134,20 @@ public class LocaleSettings{
         return status;
     }
 
+
+    public void setCurrLocaleFromPrefs(){
+        String lang = getLanguageFromPref();
+        Locale myLocale = new Locale(lang);
+        //Get the configurations
+        Resources res = context.getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        //Set the locale settings to thew new locale
+        conf.locale = myLocale;
+        //update settings
+        res.updateConfiguration(conf,dm);
+    }
+
     /**
      * pre:lang is of type String
      * pre:cl is of type class
@@ -146,7 +160,7 @@ public class LocaleSettings{
     private void setLocale(String lang, Class cl){
         //create new locale
         Locale myLocale = new Locale(lang);
-        //Get the locale settings
+        //Get the configurations
         Resources res = context.getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();

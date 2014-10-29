@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -21,6 +22,7 @@ import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 /**
@@ -39,12 +41,20 @@ public class SearchScreen extends FragmentActivity {
     *   resultList: list of search results
     */
     private ViewPager viewPager;
+    private Locale locale = null;
 
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig){
+        super.onConfigurationChanged(newConfig);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
+        LocaleSettings localeSettings = new LocaleSettings(this);
+        localeSettings.setCurrLocaleFromPrefs();
 
         //Tab titles
         ArrayList<String> tabs = new ArrayList<String>();

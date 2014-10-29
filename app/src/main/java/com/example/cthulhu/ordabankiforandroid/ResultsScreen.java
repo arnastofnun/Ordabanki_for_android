@@ -35,6 +35,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_screen);
+        LocaleSettings localeSettings = new LocaleSettings(this);
+        localeSettings.setCurrLocaleFromPrefs();
         jsonHandler = new OrdabankiJsonHandler(this);
         Bundle data = getIntent().getExtras();
         searchQuery = data.getString("searchQuery");
