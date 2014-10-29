@@ -2,7 +2,6 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -26,9 +25,13 @@ import android.view.MenuItem;
 public class SplashActivity extends Activity {
     /** Duration of wait **/
     private final int SPLASH_DISPLAY_LENGTH = 2000;
-    SharedPreferences sharedpref;
-    String lang="";
 
+
+    @Override
+    protected void onResume(){
+        LocaleSettings localeSettings = new LocaleSettings(this);
+        localeSettings.setCurrLocaleFromPrefs();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,7 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_splash);
 
         final LocaleSettings localeSettings = new LocaleSettings(this);
-
+        localeSettings.setCurrLocaleFromPrefs();
 
         new Handler().postDelayed(new Runnable(){
             @Override

@@ -15,6 +15,13 @@ import android.view.View;
  *
  */
 public class AboutActivity extends Activity {
+
+    @Override
+    protected void onResume(){
+        LocaleSettings localeSettings = new LocaleSettings(this);
+        localeSettings.setCurrLocaleFromPrefs();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

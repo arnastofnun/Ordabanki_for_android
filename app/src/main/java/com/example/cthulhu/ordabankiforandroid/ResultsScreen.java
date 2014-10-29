@@ -26,6 +26,12 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
     OrdabankiJsonHandler jsonHandler;
     private String searchQuery;
 
+    @Override
+    protected void onResume(){
+        LocaleSettings localeSettings = new LocaleSettings(this);
+        localeSettings.setCurrLocaleFromPrefs();
+    }
+
     /**
      * Takes search term from intent and passes to Rest client
      * Bill

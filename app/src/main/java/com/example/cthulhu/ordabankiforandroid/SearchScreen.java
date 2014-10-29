@@ -50,6 +50,12 @@ public class SearchScreen extends FragmentActivity {
     }
 
     @Override
+    protected void onResume(){
+        LocaleSettings localeSettings = new LocaleSettings(this);
+        localeSettings.setCurrLocaleFromPrefs();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_screen);
