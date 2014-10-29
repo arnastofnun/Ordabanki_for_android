@@ -53,10 +53,10 @@ class OrdabankiURLGen {
         if (!PickGlossaryFragment.areAllSelected()){
             ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
             if (selectedGlossaries.size() == 1) {
-                relURL = relURL + "&dict=";
+                relURL = relURL + "&dicts=";
                 relURL = relURL + selectedGlossaries.get(0);
             } else {
-                relURL = relURL + "&dict=";
+                relURL = relURL + "&dicts=";
                 ListIterator<String> it = selectedGlossaries.listIterator();
                 //iterate until last but one member,
                 while (it.hasNext() && it.nextIndex() != selectedGlossaries.size() - 1) {

@@ -142,9 +142,12 @@ public class PickGlossaryFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Glossary glossary = (Glossary) parent.getItemAtPosition(position);
-                if(!glossary.isSelected()){
+
+                if(glossary.isSelected()){
+                    glossary.setSelected(false);
                     allSelected=false;
                 }
+                else{glossary.setSelected(true);}
                 //For now just display a toast for testing
                 //Toast.makeText(getActivity().getApplicationContext(), "Clicked on: " + glossary.getName() + " checked: " + glossary.isSelected(), Toast.LENGTH_LONG).show();
             }
