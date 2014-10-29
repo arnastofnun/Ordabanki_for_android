@@ -8,19 +8,24 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    android:textSize="16sp">
+    android:textSize="16sp"
+    android:background="@color/lightGreen100">
+        >
         <TextView
             android:textStyle="bold"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/about_header_purpose"
+            android:textColor="@color/darkgrey"
             android:gravity="center"
             android:textSize="20sp"
             android:layout_marginBottom="5dp"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/about_body_purpose"/>
+            android:text="@string/about_body_purpose"
+            android:textColor="@color/darkgrey"/>
+
         <TextView
             android:textStyle="bold"
             android:layout_width="fill_parent"
@@ -28,12 +33,14 @@
             android:text="@string/about_header_structure"
             android:gravity="center"
             android:textSize="20sp"
+            android:textColor="@color/darkgrey"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/about_body_structure"/>
+            android:text="@string/about_body_structure"
+            android:textColor="@color/darkgrey"/>
         <TextView
             android:textStyle="bold"
             android:layout_width="fill_parent"
@@ -41,12 +48,14 @@
             android:text="@string/about_header_history"
             android:gravity="center"
             android:textSize="20sp"
+            android:textColor="@color/darkgrey"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/about_body_history"/>
+            android:text="@string/about_body_history"
+            android:textColor="@color/darkgrey"/>
         <TextView
             android:textStyle="bold"
             android:layout_width="fill_parent"
@@ -54,11 +63,13 @@
             android:text="@string/about_header_theapp"
             android:gravity="center"
             android:textSize="20sp"
+            android:textColor="@color/darkgrey"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/about_body_theapp"/>
+            android:text="@string/about_body_theapp"
+            android:textColor="@color/darkgrey"/>
     </LinearLayout>
 </ScrollView>
