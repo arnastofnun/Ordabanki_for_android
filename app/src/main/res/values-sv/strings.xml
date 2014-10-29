@@ -9,7 +9,6 @@
     <string name="welcometext">Välkommen till Íðorðabanki app</string>
     <string name="selectlanguage">Välj ditt språk</string>
     <string name="title_activity_select_language">Välj språk</string>
-
     <string name="search_button">Sök</string>
     <string name="targetlang">Målspråket:</string>
     <string name="sourcelang">Källspråk:</string>
@@ -33,4 +32,6 @@
     <string name="synonyms">Synonymer: </string>
     <string name="lexical_category">Lexikal kategori:</string>
     <string name="example">Exempel: </string>
+    <string name="settings_changelanguage_confirm">Välj</string>
+    <string name="help_result_screen">Implement Help here</string>
 </resources>

@@ -30,6 +30,7 @@
     <string name="languages_tab_name">Tungumál</string>
     <string name="no_search_term">Þú verður að skrifa inn leitarorð</string>
     <string name="no_glossary_picked">Þú verður að velja að minnsta kosti eitt orðasafn</string>
+    <string name="ast_char_limit">Þú þarft að nota a.m.k. tvo stafi með *</string>
     <string name="connection_error">Sambandsslit. Reyndu aftur.</string>
     <string name="definition">Skilgreining: </string>
     <string name="synonyms">Samheiti: </string>
@@ -37,6 +38,7 @@
     <string name="example">Dæmi: </string>
     <string name="help_title">Hjálp</string>
     <string name="close_help">Loka</string>
+    <string name="settings_changelanguage_confirm">Velja</string>
     <string name="change_language">Breyta tungumáli</string>
     <string name="settings_about">Um Íðorðabankann</string>
     <string name="settings_contact">Hafið samband</string>
@@ -45,6 +47,8 @@
     <string-array name="language_array">
         <item>Íslenska</item>
         <item>Enska</item>
+        <item>Sænska</item>
+        <item>Danska</item>
     </string-array>
     <string name="help_search_fragment">
         Skrifaðu orð í leitargluggann og ýttu á leita\n\n
@@ -73,6 +77,7 @@
         Þetta er gert með því að ýta á valgluggann fyrir markmál og velja tungumál\n
         Aðeins er hægt að velja öll eða eitt markmál
     </string>
+    <string name="help_result_screen">Implement Help here</string>
     <string name="about_prologue">
         Orðabankinn er í eigu Íslenskrar málstöðvar.\n
         Hann hefur að geyma sérhæfðan hugbúnað fyrir skráningu og birtingu orðasafna.\n

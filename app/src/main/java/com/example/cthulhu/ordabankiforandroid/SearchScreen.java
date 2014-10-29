@@ -2,20 +2,18 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
@@ -64,34 +62,38 @@ public class SearchScreen extends FragmentActivity {
             actionBar.setHomeButtonEnabled(false);
         }
 
-        /*
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-
-        //Adding Tabs
-        for (String tab_name : tabs) {
-            actionBar.addTab(actionBar.newTab().setText(tab_name).setTabListener(this));
-        }
-
 
         //Change the tabs when swiping between fragments
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
             public void onPageSelected(int position) {
-                // when page is selected also select correct tab
-                actionBar.setSelectedNavigationItem(position);
+                if(position == 0){
+                    View focus = getCurrentFocus();
+                    if (focus != null) {
+                        InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        keyboard.showSoftInput(focus, 0);
+                    }
+                }
             }
 
             @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if(positionOffset > 0 && position == 0){
+                    View focus = getCurrentFocus();
+                    if (focus != null) {
+                        InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        keyboard.hideSoftInputFromWindow(focus.getWindowToken(), 0);
+                    }
+                }
+
             }
 
             @Override
-            public void onPageScrollStateChanged(int arg0) {
+            public void onPageScrollStateChanged(int position) {
             }
         });
-        */
+
     }
 
     //Disable the back button
@@ -122,6 +124,7 @@ public class SearchScreen extends FragmentActivity {
         //Get the search query
         EditText searchView = (EditText) findViewById(R.id.searchView);
         String searchQuery = searchView.getText().toString();
+
         if (searchQuery.equals("")) {
             allowsearch = false;
             Toast.makeText(this, this.getString(R.string.no_search_term), Toast.LENGTH_LONG).show();
@@ -133,6 +136,21 @@ public class SearchScreen extends FragmentActivity {
             allowsearch = false;
             Toast.makeText(this, this.getString(R.string.no_glossary_picked), Toast.LENGTH_LONG).show();
         }
+        if(searchQuery.contains("*")) {
+            int count = 0;
+            for(char ch: searchQuery.toCharArray()){
+                if(ch != '*'){
+                    count ++;
+                }
+                if(count >= 2){
+                    break;
+                }
+            }
+            if(count < 2) {
+                allowsearch = false;
+                Toast.makeText(this, R.string.ast_char_limit, Toast.LENGTH_LONG).show();
+            }
+        }
 
         if (allowsearch) {
             intent.putExtra("searchQuery", searchQuery);
@@ -140,34 +158,7 @@ public class SearchScreen extends FragmentActivity {
         }
     }
 
-    /*
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-        View focus = getCurrentFocus();
-        if (focus != null) {
-            InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            keyboard.hideSoftInputFromWindow(focus.getWindowToken(), 0);
-        }
-    }
 
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-        if (tab.getPosition() == 0) {
-            View focus = getCurrentFocus();
-            if (focus != null) {
-                InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                keyboard.showSoftInput(focus, 0);
-            }
-        }
-    }
-
-    //Make sure the viewPager changes fragments when tab is pressed
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        viewPager.setCurrentItem(tab.getPosition());
-    }
-
-    */
 
 
     @Override
@@ -188,7 +179,6 @@ public class SearchScreen extends FragmentActivity {
                 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
                 int currFragment = viewPager.getCurrentItem();
 
-                //Todo set text for help  based on active fragment
                 helpBuilder.setTitle(R.string.help_title);
                 switch(currFragment){
                     case 0:
@@ -212,7 +202,8 @@ public class SearchScreen extends FragmentActivity {
                 return true;
             case R.id.action_settings:
                 View v = findViewById(R.id.action_settings);
-                createOptionsPopupMenu(v);
+                Settings settings = new Settings(this);
+                settings.createOptionsPopupMenu(v,SearchScreen.class);
                 return true;
 
 
@@ -222,52 +213,4 @@ public class SearchScreen extends FragmentActivity {
 
     }
 
-
-    private void createOptionsPopupMenu(View v){
-        PopupMenu popup = new PopupMenu(this,v);
-        MenuInflater inflater = popup.getMenuInflater();
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.settings_change_language:
-                        AlertDialog.Builder languageBuilder = new AlertDialog.Builder(SearchScreen.this);
-                        languageBuilder
-                                .setTitle(R.string.change_language)
-                                //Todo set default value for select language settings
-                                .setSingleChoiceItems(R.array.language_array, -1, new DialogInterface.OnClickListener(){
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which){
-                                    //Todo implement on click functions for select language settings
-                                    }
-                                });
-                        //Todo implement accept button
-                        languageBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                            }
-                        });
-                        AlertDialog languageDialog = languageBuilder.create();
-                        languageDialog.show();
-                        return true;
-
-                    case R.id.settings_about:
-                        Intent intent = new Intent(SearchScreen.this, AboutActivity.class);
-                        SearchScreen.this.startActivity(intent);
-                        return true;
-                    case R.id.settings_contact:
-                        Intent email = new Intent(Intent.ACTION_SENDTO,Uri.fromParts("mailto",getResources().getString(R.string.contact_email),null));
-                        //Todo doesn't seem to put the email to address through
-                        try{
-                            startActivity(Intent.createChooser(email,getResources().getString(R.string.choose_email_client)));
-                        } catch (ActivityNotFoundException e) {
-                            Toast.makeText(SearchScreen.this,getResources().getString(R.string.error_no_email_client), Toast.LENGTH_LONG).show();
-                        }
-                        return true;
-                }
-                return true;
-            }
-        });
-        inflater.inflate(R.menu.settings_menu,popup.getMenu());
-        popup.show();
-    }
 }

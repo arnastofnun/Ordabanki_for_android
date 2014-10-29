@@ -10,6 +10,7 @@
     <string name="selectlanguage">Vinsamlegast veldu tungumál</string>
     <string name="title_activity_select_language">Veldu tungumál</string>
 
+    <color name="white">#FFFFFF</color>
     <string name="search_button">Leita</string>
     <string name="targetlang">Leitarmál:</string>
     <string name="sourcelang">Markmál:</string>
@@ -29,9 +30,68 @@
     <string name="languages_tab_name">Tungumál</string>
     <string name="no_search_term">Þú verður að skrifa inn leitarorð</string>
     <string name="no_glossary_picked">Þú verður að velja að minnsta kosti eitt orðasafn</string>
+    <string name="ast_char_limit">Þú þarft að nota a.m.k. tvo stafi með *</string>
     <string name="connection_error">Sambandsslit. Reyndu aftur.</string>
     <string name="definition">Skilgreining: </string>
     <string name="synonyms">Samheiti: </string>
     <string name="lexical_category">Orðaflokkur: </string>
     <string name="example">Dæmi: </string>
+    <string name="help_title">Hjálp</string>
+    <string name="close_help">Loka</string>
+    <string name="settings_changelanguage_confirm">Velja</string>
+    <string name="change_language">Breyta tungumáli</string>
+    <string name="settings_about">Um Íðorðabankann</string>
+    <string name="settings_contact">Hafið samband</string>
+    <string name="choose_email_client">Vinsamlegast veldu email app</string>
+    <string name="error_no_email_client">Þú hefur ekkert email app</string>
+    <string-array name="language_array">
+        <item>Íslenska</item>
+        <item>Enska</item>
+        <item>Sænska</item>
+        <item>Danska</item>
+    </string-array>
+    <string name="help_search_fragment">
+        Skrifaðu orð í leitargluggann og ýttu á leita\n\n
+        Þú getur notað ? algildistáknið til að skipta út einum staf í leitarorðinu\n(m?nni yrði minni, mynni og munni)\n\n
+        Þú getur notað * algildistáknið til að skipta út 0 eða fleiri stöfum í leitarorðinu\n(m*nni yrði minni, misminni,myndminni,…)\n\n
+        Þegar algildistáknið * er notað þá þarf að taka fram a.m.k. tvo aðra stafi í leitarorðinu\n\n
+        Leitin gerir ekki greinarmun á há- og lágstöfum\n\n
+        Hægt er að takmarka leitina við ákveðið orðasafn í orðasafns flipanum\n\n
+        Hægt er að takmarka leitar- og markmál í tungumál flipanum
+    </string>
+    <string name="help_glossary_fragment">
+        Sjálfgefið er leitað í öllum orðasöfnum samtímis, en einnig er hægt að takmarka leitina við eitt eða fleiri orðasöfn\n\n
+        Ýttu á eitt eða fleiri orðasafn til að velja það, en ef orðasafn er valið birtist hak vinstra megin við það\n\n
+        Þú verður að velja a.m.k. eitt orðasafn\n\n
+        Þú getur ýtt á velja allt til að velja öll orðasöfn\n\n
+        Það er takki hægra megin við sum orðasöfn sem leiðir þig inn á nánari lýsingu á orðasafninu
+    </string>
+    <string name="help_language_fragment">
+        Leitarmál\n\n
+        Sjálfgefið er leitað í öllum tungumálum\n
+        Hægt er að takmarka leitina við ákveðið leitarmál með því að ýta á valgluggann fyrir leitarmál og velja tungumál\n
+        Aðeins er hægt að velja öll eða eitt leitarmál\n\n
+        Markmál\n\n
+        Sjálfgefið er niðurstöðum skilað á öllum tungumálum\n
+        Hægt er að takmarka leitina á þann hátt að hún skili aðeins niðurstöðum á ákveðnum markmálum.\n
+        Þetta er gert með því að ýta á valgluggann fyrir markmál og velja tungumál\n
+        Aðeins er hægt að velja öll eða eitt markmál
+    </string>
+    <string name="help_result_screen">Implement Help here</string>
+    <string name="about_header_purpose">Tilgangur Orðabanka og notendur hans</string>
+    <string name="about_body_purpose">
+        Eitt af hlutverkum orðabanka er að samræma orðanotkun innan skyldra og óskyldra greina. Hann á að safna fræðiheitum og sameina þau þannig að ekki séu á kreiki mörg heiti um sama fyrirbærið.\n
+        Orðabanki Íslenskrar málstöðvar sinnir þessu hlutverki. Hann getur veitt yfirsýn yfir íslenskan íðorðaforða og nýyrði úr almennu máli, sem eru efst á baugi, og stuðlað með því að auknu samræmi bæði í orðanotkun og skilgreiningum. Auk þess veitir hann aðgang að íslenskum þýðingum á erlendum íðorðum, og jafnframt því aðgang að hugtakaskilgreiningum íðorða á íslensku og fleiri tungumálum.\n
+        Orðabankinn getur því gagnast vel öllum þeim sem fjalla um sérfræðileg efni, þýðendum, kennurum, nemendum, fjölmiðlafólki, opinberum stofnunum, fyrirtækjum svo og hvers kyns áhugafólki, og síðast en ekki síst orðabókarhöfundum þar sem hann er sérstaklega ætlaður til orðabókasmíða.\n\n
+        Orðabankinn er líka langþráður vettvangur orðanefnda og annarra orðabókarhöfunda til að bera saman bækur sínar. Í honum fæst góð yfirsýn yfir merkingarsvið þess flettiorðs sem leitað er að hverju sinni. Ef flettiorðið er að finna í fleiri en einu safni eða merkingarsvið þess eru fleiri en eitt koma þær upplýsingar fram á skjánum því að hægt er að leita í öllum söfnum bankans samtímis.\n
+        Þetta auðveldar þeim, sem eru að búa til íðorðasöfn, að átta sig á þeim íslenska íðorðaforða sem fyrir er í ýmsum greinum. Þeir geta jafnframt séð hvort merking orðanna, sem þeir eru að fást við hverju sinni, skarast við merkingu einhverra flettiorða í bankanum.\n\n
+        Orðabankinn er á Vefnum og þar af leiðandi getur fólk um allan heim flett upp í söfnunum. Mörg hver eru með þýðingum á fleiri en einu tungumáli, auk íslensku, og ekkert er því til fyrirstöðu að útlendingar geti nýtt sér þau. Fólk um allan heim getur líka nýtt sér vinnsluhluta bankans.\n
+        Það er hægt að búa til íðorðasöfn, t.d. í samvinnu við erlendar íðorðanefndir og sameinast um vinnusvæði í vinnsluhlutanum þar sem hver gæti skráð upplýsingar á sínu tungumáli í bankann.
+    </string>
+    <string name="about_header_theapp">Íðorðabanka appið</string>
+    <string name="about_body_theapp">
+        Árið 2014 tóku fjórir nemendur við Háskóla Íslands að sér að búa til forrit í snjallsíma fyrir Íðorðabankann.\n
+        Forritið veitir almennum notendum aðgang að birtingarhluta orðabankans í gegnum Android snjallsíma og spjaldtölvur.
+    </string>
+
 </resources>

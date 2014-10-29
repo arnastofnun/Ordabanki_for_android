@@ -26,7 +26,8 @@
         android:id="@+id/resultLanguage"
         android:layout_weight="1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
+
         android:text="(Language)"
         android:textSize="16sp"
         android:textColor="@color/darkgrey"
@@ -41,7 +42,7 @@
         android:text="[Glossary]"
         android:textSize="16sp"
         android:textColor="@color/darkgrey"
-        android:singleLine="true"
+        android:singleLine="false"
         android:gravity="center"
 
         />

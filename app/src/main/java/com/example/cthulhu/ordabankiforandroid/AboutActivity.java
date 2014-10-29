@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 /**
  * ITEM ON DROPDOWN MENU ON ACTIONBAR
@@ -23,7 +24,7 @@ public class AboutActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.results_screen, menu);
+        getMenuInflater().inflate(R.menu.about_menu, menu);
         return true;
     }
 
@@ -33,6 +34,12 @@ public class AboutActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
+        if(id == R.id.action_settings){
+            View v = findViewById(R.id.action_settings);
+            Settings settings = new Settings(this);
+            settings.createOptionsPopupMenu(v,AboutActivity.class);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

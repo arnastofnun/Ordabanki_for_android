@@ -1,6 +1,8 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -135,7 +137,35 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
+
+        switch(item.getItemId()){
+            case R.id.action_help:
+
+                AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+                //Todo write the help (in strings <string name="help_result_screen">)
+                helpBuilder
+                        .setTitle(R.string.help_title)
+                        .setMessage(getResources().getString(R.string.help_result_screen));
+
+                helpBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+
+                    }
+                });
+                AlertDialog helpDialog = helpBuilder.create();
+                helpDialog.show();
+
+                return true;
+            case R.id.action_settings:
+                View v = findViewById(R.id.action_settings);
+                Settings settings = new Settings(this);
+                settings.createOptionsPopupMenu(v, SearchScreen.class);
+                return true;
+
+
+
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 }

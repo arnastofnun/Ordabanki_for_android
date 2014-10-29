@@ -51,8 +51,10 @@
     <string name="languages_tab_name">Languages</string>
     <string name="no_search_term">You have to type in a search query</string>
     <string name="no_glossary_picked">You have to pick at least one glossary</string>
+    <string name="ast_char_limit">You have to type in at least to other characters when using *</string>
     <string name="help_title">Help</string>
     <string name="close_help">Close</string>
+    <string name="settings_changelanguage_confirm">Select</string>
     <string name="change_language">Change language</string>
     <string name="settings_about">About</string>
     <string name="settings_contact">Contact us</string>
@@ -62,6 +64,8 @@
     <string-array name="language_array">
         <item>Icelandic</item>
         <item>English</item>
+        <item>Swedish</item>
+        <item>Danish</item>
     </string-array>
     <string name="help_search_fragment">
         Type in a word in the search box and click search\n\n
@@ -89,6 +93,7 @@
         You can restrict the search to a particular target language by pressing the drop down list for the target language and selecting a language\n
         You can only select one or all target languages
     </string>
+    <string name="help_result_screen">Implement Help here</string>
     <string name="about_header_purpose">Purpose</string>
     <string name="about_body_purpose">
         One purpose of a word bank is to coordinate the terminological usage in both related and different fields; to collect terms, define and unify them to avoid the use of different names of the same concept.\n
