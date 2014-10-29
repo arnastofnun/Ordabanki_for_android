@@ -66,9 +66,9 @@ public class PickGlossaryFragment extends Fragment {
         glossaryList = new ArrayList<Glossary>();
         Glossary glossary = new Glossary("ARC","Architecture","http://ismal.hi.is/ob/uppl/arkitekt.html");
         glossaryList.add(glossary);
-        glossary = new Glossary("ART","ARTS","");
+        glossary = new Glossary("TOLFR","Statistics","");
         glossaryList.add(glossary);
-        glossary = new Glossary("MED","Medicine", "http://www.ismal.hi.is/ob/uppl/laekn.html");
+        glossary = new Glossary("LAEKN","Medicine", "http://www.ismal.hi.is/ob/uppl/laekn.html");
         glossaryList.add(glossary);
         glossary = new Glossary("PHYS","Physics", "http://www.ismal.hi.is/ob/uppl/edlisfr.html");
         glossaryList.add(glossary);
@@ -142,7 +142,7 @@ public class PickGlossaryFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Glossary glossary = (Glossary) parent.getItemAtPosition(position);
-                if(glossary.isSelected()){
+                if(!glossary.isSelected()){
                     allSelected=false;
                 }
                 //For now just display a toast for testing
