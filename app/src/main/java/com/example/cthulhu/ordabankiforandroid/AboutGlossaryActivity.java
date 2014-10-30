@@ -26,7 +26,6 @@ public class AboutGlossaryActivity extends Activity {
         url = Uri.parse(url).toString();
 
         webView = (WebView) findViewById(R.id.webView);
-        webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);
     }
 
