@@ -20,7 +20,7 @@
             android:layout_height="fill_parent"
             android:text="@string/sourcelang"
             android:id="@+id/sourceLang"
-            android:maxLines="2"
+            android:singleLine="false"
             android:gravity="center"
             android:textSize="20sp"
             android:textColor="@color/darkgrey"
@@ -34,7 +34,6 @@
             android:textSize="20sp"
             android:padding="5dp"
             android:spinnerMode="dropdown"
-            android:background="@color/lightGreen200"
             android:textColor="@color/darkgrey"
             />
 
@@ -55,7 +54,7 @@
             android:layout_height="fill_parent"
             android:text="@string/targetlang"
             android:id="@+id/targetLang"
-            android:maxLines="2"
+            android:singleLine="false"
             android:gravity="center"
             android:textSize="20sp"
             android:textColor="@color/darkgrey"
@@ -67,7 +66,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/targetSpinner"
             android:textSize="20sp"
-            android:background="@color/lightGreen200"
             android:padding="5dp"
             android:spinnerMode="dropdown"
             android:textColor="@color/darkgrey"/>

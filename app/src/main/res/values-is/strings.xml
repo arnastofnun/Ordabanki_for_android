@@ -12,8 +12,8 @@
 
     <color name="white">#FFFFFF</color>
     <string name="search_button">Leita</string>
-    <string name="targetlang">Leitarmál:</string>
-    <string name="sourcelang">Markmál:</string>
+    <string name="targetlang">Markmál:</string>
+    <string name="sourcelang">Leitarmál:</string>
     <string name="all_languages">Öll</string>
 
     <string name="search_tab">Leita</string>
