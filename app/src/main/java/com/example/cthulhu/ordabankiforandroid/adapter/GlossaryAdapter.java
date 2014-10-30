@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cthulhu.ordabankiforandroid.AboutGlossaryActivity;
 import com.example.cthulhu.ordabankiforandroid.Glossary;
 import com.example.cthulhu.ordabankiforandroid.R;
 
@@ -28,7 +29,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
 
     //Initialize a list for the glossaries
     private static ArrayList<Glossary> glossaryList;
-
+    private static Context context;
 
     /**
      * Invoke the overwritten methods in superclass
@@ -42,6 +43,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
         super(context,listViewResourceId,glossaryList);
         this.glossaryList = new ArrayList<Glossary>();
         this.glossaryList = glossaryList;
+        this.context = context;
     }
 
     /**
@@ -133,11 +135,8 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
                 public void onClick(View v){
                     Glossary glossary = (Glossary) v.getTag();
                     if(!glossary.getUrl().equals("")) {
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_VIEW);
-                        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                        intent.setData(Uri.parse(glossary.getUrl()));
-                        v.getContext().startActivity(intent);
+                        Intent intent = new Intent(context, AboutGlossaryActivity.class).putExtra("url_string",glossary.getUrl());
+                        context.startActivity(intent);
                     }
                     else{
                         Toast.makeText(v.getContext(),v.getResources().getString(R.string.link_unaccessable),Toast.LENGTH_LONG).show();

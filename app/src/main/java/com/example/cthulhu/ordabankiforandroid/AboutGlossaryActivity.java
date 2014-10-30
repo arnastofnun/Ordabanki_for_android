@@ -1,18 +1,35 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
-
+/*
+ * @author Trausti
+ * @since 29.10.2014
+ */
 public class AboutGlossaryActivity extends Activity {
+    private static String url;
+    private static WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_glossary);
+
+        getActionBar().setTitle("Glossary info");
+
+        url = getIntent().getStringExtra("url_string");
+        url = Uri.parse(url).toString();
+
+        webView = (WebView) findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl(url);
     }
+
 
 
     @Override
@@ -33,4 +50,5 @@ public class AboutGlossaryActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
