@@ -35,6 +35,15 @@
         </activity>
         <activity
             android:name=".AboutActivity"
+            android:label="@string/title_activity_about_glossary"
+            android:parentActivityName=".SearchScreen"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SearchScreen" />
+        </activity>
+        <activity
+            android:name=".AboutGlossaryActivity"
             android:label="@string/settings_about"
             android:parentActivityName=".SearchScreen"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >

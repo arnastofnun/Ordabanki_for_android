@@ -10,7 +10,7 @@
     <string name="welcometext">Íðorðabankinn</string>
     <string name="selectlanguage">Please choose your language</string>
     <string name="title_activity_select_language">Select Language</string>
-
+    <string name="title_activity_about_glossary">About glossary</string>
 
     <color name="white">#FFFFFF</color>
     <color name="lightgray">#ECDFBD</color>

@@ -12,18 +12,21 @@ import android.webkit.WebView;
  * @since 29.10.2014
  */
 public class AboutGlossaryActivity extends Activity {
-    private String url;
-    private WebView webView;
+    private static String url;
+    private static WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_glossary);
 
+        getActionBar().setTitle("Glossary info");
 
         url = getIntent().getStringExtra("url_string");
         url = Uri.parse(url).toString();
+
         webView = (WebView) findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(url);
     }
 
