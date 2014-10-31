@@ -2,7 +2,6 @@ package com.example.cthulhu.ordabankiforandroid.unittests;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.ChooseLanguagesFragment;
 import com.example.cthulhu.ordabankiforandroid.R;
@@ -18,8 +17,6 @@ import junit.framework.Assert;
 public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScreen> {
 
     private Solo solo;
-   // private SearchScreen activity;
-   // private EditText searchView;
 
     public SearchScreenTest() {
         super(SearchScreen.class);
@@ -71,12 +68,12 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
 
     /**
      * This method tests if a search string can be entered and sent
-     * from the search screen
+     * from the search screen, and if the ResultsScreen recives them
      * Written by Kristján
      */
 
 
-    public void testEditText() /* throws Exception */ {
+    public void testEditText() {
         // Validates the Search Bar starts Empty
         Assert.assertTrue(solo.searchText(""));
         // Enters a word into the Search Bar
@@ -100,14 +97,37 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         Assert.assertTrue(solo.searchText("Engar niðurstöður fyrir Autodefenestration"));
         // Returns to SearchScreen
         solo.goBack();
-
-
-        //
-
     }
 
 
 
+    /**
+     * This method tests the functionality of the Glossary tab
+     * Written by Kristján
+     */
+
+
+    public void testGlossarySelection() {
+        //TODO Expand tests and add Assertions
+        //Click on Glossary tab
+        solo.clickOnText(solo.getString(R.string.pick_glossary_tab));
+        // Waits for Tab to load
+        solo.sleep(1000);
+        // Deselects all
+        solo.clickOnButton(2);
+        // Selects All
+        solo.clickOnButton(1);
+        // Selects First entry in list
+        solo.clickInList(1);
+        // Selects Deselects First entry in list
+        solo.clickInList(1);
+        // Selects Third entry in list
+        solo.clickInList(3);
+        // Deselects Third entry in list
+        solo.clickInList(3);
+
+
+    }
 
 
 
