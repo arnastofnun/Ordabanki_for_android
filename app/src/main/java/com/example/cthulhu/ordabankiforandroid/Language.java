@@ -12,16 +12,13 @@ public class Language {
             public LangName(){
                 //noargs constructor
             }
-            public static String getLocaleCode(){return localeCode;}
-            public static String getLocLangName(){return locLangName;}
-
         }
     public String getLangCode(){return LangCode;}
     public String getLangName (){
         String name = null;
-        for (LangName langName : langNames) {
-            if (LangName.getLocaleCode().equals(LocaleSettings.getLanguage())) {
-                name = LangName.getLocLangName();
+        for (LangName ignored : langNames) {
+            if (LangName.localeCode.equals(LocaleSettings.getLanguage())) {
+                name = LangName.locLangName;
             }
         }
         return name;
