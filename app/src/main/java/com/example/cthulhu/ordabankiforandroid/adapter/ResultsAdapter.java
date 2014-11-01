@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.example.cthulhu.ordabankiforandroid.R;
 import com.example.cthulhu.ordabankiforandroid.Result;
 
-
 import static com.example.cthulhu.ordabankiforandroid.Result.Synonym;
 
 
@@ -73,100 +72,106 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         //Initialize
-        View view = convertView;
-        ViewHolder holder;
-        boolean hasLex = true;
-        boolean hasSyn = true;
-        boolean hasDef = true;
-        boolean hasEx = true;
-        Result resultObj = resultsList[position];
+        final ViewHolder holder;
+        boolean hasLex = false;
+        boolean hasSyn = false;
+        boolean hasDef = false;
+        boolean hasEx = false;
+        Result result = resultsList[position];
 
-        if(view == null){
+
+        if(convertView == null){
             //inflate the layout
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
-            view = vi.inflate(R.layout.results_list,parent,false);
+            convertView = vi.inflate(R.layout.results_list,null);
 
             //Set the view holder
 
             holder = new ViewHolder();
-            holder.term = (TextView) view.findViewById(R.id.resultTerm);
-            holder.language = (TextView) view.findViewById(R.id.resultLanguage);
-            holder.glossary = (TextView) view.findViewById(R.id.resultGlossary);
-            TextView lexicalCategory= (TextView) view.findViewById(R.id.resultLexical_category);
-            TextView synonymsView = (TextView) view.findViewById(R.id.resultSynonyms);
-            TextView resDefinitions = (TextView) view.findViewById(R.id.resultDefinition);
-            TextView resExamples = (TextView) view.findViewById(R.id.resultExample);
 
-            if(resultObj.getLexical_category()!=null){
-                lexicalCategory.setVisibility(View.VISIBLE);
-                holder.lexical_category = lexicalCategory;
+            holder.term = (TextView) convertView.findViewById(R.id.resultTerm);
+            holder.language = (TextView) convertView.findViewById(R.id.resultLanguage);
+            holder.glossary = (TextView) convertView.findViewById(R.id.resultGlossary);
+            holder.lexical_category= (TextView) convertView.findViewById(R.id.resultLexical_category);
+            holder.synonyms = (TextView) convertView.findViewById(R.id.resultSynonyms);
+            holder.definition = (TextView) convertView.findViewById(R.id.resultDefinition);
+            holder.example = (TextView) convertView.findViewById(R.id.resultExample);
+
+            if(result.getLexical_category()!=null){
                 hasLex = true;
             }
             else{
-               lexicalCategory.setVisibility(View.GONE);
                hasLex=false;
             }
-            if(resultObj.getSynonyms()[0] != null){
-                synonymsView.setVisibility(View.VISIBLE);
-                holder.synonyms = synonymsView;
+            if(result.getSynonyms()[0] != null){
                 hasSyn = true;
             }
             else{
-                synonymsView.setVisibility(View.GONE);
                 hasSyn=false;
             }
-            if(!resultObj.getDefinition().equals("")){
-                resDefinitions.setVisibility(View.VISIBLE);
-                holder.definition = resDefinitions;
+            if(!result.getDefinition().equals("")){
                 hasDef = true;
             }
             else{
-                resDefinitions.setVisibility(View.GONE);
                 hasDef = false;
             }
-            if(!resultObj.getExample().equals("")){
-                resExamples.setVisibility(View.VISIBLE);
-                holder.example = resExamples;
+            if(!result.getExample().equals("")){
                 hasEx = true;
             }
             else{
-                resExamples.setVisibility(View.GONE);
                 hasEx = false;
             }
-            view.setTag(holder);
+            convertView.setTag(holder);
         }
         else {
-            holder = (ViewHolder) view.getTag();
-       }
+            holder = (ViewHolder) convertView.getTag();
+        }
 
 
 
         //adds all non-null fields from result object to result view
-        holder.term.setText(resultObj.getWord());
-        //language and glossary will return a code later. need to parse it to locale
-        holder.language.setText("(" + resultObj.getLanguage_name()+")");
-        holder.glossary.setText("["+resultObj.getTerminology_dictionary()+"]");
+        holder.term.setText(result.getWord());
+        holder.language.setText("(" + result.getLanguage_name()+")");
+        holder.glossary.setText("["+result.getTerminology_dictionary()+"]");
         if(hasLex){
-            holder.lexical_category.setText(context.getString(R.string.lexical_category)+ resultObj.getLexical_category());
+            convertView.findViewById(R.id.resultLexical_category).setVisibility(View.VISIBLE);
+            holder.lexical_category.setText(context.getString(R.string.lexical_category)+ result.getLexical_category());
+        }
+        else{
+            convertView.findViewById(R.id.resultLexical_category).setVisibility(View.GONE);
         }
         //loops through synonym strings in synonym object and adds to newline delimited list
         if(hasSyn){
+            convertView.findViewById(R.id.resultSynonyms).setVisibility(View.VISIBLE);
             holder.synonyms.setText(context.getString(R.string.synonyms)+"\n");
             Synonym[] synonymList;
-            synonymList = resultObj.getSynonyms();
+            synonymList = result.getSynonyms();
             for (Synonym aSynonymList : synonymList) {
                 holder.synonyms.setText(holder.synonyms.getText() + aSynonymList.getSynonym() + "\n");
             }
         }
+        else{
+            convertView.findViewById(R.id.resultSynonyms).setVisibility(View.GONE);
+        }
         if(hasDef){
-            String def = resultObj.getDefinition().replaceAll("<[^>]*>", "");
+            convertView.findViewById(R.id.resultDefinition).setVisibility(View.VISIBLE);
+            String def = result.getDefinition().replaceAll("<[^>]*>", "");
             holder.definition.setText(context.getString(R.string.definition) + def);
         }
-        if(hasEx){
-            holder.example.setText(context.getString(R.string.example) + resultObj.getExample());
+        else{
+            convertView.findViewById(R.id.resultDefinition).setVisibility(View.GONE);
         }
-        return view;
+        if(hasEx){
+            convertView.findViewById(R.id.resultExample).setVisibility(View.VISIBLE);
+            holder.example.setText(context.getString(R.string.example) + result.getExample());
+        }
+        else{
+            convertView.findViewById(R.id.resultExample
+            ).setVisibility(View.GONE);
+        }
+
+        return convertView;
     }
 
 }
