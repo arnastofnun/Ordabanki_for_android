@@ -24,8 +24,6 @@ class OrdabankiURLGen {
     public static String createWordOnlyURL(String sTerm){
         //takes base URL and appends search term
         final String baseURL = "http://api.arnastofnun.is/ordabanki.php?word=";
-        sTerm = sTerm.replaceAll("\\*", "%25");
-        sTerm = sTerm.replaceAll("\\?", "%5F");
         return baseURL+ sTerm;
     }
     //use: createURL(sTerm,sLang,tLang)
@@ -39,27 +37,29 @@ class OrdabankiURLGen {
      */
     public static String createURL(String sTerm) {
         //takes base URL and appends search constraints
-        final String delim = "&"; //change when find out right delimiter
+        final String delim = ","; //change when find out right delimiter
         final String baseURL = "http://api.arnastofnun.is/ordabanki.php?word=";
-        sTerm = sTerm.replaceAll("\\*", "%25");
-        sTerm = sTerm.replaceAll("\\?", "%5F");
         String relURL = baseURL+ sTerm;
-        relURL = relURL + "&sLang="+ChooseLanguagesFragment.getSourceLanguage();
-        //change when see right syntax for request, format is right
-        relURL = relURL + "&tLang=" + ChooseLanguagesFragment.getTargetLanguage();
-        relURL = relURL + "&gloss=";
-        ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
-        if (selectedGlossaries.size() == 1) {
-            relURL = relURL + selectedGlossaries.get(0);
-        } else {
-            ListIterator<String> it = selectedGlossaries.listIterator();
-            //iterate until last but one member,
-            while (it.hasNext() && it.nextIndex() != selectedGlossaries.size() - 1) {
-                relURL = relURL + it.next() + delim;
+        if (!ChooseLanguagesFragment.getSourceLanguage().equals("ALL"))
+            relURL = relURL + "&slang="+ChooseLanguagesFragment.getSourceLanguage();
+        /* commented until target language implemented in api
+        if(!ChooseLanguagesFragment.getTargetLanguage().equals("ALL"))
+            relURL = relURL + "&tlang=" + ChooseLanguagesFragment.getTargetLanguage();
+        */
+        if(!PickGlossaryFragment.areAllSelected()) {
+            relURL = relURL + "&dicts=";
+            ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
+            if (selectedGlossaries.size() == 1) {
+                relURL = relURL + selectedGlossaries.get(0);
+            } else {
+                ListIterator<String> it = selectedGlossaries.listIterator();
+                //iterate until last but one member,
+                while (it.hasNext() && it.nextIndex() != selectedGlossaries.size() - 1) {
+                    relURL = relURL + it.next() + delim;
+                }
+                relURL = relURL + selectedGlossaries.get(selectedGlossaries.size() - 1);
             }
-            relURL = relURL + selectedGlossaries.get(selectedGlossaries.size() - 1);
         }
-
         return relURL;
     }
 

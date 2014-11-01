@@ -33,7 +33,7 @@ public class PickGlossaryFragment extends Fragment {
     *   in the Orðabanki app
     */
     private static ArrayList<Glossary> glossaryList;
-
+    private static boolean allSelected;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -63,14 +63,11 @@ public class PickGlossaryFragment extends Fragment {
     private void displayListView(View rootView){
         //List of glossaries
         glossaryList = new ArrayList<Glossary>();
-        Glossary glossary = new Glossary("ARC","Architecture","http://ismal.hi.is/ob/uppl/arkitekt.html");
+        Glossary glossary = new Glossary("TOLFR","Statistics","");
         glossaryList.add(glossary);
-        glossary = new Glossary("ART","ARTS","");
+        glossary = new Glossary("LAEKN","Medicine", "http://www.ismal.hi.is/ob/uppl/laekn.html");
         glossaryList.add(glossary);
-        glossary = new Glossary("MED","Medicine", "http://www.ismal.hi.is/ob/uppl/laekn.html");
-        glossaryList.add(glossary);
-        glossary = new Glossary("PHYS","Physics", "http://www.ismal.hi.is/ob/uppl/edlisfr.html");
-        glossaryList.add(glossary);
+
 
 
         //Creating a new glossary adapter
@@ -105,6 +102,7 @@ public class PickGlossaryFragment extends Fragment {
                     }
                     index++;
                 }
+
             }
         });
 
@@ -130,6 +128,7 @@ public class PickGlossaryFragment extends Fragment {
                     }
                     index++;
                 }
+
             }
         });
 
@@ -173,7 +172,8 @@ public class PickGlossaryFragment extends Fragment {
                 selectedGlossaries.add(glossary.getName());
             }
         }
+        allSelected= selectedGlossaries.equals(glossaryList);
         return selectedGlossaries;
     }
-
+    public static boolean areAllSelected(){return allSelected;}
 }
