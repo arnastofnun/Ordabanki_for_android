@@ -78,16 +78,16 @@ public class SelectLanguageActivity extends Activity {
         //Switch to choose language from the buttons
         switch(imageButton.getId()){
             case R.id.SelectLanguageActivity_english:
-                lang="en";
+                lang="EN";
                 break;
             case R.id.SelectLanguageActivity_icelandic:
-                lang="is";
+                lang="IS";
                 break;
             case R.id.SelectLanguageActivity_danish:
-                lang="da";
+                lang="DA";
                 break;
             case R.id.SelectLanguageActivity_swedish:
-                lang="sv";
+                lang="SV";
                 break;
             default:
                 lang="";
