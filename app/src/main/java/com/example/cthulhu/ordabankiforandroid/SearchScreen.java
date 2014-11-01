@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 
+
+
 /**
  * This class contains functions for the search screen
  * tabbed view.
@@ -47,6 +49,16 @@ public class SearchScreen extends FragmentActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig){
         super.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedState){
+        super.onRestoreInstanceState(savedState);
     }
 
     @Override
