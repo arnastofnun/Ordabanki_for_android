@@ -26,7 +26,7 @@ public class Result {
     String terminology_dictionary;
     String word;
     String lexical_category;
-    ArrayList<Synonym> synonyms;
+    Synonym[] synonyms;
     String definition;
     String example;
 
@@ -105,12 +105,12 @@ public class Result {
         this.lexical_category = lexical_category;
     }
 
-    public ArrayList<Synonym> getSynonyms() {
+    public Synonym[] getSynonyms() {
         return synonyms;
     }
 
 
-    public void setSynonyms(ArrayList<Synonym> synonyms) {
+    public void setSynonyms(Synonym[] synonyms) {
         this.synonyms = synonyms;
     }
 

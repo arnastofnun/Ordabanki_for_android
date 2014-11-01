@@ -108,7 +108,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
                lexicalCategory.setVisibility(View.GONE);
                hasLex=false;
             }
-            if(result.getSynonyms().get(0) != null){
+            if(result.getSynonyms()[0] != null){
                 synonymsView.setVisibility(View.VISIBLE);
                 holder.synonyms = synonymsView;
                 hasSyn = true;
@@ -153,7 +153,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
         //loops through synonym strings in synonym object and adds to newline delimited list
         if(hasSyn){
             holder.synonyms.setText(context.getString(R.string.synonyms)+"\n");
-            ArrayList<Synonym> synonymList;
+            Synonym[] synonymList;
             synonymList = result.getSynonyms();
             for (Synonym aSynonymList : synonymList) {
                 holder.synonyms.setText(holder.synonyms.getText() + aSynonymList.getSynonym() + "\n");
