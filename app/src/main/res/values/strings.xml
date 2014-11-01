@@ -10,7 +10,7 @@
     <string name="welcometext">Íðorðabankinn</string>
     <string name="selectlanguage">Please choose your language</string>
     <string name="title_activity_select_language">Select Language</string>
-    <string name="title_activity_about_glossary">Glossary info</string>
+    <string name="title_activity_about_glossary" translatable="false">Glossary info</string>
 
     <color name="white">#FFFFFF</color>
     <color name="lightgray">#ECDFBD</color>
@@ -36,7 +36,7 @@
     <string name="search_button">Search</string>
     <string name="targetlang">Target language:</string>
     <string name="sourcelang">Source language:</string>
-    <string name="all_languages">All</string>
+    <string name="all_languages">ALL</string>
     <string name="search_tab">Search</string>
     <string name="searchpreterm">results for</string>
     <string name="search_hint">Type in search query</string>
@@ -58,7 +58,7 @@
     <string name="change_language">Change language</string>
     <string name="settings_about">About</string>
     <string name="settings_contact">Contact us</string>
-    <string name="contact_email">agustath\@islenskan.is</string>
+    <string name="contact_email" translatable="false">agustath\@islenskan.is</string>
     <string name="choose_email_client">Please choose an email client</string>
     <string name="error_no_email_client">You don\'t have an email client installed</string>
     <string-array name="language_array">

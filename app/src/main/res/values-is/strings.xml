@@ -132,5 +132,9 @@
         Árið 2014 tóku fjórir nemendur við Háskóla Íslands að sér að búa til forrit í snjallsíma fyrir Íðorðabankann.\n
         Forritið veitir almennum notendum aðgang að birtingarhluta orðabankans í gegnum Android snjallsíma og spjaldtölvur.
     </string>
+    <string name="about_body_history">.</string>
+    <string name="about_body_structure">.</string>
+    <string name="about_header_history">.</string>
+    <string name="about_header_structure">.</string>
 
 </resources>

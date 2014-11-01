@@ -41,9 +41,10 @@
          <string name = "close_help"> Luk </string>
          <string name = "change_language"> Skift sprog </string>
          <string name = "settings_about"> Om </string>
-         <string name = "settings_contact"> Kontakt </string>
-         <string name = "contact_email"> agustath \ @ islenskan.is </string>
-         <string name = "choose_email_client"> Vælg en e-mail-klient </string>
+         <string name = "settings_contact"> Kontakt </string><![CDATA[
+        
+         ]]>
+    <string name = "choose_email_client"> Vælg en e-mail-klient </string>
          <string name = "error_no_email_client"> Du har ikke en e-mail-klient installeret </string>
          <string-array name = "language_array">
              <item> Islandsk </item>
@@ -51,15 +52,15 @@
              <item> Svensk </item>
              <item> Dansk </item>
          </string-array>
-         <string name = "help_search_fragment">
+         <string name = "help_search_fragment"><![CDATA[
              Indtast ordet i søgefeltet og tryk søg \n\n
              ? er et wildcard og repræsenterer blot et brev eller mellanrum\n\n
-             * Er et wildcard og repræsenterer ingen (0) eller flere bogstaver eller mellemrum. \n (m * NNI yrði Minni, misminni, myndminni, ...) \n \n
+             * Er et wildcard og repræsenterer ingen (0) eller flere bogstaver eller mellemrum. \n (m * NNI yrði Minni, misminni, myndminni, …) \n \n
 
              Hvis du bruger * i søgestrengen skal være mindst to andre bogstaver. \n \n
              Skelner ikke Søgningen mellem store og små bogstaver \n \n
     Gå til ordbogen for at begrænse søgningen til de udvalgte ordbøger \n \n
-             Gå til sproget for at begrænse søgningen til bestemte søgning eller målsprog</string>
+             Gå til sproget for at begrænse søgningen til bestemte søgning eller målsprog]]></string>
          <string name = "help_glossary_fragment">
     Som standard, alle ordbøger, men søgningen kan begrænses til et eller flere specifikke ordforråd. \n \n
     Bare tryk en eller flere ordliste for at vælge eller fravælge det, ordlister med et flueben til den valgte venstre. \n \n

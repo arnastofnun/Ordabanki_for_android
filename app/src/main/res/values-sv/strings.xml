@@ -42,7 +42,6 @@
     <string name="change_language">Byt språk</string>
     <string name="settings_about">Om</string>
     <string name="settings_contact">Kontakta oss</string>
-    <string name="contact_email">agustath\@islenskan.is</string>
     <string name="choose_email_client">Välj ett e-postklient</string>
     <string name="error_no_email_client">Du har inte en e-postklient installerad</string>
     <string-array name="language_array">

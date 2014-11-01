@@ -137,8 +137,7 @@ public class PickGlossaryFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Glossary glossary = (Glossary) parent.getItemAtPosition(position);
-                glossary.setSelected(!glossary.isSelected());
-                //For now just display a toast for testing
+                 //For now just display a toast for testing
                 Toast.makeText(getActivity().getApplicationContext(), "Clicked on: " + glossary.getName() + " checked: " + glossary.isSelected(), Toast.LENGTH_LONG).show();
             }
         });
