@@ -33,7 +33,7 @@ public class PickGlossaryFragment extends Fragment {
     *   in the Orðabanki app
     */
     private static ArrayList<Glossary> glossaryList;
-    private static boolean allSelected;
+    private static boolean allSelected = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -167,12 +167,16 @@ public class PickGlossaryFragment extends Fragment {
         //Go through the glossaries and add the selected ones to selectedGlossaries
         ArrayList<String> selectedGlossaries = new ArrayList<String>();
         for(Glossary glossary : glossaryList) {
+
             if(glossary.isSelected()){
-                Log.v("selected glossary: ", glossary.getName());
-                selectedGlossaries.add(glossary.getName());
+                Log.v("selected glossary: ", glossary.getCode());
+                selectedGlossaries.add(glossary.getCode());
+            }
+            else {
+                allSelected = false;
             }
         }
-        allSelected= selectedGlossaries.equals(glossaryList);
+
         return selectedGlossaries;
     }
     public static boolean areAllSelected(){return allSelected;}
