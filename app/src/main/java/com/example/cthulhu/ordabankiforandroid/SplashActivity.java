@@ -29,7 +29,6 @@ public class SplashActivity extends Activity {
     SharedPreferences sharedpref;
     String lang="";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

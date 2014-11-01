@@ -29,7 +29,7 @@ public class LocaleSettings{
     SharedPreferences sharedpref;
     Context context;
     boolean status;
-    String language;
+    static String language;
 
     /**
      * use: Locale settings localeSettings = new LocaleSettings(context)
@@ -57,7 +57,7 @@ public class LocaleSettings{
      * Written by Karl Ásgeir Geirsson
      * @return language, the current language in shared preferences, or null
      */
-    public String getLanguage(){
+    public static String getLanguage(){
         return language;
     }
 
