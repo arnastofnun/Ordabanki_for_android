@@ -53,20 +53,20 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
     /**
      * Passes result to list view on successful connection.
      * Bill
-     * @param result Result array
+     * @param resultArr Result array
      */
     @Override
-    public void onResultObtained(Result[] result){
+    public void onResultObtained(Result[] resultArr){
         String searchPreTerm = getResources().getString(R.string.searchpreterm);
         TextView textView = (TextView) findViewById(R.id.resultText);
-        if(result == null){
+        if(resultArr == null){
             String databaseError = getResources().getString(R.string.database_error);
             textView.setText(databaseError);
         }
         else {
-            int resultsCount = result.length;
+            int resultsCount = resultArr.length;
             textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery);
-            displayListView(result);
+            displayListView(resultArr);
         }
     }
 
