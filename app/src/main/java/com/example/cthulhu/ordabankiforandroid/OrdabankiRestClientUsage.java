@@ -15,7 +15,11 @@ public class OrdabankiRestClientUsage {
      */
     public void setResults(String relURL, OrdabankiJsonHandler jsonHandler) throws JSONException {
         OrdabankiRESTClient.get(relURL, null, jsonHandler);
-
-
+    }
+    public void getLanguages(String langURL, LanguageJsonHandler jsonHandler) throws JSONException{
+        OrdabankiRESTClient.get(langURL,null,jsonHandler);
+    }
+    public void getDictionaries(String dictURL, DictionaryJsonHandler jsonHandler) throws JSONException{
+        OrdabankiRESTClient.get(dictURL, null, jsonHandler);
     }
 }

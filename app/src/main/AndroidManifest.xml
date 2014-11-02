@@ -8,13 +8,21 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <android:uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SplashActivity"
+            android:name="com.example.cthulhu.ordabankiforandroid.SplashActivity"
             android:label="@string/title_activity_splash"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
             <intent-filter>
@@ -24,41 +32,46 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SelectLanguageActivity"
+            android:name="com.example.cthulhu.ordabankiforandroid.SelectLanguageActivity"
             android:label="@string/title_activity_select_language"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
         </activity>
         <activity
-            android:name=".SearchScreen"
+            android:name="com.example.cthulhu.ordabankiforandroid.SearchScreen"
             android:label="@string/search_tab"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
         </activity>
         <activity
-            android:name=".AboutActivity"
+            android:name="com.example.cthulhu.ordabankiforandroid.AboutActivity"
             android:label="@string/settings_about"
-            android:parentActivityName=".SearchScreen"
+            android:parentActivityName="com.example.cthulhu.ordabankiforandroid.SearchScreen"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".SearchScreen" />
         </activity>
         <activity
-            android:name=".AboutGlossaryActivity"
+            android:name="com.example.cthulhu.ordabankiforandroid.AboutGlossaryActivity"
             android:label="@string/title_activity_about_glossary"
-            android:parentActivityName=".SearchScreen"
+            android:parentActivityName="com.example.cthulhu.ordabankiforandroid.SearchScreen"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".SearchScreen" />
         </activity>
         <activity
-            android:name=".ResultsScreen"
+            android:name="com.example.cthulhu.ordabankiforandroid.ResultsScreen"
             android:label="@string/title_activity_results_screen"
-            android:parentActivityName=".SearchScreen"
+            android:parentActivityName="com.example.cthulhu.ordabankiforandroid.SearchScreen"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
->           <meta-data
+>           
+            <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".SearchScreen" />
+        </activity>
+        <activity
+            android:name="com.example.cthulhu.ordabankiforandroid.AnActivity"
+            android:label="@string/title_activity_an" >
         </activity>
     </application>
 

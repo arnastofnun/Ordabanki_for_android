@@ -1,5 +1,7 @@
 package com.example.cthulhu.ordabankiforandroid;
 
+import static com.example.cthulhu.ordabankiforandroid.Language.LangName.*;
+
 /**
  * Created by cthulhu on 01/11/14.
  */
@@ -17,8 +19,8 @@ public class Language {
     public String getLangName (){
         String name = null;
         for (LangName ignored : langNames) {
-            if (LangName.localeCode.equals(LocaleSettings.getLanguage())) {
-                name = LangName.locLangName;
+            if (localeCode.equals(LocaleSettings.getLanguage())) {
+                name = locLangName;
             }
         }
         return name;
