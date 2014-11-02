@@ -144,7 +144,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
             case R.id.action_help:
 
                 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-                //Todo write the help (in strings <string name="help_result_screen">)
                 helpBuilder
                         .setTitle(R.string.help_title)
                         .setMessage(getResources().getString(R.string.help_result_screen));

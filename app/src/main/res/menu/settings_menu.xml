@@ -17,4 +17,9 @@
         android:icon="@drawable/ic_action_email"
 
         />
+    <item
+        android:id="@+id/settings_clear_search_history"
+        android:title="@string/settings_clear_search"
+        android:showAsAction="never"/>
+
 </menu>

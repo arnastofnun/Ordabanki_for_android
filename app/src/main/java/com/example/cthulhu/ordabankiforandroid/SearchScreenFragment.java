@@ -1,19 +1,16 @@
 package com.example.cthulhu.ordabankiforandroid;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import org.json.JSONException;
+import android.widget.SearchView;
 
 
- //Created by karlasgeir on 9.10.2014.
+//Created by karlasgeir on 9.10.2014.
 
 /**
  * <h1>Search Screen fragment</h1>
@@ -36,10 +33,10 @@ public class SearchScreenFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_search_screen,container,false);
 
         //Adding search by pressing enter functionality
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) rootView.findViewById(R.id.searchView);
 
-        EditText searchView = (EditText) rootView.findViewById(R.id.searchView);
-
-
+        /*
         searchView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent e) {
@@ -54,9 +51,13 @@ public class SearchScreenFragment extends Fragment {
                 return false;
             }
         });
+        */
 
 
-
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+        searchView.setIconifiedByDefault(false);
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setQueryRefinementEnabled(true);
 
 
         return rootView;

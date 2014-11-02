@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.SearchRecentSuggestions;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -59,14 +60,11 @@ public class Settings {
                         final AlertDialog.Builder languageBuilder = new AlertDialog.Builder(context);
                         languageBuilder
                                 .setTitle(R.string.change_language)
-                                        //Todo set default value for select language settings
                                 .setSingleChoiceItems(R.array.language_array, langPos, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        //Todo implement on click functions for select language settings
                                     }
                                 });
-                        //Todo implement accept button
                         languageBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 
@@ -91,13 +89,15 @@ public class Settings {
                         return true;
                     case R.id.settings_contact:
                         Intent email = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", context.getResources().getString(R.string.contact_email), null));
-                        //Todo doesn't seem to put the email to address through
                         try{
                             context.startActivity(Intent.createChooser(email,context.getResources().getString(R.string.choose_email_client)));
                         } catch (ActivityNotFoundException e) {
                             Toast.makeText(context, context.getResources().getString(R.string.error_no_email_client), Toast.LENGTH_LONG).show();
                         }
                         return true;
+                    case R.id.settings_clear_search_history:
+                        SearchRecentSuggestions suggestions=new SearchRecentSuggestions(context,SearchAutoComplete.AUTHORITY,SearchAutoComplete.MODE);
+                        suggestions.clearHistory();
                 }
                 return true;
             }

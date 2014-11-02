@@ -2,11 +2,13 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.provider.SearchRecentSuggestions;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -14,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
@@ -22,7 +23,6 @@ import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 
 
@@ -43,7 +43,6 @@ public class SearchScreen extends FragmentActivity {
     *   resultList: list of search results
     */
     private ViewPager viewPager;
-    private Locale locale = null;
 
 
     @Override
@@ -67,6 +66,19 @@ public class SearchScreen extends FragmentActivity {
         setContentView(R.layout.activity_search_screen);
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
+
+        Intent intent = getIntent();
+        if(Intent.ACTION_SEARCH.equals(intent.getAction())){
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this,SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);
+            suggestions.saveRecentQuery(query,null);
+            try {
+                search(query);
+            } catch(JSONException e){
+                e.printStackTrace();
+            }
+        }
+
 
         //Tab titles
         ArrayList<String> tabs = new ArrayList<String>();
@@ -136,16 +148,12 @@ public class SearchScreen extends FragmentActivity {
      * ----------------------------------------------------------------------
      * Written by Bill
      *
-     * @param view the current view
      * @throws JSONException
      */
-    public void search(View view) throws JSONException {
+    public void search(String searchQuery) throws JSONException {
         Boolean allowsearch = true;
         //Create the Intent
         Intent intent = new Intent(this, ResultsScreen.class);
-        //Get the search query
-        EditText searchView = (EditText) findViewById(R.id.searchView);
-        String searchQuery = searchView.getText().toString();
 
         if (searchQuery.equals("")) {
             allowsearch = false;
