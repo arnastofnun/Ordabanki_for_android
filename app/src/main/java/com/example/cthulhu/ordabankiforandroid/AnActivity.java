@@ -7,6 +7,9 @@ import android.view.MenuItem;
 
 import org.json.JSONException;
 
+/**
+ * dummy activity to hold use of languages and dictionaries REST usage until api is ready
+ */
 
 public class AnActivity extends Activity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener{
     LanguageJsonHandler lJsonHandler;

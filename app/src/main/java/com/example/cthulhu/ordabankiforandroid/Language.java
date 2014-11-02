@@ -17,12 +17,13 @@ public class Language {
         }
     public String getLangCode(){return LangCode;}
     public String getLangName (){
-        String name = null;
+        String lName = null;
         for (LangName ignored : langNames) {
             if (localeCode.equals(LocaleSettings.getLanguage())) {
-                name = locLangName;
+                lName = locLangName;
+                break;
             }
         }
-        return name;
+        return lName;
         }
 }

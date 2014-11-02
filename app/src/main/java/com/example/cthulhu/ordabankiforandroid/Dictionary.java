@@ -10,7 +10,7 @@ public class Dictionary {
     DName[] dNames;
         public static class DName{
             static String localeCode;
-            static String name;
+            static String dName;
             public DName(){
                 //noargs constructor
             }
@@ -21,7 +21,8 @@ public class Dictionary {
         String locName = null;
         for (DName ignored : dNames) {
             if (localeCode.equals(LocaleSettings.getLanguage())) {
-                locName = DName.name;
+                locName = DName.dName;
+                break;
             }
         }
         return locName;
