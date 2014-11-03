@@ -60,7 +60,7 @@ class OrdabankiURLGen {
                 relURL = relURL + selectedGlossaries.get(selectedGlossaries.size() - 1);
             }
         }
-        return relURL;
+        return relURL+"&agent=ordabankaapp";
     }
 
 }
