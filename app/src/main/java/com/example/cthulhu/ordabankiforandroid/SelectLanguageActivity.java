@@ -99,7 +99,8 @@ public class SelectLanguageActivity extends Activity {
             @Override
             public void onClick(View v){
                 //start the activity in the correct language
-                LocaleSettings.setLanguageInit(lang);
+                LocaleSettings lSettings = new LocaleSettings(getBaseContext());
+                lSettings.setLanguageInit(lang);
                 Intent intent = new Intent(SelectLanguageActivity.this,SplashActivity.class);
                 SelectLanguageActivity.this.startActivity(intent);
                 SelectLanguageActivity.this.finish();

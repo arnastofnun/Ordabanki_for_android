@@ -26,7 +26,7 @@ public class LocaleSettings{
         status is true if there is a language in shared preferences, else false
         language contains the language in shared preferences, else null
      */
-    static SharedPreferences sharedpref;
+    SharedPreferences sharedpref;
     Context context;
     boolean status;
     static String language;
@@ -101,13 +101,14 @@ public class LocaleSettings{
         //Set the locale settings and start the activity
         setLocale(lang,cl);
     }
-    public static void setLanguageInit(String lang){
+    public void setLanguageInit(String lang){
         //Edit the shared preferences
         SharedPreferences.Editor editor = sharedpref.edit();
         //Set lang as the language and apply changes
         editor.putString("lang",lang);
         editor.apply();
         //Set the locale settings and start the activity
+        setCurrLocaleFromPrefs();
     }
 
     /**

@@ -3,6 +3,7 @@ package com.example.cthulhu.ordabankiforandroid;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 
 import org.json.JSONException;
@@ -16,59 +17,77 @@ import org.json.JSONException;
  * <p>It should get the Locale settings and select language based on them</p>
  * <p>It should start the select language screen if language has not been selected before</p>
  * <p>It should start the SearchScreen if language has already been selected</p>
- * <p>For now it just waits and then starts the select language screen</p>
+ * <p></p>
  * ------------------------------------------------------------------------------------------
  * @author Karl Ásgeir Geirsson edited 3/11/14 by Bill to implement languages and dictionaries
  */
 public class SplashActivity extends Activity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener {
-    /**
-     * Duration of wait *
-     */
-    private final long MIN_SPLASH_DISPLAY_LENGTH = 2000;
-    LanguageJsonHandler lJsonHandler;
-    DictionaryJsonHandler dJsonHandler;
-    final String langURL = "http://api.arnastofnun.is/ordabanki.php?list=dicts&agent=ordabankaapp";
-    final String dictURL = "http://api.arnastofnun.is/ordabanki.php?list=langs&agent=ordabankaapp";
-    String[][] localisedLangs;
-    String[][] localisedDicts;
-    boolean dObtained = false;
-    boolean lObtained = false;
-    boolean error =false;
-    final LocaleSettings localeSettings = new LocaleSettings(this);
-    long startTime = System.currentTimeMillis();
+
+    public String[][] localisedLangs;
+    public String[][] localisedDicts;
+    private boolean dObtained;
+    private boolean lObtained;
+    private boolean error;
+    long startTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+    }
 
+    @Override
+    protected void onStart(){
+        startTime = System.currentTimeMillis();
+        isLocaleSet();
+        dObtained = false;
+        lObtained = false;
+        error =false;
+        getLocalisedLangs();
+        getLocalisedDicts();
+        checkTiming();
+    }
+
+    private void isLocaleSet(){
+        final LocaleSettings localeSettings = new LocaleSettings(this);
+        //if no language set in locale go to select language
         if (!localeSettings.getLocaleStatus()) {
-
             Intent intent = new Intent(SplashActivity.this, SelectLanguageActivity.class);
             SplashActivity.this.startActivity(intent);
             SplashActivity.this.finish();
-
         }
-        setContentView(R.layout.activity_splash);
+    }
 
-        lJsonHandler = new LanguageJsonHandler(this);
-        dJsonHandler = new DictionaryJsonHandler(this);
-
+    private void getLocalisedLangs(){
+        //calls rest client to populate languages array
+        final String langURL = "http://api.arnastofnun.is/ordabanki.php?list=dicts&agent=ordabankaapp";
+        LanguageJsonHandler lJsonHandler = new LanguageJsonHandler(this);
         OrdabankiRestClientUsage langClient = new OrdabankiRestClientUsage();
         try {
+            //Toast.makeText(getApplicationContext(), "getting languages", Toast.LENGTH_SHORT).show();
             langClient.getLanguages(langURL, lJsonHandler);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+    }
+    private void getLocalisedDicts(){
+        //calls rest client to populate dictionaries array
+        final String dictURL = "http://api.arnastofnun.is/ordabanki.php?list=langs&agent=ordabankaapp";
+        DictionaryJsonHandler dJsonHandler = new DictionaryJsonHandler(this);
         OrdabankiRestClientUsage dictClient = new OrdabankiRestClientUsage();
         try {
+            //Toast.makeText(getApplicationContext(), "getting dictionaries", Toast.LENGTH_SHORT).show();
             dictClient.getDictionaries(dictURL, dJsonHandler);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+    private void checkTiming(){
+        //checks if splash screen has been up for a minimum of 2 seconds then moves to search screen
+        final LocaleSettings localeSettings = new LocaleSettings(this);
         Runnable runnable = new Runnable() {
             public void run() {
-                long endTime = startTime+MIN_SPLASH_DISPLAY_LENGTH;
+                long endTime = startTime+2000;
                 while (System.currentTimeMillis() < endTime) {
                     synchronized (this) {
                         try {
@@ -76,23 +95,24 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
                         } catch (Exception e) {e.printStackTrace();}
                     }
                 }
+                //Toast.makeText(getApplicationContext(), "setting locale", Toast.LENGTH_SHORT).show();
                 localeSettings.setLanguageFromPref(SearchScreen.class);
             }
         };
         Thread timingThread = new Thread(runnable);
 
-        while(!error){
-            if(dObtained&&lObtained){
+        while(!error) {
+            if (dObtained && lObtained) {
+                //Toast.makeText(getApplicationContext(), "timing thread start", Toast.LENGTH_SHORT).show();
                 timingThread.start();
             }
         }
-
-
     }
     @Override
     public void onDictionariesObtained (Dictionary[]dictionaries){
         localisedDicts = new String[dictionaries.length][2];
         int index = 0;
+        //Toast.makeText(getApplicationContext(), "dLoop", Toast.LENGTH_SHORT).show();
         for (Dictionary dict : dictionaries) {
             localisedDicts[index][1] = dict.getDictCode();
             localisedDicts[index][2] = dict.getDictName();
@@ -103,6 +123,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     @Override
     public void onDictionariesFailure ( int statusCode){
         error = true;
+        Toast.makeText(getApplicationContext(), "dictionary error", Toast.LENGTH_SHORT).show();
         //todo handle failure: error message, restart quit options
     }
     @Override
@@ -110,15 +131,16 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         localisedLangs = new String[languages.length][2];
         int index = 0;
         for (Language lang : languages) {
-            localisedDicts[index][1] = lang.getLangCode();
-            localisedDicts[index][2] = lang.getLangName();
+            localisedLangs[index][1] = lang.getLangCode();
+            localisedLangs[index][2] = lang.getLangName();
             index++;
         }
         lObtained=true;
     }
     @Override
-    public void onLanguagesFailure ( int statusCode){
+    public void onLanguagesFailure (int statusCode){
        error= true;
+        Toast.makeText(getApplicationContext(), "languages error", Toast.LENGTH_SHORT).show();
         //todo handle failure: error message, restart quit options
     }
 
