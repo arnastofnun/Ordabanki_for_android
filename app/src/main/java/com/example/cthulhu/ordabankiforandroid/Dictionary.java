@@ -20,23 +20,23 @@ public class Dictionary {
     public String getDictCode(){return dict_code;}
     public String getFjoldi(){return fjoldi;}
     public String getDictName(){
-        String locName = null;
-        String defaultEN= null;
-        String defaultIS = null;
-        for (Info anInfo : info) {
-            if (anInfo.lang_code.equals("IS")){
-                defaultIS = anInfo.dict_name;
+        String locName = "";
+        String defaultEN= "";
+        String defaultIS = "";
+        for (Info ignored : info) {
+            if (Info.lang_code.equals("IS")){
+                defaultIS = Info.dict_name;
             }
-            else if (anInfo.lang_code.equals("EN")){
-                defaultEN =anInfo.dict_name;
+            else if (Info.lang_code.equals("EN")){
+                defaultEN =Info.dict_name;
             }
-            else if (anInfo.lang_code.equals(LocaleSettings.getLanguage())) {
-                locName = anInfo.dict_name;
+            else if (Info.lang_code.equals(LocaleSettings.getLanguage())) {
+                locName = Info.dict_name;
                 break;
             }
         }
-        if(locName.equals(null)){
-            if(defaultEN.equals(null)) {
+        if(locName.equals("")){
+            if(defaultEN.equals("")) {
                 locName = defaultIS;
             }else{
                 locName=defaultEN;

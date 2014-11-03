@@ -29,6 +29,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     private boolean lObtained;
     private boolean error;
     long startTime;
+    DictionaryJsonHandler dJsonHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
 
     @Override
     protected void onStart(){
+        super.onStart();
         startTime = System.currentTimeMillis();
         isLocaleSet();
         dObtained = false;
@@ -56,57 +58,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
             SplashActivity.this.startActivity(intent);
             SplashActivity.this.finish();
         }
-    }
 
-    private void getLocalisedLangs(){
-        //calls rest client to populate languages array
-        final String langURL = "http://api.arnastofnun.is/ordabanki.php?list=dicts&agent=ordabankaapp";
-        LanguageJsonHandler lJsonHandler = new LanguageJsonHandler(this);
-        OrdabankiRestClientUsage langClient = new OrdabankiRestClientUsage();
-        try {
-            //Toast.makeText(getApplicationContext(), "getting languages", Toast.LENGTH_SHORT).show();
-            langClient.getLanguages(langURL, lJsonHandler);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-    private void getLocalisedDicts(){
-        //calls rest client to populate dictionaries array
-        final String dictURL = "http://api.arnastofnun.is/ordabanki.php?list=langs&agent=ordabankaapp";
-        DictionaryJsonHandler dJsonHandler = new DictionaryJsonHandler(this);
-        OrdabankiRestClientUsage dictClient = new OrdabankiRestClientUsage();
-        try {
-            //Toast.makeText(getApplicationContext(), "getting dictionaries", Toast.LENGTH_SHORT).show();
-            dictClient.getDictionaries(dictURL, dJsonHandler);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-    private void checkTiming(){
-        //checks if splash screen has been up for a minimum of 2 seconds then moves to search screen
-        final LocaleSettings localeSettings = new LocaleSettings(this);
-        Runnable runnable = new Runnable() {
-            public void run() {
-                long endTime = startTime+2000;
-                while (System.currentTimeMillis() < endTime) {
-                    synchronized (this) {
-                        try {
-                            Thread.sleep(endTime-System.currentTimeMillis());
-                        } catch (Exception e) {e.printStackTrace();}
-                    }
-                }
-                //Toast.makeText(getApplicationContext(), "setting locale", Toast.LENGTH_SHORT).show();
-                localeSettings.setLanguageFromPref(SearchScreen.class);
-            }
-        };
-        Thread timingThread = new Thread(runnable);
-
-        while(!error) {
-            if (dObtained && lObtained) {
-                //Toast.makeText(getApplicationContext(), "timing thread start", Toast.LENGTH_SHORT).show();
-                timingThread.start();
-            }
-        }
     }
     @Override
     public void onDictionariesObtained (Dictionary[]dictionaries){
@@ -139,9 +91,60 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     }
     @Override
     public void onLanguagesFailure (int statusCode){
-       error= true;
+        error= true;
         Toast.makeText(getApplicationContext(), "languages error", Toast.LENGTH_SHORT).show();
         //todo handle failure: error message, restart quit options
+    }
+
+    private void getLocalisedLangs(){
+        //calls rest client to populate languages array
+        final String langURL = "http://api.arnastofnun.is/ordabanki.php?list=dicts&agent=ordabankaapp";
+        LanguageJsonHandler lJsonHandler = new LanguageJsonHandler(this);
+        LanguageRestClientUsage langClient = new LanguageRestClientUsage();
+        try {
+            //Toast.makeText(getApplicationContext(), "getting languages", Toast.LENGTH_SHORT).show();
+            langClient.getLanguages(langURL, lJsonHandler);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void getLocalisedDicts(){
+        //calls rest client to populate dictionaries array
+        final String dictURL = "http://api.arnastofnun.is/ordabanki.php?list=langs&agent=ordabankaapp";
+        dJsonHandler = new DictionaryJsonHandler(this);
+        DictionaryRestClientUsage dictClient = new DictionaryRestClientUsage();
+        try {
+            //Toast.makeText(getApplicationContext(), "getting dictionaries", Toast.LENGTH_SHORT).show();
+            dictClient.getDictionaries(dictURL, dJsonHandler);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    private void checkTiming(){
+        //checks if splash screen has been up for a minimum of 2 seconds then moves to search screen
+        final LocaleSettings localeSettings = new LocaleSettings(this);
+        Runnable runnable = new Runnable() {
+            public void run() {
+                long endTime = startTime+2000;
+                while (System.currentTimeMillis() < endTime) {
+                    synchronized (this) {
+                        try {
+                            Thread.sleep(endTime-System.currentTimeMillis());
+                        } catch (Exception e) {e.printStackTrace();}
+                    }
+                }
+                //Toast.makeText(getApplicationContext(), "setting locale", Toast.LENGTH_SHORT).show();
+                localeSettings.setLanguageFromPref(SearchScreen.class);
+            }
+        };
+        Thread timingThread = new Thread(runnable);
+
+        while(!error) {
+            if (dObtained && lObtained) {
+                //Toast.makeText(getApplicationContext(), "timing thread start", Toast.LENGTH_SHORT).show();
+                timingThread.start();
+            }
+        }
     }
 
 
