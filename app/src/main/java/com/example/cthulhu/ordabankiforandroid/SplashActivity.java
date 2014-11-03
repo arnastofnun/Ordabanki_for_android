@@ -114,14 +114,14 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         int index = 0;
         //Toast.makeText(getApplicationContext(), "dLoop", Toast.LENGTH_SHORT).show();
         for (Dictionary dict : dictionaries) {
-            localisedDicts[index][1] = dict.getDictCode();
-            localisedDicts[index][2] = dict.getDictName();
+            localisedDicts[index][0] = dict.getDictCode();
+            localisedDicts[index][1] = dict.getDictName();
             index++;
         }
         dObtained=true;
     }
     @Override
-    public void onDictionariesFailure ( int statusCode){
+    public void onDictionariesFailure (int statusCode){
         error = true;
         Toast.makeText(getApplicationContext(), "dictionary error", Toast.LENGTH_SHORT).show();
         //todo handle failure: error message, restart quit options
@@ -131,8 +131,8 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         localisedLangs = new String[languages.length][2];
         int index = 0;
         for (Language lang : languages) {
-            localisedLangs[index][1] = lang.getLangCode();
-            localisedLangs[index][2] = lang.getLangName();
+            localisedLangs[index][0] = lang.getLangCode();
+            localisedLangs[index][1] = lang.getLangName();
             index++;
         }
         lObtained=true;
