@@ -14,11 +14,23 @@ import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
 
-/*
- * @author Trausti
+/**
+ *  This class displays the glossary info screen
+ *
+ *  @author Trausti
  * @since 29.10.2014
  */
 public class AboutGlossaryActivity extends Activity {
+    /*
+     *  Data invariants:
+     *
+     *  url is  the url of the glossary info page
+     *  webView is the view used to display html content
+     *  client is used to retrieve html from the web page containing glossary info
+     *  contents is the html itself
+     *  css is a string that contains css to change the look of the page
+     *
+     */
     private String url;
     private WebView webView;
     private AsyncHttpClient client = new AsyncHttpClient();
@@ -29,10 +41,8 @@ public class AboutGlossaryActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_glossary);
 
-
         url = getIntent().getStringExtra("url_string");
         url = Uri.parse(url).toString();
-
 
         webView = (WebView) findViewById(R.id.webView);
         WebSettings settings = webView.getSettings();
@@ -45,10 +55,18 @@ public class AboutGlossaryActivity extends Activity {
                 "<h4 style=\"text-align:center;\">Orðabanki Íslenskrar málstöðvar</h1>" ;
 
        OrdabankiRESTClient.get(url,null, new AsyncHttpResponseHandler() {
+           /*
+            *  Called when get request has started
+            */
             @Override
             public void onStart() {
             }
-
+           /**
+            * Parses html text with glossary info
+            * @param statusCode HTTP status code
+            * @param headers headers array
+            * @param responseBody response in byte array
+            */
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
@@ -62,15 +80,23 @@ public class AboutGlossaryActivity extends Activity {
                     e.printStackTrace();
                 }
             }
-
+           /**
+            * called when response HTTP status is "4XX" (eg. 401, 403, 404)
+            * @param statusCode HTTP status code
+            * @param headers headers array
+            * @param errorResponse error response
+            * @param e throws an exception
+            */
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
-                // called when response HTTP status is "4XX" (eg. 401, 403, 404)
-            }
 
+            }
+           /**
+            * called when request is retried
+            * @param retryNo number of retries
+            */
             @Override
             public void onRetry(int retryNo) {
-                // called when request is retried
             }
         });
 

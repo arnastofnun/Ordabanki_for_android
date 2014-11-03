@@ -3,7 +3,8 @@ package com.example.cthulhu.ordabankiforandroid;
 import static com.example.cthulhu.ordabankiforandroid.Dictionary.DName.localeCode;
 
 /**
- * Created by cthulhu on 01/11/14.
+ * @author Bill
+ * @since 01/11/14.
  */
 public class Dictionary {
     String code;

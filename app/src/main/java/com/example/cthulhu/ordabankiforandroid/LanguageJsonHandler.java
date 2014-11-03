@@ -8,7 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Created by cthulhu on 01/11/14.
+ * @author Bill
+ * @since 01/11/14.
  */
 public class LanguageJsonHandler extends JsonHttpResponseHandler{
 

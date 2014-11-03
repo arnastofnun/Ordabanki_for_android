@@ -2,6 +2,7 @@ package com.example.cthulhu.ordabankiforandroid.unittests;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.WindowManager;
+import android.widget.EditText;
 
 import com.example.cthulhu.ordabankiforandroid.ChooseLanguagesFragment;
 import com.example.cthulhu.ordabankiforandroid.R;
@@ -35,9 +36,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
                 getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
             }
         });
-*/
-
-    }
+*/}
 
     //Are we testing the correct activity?
     public void testPreconditions(){
@@ -126,9 +125,35 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         // Deselects Third entry in list
         solo.clickInList(3);
 
-
+        // Deselects all
+        solo.clickOnButton(2);
+        solo.clickOnText(solo.getString(R.string.search_tab));
+        solo.enterText(0, "Asf");
+        solo.clickOnButton(R.string.search_button);
+        //user should not be able to search as he has deselected all tabs
+        solo.assertCurrentActivity("wrong activity",SearchScreen.class);
     }
 
+
+
+    /**
+     * This method tests whether or not search is allowed with 0-2 letters
+     * Written by Trausti
+     */
+
+    public void testSearchLessThanTwoLetters(){
+        EditText search = (EditText)solo.getView(R.id.searchView);
+        solo.enterText(search,"");
+        solo.clickOnText(solo.getString(R.string.search_button));
+        //user should not be able to search as he has entered 0 letters
+        solo.assertCurrentActivity("wrong activity",SearchScreen.class);
+        solo.clearEditText(search);
+        solo.enterText(search,"a");
+        solo.clickOnText(solo.getString(R.string.search_button));
+
+        //user should not be able to search as he has entered 1 letter
+        solo.assertCurrentActivity("wrong activity",SearchScreen.class);
+    }
 
 
 
