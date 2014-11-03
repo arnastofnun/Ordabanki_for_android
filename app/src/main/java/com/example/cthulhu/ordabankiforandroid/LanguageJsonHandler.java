@@ -13,13 +13,13 @@ import org.json.JSONObject;
  */
 public class LanguageJsonHandler extends JsonHttpResponseHandler{
 
-        AnActivity activity;
+        SplashActivity activity;
 
         /**
          * initialisation
          * @param activity parent activity
          */
-        public LanguageJsonHandler(AnActivity activity)
+        public LanguageJsonHandler(SplashActivity activity)
         {
             this.activity = activity;
         }

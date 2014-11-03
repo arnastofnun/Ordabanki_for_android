@@ -3,7 +3,9 @@ package com.example.cthulhu.ordabankiforandroid;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+
+
+import org.json.JSONException;
 
 //Basically just waits for two secons and then starts the next activity
 
@@ -18,31 +20,108 @@ import android.os.Handler;
  * ------------------------------------------------------------------------------------------
  * @author Karl Ásgeir Geirsson
  */
-public class SplashActivity extends Activity {
-    /** Duration of wait **/
-    private final int SPLASH_DISPLAY_LENGTH = 2000;
+public class SplashActivity extends Activity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener {
+    /**
+     * Duration of wait *
+     */
+    private final long MIN_SPLASH_DISPLAY_LENGTH = 2000;
+    LanguageJsonHandler lJsonHandler;
+    DictionaryJsonHandler dJsonHandler;
+    final String langURL = "http://api.arnastofnun.is/ordabanki.php?list=dicts&agent=ordabankaapp";
+    final String dictURL = "http://api.arnastofnun.is/ordabanki.php?list=langs&agent=ordabankaapp";
+    String[][] localisedLangs;
+    String[][] localisedDicts;
+    boolean dObtained = false;
+    boolean lObtained = false;
+    boolean error =false;
+    final LocaleSettings localeSettings = new LocaleSettings(this);
+    long startTime = System.currentTimeMillis();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (!localeSettings.getLocaleStatus()) {
+
+            Intent intent = new Intent(SplashActivity.this, SelectLanguageActivity.class);
+            SplashActivity.this.startActivity(intent);
+            SplashActivity.this.finish();
+
+        }
         setContentView(R.layout.activity_splash);
 
-        final LocaleSettings localeSettings = new LocaleSettings(this);
+        lJsonHandler = new LanguageJsonHandler(this);
+        dJsonHandler = new DictionaryJsonHandler(this);
 
+        OrdabankiRestClientUsage langClient = new OrdabankiRestClientUsage();
+        try {
+            langClient.getLanguages(langURL, lJsonHandler);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-        new Handler().postDelayed(new Runnable(){
-            @Override
+        OrdabankiRestClientUsage dictClient = new OrdabankiRestClientUsage();
+        try {
+            dictClient.getDictionaries(dictURL, dJsonHandler);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Runnable runnable = new Runnable() {
             public void run() {
-                if(localeSettings.getLocaleStatus()){
-                    localeSettings.setLanguageFromPref(SearchScreen.class);
+                long endTime = startTime+MIN_SPLASH_DISPLAY_LENGTH;
+                while (System.currentTimeMillis() < endTime) {
+                    synchronized (this) {
+                        try {
+                            Thread.sleep(endTime-System.currentTimeMillis());
+                        } catch (Exception e) {e.printStackTrace();}
+                    }
                 }
-                else {
-                /* Create an Intent that will start the Menu-Activity. */
-                    Intent intent = new Intent(SplashActivity.this, SelectLanguageActivity.class);
-                    SplashActivity.this.startActivity(intent);
-                    SplashActivity.this.finish();
-                }
+                localeSettings.setLanguageFromPref(SearchScreen.class);
             }
-        }, SPLASH_DISPLAY_LENGTH);
+        };
+        Thread timingThread = new Thread(runnable);
+
+        while(!error){
+            if(dObtained&&lObtained){
+                timingThread.start();
+            }
+        }
+
+
     }
+    @Override
+    public void onDictionariesObtained (Dictionary[]dictionaries){
+        localisedDicts = new String[dictionaries.length][2];
+        int index = 0;
+        for (Dictionary dict : dictionaries) {
+            localisedDicts[index][1] = dict.getDictCode();
+            localisedDicts[index][2] = dict.getDictName();
+            index++;
+        }
+        dObtained=true;
+    }
+    @Override
+    public void onDictionariesFailure ( int statusCode){
+        error = true;
+        //todo handle failure: error message, restart quit options
+    }
+    @Override
+    public void onLanguagesObtained (Language[]languages){
+        localisedLangs = new String[languages.length][2];
+        int index = 0;
+        for (Language lang : languages) {
+            localisedDicts[index][1] = lang.getLangCode();
+            localisedDicts[index][2] = lang.getLangName();
+            index++;
+        }
+        lObtained=true;
+    }
+    @Override
+    public void onLanguagesFailure ( int statusCode){
+       error= true;
+        //todo handle failure: error message, restart quit options
+    }
+
+
 }
+

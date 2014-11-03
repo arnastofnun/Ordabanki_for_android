@@ -13,13 +13,13 @@ import org.json.JSONObject;
  */
 public class DictionaryJsonHandler extends JsonHttpResponseHandler{
 
-    AnActivity activity;
+    SplashActivity activity;
 
     /**
      * initialisation
      * @param activity parent activity
      */
-    public DictionaryJsonHandler(AnActivity activity)
+    public DictionaryJsonHandler(SplashActivity activity)
     {
         this.activity = activity;
     }
