@@ -14,8 +14,8 @@ import org.json.JSONException;
 public class AnActivity extends Activity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener{
     LanguageJsonHandler lJsonHandler;
     DictionaryJsonHandler dJsonHandler;
-    final String langURL="http://api...";
-    final String dictURL="http://api...";
+    final String langURL="http://api.arnastofnun.is/ordabanki.php?list=dicts&agent=ordabankaapp";
+    final String dictURL="http://api.arnastofnun.is/ordabanki.php?list=langs&agent=ordabankaapp";
     String[][] localisedLangs;
     String[][] localisedDicts;
     @Override
@@ -46,8 +46,8 @@ public class AnActivity extends Activity implements OnDictionariesObtainedListen
         localisedDicts=new String[dictionaries.length][2];
         int index = 0;
         for (Dictionary dict: dictionaries){
-            localisedDicts[index][1]= dict.getCode();
-            localisedDicts[index][2]= dict.getDName();
+            localisedDicts[index][1]= dict.getDictCode();
+            localisedDicts[index][2]= dict.getDictName();
             index++;
         }
     }

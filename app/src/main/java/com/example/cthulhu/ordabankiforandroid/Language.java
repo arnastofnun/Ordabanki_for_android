@@ -1,29 +1,44 @@
 package com.example.cthulhu.ordabankiforandroid;
 
-import static com.example.cthulhu.ordabankiforandroid.Language.LangName.*;
+
 
 /**
  * Created by cthulhu on 01/11/14.
  */
 public class Language {
-    String LangCode;
-    LangName[] langNames;
-        public static class LangName{
-            static String localeCode;
-            static String locLangName;
-            public LangName(){
+    String code;
+    Info[] info;
+        public static class Info{
+            static String lang_code;
+            static String lang_name;
+            public Info(){
                 //noargs constructor
             }
         }
-    public String getLangCode(){return LangCode;}
-    public String getLangName (){
-        String lName = null;
-        for (LangName ignored : langNames) {
-            if (localeCode.equals(LocaleSettings.getLanguage())) {
-                lName = locLangName;
+    public String getLangCode(){return code;}
+    public String getLangName(){
+        String locName = null;
+        String defaultEN= null;
+        String defaultIS = null;
+        for (Info anInfo : info) {
+            if (anInfo.lang_code.equals("IS")){
+                defaultIS = anInfo.lang_name;
+            }
+            else if (anInfo.lang_code.equals("EN")){
+                defaultEN = anInfo.lang_name;
+            }
+            else if (anInfo.lang_code.equals(LocaleSettings.getLanguage())) {
+                locName = anInfo.lang_name;
                 break;
             }
         }
-        return lName;
+        if(locName==null){
+            if(defaultEN==null) {
+                locName = defaultIS;
+            }else{
+                locName=defaultEN;
+            }
         }
+        return locName;
+    }
 }
