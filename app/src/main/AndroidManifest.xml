@@ -79,10 +79,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".SearchScreen" />
         </activity>
-        <activity
-            android:name="com.example.cthulhu.ordabankiforandroid.AnActivity"
-            android:label="@string/title_activity_an" >
-        </activity>
+
     </application>
 
 </manifest>
