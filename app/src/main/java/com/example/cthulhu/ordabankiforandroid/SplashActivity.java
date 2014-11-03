@@ -18,7 +18,7 @@ import org.json.JSONException;
  * <p>It should start the SearchScreen if language has already been selected</p>
  * <p>For now it just waits and then starts the select language screen</p>
  * ------------------------------------------------------------------------------------------
- * @author Karl Ásgeir Geirsson
+ * @author Karl Ásgeir Geirsson edited 3/11/14 by Bill to implement languages and dictionaries
  */
 public class SplashActivity extends Activity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener {
     /**
