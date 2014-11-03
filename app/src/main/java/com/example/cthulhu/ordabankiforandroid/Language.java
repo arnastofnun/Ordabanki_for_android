@@ -17,23 +17,23 @@ public class Language {
         }
     public String getLangCode(){return code;}
     public String getLangName(){
-        String locName = null;
-        String defaultEN= null;
-        String defaultIS = null;
-        for (Info anInfo : info) {
-            if (anInfo.lang_code.equals("IS")){
-                defaultIS = anInfo.lang_name;
+        String locName = "";
+        String defaultEN= "";
+        String defaultIS = "";
+        for (Info ignored : info) {
+            if (Info.lang_code.equals("IS")){
+                defaultIS = Info.lang_name;
             }
-            else if (anInfo.lang_code.equals("EN")){
-                defaultEN = anInfo.lang_name;
+            else if (Info.lang_code.equals("EN")){
+                defaultEN = Info.lang_name;
             }
-            else if (anInfo.lang_code.equals(LocaleSettings.getLanguage())) {
-                locName = anInfo.lang_name;
+            else if (Info.lang_code.equals(LocaleSettings.getLanguage())) {
+                locName = Info.lang_name;
                 break;
             }
         }
-        if(locName==null){
-            if(defaultEN==null) {
+        if(locName.equals("")){
+            if(defaultEN.equals("")) {
                 locName = defaultIS;
             }else{
                 locName=defaultEN;
