@@ -37,9 +37,16 @@ public class ChooseLanguagesFragment extends Fragment {
         //Making "All" the first item
         listSource.add(getResources().getString(R.string.all_languages));
         //Adding some placeholder values until we get the API
-        //todo add source languages from api
-        listSource.add("IS");
-        listSource.add("EN");
+
+        //Source languages
+        String[] src_langs = getString(R.string.src_languages).split("-");
+
+        //Target languages
+        String[] target_langs = getString(R.string.target_languages).split("-");
+
+        for(String src_lang : src_langs){
+            listSource.add(src_lang);
+        }
 
         //Create an array adapter to put the source list into the spinner
         ArrayAdapter<String> dataAdapterSource = new ArrayAdapter<String>
@@ -57,9 +64,10 @@ public class ChooseLanguagesFragment extends Fragment {
         //Making "All" the first item
         listTarget.add(getResources().getString(R.string.all_languages));
         //Adding some placeholder values until we get the API
-        //todo add target languages from api
-        listTarget.add("Icelandic");
-        listTarget.add("English");
+
+        for(String target_lang : target_langs){
+            listSource.add(target_lang);
+        }
 
 
         //Create an array adapter to put the target list into the spinner

@@ -137,5 +137,8 @@
     <string name="about_body_structure">.</string>
     <string name="about_header_history">.</string>
     <string name="about_header_structure">.</string>
-
+    <!-- source languages -->
+    <string name="src_languages">danska-enska-færeyska-finnska-franska-grænlenska-gríska-hollenska-írska-íslenska-ítalska-japanska-latína-norskt bókmál-nýnorska-pólska-portúgalska-rússneska-sænska-samíska-sanskrít-spænska-þýska</string>
+    <!-- target languages -->
+    <string name="target_languages">danska-enska-færeyska-finnska-franska-grænlenska-gríska-hollenska-írska-íslenska-ítalska-japanska-latína-norskt bókmál-nýnorska-pólska-portúgalska-rússneska-sænska-samíska-sanskrít-spænska-þýska</string>
 </resources>

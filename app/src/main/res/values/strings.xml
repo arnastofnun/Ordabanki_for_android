@@ -121,4 +121,10 @@
     <string name="title_activity_an">AnActivity</string>
     <string name="hello_world">Hello world!</string>
 
+    <!-- Search languages-->
+    <string name="src_languages">"Danish-Dutch-English-Faeroese-Finnish-French-German-Greenlandic-Icelandic-Irish-Italian-Japanese-Latin-New Norwegian-Norwegian-Portuguese-Russian-Sami-Spanish-Swedish"</string>
+
+    <!-- Target languages -->
+    <string name="target_languages">"Danish-Dutch-English-Faeroese-Finnish-French-German-Greenlandic-Icelandic-Irish-Italian-Japanese-Latin-New Norwegian-Norwegian-Portuguese-Russian-Sami-Spanish-Swedish"</string>
+
 </resources>
