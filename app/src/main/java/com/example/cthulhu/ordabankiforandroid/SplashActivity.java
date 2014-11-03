@@ -47,7 +47,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         error =false;
         getLocalisedLangs();
         getLocalisedDicts();
-        checkTiming();
+        //checkTiming();
     }
 
     private void isLocaleSet(){

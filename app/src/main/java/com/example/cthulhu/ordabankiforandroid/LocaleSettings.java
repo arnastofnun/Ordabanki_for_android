@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 import java.util.Locale;
 
@@ -29,7 +30,8 @@ public class LocaleSettings{
     SharedPreferences sharedpref;
     Context context;
     boolean status;
-    static String language;
+    String language;
+    static String statLang;
 
     /**
      * use: Locale settings localeSettings = new LocaleSettings(context)
@@ -46,6 +48,8 @@ public class LocaleSettings{
         this.sharedpref = PreferenceManager.getDefaultSharedPreferences(context);
         this.status = sharedpref.contains("lang");
         this.language = getLanguageFromPref();
+        statLang =this.language;
+
     }
 
     /**
@@ -57,10 +61,11 @@ public class LocaleSettings{
      * Written by Karl Ásgeir Geirsson
      * @return language, the current language in shared preferences, or null
      */
-    public static String getLanguage(){
+    public String getLanguage(){
         return language;
     }
 
+    public static String returnLanguage(){return statLang;}
 
     /**
      * use: String language = getLanguageFromPref()
@@ -73,6 +78,7 @@ public class LocaleSettings{
      */
     public String getLanguageFromPref(){
         //if language is set in shared prefs
+        this.status = sharedpref.contains("lang");
         if(status){
             //get the language string
             return sharedpref.getString("lang","DEFAULT");
@@ -103,6 +109,7 @@ public class LocaleSettings{
     }
     public void setLanguageInit(String lang){
         //Edit the shared preferences
+        Log.v("setting language",lang);
         SharedPreferences.Editor editor = sharedpref.edit();
         //Set lang as the language and apply changes
         editor.putString("lang",lang);
@@ -144,6 +151,7 @@ public class LocaleSettings{
 
 
     public void setCurrLocaleFromPrefs(){
+
         String lang = getLanguageFromPref();
         Locale myLocale = new Locale(lang);
         //Get the configurations
