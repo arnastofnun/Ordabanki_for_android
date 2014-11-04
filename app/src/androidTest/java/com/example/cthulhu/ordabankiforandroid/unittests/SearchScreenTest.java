@@ -1,6 +1,7 @@
 package com.example.cthulhu.ordabankiforandroid.unittests;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.widget.EditText;
 
@@ -86,7 +87,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         // Re-enters text
         solo.enterText(0, "Autodefenestration");
         // Clicks the search button
-        solo.clickOnButton("Leita");
+        //solo.sendKey(KeyEvent.KEYCODE_ENTER);
         //Waits for the Results to load
         solo.waitForActivity(ResultsScreen.class);
         // Asserts that the current screen is the results
@@ -98,6 +99,28 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         solo.goBack();
     }
 
+    /**
+     * This method tests if clearing the text also clears the searchview suggestion
+     */
+
+    public void testSearchViewRefresh(){
+        //Enters the first word
+        solo.enterText(0, "Autodefenestration");
+        //clears the first word
+        solo.clearEditText(0);
+        //enters the second word
+        solo.enterText(0, "Polyester");
+        //Checks that the first word is no longer on the screen
+        Assert.assertFalse(solo.searchText("Autodefenestration"));
+        //clears the text
+        solo.clearEditText(0);
+        //Checks that the first word is no longer on the screen
+        Assert.assertFalse(solo.searchText("Autodefenestration"));
+
+
+
+
+    }
 
 
     /**
@@ -106,7 +129,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
      */
 
 
-    public void testGlossarySelection() {
+    public void testGlossarySelection () {
         //TODO Expand tests and add Assertions
         //Click on Glossary tab
         solo.clickOnText(solo.getString(R.string.pick_glossary_tab));
