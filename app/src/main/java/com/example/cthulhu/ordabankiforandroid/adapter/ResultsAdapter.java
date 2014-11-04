@@ -110,13 +110,13 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
             else{
                 hasSyn=false;
             }
-            if(!result.getDefinition().equals("")){
+            if(result.getDefinition()!= null){
                 hasDef = true;
             }
             else{
                 hasDef = false;
             }
-            if(!result.getExample().equals("")){
+            if(result.getExample()!=null){
                 hasEx = true;
             }
             else{

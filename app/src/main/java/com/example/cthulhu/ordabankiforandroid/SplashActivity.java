@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
-
 
 import org.json.JSONException;
 
@@ -30,17 +31,14 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     private boolean lObtained;
     private boolean error;
     long startTime;
+    public static String[][] g_Languages;
+    public static String[][] g_Dictionaries;
     DictionaryJsonHandler dJsonHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-    }
-
-    @Override
-    protected void onStart(){
-        super.onStart();
         startTime = System.currentTimeMillis();
         isLocaleSet();
         dObtained = false;
@@ -121,28 +119,45 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
             e.printStackTrace();
         }
     }
+
+
+    public static String[][] getLanguages(){
+        return g_Languages;
+    }
+
+    public static String[][] getDictionaries(){
+        return g_Dictionaries;
+    }
+
     private void checkTiming(){
         //checks if splash screen has been up for a minimum of 2 seconds then moves to search screen
-        final LocaleSettings localeSettings = new LocaleSettings(this);
         Runnable runnable = new Runnable() {
             public void run() {
-                long endTime = startTime + 2000;
-                while (!error) {
-                    if (dObtained && lObtained) {
-                        long delay = endTime-System.currentTimeMillis();
-                        if (delay>0) {
-                            Handler timer = new Handler();
-                            timer.postDelayed(new Runnable() {
-                                public void run() {
-                                    localeSettings.setLanguageFromPref(SearchScreen.class);
 
-                                }
-                            }, delay);
+                Looper.prepare();
+                long endTime = startTime + 2000;
+                long delay = 0;
+                while (!error) {
+                    Log.v("dObtained", String.valueOf(dObtained));
+                    Log.v("lObtained",String.valueOf(lObtained));
+                    if (dObtained && lObtained) {
+                        g_Languages = localisedLangs;
+                        g_Dictionaries = localisedDicts;
+                        long now = System.currentTimeMillis();
+                        if (now < endTime) {
+                            delay = endTime - now;
                         }
-                        else{localeSettings.setLanguageFromPref(SearchScreen.class);}
+                        break;
                     }
                 }
-                //error
+                Handler mainHandler = new Handler(SplashActivity.this.getMainLooper());
+                mainHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        LocaleSettings localeSettings = new LocaleSettings(SplashActivity.this);
+                        localeSettings.setLanguageFromPref(SearchScreen.class);
+                    }
+                }, delay);
             }
         };
         Thread timingThread = new Thread(runnable);
