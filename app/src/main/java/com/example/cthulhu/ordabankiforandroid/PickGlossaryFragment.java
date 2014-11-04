@@ -48,11 +48,13 @@ public class PickGlossaryFragment extends Fragment {
     }
     @Override
     public void onPause(){
+        super.onPause();
         g.setGlossaryState(glossaryList);
     }
 
     @Override
     public void onResume(){
+        super.onResume();
         glossaryList=g.getGlossaryState();
         int index=0;
         View listitemview;
