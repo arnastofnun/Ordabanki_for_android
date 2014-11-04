@@ -32,9 +32,10 @@ public class PickGlossaryFragment extends Fragment {
     *   glossaryList is a list that contains all the glossaries to be used
     *   in the Orðabanki app
     */
+    Globals g;
     private static ArrayList<Glossary> glossaryList;
     private static boolean allSelected = true;
-
+    private static ListView listView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         //Load the .xml file for the pick glossary fragment
@@ -44,6 +45,33 @@ public class PickGlossaryFragment extends Fragment {
             //Display the pick glossary list
             displayListView(rootView);
         return rootView;
+    }
+    @Override
+    public void onPause(){
+        g.setGlossaryState(glossaryList);
+    }
+
+    @Override
+    public void onResume(){
+        glossaryList=g.getGlossaryState();
+        int index=0;
+        View listitemview;
+        for(Glossary glossary : glossaryList){
+            listitemview = listView.getChildAt(index);
+            if(listitemview != null) {
+                if(glossary.isSelected()){
+                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                    listitemview.setBackgroundResource(R.color.glossary_selected);
+                    tick.setImageResource(R.drawable.ic_action_accept);
+                }else{
+                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                    listitemview.setBackgroundResource(R.color.glossary_notselected);
+                    tick.setImageResource(0);
+                }
+            }
+            index++;
+        }
+
     }
     /**use:displayListView(rootView)
      * pre: rootView is of type View
@@ -62,9 +90,10 @@ public class PickGlossaryFragment extends Fragment {
      */
     private void displayListView(View rootView){
         //List of glossaries
-        glossaryList = new ArrayList<Glossary>();
-        Globals g = (Globals)this.getActivity().getApplication();
-        glossaryList.addAll(g.getDictionaries());
+
+            glossaryList = new ArrayList<Glossary>();
+            g = (Globals) this.getActivity().getApplication();
+            glossaryList.addAll(g.getDictionaries());
 
 
 
@@ -72,7 +101,7 @@ public class PickGlossaryFragment extends Fragment {
         GlossaryAdapter glossaryAdapter = new GlossaryAdapter(this.getActivity(), R.layout.glossary_list, glossaryList);
 
         //Getting the glossary list and setting it's adapter to my custom glossary adapter
-        final ListView listView = (ListView) rootView.findViewById(R.id.GlossaryList);
+        listView = (ListView) rootView.findViewById(R.id.GlossaryList);
         listView.setAdapter(glossaryAdapter);
 
         //Button to check all glossaries
