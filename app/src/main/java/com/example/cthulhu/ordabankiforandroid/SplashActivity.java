@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
+
 //Basically just waits for two secons and then starts the next activity
 
 /**
@@ -25,14 +27,14 @@ import org.json.JSONException;
  */
 public class SplashActivity extends Activity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener {
 
-    public String[][] localisedLangs;
-    public String[][] localisedDicts;
+    public ArrayList<ArrayList<String>> localisedLangs;
+    public ArrayList<Glossary> localisedDicts;
     private boolean dObtained;
     private boolean lObtained;
     private boolean error;
     long startTime;
-    public static String[][] g_Languages;
-    public static String[][] g_Dictionaries;
+    public static ArrayList<ArrayList<String>> g_Languages;
+    public static ArrayList<Glossary> g_Dictionaries;
     DictionaryJsonHandler dJsonHandler;
 
     @Override
@@ -64,69 +66,19 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     }
     @Override
     public void onDictionariesObtained (Dictionary[]dictionaries){
-        localisedDicts = new String[dictionaries.length][2];
+        Log.v("dObtained", String.valueOf(dObtained));
+        localisedDicts = new ArrayList<Glossary>();
         int index = 0;
+        Glossary glossary;
         //Toast.makeText(getApplicationContext(), "dLoop", Toast.LENGTH_SHORT).show();
         for (Dictionary dict : dictionaries) {
-            localisedDicts[index][0] = dict.getDictCode();
-            localisedDicts[index][1] = getDictName(dict);
+            Log.v("name: ",dict.getDictName());
+            Log.v("dict code", dict.getDictCode());
+            glossary = new Glossary(dict.getDictCode(),dict.getDictName(),"");
+            localisedDicts.add(index, glossary);
             index++;
         }
         dObtained=true;
-    }
-    public String getDictName(Dictionary dict) {
-        String locName = null;
-        String defaultEN = null;
-        String defaultIS = null;
-        Dictionary.Info[] info =  dict.getInfo();
-        for (Dictionary.Info anInfo : info) {
-            if (anInfo.getLangCode().equals("IS")) {
-                defaultIS = anInfo.getDictName();
-            } else if (anInfo.getLangCode().equals("EN")) {
-                defaultEN = anInfo.getDictName();
-            } else if (anInfo.getLangCode().equals(LocaleSettings.returnLanguage())) {
-                locName = anInfo.getDictName();
-                break;
-            }
-        }
-        if (locName == null) {
-            if (defaultEN == null) {
-                locName = defaultIS;
-            } else {
-                locName = defaultEN;
-            }
-        }
-        if (locName==null){
-            Toast.makeText(getApplicationContext(), "D parse error", Toast.LENGTH_SHORT).show();
-        }
-        return locName;
-    }
-    public String getLangName(Language lang) {
-        String locName = null;
-        String defaultEN = null;
-        String defaultIS = null;
-        Language.Info[] info =  lang.getInfo();
-        for (Language.Info anInfo : info) {
-            if (anInfo.getLangCode().equals("IS")) {
-                defaultIS = anInfo.getLangName();
-            } else if (anInfo.getLangCode().equals("EN")) {
-                defaultEN = anInfo.getLangName();
-            } else if (anInfo.getLangCode().equals(LocaleSettings.returnLanguage())) {
-                locName = anInfo.getLangName();
-                break;
-            }
-        }
-        if (locName == null) {
-            if (defaultEN == null) {
-                locName = defaultIS;
-            } else {
-                locName = defaultEN;
-            }
-        }
-        if (locName==null){
-            Toast.makeText(getApplicationContext(), "L parse error", Toast.LENGTH_SHORT).show();
-        }
-        return locName;
     }
     @Override
     public void onDictionariesFailure (int statusCode){
@@ -136,14 +88,16 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     }
     @Override
     public void onLanguagesObtained (Language[]languages){
-        localisedLangs = new String[languages.length][2];
+        //Log.v("lObtained",String.valueOf(lObtained));
+        /*
+        localisedLangs = new ArrayList<ArrayList<String>>();
         int index = 0;
         for (Language lang : languages) {
-            localisedLangs[index][0] = lang.getCode();
-            localisedLangs[index][1] = getLangName(lang);
+            localisedLangs.get(index).add(0, lang.getLangCode());
+            localisedLangs.get(index).add(1, lang.getLangName());
             index++;
         }
-
+        */
         lObtained=true;
     }
     @Override
@@ -155,7 +109,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
 
     private void getLocalisedLangs(){
         //calls rest client to populate languages array
-        final String langURL = "http://api.arnastofnun.is/ordabanki.php?list=dicts&agent=ordabankaapp";
+        final String langURL = "http://api.arnastofnun.is/ordabanki.php?list=langs&agent=ordabankaapp";
         LanguageJsonHandler lJsonHandler = new LanguageJsonHandler(this);
         LanguageRestClientUsage langClient = new LanguageRestClientUsage();
         try {
@@ -167,7 +121,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     }
     private void getLocalisedDicts(){
         //calls rest client to populate dictionaries array
-        final String dictURL = "http://api.arnastofnun.is/ordabanki.php?list=langs&agent=ordabankaapp";
+        final String dictURL = "http://api.arnastofnun.is/ordabanki.php?list=dicts&agent=ordabankaapp";
         dJsonHandler = new DictionaryJsonHandler(this);
         DictionaryRestClientUsage dictClient = new DictionaryRestClientUsage();
         try {
@@ -179,14 +133,6 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     }
 
 
-    public static String[][] getLanguages(){
-        return g_Languages;
-    }
-
-    public static String[][] getDictionaries(){
-        return g_Dictionaries;
-    }
-
     private void checkTiming(){
         //checks if splash screen has been up for a minimum of 2 seconds then moves to search screen
         Runnable runnable = new Runnable() {
@@ -196,8 +142,8 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
                 long endTime = startTime + 2000;
                 long delay = 0;
                 while (!error) {
-                    Log.v("dObtained", String.valueOf(dObtained));
-                    Log.v("lObtained",String.valueOf(lObtained));
+                    //Log.v("dObtained", String.valueOf(dObtained));
+                    //Log.v("lObtained",String.valueOf(lObtained));
                     if (dObtained && lObtained) {
                         g_Languages = localisedLangs;
                         g_Dictionaries = localisedDicts;

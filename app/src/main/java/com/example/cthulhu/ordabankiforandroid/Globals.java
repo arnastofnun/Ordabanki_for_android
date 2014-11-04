@@ -1,18 +1,22 @@
 package com.example.cthulhu.ordabankiforandroid;
+
 import android.app.Application;
+
+import java.util.ArrayList;
+
 /**
  * Created by cthulhu on 04/11/14.
  */
 public class Globals extends Application{
-    private String[][] languages;
-    private String[][] dictionaries;
+    private ArrayList<ArrayList<String>> languages;
+    private ArrayList<Glossary> dictionaries;
 
-    public void setLanguages(String[][] langs){
+    public void setLanguages(ArrayList<ArrayList<String>> langs){
      this.languages=langs;
     }
-    public void setDictionaries(String[][]dicts){
+    public void setDictionaries(ArrayList<Glossary> dicts){
         this.dictionaries=dicts;
     }
-    public String[][]getLanguages(){return languages;}
-    public String[][]getDictionaries(){return dictionaries;}
+    public ArrayList<ArrayList<String>>getLanguages(){return languages;}
+    public ArrayList<Glossary>getDictionaries(){return dictionaries;}
 }

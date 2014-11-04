@@ -20,7 +20,7 @@ public class Glossary{
     *   selected is true if this glossary
     *   is selected, false otherwise
     * */
-    String code = null;
+    String dict_code;
     String name = null;
     String url = null;
     boolean selected = false;
@@ -30,7 +30,7 @@ public class Glossary{
     //post: creates the glossary object
     public Glossary(String code, String name, String url) {
         super();
-        this.code = code;
+        this.dict_code = code;
         this.name = name;
         this.url = url;
         this.selected = true;
@@ -39,15 +39,15 @@ public class Glossary{
      //use: glossary.getCode()
     //pre: nothing
     //post: returns the code for the glossary, type string
-    public String getCode() {
-        return code;
+    public String getDictCode() {
+        return dict_code;
     }
 
     //use: glossary.setCode()
     //pre: code is a String
     //post:Sets the code for the glossary
     public void setCode(String code) {
-        this.code = code;
+        this.dict_code = code;
     }
 
 

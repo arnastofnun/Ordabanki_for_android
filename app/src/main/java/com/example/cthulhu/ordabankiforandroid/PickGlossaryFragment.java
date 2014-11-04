@@ -63,10 +63,8 @@ public class PickGlossaryFragment extends Fragment {
     private void displayListView(View rootView){
         //List of glossaries
         glossaryList = new ArrayList<Glossary>();
-        Glossary glossary = new Glossary("TOLFR","Statistics","");
-        glossaryList.add(glossary);
-        glossary = new Glossary("LAEKN","Medicine", "http://www.ismal.hi.is/ob/uppl/laekn.html");
-        glossaryList.add(glossary);
+        Globals g = (Globals)this.getActivity().getApplication();
+        glossaryList.addAll(g.getDictionaries());
 
 
 
@@ -169,8 +167,8 @@ public class PickGlossaryFragment extends Fragment {
         for(Glossary glossary : glossaryList) {
 
             if(glossary.isSelected()){
-                Log.v("selected glossary: ", glossary.getCode());
-                selectedGlossaries.add(glossary.getCode());
+                Log.v("selected glossary: ", glossary.getDictCode());
+                selectedGlossaries.add(glossary.getDictCode());
             }
             else {
                 allSelected = false;

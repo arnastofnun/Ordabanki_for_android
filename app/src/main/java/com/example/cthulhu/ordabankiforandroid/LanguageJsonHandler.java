@@ -1,5 +1,7 @@
 package com.example.cthulhu.ordabankiforandroid;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -33,6 +35,7 @@ public class LanguageJsonHandler extends JsonHttpResponseHandler{
         @Override
         public void onSuccess(int statusCode, Header[] headers, JSONArray response){
             Gson gson = new Gson();
+            Log.v("SUCCESS","HERE");
             Language[] languages =  gson.fromJson(response.toString(), Language[].class);
             activity.onLanguagesObtained(languages);
         }

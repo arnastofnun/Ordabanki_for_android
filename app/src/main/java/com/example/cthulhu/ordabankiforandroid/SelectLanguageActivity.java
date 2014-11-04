@@ -1,19 +1,10 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
-
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Typeface;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-
-import android.widget.TextView;
-
-import java.util.Locale;
 
 /*
 *   Holds the functions that are implemented in
@@ -49,10 +40,10 @@ public class SelectLanguageActivity extends Activity {
         final LocaleSettings localeSettings = new LocaleSettings(this);
 
         //Create on click listeners for the buttons
-        languageOnClickListener(enButton,localeSettings);
-        languageOnClickListener(isButton,localeSettings);
-        languageOnClickListener(daButton,localeSettings);
-        languageOnClickListener(svButton,localeSettings);
+        languageOnClickListener(enButton);
+        languageOnClickListener(isButton);
+        languageOnClickListener(daButton);
+        languageOnClickListener(svButton);
 
 
     }
@@ -71,9 +62,8 @@ public class SelectLanguageActivity extends Activity {
      * -----------------------------------------------------------------------------------
      * Written by Karl Ásgeir Geirsson
      * @param imageButton an image button that is supposed to change language
-     * @param localeSettings a locale settings object
      */
-    private void languageOnClickListener(ImageButton imageButton, final LocaleSettings localeSettings){
+    private void languageOnClickListener(ImageButton imageButton){
         final String lang;
         //Switch to choose language from the buttons
         switch(imageButton.getId()){
