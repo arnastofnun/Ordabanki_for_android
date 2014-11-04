@@ -44,8 +44,11 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         dObtained = false;
         lObtained = false;
         error =false;
+        final Globals globals = (Globals) getApplicationContext();
         getLocalisedLangs();
+        globals.setLanguages(localisedLangs);
         getLocalisedDicts();
+        globals.setDictionaries(localisedDicts);
         checkTiming();
     }
 
@@ -140,6 +143,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
             localisedLangs[index][1] = getLangName(lang);
             index++;
         }
+
         lObtained=true;
     }
     @Override
