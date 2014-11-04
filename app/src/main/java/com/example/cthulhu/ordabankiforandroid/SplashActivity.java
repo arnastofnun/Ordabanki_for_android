@@ -47,7 +47,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         error =false;
         getLocalisedLangs();
         getLocalisedDicts();
-        //checkTiming();
+        checkTiming();
     }
 
     private void isLocaleSet(){
@@ -125,26 +125,28 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         final LocaleSettings localeSettings = new LocaleSettings(this);
         Runnable runnable = new Runnable() {
             public void run() {
-                long endTime = startTime+2000;
-                while (System.currentTimeMillis() < endTime) {
-                    synchronized (this) {
-                        try {
-                            Thread.sleep(endTime-System.currentTimeMillis());
-                        } catch (Exception e) {e.printStackTrace();}
+                long endTime = startTime + 2000;
+                while (!error) {
+                    if (dObtained && lObtained) {
+                        long now = System.currentTimeMillis();
+                        if (now < endTime) {
+                            synchronized (this) {
+                               try {
+                                    Thread.sleep(endTime - now);
+                               } catch (Exception e) {
+                                    e.printStackTrace();
+                               }
+                            }
+                        }
+                        localeSettings.setLanguageFromPref(SearchScreen.class);
                     }
                 }
-                //Toast.makeText(getApplicationContext(), "setting locale", Toast.LENGTH_SHORT).show();
-                localeSettings.setLanguageFromPref(SearchScreen.class);
+                //error
             }
         };
         Thread timingThread = new Thread(runnable);
+        timingThread.start();
 
-        while(!error) {
-            if (dObtained && lObtained) {
-                //Toast.makeText(getApplicationContext(), "timing thread start", Toast.LENGTH_SHORT).show();
-                timingThread.start();
-            }
-        }
     }
 
 
