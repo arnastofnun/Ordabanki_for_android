@@ -115,7 +115,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         //calls rest client to populate languages array
         final String langURL = "http://api.arnastofnun.is/ordabanki.php?list=langs&agent=ordabankaapp";
         LanguageJsonHandler lJsonHandler = new LanguageJsonHandler(this);
-        LanguageRestClientUsage langClient = new LanguageRestClientUsage();
+        OrdabankiRestClientUsage langClient = new OrdabankiRestClientUsage();
         try {
             //Toast.makeText(getApplicationContext(), "getting languages", Toast.LENGTH_SHORT).show();
             langClient.getLanguages(langURL, lJsonHandler);
@@ -127,7 +127,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         //calls rest client to populate dictionaries array
         final String dictURL = "http://api.arnastofnun.is/ordabanki.php?list=dicts&agent=ordabankaapp";
         dJsonHandler = new DictionaryJsonHandler(this);
-        DictionaryRestClientUsage dictClient = new DictionaryRestClientUsage();
+        OrdabankiRestClientUsage dictClient = new OrdabankiRestClientUsage();
         try {
             //Toast.makeText(getApplicationContext(), "getting dictionaries", Toast.LENGTH_SHORT).show();
             dictClient.getDictionaries(dictURL, dJsonHandler);
