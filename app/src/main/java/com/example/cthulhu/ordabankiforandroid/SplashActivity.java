@@ -66,10 +66,58 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         //Toast.makeText(getApplicationContext(), "dLoop", Toast.LENGTH_SHORT).show();
         for (Dictionary dict : dictionaries) {
             localisedDicts[index][0] = dict.getDictCode();
-            localisedDicts[index][1] = dict.getDictName();
+            localisedDicts[index][1] = getDictName(dict);
             index++;
         }
         dObtained=true;
+    }
+    public String getDictName(Dictionary dict) {
+        String locName = null;
+        String defaultEN = null;
+        String defaultIS = null;
+        Dictionary.Info[] info =  dict.getInfo();
+        for (Dictionary.Info anInfo : info) {
+            if (anInfo.getLangCode().equals("IS")) {
+                defaultIS = anInfo.getDictName();
+            } else if (anInfo.getLangCode().equals("EN")) {
+                defaultEN = anInfo.getDictName();
+            } else if (anInfo.getLangCode().equals(LocaleSettings.returnLanguage())) {
+                locName = anInfo.getDictName();
+                break;
+            }
+        }
+        if (locName == null) {
+            if (defaultEN == null) {
+                locName = defaultIS;
+            } else {
+                locName = defaultEN;
+            }
+        }
+        return locName;
+    }
+    public String getLangName(Language lang) {
+        String locName = null;
+        String defaultEN = null;
+        String defaultIS = null;
+        Language.Info[] info =  lang.getInfo();
+        for (Language.Info anInfo : info) {
+            if (anInfo.getLangCode().equals("IS")) {
+                defaultIS = anInfo.getLangName();
+            } else if (anInfo.getLangCode().equals("EN")) {
+                defaultEN = anInfo.getLangName();
+            } else if (anInfo.getLangCode().equals(LocaleSettings.returnLanguage())) {
+                locName = anInfo.getLangName();
+                break;
+            }
+        }
+        if (locName == null) {
+            if (defaultEN == null) {
+                locName = defaultIS;
+            } else {
+                locName = defaultEN;
+            }
+        }
+        return locName;
     }
     @Override
     public void onDictionariesFailure (int statusCode){
@@ -82,8 +130,8 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         localisedLangs = new String[languages.length][2];
         int index = 0;
         for (Language lang : languages) {
-            localisedLangs[index][0] = lang.getLangCode();
-            localisedLangs[index][1] = lang.getLangName();
+            localisedLangs[index][0] = lang.getCode();
+            localisedLangs[index][1] = getLangName(lang);
             index++;
         }
         lObtained=true;
