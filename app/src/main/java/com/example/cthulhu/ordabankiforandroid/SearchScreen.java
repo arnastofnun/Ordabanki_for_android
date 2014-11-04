@@ -153,6 +153,8 @@ public class SearchScreen extends FragmentActivity {
     public void search(String searchQuery) throws JSONException {
         Boolean allowsearch = true;
         //Create the Intent
+        //todo make intent go to term results screen if search term is numeric
+
         Intent intent = new Intent(this, ResultsScreen.class);
 
         if (searchQuery.equals("")) {
