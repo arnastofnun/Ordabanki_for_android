@@ -19,6 +19,7 @@ public class ChooseLanguagesFragment extends Fragment {
 
     private static Spinner sourceSpinner;
     private static Spinner targetSpinner;
+    private static ArrayList<String> codeRef= new ArrayList<String>();
 
 
 
@@ -37,6 +38,7 @@ public class ChooseLanguagesFragment extends Fragment {
         listSource.add(getResources().getString(R.string.all_languages));
         Globals g = (Globals)this.getActivity().getApplication();
         listSource.addAll(g.getLanguages().get(1));
+        codeRef.addAll(g.getLanguages().get(0));
 
 
         //Adding some placeholder values until we get the API
@@ -82,12 +84,18 @@ public class ChooseLanguagesFragment extends Fragment {
 
     public static String getSourceLanguage(){
         if(sourceSpinner == null) {return "ALL";}
-        else {return sourceSpinner.getSelectedItem().toString();}
+        else {
+            int index =targetSpinner.getSelectedItemPosition()-1;
+            return codeRef.get(index);
+        }
     }
 
     public static String getTargetLanguage(){
         if(targetSpinner == null) {return "ALL";}
-        else {return targetSpinner.getSelectedItem().toString();}
+        else {
+            int index =targetSpinner.getSelectedItemPosition()-1;
+            return codeRef.get(index);
+        }
     }
 
 
