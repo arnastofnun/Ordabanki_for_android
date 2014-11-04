@@ -32,7 +32,7 @@ public class PickGlossaryFragment extends Fragment {
     *   glossaryList is a list that contains all the glossaries to be used
     *   in the Orðabanki app
     */
-    Globals g;
+    Globals g = (Globals) this.getActivity().getApplication();
     private static ArrayList<Glossary> glossaryList;
     private static boolean allSelected = true;
     private static ListView listView;
@@ -92,7 +92,7 @@ public class PickGlossaryFragment extends Fragment {
         //List of glossaries
 
             glossaryList = new ArrayList<Glossary>();
-            g = (Globals) this.getActivity().getApplication();
+            //g = (Globals) this.getActivity().getApplication();
             glossaryList.addAll(g.getDictionaries());
 
 
