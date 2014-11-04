@@ -7,16 +7,37 @@ package com.example.cthulhu.ordabankiforandroid;
 public class Language {
     String code;
     Info[] info;
-        public static class Info{
+        public class Info{
             String lang_code;
             String lang_name;
             public Info(){
                 //noargs constructor
             }
-            public String getLangCode(){return lang_code;}
-            public String getLangName(){return lang_name;}
         }
-    public String getCode(){return code;}
-    public Info[] getInfo(){return info;}
-
+    public String getLangCode(){return code;}
+    public String getLangName(){
+        String locName = null;
+        String defaultEN= null;
+        String defaultIS = null;
+        for (Info anInfo : info) {
+            if (anInfo.lang_code.equals("IS")){
+                defaultIS = anInfo.lang_name;
+            }
+            else if (anInfo.lang_code.equals("EN")){
+                defaultEN = anInfo.lang_name;
+            }
+            else if (anInfo.lang_code.equals(LocaleSettings.returnLanguage())) {
+                locName = anInfo.lang_name;
+                break;
+            }
+        }
+        if(locName==null){
+            if(defaultEN==null) {
+                locName = defaultIS;
+            }else{
+                locName=defaultEN;
+            }
+        }
+        return locName;
+    }
 }

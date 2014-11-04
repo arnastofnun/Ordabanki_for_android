@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class ChooseLanguagesFragment extends Fragment {
@@ -32,21 +31,21 @@ public class ChooseLanguagesFragment extends Fragment {
         //Get the source language spinner
         sourceSpinner = (Spinner) rootView.findViewById(R.id.sourceSpinner);
         //Create a list to place the source languages in
-        List<String> listSource = new ArrayList<String>();
+        ArrayList<String> listSource = new ArrayList<String>();
 
         //Making "All" the first item
         listSource.add(getResources().getString(R.string.all_languages));
+        Globals g = (Globals)this.getActivity().getApplication();
+        listSource.addAll(g.getLanguages().get(1));
+
+
         //Adding some placeholder values until we get the API
 
         //Source languages
-        String[] src_langs = getString(R.string.src_languages).split("-");
+        //String[] src_langs = getString(R.string.src_languages).split("-");
 
         //Target languages
-        String[] target_langs = getString(R.string.target_languages).split("-");
-
-        for(String src_lang : src_langs){
-            listSource.add(src_lang);
-        }
+        //String[] target_langs = getString(R.string.target_languages).split("-");
 
         //Create an array adapter to put the source list into the spinner
         ArrayAdapter<String> dataAdapterSource = new ArrayAdapter<String>
@@ -60,14 +59,11 @@ public class ChooseLanguagesFragment extends Fragment {
         //Add items to target language dropdown spinner
         targetSpinner = (Spinner) rootView.findViewById(R.id.targetSpinner);
         //Create a list to place the target languages in
-        List<String> listTarget = new ArrayList<String>();
+        ArrayList<String> listTarget = new ArrayList<String>();
         //Making "All" the first item
         listTarget.add(getResources().getString(R.string.all_languages));
+        listTarget.addAll(g.getLanguages().get(1));
         //Adding some placeholder values until we get the API
-
-        for(String target_lang : target_langs){
-            listSource.add(target_lang);
-        }
 
 
         //Create an array adapter to put the target list into the spinner

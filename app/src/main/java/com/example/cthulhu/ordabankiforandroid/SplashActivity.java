@@ -89,15 +89,19 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     @Override
     public void onLanguagesObtained (Language[]languages){
         //Log.v("lObtained",String.valueOf(lObtained));
-        /*
+
         localisedLangs = new ArrayList<ArrayList<String>>();
         int index = 0;
+        ArrayList<String> codeList = new ArrayList<String>();
+        ArrayList<String> nameList = new ArrayList<String>();
         for (Language lang : languages) {
-            localisedLangs.get(index).add(0, lang.getLangCode());
-            localisedLangs.get(index).add(1, lang.getLangName());
+            codeList.add(index,lang.getLangCode());
+            nameList.add(index,lang.getLangName());
             index++;
         }
-        */
+        localisedLangs.add(0,codeList);
+        localisedLangs.add(1,nameList);
+
         lObtained=true;
     }
     @Override

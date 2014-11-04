@@ -93,10 +93,12 @@ public class PickGlossaryFragment extends Fragment {
                         //Set the selected status of the glossary
                         glossary.setSelected(true);
                         //Get the correct item in the list
-                        listitemview =  listView.getChildAt(index);
-                        ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                        listitemview.setBackgroundResource(R.color.glossary_selected);
-                        tick.setImageResource(R.drawable.ic_action_accept);
+                        listitemview = listView.getChildAt(index);
+                        if(listitemview != null) {
+                            ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                            listitemview.setBackgroundResource(R.color.glossary_selected);
+                            tick.setImageResource(R.drawable.ic_action_accept);
+                        }
                     }
                     index++;
                 }
@@ -119,9 +121,12 @@ public class PickGlossaryFragment extends Fragment {
                         glossary.setSelected(false);
                         //Get the correct item in the list
                         listitemview =  listView.getChildAt(index);
-                        ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                        listitemview.setBackgroundResource(R.color.glossary_notselected);
-                        tick.setImageResource(0);
+                        if(listitemview != null) {
+                            Log.v("LISTVIEW", listitemview.toString());
+                            ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                            listitemview.setBackgroundResource(R.color.glossary_notselected);
+                            tick.setImageResource(0);
+                        }
 
                     }
                     index++;
