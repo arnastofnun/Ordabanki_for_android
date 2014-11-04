@@ -3,6 +3,7 @@ package com.example.cthulhu.ordabankiforandroid;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Toast;
 
 
@@ -128,17 +129,17 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
                 long endTime = startTime + 2000;
                 while (!error) {
                     if (dObtained && lObtained) {
-                        long now = System.currentTimeMillis();
-                        if (now < endTime) {
-                            synchronized (this) {
-                               try {
-                                    Thread.sleep(endTime - now);
-                               } catch (Exception e) {
-                                    e.printStackTrace();
-                               }
-                            }
+                        long delay = endTime-System.currentTimeMillis();
+                        if (delay>0) {
+                            Handler timer = new Handler();
+                            timer.postDelayed(new Runnable() {
+                                public void run() {
+                                    localeSettings.setLanguageFromPref(SearchScreen.class);
+
+                                }
+                            }, delay);
                         }
-                        localeSettings.setLanguageFromPref(SearchScreen.class);
+                        else{localeSettings.setLanguageFromPref(SearchScreen.class);}
                     }
                 }
                 //error
