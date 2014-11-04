@@ -93,6 +93,9 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
                 locName = defaultEN;
             }
         }
+        if (locName==null){
+            Toast.makeText(getApplicationContext(), "D parse error", Toast.LENGTH_SHORT).show();
+        }
         return locName;
     }
     public String getLangName(Language lang) {
@@ -116,6 +119,9 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
             } else {
                 locName = defaultEN;
             }
+        }
+        if (locName==null){
+            Toast.makeText(getApplicationContext(), "L parse error", Toast.LENGTH_SHORT).show();
         }
         return locName;
     }
