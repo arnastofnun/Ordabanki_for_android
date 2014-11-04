@@ -46,11 +46,11 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         dObtained = false;
         lObtained = false;
         error =false;
-        final Globals globals = (Globals) getApplicationContext();
+
         getLocalisedLangs();
-        globals.setLanguages(localisedLangs);
+
         getLocalisedDicts();
-        globals.setDictionaries(localisedDicts);
+
         checkTiming();
     }
 
@@ -135,6 +135,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
 
     private void checkTiming(){
         //checks if splash screen has been up for a minimum of 2 seconds then moves to search screen
+        final Globals globals = (Globals) getApplicationContext();
         Runnable runnable = new Runnable() {
             public void run() {
 
@@ -154,6 +155,9 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
                         break;
                     }
                 }
+
+                globals.setLanguages(localisedLangs);
+                globals.setDictionaries(localisedDicts);
                 Handler mainHandler = new Handler(SplashActivity.this.getMainLooper());
                 mainHandler.postDelayed(new Runnable() {
                     @Override
