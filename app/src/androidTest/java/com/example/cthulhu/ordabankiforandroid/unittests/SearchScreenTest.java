@@ -87,7 +87,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         // Re-enters text
         solo.enterText(0, "Autodefenestration");
         // Clicks the search button
-        //solo.sendKey(KeyEvent.KEYCODE_ENTER);
+        solo.sendKey(KeyEvent.KEYCODE_ENTER);
         //Waits for the Results to load
         solo.waitForActivity(ResultsScreen.class);
         // Asserts that the current screen is the results
@@ -100,10 +100,11 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
     }
 
     /**
-     * This method tests if clearing the text also clears the searchview suggestion
+     * This method tests the suggestion feature
+     * written by Kristján
      */
 
-    public void testSearchViewRefresh(){
+    public void testSuggestion(){
         //Enters the first word
         solo.enterText(0, "Autodefenestration");
         //clears the first word
@@ -114,9 +115,16 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         Assert.assertFalse(solo.searchText("Autodefenestration"));
         //clears the text
         solo.clearEditText(0);
-        //Checks that the first word is no longer on the screen
+        //checks that suggestion is made
+        Assert.assertTrue(solo.searchText("Autodefenestration"));
+        //Enters partial match
+        solo.enterText(0, "Auto");
+        //checks that suggestion is made
+        Assert.assertTrue(solo.searchText("Autodefenestration"));
+        //enters something that doesn't match
+        solo.enterText(0, "AutoMobile");
+        //Checks that suggestion is no longer made
         Assert.assertFalse(solo.searchText("Autodefenestration"));
-
 
 
 
