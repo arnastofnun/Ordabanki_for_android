@@ -7,7 +7,7 @@ package com.example.cthulhu.ordabankiforandroid;
  */
 public class Dictionary {
     String dict_code;
-    String fjoldi;
+    int fjoldi;
     Info[] info;
         public static class Info{
             static String lang_code;
@@ -19,6 +19,6 @@ public class Dictionary {
         public  String getDictName(){return dict_name;}
         }
     public String getDictCode(){return dict_code;}
-    public String getFjoldi(){return fjoldi;}
+    public int getFjoldi(){return fjoldi;}
     public Info[] getInfo(){return info;}
 }
