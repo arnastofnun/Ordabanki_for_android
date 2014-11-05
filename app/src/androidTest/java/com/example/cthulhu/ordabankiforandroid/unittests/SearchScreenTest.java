@@ -40,7 +40,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
 */}
 
     //Are we testing the correct activity?
-    public void testPreconditions(){
+    public void testPreconditions() {
         solo.assertCurrentActivity("wrong activity",SearchScreen.class);
     }
 
@@ -50,7 +50,8 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
      * Written by Trausti
      * @return      nothing */
 
-    public void testSpinner(){
+    public void testSpinner() {
+        //TODO This test no longer functions
         //Click on Languages tab
         solo.clickOnText(solo.getString(R.string.languages_tab_name));
         //Press spinner item 0 (src lang) and language 2 (English)
@@ -86,11 +87,9 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         Assert.assertTrue(solo.searchText(""));
         // Re-enters text
         solo.enterText(0, "Autodefenestration");
-        // Clicks the search button
-        solo.sendKey(KeyEvent.KEYCODE_ENTER);
+        //Clicks the Search button
+        solo.clickOnView(solo.getView(R.id.searchscreen));
         //Waits for the Results to load
-        solo.waitForActivity(ResultsScreen.class);
-        // Asserts that the current screen is the results
         solo.assertCurrentActivity("wrong activity",ResultsScreen.class);
         // Verifies the search term has passed into the ResultsScreen
         // TODO find a less stupid way to do this
@@ -100,11 +99,13 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
     }
 
     /**
+     *
      * This method tests the suggestion feature
+     * Must be run after the EditText test for first word to be in memory
      * written by Kristján
      */
 
-    public void testSuggestion(){
+    public void testSuggestion() {
         //Enters the first word
         solo.enterText(0, "Autodefenestration");
         //clears the first word
@@ -115,7 +116,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         Assert.assertFalse(solo.searchText("Autodefenestration"));
         //clears the text
         solo.clearEditText(0);
-        //checks that suggestion is made
+        //checks that suggestion is made (This Assertion may cause problems further into development)
         Assert.assertTrue(solo.searchText("Autodefenestration"));
         //Enters partial match
         solo.enterText(0, "Auto");
@@ -172,7 +173,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
      * Written by Trausti
      */
 
-    public void testSearchLessThanTwoLetters(){
+    public void testSearchLessThanTwoLetters() {
         EditText search = (EditText)solo.getView(R.id.searchView);
         solo.enterText(search,"");
         solo.clickOnText(solo.getString(R.string.search_button));
@@ -184,6 +185,84 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
 
         //user should not be able to search as he has entered 1 letter
         solo.assertCurrentActivity("wrong activity",SearchScreen.class);
+    }
+
+    /**
+     * This method tests the langauge select option on the action bar
+     * This test may give a false negative if previous test doesn't end on SearchScreenActivity
+     * Written by Kristján
+     */
+
+    public void testLanguageSelection() {
+        //solo.goBack();
+        // Selects the action bar menu
+        solo.clickOnActionBarItem(R.id.action_settings);
+        // Clicks on the Language select option
+        solo.clickInList(0);
+        // Selects Icelandic
+        solo.clickInList(1);
+        // Confirms selection
+        solo.clickOnButton(1);
+        //waits for new language to load
+        solo.sleep(5000);
+        // Asserts Icelandic is selected
+        Assert.assertTrue(solo.searchText("Leita"));
+        // Repeats, selects the English language but cancels the selection
+        solo.clickOnActionBarItem(R.id.action_settings);
+        // Clicks on the Language select option
+        solo.clickInList(0);
+        // Selects English
+        solo.clickInList(0);
+        // Cancels selection
+        solo.clickOnButton(0);
+        //waits for new language to load
+        solo.sleep(5000);
+        // Asserts Icelandic is still selected
+        Assert.assertTrue(solo.searchText("Leita"));
+        // Repeats, but this time confirms English selection
+        solo.clickOnActionBarItem(R.id.action_settings);
+        // Clicks on the Language select option
+        solo.clickInList(0);
+        // Selects English
+        solo.clickInList(0);
+        // Confirms selection
+        solo.clickOnButton(1);
+        //waits for new language to load
+        solo.sleep(5000);
+        // Asserts English is selected
+        Assert.assertTrue(solo.searchText("Search"));
+    }
+
+    /*
+    * This method test if search history can be cleared
+    * written by Kristján
+     */
+
+
+    public void testClearHistory(){
+        //Makes sure search is empty
+        solo.clearEditText(0);
+        //Enters search term
+        solo.enterText(0, "Polystyrene");
+        //Searches, to save the search term in autocomplete
+        solo.clickOnView(solo.getView(R.id.searchscreen));
+        //Waits for results
+        solo.sleep(50000);
+        // Goes back to search screen
+        solo.goBack();
+        //Makes sure search is empty
+        solo.clearEditText(0);
+        //Enters partial match
+        solo.enterText(0, "Poly");
+        //Confirms suggestion is made
+        Assert.assertTrue(solo.searchText("Polystyrene"));
+        //Clears the search
+        solo.clickOnActionBarItem(R.id.action_settings);
+        solo.clickInList(4);
+        //Re-enters partial match
+        solo.enterText(0, "Poly");
+        //Confirms suggestion is no longer made
+        Assert.assertTrue(solo.searchText("Polystyrene"));
     }
 
 
