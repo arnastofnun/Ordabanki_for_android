@@ -1,7 +1,6 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,21 +10,25 @@ import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Word;
 import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Word.Synonym;
 
 import com.google.gson.Gson;
-import com.google.gson.annotations.Expose;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
+/**
+ * When a specific result is clicked, it opens a new activity
+ * with more information about the result and translations
+ *
+ * @author Trausti
+ * @since 05/11/14
+ *
+ */
 
 public class ResultInfo extends Activity {
 
     private WebView wv;
     private String idTerm;
-    private String glossary = "TODO: Add glossary here";
     private String idWord;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +38,8 @@ public class ResultInfo extends Activity {
         idTerm = extras.getString("idTerm");
         idWord = extras.getString("idWord");
         TextView wordTextView = (TextView)findViewById(R.id.termWordView);
-        TextView categoryTextView = (TextView)findViewById(R.id.categoryWordView);
         wv = (WebView)findViewById(R.id.webViewTerm);
         wordTextView.setText(idWord);
-        categoryTextView.setText(glossary);
         String url = "http://api.arnastofnun.is/ordabanki.php?term="+idTerm+"&agent=ordabankaapp";
         OrdabankiRESTClient.get(url,null, new JsonHttpResponseHandler(){
             /**
