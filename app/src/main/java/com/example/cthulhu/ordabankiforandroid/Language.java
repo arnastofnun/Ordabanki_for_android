@@ -2,7 +2,8 @@ package com.example.cthulhu.ordabankiforandroid;
 
 
 /**
- * Created by cthulhu on 01/11/14.
+ * Java object for parsing of language Jsons
+ * @author Bill
  */
 public class Language {
     String code;
@@ -15,6 +16,11 @@ public class Language {
             }
         }
     public String getLangCode(){return code;}
+
+    /**
+     *
+     * @return language name in language of app
+     */
     public String getLangName(){
         String locName = null;
         String defaultEN= null;

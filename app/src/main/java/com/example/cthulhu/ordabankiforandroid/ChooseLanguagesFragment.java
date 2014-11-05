@@ -10,6 +10,9 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
+/**
+ *
+ */
 
 public class ChooseLanguagesFragment extends Fragment {
     //Data invarians:
@@ -80,6 +83,11 @@ public class ChooseLanguagesFragment extends Fragment {
 
         return rootView;
     }
+
+    /**
+     * Saves state to globals when fragment loses focus
+     * @author Bill
+     */
     @Override
     public void onPause(){
         super.onPause();
@@ -87,6 +95,11 @@ public class ChooseLanguagesFragment extends Fragment {
         g.setTLangPos(targetSpinner.getSelectedItemPosition());
         g.setSLangPos(sourceSpinner.getSelectedItemPosition());
     }
+
+    /**
+     * restores state from globals when fragment returns to focus
+     * @author Bill
+     */
     @Override
     public void onResume(){
         super.onResume();
@@ -99,6 +112,10 @@ public class ChooseLanguagesFragment extends Fragment {
         }
     }
 
+    /**
+     * @author Bill
+     * @return language code for source language
+     */
     public static String getSourceLanguage(){
         if(sourceSpinner == null || sourceSpinner.getSelectedItemPosition() == 0) {return "ALL";}
         else {
@@ -107,6 +124,10 @@ public class ChooseLanguagesFragment extends Fragment {
         }
     }
 
+    /**
+     * @author Bill
+     * @return language code for target language
+     */
     public static String getTargetLanguage(){
         if(targetSpinner == null || targetSpinner.getSelectedItemPosition() == 0) {return "ALL";}
         else {

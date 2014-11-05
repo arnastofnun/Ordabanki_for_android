@@ -5,7 +5,8 @@ import android.app.Application;
 import java.util.ArrayList;
 
 /**
- * Created by cthulhu on 04/11/14.
+ * Holds global variables.
+ * @author Bill
  */
 public class Globals extends Application{
     private ArrayList<ArrayList<String>> languages;

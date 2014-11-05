@@ -6,7 +6,8 @@ import android.os.Bundle;
 import org.json.JSONException;
 
 /**
- * Created by cthulhu on 04/11/14.
+ * placeholder activity to stop errors until term and synonym searches are ready to be integrated
+ * @author Bill
  */
 public class AnActivity extends Activity implements OnTermResultObtainedListener, OnSynonymResultObtainedListener{
     @Override

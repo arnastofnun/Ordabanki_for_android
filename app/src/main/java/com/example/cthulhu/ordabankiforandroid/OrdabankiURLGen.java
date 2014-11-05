@@ -23,18 +23,15 @@ class OrdabankiURLGen {
      */
     final static String baseURL = "http://api.arnastofnun.is/ordabanki.php?";
 
-    public static String createWordOnlyURL(String sTerm){
+/*    public static String createWordOnlyURL(String sTerm){
         //takes base URL and appends search term
         final String baseURL = "http://api.arnastofnun.is/ordabanki.php?word=";
         return baseURL+ sTerm;
     }
-    //use: createURL(sTerm,sLang,tLang)
-    //pre: sTerm,sLang,tLang are strings, they form the search query
-    //post: returns the url for search results, a string
-
+*/
     /**
-     * creates URL with all parameters
-     * @param sTerm search term
+     * creates URL with word search parameter
+     * @param sTerm search word
      * @return relative url
      */
     public static String createWordURL(String sTerm) {
@@ -42,15 +39,31 @@ class OrdabankiURLGen {
         return appendParams(baseURL + "word="+sTerm);
     }
 
+    /**
+     * creates url with term search parameter
+     * @param sTerm search term
+     * @return relative url
+     */
+
     public static String createTermURL(String sTerm){
         return appendParams(baseURL + "term="+sTerm);
     }
 
+    /**
+     * creates url with synonym search parameter
+     * @param sTerm synonym search term
+     * @return relative url
+     */
     public static String createSynonymURL(String sTerm){
         return appendParams(baseURL +"synonym="+sTerm);
     }
 
-    public static String appendParams(String relURL){
+    /**
+     * appends extra parameters to  base search string with search term
+     * @param relURL base term with main search parameter appended
+     * @return relative url
+     */
+    private static String appendParams(String relURL){
         final String delim = ",";
         if (!ChooseLanguagesFragment.getSourceLanguage().equals("ALL"))
             relURL = relURL + "&slang="+ChooseLanguagesFragment.getSourceLanguage();
