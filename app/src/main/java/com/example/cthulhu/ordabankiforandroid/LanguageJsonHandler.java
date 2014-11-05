@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
+ * Handles Http response for language calls
  * @author Bill
  * @since 01/11/14.
  */

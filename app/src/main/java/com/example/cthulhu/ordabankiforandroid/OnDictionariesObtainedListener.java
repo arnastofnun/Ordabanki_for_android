@@ -1,7 +1,8 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 /**
- * @author Bill
+ * Interface for dictionary http handler
+ *  @author Bill
  * @since 01/11/14.
  */
 public interface OnDictionariesObtainedListener {

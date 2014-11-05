@@ -2,6 +2,7 @@ package com.example.cthulhu.ordabankiforandroid;
 
 
 /**
+ * Java object for parsing of Dictionary Jsons
  * @author Bill
  * @since 01/11/14.
  */
@@ -19,6 +20,11 @@ public class Dictionary {
         }
     public String getDictCode(){return dict_code;}
     public String getFjoldi(){return fjoldi;}
+
+    /**
+     *
+     * @return dictionary name in language of app
+     */
     public String getDictName(){
         String locName = null;
         String defaultEN= null;
