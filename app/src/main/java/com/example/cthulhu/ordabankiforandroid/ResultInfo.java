@@ -51,9 +51,15 @@ public class ResultInfo extends Activity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response){
                 Gson gson = new Gson();
-                String wordHTML = "<style>p{margin:0pt;padding:0pt;} " +
-                        "#container{width:310px;margin-left: auto; margin-right: auto ;} " +
-                        "#textBlock{text-align:left}" +
+                String wordHTML = "<style>h3{color:white} body{background-color:#616161;color:#616161;}p{margin:0pt;padding:0pt;} " +
+                        "#synonym{padding:5px;background-color:white;margin-top:0px;-webkit-border-radius: 7px;\n" +
+                        "-moz-border-radius: 7px;\n" +
+                        "border-radius: 7px;}" +
+                        "#word{padding:5px;background-color:#DCEDC8;margin-top:0px;-webkit-border-radius: 7px;\n" +
+                        "-moz-border-radius: 7px;\n" +
+                        "border-radius: 7px;}" +
+                        "#container{width:300px;margin-left: auto; margin-right: auto;margin-top:6px;} " +
+                        "#textBlock{text-align:center;}" +
                         "</style>";
                 String synonymHTML;
                 TermResult[] terms = gson.fromJson(response.toString(), TermResult[].class);
@@ -64,50 +70,58 @@ public class ResultInfo extends Activity {
                         wordHTML += "<div id=\"container\"><div id=\"textBlock\">" +
                                 "<b><h3>"+word.word + " - " + word.lang_code + "</h3></b>";
                         wordHTML += "<p>";
+
+                        if(word.abbreviation != null || word.definition != null || word.dialect != null
+                        || word.domain != null|| word.example != null || word.explanation != null
+                        || word.othergrammar != null)
+                        {
+                            wordHTML+="<div id=\"word\">";
+                        }
+
                         if(word.abbreviation != null){
-                            wordHTML += getString(R.string.word_abbreviation)+" "+ word.abbreviation + "<br>";
+                            wordHTML += "<b>"+getString(R.string.word_abbreviation)+"</b> "+ word.abbreviation + "<br>";
                         }
                         if(word.definition != null){
-                            wordHTML += getString(R.string.word_definition)+" " + word.definition + "<br>";
+                            wordHTML += "<b>"+getString(R.string.word_definition)+"</b> "+ word.definition + "<br>";
                         }
                         if(word.dialect != null){
-                            wordHTML += getString(R.string.word_dialect)+" " + word.dialect + "<br>";
+                            wordHTML += "<b>"+getString(R.string.word_dialect)+"</b> " + word.dialect + "<br>";
 
                         }
                         if(word.domain != null){
-                            wordHTML += getString(R.string.word_domain)+" " +  word.domain + "<br>";
+                            wordHTML += "<b>"+getString(R.string.word_domain)+"</b> " +  word.domain + "<br>";
 
                         }
                         if(word.example != null) {
-                            wordHTML += getString(R.string.word_example)+" " +  word.example + "<br>";
+                            wordHTML += "<b>"+getString(R.string.word_example)+"</b> " +  word.example + "<br>";
                         }
                         if(word.explanation != null){
-                            wordHTML += getString(R.string.word_explanation)+" " + word.explanation + "<br>";
+                            wordHTML += "<b>"+getString(R.string.word_explanation)+"</b> "+ word.explanation + "<br>";
                         }
                         if(word.othergrammar != null){
-                            wordHTML += getString(R.string.word_othergrammar)+" " + word.othergrammar + "<br>";
+                            wordHTML += "<b>"+getString(R.string.word_othergrammar)+"</b> "+ word.othergrammar + "<br>";
                         }
                         if(word.synonyms[0] != null){
-                            synonymHTML += "<ul><b>" + getString(R.string.word_synyonym) + " </b><br>";
+                            synonymHTML += "<div id=\"synonym\"><b>" + getString(R.string.word_synyonym) + " </b><br>";
                             for(Synonym synonym: word.synonyms){
 
                                 synonymHTML += synonym.synonym + "<br>";
 
                                 if(synonym.abbreviation != null){
-                                    synonymHTML +=  "<li>"+getString(R.string.word_abbreviation)+" " + synonym.abbreviation +"</li>";
+                                    synonymHTML +=  getString(R.string.word_abbreviation)+" " + synonym.abbreviation+ "<br>";
                                 }
                                 if(synonym.dialect != null){
-                                    synonymHTML +=  "<li>"+getString(R.string.word_dialect)+" " + synonym.dialect + "</li>";
+                                    synonymHTML +=  getString(R.string.word_dialect)+" " + synonym.dialect + "<br>";
                                 }
                                 if(synonym.pronunciation != null){
-                                    synonymHTML += "<li>"+getString(R.string.word_pronunciation)+" " + synonym.pronunciation + "</li>";
+                                    synonymHTML += getString(R.string.word_pronunciation)+" " + synonym.pronunciation + "<br>";
                                 }
                                 if(synonym.othergrammar != null){
-                                    synonymHTML += "<li>"+getString(R.string.word_othergrammar)+" " + synonym.othergrammar + "</li>";
+                                    synonymHTML += getString(R.string.word_othergrammar)+" " + synonym.othergrammar + "<br>";
                                 }
 
                             }
-                            synonymHTML += "</ul>";
+                            synonymHTML += "</div>";
                         }
                         wordHTML += synonymHTML;
                         wordHTML+="</p></div></div>";
