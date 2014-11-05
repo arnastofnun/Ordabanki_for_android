@@ -114,13 +114,13 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         listView = (ListView) findViewById(R.id.resultsList);
         listView.setAdapter(resultsAdapter);
 
+
         //Setting the on item click listener to be ready for later use
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 Result result = (Result) parent.getItemAtPosition(position);
-                String item = listView.getAdapter().getItem(position).toString();
-                //For now just display a toast for testing
                 Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
                 intent.putExtra("idTerm",result.getId_term());
                 intent.putExtra("idWord",result.getWord());
