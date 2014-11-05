@@ -21,6 +21,8 @@ class OrdabankiURLGen {
      * @param sTerm search term
      * @return relative url
      */
+    final static String baseURL = "http://api.arnastofnun.is/ordabanki.php?";
+
     public static String createWordOnlyURL(String sTerm){
         //takes base URL and appends search term
         final String baseURL = "http://api.arnastofnun.is/ordabanki.php?word=";
@@ -35,34 +37,43 @@ class OrdabankiURLGen {
      * @param sTerm search term
      * @return relative url
      */
-    public static String createURL(String sTerm) {
-        //takes base URL and appends search constraints
-        final String delim = ","; //change when find out right delimiter
-        final String baseURL = "http://api.arnastofnun.is/ordabanki.php?word=";
-        String relURL = baseURL+ sTerm;
-        if (!ChooseLanguagesFragment.getSourceLanguage().equals("ALL"))
-            relURL = relURL + "&slang="+ChooseLanguagesFragment.getSourceLanguage();
-        /* commented until target language implemented in api
-        if(!ChooseLanguagesFragment.getTargetLanguage().equals("ALL"))
-            relURL = relURL + "&tlang=" + ChooseLanguagesFragment.getTargetLanguage();
-        */
-        if(!PickGlossaryFragment.areAllSelected()) {
-            relURL = relURL + "&dicts=";
-            ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
-            if (selectedGlossaries.size() == 1) {
-                relURL = relURL + selectedGlossaries.get(0);
-            } else {
-                ListIterator<String> it = selectedGlossaries.listIterator();
-                //iterate until last but one member,
-                while (it.hasNext() && it.nextIndex() != selectedGlossaries.size() - 1) {
-                    relURL = relURL + it.next() + delim;
-                }
-                relURL = relURL + selectedGlossaries.get(selectedGlossaries.size() - 1);
-            }
-        }
-        return relURL+"&agent=ordabankaapp";
+    public static String createWordURL(String sTerm) {
+        //takes base URL and appends search term
+        return appendParams(baseURL + "word="+sTerm);
     }
 
+    public static String createTermURL(String sTerm){
+        return appendParams(baseURL + "term="+sTerm);
+    }
+
+    public static String createSynonymURL(String sTerm){
+        return appendParams(baseURL +"synonym="+sTerm);
+    }
+
+    public static String appendParams(String relURL){
+        final String delim = ",";
+        if (!ChooseLanguagesFragment.getSourceLanguage().equals("ALL"))
+            relURL = relURL + "&slang="+ChooseLanguagesFragment.getSourceLanguage();
+            /* commented until target language implemented in api
+        if(!ChooseLanguagesFragment.getTargetLanguage().equals("ALL"))
+            relURL = relURL + "&tlang=" + ChooseLanguagesFragment.getTargetLanguage();
+             */
+        if(!PickGlossaryFragment.areAllSelected()) {
+                relURL = relURL + "&dicts=";
+                ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
+        if (selectedGlossaries.size() == 1) {
+            relURL = relURL + selectedGlossaries.get(0);
+        } else {
+            ListIterator<String> it = selectedGlossaries.listIterator();
+            //iterate until last but one member,
+            while (it.hasNext() && it.nextIndex() != selectedGlossaries.size() - 1) {
+                relURL = relURL + it.next() + delim;
+            }
+            relURL = relURL + selectedGlossaries.get(selectedGlossaries.size() - 1);
+        }
+    }
+    return relURL+"&agent=ordabankaapp";
+    }
 }
 
 
