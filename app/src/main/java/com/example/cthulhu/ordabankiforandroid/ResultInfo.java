@@ -8,6 +8,8 @@ import android.webkit.WebView;
 import android.widget.TextView;
 import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Word;
 import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Word.Synonym;
+import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Sbr;
+import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Einnig;
 
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -51,7 +53,8 @@ public class ResultInfo extends Activity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response){
                 Gson gson = new Gson();
-                String wordHTML = "<style>h3{color:white} body{background-color:#616161;color:#616161;}p{margin:0pt;padding:0pt;} " +
+                String wordHTML = "<link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>" +
+                        "<style>#sbr_refs{color:white;font-family: 'PT Serif', serif;font-size:0.9em} h3{color:white} body{background-color:#616161;color:#616161;}p{margin:0pt;padding:0pt;} " +
                         "#synonym{padding:5px;background-color:white;margin-top:0px;-webkit-border-radius: 7px;\n" +
                         "-moz-border-radius: 7px;\n" +
                         "border-radius: 7px;}" +
@@ -62,9 +65,10 @@ public class ResultInfo extends Activity {
                         "#textBlock{text-align:center;}" +
                         "</style>";
                 String synonymHTML;
+                String sbr_refsHTML = "";
+                String einnig_refsHTML = "";
                 TermResult[] terms = gson.fromJson(response.toString(), TermResult[].class);
                 if(terms[0].term.words[0] != null){
-
                     for(Word word: terms[0].term.words){
                         synonymHTML = "";
                         wordHTML += "<div id=\"container\"><div id=\"textBlock\">" +
@@ -102,7 +106,7 @@ public class ResultInfo extends Activity {
                             wordHTML += "<b>"+getString(R.string.word_othergrammar)+"</b> "+ word.othergrammar + "<br>";
                         }
                         if(word.synonyms[0] != null){
-                            synonymHTML += "<div id=\"synonym\"><b>" + getString(R.string.word_synyonym) + " </b><br>";
+                            synonymHTML += "<div id=\"synonym\"><b>" + getString(R.string.word_synyonym) + " </b>";
                             for(Synonym synonym: word.synonyms){
 
                                 synonymHTML += synonym.synonym + "<br>";
@@ -126,10 +130,37 @@ public class ResultInfo extends Activity {
                         wordHTML += synonymHTML;
                         wordHTML+="</p></div></div>";
 
+                }
+                if(terms[0].term.sbr[0] != null){
+                    sbr_refsHTML += "<div id=\"sbr_refs\">";
+                    for(Sbr sbr: terms[0].term.sbr){
+                        sbr_refsHTML += "<br><i>"+getString(R.string.word_sbr)+"</i>: ";
+                        if(sbr.refs[0] != null){
+                            for(Sbr.Refs ref: sbr.refs){
+                                sbr_refsHTML += ref.word +" - " +ref.lang_code;
+                                sbr_refsHTML += ", ";
+                            }
+                            sbr_refsHTML = sbr_refsHTML.substring(0,sbr_refsHTML.length()-2)+"</div>";
+                        }
                     }
                 }
+                if(terms[0].term.einnig[0] != null){
+                    einnig_refsHTML += "<div id=\"sbr_refs\">";
+                    for(Einnig einnig: terms[0].term.einnig){
+                        einnig_refsHTML += "<br><i>"+getString(R.string.word_einnig)+"</i>: ";
+                       if(einnig.refs[0] != null){
+                           for(Einnig.Refs ref : einnig.refs){
+                               einnig_refsHTML += ref.word +" - " +ref.lang_code;
+                               einnig_refsHTML += ", ";
+                           }
+                           einnig_refsHTML = einnig_refsHTML.substring(0,einnig_refsHTML.length()-2)+"</div>";
+                       }
 
-                wv.loadDataWithBaseURL(null, wordHTML, "text/html", "UTF-8", null);
+                    }
+                }
+            }
+
+                wv.loadDataWithBaseURL(null, wordHTML+sbr_refsHTML+einnig_refsHTML, "text/html", "UTF-8", null);
 
             }
 
