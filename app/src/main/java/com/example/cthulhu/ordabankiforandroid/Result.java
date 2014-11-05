@@ -11,7 +11,7 @@ import android.os.Parcelable;
  * @author Karl Ásgeir Geirsson, Bill Hayhurst
  * @since 14.10.2014.modified 20/11/14
  */
-public class Result {
+public class Result implements Comparable<Result>{
     //Data invariants:
     //  term: term of search result
     //  language: language of search result
@@ -117,6 +117,10 @@ public class Result {
 
     public void setExample(String example) {
         this.example = example;
+    }
+
+    public int compareTo(Result r){
+        return getWord().compareTo(r.getWord());
     }
 }
 

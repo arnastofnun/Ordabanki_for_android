@@ -14,6 +14,7 @@ import com.example.cthulhu.ordabankiforandroid.R;
 import com.example.cthulhu.ordabankiforandroid.Result;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.cthulhu.ordabankiforandroid.Result.Synonym;
 
@@ -28,7 +29,7 @@ import static com.example.cthulhu.ordabankiforandroid.Result.Synonym;
  */
 public class ResultsAdapter extends ArrayAdapter<Result> {
     //Initialize a list for the results
-    private Result[] resultsList;
+    private List<Result> resultsList;
     private Context context;
 
     /**
@@ -39,7 +40,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
      * @param listViewResourceId the resource Id of the list view that the adapter is being added to
      * @param resultsList the glossary list that is to be added to the list view
      */
-    public ResultsAdapter(Context context, int listViewResourceId, Result[] resultsList){
+    public ResultsAdapter(Context context, int listViewResourceId, List<Result> resultsList){
         super(context,listViewResourceId,resultsList);
         this.resultsList = resultsList;
         this.context = context;
@@ -82,7 +83,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
         boolean hasSyn = false;
         boolean hasDef = false;
         boolean hasEx = false;
-        Result result = resultsList[position];
+        Result result = resultsList.get(position);
 
 
         if(convertView == null){

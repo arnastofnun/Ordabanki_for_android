@@ -7,11 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.GlossaryAdapter;
 
@@ -75,11 +73,11 @@ public class PickGlossaryFragment extends Fragment {
                     if (glossary.isSelected()) {
                         ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
                         listitemview.setBackgroundResource(R.color.glossary_selected);
-                        tick.setImageResource(R.drawable.ic_action_accept);
+                        tick.setVisibility(View.VISIBLE);
                     } else {
                         ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
                         listitemview.setBackgroundResource(R.color.glossary_notselected);
-                        tick.setImageResource(0);
+                        tick.setVisibility(View.INVISIBLE);
                     }
                 }
                 index++;
@@ -96,7 +94,6 @@ public class PickGlossaryFragment extends Fragment {
      * This function is supposed to loop through the glossaries and add them to the glossary list.
      * For now it just puts some test glossaries in.
      * It also sets an on click listener that displays a toast for now.
-     * todo get glossaries from API and put into glossary list
      * -------------------------------------------------------------------------------------------
      * Written by Karl Ásgeir Geirsson
      * @param rootView the root view
@@ -140,7 +137,7 @@ public class PickGlossaryFragment extends Fragment {
                         if(listitemview != null) {
                             ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
                             listitemview.setBackgroundResource(R.color.glossary_selected);
-                            tick.setImageResource(R.drawable.ic_action_accept);
+                            tick.setVisibility(View.VISIBLE);
                         }
                     }
                     index++;
@@ -168,7 +165,7 @@ public class PickGlossaryFragment extends Fragment {
                             Log.v("LISTVIEW", listitemview.toString());
                             ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
                             listitemview.setBackgroundResource(R.color.glossary_notselected);
-                            tick.setImageResource(0);
+                            tick.setVisibility(View.INVISIBLE);
                         }
 
                     }
@@ -178,7 +175,9 @@ public class PickGlossaryFragment extends Fragment {
             }
         });
 
+
         //Setting the on item click listener to be ready for later use
+        /*
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -187,6 +186,7 @@ public class PickGlossaryFragment extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(), "Clicked on: " + glossary.getName() + " checked: " + glossary.isSelected(), Toast.LENGTH_LONG).show();
             }
         });
+        */
 
     }
 
@@ -215,7 +215,6 @@ public class PickGlossaryFragment extends Fragment {
         for(Glossary glossary : glossaryList) {
 
             if(glossary.isSelected()){
-                Log.v("selected glossary: ", glossary.getDictCode());
                 selectedGlossaries.add(glossary.getDictCode());
             }
             else {

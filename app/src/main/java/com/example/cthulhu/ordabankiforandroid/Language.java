@@ -5,14 +5,14 @@ package com.example.cthulhu.ordabankiforandroid;
  * Java object for parsing of language Jsons
  * @author Bill
  */
-public class Language {
+public class Language implements Comparable<Language>{
     String code;
     Info[] info;
         public class Info{
             String lang_code;
             String lang_name;
             public Info(){
-                //noargs constructor
+                //noarg
             }
         }
     public String getLangCode(){return code;}
@@ -45,6 +45,11 @@ public class Language {
             }
         }
         return locName;
+    }
+
+
+    public int compareTo(Language l){
+        return getLangName().compareTo(l.getLangName());
     }
 
 }

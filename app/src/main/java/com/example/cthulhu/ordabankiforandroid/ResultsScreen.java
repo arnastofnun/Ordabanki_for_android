@@ -17,6 +17,10 @@ import com.example.cthulhu.ordabankiforandroid.adapter.ResultsAdapter;
 
 import org.json.JSONException;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * This class implements functions for the results screen
  * ------------------------------------------------------
@@ -38,6 +42,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         setContentView(R.layout.activity_results_screen);
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
+
         jsonHandler = new OrdabankiJsonHandler(this);
         Bundle data = getIntent().getExtras();
         searchQuery = data.getString("searchQuery");
@@ -58,6 +63,9 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
      */
     @Override
     public void onResultObtained(Result[] resultArr){
+        List<Result> resultList = Arrays.asList(resultArr);
+        Collections.sort(resultList);
+
         String searchPreTerm = getResources().getString(R.string.searchpreterm);
         TextView textView = (TextView) findViewById(R.id.resultText);
         if(resultArr == null){
@@ -65,9 +73,9 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
             textView.setText(databaseError);
         }
         else {
-            int resultsCount = resultArr.length;
+            int resultsCount = resultList.size();
             textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery);
-            displayListView(resultArr);
+            displayListView(resultList);
         }
     }
 
@@ -101,7 +109,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
      * Written by Karl Ásgeir Geirsson
      * @since 09.10.2014
      */
-    private void displayListView(Result[] resultList){
+    private void displayListView(List<Result> resultList){
         //Placeholder values for the glossaries
         //Result result = new Result("lobe", "english", "Medicine");
         //resultList.add(result);

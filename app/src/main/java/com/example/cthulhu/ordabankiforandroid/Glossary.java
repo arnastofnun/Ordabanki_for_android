@@ -8,7 +8,7 @@ package com.example.cthulhu.ordabankiforandroid;
  * @author Karl Ásgeir Geirsson
  * @since 14.10.2014.
  */
-public class Glossary{
+public class Glossary implements Comparable<Glossary>{
     /*
     * Data invariants:
     *   code is id of glossary
@@ -91,6 +91,10 @@ public class Glossary{
     //post: sets glossary selected status
     public void setSelected(boolean selected) {
         this.selected = selected;
+    }
+
+    public int compareTo(Glossary g){
+        return getName().compareTo(g.getName());
     }
 
 }

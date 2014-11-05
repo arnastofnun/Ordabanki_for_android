@@ -2,7 +2,6 @@ package com.example.cthulhu.ordabankiforandroid.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,12 +114,12 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
                     ImageView tick = (ImageView) row.findViewById(R.id.checked_image);
                     if(glossary.isSelected()) {
                         row.setBackgroundResource(R.color.glossary_notselected);
-                        tick.setImageResource(0);
+                        tick.setVisibility(View.INVISIBLE);
                         glossary.setSelected(false);
                     }
                    else{
                         row.setBackgroundResource(R.color.glossary_selected);
-                        tick.setImageResource(R.drawable.ic_action_accept);
+                        tick.setVisibility(View.VISIBLE);;
                         glossary.setSelected(true);
 
                     }
@@ -164,11 +163,11 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
         View row = (View) holder.glossaryName.getParent();
         if(glossary.isSelected()){
             row.setBackgroundResource(R.color.glossary_selected);
-            holder.tick.setImageResource(R.drawable.ic_action_accept);
+            holder.tick.setVisibility(View.VISIBLE);
         }
         else{
             row.setBackgroundResource(R.color.glossary_notselected);
-            holder.tick.setImageResource(0);
+            holder.tick.setVisibility(View.INVISIBLE);
         }
         holder.glossaryName.setTag(glossary);
 
