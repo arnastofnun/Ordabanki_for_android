@@ -3,6 +3,7 @@ package com.example.cthulhu.ordabankiforandroid;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,7 +26,7 @@ import org.json.JSONException;
 public class ResultsScreen extends Activity implements OnResultObtainedListener{
     OrdabankiJsonHandler jsonHandler;
     private String searchQuery;
-
+    private ListView listView;
     /**
      * Takes search term from intent and passes to Rest client
      * Bill
@@ -110,7 +111,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         //Creating a new glossary adapter
         ResultsAdapter resultsAdapter = new ResultsAdapter(this, R.layout.results_list, resultList);
         //Getting the glossary list and setting it's adapter to my custom glossary adapter
-        ListView listView = (ListView) findViewById(R.id.resultsList);
+        listView = (ListView) findViewById(R.id.resultsList);
         listView.setAdapter(resultsAdapter);
 
         //Setting the on item click listener to be ready for later use
@@ -118,8 +119,13 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Result result = (Result) parent.getItemAtPosition(position);
+                String item = listView.getAdapter().getItem(position).toString();
                 //For now just display a toast for testing
-                Toast.makeText(getApplicationContext(), "Clicked on: " + result.getWord(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
+                intent.putExtra("idTerm",result.getId_term());
+                intent.putExtra("idWord",result.getWord());
+                startActivity(intent);
+                //Toast.makeText(getApplicationContext(), "Clicked on: " + result.getWord(), Toast.LENGTH_LONG).show();
             }
         });
 

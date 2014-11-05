@@ -1,0 +1,38 @@
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/termWordView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:typeface="serif"
+        android:text="Word"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/categoryWordView"
+        android:layout_alignTop="@+id/termWordView"
+        android:layout_centerHorizontal="true"
+        android:typeface="serif"
+        android:textStyle="italic"
+        android:gravity="center"
+        android:text="Category" />
+
+    <WebView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/webViewTerm"
+        android:layout_below="@+id/termWordView"
+        android:layout_centerHorizontal="true" />
+</LinearLayout>
