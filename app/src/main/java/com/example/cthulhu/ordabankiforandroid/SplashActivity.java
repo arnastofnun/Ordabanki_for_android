@@ -28,13 +28,13 @@ import java.util.ArrayList;
 public class SplashActivity extends Activity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener {
 
     public ArrayList<ArrayList<String>> localisedLangs;
-    public ArrayList<Glossary> localisedDicts;
+    public ArrayList<ArrayList<String>> localisedDicts;
+    public ArrayList<Glossary> glossaries;
     private boolean dObtained;
     private boolean lObtained;
     private boolean error;
     long startTime;
-    public static ArrayList<ArrayList<String>> g_Languages;
-    public static ArrayList<Glossary> g_Dictionaries;
+
     DictionaryJsonHandler dJsonHandler;
 
     @Override
@@ -66,18 +66,23 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     }
     @Override
     public void onDictionariesObtained (Dictionary[]dictionaries){
-        Log.v("dObtained", String.valueOf(dObtained));
-        localisedDicts = new ArrayList<Glossary>();
+        glossaries = new ArrayList<Glossary>();
+        localisedDicts = new ArrayList<ArrayList<String>>();
         int index = 0;
         Glossary glossary;
+        ArrayList<String> codeList = new ArrayList<String>();
+        ArrayList<String> dictList = new ArrayList<String>();
         //Toast.makeText(getApplicationContext(), "dLoop", Toast.LENGTH_SHORT).show();
         for (Dictionary dict : dictionaries) {
-            Log.v("name: ",dict.getDictName());
-            Log.v("dict code", dict.getDictCode());
+            codeList.add(index, dict.getDictCode());
+            dictList.add(index,dict.getDictName());
             glossary = new Glossary(dict.getDictCode(),dict.getDictName(),"");
-            localisedDicts.add(index, glossary);
+            glossaries.add(index, glossary);
             index++;
         }
+        localisedDicts.add(0,codeList);
+        localisedDicts.add(1,dictList);
+        Log.v("LocDicts",localisedDicts.get(0).get(0));
         dObtained=true;
     }
     @Override
@@ -88,8 +93,6 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     }
     @Override
     public void onLanguagesObtained (Language[]languages){
-        //Log.v("lObtained",String.valueOf(lObtained));
-
         localisedLangs = new ArrayList<ArrayList<String>>();
         int index = 0;
         ArrayList<String> codeList = new ArrayList<String>();
@@ -150,8 +153,6 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
                     //Log.v("dObtained", String.valueOf(dObtained));
                     //Log.v("lObtained",String.valueOf(lObtained));
                     if (dObtained && lObtained) {
-                        g_Languages = localisedLangs;
-                        g_Dictionaries = localisedDicts;
                         long now = System.currentTimeMillis();
                         if (now < endTime) {
                             delay = endTime - now;
@@ -161,7 +162,8 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
                 }
 
                 globals.setLanguages(localisedLangs);
-                globals.setDictionaries(localisedDicts);
+                globals.setDictionaries(glossaries);
+                globals.setLocalizedDictionaries(localisedDicts);
                 Handler mainHandler = new Handler(SplashActivity.this.getMainLooper());
                 mainHandler.postDelayed(new Runnable() {
                     @Override

@@ -3,8 +3,6 @@ package com.example.cthulhu.ordabankiforandroid;
 import android.os.Parcel;
 import android.os.Parcelable;
 */
-import java.util.ArrayList;
-
 /**
  * This class is the Result object, which holds
  * important information about the results
@@ -22,8 +20,7 @@ public class Result {
     String id_word;
     String id_term;
     String language_code;
-    String language_name;
-    String terminology_dictionary;
+    String dictionary_code;
     String word;
     String lexical_category;
     Synonym[] synonyms;
@@ -73,20 +70,12 @@ public class Result {
         this.language_code = language_code;
     }
 
-    public String getLanguage_name() {
-        return language_name;
+    public String getDictionary_code() {
+        return dictionary_code;
     }
 
-    public void setLanguage_name(String language_name) {
-        this.language_name = language_name;
-    }
-
-    public String getTerminology_dictionary() {
-        return terminology_dictionary;
-    }
-
-    public void setTerminology_dictionary(String terminology_dictionary) {
-        this.terminology_dictionary = terminology_dictionary;
+    public void setDictionary_code(String dictionary_code) {
+        this.dictionary_code = dictionary_code;
     }
 
     public String getWord() {

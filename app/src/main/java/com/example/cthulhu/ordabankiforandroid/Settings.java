@@ -76,7 +76,7 @@ public class Settings {
                                 int pos = lw.getCheckedItemPosition();
                                 Log.v("id", String.valueOf(pos));
                                 Log.v("lang",getLanguageFromPos(pos));
-                                localeSettings.setLanguage(getLanguageFromPos(pos),cl);
+                                localeSettings.setLanguage(getLanguageFromPos(pos),SplashActivity.class);
                             }
                         });
                         AlertDialog languageDialog = languageBuilder.create();
@@ -110,16 +110,16 @@ public class Settings {
 
     private int getLanguagePos(String lang){
 
-        if(lang.equals("is")){
+        if(lang.equals("IS")){
             return 0;
         }
-        else if(lang.equals("en")){
+        else if(lang.equals("EN")){
             return 1;
         }
-        else if(lang.equals("sv")){
+        else if(lang.equals("SV")){
             return 2;
         }
-        else if(lang.equals("da")){
+        else if(lang.equals("DA")){
             return 3;
         }
         else{
@@ -130,13 +130,13 @@ public class Settings {
     private String getLanguageFromPos(int pos){
         switch(pos){
             case 0:
-                return "is";
+                return "IS";
             case 1:
-                return "en";
+                return "EN";
             case 2:
-                return "sv";
+                return "SV";
             case 3:
-                return "da";
+                return "DA";
             default:
                 return "";
         }

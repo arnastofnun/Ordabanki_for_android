@@ -26,7 +26,7 @@ public class Language {
             else if (anInfo.lang_code.equals("EN")){
                 defaultEN = anInfo.lang_name;
             }
-            else if (anInfo.lang_code.equals(LocaleSettings.returnLanguage())) {
+            if (anInfo.lang_code.equals(LocaleSettings.returnLanguage())) {
                 locName = anInfo.lang_name;
                 break;
             }
@@ -40,4 +40,5 @@ public class Language {
         }
         return locName;
     }
+
 }

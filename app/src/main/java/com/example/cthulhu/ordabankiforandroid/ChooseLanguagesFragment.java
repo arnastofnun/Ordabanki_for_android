@@ -20,7 +20,7 @@ public class ChooseLanguagesFragment extends Fragment {
     private static Spinner sourceSpinner;
     private static Spinner targetSpinner;
     private static ArrayList<String> codeRef= new ArrayList<String>();
-    Globals g = (Globals) this.getActivity().getApplication();
+
 
 
     @Override
@@ -36,7 +36,7 @@ public class ChooseLanguagesFragment extends Fragment {
 
         //Making "All" the first item
         listSource.add(getResources().getString(R.string.all_languages));
-        //Globals g = (Globals)this.getActivity().getApplication();
+        Globals g = (Globals)this.getActivity().getApplication();
         listSource.addAll(g.getLanguages().get(1));
         codeRef.addAll(g.getLanguages().get(0));
 
@@ -83,18 +83,24 @@ public class ChooseLanguagesFragment extends Fragment {
     @Override
     public void onPause(){
         super.onPause();
+        Globals g = (Globals) this.getActivity().getApplication();
         g.setTLangPos(targetSpinner.getSelectedItemPosition());
         g.setSLangPos(sourceSpinner.getSelectedItemPosition());
     }
     @Override
     public void onResume(){
         super.onResume();
-        targetSpinner.setSelection(g.getTLangPos());
-        sourceSpinner.setSelection(g.getSLangPos());
+        Globals g = (Globals) this.getActivity().getApplication();
+        if(g.getTLangPos() != -1) {
+            targetSpinner.setSelection(g.getTLangPos());
+        }
+        if(g.getSLangPos() != -1){
+            sourceSpinner.setSelection(g.getSLangPos());
+        }
     }
 
     public static String getSourceLanguage(){
-        if(sourceSpinner == null) {return "ALL";}
+        if(sourceSpinner == null || sourceSpinner.getSelectedItemPosition() == 0) {return "ALL";}
         else {
             int index =sourceSpinner.getSelectedItemPosition()-1;
             return codeRef.get(index);
@@ -102,7 +108,7 @@ public class ChooseLanguagesFragment extends Fragment {
     }
 
     public static String getTargetLanguage(){
-        if(targetSpinner == null) {return "ALL";}
+        if(targetSpinner == null || targetSpinner.getSelectedItemPosition() == 0) {return "ALL";}
         else {
             int index =targetSpinner.getSelectedItemPosition()-1;
             return codeRef.get(index);

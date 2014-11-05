@@ -1,14 +1,19 @@
 package com.example.cthulhu.ordabankiforandroid.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.cthulhu.ordabankiforandroid.Globals;
 import com.example.cthulhu.ordabankiforandroid.R;
 import com.example.cthulhu.ordabankiforandroid.Result;
+
+import java.util.ArrayList;
 
 import static com.example.cthulhu.ordabankiforandroid.Result.Synonym;
 
@@ -131,9 +136,19 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
 
 
         //adds all non-null fields from result object to result view
+        Globals g = (Globals) ((Activity) parent.getContext()).getApplication();
+        ArrayList<ArrayList<String>> languages = g.getLanguages();
+        ArrayList<ArrayList<String>> dictionaries = g.getLoc_dictionaries();
+        int lang_index = languages.get(0).indexOf(result.getLanguage_code());
+        Log.v("Lang",String.valueOf(lang_index));
+        int gloss_index = dictionaries.get(0).indexOf(result.getDictionary_code());
+        Log.v("gloss",String.valueOf(gloss_index));
+        Log.v("resultCode",result.getDictionary_code());
+        Log.v("from vector",dictionaries.get(0).get(0));
+
         holder.term.setText(result.getWord());
-        holder.language.setText("(" + result.getLanguage_name()+")");
-        holder.glossary.setText("["+result.getTerminology_dictionary()+"]");
+        holder.language.setText("(" + languages.get(1).get(lang_index)+")");
+        holder.glossary.setText("["+ dictionaries.get(1).get(gloss_index)+"]");
         if(hasLex){
             convertView.findViewById(R.id.resultLexical_category).setVisibility(View.VISIBLE);
             holder.lexical_category.setText(context.getString(R.string.lexical_category)+ result.getLexical_category());

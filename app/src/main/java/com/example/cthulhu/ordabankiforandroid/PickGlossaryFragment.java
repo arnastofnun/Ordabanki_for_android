@@ -32,7 +32,7 @@ public class PickGlossaryFragment extends Fragment {
     *   glossaryList is a list that contains all the glossaries to be used
     *   in the Orðabanki app
     */
-    Globals g = (Globals) this.getActivity().getApplication();
+
     private static ArrayList<Glossary> glossaryList;
     private static boolean allSelected = true;
     private static ListView listView;
@@ -41,7 +41,6 @@ public class PickGlossaryFragment extends Fragment {
         //Load the .xml file for the pick glossary fragment
 
         View rootView = inflater.inflate(R.layout.fragment_pick_glossary,container,false);
-
             //Display the pick glossary list
             displayListView(rootView);
         return rootView;
@@ -49,29 +48,42 @@ public class PickGlossaryFragment extends Fragment {
     @Override
     public void onPause(){
         super.onPause();
+        Globals g= (Globals) this.getActivity().getApplication();
+        if(glossaryList == null){
+            Log.v("GlossaryList","null");
+        }
         g.setGlossaryState(glossaryList);
     }
 
     @Override
     public void onResume(){
         super.onResume();
-        glossaryList=g.getGlossaryState();
-        int index=0;
-        View listitemview;
-        for(Glossary glossary : glossaryList){
-            listitemview = listView.getChildAt(index);
-            if(listitemview != null) {
-                if(glossary.isSelected()){
-                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                    listitemview.setBackgroundResource(R.color.glossary_selected);
-                    tick.setImageResource(R.drawable.ic_action_accept);
-                }else{
-                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                    listitemview.setBackgroundResource(R.color.glossary_notselected);
-                    tick.setImageResource(0);
+        Globals g= (Globals) this.getActivity().getApplication();
+        if(g==null){
+           Log.v("Globals","null");
+        }
+        if(g.getGlossaryState() ==null){
+            Log.v("GlossaryState","null");
+        }
+        else {
+            glossaryList = g.getGlossaryState();
+            int index = 0;
+            View listitemview;
+            for (Glossary glossary : glossaryList) {
+                listitemview = listView.getChildAt(index);
+                if (listitemview != null) {
+                    if (glossary.isSelected()) {
+                        ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                        listitemview.setBackgroundResource(R.color.glossary_selected);
+                        tick.setImageResource(R.drawable.ic_action_accept);
+                    } else {
+                        ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                        listitemview.setBackgroundResource(R.color.glossary_notselected);
+                        tick.setImageResource(0);
+                    }
                 }
+                index++;
             }
-            index++;
         }
 
     }
@@ -92,7 +104,7 @@ public class PickGlossaryFragment extends Fragment {
      */
     private void displayListView(View rootView){
         //List of glossaries
-
+            Globals g= (Globals) this.getActivity().getApplication();
             glossaryList = new ArrayList<Glossary>();
             //g = (Globals) this.getActivity().getApplication();
             glossaryList.addAll(g.getDictionaries());

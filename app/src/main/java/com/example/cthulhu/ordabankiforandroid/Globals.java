@@ -10,9 +10,10 @@ import java.util.ArrayList;
 public class Globals extends Application{
     private ArrayList<ArrayList<String>> languages;
     private ArrayList<Glossary> dictionaries;
+    private ArrayList<ArrayList<String>> loc_dictionaries;
     private ArrayList<Glossary> glossaryState;
-    private int tLangPos;
-    private int sLangPos;
+    private int tLangPos = -1;
+    private int sLangPos = -1;
 
     public void setLanguages(ArrayList<ArrayList<String>> langs){
      this.languages=langs;
@@ -20,6 +21,7 @@ public class Globals extends Application{
     public void setDictionaries(ArrayList<Glossary> dicts){
         this.dictionaries=dicts;
     }
+    public void setLocalizedDictionaries(ArrayList<ArrayList<String>> dicts){this.loc_dictionaries=dicts;}
     public void setGlossaryState(ArrayList<Glossary> glossaryList){
         this.glossaryState=glossaryList;
     }
@@ -30,6 +32,7 @@ public class Globals extends Application{
         this.sLangPos=pos;
     }
     public ArrayList<ArrayList<String>>getLanguages(){return languages;}
+    public ArrayList<ArrayList<String>> getLoc_dictionaries(){return loc_dictionaries;}
     public ArrayList<Glossary>getDictionaries(){return dictionaries;}
     public ArrayList<Glossary>getGlossaryState(){return glossaryState;}
     public int getTLangPos(){return tLangPos;}

@@ -30,7 +30,7 @@ public class Dictionary {
             else if (anInfo.lang_code.equals("EN")){
                 defaultEN =anInfo.dict_name;
             }
-            else if (anInfo.lang_code.equals(LocaleSettings.returnLanguage())) {
+            if (anInfo.lang_code.equals(LocaleSettings.returnLanguage())) {
                 locName = anInfo.dict_name;
                 break;
             }
