@@ -28,11 +28,11 @@ public class Glossary implements Comparable<Glossary>{
     //use: Glossary glossary = new Glossary(code,name,selected,url);
     //pre: code,name and url are Strings, selected is a boolean
     //post: creates the glossary object
-    public Glossary(String code, String name, String url) {
+    public Glossary(String code, String name) {
         super();
         this.dict_code = code;
         this.name = name;
-        this.url = url;
+        this.url = "http://www.ismal.hi.is/ob/uppl/" + dict_code.toLowerCase() + ".html";
         this.selected = true;
     }
 

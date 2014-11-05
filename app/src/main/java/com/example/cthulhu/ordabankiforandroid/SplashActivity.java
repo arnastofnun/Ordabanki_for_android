@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.widget.Toast;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 //Basically just waits for two secons and then starts the next activity
 
@@ -76,13 +78,13 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         for (Dictionary dict : dictionaries) {
             codeList.add(index, dict.getDictCode());
             dictList.add(index,dict.getDictName());
-            glossary = new Glossary(dict.getDictCode(),dict.getDictName(),"");
+            glossary = new Glossary(dict.getDictCode(),dict.getDictName());
             glossaries.add(index, glossary);
             index++;
         }
         localisedDicts.add(0,codeList);
-        localisedDicts.add(1,dictList);
-        Log.v("LocDicts",localisedDicts.get(0).get(0));
+        localisedDicts.add(1, dictList);
+        Collections.sort(glossaries);
         dObtained=true;
     }
     @Override
@@ -94,13 +96,30 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     @Override
     public void onLanguagesObtained (Language[]languages){
         localisedLangs = new ArrayList<ArrayList<String>>();
-        int index = 0;
+        int index = 2;
         ArrayList<String> codeList = new ArrayList<String>();
+        codeList.add(0,null);
+        codeList.add(1,null);
         ArrayList<String> nameList = new ArrayList<String>();
-        for (Language lang : languages) {
-            codeList.add(index,lang.getLangCode());
-            nameList.add(index,lang.getLangName());
-            index++;
+        nameList.add(0,null);
+        nameList.add(1,null);
+        List<Language> langarray = Arrays.asList(languages);
+        Collections.sort(langarray);
+        for (Language lang : langarray) {
+            if(lang.getLangCode().equals("IS")){
+                codeList.set(0,lang.getLangCode());
+                nameList.set(0,lang.getLangName());
+            }
+            else if(lang.getLangCode().equals("EN")){
+                codeList.set(1,lang.getLangCode());
+                nameList.set(1,lang.getLangName());
+            }
+            else {
+                codeList.add(index, lang.getLangCode());
+                nameList.add(index, lang.getLangName());
+                index++;
+            }
+
         }
         localisedLangs.add(0,codeList);
         localisedLangs.add(1,nameList);

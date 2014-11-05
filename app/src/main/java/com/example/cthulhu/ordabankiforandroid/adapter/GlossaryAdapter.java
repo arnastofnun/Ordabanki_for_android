@@ -2,6 +2,7 @@ package com.example.cthulhu.ordabankiforandroid.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -134,6 +135,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
                 public void onClick(View v){
                     Glossary glossary = (Glossary) v.getTag();
                     if(!glossary.getUrl().equals("")) {
+                        Log.v("glossary link",glossary.getUrl());
                         Intent intent = new Intent(context, AboutGlossaryActivity.class).putExtra("url_string",glossary.getUrl());
                         context.startActivity(intent);
                     }
