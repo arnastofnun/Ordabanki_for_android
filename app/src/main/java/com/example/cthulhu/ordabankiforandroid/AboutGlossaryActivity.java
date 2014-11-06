@@ -30,10 +30,7 @@ public class AboutGlossaryActivity extends Activity {
      *  webView is the view used to display html content
      */     
     private WebView webView;
-    /** 
-     * client is used to retrieve html from the web page containing glossary info
-     */    
-    private AsyncHttpClient client = new AsyncHttpClient();
+
     /**  
      * contents is the html itself
      */    
@@ -43,6 +40,13 @@ public class AboutGlossaryActivity extends Activity {
      */    
     private String css;
 
+    /**
+     * display activity with info about selected glossary
+     * <p>Activity is called when it first starts up</p>
+     *
+     * @param  savedInstanceState state when activity starts up
+     * @return nothing
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
