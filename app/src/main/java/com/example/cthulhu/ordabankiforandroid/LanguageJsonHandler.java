@@ -10,7 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Handles Http response for language calls
+ * Handler to parse language list JSON or return status code on error.
  * @author Bill
  * @since 01/11/14.
  */

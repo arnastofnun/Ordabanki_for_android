@@ -11,13 +11,20 @@ import org.json.JSONException;
  */
 public class AnActivity extends Activity implements OnTermResultObtainedListener, OnSynonymResultObtainedListener{
 
-    //TODO: javadocs
+    /**
+     * real javadoc will be in final class-see ResultScreen
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
-    //TODO: javadocs
+
+    /**
+     * real javadoc will be in final class-see ResultScreen
+     * @param sTerm
+     */
     private void setSynonymResults(String sTerm){
         SynonymResultJsonHandler sJsonHandler = new SynonymResultJsonHandler(this);
         OrdabankiRestClientUsage sClient = new OrdabankiRestClientUsage();
@@ -28,7 +35,11 @@ public class AnActivity extends Activity implements OnTermResultObtainedListener
             e.printStackTrace();
         }
     }
-    //TODO: javadocs
+
+    /**
+     * real javadoc will be in final class-see ResultScreen
+     * @param sTerm
+     */
     private void setTermResults(String sTerm){
         TermResultJsonHandler tJsonHandler = new TermResultJsonHandler(this);
         OrdabankiRestClientUsage tClient = new OrdabankiRestClientUsage();
@@ -39,22 +50,38 @@ public class AnActivity extends Activity implements OnTermResultObtainedListener
             e.printStackTrace();
         }
     }
-    //TODO: javadocs
+
+    /**
+     * real javadoc will be in final class-see ResultScreen
+     * @param tResult
+     */
     @Override
     public void onTermResultObtained(TermResult[] tResult){
 
     }
-    //TODO: javadocs
+
+    /**
+     * real javadoc will be in final class-see ResultScreen
+     * @param statusCode
+     */
     @Override
     public void onTermResultFailure(int statusCode){
 
     }
-    //TODO: javadocs
+
+    /**
+     * real javadoc will be in final class-see ResultScreen
+     * @param sResult
+     */
     @Override
     public void onSynonymResultObtained(SynonymResult[] sResult){
 
     }
-    //TODO: javadocs
+
+    /**
+     * real javadoc will be in final class-see ResultScreen
+     * @param statusCode HTTP status code. No result on 200, otherwise error.
+     */
     @Override
     public void onSynonymResultFailure(int statusCode){
 

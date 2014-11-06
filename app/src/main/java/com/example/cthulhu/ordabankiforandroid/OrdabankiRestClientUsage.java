@@ -3,32 +3,56 @@ package com.example.cthulhu.ordabankiforandroid;
 import org.json.JSONException;
 
 /**
- * Creates instance of rest client
+ * Creates instances of rest client for different database calls
  * Created by Bill on 26/10/14
  */
 public class OrdabankiRestClientUsage {
     /**
-     * creates instance of rest client
-     * @param relURL relative URL to be searched
+     * creates instance of rest client for word search
+     * @param relURL relative word URL from URLGen to be searched
      * @param jsonHandler json handler instance
      * @throws JSONException
      */
     public void setResults(String relURL, OrdabankiJsonHandler jsonHandler) throws JSONException {
         OrdabankiRESTClient.get(relURL, null, jsonHandler);
     }
-    //TODO: javadocs
+
+    /**
+     * creates instance of rest client for call to dictionary list
+     * @param dictURL dictionary list URL
+     * @param jsonHandler json handler instance
+     * @throws JSONException
+     */
     public void getDictionaries(String dictURL, DictionaryJsonHandler jsonHandler) throws JSONException {
         OrdabankiRESTClient.get(dictURL, null, jsonHandler);
     }
-    //TODO: javadocs
+
+    /**
+     * creates instance of rest client for call to language list
+     * @param langURL language list URL
+     * @param jsonHandler json handler instance
+     * @throws JSONException
+     */
     public void getLanguages(String langURL, LanguageJsonHandler jsonHandler) throws JSONException {
         OrdabankiRESTClient.get(langURL,null,jsonHandler);
     }
-    //TODO: javadocs
+
+    /**
+     * creates instance of rest client for numerical term search
+     * @param termURL numerical term search URL from URLGen
+     * @param jsonHandler json handler instance
+     * @throws JSONException
+     */
     public void setTermResults(String termURL, TermResultJsonHandler jsonHandler) throws JSONException{
         OrdabankiRESTClient.get(termURL, null, jsonHandler);
     }
-    //TODO: javadocs
+
+    /**
+     * creates instance of rest client for synonym search
+     * @param synURL synonym URL from URLGen
+     * @param jsonHandler json handler instance
+     * @throws JSONException
+     */
     public void setSynonymResults(String synURL, SynonymResultJsonHandler jsonHandler) throws JSONException{
         OrdabankiRESTClient.get(synURL, null, jsonHandler);
     }

@@ -8,7 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Handles http responses for dictionary calls
+ * Handler to parse dictionary list JSON or return status code on error.
  * @author Bill
  * @since 01/11/14.
  */
