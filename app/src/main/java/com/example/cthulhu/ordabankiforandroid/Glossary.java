@@ -25,74 +25,109 @@ public class Glossary implements Comparable<Glossary>{
     String url = null;
     boolean selected = false;
 
-    //use: Glossary glossary = new Glossary(code,name,selected,url);
-    //pre: code,name and url are Strings, selected is a boolean
-    //post: creates the glossary object
+    /**
+     * use: Glossary glossary = new Glossary(code,name,selected,url);
+     * Creates a new instance of the Glossary class
+     * Written by Karl Ásgeir
+     * @param code is a String and represents the glossary code
+     * @param name is a String and represents the glossary name
+     */
     public Glossary(String code, String name) {
         super();
         this.dict_code = code;
         this.name = name;
+        //TODO: get the url from API, or check if it exists in some way
         this.url = "http://www.ismal.hi.is/ob/uppl/" + dict_code.toLowerCase() + ".html";
         this.selected = true;
     }
 
-     //use: glossary.getCode()
-    //pre: nothing
-    //post: returns the code for the glossary, type string
+
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * use: glossary.getCode()
+     * @return the code for the glossary, type string
+     */
     public String getDictCode() {
         return dict_code;
     }
 
-    //use: glossary.setCode()
-    //pre: code is a String
-    //post:Sets the code for the glossary
+
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * use: glossary.setCode()
+     * @param code is a String
+     * post:Sets the code for the glossary
+     */
     public void setCode(String code) {
         this.dict_code = code;
     }
 
-
-    //use: glossary.getName()
-    //pre: nothing
-    //post:Returns the name of the glossary
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * use: glossary.getName()
+     * @return the name of the glossary
+     */
     public String getName() {
         return name;
     }
 
-    //use: glossary.setName()
-    //pre: name is of type String
-    //post:Sets the name of the glossary
+
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * use: glossary.setName()
+     * @param name is of type String
+     * post:Sets the name of the glossary
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    //use: glossary.getUrl()
-    //pre: nothing
-    //post:Returns the url of the glossary
+
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * use: glossary.getUrl()
+     * @return the url of the glossary
+     */
     public String getUrl() {
         return url;
     }
 
-    //use: glossary.setUrl()
-    //pre: url is of type String
-    //post: sets the url of the glossary
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * use: glossary.setUrl()
+     * @param url is a legal URL of type string
+     * post: sets the url of the glossary
+     */
     public void setUrl(String url) {
         this.url = url;
     }
 
-    //use: glossary.isSelected()
-    //pre: nothing
-    //post: Returns true if glossary is selected, else false
+
+
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * use: glossary.isSelected()
+     * @return true if glossary is selected, else false
+     */
     public boolean isSelected() {
         return selected;
     }
 
-    //use: glossary.setSelected()
-    //pre: seæected is of type boolean
-    //post: sets glossary selected status
+
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * @param selected is of type boolean
+     * post: sets glossary selected status
+     */
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
 
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * @param g is of type Glossary, to compare with this glossary
+     * @return integer that indicates the order these should be compared in
+     */
     public int compareTo(Glossary g){
         return getName().compareTo(g.getName());
     }

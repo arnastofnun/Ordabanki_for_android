@@ -32,6 +32,11 @@ public class ResultInfo extends Activity {
     private WebView wv;
     private String idTerm;
     private String idWord;
+
+    /**
+     * Written by Trausti
+     * @param savedInstanceState the saved instances
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -200,7 +205,12 @@ public class ResultInfo extends Activity {
 
     }
 
-
+    /**
+     * Inflates the options menu
+     * @param menu the options menu
+     * @return true or false
+     * TODO inflate the correct options menu
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -208,6 +218,12 @@ public class ResultInfo extends Activity {
         return true;
     }
 
+    /**
+     * Handles when clicked on items in the action bar
+     * @param item the menu item that was clicked
+     * @return true or false
+     * TODO handle on click actions for the action bar
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

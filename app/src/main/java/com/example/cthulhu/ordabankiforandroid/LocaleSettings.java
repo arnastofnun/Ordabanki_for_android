@@ -65,6 +65,11 @@ public class LocaleSettings{
         return language;
     }
 
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * use: String language = LocaleSettings.returnLanguage()
+     * @return the current language code
+     */
     public static String returnLanguage(){return statLang;}
 
     /**
@@ -107,6 +112,14 @@ public class LocaleSettings{
         //Set the locale settings and start the activity
         setLocale(lang,cl);
     }
+
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * use: language.setLanguageInit(lang)
+     * @param lang is the language to be set
+     * post: The language has been saved and
+     *       the current locale set to lang
+     */
     public void setLanguageInit(String lang){
         //Edit the shared preferences
         Log.v("setting language",lang);
@@ -150,6 +163,14 @@ public class LocaleSettings{
     }
 
 
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * pre: language has to be set in preferences
+     * use: language.setCurLocaleFromPrefs()
+     * post: The locale has been set to the
+     *       language that has been set in
+     *       preferences
+     */
     public void setCurrLocaleFromPrefs(){
 
         String lang = getLanguageFromPref();

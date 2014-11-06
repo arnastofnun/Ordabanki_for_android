@@ -10,11 +10,14 @@ import org.json.JSONException;
  * @author Bill
  */
 public class AnActivity extends Activity implements OnTermResultObtainedListener, OnSynonymResultObtainedListener{
+
+    //TODO: javadocs
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
+    //TODO: javadocs
     private void setSynonymResults(String sTerm){
         SynonymResultJsonHandler sJsonHandler = new SynonymResultJsonHandler(this);
         OrdabankiRestClientUsage sClient = new OrdabankiRestClientUsage();
@@ -25,6 +28,7 @@ public class AnActivity extends Activity implements OnTermResultObtainedListener
             e.printStackTrace();
         }
     }
+    //TODO: javadocs
     private void setTermResults(String sTerm){
         TermResultJsonHandler tJsonHandler = new TermResultJsonHandler(this);
         OrdabankiRestClientUsage tClient = new OrdabankiRestClientUsage();
@@ -35,18 +39,22 @@ public class AnActivity extends Activity implements OnTermResultObtainedListener
             e.printStackTrace();
         }
     }
+    //TODO: javadocs
     @Override
     public void onTermResultObtained(TermResult[] tResult){
 
     }
+    //TODO: javadocs
     @Override
     public void onTermResultFailure(int statusCode){
 
     }
+    //TODO: javadocs
     @Override
     public void onSynonymResultObtained(SynonymResult[] sResult){
 
     }
+    //TODO: javadocs
     @Override
     public void onSynonymResultFailure(int statusCode){
 

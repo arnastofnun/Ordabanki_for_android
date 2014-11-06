@@ -72,10 +72,21 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
         return count;
     }
 
+    /**
+     * Sets the title of the tabs from an array of strings
+     * Written by Karl Ásgeir Geirsson
+     * @param tabs an array of title strings for the tabs
+     */
     public void setTabTitles(ArrayList<String> tabs){
         tabtitles = tabs;
     }
 
+    /**
+     * This is a method to get the title of the page from
+     * a specific position
+     * @param position the position of the tab
+     * @return returns the title of the tab
+     */
     @Override
     public CharSequence getPageTitle(int position){
         return tabtitles.get(position);

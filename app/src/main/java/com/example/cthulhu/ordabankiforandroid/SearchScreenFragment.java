@@ -23,16 +23,29 @@ import android.widget.SearchView;
  * @since 09.10.2014
  */
 public class SearchScreenFragment extends Fragment {
+
+    /**
+     * Runs when created
+     * @param savedInstanceState saved instances
+     */
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * Runs when view is created
+     * @param inflater the layout inflater
+     * @param container the ViewGroup
+     * @param savedInstanceState saved instances
+     * @return the view that was created
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        //Inflate the layout
         View rootView = inflater.inflate(R.layout.fragment_search_screen,container,false);
 
-        //Adding search by pressing enter functionality
+        //Get the search view and the search manager
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) rootView.findViewById(R.id.searchView);
 
@@ -53,7 +66,7 @@ public class SearchScreenFragment extends Fragment {
         });
         */
 
-
+        //Set up the search view
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
         searchView.setIconifiedByDefault(false);
         searchView.setSubmitButtonEnabled(true);

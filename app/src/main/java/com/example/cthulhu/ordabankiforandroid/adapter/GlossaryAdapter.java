@@ -61,14 +61,19 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
     }
 
 
-
-
-
+    /**
+     * Gets the view of the current item in the list view
+     * @param position The position of the item in the list
+     * @param convertView The view of the item in the list
+     * @param parent The parent view
+     * @return convertView is the view of the current item
+     */
     public View getView(int position, View convertView, ViewGroup parent){
         //Initialize
         View view = convertView;
         ViewHolder holder;
 
+        //If view has not been inflated
         if(view == null){
             //inflate the layout
             LayoutInflater vi;
@@ -104,20 +109,23 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
             */
 
 
-
+            //Set an on click listener to the glossary
             holder.glossaryName.setOnClickListener(new View.OnClickListener() {
                 //if the checkbox is clicked set the selected glossary to selected
                 @Override
                 public void onClick(View v) {
+                    //Get the view of the checked image
                     TextView glossaryName = (TextView) v;
                     Glossary glossary = (Glossary) glossaryName.getTag();
                     View row = (View) v.getParent();
                     ImageView tick = (ImageView) row.findViewById(R.id.checked_image);
+                    //If glossary is selected, deselect it and hide the tick
                     if(glossary.isSelected()) {
                         row.setBackgroundResource(R.color.glossary_notselected);
                         tick.setVisibility(View.INVISIBLE);
                         glossary.setSelected(false);
                     }
+                    //If glossary is note selected, select it and show the tick
                    else{
                         row.setBackgroundResource(R.color.glossary_selected);
                         tick.setVisibility(View.VISIBLE);;
@@ -152,9 +160,10 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
 
 
 
-        //Set the current glossary name and checkbox status
+        //Set the current glossary name, tick status and link
         Glossary glossary = glossaryList.get(position);
         holder.link.setTag(glossary);
+        //TODO: hide empty urls, this doesn't work any more
         if(glossary.getUrl().equals("")){
             holder.link.setImageResource(android.R.color.transparent);
         }

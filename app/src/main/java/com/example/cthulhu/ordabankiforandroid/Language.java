@@ -6,19 +6,37 @@ package com.example.cthulhu.ordabankiforandroid;
  * @author Bill
  */
 public class Language implements Comparable<Language>{
-    String code;
-    Info[] info;
-        public class Info{
-            String lang_code;
-            String lang_name;
-            public Info(){
-                //noarg
-            }
+    String code; //The language code
+    Info[] info; //List of language codes and name of language in that language code
+
+    /**
+     * Info class that holds the
+     * language code and name of languages in different languages
+     * @author Bill
+     */
+    public class Info{
+        String lang_code;
+        String lang_name;
+
+        /**
+         * Creates a new instance of the Info class
+         * Written by Bill
+         */
+        public Info(){
+            //noarg
         }
+    }
+
+    /**
+     * Written by Bill
+     * usage: String lang_code = language.getLangCode();
+     * @return the language code
+     */
     public String getLangCode(){return code;}
 
     /**
-     *
+     * Written by Bill
+     * usage: String lang_name = language.getLangName();
      * @return language name in language of app
      */
     public String getLangName(){
@@ -47,7 +65,12 @@ public class Language implements Comparable<Language>{
         return locName;
     }
 
-
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * usage: int cmp = lang.compareTo(language2);
+     * @param l is the language that this language should be compared to
+     * @return returns an integer the alphabetical order of the languages
+     */
     public int compareTo(Language l){
         return getLangName().compareTo(l.getLangName());
     }
