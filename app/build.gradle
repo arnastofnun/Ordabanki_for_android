@@ -12,8 +12,7 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
         }
     }
     productFlavors {
@@ -27,3 +26,4 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.android.support:support-v4:21.0.0'
 }
+
