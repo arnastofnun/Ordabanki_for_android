@@ -28,19 +28,42 @@ import java.util.List;
  * @author Karl Ásgeir Geirsson edited 3/11/14 by Bill to implement languages and dictionaries
  */
 public class SplashActivity extends Activity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener {
-    public ArrayList<ArrayList<String>> localisedLangs; //Holds languages and their codes in the current language
-    public ArrayList<ArrayList<String>> localisedDicts; //Holds glossary names and codes in the current language
-    public ArrayList<Glossary> glossaries; //Holds glossary objects with their values in the current language
-    private boolean dObtained; //true if dictionaries are obtained
-    private boolean lObtained; //true if languages are obtained
-    private boolean error; //true if there was an error
-    long startTime; //Timer value
-    DictionaryJsonHandler dJsonHandler; //Json handler
-
 
     /**
-     * Runs when activity is created
-     * @param savedInstanceState saved instances
+     * localisedLangs is a list of strings that are names of languages
+     */
+    public ArrayList<ArrayList<String>> localisedLangs;
+    /**
+     * localisedLangs is list of strings that are dictionary names
+     */    
+    public ArrayList<ArrayList<String>> localisedDicts;
+    /**
+     * localisedLangs is a list of glossaries
+     */
+    public ArrayList<Glossary> glossaries;
+    /**
+     * dObtained is true if dictionary values have been obtained
+     */
+    private boolean dObtained;
+    /**
+     * lObtained is true if language values have been obtained
+     */
+    private boolean lObtained;
+    /**
+     * error is true if an error appears while the app is running
+     */
+    private boolean error;
+    /**
+     * startTime is the current time im milliseconds
+     */
+    long startTime;
+    /**
+     * dJsonHandler is handles json files that contain dictionary values
+     */
+    DictionaryJsonHandler dJsonHandler;
+    /**
+     * when this activity is started a logo is displayed while initialization takes place
+     * @param savedInstanceState the saved instances
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

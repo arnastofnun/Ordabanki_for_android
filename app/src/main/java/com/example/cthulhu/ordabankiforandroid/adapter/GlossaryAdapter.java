@@ -27,8 +27,13 @@ import java.util.ArrayList;
  */
 public class GlossaryAdapter extends ArrayAdapter<Glossary> {
 
-    //Initialize a list for the glossaries
+    /**
+    *   a list containing glossaries
+    */    
     private static ArrayList<Glossary> glossaryList;
+    /**
+    *   current context
+    */       
     private static Context context;
 
     /**
