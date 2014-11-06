@@ -13,17 +13,23 @@ import com.robotium.solo.Solo;
 import junit.framework.Assert;
 
 /**
+ * Tests SearchScreenActivity with robotium library
+ * 
  * @author Trausti
  * @since 23.10.2014.
  */
 public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScreen> {
-
+    /**
+     * solo is used to do access all functionality while app is running
+     */
     private Solo solo;
 
     public SearchScreenTest() {
         super(SearchScreen.class);
     }
-
+    /**
+     * method  sets up activity and solo befor testing can begin
+     */
     public void setUp() throws Exception {
         solo = new Solo(getInstrumentation(), getActivity());
 
@@ -38,8 +44,10 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
             }
         });
 */}
-
-    //Are we testing the correct activity?
+    
+    /**
+     * Checks if we are testing the current activity
+     */
     public void testPreconditions() {
         solo.assertCurrentActivity("wrong activity",SearchScreen.class);
     }
@@ -136,8 +144,6 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
      * This method tests the functionality of the Glossary tab
      * Written by Kristján
      */
-
-
     public void testGlossarySelection () {
         //TODO Expand tests and add Assertions
         //Click on Glossary tab
@@ -171,6 +177,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
     /**
      * This method tests whether or not search is allowed with 0-2 letters
      * Written by Trausti
+     * @return nothing
      */
 
     public void testSearchLessThanTwoLetters() {
@@ -237,8 +244,6 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
     * This method test if search history can be cleared
     * written by Kristján
      */
-
-
     public void testClearHistory(){
         //Makes sure search is empty
         solo.clearEditText(0);
@@ -266,7 +271,9 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
     }
 
 
-
+    /**
+     * tearDown exits all opened activites
+     */
     @Override
     public void tearDown() throws Exception {
         solo.finishOpenedActivities();
