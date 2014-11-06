@@ -1,3 +1,34 @@
+    package com.example.cthulhu.ordabankiforandroid;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.widget.Toast;
+
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+//Basically just waits for two secons and then starts the next activity
+
+/**
+ * <h1>Splash screen</h1>
+ * <p>This class is supposed to handle things that need
+ * to be hidden in the splash screen</p>
+ * <p>It should get the Locale settings and select language based on them</p>
+ * <p>It should start the select language screen if language has not been selected before</p>
+ * <p>It should start the SearchScreen if language has already been selected</p>
+ * <p></p>
+ * ------------------------------------------------------------------------------------------
+ * @author Karl Ásgeir Geirsson edited 3/11/14 by Bill to implement languages and dictionaries
+ */
+public class SplashActivity extends Activity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener {
+
     /**
      * localisedLangs is a list of strings that are names of languages
      */
