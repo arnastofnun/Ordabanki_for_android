@@ -38,10 +38,12 @@ package com.example.cthulhu.ordabankiforandroid;
  * Holder object for parsing of term result jsons. Repeated variable names are a product of
  * Gson needing the variables to have the same name as json field.
  * @author Bill
+ * @since 04/11/14
  * todo add getters and setters
  */
 public class TermResult {
     Term term;
+    
     public static class Term{
         String id;
         String dict_code;
