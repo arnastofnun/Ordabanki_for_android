@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.adapter.ResultsAdapter;
 
@@ -34,7 +33,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
     /**
      * Takes search term from intent and passes to Rest client
      * Bill
-     * @param savedInstanceState what it says on the tin
+     * @param savedInstanceState saved instances
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +139,12 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
     }
 
 
-
+    /**
+     * Runs when options menu is created
+     * basically just inflates the options menu
+     * @param menu the options menu
+     * @return true or false
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -148,32 +152,42 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         return true;
     }
 
+    /**
+     * handles actions when an item in the options menu is clicked
+     * Written by Karl Ásgeir Geirsson
+     * @param item the clicked item
+     * @return true or false
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-
         switch(item.getItemId()){
+            //If the help button is pressed
             case R.id.action_help:
-
+                //Build a dialog
                 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
                 helpBuilder
                         .setTitle(R.string.help_title)
                         .setMessage(getResources().getString(R.string.help_result_screen));
-
+                //Cancel action
                 helpBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id){
-
+                        //Do nothing on cancel
                     }
                 });
+                //Create and show the dialog
                 AlertDialog helpDialog = helpBuilder.create();
                 helpDialog.show();
-
                 return true;
+            //If the settings button is pressed
             case R.id.action_settings:
+                //Find the view for the settings button
                 View v = findViewById(R.id.action_settings);
+                //Create a new settings instance
                 Settings settings = new Settings(this);
+                //Create a popup menu with settings, that pops from the action button
                 settings.createOptionsPopupMenu(v, SearchScreen.class);
                 return true;
 

@@ -5,6 +5,8 @@ package com.example.cthulhu.ordabankiforandroid;
  * @author Bill
  */
 public interface OnLanguagesObtainedListener {
+    //TODO: javadocs
     public void onLanguagesObtained(Language[] languages);
+    //TODO: javadocs
     public void onLanguagesFailure(int statusCode);
 }

@@ -22,12 +22,16 @@ import android.widget.ImageButton;
 public class SelectLanguageActivity extends Activity {
 
 
-
+    /**
+     * Runs when the activity is created
+     * Does all the setup work for the activity
+     * @param savedInstanceState the saved instances
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_language);
-        initTypeFace();
+        //initTypeFace();
 
 
         //Get the image buttons
@@ -48,11 +52,13 @@ public class SelectLanguageActivity extends Activity {
 
     }
 
+    /*
     private void initTypeFace() {
-        /*TextView textView = (TextView)findViewById(R.id.welcometext);
+        TextView textView = (TextView)findViewById(R.id.welcometext);
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Walkway_SemiBold.ttf");
-        textView.setTypeface(font);*/
+        textView.setTypeface(font);
     }
+    */
 
 
     /**
@@ -86,6 +92,11 @@ public class SelectLanguageActivity extends Activity {
 
         //create on click listener for the button
         imageButton.setOnClickListener(new View.OnClickListener(){
+
+            /**
+             * handles action when image button is clicked
+             * @param v the view of the clicked image button
+             */
             @Override
             public void onClick(View v){
                 //start the activity in the correct language
