@@ -1,42 +1,34 @@
-package com.example.cthulhu.ordabankiforandroid;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.Toast;
-
-import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-//Basically just waits for two secons and then starts the next activity
-
-/**
- * <h1>Splash screen</h1>
- * <p>This class is supposed to handle things that need
- * to be hidden in the splash screen</p>
- * <p>It should get the Locale settings and select language based on them</p>
- * <p>It should start the select language screen if language has not been selected before</p>
- * <p>It should start the SearchScreen if language has already been selected</p>
- * <p></p>
- * ------------------------------------------------------------------------------------------
- * @author Karl Ásgeir Geirsson edited 3/11/14 by Bill to implement languages and dictionaries
- */
-public class SplashActivity extends Activity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener {
-
+    /**
+     * localisedLangs is a list of strings that are names of languages
+     */
     public ArrayList<ArrayList<String>> localisedLangs;
+    /**
+     * localisedLangs is list of strings that are dictionary names
+     */    
     public ArrayList<ArrayList<String>> localisedDicts;
+    /**
+     * localisedLangs is a list of glossaries
+     */
     public ArrayList<Glossary> glossaries;
+    /**
+     * dObtained is true if dictionary values have been obtained
+     */
     private boolean dObtained;
+    /**
+     * lObtained is true if language values have been obtained
+     */
     private boolean lObtained;
+    /**
+     * error is true if an error appears while the app is running
+     */
     private boolean error;
+    /**
+     * startTime is the current time im milliseconds
+     */
     long startTime;
-
+    /**
+     * dJsonHandler is handles json files that contain dictionary values
+     */
     DictionaryJsonHandler dJsonHandler;
 
     @Override
@@ -56,6 +48,11 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         checkTiming();
     }
 
+    /**
+     * Gets the system's locale settings and checks if locale has been set
+     * @param nothing
+     * @return nothing
+     */
     private void isLocaleSet(){
         final LocaleSettings localeSettings = new LocaleSettings(this);
         //if no language set in locale go to select language
