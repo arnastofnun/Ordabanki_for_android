@@ -15,7 +15,8 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 /**
- * Created by karlasgeir on 29.10.2014.
+ * @author Karl Ásgeir Geirsson
+ * @since 29.10.2014.
  */
 public class Settings {
     /*
@@ -26,6 +27,7 @@ public class Settings {
         status is true if there is a language in shared preferences, else false
         language contains the language in shared preferences, else null
      */
+
     Context context;
 
 
