@@ -7,9 +7,18 @@ package com.example.cthulhu.ordabankiforandroid;
  * @since 01/11/14.
  */
 public class Dictionary {
-    String dict_code; //code of the glossary
-    String fjoldi; //total number of glossaries
-    Info[] info; //Info class containing the glossary names in different languages
+    /**
+     * code of the glossary
+     */
+    String dict_code; 
+    /**
+     * total number of glossaries
+     */    
+    String fjoldi; 
+    /**
+     * Info class containing the glossary names in different languages
+     */    
+    Info[] info; 
 
     /**
      * Info class that contains language code and
