@@ -1,8 +1,5 @@
 package com.example.cthulhu.ordabankiforandroid;
 
-/**
- * Created by cthulhu on 04/11/14.
- */
 /*
 *Example:
 * [{"synonym":"svið","word":{"term_id": 454306, "word": "ríki", "dict_code": "STJORN"}},
@@ -18,12 +15,17 @@ package com.example.cthulhu.ordabankiforandroid;
 /**
  * Holder object for parsing synonym results
  * @author Bill
- * todo add getters and setters
+ * @since 04/11/14
   */
 public class SynonymResult {
     String synonym;
     Word word;
-
+ /**
+  * Holder object for parsing word results
+  * @author Bill
+  * @since 04/11/14
+  * todo add getters and setters
+   */
     public static class Word{
         String term_id;
         String word;
