@@ -30,7 +30,10 @@
      * dJsonHandler is handles json files that contain dictionary values
      */
     DictionaryJsonHandler dJsonHandler;
-
+    /**
+     * when this activity is started a logo is displayed while initialization takes place
+     * @param savedInstanceState the saved instances
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
