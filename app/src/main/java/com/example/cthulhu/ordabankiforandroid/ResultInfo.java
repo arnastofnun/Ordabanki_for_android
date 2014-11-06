@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
+ * ResultInfo displays more info when result has been selected
+ *
  * When a specific result is clicked, it opens a new activity
  * with more information about the result and translations
  *
@@ -29,13 +31,29 @@ import org.json.JSONObject;
 
 public class ResultInfo extends Activity {
 
+    /**
+     * wv interprets and displays the html in it's container
+     */
     private WebView wv;
+    /**
+     * idTerm is the id of the term, it is used to perform a get request
+     * to fetch all info on selected term
+     */
     private String idTerm;
+    /**
+     * idWord is the word that the user selected and is displayed at
+     * the top of the screen
+     */
     private String idWord;
 
     /**
-     * Written by Trausti
-     * @param savedInstanceState the saved instances
+     * display activity with info about selected term in results screen
+     * <p> After all info on results has been fetched the data is parsed, HTML is
+     *   generated inside the method and interpeted and displayed on the screen </p>
+     *  written by Trausti
+     * 
+     * @param  savedInstanceState saved instances
+     * @return nothing
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
