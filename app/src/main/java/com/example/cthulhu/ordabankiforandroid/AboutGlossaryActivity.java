@@ -20,21 +20,29 @@ import org.apache.http.Header;
  * @since 29.10.2014
  */
 public class AboutGlossaryActivity extends Activity {
-    /*
-     *  Data invariants:
-     *
+
+    /**
      *  url is  the url of the glossary info page
-     *  webView is the view used to display html content
-     *  client is used to retrieve html from the web page containing glossary info
-     *  contents is the html itself
-     *  css is a string that contains css to change the look of the page
-     *
-     */
+     */     
     private String url;
+    
+    /** 
+     *  webView is the view used to display html content
+     */     
     private WebView webView;
+    /** 
+     * client is used to retrieve html from the web page containing glossary info
+     */    
     private AsyncHttpClient client = new AsyncHttpClient();
+    /**  
+     * contents is the html itself
+     */    
     private String contents;
+    /**  
+     * css is a string that contains css to change the look of the page
+     */    
     private String css;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
