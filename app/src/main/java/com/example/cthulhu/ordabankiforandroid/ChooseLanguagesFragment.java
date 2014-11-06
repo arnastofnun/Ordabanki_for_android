@@ -86,7 +86,7 @@ public class ChooseLanguagesFragment extends Fragment {
 
     /**
      * Saves state to globals when fragment loses focus
-     * @author Bill
+     *
      */
     @Override
     public void onPause(){
@@ -98,7 +98,7 @@ public class ChooseLanguagesFragment extends Fragment {
 
     /**
      * restores state from globals when fragment returns to focus
-     * @author Bill
+     *
      */
     @Override
     public void onResume(){
@@ -113,7 +113,7 @@ public class ChooseLanguagesFragment extends Fragment {
     }
 
     /**
-     * @author Bill
+     *
      * @return language code for source language
      */
     public static String getSourceLanguage(){
@@ -125,7 +125,7 @@ public class ChooseLanguagesFragment extends Fragment {
     }
 
     /**
-     * @author Bill
+     *
      * @return language code for target language
      */
     public static String getTargetLanguage(){

@@ -8,9 +8,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Created by cthulhu on 04/11/14.
+ * Handler to parse results from numerical term search or return status code on error/no result.
+ * @author Bill
  */
 public class TermResultJsonHandler extends JsonHttpResponseHandler {
+    //AnActivity is a placeholder to avoid errors until this is ready to be integrated.
     AnActivity activity;
 
     /**

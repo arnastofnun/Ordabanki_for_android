@@ -14,6 +14,12 @@ package com.example.cthulhu.ordabankiforandroid;
  * {"synonym":"svið","word":{"term_id": 720703, "word": "svæði", "dict_code": "LISA"}}]
 *
  */
+
+/**
+ * Holder object for parsing synonym results
+ * @author Bill
+ * todo add getters and setters
+  */
 public class SynonymResult {
     String synonym;
     Word word;

@@ -33,6 +33,13 @@ package com.example.cthulhu.ordabankiforandroid;
 * {"lang_code":"EN","word":"interval scale"}]},{"einnig_term":296096,"refs":[{"lang_code":"IS","word":"flokkunarkvarði"},
  * {"lang_code":"EN","word":"nominal scale"}]},{"einnig_term":296172,"refs":[{"lang_code":"IS","word":"raðkvarði"}, {"lang_code":"EN","word":"ordinal scale"}]}]}}]
 */
+
+/**
+ * Holder object for parsing of term result jsons. Repeated variable names are a product of
+ * Gson needing the variables to have the same name as json field.
+ * @author Bill
+ * todo add getters and setters
+ */
 public class TermResult {
     Term term;
     public static class Term{

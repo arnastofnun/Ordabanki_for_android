@@ -8,7 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Created by cthulhu on 04/11/14.
+ * Handler to parse results from synonym search or return status code on error/no result.
+ * @author Bill
  */
 public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
     AnActivity activity;

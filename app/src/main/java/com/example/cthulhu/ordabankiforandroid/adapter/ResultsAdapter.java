@@ -104,30 +104,10 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
             holder.definition = (TextView) convertView.findViewById(R.id.resultDefinition);
             holder.example = (TextView) convertView.findViewById(R.id.resultExample);
 
-            if(result.getLexical_category()!=null){
-                hasLex = true;
-            }
-            else{
-               hasLex=false;
-            }
-            if(result.getSynonyms()[0] != null){
-                hasSyn = true;
-            }
-            else{
-                hasSyn=false;
-            }
-            if(result.getDefinition()!= null){
-                hasDef = true;
-            }
-            else{
-                hasDef = false;
-            }
-            if(result.getExample()!=null){
-                hasEx = true;
-            }
-            else{
-                hasEx = false;
-            }
+            hasLex = result.getLexical_category() != null;
+            hasSyn = result.getSynonyms()[0] != null;
+            hasDef = result.getDefinition() != null;
+            hasEx = result.getExample() != null;
             convertView.setTag(holder);
         }
         else {
