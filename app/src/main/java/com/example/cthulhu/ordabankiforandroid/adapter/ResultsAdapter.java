@@ -2,7 +2,6 @@ package com.example.cthulhu.ordabankiforandroid.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,17 +115,20 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
 
 
 
-        //adds all non-null fields from result object to result view
+        //Get global values
         Globals g = (Globals) ((Activity) parent.getContext()).getApplication();
+        //Get the languages and dictionaries from global values
         ArrayList<ArrayList<String>> languages = g.getLanguages();
         ArrayList<ArrayList<String>> dictionaries = g.getLoc_dictionaries();
-        int lang_index = languages.get(0).indexOf(result.getLanguage_code());
-        Log.v("Lang",String.valueOf(lang_index));
-        int gloss_index = dictionaries.get(0).indexOf(result.getDictionary_code());
-        Log.v("gloss",String.valueOf(gloss_index));
-        Log.v("resultCode",result.getDictionary_code());
-        Log.v("from vector",dictionaries.get(0).get(0));
 
+        /*
+            Find the index if the language and dictionary code set by the current result
+            This is done so we can provide the correct language
+         */
+        int lang_index = languages.get(0).indexOf(result.getLanguage_code());
+        int gloss_index = dictionaries.get(0).indexOf(result.getDictionary_code());
+
+        //Set holder values
         holder.term.setText(result.getWord());
         holder.language.setText("(" + languages.get(1).get(lang_index)+")");
         holder.glossary.setText("["+ dictionaries.get(1).get(gloss_index)+"]");
@@ -137,6 +139,9 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
         else{
             convertView.findViewById(R.id.resultLexical_category).setVisibility(View.GONE);
         }
+        /*
+            Set values to view holder if they exist, else hide the view for the item
+         */
         //loops through synonym strings in synonym object and adds to newline delimited list
         if(hasSyn){
             convertView.findViewById(R.id.resultSynonyms).setVisibility(View.VISIBLE);

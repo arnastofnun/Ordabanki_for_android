@@ -10,14 +10,13 @@ import android.webkit.WebView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
 
 /**
  *  This class displays the glossary info screen
  *
- *  @author Trausti
+ * @author Trausti
  * @since 29.10.2014
  */
 public class AboutGlossaryActivity extends Activity {

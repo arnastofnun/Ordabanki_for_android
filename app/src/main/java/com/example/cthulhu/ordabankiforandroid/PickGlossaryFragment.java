@@ -22,18 +22,23 @@ import java.util.ArrayList;
  * @since 9.10.2014
  */
 public class PickGlossaryFragment extends Fragment {
-
-
-
    /*
     * Data invariants:
     *   glossaryList is a list that contains all the glossaries to be used
     *   in the Orðabanki app
     */
-
     private static ArrayList<Glossary> glossaryList;
     private static boolean allSelected = true;
     private static ListView listView;
+
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * Run when the view is created
+     * @param inflater the layout inflater
+     * @param container the ViewGroup
+     * @param savedInstanceState the saved instances
+     * @return returns the created view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         //Load the .xml file for the pick glossary fragment
@@ -43,6 +48,12 @@ public class PickGlossaryFragment extends Fragment {
             displayListView(rootView);
         return rootView;
     }
+
+    /**
+     * Written by Bill
+     * Saves the glossary state when it looses focus
+     * Post: Glossary state has been saved
+     */
     @Override
     public void onPause(){
         super.onPause();
@@ -53,6 +64,11 @@ public class PickGlossaryFragment extends Fragment {
         g.setGlossaryState(glossaryList);
     }
 
+    /**
+     * Written by Bill
+     * sets the glossary state when resumed
+     * Post: glossary state has been set
+     */
     @Override
     public void onResume(){
         super.onResume();
@@ -202,8 +218,10 @@ public class PickGlossaryFragment extends Fragment {
     /*public static ArrayList<Glossary> getGlossaryList(){
             return glossaryList;
     }
-*/
+    */
+
     /**
+     * Written by Bill
      * use: ArrayList<Glossary> glossaryList = getSelectedGlossaries();
      * pre: nothing
      * post: his function returns an array list of all selected glossaries from the glossary list
@@ -224,5 +242,11 @@ public class PickGlossaryFragment extends Fragment {
 
         return selectedGlossaries;
     }
+
+    /**
+     * Written by Bill
+     * use: boolean selected = areAllSelected();
+     * @return true if all glossaries are selected, else false
+     */
     public static boolean areAllSelected(){return allSelected;}
 }
