@@ -10,6 +10,7 @@ import org.json.JSONObject;
 /**
  * Handler to parse results from synonym search or return status code on error/no result.
  * @author Bill
+ * @since 04/11/14
  */
 public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
     AnActivity activity;
