@@ -12,7 +12,9 @@ import org.json.JSONObject;
  * @author Bill
  */
 public class TermResultJsonHandler extends JsonHttpResponseHandler {
-    //AnActivity is a placeholder to avoid errors until this is ready to be integrated.
+    /**
+     * AnActivity is a placeholder to avoid errors until this is ready to be integrated.
+     */    
     AnActivity activity;
 
     /**
