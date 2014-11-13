@@ -2,6 +2,7 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
@@ -17,6 +18,8 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 /**
  * ResultInfo displays more info when result has been selected
@@ -47,6 +50,16 @@ public class ResultInfo extends Activity {
     private String idWord;
 
     /**
+     * dictCode is the code of the glossary that
+     * the selected term belongs to
+     */
+    private String dictCode;
+    /**
+     * glossaryName is the name of the glossary that
+     * the selected term belongs to
+     */
+    private String glossaryName;
+    /**
      * display activity with info about selected term in results screen
      * <p> After all info on results has been fetched the data is parsed, HTML is
      *   generated inside the method and interpeted and displayed on the screen </p>
@@ -62,9 +75,23 @@ public class ResultInfo extends Activity {
         Bundle extras = getIntent().getExtras();
         idTerm = extras.getString("idTerm");
         idWord = extras.getString("idWord");
+        dictCode = extras.getString("dictCode");
         TextView wordTextView = (TextView)findViewById(R.id.termWordView);
+        TextView termGlossaryView = (TextView)findViewById(R.id.termGlossaryView);
         wv = (WebView)findViewById(R.id.webViewTerm);
+
+        //Fetch glossary name of selected term
+        Globals globals = (Globals) getApplicationContext();
+        ArrayList<ArrayList<String>> glossaries = globals.getLoc_dictionaries();
+        int dictCodeIndex = glossaries.get(0).indexOf(dictCode);
+        glossaryName = glossaries.get(1).get(dictCodeIndex);
+
+        //Language names
+        final ArrayList<ArrayList<String>> languages = globals.getLanguages();
+
+        //Set header text
         wordTextView.setText(idWord);
+        termGlossaryView.setText(glossaryName);
         String url = "http://api.arnastofnun.is/ordabanki.php?term="+idTerm+"&agent=ordabankaapp";
         OrdabankiRESTClient.get(url,null, new JsonHttpResponseHandler(){
             /**
@@ -95,7 +122,9 @@ public class ResultInfo extends Activity {
                     for(Word word: terms[0].term.words){
                         synonymHTML = "";
                         wordHTML += "<div id=\"container\"><div id=\"textBlock\">" +
-                                "<b><h3>"+word.word + " - " + word.lang_code + "</h3></b>";
+                                "<b><h3>"+word.word + " - " +
+                                languages.get(1).get(languages.get(0).indexOf(word.lang_code)) + //language of term fetched
+                                "</h3></b>";
                         wordHTML += "<p>";
 
                         if(word.abbreviation != null || word.definition != null || word.dialect != null
@@ -157,10 +186,11 @@ public class ResultInfo extends Activity {
                 if(terms[0].term.sbr[0] != null){
                     sbr_refsHTML += "<div id=\"sbr_refs\">";
                     for(Sbr sbr: terms[0].term.sbr){
-                        sbr_refsHTML += "<br><i>"+getString(R.string.word_sbr)+"</i>: ";
+                        sbr_refsHTML += "<br><i>"+getString(R.string.word_sbr)+"</i> ";
                         if(sbr.refs[0] != null){
                             for(Sbr.Refs ref: sbr.refs){
-                                sbr_refsHTML += ref.word +" - " +ref.lang_code;
+                                //get language string with index of language name in array languages
+                                sbr_refsHTML += ref.word +" - " + languages.get(1).get(languages.get(0).indexOf(ref.lang_code));
                                 sbr_refsHTML += ", ";
                             }
                             sbr_refsHTML = sbr_refsHTML.substring(0,sbr_refsHTML.length()-2)+"</div>";
@@ -170,10 +200,11 @@ public class ResultInfo extends Activity {
                 if(terms[0].term.einnig[0] != null){
                     einnig_refsHTML += "<div id=\"sbr_refs\">";
                     for(Einnig einnig: terms[0].term.einnig){
-                        einnig_refsHTML += "<br><i>"+getString(R.string.word_einnig)+"</i>: ";
+                        einnig_refsHTML += "<br><i>"+getString(R.string.word_einnig)+"</i> ";
                        if(einnig.refs[0] != null){
                            for(Einnig.Refs ref : einnig.refs){
-                               einnig_refsHTML += ref.word +" - " +ref.lang_code;
+                               //get language string with index of language name in array languages
+                               einnig_refsHTML += ref.word +" - " +languages.get(1).get(languages.get(0).indexOf(ref.lang_code));
                                einnig_refsHTML += ", ";
                            }
                            einnig_refsHTML = einnig_refsHTML.substring(0,einnig_refsHTML.length()-2)+"</div>";

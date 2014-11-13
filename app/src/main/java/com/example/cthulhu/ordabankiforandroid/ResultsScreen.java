@@ -131,6 +131,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
                 Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
                 intent.putExtra("idTerm",result.getId_term());
                 intent.putExtra("idWord",result.getWord());
+                intent.putExtra("dictCode",result.getDictionary_code());
                 startActivity(intent);
                 //Toast.makeText(getApplicationContext(), "Clicked on: " + result.getWord(), Toast.LENGTH_LONG).show();
             }
