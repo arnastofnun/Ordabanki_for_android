@@ -137,6 +137,9 @@
     <string name="about_body_structure">.</string>
     <string name="about_header_history">.</string>
     <string name="about_header_structure">.</string>
+
+    <string name="title_activity_result_info">Upplýsingar um leitarorð</string>
+
     <!-- source languages -->
     <string name="src_languages">danska-enska-færeyska-finnska-franska-grænlenska-gríska-hollenska-írska-íslenska-ítalska-japanska-latína-norskt bókmál-nýnorska-pólska-portúgalska-rússneska-sænska-samíska-sanskrít-spænska-þýska</string>
     <!-- target languages -->
