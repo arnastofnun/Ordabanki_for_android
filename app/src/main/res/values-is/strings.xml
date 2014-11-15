@@ -139,6 +139,18 @@
     <string name="about_header_structure">.</string>
 
     <string name="title_activity_result_info">Upplýsingar um leitarorð</string>
+    <string name="word_abbreviation">Skammstöfun: </string>
+    <string name="word_definition">Skilgreining: </string>
+    <string name="word_example">Dæmi: </string>
+    <string name="word_domain">Umdæmi: </string>
+    <string name="word_othergrammar">Önnur málfræði: </string>
+    <string name="word_dialect">Mállýska: </string>
+    <string name="word_explanation">Útskýring: </string>
+
+    <string name="word_synyonym">Samheiti: </string>
+    <string name="word_pronunciation">Framburður: </string>
+    <string name="word_einnig">Sjá einnig: </string>
+    <string name="word_sbr">Samanber: </string>
 
     <!-- source languages -->
     <string name="src_languages">danska-enska-færeyska-finnska-franska-grænlenska-gríska-hollenska-írska-íslenska-ítalska-japanska-latína-norskt bókmál-nýnorska-pólska-portúgalska-rússneska-sænska-samíska-sanskrít-spænska-þýska</string>

@@ -104,14 +104,14 @@ public class ResultInfo extends Activity {
             public void onSuccess(int statusCode, Header[] headers, JSONArray response){
                 Gson gson = new Gson();
                 String wordHTML = "<link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>" +
-                        "<style>#sbr_refs{color:white;font-family: 'PT Serif', serif;font-size:0.9em} h3{color:white} body{background-color:#616161;color:#616161;}p{margin:0pt;padding:0pt;} " +
-                        "#synonym{padding:5px;background-color:white;margin-top:0px;-webkit-border-radius: 7px;\n" +
+                        "<style>#sbr_refs{text-align:left;color:white;font-family: 'PT Serif', serif;font-size:0.9em} h3{color:white} body{margin-left:auto;margin-right:auto;width:80%;background-color:#616161;color:#616161;}p{margin:0pt;padding:0pt;} " +
+                        "#synonym{padding:5px;background-color:white;margin:0px;-webkit-border-radius: 7px;\n" +
                         "-moz-border-radius: 7px;\n" +
                         "border-radius: 7px;}" +
-                        "#word{padding:5px;background-color:#DCEDC8;margin-top:0px;-webkit-border-radius: 7px;\n" +
+                        "#word{padding:5px;background-color:#DCEDC8;margin:0px;-webkit-border-radius: 7px;\n" +
                         "-moz-border-radius: 7px;\n" +
                         "border-radius: 7px;}" +
-                        "#container{width:300px;margin-left: auto; margin-right: auto;margin-top:6px;} " +
+                        "#container{margin-top:6px;} " +
                         "#textBlock{text-align:center;}" +
                         "</style>";
                 String synonymHTML;
@@ -119,6 +119,7 @@ public class ResultInfo extends Activity {
                 String einnig_refsHTML = "";
                 TermResult[] terms = gson.fromJson(response.toString(), TermResult[].class);
                 if(terms[0].term.words[0] != null){
+                    wordHTML +="<div id=\"container\">";
                     for(Word word: terms[0].term.words){
                         synonymHTML = "";
                         wordHTML += "<div id=\"container\"><div id=\"textBlock\">" +
@@ -180,7 +181,7 @@ public class ResultInfo extends Activity {
                             synonymHTML += "</div>";
                         }
                         wordHTML += synonymHTML;
-                        wordHTML+="</p></div></div>";
+                        wordHTML+="</p></div>>";
 
                 }
                 if(terms[0].term.sbr[0] != null){
@@ -212,6 +213,7 @@ public class ResultInfo extends Activity {
 
                     }
                 }
+                wordHTML+="</div>";
             }
 
                 wv.loadDataWithBaseURL(null, wordHTML+sbr_refsHTML+einnig_refsHTML, "text/html", "UTF-8", null);
