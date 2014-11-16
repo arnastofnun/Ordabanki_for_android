@@ -135,4 +135,8 @@
     <string name="word_pronunciation">Pronunciation: </string>
     <string name="word_einnig">See also: </string>
     <string name="word_sbr">Compare: </string>
+    <string name ="help_result_info_screen">1) Name of selected term\n
+        2) The glossary this term belongs to \n
+        3) Translations and all extra info contained in the glossary for this term is listed here.\n
+            If extra information exists for a particular translation it is listed right below it inside a light green box. If similar terms exist they are listed below the light green box.</string>
 </resources>

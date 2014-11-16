@@ -1,11 +1,15 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Word;
 import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Word.Synonym;
@@ -104,19 +108,20 @@ public class ResultInfo extends Activity {
             public void onSuccess(int statusCode, Header[] headers, JSONArray response){
                 Gson gson = new Gson();
                 String wordHTML = "<link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>" +
-                        "<style>#sbr_refs{text-align:left;color:white;font-family: 'PT Serif', serif;font-size:0.9em} h3{color:white} body{margin-left:auto;margin-right:auto;width:80%;background-color:#616161;color:#616161;}p{margin:0pt;padding:0pt;} " +
-                        "#synonym{padding:5px;background-color:white;margin:0px;-webkit-border-radius: 7px;\n" +
-                        "-moz-border-radius: 7px;\n" +
+                        "<style>#sbr_refs{text-align:left;color:white;font-family: 'PT Serif', serif;font-size:0.9em} h3{color:white} body{margin-left:auto;margin-right:auto;width:75%;background-color:#616161;color:#616161;}p{margin:0pt;padding:0pt;} " +
+                        "#synonym{padding:5px;background-color:white;margin-top:5px;margin:0px;-webkit-border-radius: 7px;\n" +
+                        "-moz-border-radius: 7px;margin-left:auto;margin-right:auto;\n" +
                         "border-radius: 7px;}" +
                         "#word{padding:5px;background-color:#DCEDC8;margin:0px;-webkit-border-radius: 7px;\n" +
-                        "-moz-border-radius: 7px;\n" +
+                        "-moz-border-radius: 7px;margin-left:auto;margin-right:auto;\n" +
                         "border-radius: 7px;}" +
-                        "#container{margin-top:6px;} " +
-                        "#textBlock{text-align:center;}" +
+                        "#container{margin-top:6px;margin-left:auto;margin-right:auto} " +
+                        "#textBlock{text-align:center;margin-left:auto;margin-right:auto}" +
                         "</style>";
                 String synonymHTML;
                 String sbr_refsHTML = "";
                 String einnig_refsHTML = "";
+                boolean synParent; //true if div word exists (synonym parent), false otherwise
                 TermResult[] terms = gson.fromJson(response.toString(), TermResult[].class);
                 if(terms[0].term.words[0] != null){
                     wordHTML +="<div id=\"container\">";
@@ -133,6 +138,9 @@ public class ResultInfo extends Activity {
                         || word.othergrammar != null)
                         {
                             wordHTML+="<div id=\"word\">";
+                            synParent = true;
+                        }else{
+                            synParent = false;
                         }
 
                         if(word.abbreviation != null){
@@ -159,29 +167,38 @@ public class ResultInfo extends Activity {
                             wordHTML += "<b>"+getString(R.string.word_othergrammar)+"</b> "+ word.othergrammar + "<br>";
                         }
                         if(word.synonyms[0] != null){
-                            synonymHTML += "<div id=\"synonym\"><b>" + getString(R.string.word_synyonym) + " </b>";
+                            if(synParent){
+                                synonymHTML += "<div id=\"synonym\"><b>" + getString(R.string.word_synyonym) + " </b>";
+                            }else{
+                                synonymHTML += "<div id=\"synonym\" style=\"color:white;padding:0px;background-color:#616161;margin-top:0px;\"><b>" + getString(R.string.word_synyonym) + " </b>";
+                            }
+
                             for(Synonym synonym: word.synonyms){
 
-                                synonymHTML += synonym.synonym + "<br>";
-
+                                synonymHTML += "<div id=\"word\" style =\"width:80%;margin-top:5px;font-family:'PT serif';color:#616161;\"><b><i>"+synonym.synonym + "</i></b>";
+                                String synChild = "";
                                 if(synonym.abbreviation != null){
-                                    synonymHTML +=  getString(R.string.word_abbreviation)+" " + synonym.abbreviation+ "<br>";
+                                    synChild +=  getString(R.string.word_abbreviation)+" " + synonym.abbreviation+ "<br>";
                                 }
                                 if(synonym.dialect != null){
-                                    synonymHTML +=  getString(R.string.word_dialect)+" " + synonym.dialect + "<br>";
+                                    synChild +=  getString(R.string.word_dialect)+" " + synonym.dialect + "<br>";
                                 }
                                 if(synonym.pronunciation != null){
-                                    synonymHTML += getString(R.string.word_pronunciation)+" " + synonym.pronunciation + "<br>";
+                                    synChild += getString(R.string.word_pronunciation)+" " + synonym.pronunciation + "<br>";
                                 }
                                 if(synonym.othergrammar != null){
-                                    synonymHTML += getString(R.string.word_othergrammar)+" " + synonym.othergrammar + "<br>";
+                                    synChild += getString(R.string.word_othergrammar)+" " + synonym.othergrammar + "<br>";
                                 }
 
+                                if(synChild != ""){
+                                    synonymHTML += "<div id =\"synonym\">" + synChild + "</div>";
+                                }
+                                synonymHTML += "</div>";
                             }
                             synonymHTML += "</div>";
                         }
                         wordHTML += synonymHTML;
-                        wordHTML+="</p></div>>";
+                        wordHTML+="</p></div>";
 
                 }
                 if(terms[0].term.sbr[0] != null){
@@ -270,20 +287,49 @@ public class ResultInfo extends Activity {
     }
 
     /**
-     * Handles when clicked on items in the action bar
-     * @param item the menu item that was clicked
+     * handles actions when an item in the options menu is clicked
+     * Written by Karl Ásgeir Geirsson
+     * @param item the clicked item
      * @return true or false
-     * TODO handle on click actions for the action bar
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        ImageView iv = new ImageView(this);
+        iv.setImageResource(R.drawable.resultinfo);
+        switch(item.getItemId()){
+            //If the help button is pressed
+            case R.id.action_help:
+                //Build a dialog
+
+                AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+                helpBuilder
+                        .setTitle(R.string.help_title)
+                        .setMessage(getResources().getString(R.string.help_result_info_screen))
+                        .setView(iv);
+                //Cancel action
+                helpBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+                        //Do nothing on cancel
+                    }
+                });
+                //Create and show the dialog
+                AlertDialog helpDialog = helpBuilder.create();
+                helpDialog.show();
+                return true;
+            //If the settings button is pressed
+            case R.id.action_settings:
+                //Find the view for the settings button
+                View v = findViewById(R.id.action_settings);
+                //Create a new settings instance
+                Settings settings = new Settings(this);
+                //Create a popup menu with settings, that pops from the action button
+                settings.createOptionsPopupMenu(v, SearchScreen.class);
+                return true;
         }
-        return super.onOptionsItemSelected(item);
+
+            return super.onOptionsItemSelected(item);
     }
 }
