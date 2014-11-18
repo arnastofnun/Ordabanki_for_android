@@ -12,7 +12,8 @@ import org.json.JSONObject;
 
 /**
  * Handles raw Json data or returns HTTP status code if there is an error
- * Created by Bill on 26/10/14.**
+ * @author Bill
+ * @since 26/10/14.
  */
 public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
 

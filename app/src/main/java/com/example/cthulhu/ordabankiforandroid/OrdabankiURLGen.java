@@ -7,8 +7,6 @@ import java.util.ListIterator;
 /**
 
  * This class creates URLs to be passed to the client from paramters within the app
- *
- * Created by cthulhu on 13/10/14.
  * <h1>OrðabankiURLGen</h1>
  * <p>Creates URLs to be passed into the rest client</p>
  * @author Bill

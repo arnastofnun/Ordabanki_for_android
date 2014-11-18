@@ -15,7 +15,6 @@ import org.apache.http.Header;
 
 /**
  *  This class displays the glossary info screen
- *
  * @author Trausti
  * @since 29.10.2014
  */
@@ -113,8 +112,10 @@ public class AboutGlossaryActivity extends Activity {
 
     }
 
-
-
+    /**
+     *@param menu the menu
+     *@return true or false
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -122,6 +123,10 @@ public class AboutGlossaryActivity extends Activity {
         return true;
     }
 
+    /**
+     * @param item the menu item that was clicked
+     * @return true or false
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will

@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 
 
-//Created by karlasgeir on 9.10.2014.
-
 /**
  * <h1>Search Screen fragment</h1>
  * <p>This class contains the methods for the search screen fragment</p>

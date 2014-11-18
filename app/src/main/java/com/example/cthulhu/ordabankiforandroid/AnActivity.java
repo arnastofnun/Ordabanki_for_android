@@ -8,6 +8,7 @@ import org.json.JSONException;
 /**
  * placeholder activity to stop errors until term and synonym searches are ready to be integrated
  * @author Bill
+ * @since 01/11/14
  */
 public class AnActivity extends Activity implements OnTermResultObtainedListener, OnSynonymResultObtainedListener{
 

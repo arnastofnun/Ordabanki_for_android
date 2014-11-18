@@ -29,7 +29,8 @@ import java.util.ArrayList;
  * This class contains functions for the search screen
  * tabbed view.
  * It allows you to swipe and tab between fragments
- * Created by Karl Ásgeir Geirsson on 9.10.2014.
+ * @author Karl Ásgeir Geirsson
+ * @since 9.10.2014.
  */
 public class SearchScreen extends FragmentActivity {
     /*

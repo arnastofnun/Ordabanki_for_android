@@ -3,7 +3,8 @@ package com.example.cthulhu.ordabankiforandroid;
 /**
  * Listener interface for rest client
  * returns a SynonymResult array if results are obtained or an HTTP status code otherwise
- * Created by Bill on 26/10/14.
+ * @author Bill
+ * @since 26/10/14.
  */
 public interface OnSynonymResultObtainedListener {
     /**

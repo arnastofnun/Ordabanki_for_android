@@ -1,8 +1,6 @@
 package com.example.cthulhu.ordabankiforandroid;
 
-/**
- * Created by cthulhu on 04/11/14.
- */
+
 /*sample 1 -synonyms only
 *[{"term":{"id":481413,"dict_code":"ERFDAFR","category":null,"subcategory":null,"words":[{"id":1127859,
 *"lang_code":"EN","word":"recombinant DNA technology","domain":null,"definition":null,"example":null,
