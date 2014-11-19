@@ -11,12 +11,13 @@
     <string name="title_activity_select_language">Veldu tungumál</string>
 
     <color name="white">#FFFFFF</color>
+
     <string name="search_button">Leita</string>
     <string name="targetlang">Markmál:</string>
     <string name="sourcelang">Leitarmál:</string>
     <string name="all_languages">Öll</string>
-
     <string name="search_tab">Leita</string>
+
     <string name="searchpreterm">niðurstöður fyrir</string>
     <string name="search_hint">Skrifaðu leitarorð</string>
     <string name="pick_glossary_tab">Orðasöfn</string>
@@ -33,6 +34,7 @@
     <string name="ast_char_limit">Þú þarft að nota a.m.k. tvo stafi með *</string>
     <string name="connection_error">Sambandsslit. Reyndu aftur.</string>
     <string name="definition">Skilgreining: </string>
+
     <string name="synonyms">Samheiti: </string>
     <string name="lexical_category">Orðaflokkur: </string>
     <string name="example">Dæmi: </string>
@@ -45,98 +47,13 @@
     <string name="settings_clear_search">Hreinsa leitarsögu</string>
     <string name="choose_email_client">Vinsamlegast veldu email app</string>
     <string name="error_no_email_client">Þú hefur ekkert email app</string>
+
     <string-array name="language_array">
         <item>Íslenska</item>
         <item>Enska</item>
         <item>Sænska</item>
         <item>Danska</item>
     </string-array>
-    <string name="help_search_fragment">
-        Skrifaðu orð í leitargluggann og ýttu á leita\n\n
-        Þú getur notað ? algildistáknið til að skipta út einum staf í leitarorðinu\n(m?nni yrði minni, mynni og munni)\n\n
-        Þú getur notað * algildistáknið til að skipta út 0 eða fleiri stöfum í leitarorðinu\n(m*nni yrði minni, misminni,myndminni,…)\n\n
-        Þegar algildistáknið * er notað þá þarf að taka fram a.m.k. tvo aðra stafi í leitarorðinu\n\n
-        Leitin gerir ekki greinarmun á há- og lágstöfum\n\n
-        Hægt er að takmarka leitina við ákveðið orðasafn í orðasafns flipanum\n\n
-        Hægt er að takmarka leitar- og markmál í tungumál flipanum
-    </string>
-    <string name="help_glossary_fragment">
-        Sjálfgefið er leitað í öllum orðasöfnum samtímis, en einnig er hægt að takmarka leitina við eitt eða fleiri orðasöfn\n\n
-        Ýttu á eitt eða fleiri orðasafn til að velja það, en ef orðasafn er valið birtist hak vinstra megin við það\n\n
-        Þú verður að velja a.m.k. eitt orðasafn\n\n
-        Þú getur ýtt á velja allt til að velja öll orðasöfn\n\n
-        Það er takki hægra megin við sum orðasöfn sem leiðir þig inn á nánari lýsingu á orðasafninu
-    </string>
-    <string name="help_language_fragment">
-        Leitarmál\n\n
-        Sjálfgefið er leitað í öllum tungumálum\n
-        Hægt er að takmarka leitina við ákveðið leitarmál með því að ýta á valgluggann fyrir leitarmál og velja tungumál\n
-        Aðeins er hægt að velja öll eða eitt leitarmál\n\n
-        Markmál\n\n
-        Sjálfgefið er niðurstöðum skilað á öllum tungumálum\n
-        Hægt er að takmarka leitina á þann hátt að hún skili aðeins niðurstöðum á ákveðnum markmálum.\n
-        Þetta er gert með því að ýta á valgluggann fyrir markmál og velja tungumál\n
-        Aðeins er hægt að velja öll eða eitt markmál
-    </string>
-    <string name="help_result_screen">Implement Help here</string>
-    <string name="about_prologue">
-        Orðabankinn er í eigu Íslenskrar málstöðvar.\n
-        Hann hefur að geyma sérhæfðan hugbúnað fyrir skráningu og birtingu orðasafna.\n
-        Höfundar fá aðgang að skráningarkerfi til þess að vinna að söfnum sínum og bætast þau síðan í hóp annarra orðasafna sem almennir notendur orðabankans geta leitað í.\n
-        Íslensk málstöð gerir samning við höfunda orðasafna um að þeir fái endurgjaldslausan aðgang að skráningarkerfinu gegn því að málstöðin megi birta orðasöfnin í orðabankanum á Netinu.\n
-        Höfundar hafa eftir sem áður allan rétt til verka sinna og geta birt þau hvar og hvenær sem þeir vilja.
-    </string>
-    <string name="about_header_addragandi">Aðdragandi</string>
-    <string name="about_body_addragandi">
-        Á fundi Íslenskrar málnefndar með orðanefndum 22. nóvember 1979 kom fyrst fram hugmynd um íslenskan orðabanka eða íðorðabanka.\n
-        Íslensk málnefnd hlutaðist til um að koma á fót undirbúningsnefnd um slíkan orðabanka þegar árið 1980 og hefur verið hugað að gerð hans með hléum allar götur síðan.\n
-        Fyrsti undirbúningur orðabanka var í því fólginn að gera sér grein fyrir efnisatriðum íðorðasafna og tölvuskráningu þeirra með vélræna úrvinnslu í huga. Öll orðasöfn, sem unnið hefur verið að á vegum málnefndarinnar sjálfrar eða í húsakynnum Íslenskrar málstöðvar, hafa verið tölvuskráð eftir sérstöku kerfi í þessu skyni.\n
-        Í Reglugerð um Íslenska málnefnd og starfsemi Íslenskrar málstöðvar, nr. 159/1987, segir í 7. gr.: ,,Málstöðin skal fylgjast með þróun íðorðabanka í öðrum löndum, undirbúa slíkan banka hér og sjá um rekstur hans.“ Ýmsar ástæður töfðu og torvelduðu samfellda þróun hugmyndarinnar um orðabanka en með tilkomu Netsins varð til muna einfaldara tæknilega að hrinda verkefninu í framkvæmd þannig að öll fyrirtæki, stofnanir og einstaklingar, hvar sem er í heiminum, gætu nýtt sér slíkan orðabanka á Veraldarvefnum.\n
-        Skriður komst á málið þegar íslensk málnefnd hlaut þriggja milljóna króna styrk úr Lýðveldissjóði 1995 til að undirbúa íðorðabanka og þriggja milljóna króna styrk úr sama sjóði til þjónustu við þýðendur. Styrkir þessir áttu að greiðast á þremur árum.\n
-        Einn starfsmaður var ráðinn til Íslenskrar málstöðvar í október 1995 til að sinna þessum verkefnum. Verkefnin tvö eru efnislega samtvinnuð enda lítur málstöðin svo á að orðabanki á tölvuneti geti verið þýðendum ómetanlegt hjálpartæki.\n
-        Árið 1996 fékk Íslensk málstöð að auki einnar milljónar króna styrk úr Málræktarsjóði til að hanna tölvukerfi fyrir orðabankann og árið 1997 fékkst 400 þús. kr. styrkur úr sama sjóði sem m.a. mátti nota til að færa orðasöfn milli tölvukerfa.\n
-        Verkefnið naut jafnframt góðs af nýjum tölvubúnaði sem málstöðin eignaðist 1994. Það var gjöf frá Mjólkursamsölunni í Reykjavík sem hafði ákveðið að verja hluta af auglýsingafé sínu til að styrkja íslenska málrækt á þennan hátt.\n
-        Samkvæmt samningi við tungutækniverkefni á vegum menntamálaráðuneytisins fékk Íslensk málstöð styrk úr tungutæknisjóði 2003-2004 til að endurforrita orðabankann.\n\n
-        Orðabanki Íslenskrar málstöðvar var opnaður á Vefnum 15. nóvember 1997, í tengslum við dag íslenskrar tungu, nánast réttum 18 árum eftir að hugmyndin um íðorðabanka kom fyrst fram á fundi málnefndarinnar með orðanefndunum. Á þeim fundi hugsuðu menn sér að bankinn yrði geymdur í miðlægri tölvu með nettengdum aðgangi um útstöðvar. Síðan hefur orðið tæknibylting í tölvuheiminum. Þrátt fyrir það er þessi hugmynd um skipulag bankans eins í grundvallaratriðum. Munurinn er sá að tölvunetið er margfalt stærra og útstöðvarnar fleiri því að miðlæga tölvan er tengd Netinu.
-    </string>
-    <string name="about_header_purpose">Tilgangur Orðabanka og notendur hans</string>
-    <string name="about_body_purpose">
-        Eitt af hlutverkum orðabanka er að samræma orðanotkun innan skyldra og óskyldra greina. Hann á að safna fræðiheitum og sameina þau þannig að ekki séu á kreiki mörg heiti um sama fyrirbærið.\n
-        Orðabanki Íslenskrar málstöðvar sinnir þessu hlutverki. Hann getur veitt yfirsýn yfir íslenskan íðorðaforða og nýyrði úr almennu máli, sem eru efst á baugi, og stuðlað með því að auknu samræmi bæði í orðanotkun og skilgreiningum. Auk þess veitir hann aðgang að íslenskum þýðingum á erlendum íðorðum, og jafnframt því aðgang að hugtakaskilgreiningum íðorða á íslensku og fleiri tungumálum.\n
-        Orðabankinn getur því gagnast vel öllum þeim sem fjalla um sérfræðileg efni, þýðendum, kennurum, nemendum, fjölmiðlafólki, opinberum stofnunum, fyrirtækjum svo og hvers kyns áhugafólki, og síðast en ekki síst orðabókarhöfundum þar sem hann er sérstaklega ætlaður til orðabókasmíða.\n\n
-        Orðabankinn er líka langþráður vettvangur orðanefnda og annarra orðabókarhöfunda til að bera saman bækur sínar. Í honum fæst góð yfirsýn yfir merkingarsvið þess flettiorðs sem leitað er að hverju sinni. Ef flettiorðið er að finna í fleiri en einu safni eða merkingarsvið þess eru fleiri en eitt koma þær upplýsingar fram á skjánum því að hægt er að leita í öllum söfnum bankans samtímis.\n
-        Þetta auðveldar þeim, sem eru að búa til íðorðasöfn, að átta sig á þeim íslenska íðorðaforða sem fyrir er í ýmsum greinum. Þeir geta jafnframt séð hvort merking orðanna, sem þeir eru að fást við hverju sinni, skarast við merkingu einhverra flettiorða í bankanum.\n\n
-        Orðabankinn er á Vefnum og þar af leiðandi getur fólk um allan heim flett upp í söfnunum. Mörg hver eru með þýðingum á fleiri en einu tungumáli, auk íslensku, og ekkert er því til fyrirstöðu að útlendingar geti nýtt sér þau. Fólk um allan heim getur líka nýtt sér vinnsluhluta bankans.\n
-        Það er hægt að búa til íðorðasöfn, t.d. í samvinnu við erlendar íðorðanefndir og sameinast um vinnusvæði í vinnsluhlutanum þar sem hver gæti skráð upplýsingar á sínu tungumáli í bankann.
-    </string>
-    <string name="about_header_resktur">Rekstur</string>
-    <string name="about_body_rekstur">
-        Íslensk málstöð annast orðabankann og fellur starfsemin undir verksvið íðorðadeildar málstöðvarinnar.\n
-        Ókeypis aðgangur var að bankanum í tæplega eitt ár frá opnun hans en gjaldtaka hófst 15. október 1998.\n
-        Gjaldtöku var aflétt 3. janúar 2001 og aðgangur er öllum frjáls.
-    </string>
-    <string name="about_header_innraskipulag">Innra skipulag orðabankans</string>
-    <string name="about_body_innraskipulag">
-        Skipulag orðabankans er miðað við að efnið í honum margfaldist og verði sífellt fjölbreytilegra.\n
-        Bankinn skiptist í tvo meginhluta, vinnsluhluta og birtingarhluta.\n\n
-
-        Almennir notendur hafa engan aðgang að vinnsluhluta orðabankans. Þar er efninu safnað saman til úrvinnslu, bæði orðasöfnum í frumvinnslu og söfnum í endurskoðun.\n
-        Vinnsluhlutinn skiptist í mismunandi svæði sem hvert og eitt tilheyrir höfundi tiltekins orðasafns (einstaklingi eða t.d. orðanefnd) og engum öðrum.\n
-        Orðabankastjóri í Íslenskri málstöð hefur raunar lesaðgang að vinnsluhlutanum í eftirlitsskyni en aðeins sérfræðingur í viðkomandi grein, höfundur orðasafnsins, getur breytt því.\n
-        Þegar vinnu við gerð orðasafns lýkur flytur orðabankastjóri það í birtingarhlutann; raunar er unnt að birta einstaka hluta orðasafns jafnóðum og þeir eru tilbúnir (þannig má m.a. kynna ný orð fyrr en tíðkast við hefðbunda (bóka)útgáfu).\n\n
-
-        Birtingarhluti orðabankans er hinn sýnilegi orðabanki, þ.e. sá hluti bankans sem almennir notendur hafa aðgang að.\n
-        Með skjótvirku leitarkerfi má finna þar íslensk eða erlend orð, í einu eða fleiri orðasöfnum í einu, fá margs konar upplýsingar um hvert flettiorð, bæði á íslensku og þeim tungumálum öðrum sem um ræðir.
-    </string>
-    <string name="about_header_theapp">Íðorðabanka appið</string>
-    <string name="about_body_theapp">
-        Árið 2014 tóku fjórir nemendur við Háskóla Íslands að sér að búa til forrit í snjallsíma fyrir Íðorðabankann.\n
-        Forritið veitir almennum notendum aðgang að birtingarhluta orðabankans í gegnum Android snjallsíma og spjaldtölvur.
-    </string>
-    <string name="about_body_history">.</string>
-    <string name="about_body_structure">.</string>
-    <string name="about_header_history">.</string>
-    <string name="about_header_structure">.</string>
 
     <string name="title_activity_result_info">Upplýsingar um leitarorð</string>
     <string name="word_abbreviation">Skammstöfun: </string>
@@ -151,6 +68,181 @@
     <string name="word_pronunciation">Framburður: </string>
     <string name="word_einnig">Sjá einnig: </string>
     <string name="word_sbr">Samanber: </string>
+
+    <string name="help_search_fragment">
+        Skrifaðu orð í leitargluggann og ýttu á leita\n\n
+        Þú getur notað ? algildistáknið til að skipta út einum staf í leitarorðinu\n(m?nni yrði minni,
+        mynni og munni)\n\n
+        Þú getur notað * algildistáknið til að skipta út 0 eða fleiri stöfum í leitarorðinu\n(m*nni
+        yrði minni, misminni,myndminni,…)\n\n
+        Þegar algildistáknið * er notað þá þarf að taka fram a.m.k. tvo aðra stafi í leitarorðinu\n\n
+        Leitin gerir ekki greinarmun á há- og lágstöfum\n\n
+        Hægt er að takmarka leitina við ákveðið orðasafn í orðasafns flipanum\n\n
+        Hægt er að takmarka leitar- og markmál í tungumál flipanum
+    </string>
+
+    <string name="help_glossary_fragment">
+        Sjálfgefið er leitað í öllum orðasöfnum samtímis, en einnig er hægt að takmarka leitina við eitt eða fleiri orðasöfn\n\n
+        Ýttu á eitt eða fleiri orðasafn til að velja það, en ef orðasafn er valið birtist hak vinstra megin við það\n\n
+        Þú verður að velja a.m.k. eitt orðasafn\n\n
+        Þú getur ýtt á velja allt til að velja öll orðasöfn\n\n
+        Það er takki hægra megin við sum orðasöfn sem leiðir þig inn á nánari lýsingu á orðasafninu
+    </string>
+
+    <string name="help_language_fragment">
+        Leitarmál\n\n
+        Sjálfgefið er leitað í öllum tungumálum\n
+        Hægt er að takmarka leitina við ákveðið leitarmál með því að ýta á valgluggann fyrir leitarmál og velja tungumál\n
+        Aðeins er hægt að velja öll eða eitt leitarmál\n\n
+        Markmál\n\n
+        Sjálfgefið er niðurstöðum skilað á öllum tungumálum\n
+        Hægt er að takmarka leitina á þann hátt að hún skili aðeins niðurstöðum á ákveðnum markmálum.\n
+        Þetta er gert með því að ýta á valgluggann fyrir markmál og velja tungumál\n
+        Aðeins er hægt að velja öll eða eitt markmál
+    </string>
+
+    <string name="help_result_screen">Implement Help here</string>
+
+    <string name="help_result_info_screen">
+        Texti ekki þýddur
+        <!--
+        1) Name of selected term\n
+        2) The glossary this term belongs to \n
+        3) Translations and all extra info contained in the glossary for this term is listed here.\n
+            If extra information exists for a particular translation it is listed right below it inside a light green box. If similar terms exist they are listed below the light green box. -->
+    </string>
+
+
+    <string name="about_header_prologue">Aðdragandi</string>
+    <string name="about_prologue">
+        Orðabankinn er í eigu Íslenskrar málstöðvar.\n
+        Hann hefur að geyma sérhæfðan hugbúnað fyrir skráningu og birtingu orðasafna.\n
+        Höfundar fá aðgang að skráningarkerfi til þess að vinna að söfnum sínum og bætast þau síðan
+        í hóp annarra orðasafna sem almennir notendur orðabankans geta leitað í.\n
+        Íslensk málstöð gerir samning við höfunda orðasafna um að þeir fái endurgjaldslausan aðgang
+        að skráningarkerfinu gegn því að málstöðin megi birta orðasöfnin í orðabankanum á Netinu.\n
+        Höfundar hafa eftir sem áður allan rétt til verka sinna og geta birt þau hvar og hvenær sem þeir vilja.
+    </string>
+
+    <string name="about_header_addragandi">Aðdragandi</string>
+    <string name="about_body_addragandi">
+            Á fundi Íslenskrar málnefndar með orðanefndum 22. nóvember 1979 kom fyrst fram hugmynd um íslenskan
+        orðabanka eða íðorðabanka.\n
+            Íslensk málnefnd hlutaðist til um að koma á fót undirbúningsnefnd um slíkan orðabanka þegar
+        árið 1980 og hefur verið hugað að gerð hans með hléum allar götur síðan.\n
+            Fyrsti undirbúningur orðabanka var í því fólginn að gera sér grein fyrir efnisatriðum íðorðasafna
+        og tölvuskráningu þeirra með vélræna úrvinnslu í huga. Öll orðasöfn, sem unnið hefur verið að á
+        vegum málnefndarinnar sjálfrar eða í húsakynnum Íslenskrar málstöðvar, hafa verið tölvuskráð
+        eftir sérstöku kerfi í þessu skyni.\n
+        Í Reglugerð um Íslenska málnefnd og starfsemi Íslenskrar málstöðvar, nr. 159/1987, segir í
+        7. gr.: ,,Málstöðin skal fylgjast með þróun íðorðabanka í öðrum löndum, undirbúa slíkan banka
+        hér og sjá um rekstur hans.“ Ýmsar ástæður töfðu og torvelduðu samfellda þróun hugmyndarinnar
+        um orðabanka en með tilkomu Netsins varð til muna einfaldara tæknilega að hrinda verkefninu
+        í framkvæmd þannig að öll fyrirtæki, stofnanir og einstaklingar, hvar sem er í heiminum, gætu
+        nýtt sér slíkan orðabanka á Veraldarvefnum.\n
+            Skriður komst á málið þegar íslensk málnefnd hlaut þriggja milljóna króna styrk úr Lýðveldissjóði
+        1995 til að undirbúa íðorðabanka og þriggja milljóna króna styrk úr sama sjóði til þjónustu við
+        þýðendur. Styrkir þessir áttu að greiðast á þremur árum.\n
+            Einn starfsmaður var ráðinn til Íslenskrar málstöðvar í október 1995 til að sinna þessum
+        verkefnum. Verkefnin tvö eru efnislega samtvinnuð enda lítur málstöðin svo á að orðabanki á
+        tölvuneti geti verið þýðendum ómetanlegt hjálpartæki.\n
+            Árið 1996 fékk Íslensk málstöð að auki einnar milljónar króna styrk úr Málræktarsjóði til
+        að hanna tölvukerfi fyrir orðabankann og árið 1997 fékkst 400 þús. kr. styrkur úr sama sjóði
+        sem m.a. mátti nota til að færa orðasöfn milli tölvukerfa.\n
+            Verkefnið naut jafnframt góðs af nýjum tölvubúnaði sem málstöðin eignaðist 1994. Það var
+        gjöf frá Mjólkursamsölunni í Reykjavík sem hafði ákveðið að verja hluta af auglýsingafé sínu
+        til að styrkja íslenska málrækt á þennan hátt.\n
+            Samkvæmt samningi við tungutækniverkefni á vegum menntamálaráðuneytisins fékk Íslensk málstöð
+        styrk úr tungutæknisjóði 2003-2004 til að endurforrita orðabankann.\n\n
+            Orðabanki Íslenskrar málstöðvar var opnaður á Vefnum 15. nóvember 1997, í tengslum við
+        dag íslenskrar tungu, nánast réttum 18 árum eftir að hugmyndin um íðorðabanka kom fyrst fram
+        á fundi málnefndarinnar með orðanefndunum. Á þeim fundi hugsuðu menn sér að bankinn yrði geymdur
+        í miðlægri tölvu með nettengdum aðgangi um útstöðvar. Síðan hefur orðið tæknibylting í tölvuheiminum.
+        Þrátt fyrir það er þessi hugmynd um skipulag bankans eins í grundvallaratriðum. Munurinn er sá að
+        tölvunetið er margfalt stærra og útstöðvarnar fleiri því að miðlæga tölvan er tengd Netinu.
+    </string>
+
+    <string name="about_header_purpose">Tilgangur Orðabanka og notendur hans</string>
+    <string name="about_body_purpose">
+            Eitt af hlutverkum orðabanka er að samræma orðanotkun innan skyldra og óskyldra greina. Hann
+        á að safna fræðiheitum og sameina þau þannig að ekki séu á kreiki mörg heiti um sama fyrirbærið.\n
+            Orðabanki Íslenskrar málstöðvar sinnir þessu hlutverki. Hann getur veitt yfirsýn yfir íslenskan
+        íðorðaforða og nýyrði úr almennu máli, sem eru efst á baugi, og stuðlað með því að auknu samræmi bæði
+        í orðanotkun og skilgreiningum. Auk þess veitir hann aðgang að íslenskum þýðingum á erlendum íðorðum,
+        og jafnframt því aðgang að hugtakaskilgreiningum íðorða á íslensku og fleiri tungumálum.\n
+            Orðabankinn getur því gagnast vel öllum þeim sem fjalla um sérfræðileg efni, þýðendum, kennurum,
+        nemendum, fjölmiðlafólki, opinberum stofnunum, fyrirtækjum svo og hvers kyns áhugafólki, og síðast
+        en ekki síst orðabókarhöfundum þar sem hann er sérstaklega ætlaður til orðabókasmíða.\n\n
+            Orðabankinn er líka langþráður vettvangur orðanefnda og annarra orðabókarhöfunda til að
+        bera saman bækur sínar. Í honum fæst góð yfirsýn yfir merkingarsvið þess flettiorðs sem leitað
+        er að hverju sinni. Ef flettiorðið er að finna í fleiri en einu safni eða merkingarsvið þess
+        eru fleiri en eitt koma þær upplýsingar fram á skjánum því að hægt er að leita í öllum söfnum
+        bankans samtímis.\n
+            Þetta auðveldar þeim, sem eru að búa til íðorðasöfn, að átta sig á þeim íslenska íðorðaforða
+        sem fyrir er í ýmsum greinum. Þeir geta jafnframt séð hvort merking orðanna, sem þeir eru að
+        fást við hverju sinni, skarast við merkingu einhverra flettiorða í bankanum.\n\n
+            Orðabankinn er á Vefnum og þar af leiðandi getur fólk um allan heim flett upp í söfnunum.
+        Mörg hver eru með þýðingum á fleiri en einu tungumáli, auk íslensku, og ekkert er því til
+        fyrirstöðu að útlendingar geti nýtt sér þau. Fólk um allan heim getur líka nýtt sér
+        vinnsluhluta bankans.\n
+            Það er hægt að búa til íðorðasöfn, t.d. í samvinnu við erlendar íðorðanefndir og sameinast
+        um vinnusvæði í vinnsluhlutanum þar sem hver gæti skráð upplýsingar á sínu tungumáli í bankann.
+    </string>
+
+
+    <string name="about_header_structure">Uppbygging</string>
+    <string name="about_body_structure">  
+        Texti ekki þýddur
+        <!--The Icelandic Word Bank is divided into two main sections, processing section and display section.Each section contains glossaries in different fields.\n\n
+        The display section is publicly searchable/accessible on the World Wide Web and the processing section is the part where the owners and editors of different glossaries can update their work and create new glossaries.\n
+        When the owner of a particular glossary is ready to publish his/her work the editor of the Word Bank can copy the glossary from the processing section to the display section and thus either add a new glossary or update an existing one.\n
+        All glossaries contain terms in Icelandic. In the bilingual glossaries, apart from the Icelandic, the most common language is English, but many of the glossaries are multilingual and the most frequent additional languages are Danish, German, Norwegian, Swedish and French.\n
+        Today there are 36 glossaries containing about 125.000 terms in the display section, all accessible to the user in a single search, and additional 13 glossaries at different stages in the processing section.\n\n
+        The Icelandic Word Bank on the World Wide Web can be updated at all times wherever the editors of its data bases are located in the world, as long as they are connected to the Internet, and the editors and other users can use their favourite WWW browsers for editing and searching as they are not bound to one platform. -->
+    </string>
+
+
+    <string name="about_header_history">Saga</string>
+    <string name="about_body_history"> 
+        Texti ekki þýddur
+        <!--In 1979 the first ideas about a computerized Term Bank in a network emerged in the Icelandic Language Institute. The main idea was to store the data in a mainframe computer with access from terminals.\n
+        Since then there has been a technical revolution in the field of computing; still the main idea is the same, the only difference ist that now the network is the computer. -->
+    </string>
+
+    <string name="about_header_resktur">Rekstur</string>
+    <string name="about_body_rekstur">
+        Íslensk málstöð annast orðabankann og fellur starfsemin undir verksvið íðorðadeildar málstöðvarinnar.\n
+        Ókeypis aðgangur var að bankanum í tæplega eitt ár frá opnun hans en gjaldtaka hófst 15. október 1998.\n
+        Gjaldtöku var aflétt 3. janúar 2001 og aðgangur er öllum frjáls.
+    </string>
+
+    <string name="about_header_theapp">Íðorðabanka appið</string>
+    <string name="about_body_theapp">
+        Árið 2014 tóku fjórir nemendur við Háskóla Íslands að sér að búa til forrit í snjallsíma fyrir Íðorðabankann.\n
+        Forritið veitir almennum notendum aðgang að birtingarhluta orðabankans í gegnum Android snjallsíma og spjaldtölvur.
+    </string>
+
+    <string name="about_header_innraskipulag">Innra skipulag orðabankans</string>
+    <string name="about_body_innraskipulag">
+        Skipulag orðabankans er miðað við að efnið í honum margfaldist og verði sífellt fjölbreytilegra.\n
+        Bankinn skiptist í tvo meginhluta, vinnsluhluta og birtingarhluta.\n\n
+
+            Almennir notendur hafa engan aðgang að vinnsluhluta orðabankans. Þar er efninu safnað saman
+        til úrvinnslu, bæði orðasöfnum í frumvinnslu og söfnum í endurskoðun.\n
+            Vinnsluhlutinn skiptist í mismunandi svæði sem hvert og eitt tilheyrir höfundi tiltekins
+        orðasafns (einstaklingi eða t.d. orðanefnd) og engum öðrum.\n
+            Orðabankastjóri í Íslenskri málstöð hefur raunar lesaðgang að vinnsluhlutanum í eftirlitsskyni
+        en aðeins sérfræðingur í viðkomandi grein, höfundur orðasafnsins, getur breytt því.\n
+            Þegar vinnu við gerð orðasafns lýkur flytur orðabankastjóri það í birtingarhlutann; raunar
+        er unnt að birta einstaka hluta orðasafns jafnóðum og þeir eru tilbúnir (þannig má m.a. kynna
+        ný orð fyrr en tíðkast við hefðbunda (bóka)útgáfu).\n\n
+        Birtingarhluti orðabankans er hinn sýnilegi orðabanki, þ.e. sá hluti bankans sem almennir notendur
+        hafa aðgang að.\n
+            Með skjótvirku leitarkerfi má finna þar íslensk eða erlend orð, í einu eða fleiri orðasöfnum
+        í einu, fá margs konar upplýsingar um hvert flettiorð, bæði á íslensku og þeim tungumálum öðrum sem um ræðir.
+    </string>
+
+
 
     <!-- source languages -->
     <string name="src_languages">danska-enska-færeyska-finnska-franska-grænlenska-gríska-hollenska-írska-íslenska-ítalska-japanska-latína-norskt bókmál-nýnorska-pólska-portúgalska-rússneska-sænska-samíska-sanskrít-spænska-þýska</string>

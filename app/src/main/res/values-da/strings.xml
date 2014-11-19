@@ -9,135 +9,174 @@
     <string name="welcometext">Velkommen til Íðorðabanki app</string>
     <string name="selectlanguage">Vælg dit sprog</string>
     <string name="title_activity_select_language">Vælg sprog</string>
+
     <string name="search_button">Søg</string>
     <string name="targetlang">Målsproget:</string>
     <string name="sourcelang">Kilde sprog:</string>
     <string name="all_languages">Alle</string>
     <string name="search_tab"> Søg</string>
+
     <string name="searchpreterm">resultater for </string>
-         <string name = "search_hint"> Indtast forespørgslen </string>
-         <string name = "pick_glossary_tab"> Ordbøger </string>
-         <string name = "title_activity_results_screen"> Resultater </string>
-         <string name = "action_help"> Hjælp </string>
-         <string name = "select_all"> Vælg alt </string>
-         <string name = "deselect_all"> Fjern markeringen </string>
-         <string name = "database_error"> Kunne ikke forbinde til databasen </string>
-         <string name = "no_result"> Nej </string>
-         <string name = "link_unaccessable"> Der er ingen hjemmeside for denne ordliste </string>
-         <string name = "languages_tab_name"> Sprog </string>
-         <string name = "no_search_term"> Du skal indtaste en søgning </string>
-         <string name = "no_glossary_picked"> Du skal vælge en ordbog </string>
-         <string name = "connection_error"> Connection Error. Prøv igen. </string>
-    <string name="definition">Definition: </string>
+    <string name="search_hint"> Indtast forespørgslen </string>
+    <string name="pick_glossary_tab"> Ordbøger </string>
+    <string name="title_activity_results_screen"> Resultater </string>
+    <string name="action_help"> Hjælp </string>
+    <string name="select_all"> Vælg alt </string>
+    <string name="deselect_all"> Fjern markeringen </string>
+    <string name="database_error"> Kunne ikke forbinde til databasen </string>
+    <string name="no_result"> Nej </string>
+    <string name="link_unaccessable"> Der er ingen hjemmeside for denne ordliste </string>
+    <string name="languages_tab_name"> Sprog </string>
+    <string name="no_search_term"> Du skal indtaste en søgning </string>
+    <string name="no_glossary_picked"> Du skal vælge en ordbog </string>
+    <string name="ast_char_limit"> Du skal indtaste mindst to andre tegn, når du bruger * </string>
+    <string name="connection_error"> Connection Error. Prøv igen. </string>
+
     <string name="synonyms">Synonymer: </string>
     <string name="lexical_category">Leksikalsk kategori::</string>
     <string name="example">Exempel: </string>
+    <string name="help_title"> Hjælp </string>
+    <string name="close_help"> Luk </string>
     <string name="settings_changelanguage_confirm">Vælg</string>
-    <string name="help_result_screen">Implementere Hjælp her </string>
+    <string name="change_language"> Skift sprog </string>
+    <string name="settings_about"> Om </string>
+    <string name="settings_contact"> Kontakt </string><![CDATA[]]>
+    <string name="choose_email_client"> Vælg en e-mail-klient </string>
+    <string name="error_no_email_client"> Du har ikke en e-mail-klient installeret </string>
 
+    <string name="title_activity_result_info">Term info</string>
+    <string name="definition">Definition: </string>
+    <string name="word_abbreviation">Forkortelse: </string>
+    <string name="word_definition">Definition: </string>
+    <string name="word_example">Eksempel: </string>
+    <string name="word_domain">Domæne: </string>
+    <string name="word_othergrammar">Andre grammatik: </string>
+    <string name="word_dialect">Dialekt: </string>
+    <string name="word_explanation">Forklaring: </string>
 
-    <string name = "ast_char_limit"> Du skal indtaste mindst to andre tegn, når du bruger * </string>
-         <string name = "help_title"> Hjælp </string>
-         <string name = "close_help"> Luk </string>
-         <string name = "change_language"> Skift sprog </string>
-         <string name = "settings_about"> Om </string>
-         <string name = "settings_contact"> Kontakt </string><![CDATA[
-        
-         ]]>
-    <string name = "choose_email_client"> Vælg en e-mail-klient </string>
-         <string name = "error_no_email_client"> Du har ikke en e-mail-klient installeret </string>
-         <string-array name = "language_array">
+    <string name="word_synyonym">Synonymer: </string>
+    <string name="word_pronunciation">Udtale: </string>
+    <string name="word_einnig">Se også: </string>
+    <string name="word_sbr">Sammenlign: </string>
+
+        <string-array name= "language_array">
              <item> Islandsk </item>
              <item> Engelsk </item>
              <item> Svensk </item>
              <item> Dansk </item>
          </string-array>
-         <string name = "help_search_fragment"><![CDATA[
-             Indtast ordet i søgefeltet og tryk søg \n\n
-             ? er et wildcard og repræsenterer blot et brev eller mellanrum\n\n
-             * Er et wildcard og repræsenterer ingen (0) eller flere bogstaver eller mellemrum. \n (m * NNI yrði Minni, misminni, myndminni, …) \n \n
 
-             Hvis du bruger * i søgestrengen skal være mindst to andre bogstaver. \n \n
-             Skelner ikke Søgningen mellem store og små bogstaver \n \n
-    Gå til ordbogen for at begrænse søgningen til de udvalgte ordbøger \n \n
-             Gå til sproget for at begrænse søgningen til bestemte søgning eller målsprog]]></string>
-         <string name = "help_glossary_fragment">
-    Som standard, alle ordbøger, men søgningen kan begrænses til et eller flere specifikke ordforråd. \n \n
-    Bare tryk en eller flere ordliste for at vælge eller fravælge det, ordlister med et flueben til den valgte venstre. \n \n
-    Du skal vælge en ordbog. \n \n
-    Du kan trykke på knappen Vælg alt for at vælge alle ordbøger. \n \n
-    Knappen til højre for nogle ordbøger er et link til en beskrivelse af ordlisten.
-         </string>
-         <string name = "help_language_fragment">
-    Søg sprog \n \n
-    Som standard søgeforespørgsler på alle sprog.
-    Kan du begrænse søgningen til en bestemt søgning efter et sprog, skal du trykke på drop down menu af søgningen sprog, og vælg sprog \n
-    Du kan kun vælge en eller alle søge sprog \n \n
-    Target \n \n
-    Som standard søgning Vis resultater på alle sprog \n
-    Kan du begrænse søgningen til en specifik målgruppe sprog ved at trykke på drop-down menu til målsproget, og vælg sprog \n
-    Du kan kun vælge en eller alle af målsproget
-         </string>
-         <string name = "about_header_purpose"> Formål </string>
-         <string name = "about_body_purpose">
-    Et af formålene med et ord bank er at koordinere den terminologi, der anvendes i både beslægtede og forskellige områder: indsamling vilkår, definere og samle dem for at undgå anvendelsen af ​​forskellige navne for det samme koncept. \n
-    Den islandske Word Bank tjener dette formål. Det kan give en generel oversigt over moderne islandsk terminologi og neologismer, som bidrager til koordinering af både forbrug og definitioner.
-</string>
-         <string name = "about_header_structure"> Struktur </string>
-         <string name = "about_body_structure">
-    Den islandske ord bank er opdelt i to hoveddele, forarbejdning sektion og show section.Each afsnit indeholder ordlister inden for forskellige områder. \n \n
-    Afsnittet display er offentligt søgbar / tilgængelig på World Wide Web og afsnittet behandlingen er den del, hvor ejere og redaktører af forskellige ordforråd kan opdatere deres arbejde og skabe nye ordbøger. \n
-    Når ejeren af et bestemt ordbog er klar til at udgive hans / hendes arbejde, kan redaktøren af ​​Word Bank kopiere ordbogen fra afsnittet forarbejdning til del af displayet, og dermed enten tilføje en ny ordbog eller opdatere en eksisterende. \n
-    Alle ordbog indeholder vilkår i islandsk. I tosprogede ordbøger, bortset fra den islandske, er det mest udbredte sprog er engelsk, men mange af de ordbøger er flersprogede og de ​​hyppigste yderligere sprog er dansk, tysk, norsk, svensk og fransk. \n
-    I dag er der 36 ordbøger indeholder omkring 125.000 vilkår i afsnittet display, alle til rådighed for brugeren i en enkelt søgning, og en anden 13 ordbøger i forskellige stadier i afsnittet forarbejdning. \n \n
-    Den islandske ord bank på World Wide Web kan opdateres hele tiden, uanset hvor redaktørerne af deres databaser i verden, så længe de er forbundet til internettet og redaktører og andre brugere kan bruge deres foretrukne webbrowser til redigering og søge, fordi de ikke er bundet til en platform.
-</string>
-         <string name = "about_header_history"> Historik </string>
-         <string name = "about_body_history">
-    I 1979 voksede de første ideer om et edb-Term Bank på et netværk ud af det islandske Language Institute. Den grundlæggende idé var at lagre data i en mainframe med adgang fra terminalerne. \n
-    Siden da har der været en teknologisk revolution inden for databehandling; Hovedidéen er stadig den samme, den eneste forskel, at nu ist netværk er computeren.
-</string>
-         <string name = "about_header_theapp"> The Íðorðabankinn app </string>
-         <string name = "about_body_theapp">
-    I 2014, fire studerende ved Islands Universitet lavet en App til Íðorðabanki. \n
-    Den app giver brugerne adgang til displayet del af íðorðabanki på Android-smartphones og tablets.
-</string>
+     <string name= "help_search_fragment">
+         Indtast ordet i søgefeltet og tryk søg \n\n
+         ? er et wildcard og repræsenterer blot et brev eller mellanrum\n\n
+         * Er et wildcard og repræsenterer ingen (0) eller flere bogstaver eller mellemrum. \n (m * NNI yrði Minni, misminni, myndminni, …) \n \n
 
-    <string name="about_header_addragandi">Prelude</string>
-    <string name="about_body_addragandi">På et møde i Islandsk Sprognævn udvalg med ord November 22, 1979 for første gang ideen om en islandsk bank af ord eller terminologi bank. \ n
-     Det islandske sprog af det parti nedsætte en forberedende til sådanne ord, da banken i 1980 og er blevet givet til hans intermitterende lige siden. \ n
-     De blev foretaget ved inklusion første ord præparater realisere topic terminologier og computer indtastning af en mekanisk bearbejdning i tankerne. Alle encyklopædier, som er blevet arrangeret af Rådet Sprog Komité eller i lokalerne hos den islandske Language Institute, har været registreres elektronisk af en særlig ordning til dette formål. \ n
-     Reguleringen af ​​den islandske Sprognævn og aktiviteterne i den islandske Language Institute, no. 159/1987, bestemmer i artikel 7:.,, Language Institute overvåger udviklingen af terminologiske banker i andre lande, at udarbejde en sådan bank her og drive det "Forskellige årsager forsinket og hindret udøvelse af kontinuerlig udvikling koncept af ordet bank, men med fremkomsten af internettet var. betydeligt enklere at gennemføre teknisk gennemførelse af projektet, således at alle virksomheder, organisationer og enkeltpersoner, hvor som helst i verden, kan gøre brug af et sådant ord bank på internettet. \ n
-     Skridt fremad blev gjort, da den islandske Sprognævn modtog tre millioner tilskud fra den republikanske Fund 1995 for at forberede terminologiske banker og tre millioner tilskud fra fonden for den samme service med oversættere. Tilskud disse skulle betales over tre år. \ n
-     En officer blev udnævnt til den islandske Language Institute i oktober 1995 til at udføre disse opgaver. Projekterne er væsentligt sammenflettede ende ser Language Institute som en orðabanki et computernetværk kan være uvurderlige hjælpemidler oversættere. \ n
-     I 1996, at den islandske Language Institute desuden en million million tilskud fra comm unication Fund designe edb-systemer for ord bank og i 1997 modtog 400 tusind. kr. koncentration af samme fond, bl.a. kunne bruges til at flytte mellem edb-systemer encyklopædier. \ n
-     Projektet har også nydt godt af nyt edb-udstyr, som Language Institute erhvervet i 1994. Det var en gave fra Mjólkursamsalan i Reykjavik havde besluttet at afsætte en del af deres auglýsingafé at styrke guage på denne måde. \ n
-     I henhold til kontrakten sprogteknologi på ministeriets English Language Institute Sprogteknologi Fund tilskud fra 2003-2004 til at omprogrammere ordet bank. \ n \ n
-     Orðabanki Islandsk Language Institute blev åbnet på internettet November 15, 1997, sammenholdt med det islandske sprog i dag, næsten 18 år efter, at den rigtige idé om den terminologi bank skete under et møde i udvalget med en verbal Sprognævn udvalg. På dette møde, de mente, at banken ville blive gemt i en central computer med netbaseret adgang terminalen. Da teknologien er blevet en revolution i dagens software. Selv om der er denne idé af layoutet af banken som et princip. Forskellen er, at et computernetværk er meget større og mere beskyttende terminal til en central computer tilsluttet internettet.
+         Hvis du bruger * i søgestrengen skal være mindst to andre bogstaver. \n \n
+         Skelner ikke Søgningen mellem store og små bogstaver \n \n
+Gå til ordbogen for at begrænse søgningen til de udvalgte ordbøger \n \n
+         Gå til sproget for at begrænse søgningen til bestemte søgning eller målsprog>
     </string>
 
+         <string name= "help_glossary_fragment">
+        Som standard, alle ordbøger, men søgningen kan begrænses til et eller flere specifikke ordforråd. \n \n
+        Bare tryk en eller flere ordliste for at vælge eller fravælge det, ordlister med et flueben til den valgte venstre. \n \n
+        Du skal vælge en ordbog. \n \n
+        Du kan trykke på knappen Vælg alt for at vælge alle ordbøger. \n \n
+        Knappen til højre for nogle ordbøger er et link til en beskrivelse af ordlisten.
+     </string>
+
+         <string name= "help_language_fragment">
+        Søg sprog \n \n
+        Som standard søgeforespørgsler på alle sprog.
+        Kan du begrænse søgningen til en bestemt søgning efter et sprog, skal du trykke på drop down menu af søgningen sprog, og vælg sprog \n
+        Du kan kun vælge en eller alle søge sprog \n \n
+        Target \n \n
+        Som standard søgning Vis resultater på alle sprog \n
+        Kan du begrænse søgningen til en specifik målgruppe sprog ved at trykke på drop-down menu til målsproget, og vælg sprog \n
+        Du kan kun vælge en eller alle af målsproget
+     </string>
+
+    <string name="help_result_screen">Implementere Hjælp her </string>
+
+    <string name="help_result_info_screen">
+        Ingen oversættelse af denne tekst tilgængelig
+        <!--
+        1) Name of selected term\n
+        2) The glossary this term belongs to \n
+        3) Translations and all extra info contained in the glossary for this term is listed here.\n
+            If extra information exists for a particular translation it is listed right below it inside a light green box. If similar terms exist they are listed below the light green box. -->
+    </string>
+
+    <string name="about_header_prologue">Prologue</string>
+    <string name="about_prologue">
+        Orðabankinn er ejet af det islandske sprog institut. \ n
+         Den indeholder specialiseret software til indspilning og udgivelse ordliste. \ n
+         Forfattere adgang registreringssystemet til at arbejde på deres porteføljer og derefter tilsat dem til en gruppe af andre ordliste over ord, som almindelige brugere kan søge i banken. \ n
+         English Language Institute en aftale med forfattere ordliste, at de får gratis fri adgang til registreringssystemet fra Language Institute kan offentliggøre samlinger af ord i ordet bank på internettet. \ n
+         Forfattere har stadig ret til at arbejde og være i stand til at vise dem, hvor og når de vil.
+    </string>
+
+    <string name="about_header_addragandi">Prelude</string>
+    <string name="about_body_addragandi">
+        På et møde i Islandsk Sprognævn udvalg med ord November 22, 1979 for første gang ideen om en islandsk bank af ord eller terminologi bank. \ n
+             Det islandske sprog af det parti nedsætte en forberedende til sådanne ord, da banken i 1980 og er blevet givet til hans intermitterende lige siden. \ n
+             De blev foretaget ved inklusion første ord præparater realisere topic terminologier og computer indtastning af en mekanisk bearbejdning i tankerne. Alle encyklopædier, som er blevet arrangeret af Rådet Sprog Komité eller i lokalerne hos den islandske Language Institute, har været registreres elektronisk af en særlig ordning til dette formål. \ n
+             Reguleringen af ​​den islandske Sprognævn og aktiviteterne i den islandske Language Institute, no. 159/1987, bestemmer i artikel 7:.,, Language Institute overvåger udviklingen af terminologiske banker i andre lande, at udarbejde en sådan bank her og drive det "Forskellige årsager forsinket og hindret udøvelse af kontinuerlig udvikling koncept af ordet bank, men med fremkomsten af internettet var. betydeligt enklere at gennemføre teknisk gennemførelse af projektet, således at alle virksomheder, organisationer og enkeltpersoner, hvor som helst i verden, kan gøre brug af et sådant ord bank på internettet. \ n
+             Skridt fremad blev gjort, da den islandske Sprognævn modtog tre millioner tilskud fra den republikanske Fund 1995 for at forberede terminologiske banker og tre millioner tilskud fra fonden for den samme service med oversættere. Tilskud disse skulle betales over tre år. \ n
+             En officer blev udnævnt til den islandske Language Institute i oktober 1995 til at udføre disse opgaver. Projekterne er væsentligt sammenflettede ende ser Language Institute som en orðabanki et computernetværk kan være uvurderlige hjælpemidler oversættere. \ n
+             I 1996, at den islandske Language Institute desuden en million million tilskud fra comm unication Fund designe edb-systemer for ord bank og i 1997 modtog 400 tusind. kr. koncentration af samme fond, bl.a. kunne bruges til at flytte mellem edb-systemer encyklopædier. \ n
+             Projektet har også nydt godt af nyt edb-udstyr, som Language Institute erhvervet i 1994. Det var en gave fra Mjólkursamsalan i Reykjavik havde besluttet at afsætte en del af deres auglýsingafé at styrke guage på denne måde. \ n
+             I henhold til kontrakten sprogteknologi på ministeriets English Language Institute Sprogteknologi Fund tilskud fra 2003-2004 til at omprogrammere ordet bank. \ n \ n
+             Orðabanki Islandsk Language Institute blev åbnet på internettet November 15, 1997, sammenholdt med det islandske sprog i dag, næsten 18 år efter, at den rigtige idé om den terminologi bank skete under et møde i udvalget med en verbal Sprognævn udvalg. På dette møde, de mente, at banken ville blive gemt i en central computer med netbaseret adgang terminalen. Da teknologien er blevet en revolution i dagens software. Selv om der er denne idé af layoutet af banken som et princip. Forskellen er, at et computernetværk er meget større og mere beskyttende terminal til en central computer tilsluttet internettet.
+    </string>
+
+      <string name= "about_header_purpose"> Formål </string>
+     <string name= "about_body_purpose">
+        Et af formålene med et ord bank er at koordinere den terminologi, der anvendes i både beslægtede og forskellige områder: indsamling vilkår, definere og samle dem for at undgå anvendelsen af ​​forskellige navne for det samme koncept. \n
+        Den islandske Word Bank tjener dette formål. Det kan give en generel oversigt over moderne islandsk terminologi og neologismer, som bidrager til koordinering af både forbrug og definitioner.
+    </string>
+
+    <string name= "about_header_structure"> Struktur </string>
+    <string name= "about_body_structure">
+        Den islandske ord bank er opdelt i to hoveddele, forarbejdning sektion og show section.Each afsnit indeholder ordlister inden for forskellige områder. \n \n
+        Afsnittet display er offentligt søgbar / tilgængelig på World Wide Web og afsnittet behandlingen er den del, hvor ejere og redaktører af forskellige ordforråd kan opdatere deres arbejde og skabe nye ordbøger. \n
+        Når ejeren af et bestemt ordbog er klar til at udgive hans / hendes arbejde, kan redaktøren af ​​Word Bank kopiere ordbogen fra afsnittet forarbejdning til del af displayet, og dermed enten tilføje en ny ordbog eller opdatere en eksisterende. \n
+        Alle ordbog indeholder vilkår i islandsk. I tosprogede ordbøger, bortset fra den islandske, er det mest udbredte sprog er engelsk, men mange af de ordbøger er flersprogede og de ​​hyppigste yderligere sprog er dansk, tysk, norsk, svensk og fransk. \n
+        I dag er der 36 ordbøger indeholder omkring 125.000 vilkår i afsnittet display, alle til rådighed for brugeren i en enkelt søgning, og en anden 13 ordbøger i forskellige stadier i afsnittet forarbejdning. \n \n
+        Den islandske ord bank på World Wide Web kan opdateres hele tiden, uanset hvor redaktørerne af deres databaser i verden, så længe de er forbundet til internettet og redaktører og andre brugere kan bruge deres foretrukne webbrowser til redigering og søge, fordi de ikke er bundet til en platform.
+    </string>
+
+    <string name= "about_header_history"> Historik </string>
+    <string name= "about_body_history">
+        I 1979 voksede de første ideer om et edb-Term Bank på et netværk ud af det islandske Language Institute. Den grundlæggende idé var at lagre data i en mainframe med adgang fra terminalerne. \n
+        Siden da har der været en teknologisk revolution inden for databehandling; Hovedidéen er stadig den samme, den eneste forskel, at nu ist netværk er computeren.
+    </string>
+
+    <string name= "about_header_theapp"> The Íðorðabankinn app </string>
+    <string name= "about_body_theapp">
+        I 2014, fire studerende ved Islands Universitet lavet en App til Íðorðabanki. \n
+        Den app giver brugerne adgang til displayet del af íðorðabanki på Android-smartphones og tablets.
+    </string>
+
+
+
     <string name="about_header_innraskipulag">Infrastrukturer ord bank</string>
-    <string name="about_body_innraskipulag">Setup ordet bank er baseret på materialet i den formere sig og blive mere og mere diversificeret. \ n
-     Banken er opdelt i to hoveddele, forarbejdning del og display del. \ n \ n
-     Almindelige brugere har ikke adgang til tekstbehandling del af banken. Da materialet opsamles til forarbejdning begge ord i samlinger og museer i den primære gennemgang. \ n
-     Behandlingen del er opdelt i forskellige områder, som hver især hører til forfatteren af en bestemt ordliste (f.eks individuel eller orðanefnd) og ingen anden. \ n
-     Bankfolk ord i islandsk Language Institute har faktisk læst adgang til behandling sektion for at inspicere, men kun en ekspert på det pågældende område, kan forfatteren ordliste ændre det. \ n
-     Når du arbejder på at gøre ordliste fuldender flytte ord bankfolk i display sektion; Faktisk er det muligt at vise forskellige dele ordliste, så snart de er klar (dette kan omfatte at indføre nye ord tidligere end dem med traditionelle (bog) udgivelse). \ n \ n
-     Impressions Part ord bank er manifestation orðabanki, dvs. den del af bankens almindelige brugere har adgang til. \ n
-     opløselig søgesystem kan findes der, islandske eller udenlandske ord i ét eller flere ord samlinger på et tidspunkt, få en række oplysninger om hver flettiorð både islandske og andre sprog spørgsmål.
+    <string name="about_body_innraskipulag">
+        Setup ordet bank er baseret på materialet i den formere sig og blive mere og mere diversificeret. \ n
+             Banken er opdelt i to hoveddele, forarbejdning del og display del. \ n \ n
+        Almindelige brugere har ikke adgang til tekstbehandling del af banken. Da materialet opsamles til forarbejdning begge ord i samlinger og museer i den primære gennemgang. \ n
+             Behandlingen del er opdelt i forskellige områder, som hver især hører til forfatteren af en bestemt ordliste (f.eks individuel eller orðanefnd) og ingen anden. \ n
+             Bankfolk ord i islandsk Language Institute har faktisk læst adgang til behandling sektion for at inspicere, men kun en ekspert på det pågældende område, kan forfatteren ordliste ændre det. \ n
+             Når du arbejder på at gøre ordliste fuldender flytte ord bankfolk i display sektion; Faktisk er det muligt at vise forskellige dele ordliste, så snart de er klar (dette kan omfatte at indføre nye ord tidligere end dem med traditionelle (bog) udgivelse). \ n \ n
+             Impressions Part ord bank er manifestation orðabanki, dvs. den del af bankens almindelige brugere har adgang til. \ n
+        opløselig søgesystem kan findes der, islandske eller udenlandske ord i ét eller flere ord samlinger på et tidspunkt, få en række oplysninger om hver flettiorð både islandske og andre sprog spørgsmål.
     </string>
 
     <string name="about_header_resktur">Operationer</string>
-    <string name="about_body_rekstur">Islandsk Language Institute I mellemtiden banken og passer ind under regi af Institut terminologi dominerende for sprog vedlagt. \ n
-     Fri adgang til banken i mindre end ét år fra åbningen af ​​hans afgifter begyndte 15. oktober 1998. \ n
-     Taksterne blev løftet 3 januar, 2001 og der er gratis adgang for alle.
-</string>
-
-    <string name="about_prologue">Orðabankinn er ejet af det islandske sprog institut. \ n
-     Den indeholder specialiseret software til indspilning og udgivelse ordliste. \ n
-     Forfattere adgang registreringssystemet til at arbejde på deres porteføljer og derefter tilsat dem til en gruppe af andre ordliste over ord, som almindelige brugere kan søge i banken. \ n
-     English Language Institute en aftale med forfattere ordliste, at de får gratis fri adgang til registreringssystemet fra Language Institute kan offentliggøre samlinger af ord i ordet bank på internettet. \ n
-     Forfattere har stadig ret til at arbejde og være i stand til at vise dem, hvor og når de vil.
-</string>
+    <string name="about_body_rekstur">
+        Islandsk Language Institute I mellemtiden banken og passer ind under regi af Institut terminologi dominerende for sprog vedlagt. \ n
+         Fri adgang til banken i mindre end ét år fra åbningen af ​​hans afgifter begyndte 15. oktober 1998. \ n
+         Taksterne blev løftet 3 januar, 2001 og der er gratis adgang for alle.
+    </string>
 
 </resources>
