@@ -39,7 +39,7 @@
     <string name="close_help">Stänga</string>
     <string name="settings_changelanguage_confirm">Välj</string>
     <string name="change_language">Byt språk</string>
-    <string name="settings_about">Om</string>
+    <string name="settings_about">Om Íðorðabanki</string>
     <string name="settings_contact">Kontakta oss</string>
     <string name="settings_clear_search">Rensa sökhistoriken</string>
     <string name="choose_email_client">Välj ett e-postklient</string>
@@ -121,7 +121,7 @@
         Redaktörerna har hela rätten till sina verk och kan publicera dem när och var de önskar.
     </string>
 
-    <string name="about_header_addragandi">Aðdragandi</string>
+    <string name="about_header_addragandi">Historia</string>
     <string name="about_body_addragandi">
         Idén om en isländsk ordbank eller ordbank för fackuttryck presenterades första gången vid ett
         möte med den isländska språknämnden 22 november 1979.\n

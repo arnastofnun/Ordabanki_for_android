@@ -39,8 +39,8 @@
     <string name="close_help"> Luk </string>
     <string name="settings_changelanguage_confirm">Vælg</string>
     <string name="change_language"> Skift sprog </string>
-    <string name="settings_about"> Om </string>
-    <string name="settings_contact"> Kontakt </string><![CDATA[]]>
+    <string name="settings_about">Om Íðorðabanki</string>
+    <string name="settings_contact">Kontakt </string><![CDATA[]]>
     <string name="settings_clear_search">Klar søgehistorik</string>
     <string name="choose_email_client"> Vælg en e-mail-klient </string>
     <string name="error_no_email_client"> Du har ikke en e-mail-klient installeret </string>
