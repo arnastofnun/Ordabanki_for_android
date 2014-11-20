@@ -39,6 +39,7 @@ public class SelectLanguageActivity extends Activity {
         ImageButton isButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_icelandic);
         ImageButton daButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_danish);
         ImageButton svButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_swedish);
+        ImageButton noButton = (ImageButton) findViewById(R.id.SelectLanguageActivity_norwegian);
 
         //create new locale settings object
         final LocaleSettings localeSettings = new LocaleSettings(this);
@@ -48,6 +49,7 @@ public class SelectLanguageActivity extends Activity {
         languageOnClickListener(isButton);
         languageOnClickListener(daButton);
         languageOnClickListener(svButton);
+        languageOnClickListener(noButton);
 
 
     }
@@ -84,6 +86,9 @@ public class SelectLanguageActivity extends Activity {
                 break;
             case R.id.SelectLanguageActivity_swedish:
                 lang="SV";
+                break;
+            case R.id.SelectLanguageActivity_norwegian:
+                lang="NO";
                 break;
             default:
                 lang="";

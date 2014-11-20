@@ -88,6 +88,17 @@
                 android:focusableInTouchMode="false"
                 android:contentDescription="Swedish" />
 
+            <ImageButton
+                android:id="@+id/SelectLanguageActivity.norwegian"
+                android:layout_width="match_parent"
+                android:layout_weight="0.3"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_norway"
+                android:scaleType="fitCenter"
+                android:background="@null"
+                android:contentDescription="Norwegian" />
+
+
         </LinearLayout>
     </ScrollView>
 

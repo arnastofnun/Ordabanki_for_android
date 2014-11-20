@@ -113,7 +113,7 @@ public class Settings {
                         }
                         return true;
                     //If clear search history is pressed
-                    case R.id.settings_clear_search_history:
+                    case R.id.settings_clear_search:
                         //Clear the search histry
                         SearchRecentSuggestions suggestions=new SearchRecentSuggestions(context, SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);
                         suggestions.clearHistory();
@@ -143,8 +143,11 @@ public class Settings {
         else if(lang.equals("SV")){
             return 2;
         }
-        else if(lang.equals("DA")){
+        else if(lang.equals("DA")) {
             return 3;
+        }
+        else if(lang.equals("NO")){
+                return 4;
         }
         else{
             return -1;
@@ -165,6 +168,8 @@ public class Settings {
                 return "SV";
             case 3:
                 return "DA";
+            case 4:
+                return "NO";
             default:
                 return "";
         }

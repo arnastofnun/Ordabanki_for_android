@@ -18,7 +18,7 @@
 
         />
     <item
-        android:id="@+id/settings_clear_search_history"
+        android:id="@+id/settings_clear_search"
         android:title="@string/settings_clear_search"
         android:showAsAction="never"/>
 

@@ -99,13 +99,7 @@
     </string>
 
     <string name="help_result_screen">
-        Ordbanken ägs av Íslensk málstöð (ÍM).\n
-        Den innehåller ett särskilt anpassat program för registrering och publicering av ordlistor.\n
-        Redaktörerna har tillgång till ett särskilt registreringssystem för att arbeta med sina ordlistor
-            och sedan kombinera dem med andra ordlistor som användarna av ordbanken kan söka i. \n
-        Íslensk málstöð har gjort en överenskommelse med ordlistornas redaktörer  som får tillgång till
-            registreringssystemet mot att ÍM får publicera ordlistorna i ordbanken på nätet. \n
-        Redaktörerna har hela rätten till sina verk och kan publicera dem när och var de önskar.
+
     </string>
 
      <string name ="help_result_info_screen">
@@ -118,9 +112,13 @@
     </string>
 
     <string name="about_prologue">
-        Ingen översättning av denna text är tillgänglig
-        <!--
-        Orðabankinn er í eigu Íslenskrar málstöðvar.\n         Hann hefur að geyma sérhæfðan hugbúnað fyrir skráningu og birtingu orðasafna.\n         Höfundar fá aðgang að skráningarkerfi til þess að vinna að söfnum sínum og bætast þau síðan í hóp annarra orðasafna sem almennir notendur orðabankans geta leitað í.\n         Íslensk málstöð gerir samning við höfunda orðasafna um að þeir fái endurgjaldslausan aðgang að skráningarkerfinu gegn því að málstöðin megi birta orðasöfnin í orðabankanum á Netinu.\n         Höfundar hafa eftir sem áður allan rétt til verka sinna og geta birt þau hvar og hvenær sem þeir vilja. -->
+            Ordbanken ägs av Íslensk málstöð (ÍM).\n
+        Den innehåller ett särskilt anpassat program för registrering och publicering av ordlistor.\n
+        Redaktörerna har tillgång till ett särskilt registreringssystem för att arbeta med sina ordlistor
+            och sedan kombinera dem med andra ordlistor som användarna av ordbanken kan söka i. \n
+        Íslensk málstöð har gjort en överenskommelse med ordlistornas redaktörer  som får tillgång till
+            registreringssystemet mot att ÍM får publicera ordlistorna i ordbanken på nätet. \n
+        Redaktörerna har hela rätten till sina verk och kan publicera dem när och var de önskar.
     </string>
 
     <string name="about_header_addragandi">Aðdragandi</string>
