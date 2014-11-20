@@ -91,6 +91,7 @@
         <item>English</item>
         <item>Swedish</item>
         <item>Danish</item>
+        <item>Norwegian</item>
     </string-array>
 
     <string name="help_search_fragment">        

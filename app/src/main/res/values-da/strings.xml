@@ -64,6 +64,7 @@
              <item> Engelsk </item>
              <item> Svensk </item>
              <item> Dansk </item>
+             <item> Norsk </item>
          </string-array>
 
      <string name= "help_search_fragment">

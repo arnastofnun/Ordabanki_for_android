@@ -48,13 +48,6 @@
     <string name="choose_email_client">Vinsamlegast veldu email app</string>
     <string name="error_no_email_client">Þú hefur ekkert email app</string>
 
-    <string-array name="language_array">
-        <item>Íslenska</item>
-        <item>Enska</item>
-        <item>Sænska</item>
-        <item>Danska</item>
-    </string-array>
-
     <string name="title_activity_result_info">Upplýsingar um leitarorð</string>
     <string name="word_abbreviation">Skammstöfun: </string>
     <string name="word_definition">Skilgreining: </string>
@@ -68,6 +61,14 @@
     <string name="word_pronunciation">Framburður: </string>
     <string name="word_einnig">Sjá einnig: </string>
     <string name="word_sbr">Samanber: </string>
+
+    <string-array name="language_array">
+        <item>Íslenska</item>
+        <item>Enska</item>
+        <item>Sænska</item>
+        <item>Danska</item>
+        <item>Norska</item>
+    </string-array>
 
     <string name="help_search_fragment">
         Skrifaðu orð í leitargluggann og ýttu á leita\n\n

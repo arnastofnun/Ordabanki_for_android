@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <string name="app_name">Íðorðabankinn</string>
+    <string name="title_activity_splash">Orðabankinn</string>
+    <string name="action_settings">Innstillinger</string>
+    <string name="splashimage">Splash bilde</string>
+    <string name="splashtext">Initialisering</string>
+    <string name="welcometext">Velkommen til Íðorðabanki app</string>
+    <string name="selectlanguage">Velge språk</string>
+    <string name="title_activity_select_language">Velg språk</string>
+
+    <string name="search_button">Søk</string>
+    <string name="targetlang">Målspråket:</string>
+    <string name="sourcelang">Kildespråk:</string>
+    <string name="all_languages">Alt</string>
+    <string name="search_tab">Søk</string>
+
+    <string name="searchpreterm">Resultater for</string>
+    <string name="search_hint">Typen i søket</string>
+    <string name="pick_glossary_tab">Ordlister</string>
+    <string name="title_activity_results_screen">Resultater</string>
+    <string name="action_help">Hjelpe</string>
+    <string name="select_all">Velg alle</string>
+    <string name="deselect_all">Oppheve valget alt</string>
+    <string name="database_error">Kunne ikke koble til database</string>
+    <string name="no_result">No</string>
+    <string name="link_unaccessable">Det er ingen nettside for denne ordlisten</string>
+    <string name="languages_tab_name">Språk</string>
+    <string name="no_search_term">Du må skrive inn et søk sams</string>
+    <string name="no_glossary_picked">Du må velge minst en ordliste</string>
+    <string name="ast_char_limit">Du må skrive inn minst to andre tegn når du bruker *</string>
+    <string name="connection_error">Tilkoblingsfeil. Prøv på nytt.</string>
+    <string name="definition">Definisjon: </string>
+
+    <string name="synonyms">Synonymer: </string>
+    <string name="lexical_category">Leksikalsk Kategori:</string>
+    <string name="example">Eksempel: </string>
+    <string name="help_title">Hjelp</string>
+    <string name="close_help">Nær</string>
+    <string name="settings_changelanguage_confirm">Velg</string>
+    <string name="change_language">Endring språk</string>
+    <string name="settings_about">Om</string>
+    <string name="settings_contact">Kontakt oss</string>
+    <string name="settings_clear_search">Tøm søkehistorikk</string>
+    <string name="choose_email_client">Velg en e-postklient</string>
+    <string name="error_no_email_client">Du trenger ikke ha en e-postklient installert</string>
+
+    <string-array name="language_array">
+    <item>Islandsk</item>
+    <item>Engelsk </item>
+    <item>Svensk </item>
+    <item>Dansk </item>
+    <item>Norsk </item>
+    </string-array>
+
+ </resources>

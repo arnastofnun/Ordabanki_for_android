@@ -30,14 +30,13 @@
     <string name="no_search_term">Du måste skriva in en sökfråga</string>
     <string name="no_glossary_picked">Du måste välja minst en ordlista</string>
     <string name="ast_char_limit">Du måste skriva in minst två andra tecken när du använder *</string>
-    <string name="connection_error">Connection Error. Try again.</string>
-    <string name="definition">Definition: </string>
+    <string name="connection_error">Tilkoblingsfeil. Prøv på nytt.</string>
 
     <string name="synonyms">Synonymer: </string>
     <string name="lexical_category">Lexikal kategori:</string>
     <string name="example">Exempel: </string>
     <string name="help_title">Hjälp</string>
-    <string name="close_help">Close</string>
+    <string name="close_help">Stänga</string>
     <string name="settings_changelanguage_confirm">Välj</string>
     <string name="change_language">Byt språk</string>
     <string name="settings_about">Om</string>
@@ -46,11 +45,27 @@
     <string name="choose_email_client">Välj ett e-postklient</string>
     <string name="error_no_email_client">Du har inte en e-postklient installerad</string>
 
+    <string name="title_activity_result_info">Uttrycket Info</string>
+    <string name="definition">Definitionen: </string>
+    <string name="word_abbreviation">Förkortning: </string>
+    <string name="word_definition">Definitionen: </string>
+    <string name="word_example">Exempel: </string>
+    <string name="word_domain">Domän: </string>
+    <string name="word_othergrammar">Annan grammatik: </string>
+    <string name="word_dialect">Dialekt: </string>
+    <string name="word_explanation">Förklaring: </string>
+
+    <string name="word_synyonym">Synonym: </string>
+    <string name="word_pronunciation">Uttal: </string>
+    <string name="word_einnig">Se även: </string>
+    <string name="word_sbr">Jämför: </string>
+
     <string-array name="language_array">
         <item>Isländska</item>
         <item>Engelska </item>
         <item>Svenska </item>
         <item>Danska </item>
+        <item>Norska </item>
     </string-array>
     
     <string name="help_search_fragment">
