@@ -38,7 +38,7 @@ public class Glossary implements Comparable<Glossary>{
         this.name = name;
         //TODO: get the url from API, or check if it exists in some way
         //temporary fix until API provides the values, check string that contains glossaries currently online
-        String glossaryLinks = "bilord.html-arkitekt.html-byggverk.html-edlisfr.html-efnafr.html-endur.html-erfdafr.html-flug.html-fundarord.html-gjaldmidlar.html-hagfr.html-jardfr.html-laekn.html-landafr.html-liford.html-lisa.html-malfr.html-krydd.html-vidur.html-nyyrdi.html-onaemisfr.html-flora.html-raft.html-rettritun.html-rikjaheiti.html-sjodyr.html-pisces.html-sjomenn.html-stjornsysla.html-stjarna.html-thy.html-timbur.html-tolfr.html-tolva.html-saela.html-verkst.htm-upplysingafraedi.htm-umhv.htm-malmur.htm-vedur.htm";
+        String glossaryLinks = "bilord.html-arkitekt.html-byggverk.html-edlisfr.html-efnafr.html-endur.html-erfdafr.html-flug.html-fundarord.html-gjaldmidlar.html-hagfr.html-jardfr.html-laekn.html-landafr.html-liford.html-lisa.html-malfr.html-krydd.html-vidur.html-nyyrdi.html-onaemisfr.html-flora.html-raft.html-rettritun.html-rikjaheiti.html-sjodyr.html-pisces.html-sjomenn.html-stjornsysla.html-stjarna.html-thy.html-timbur.html-tolfr.html-tolva.html-saela.html-verkst.html-upplysingafraedi.htm-umhv.htm-malmur.htm-vedur.htm";
         String[] glossaryLinksArray = glossaryLinks.split("-");
         String dictLowerCase = dict_code.toLowerCase();
         if(glossaryLinks.contains(dictLowerCase))
