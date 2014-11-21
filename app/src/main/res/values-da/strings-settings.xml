@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings for settings menu-->
+    <string name="action_help"> Hjælp </string>
+    <string name="settings_changelanguage_confirm">Vælg</string>
+    <string name="change_language"> Skift sprog </string>
+    <string name="settings_about">Om Íðorðabanki</string>
+    <string name="settings_contact">Kontakt </string>
+    <string name="settings_clear_search">Klar søgehistorik</string>
+    
+    <!--Strings for changing language-->
+    <string-array name= "language_array">
+         <item> Islandsk </item>
+         <item> Engelsk </item>
+         <item> Svensk </item>
+         <item> Dansk </item>
+         <item> Norsk </item>
+     </string-array>
+
+    <!--Strings for emailing contact-->
+    <string name="choose_email_client"> Vælg en e-mail-klient </string>
+    <string name="error_no_email_client"> Du har ikke en e-mail-klient installeret </string>
+
+</resources>

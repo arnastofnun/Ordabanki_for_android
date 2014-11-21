@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings used in the search tab-->
+    <string name="search_tab"> Søg</string>
+    <string name="search_hint"> Indtast forespørgslen </string>
+    <string name="database_error"> Kunne ikke forbinde til databasen </string>
+    <string name="no_search_term"> Du skal indtaste en søgning </string>
+    <string name="no_glossary_picked"> Du skal vælge en ordbog </string>
+    <string name="ast_char_limit"> Du skal indtaste mindst to andre tegn, når du bruger * </string>
+    <string name="connection_error"> Connection Error. Prøv igen. </string>
+
+
+    <!--Strings used in the pick glossaries tab-->
+    <string name="pick_glossary_tab"> Ordbøger </string>
+    <string name="select_all"> Vælg alt </string>
+    <string name="deselect_all"> Fjern markeringen </string>
+    <string name="link_unaccessable"> Der er ingen hjemmeside for denne ordliste </string>
+
+    <!--Strings used in the choose language fragment-->
+    <string name="languages_tab_name"> Sprog </string>
+    <string name="targetlang">Målsproget:</string>
+    <string name="sourcelang">Kilde sprog:</string>
+    <string name="all_languages">Alle</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings used in the results screen-->
+    <string name="searchpreterm">resultat för</string>
+    <string name="no_result">No</string>
+    <string name="synonyms">Synonymer: </string>
+    <string name="lexical_category">Lexikal kategori:</string>
+    <string name="example">Exempel: </string>
+
+    <!--Strings for the result-information screen-->
+<string name="definition">Definitionen: </string>
+    <string name="word_abbreviation">Förkortning: </string>
+    <string name="word_definition">Definitionen: </string>
+    <string name="word_example">Exempel: </string>
+    <string name="word_domain">Domän: </string>
+    <string name="word_othergrammar">Annan grammatik: </string>
+    <string name="word_dialect">Dialekt: </string>
+    <string name="word_explanation">Förklaring: </string>
+    <string name="word_synyonym">Synonym: </string>
+    <string name="word_pronunciation">Uttal: </string>
+    <string name="word_einnig">Se även: </string>
+    <string name="word_sbr">Jämför: </string>
+
+
+</resources>

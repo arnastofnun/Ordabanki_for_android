@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings used in the results screen-->
+    <string name="searchpreterm">resultater for </string>
+    <string name="no_result"> Nej </string>
+    <string name="synonyms">Synonymer: </string>
+    <string name="lexical_category">Leksikalsk kategori::</string>
+    <string name="example">Exempel: </string>
+
+    <!--Strings for the result-information screen-->
+    <string name="definition">Definition: </string>
+    <string name="word_abbreviation">Forkortelse: </string>
+    <string name="word_definition">Definition: </string>
+    <string name="word_example">Eksempel: </string>
+    <string name="word_domain">Domæne: </string>
+    <string name="word_othergrammar">Andre grammatik: </string>
+    <string name="word_dialect">Dialekt: </string>
+    <string name="word_explanation">Forklaring: </string>
+    <string name="word_synyonym">Synonymer: </string>
+    <string name="word_pronunciation">Udtale: </string>
+    <string name="word_einnig">Se også: </string>
+    <string name="word_sbr">Sammenlign: </string>
+
+
+</resources>

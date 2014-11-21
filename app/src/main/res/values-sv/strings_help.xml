@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings for the help-->
+    <string name="help_title">Hjälp</string>
+    <string name="close_help">Stänga</string>
+
+    <!--Help string arrays-->
+    <!--NOTE There are two string arrays for each section
+    one including the titles and one including the contents.
+    They will be displayed in order (first item in titles
+    will be the title array for the first item in the content array.
+    If you want to skip the title, put in a !skip in an item in the title array-->
+    <!--Titles for search fragment help -->
+    <string-array name="help_search_fragment_titles">
+        <item>!skip</item>
+        <item>Hur söker jag?</item>
+        <item>Få fler resultat</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Du får för många resultat?</item>
+    </string-array>
+    <!--Contents for search fragments-->
+    <string-array name="help_search_fragment">
+        <item>Sökmotorn gör ingen skillnad på gemena eller versala bokstäver</item>
+        <item>Skriv ett ord i sökfönstret och tryck på sök.</item>
+        <item>Du kan använda ? som jokertecken för att byta ut en bokstav i sökordet\n(m?nni blir minni, mynni och munni)</item>
+        <item>Du kan använda * som jokertecken til að byta ut 0 eller flera bokstäver i sökordet\n(m*nni blir minni,misminni,myndminni,…)</item>
+        <item>När * används som jokertecken måste man ta fram minst två andra tecken i sökordet</item>
+        <item> Det är möjligt att begränsa sökandet till en bestämd ordlista i fliken för ordlistor
+        Det är också möjligt att begränsa sök- och målspråk i fliken för språk</item>
+    </string-array>
+
+    <!--Titles for select language fragment-->
+    <string-array name="help_glossary_fragment_titles">
+        <item>!skip</item>
+        <item>Välj ordlista</item>
+        <item>Välj alla ordlistor</item>
+        <item>Mer information om ordlista</item>
+        <item>Restriktioner</item>
+    </string-array>
+    <!--Contents for select language fragment-->
+    <string-array name="help_glossary_fragment">
+        <item>Det går självfallet att söka i alla ordlistor samtidigt, men också att begränsa sökandet till en eller flera ordlistor</item>
+        <item>Välj en eller flera ordlistor, och om en ordlista är vald så visar sig en hake till vänster om den</item>
+        <item>Du kan klicka på välja allt för att välja alla ordlistor</item>
+        <item>Det finns en tangentsymbol till höger om några ordlistor som ger dig mer information om ordlistorna.</item>
+        <item> Du måste välja åtminstone en ordlista</item>
+    </string-array>
+
+    <!--Titles for select language fragment-->
+    <string-array name="help_language_fragment_titles">
+        <item>Sökspråk</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Målspråk</item>
+        <item>!skip</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for select language fragment-->
+    <string-array name="help_language_fragment">
+        <item>Resultatet lämnas på alla språk</item>
+        <item>Det går att begränsa sökandet  genom att klicka på fliken för sökspråk  och välja språk</item>
+        <item> Det är bara möjligt att välja alla eller ett språk</item>
+        <item>Sjálfgefið er niðurstöðum skilað á öllum tungumálum</item>
+        <item>Det går att begränsa sökandet så att det bara ger resultat på ett bestämt målspråk.
+        Detta görs genom att klicka på fliken för målspråk och välja språk</item>
+        <item>Det är bara möjligt att välja alla eller ett språk</item>item>
+    </string-array>
+
+    <!--Titles for the result screen-->
+    <string-array name="help_result_screen_titles">
+        <item> </item>
+        <item>Vad gör skärmen?</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Få mer information</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for the result screen-->
+    <string-array name="help_result_screen">
+        <item>Resultatet skärmen visar resultatet av din sökning</item>
+        <item>Resultaten visas enligt följande</item>
+        <!--TODO: breyta myndinni á íslensku-->
+        <item>image:result_help</item>
+        <item>Term: Termen att detta resultat representerar</item>
+        <item>Språk: Det språk som uttrycket är</item>
+        <item>Ordlistan: ordlistan termen hör</item>
+        <item>Genom att klicka på resultatet på skärmen nnum du kan komma åt skärmen som visar mer information om Termen.\n
+        Sådan information kan exempelvis vara översättningar, förklaringar, synonymer eller</item>
+    </string-array>
+
+    <!--Titles for the result info screen-->
+    <string-array name = "help_result_info_screen_titles">
+        <item>Vad gör skärmen?</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Ytterligare information</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for the result info screen-->
+    <string-array name ="help_result_info_screen">
+        <item>image:resultinfo</item>
+        <item>1) Termen för denna bild visar den</item>
+        <item>2) Ordlista att detta begrepp hör</item>
+        <item>3) Översättning och all information om begreppet ordet bank.</item>
+        <item>Om någon extra information om just detta koncept kommer att visas i den optiska och lådor i lådor 3</item>
+        <item>Sådan information kan exempelvis vara en förklaring av konceptet, ett exempel på dess användning, synonymer, etc.</item>
+    </string-array>
+
+
+</resources>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings for the help-->
+    <string name="help_title"> Hjælp </string>
+    <string name="close_help"> Luk </string>
+
+    <!--Help string arrays-->
+    <!--NOTE There are two string arrays for each section
+    one including the titles and one including the contents.
+    They will be displayed in order (first item in titles
+    will be the title array for the first item in the content array.
+    If you want to skip the title, put in a !skip in an item in the title array-->
+    <!--Titles for search fragment help -->
+    <string-array name="help_search_fragment_titles">
+        <item>!skip</item>
+        <item>Hvordan ser jeg ud?</item>
+        <item>Få flere resultater</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Flyt for mange?</item>
+    </string-array>
+    <!--Contents for search fragments-->
+    <string-array name="help_search_fragment">
+        <item>Skelner ikke Søgningen mellem store og små bogstaver</item>
+        <item>Indtast ordet i søgefeltet og tryk søg</item>
+        <item>? er et wildcard og repræsenterer blot et brev eller mellanrum</item>
+        <item>* Er et wildcard og repræsenterer ingen (0) eller flere bogstaver eller mellemrum. (m * NNI yrði Minni, misminni, myndminni, …)
+         Hvis du bruger * i søgestrengen skal være mindst to andre bogstaver</item>
+        <item>Þegar táknið \'*\' er notað þá þarf að hafa a.m.k. tvo aðra stafi í leitarorðinu</item>
+        <item>Gå til ordbogen for at begrænse søgningen til de udvalgte ordbøger
+        Gå til sproget for at begrænse søgningen til bestemte søgning eller målsprog</item>
+    </string-array>
+
+    <!--Titles for select language fragment-->
+    <string-array name="help_glossary_fragment_titles">
+        <item>!skip</item>
+        <item>Vælg ordliste</item>
+        <item>Vælg alle ordlister</item>
+        <item>Oplysninger om ordliste</item>
+        <item>Restriktioner</item>
+    </string-array>
+    <!--Contents for select language fragment-->
+    <string-array name="help_glossary_fragment">
+        <item>Som standard, alle ordbøger, men søgningen kan begrænses til et eller flere specifikke ordforråd.</item>
+        <item>Bare tryk en eller flere ordliste for at vælge eller fravælge det, ordlister med et flueben til den valgte venstre.</item>
+        <item>Du kan trykke på knappen Vælg alt for at vælge alle ordbøger</item>
+        <item>Knappen til højre for nogle ordbøger er et link til en beskrivelse af ordlisten</item>
+        <item>Du skal vælge en ordbog</item>
+    </string-array>
+
+    <!--Titles for select language fragment-->
+    <string-array name="help_language_fragment_titles">
+        <item>Søg sprog</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Target</item>
+        <item>!skip</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for select language fragment-->
+    <string-array name="help_language_fragment">
+        <item>Som standard søgeforespørgsler på alle sprog</item>
+        <item>Kan du begrænse søgningen til en bestemt søgning efter et sprog, skal du trykke på drop down menu af søgningen sprog, og vælg sprog</item>
+        <item>Du kan kun vælge en eller alle søge sprog</item>
+        <item>Som standard søgning Vis resultater på alle sprog</item>
+        <item>Kan du begrænse søgningen til en specifik målgruppe sprog ved at trykke på drop-down menu til målsproget, og vælg sprog.</item>
+        <item>Du kan kun vælge en eller alle af målsproget</item>
+    </string-array>
+
+    <!--Titles for the result screen-->
+    <string-array name="help_result_screen_titles">
+        <item> </item>
+        <item>Hvad gør skærmen?</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Få flere oplysninger</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for the result screen-->
+    <string-array name="help_result_screen">
+        <item>Resultat skærm viser resultaterne af din søgning</item>
+        <item>Resultaterne er vist som følger</item>
+        <!--TODO: breyta myndinni á íslensku-->
+        <item>image:result_help</item>
+        <item>Term: Udtrykket af dette fund repræsenterer</item>
+        <item>Sprog: Det sprog, som udtrykket er</item>
+        <item>Ordforråd: ordbog udtrykket tilhører</item>
+        <item>Ved at klikke på resultatet på skærmen nnum du kan få adgang til skærm, som viser
+         mere information om konceptet. \ n
+         Sådanne oplysninger kunne for eksempel være oversættelser, forklaringer, synonymer eller</item>
+    </string-array>
+
+    <!--Titles for the result info screen-->
+    <string-array name = "help_result_info_screen_titles">
+        <item>Hvad gør skærmen?</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Yderligere oplysninger</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for the result info screen-->
+    <string-array name ="help_result_info_screen">
+        <item>image:resultinfo</item>
+        <item>1) Varigheden af denne skærm viser</item>
+        <item>2) Ordbog, dette begreb hører</item>
+        <item>3) Oversættelse og alle oplysninger om konceptet af ordet bank.</item>
+        <item>Hvis nogen ekstra oplysninger om dette særlige koncept vil blive vist i den optiske og kasser i rubrik 3</item>
+        <item>Sådanne oplysninger kunne for eksempel være en forklaring af begrebet, et eksempel på dens anvendelse, synonymer, etc.</item>
+    </string-array>
+
+
+</resources>
