@@ -20,7 +20,7 @@ import junit.framework.Assert;
  */
 public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScreen> {
     /**
-     * solo is used to do access all functionality while app is running
+     * solo is used to do access functionalities while app is running
      */
     private Solo solo;
 
@@ -28,7 +28,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         super(SearchScreen.class);
     }
     /**
-     * method  sets up activity and solo befor testing can begin
+     * method  sets up activity and solo before testing can begin
      */
     public void setUp() throws Exception {
         solo = new Solo(getInstrumentation(), getActivity());
@@ -53,10 +53,64 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
     }
 
     /**
+     * USER STORY TEST:
+     *
+     * <p>
+     *     user story: As a teacher I want to be able to choose one or
+     *     more glossaries to restrict the results to my field
+     *
+     *     story point: 1,
+     *     MSCW: SH,
+     *     planned in sprint: 1,
+     *     finished in sprint: 2
+     * </p>
+     *
+     * Written by Trausti
+     */
+    public void testUserStoryGlossary(){
+        //Click on Glossary tab
+        solo.clickOnText(solo.getString(R.string.pick_glossary_tab));
+        // Waits for Tab to load
+        solo.sleep(1000);
+        // Deselects all
+        solo.clickOnButton(2);
+        // Select entries 2,4,7 and 8
+        solo.clickInList(2);
+        solo.clickInList(4);
+        solo.clickInList(7);
+        solo.clickInList(8);
+        //search only in selected glossaries
+        solo.clickOnText(solo.getString(R.string.search_tab));
+        solo.enterText(0, "Sta*");
+        solo.clickOnButton(R.string.search_button);
+        //Todo find a way to check if only results in selected glossaries show up
+    }
+
+    /**
+     * USER STORY TEST:
+     *
+     * <p>
+     *     user story: As a non-technical person I want to be able to get
+     *     help so I can effectively use the app
+     *
+     *     story point: 3,
+     *     MSCW: SH,
+     *     planned in sprint: 2,
+     *     finished in sprint: 2
+     * </p>
+     *
+     * Written by Trausti
+     */
+    public void testUserStoryHelp(){
+        //Todo check if there is a help button displayed in all activities
+    }
+
+
+    /**
      * This method tests if spinner values stay the same after
      * having exited and revisited the activity that contains them
      * Written by Trausti
-     * @return      nothing */
+     */
 
     public void testSpinner() {
         //TODO This test no longer functions
