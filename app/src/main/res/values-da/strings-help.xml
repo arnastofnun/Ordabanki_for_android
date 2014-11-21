@@ -13,7 +13,7 @@
     <!--Titles for search fragment help -->
     <string-array name="help_search_fragment_titles">
         <item>!skip</item>
-        <item>Hvordan ser jeg ud?</item>
+        <item>Hvordan søger jeg?</item>
         <item>Få flere resultater</item>
         <item>!skip</item>
         <item>!skip</item>
@@ -23,12 +23,11 @@
     <string-array name="help_search_fragment">
         <item>Skelner ikke Søgningen mellem store og små bogstaver</item>
         <item>Indtast ordet i søgefeltet og tryk søg</item>
-        <item>? er et wildcard og repræsenterer blot et brev eller mellanrum</item>
-        <item>* Er et wildcard og repræsenterer ingen (0) eller flere bogstaver eller mellemrum. (m * NNI yrði Minni, misminni, myndminni, …)
-         Hvis du bruger * i søgestrengen skal være mindst to andre bogstaver</item>
-        <item>Þegar táknið \'*\' er notað þá þarf að hafa a.m.k. tvo aðra stafi í leitarorðinu</item>
-        <item>Gå til ordbogen for at begrænse søgningen til de udvalgte ordbøger
-        Gå til sproget for at begrænse søgningen til bestemte søgning eller målsprog</item>
+        <item>\'?\' er et wildcard og repræsenterer blot et brev eller mellanrum</item>
+        <item>\'*\' Er et wildcard og repræsenterer ingen (0) eller flere bogstaver eller mellemrum. (m * NNI yrði Minni, misminni, myndminni, …)</item>
+        <item>Hvis du bruger \'*\' i søgestrengen skal være mindst to andre bogstaver</item>
+        <item>Gå til ordbogen for at begrænse søgningen til de udvalgte ordbøger\n
+            Gå til sproget for at begrænse søgningen til bestemte søgning eller målsprog</item>
     </string-array>
 
     <!--Titles for select language fragment-->

@@ -1,15 +1,13 @@
 package com.example.cthulhu.ordabankiforandroid.unittests;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.view.KeyEvent;
-import android.view.WindowManager;
 import android.widget.EditText;
 
-import com.example.cthulhu.ordabankiforandroid.ChooseLanguagesFragment;
 import com.example.cthulhu.ordabankiforandroid.R;
 import com.example.cthulhu.ordabankiforandroid.ResultsScreen;
 import com.example.cthulhu.ordabankiforandroid.SearchScreen;
 import com.robotium.solo.Solo;
+
 import junit.framework.Assert;
 
 /**
@@ -82,7 +80,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         //search only in selected glossaries
         solo.clickOnText(solo.getString(R.string.search_tab));
         solo.enterText(0, "Sta*");
-        solo.clickOnButton(R.string.search_button);
+        solo.sendKey(Solo.ENTER);
         //Todo find a way to check if only results in selected glossaries show up
     }
 
@@ -221,7 +219,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
         solo.clickOnButton(2);
         solo.clickOnText(solo.getString(R.string.search_tab));
         solo.enterText(0, "Asf");
-        solo.clickOnButton(R.string.search_button);
+        solo.sendKey(Solo.ENTER);
         //user should not be able to search as he has deselected all tabs
         solo.assertCurrentActivity("wrong activity",SearchScreen.class);
     }
@@ -237,12 +235,12 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SearchScr
     public void testSearchLessThanTwoLetters() {
         EditText search = (EditText)solo.getView(R.id.searchView);
         solo.enterText(search,"");
-        solo.clickOnText(solo.getString(R.string.search_button));
+        solo.sendKey(Solo.ENTER);
         //user should not be able to search as he has entered 0 letters
         solo.assertCurrentActivity("wrong activity",SearchScreen.class);
         solo.clearEditText(search);
         solo.enterText(search,"a");
-        solo.clickOnText(solo.getString(R.string.search_button));
+        solo.sendKey(Solo.ENTER);
 
         //user should not be able to search as he has entered 1 letter
         solo.assertCurrentActivity("wrong activity",SearchScreen.class);
