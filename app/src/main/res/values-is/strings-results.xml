@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings used in the results screen-->
+    <string name="searchpreterm">niðurstöður fyrir</string>
+    <string name="no_result">Engar</string>
+    <string name="synonyms">Samheiti: </string>
+    <string name="lexical_category">Orðaflokkur: </string>
+    <string name="example">Dæmi: </string>
+
+    <!--Strings for the result-information screen-->
+    <string name="definition">Skilgreining: </string>
+    <string name="word_abbreviation">Skammstöfun: </string>
+    <string name="word_definition">Skilgreining: </string>
+    <string name="word_example">Dæmi: </string>
+    <string name="word_domain">Umdæmi: </string>
+    <string name="word_othergrammar">Önnur málfræði: </string>
+    <string name="word_dialect">Mállýska: </string>
+    <string name="word_explanation">Útskýring: </string>
+    <string name="word_synyonym">Samheiti: </string>
+    <string name="word_pronunciation">Framburður: </string>
+    <string name="word_einnig">Sjá einnig: </string>
+    <string name="word_sbr">Samanber: </string>
+
+
+</resources>

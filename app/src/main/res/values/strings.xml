@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
-
+    <!--Strings that are used in the inital screens as well as the android manifest -->
     <string name="app_name">Íðorðabankinn</string>
     <string name="title_activity_splash">Íðorðabankinn</string>
     <string name="action_settings">Settings</string>
@@ -10,142 +10,9 @@
     <string name="selectlanguage">Please choose your language</string>
     <string name="title_activity_select_language">Select Language</string>
     <string name="title_activity_about_glossary" translatable="false">Glossary info</string>
-
-    <color name="white">#FFFFFF</color>
-    <color name="lightgray">#ECDFBD</color>
-    <color name="blue">#20457C</color>
-    <color name="darkgrey">#616161</color>
-    <color name="orange">#FB6648</color>
-    <color name="purple">#5E3448</color>
-    <color name="lightGreen50">#f1f8e9</color>
-    <color name="lightGreen100">#dcedc8</color>
-    <color name="lightGreen200">#c5e1a5</color>
-    <color name="lightGreen300">#aed581</color>
-    <color name="lightGreen400">#9ccc65</color>
-    <color name="green300">#42bd41</color>
-    <color name="grey200">#eeeeee</color>
-    <color name="greenblue">#588C7E</color>
-    <color name="lightyellow">#F2E394</color>
-    <color name="lightorange">#F2AE72</color>
-    <color name="darkorange">#D96459</color>
-    <color name="darkred">#8C4646</color>
-    <color name="glossary_selected">@color/lightGreen100</color>
-    <color name="glossary_notselected">@color/lightGreen50</color>
-
-    <string name="search_button">Search</string>
-    <string name="targetlang">Target language:</string>
-    <string name="sourcelang">Source language:</string>
-    <string name="all_languages">All</string>
-    <string name="search_tab">Search</string>
-
-    <string name="searchpreterm">results for</string>
-    <string name="search_hint">Type in search query</string>
-    <string name="pick_glossary_tab">Glossaries</string>
     <string name="title_activity_results_screen">Results</string>
-    <string name="action_help">Help</string>
-    <string name="select_all">Select all</string>
-    <string name="deselect_all">Clear all</string>
-    <string name="database_error">Could not connect to database</string>
-    <string name="no_result">No</string>
-    <string name="link_unaccessable">There is no website for this glossary</string>
-    <string name="languages_tab_name">Languages</string>
-    <string name="no_search_term">You have to type in a search query</string>
-    <string name="no_glossary_picked">You have to pick at least one glossary</string>
-    <string name="ast_char_limit">You have to type in at least two other characters when using *</string>
-    <string name="connection_error">Connection Error. Try again.</string>
-
-    <string name="synonyms">Synonyms: </string>
-    <string name="lexical_category">Lexical category: </string>
-    <string name="example">Example: </string>
-    <string name="help_title">Help</string>
-    <string name="close_help">Close</string>
-    <string name="settings_changelanguage_confirm">Select</string>
-    <string name="change_language">Change language</string>
-    <string name="settings_about">About Íðorðabanki</string>
-    <string name="settings_contact">Contact us</string>
-    <string name="settings_clear_search">Clear search history</string>
-    <string name="contact_email" translatable="false">agustath\@islenskan.is</string>
-    <string name="choose_email_client">Please choose an email client</string>
-    <string name="error_no_email_client">You don\'t have an email client installed</string>
-
-    <string name="title_activity_an">AnActivity</string>
-    <string name="hello_world">Hello world!</string>
-
+    <string name="title_activity_an" translatable="false">AnActivity</string>
     <string name="title_activity_result_info">Term info</string>
-    <string name="definition">Definition: </string>
-    <string name="word_abbreviation">Abbreviation: </string>
-    <string name="word_definition">Definition: </string>
-    <string name="word_example">Example: </string>
-    <string name="word_domain">Domain: </string>
-    <string name="word_othergrammar">Other grammar: </string>
-    <string name="word_dialect">Dialect: </string>
-    <string name="word_explanation">Explanation: </string>
-
-    <string name="word_synyonym">Synonyms: </string>
-    <string name="word_pronunciation">Pronunciation: </string>
-    <string name="word_einnig">See also: </string>
-    <string name="word_sbr">Compare: </string>
-
-    <string-array name="language_array">
-        <item>Icelandic</item>
-        <item>English</item>
-        <item>Swedish</item>
-        <item>Danish</item>
-        <item>Norwegian</item>
-    </string-array>
-
-
-
-    <string name="about_header_prologue">Prologue</string>
-    <string name="about_prologue">
-        No Translation for this text available
-        <!--Orðabankinn er í eigu Íslenskrar málstöðvar.\n         Hann hefur að geyma sérhæfðan hugbúnað fyrir skráningu og birtingu orðasafna.\n         Höfundar fá aðgang að skráningarkerfi til þess að vinna að söfnum sínum og bætast þau síðan í hóp annarra orðasafna sem almennir notendur orðabankans geta leitað í.\n         Íslensk málstöð gerir samning við höfunda orðasafna um að þeir fái endurgjaldslausan aðgang að skráningarkerfinu gegn því að málstöðin megi birta orðasöfnin í orðabankanum á Netinu.\n         Höfundar hafa eftir sem áður allan rétt til verka sinna og geta birt þau hvar og hvenær sem þeir vilja. -->
-    </string>
-
-    <string name="about_header_addragandi">Background</string>
-    <string name="about_body_addragandi">
-        No Translation for this text available
-        <!--Á fundi Íslenskrar málnefndar með orðanefndum 22. nóvember 1979 kom fyrst fram hugmynd um íslenskan orðabanka eða íðorðabanka.\n         Íslensk málnefnd hlutaðist til um að koma á fót undirbúningsnefnd um slíkan orðabanka þegar árið 1980 og hefur verið hugað að gerð hans með hléum allar götur síðan.\n         Fyrsti undirbúningur orðabanka var í því fólginn að gera sér grein fyrir efnisatriðum íðorðasafna og tölvuskráningu þeirra með vélræna úrvinnslu í huga. Öll orðasöfn, sem unnið hefur verið að á vegum málnefndarinnar sjálfrar eða í húsakynnum Íslenskrar málstöðvar, hafa verið tölvuskráð eftir sérstöku kerfi í þessu skyni.\n         Í Reglugerð um Íslenska málnefnd og starfsemi Íslenskrar málstöðvar, nr. 159/1987, segir í 7. gr.: ,,Málstöðin skal fylgjast með þróun íðorðabanka í öðrum löndum, undirbúa slíkan banka hér og sjá um rekstur hans.“ Ýmsar ástæður töfðu og torvelduðu samfellda þróun hugmyndarinnar um orðabanka en með tilkomu Netsins varð til muna einfaldara tæknilega að hrinda verkefninu í framkvæmd þannig að öll fyrirtæki, stofnanir og einstaklingar, hvar sem er í heiminum, gætu nýtt sér slíkan orðabanka á Veraldarvefnum.\n         Skriður komst á málið þegar íslensk málnefnd hlaut þriggja milljóna króna styrk úr Lýðveldissjóði 1995 til að undirbúa íðorðabanka og þriggja milljóna króna styrk úr sama sjóði til þjónustu við þýðendur. Styrkir þessir áttu að greiðast á þremur árum.\n         Einn starfsmaður var ráðinn til Íslenskrar málstöðvar í október 1995 til að sinna þessum verkefnum. Verkefnin tvö eru efnislega samtvinnuð enda lítur málstöðin svo á að orðabanki á tölvuneti geti verið þýðendum ómetanlegt hjálpartæki.\n         Árið 1996 fékk Íslensk málstöð að auki einnar milljónar króna styrk úr Málræktarsjóði til að hanna tölvukerfi fyrir orðabankann og árið 1997 fékkst 400 þús. kr. styrkur úr sama sjóði sem m.a. mátti nota til að færa orðasöfn milli tölvukerfa.\n         Verkefnið naut jafnframt góðs af nýjum tölvubúnaði sem málstöðin eignaðist 1994. Það var gjöf frá Mjólkursamsölunni í Reykjavík sem hafði ákveðið að verja hluta af auglýsingafé sínu til að styrkja íslenska málrækt á þennan hátt.\n         Samkvæmt samningi við tungutækniverkefni á vegum menntamálaráðuneytisins fékk Íslensk málstöð styrk úr tungutæknisjóði 2003–2004 til að endurforrita orðabankann.\n\n         Orðabanki Íslenskrar málstöðvar var opnaður á Vefnum 15. nóvember 1997, í tengslum við dag íslenskrar tungu, nánast réttum 18 árum eftir að hugmyndin um íðorðabanka kom fyrst fram á fundi málnefndarinnar með orðanefndunum. Á þeim fundi hugsuðu menn sér að bankinn yrði geymdur í miðlægri tölvu með nettengdum aðgangi um útstöðvar. Síðan hefur orðið tæknibylting í tölvuheiminum. Þrátt fyrir það er þessi hugmynd um skipulag bankans eins í grundvallaratriðum. Munurinn er sá að tölvunetið er margfalt stærra og útstöðvarnar fleiri því að miðlæga tölvan er tengd Netinu. -->
-    </string>
-
-    <string name="about_header_purpose">Purpose</string>
-    <string name="about_body_purpose">        One purpose of a word bank is to coordinate the terminological usage in both related and different fields; to collect terms, define and unify them to avoid the use of different names of the same concept.\n
-        The Icelandic Word Bank does serve this purpose. It can give a general survey of Icelandic terminology and contemporary neologisms, thus adding to the coordination of both usage and definitions.
-    </string>
-
-    <string name="about_header_structure">Structure</string>
-    <string name="about_body_structure">
-        The Icelandic Word Bank is divided into two main sections, processing section and display section.Each section contains glossaries in different fields.\n\n
-        The display section is publicly searchable/accessible on the World Wide Web and the processing section is the part where the owners and editors of different glossaries can update their work and create new glossaries.\n
-        When the owner of a particular glossary is ready to publish his/her work the editor of the Word Bank can copy the glossary from the processing section to the display section and thus either add a new glossary or update an existing one.\n
-        All glossaries contain terms in Icelandic. In the bilingual glossaries, apart from the Icelandic, the most common language is English, but many of the glossaries are multilingual and the most frequent additional languages are Danish, German, Norwegian, Swedish and French.\n
-        Today there are 36 glossaries containing about 125.000 terms in the display section, all accessible to the user in a single search, and additional 13 glossaries at different stages in the processing section.\n\n
-        The Icelandic Word Bank on the World Wide Web can be updated at all times wherever the editors of its data bases are located in the world, as long as they are connected to the Internet, and the editors and other users can use their favourite WWW browsers for editing and searching as they are not bound to one platform.
-    </string>
-
-    <string name="about_header_history">History</string>
-    <string name="about_body_history">
-        In 1979 the first ideas about a computerized Term Bank in a network emerged in the Icelandic Language Institute. The main idea was to store the data in a mainframe computer with access from terminals.\n
-        Since then there has been a technical revolution in the field of computing; still the main idea is the same, the only difference ist that now the network is the computer.
-    </string>
-
-    <string name="about_header_theapp">The Íðorðabanki app</string>
-    <string name="about_body_theapp">
-        In 2014 four students at the University of Iceland made an App for the Íðorðabanki.\n
-        The App allows users access to the display section of the íðorðabanki on Android smart phones and tablets.
-    </string>
-
-    <string name="about_header_innraskipulag">Innra skipulag orðabankans</string>
-    <string name="about_body_innraskipulag">
-        No Translation for this text available
-        <!--Skipulag orðabankans er miðað við að efnið í honum margfaldist og verði sífellt fjölbreytilegra.\n         Bankinn skiptist í tvo meginhluta, vinnsluhluta og birtingarhluta.\n\n          Almennir notendur hafa engan aðgang að vinnsluhluta orðabankans. Þar er efninu safnað saman til úrvinnslu, bæði orðasöfnum í frumvinnslu og söfnum í endurskoðun.\n         Vinnsluhlutinn skiptist í mismunandi svæði sem hvert og eitt tilheyrir höfundi tiltekins orðasafns (einstaklingi eða t.d. orðanefnd) og engum öðrum.\n         Orðabankastjóri í Íslenskri málstöð hefur raunar lesaðgang að vinnsluhlutanum í eftirlitsskyni en aðeins sérfræðingur í viðkomandi grein, höfundur orðasafnsins, getur breytt því.\n         Þegar vinnu við gerð orðasafns lýkur flytur orðabankastjóri það í birtingarhlutann; raunar er unnt að birta einstaka hluta orðasafns jafnóðum og þeir eru tilbúnir (þannig má m.a. kynna ný orð fyrr en tíðkast við hefðbunda (bóka)útgáfu).\n\n          Birtingarhluti orðabankans er hinn sýnilegi orðabanki, þ.e. sá hluti bankans sem almennir notendur hafa aðgang að.\n         Með skjótvirku leitarkerfi má finna þar íslensk eða erlend orð, í einu eða fleiri orðasöfnum í einu, fá margs konar upplýsingar um hvert flettiorð, bæði á íslensku og þeim tungumálum öðrum sem um ræðir. -->
-    </string>
-
-    <string name="about_header_resktur">Operations</string>
-    <string name="about_body_rekstur">
-        No translation for this text available
-        <!--Íslensk málstöð annast orðabankann og fellur starfsemin undir verksvið íðorðadeildar málstöðvarinnar.\n         Ókeypis aðgangur var að bankanum í tæplega eitt ár frá opnun hans en gjaldtaka hófst 15. október 1998.\n         Gjaldtöku var aflétt 3. janúar 2001 og aðgangur er öllum frjáls.-->
-    </string>
-
+    <string name="hello_world" translatable="false">Hello world!</string>
 
 </resources>

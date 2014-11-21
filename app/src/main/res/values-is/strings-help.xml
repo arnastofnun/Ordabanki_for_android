@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings for the help-->
+    <string name="help_title">Hjálp</string>
+    <string name="close_help">Loka</string>
+
+    <!--Help string arrays-->
+    <!--NOTE There are two string arrays for each section
+    one including the titles and one including the contents.
+    They will be displayed in order (first item in titles
+    will be the title array for the first item in the content array.
+    If you want to skip the title, put in a !skip in an item in the title array-->
+    <!--Titles for search fragment help -->
+    <string-array name="help_search_fragment_titles">
+        <item>!skip</item>
+        <item>Hvernig á að leita?</item>
+        <item>Fáðu fleiri niðurstöður</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Færðu of margar niðurstöður?</item>
+    </string-array>
+    <!--Contents for search fragments-->
+    <string-array name="help_search_fragment">
+        <item>Leitin gerir ekki greinarmun á há- og lágstöfum</item>
+        <item>Skrifaðu orð í leitargluggann og ýttu á leita</item>
+        <item>Þú getur notað táknið \'?\' til að skipta út einum staf í leitarorðinu\n(m?nni yrði minni,
+        mynni og munni)</item>
+        <item>Þú getur notað táknið \'*\' til að skipta út 0 eða fleiri stöfum í leitarorðinu\n(m*nni
+        yrði minni, misminni,myndminni,…)</item>
+        <item>Þegar táknið \'*\' er notað þá þarf að hafa a.m.k. tvo aðra stafi í leitarorðinu</item>
+        <item>Hægt er að takmarka leitina við ákveðið orðasafn í orðasafns flipanum\n\n
+        Hægt er að takmarka leitar- og markmál í tungumál flipanum</item>
+    </string-array>
+
+    <!--Titles for select language fragment-->
+    <string-array name="help_glossary_fragment_titles">
+        <item>!skip</item>
+        <item>Velja orðasafn</item>
+        <item>Velja öll orðasöfn</item>
+        <item>Nánar um orðasöfn</item>
+        <item>Takmarkanir</item>
+    </string-array>
+    <!--Contents for select language fragment-->
+    <string-array name="help_glossary_fragment">
+        <item>Sjálfgefið er leitað í öllum orðasöfnum samtímis, en einnig er hægt að takmarka leitina við eitt eða fleiri orðasöfn</item>
+        <item>Ýttu á eitt eða fleiri orðasafn til að velja það, en ef orðasafn er valið birtist hak vinstra megin við það</item>
+        <item>Þú getur ýtt á velja allt til að velja öll orðasöfn</item>
+        <item>Það er takki hægra megin við sum orðasöfn sem leiðir þig inn á nánari lýsingu á orðasafninu</item>
+        <item>Þú verður að velja a.m.k. eitt orðasafn</item>
+    </string-array>
+
+    <!--Titles for select language fragment-->
+    <string-array name="help_language_fragment_titles">
+        <item>Leitarmál</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Markmál</item>
+        <item>!skip</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for select language fragment-->
+    <string-array name="help_language_fragment">
+        <item>Sjálfgefið er leitað í öllum tungumálum</item>
+        <item>Hægt er að takmarka leitina við ákveðið leitarmál með því að ýta á valgluggann fyrir leitarmál og velja tungumál</item>
+        <item>Aðeins er hægt að velja öll eða eitt leitarmál</item>
+        <item>Sjálfgefið er niðurstöðum skilað á öllum tungumálum</item>
+        <item>Hægt er að takmarka leitina á þann hátt að hún skili aðeins niðurstöðum á ákveðnum markmálum.\n
+        Þetta er gert með því að ýta á valgluggann fyrir markmál og velja tungumál</item>
+        <item>Aðeins er hægt að velja öll eða eitt markmál</item>item>
+    </string-array>
+
+    <!--Titles for the result screen-->
+    <string-array name="help_result_screen_titles">
+        <item> </item>
+        <item>Hvað þýðir skjárinn?</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Fá meiri upplýsingar</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for the result screen-->
+    <string-array name="help_result_screen">
+        <item>Niðurstöðu skjárinn sýnir niðurstöður úr leit þinni</item>
+        <item>Niðurstöðurnar eru birtar á eftirfarandi hátt</item>
+        <!--TODO: breyta myndinni á íslensku-->
+        <item>image:result_help</item>
+        <item>Hugtak: Hugtakið sem þessi niðurstaða táknar</item>
+        <item>Tungumál: Tungumálið sem hugtakið er á</item>
+        <item>Orðasafn: Orðasafnið sem hugtakið tilheyrir</item>
+        <item>Með því að ýta á niðurstöðu á skjánnum kemstu í skjá sem sýnir enn
+        meiri upplýsingar um hugtakið.\n
+        Slíkar upplýsingar gætu t.d. verið þýðingar, útskýringar, eða samheiti</item>
+    </string-array>
+
+    <!--Titles for the result info screen-->
+    <string-array name = "help_result_info_screen_titles">
+        <item>Hvað þýðir skjárinn?</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Auka upplýsingar</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for the result info screen-->
+    <string-array name ="help_result_info_screen">
+        <item>image:resultinfo</item>
+        <item>1) Hugtakið sem þessi skjár sýnir upplýsingar um</item>
+        <item>2) Orðasafnið sem þetta hugtak tilheyrir</item>
+        <item>3) Þýðingar og allar upplýsingar sem eru um hugtakið í orðabankanum.</item>
+        <item>Ef einhverjar auka upplýsingar eru til um þetta ákveðna hugtak þá birtast þær í ljósrænum kassa í reiti 3</item>
+        <item>Slíkar upplýsingar gætu t.d. verið útskýringar á hugtakinu, dæmi um notkun þess, samheiti o.s.frv.</item>
+    </string-array>
+
+
+</resources>

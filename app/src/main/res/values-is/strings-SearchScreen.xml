@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings used in the search tab-->
+    <string name="search_tab">Leita</string>
+    <string name="search_hint">Skrifaðu leitarorð</string>
+    <string name="database_error">Gat ekki tengst gagnasafni</string>
+    <string name="no_search_term">Þú verður að skrifa inn leitarorð</string>
+    <string name="no_glossary_picked">Þú verður að velja að minnsta kosti eitt orðasafn</string>
+    <string name="ast_char_limit">Þú þarft að nota a.m.k. tvo stafi með *</string>
+    <string name="connection_error">Sambandsslit. Reyndu aftur.</string>
+
+
+    <!--Strings used in the pick glossaries tab-->
+    <string name="pick_glossary_tab">Orðasöfn</string>
+    <string name="select_all">Velja allt</string>
+    <string name="deselect_all">Velja ekkert</string>
+    <string name="link_unaccessable">Það er engin vefsíða fyrir þetta orðasafn</string>
+
+    <!--Strings used in the choose language fragment-->
+    <string name="languages_tab_name">Tungumál</string>
+    <string name="targetlang">Markmál:</string>
+    <string name="sourcelang">Leitarmál:</string>
+    <string name="all_languages">Öll</string>
+</resources>

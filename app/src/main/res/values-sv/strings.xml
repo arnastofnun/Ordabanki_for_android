@@ -10,7 +10,6 @@
     <string name="selectlanguage">Välj ditt språk</string>
     <string name="title_activity_select_language">Välj språk</string>
 
-    <string name="search_button">Sök</string>
     <string name="targetlang">Målspråket:</string>
     <string name="sourcelang">Källspråk:</string>
     <string name="all_languages">Allt</string>

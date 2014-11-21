@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings used in the results screen-->
+    <string name="searchpreterm">results for</string>
+    <string name="no_result">No</string>
+    <string name="synonyms">Synonyms: </string>
+    <string name="lexical_category">Lexical category: </string>
+    <string name="example">Example: </string>
+
+
+
+    <!--Strings for the result-information screen-->
+    <string name="definition">Definition: </string>
+    <string name="word_abbreviation">Abbreviation: </string>
+    <string name="word_definition">Definition: </string>
+    <string name="word_example">Example: </string>
+    <string name="word_domain">Domain: </string>
+    <string name="word_othergrammar">Other grammar: </string>
+    <string name="word_dialect">Dialect: </string>
+    <string name="word_explanation">Explanation: </string>
+    <string name="word_synyonym">Synonyms: </string>
+    <string name="word_pronunciation">Pronunciation: </string>
+    <string name="word_einnig">See also: </string>
+    <string name="word_sbr">Compare: </string>
+</resources>

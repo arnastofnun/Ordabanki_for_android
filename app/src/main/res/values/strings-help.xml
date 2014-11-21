@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Strings for the help-->
+    <string name="help_title">Help</string>
+    <string name="close_help">Close</string>
+
     <!--Help string arrays-->
     <!--NOTE There are two string arrays for each section
     one including the titles and one including the contents.
     They will be displayed in order (first item in titles
     will be the title array for the first item in the content array.
-    If you want to skip the title, put in a single space in an item in the title array-->
+    If you want to skip the title, put in a !skip in an item in the title array-->
     <!--Titles for search fragment help -->
     <string-array name="help_search_fragment_titles">
         <item>!skip</item>
@@ -26,7 +30,7 @@
         Go to the languages tab to restrict search to certain search- or target languages</item>
 
     </string-array>
-    <!--Titles for search fragment help -->
+    <!--Titles for glossart fragment help -->
     <string-array name="help_glossary_fragment_titles">
         <item>!skip</item>
         <item>Selecting a glossary</item>
@@ -34,7 +38,7 @@
         <item>Glossary descriptions</item>
         <item>Restrictions</item>
     </string-array>
-    <!--Contents for search fragment help -->
+    <!--Contents for glossary fragment help -->
     <string-array name="help_glossary_fragment">
         <item>By default all the glossaries are searched but the search can be restricted to one or more particular glossaries</item>
         <item>Just tap one or more glossary to select or deselect it, the glossaries with a check mark on the left are selected</item>
@@ -76,9 +80,9 @@
         <item>The result screen displays the results from your search</item>
         <item>The results are displayed like this:</item>
         <item>image:result_help</item>
-        <item>The term is the name of the term</item>
-        <item>The language indicates what language the term is in</item>
-        <item>The glossary this term belongs to</item>
+        <item>Term: is the name of the term</item>
+        <item>Language: indicates what language the term is in</item>
+        <item>Glossary: The glossary that this term belongs to</item>
         <item>By clicking the items in the result screen you can get more information
             on each search term, including translations, descriptions and synonyms</item>
     </string-array>
@@ -96,13 +100,13 @@
     </string-array>
     <!--Contents for the result info screen-->
     <string-array name ="help_result_info_screen">
+        <!--TODO mynd á ensku-->
         <item>image:resultinfo</item>
         <item>1) Name of the selected term</item>
         <item>2) The glossary this term belongs to</item>
         <item>3) Translations and all extra info contained in the glossary for this term is listed here.</item>
         <item>If extra information exists for a particular translation it is listed right below it inside a light green box.</item>
-        <item>This can include description of the term, example of usage and so on.</item>
-        <item>If similar terms exist (synonyms) they are listed below the light green box.</item>
+        <item>This can include description of the term, example of usage, synonyms and so on.</item>
     </string-array>
 
 

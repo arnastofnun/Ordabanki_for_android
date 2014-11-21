@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings used in the search tab-->
+    <string name="search_tab">Search</string>
+    <string name="search_hint">Type in search query</string>
+    <string name="database_error">Could not connect to database</string>
+    <string name="no_search_term">You have to type in a search query</string>
+    <string name="no_glossary_picked">You have to pick at least one glossary</string>
+    <string name="ast_char_limit">You have to type in at least two other characters when using *</string>
+    <string name="connection_error">Connection Error. Try again.</string>
+
+    <!--Strings used in the pick glossaries tab-->
+    <string name="pick_glossary_tab">Glossaries</string>
+    <string name="select_all">Select all</string>
+    <string name="deselect_all">Clear all</string>
+    <string name="link_unaccessable">There is no website for this glossary</string>
+
+    <!--Strings used in the choose language fragment-->
+    <string name="languages_tab_name">Languages</string>
+    <string name="targetlang">Target language:</string>
+    <string name="sourcelang">Source language:</string>
+    <string name="all_languages">All</string>
+</resources>

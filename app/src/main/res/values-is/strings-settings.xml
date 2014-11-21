@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings for settings menu-->
+    <string name="action_help">Hjálp</string>
+    <string name="settings_changelanguage_confirm">Velja</string>
+    <string name="change_language">Breyta tungumáli</string>
+    <string name="settings_about">Um Íðorðabankann</string>
+    <string name="settings_contact">Hafið samband</string>
+    <string name="settings_clear_search">Hreinsa leitarsögu</string>
+
+    <!--Strings for changing language-->
+    <string-array name="language_array">
+        <item>Íslenska</item>
+        <item>Enska</item>
+        <item>Sænska</item>
+        <item>Danska</item>
+        <item>Norska</item>
+    </string-array>
+
+    <!--Strings for emailing contact-->
+    <string name="choose_email_client">Vinsamlegast veldu email app</string>
+    <string name="error_no_email_client">Þú hefur ekkert email app</string>
+
+</resources>

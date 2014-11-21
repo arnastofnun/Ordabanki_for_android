@@ -92,28 +92,6 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
             holder.tick = (ImageView) view.findViewById(R.id.checked_image);
             view.setTag(holder);
 
-            //Set the on click listener on the checkbox
-            /*
-            holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (buttonView == null) {
-                        Log.v("buttonView", "null");
-                    } else {
-                        Log.v("buttonView", "OK");
-                    }
-                    Glossary glossary = (Glossary) buttonView.getTag();
-                    if (glossary == null) {
-                        Log.v("glossary", "null");
-                    } else {
-                        Log.v("glossary", "OK");
-                    }
-                    glossary.setSelected(isChecked);
-                }
-            });
-            */
-
-
             //Set an on click listener to the glossary
             holder.glossaryName.setOnClickListener(new View.OnClickListener() {
                 //if the checkbox is clicked set the selected glossary to selected

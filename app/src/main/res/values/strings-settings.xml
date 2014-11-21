@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings for settings menu-->
+    <string name="action_help">Help</string>
+    <string name="change_language">Change language</string>
+    <string name="settings_about">About Íðorðabanki</string>
+    <string name="settings_contact">Contact us</string>
+    <string name="settings_clear_search">Clear search history</string>
+
+
+
+    <!--Strings for changing language-->
+    <string-array name="language_array">
+        <item>Icelandic</item>
+        <item>English</item>
+        <item>Swedish</item>
+        <item>Danish</item>
+        <item>Norwegian</item>
+    </string-array>
+    <string name="settings_changelanguage_confirm">Select</string>
+
+
+    <!--Strings for emailing contact-->
+    <string name="contact_email" translatable="false">agustath\@islenskan.is</string>
+    <string name="choose_email_client">Please choose an email client</string>
+    <string name="error_no_email_client">You don\'t have an email client installed</string>
+
+
+</resources>
