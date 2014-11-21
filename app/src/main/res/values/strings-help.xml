@@ -5,14 +5,14 @@
     one including the titles and one including the contents.
     They will be displayed in order (first item in titles
     will be the title array for the first item in the content array.
-    If you want to skip the title, put in an empty item in the title array-->
+    If you want to skip the title, put in a single space in an item in the title array-->
     <!--Titles for search fragment help -->
     <string-array name="help_search_fragment_titles">
-        <item></item>
+        <item>!skip</item>
         <item>How to search</item>
         <item>Get more results</item>
-        <item></item>
-        <item></item>
+        <item>!skip</item>
+        <item>!skip</item>
         <item>Too many results?</item>
     </string-array>
     <!--Contents for search fragments-->
@@ -28,7 +28,7 @@
     </string-array>
     <!--Titles for search fragment help -->
     <string-array name="help_glossary_fragment_titles">
-        <item></item>
+        <item>!skip</item>
         <item>Selecting a glossary</item>
         <item>Selecting all glossaries</item>
         <item>Glossary descriptions</item>
@@ -45,11 +45,11 @@
     <!--Titles for select language fragment-->
     <string-array name="help_language_fragment_titles">
         <item>Search language</item>
-        <item></item>
-        <item></item>
+        <item>!skip</item>
+        <item>!skip</item>
         <item>Target language</item>
-        <item></item>
-        <item></item>
+        <item>!skip</item>
+        <item>!skip</item>
     </string-array>
     <!--Contents for select language fragment-->
     <string-array name="help_language_fragment">
@@ -60,14 +60,50 @@
         <item>You can restrict the search to a particular target language by pressing the drop down list for the target language and selecting a language</item>
         <item>You can only select one or all target languages</item>
     </string-array>
+    <!--Titles for the result screen-->
+    <string-array name="help_result_screen_titles">
+        <item> </item>
+        <item>What does it tell you?</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Getting more information</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for the result screen-->
+    <string-array name="help_result_screen">
+        <item>The result screen displays the results from your search</item>
+        <item>The results are displayed like this:</item>
+        <item>image:result_help</item>
+        <item>The term is the name of the term</item>
+        <item>The language indicates what language the term is in</item>
+        <item>The glossary this term belongs to</item>
+        <item>By clicking the items in the result screen you can get more information
+            on each search term, including translations, descriptions and synonyms</item>
+    </string-array>
 
-    <string name="help_result_screen">Implement Help here</string>
-
-    <string name ="help_result_info_screen">1) Name of selected term\n
-        2) The glossary this term belongs to \n
-        3) Translations and all extra info contained in the glossary for this term is listed here.\n
-            If extra information exists for a particular translation it is listed right below it inside a light green box. If similar terms exist they are listed below the light green box.
-    </string>
+    <!--Titles for the result info screen-->
+    <string-array name = "help_result_info_screen_titles">
+        <item>What does it tell you?</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Extra information</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for the result info screen-->
+    <string-array name ="help_result_info_screen">
+        <item>image:resultinfo</item>
+        <item>1) Name of the selected term</item>
+        <item>2) The glossary this term belongs to</item>
+        <item>3) Translations and all extra info contained in the glossary for this term is listed here.</item>
+        <item>If extra information exists for a particular translation it is listed right below it inside a light green box.</item>
+        <item>This can include description of the term, example of usage and so on.</item>
+        <item>If similar terms exist (synonyms) they are listed below the light green box.</item>
+    </string-array>
 
 
 

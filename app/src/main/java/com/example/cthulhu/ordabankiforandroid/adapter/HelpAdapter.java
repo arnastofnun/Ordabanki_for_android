@@ -1,10 +1,12 @@
 package com.example.cthulhu.ordabankiforandroid.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.cthulhu.ordabankiforandroid.R;
@@ -18,13 +20,11 @@ import com.example.cthulhu.ordabankiforandroid.R;
  */
 public class HelpAdapter extends ArrayAdapter<String>{
     private String[] titles;
-    private String[] helpDescriptions;
     private Context context;
 
     public HelpAdapter(Context context, int listViewResourceID, String[] titles, String[] helpDescriptions){
         super(context,listViewResourceID,helpDescriptions);
         this.titles = titles;
-        this.helpDescriptions = helpDescriptions;
         this.context = context;
     }
 
@@ -40,16 +40,30 @@ public class HelpAdapter extends ArrayAdapter<String>{
         if(currentHelp != null) {
             TextView title = (TextView) convertView.findViewById(R.id.help_item_title);
             TextView content = (TextView) convertView.findViewById(R.id.help_content);
+            ImageView img = (ImageView) convertView.findViewById(R.id.help_image);
 
-            if (title != null && titles.length > position && !titles[position].equals("")){
+
+
+            if (title != null && titles.length > position && !titles[position].equals("!skip")){
                 title.setVisibility(View.VISIBLE);
                 title.setText(titles[position]);
             }
             else if(title!= null){
                 title.setVisibility(View.GONE);
             }
-            if(content != null){
+            if(img!= null && content !=null && currentHelp.startsWith("image:")){
+                content.setVisibility(View.GONE);
+                String uri = "drawable/" + currentHelp.substring(6);
+                Log.v("URI",uri);
+                int resourceID = context.getResources().getIdentifier(uri,null,context.getPackageName());
+                img.setImageResource(resourceID);
+                img.setVisibility(View.VISIBLE);
+
+            }
+            else if(content != null && img != null){
+                img.setVisibility(View.GONE);
                 content.setText(currentHelp);
+                content.setVisibility(View.VISIBLE);
             }
 
         }

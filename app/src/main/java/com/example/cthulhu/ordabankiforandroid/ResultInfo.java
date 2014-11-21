@@ -1,21 +1,17 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Einnig;
+import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Sbr;
 import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Word;
 import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Word.Synonym;
-import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Sbr;
-import com.example.cthulhu.ordabankiforandroid.TermResult.Term.Einnig;
-
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -70,7 +66,6 @@ public class ResultInfo extends Activity {
      *  written by Trausti
      * 
      * @param  savedInstanceState saved instances
-     * @return nothing
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,7 +185,7 @@ public class ResultInfo extends Activity {
                                     synChild += getString(R.string.word_othergrammar)+" " + synonym.othergrammar + "<br>";
                                 }
 
-                                if(synChild != ""){
+                                if(!synChild.equals("")){
                                     synonymHTML += "<div id =\"synonym\">" + synChild + "</div>";
                                 }
                                 synonymHTML += "</div>";
@@ -297,13 +292,21 @@ public class ResultInfo extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        /*
         ImageView iv = new ImageView(this);
         iv.setImageResource(R.drawable.resultinfo);
+        */
         switch(item.getItemId()){
             //If the help button is pressed
             case R.id.action_help:
                 //Build a dialog
 
+                String[] titleList = getResources().getStringArray(R.array.help_result_info_screen_titles);
+                String[] helpList = getResources().getStringArray(R.array.help_result_info_screen);
+
+                HelpDialog helpDialog = new HelpDialog(this,this.getLayoutInflater(),titleList,helpList);
+                helpDialog.show();
+                /*
                 AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
                 helpBuilder
                         .setTitle(R.string.help_title)
@@ -317,7 +320,8 @@ public class ResultInfo extends Activity {
                 });
                 //Create and show the dialog
                 AlertDialog helpDialog = helpBuilder.create();
-                helpDialog.show();
+
+                */
                 return true;
             //If the settings button is pressed
             case R.id.action_settings:

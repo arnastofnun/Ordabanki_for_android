@@ -1,8 +1,6 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -167,19 +165,10 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         switch(item.getItemId()){
             //If the help button is pressed
             case R.id.action_help:
-                //Build a dialog
-                AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-                helpBuilder
-                        .setTitle(R.string.help_title)
-                        .setMessage(getResources().getString(R.string.help_result_screen));
-                //Cancel action
-                helpBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int id){
-                        //Do nothing on cancel
-                    }
-                });
-                //Create and show the dialog
-                AlertDialog helpDialog = helpBuilder.create();
+                String[] titleList = getResources().getStringArray(R.array.help_result_screen_titles);
+                String[] helpList = getResources().getStringArray(R.array.help_result_screen);
+
+                HelpDialog helpDialog = new HelpDialog(this,this.getLayoutInflater(),titleList,helpList);
                 helpDialog.show();
                 return true;
             //If the settings button is pressed
