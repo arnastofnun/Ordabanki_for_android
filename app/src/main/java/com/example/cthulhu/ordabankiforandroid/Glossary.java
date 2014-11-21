@@ -37,7 +37,15 @@ public class Glossary implements Comparable<Glossary>{
         this.dict_code = code;
         this.name = name;
         //TODO: get the url from API, or check if it exists in some way
-        this.url = "http://www.ismal.hi.is/ob/uppl/" + dict_code.toLowerCase() + ".html";
+        //temporary fix until API provides the values, check string that contains glossaries currently online
+        if(("bilord-arkitekt-byggverk-edlisfr-efnafr-endur-erfdafr-flug-fundarord-gjaldmidlar-hagfr-" +
+            "jardfr-laekn-landafr-liford-lisa-malfr-krydd-vidur-nyyrdi-onaemisfr-flora-raft-rettritun-" +
+             "rikjaheiti-sjodyr-pisces-sjomenn-stjornsysla-stjarna-thy-timbur-tolfr-tolva-saela-verkst").contains(dict_code.toLowerCase()))
+        {
+            this.url = "http://www.ismal.hi.is/ob/uppl/" + dict_code.toLowerCase() + ".html";
+        }else{
+            this.url = "";
+        }
         this.selected = true;
     }
 
