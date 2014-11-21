@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Help string arrays-->
+    <!--NOTE There are two string arrays for each section
+    one including the titles and one including the contents.
+    They will be displayed in order (first item in titles
+    will be the title array for the first item in the content array.
+    If you want to skip the title, put in an empty item in the title array-->
+    <!--Titles for search fragment help -->
+    <string-array name="help_search_fragment_titles">
+        <item></item>
+        <item>How to search</item>
+        <item>Get more results</item>
+        <item></item>
+        <item></item>
+        <item>Too many results?</item>
+    </string-array>
+    <!--Contents for search fragments-->
+    <string-array name="help_search_fragment">
+        <item>The search is not case sensitive</item>
+        <item>Type in a word in the search box and click search</item>
+        <item>You can use the \'?\' character to substitute one character\n(m?nni would result in minni, mynni and munni)</item>
+        <item>You can use the \'*\' character to substitute 0 or more characters\n(m*nni would result in minni, misminni,myndminni,…)</item>
+        <item>When using the \'*\' character you have to specify at least two other characters in the search</item>
+        <item>Go to the glossaries tab to restrict search to selected glossaries\n\n
+        Go to the languages tab to restrict search to certain search- or target languages</item>
+
+    </string-array>
+    <!--Titles for search fragment help -->
+    <string-array name="help_glossary_fragment_titles">
+        <item></item>
+        <item>Selecting a glossary</item>
+        <item>Selecting all glossaries</item>
+        <item>Glossary descriptions</item>
+        <item>Restrictions</item>
+    </string-array>
+    <!--Contents for search fragment help -->
+    <string-array name="help_glossary_fragment">
+        <item>By default all the glossaries are searched but the search can be restricted to one or more particular glossaries</item>
+        <item>Just tap one or more glossary to select or deselect it, the glossaries with a check mark on the left are selected</item>
+        <item>You can press the select all button to select all glossaries</item>
+        <item>The button to the right of some glossaries is a link to a description of the glossary</item>
+        <item>You have to select at least one glossary</item>
+    </string-array>
+    <!--Titles for select language fragment-->
+    <string-array name="help_language_fragment_titles">
+        <item>Search language</item>
+        <item></item>
+        <item></item>
+        <item>Target language</item>
+        <item></item>
+        <item></item>
+    </string-array>
+    <!--Contents for select language fragment-->
+    <string-array name="help_language_fragment">
+        <item>By default the search searches in all languages</item>
+        <item>You can restrict the search to a particular search language by pressing the drop down list for the search language and selecting a language</item>
+        <item>You can only select one or all search languages</item>
+        <item>By default the search displays results in all languages</item>
+        <item>You can restrict the search to a particular target language by pressing the drop down list for the target language and selecting a language</item>
+        <item>You can only select one or all target languages</item>
+    </string-array>
+
+    <string name="help_result_screen">Implement Help here</string>
+
+    <string name ="help_result_info_screen">1) Name of selected term\n
+        2) The glossary this term belongs to \n
+        3) Translations and all extra info contained in the glossary for this term is listed here.\n
+            If extra information exists for a particular translation it is listed right below it inside a light green box. If similar terms exist they are listed below the light green box.
+    </string>
+
+
+
+
+</resources>

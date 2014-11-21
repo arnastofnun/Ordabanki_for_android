@@ -1,10 +1,8 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.ActionBar;
-import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -256,37 +254,39 @@ public class SearchScreen extends FragmentActivity {
         switch(item.getItemId()){
             //If clicked on help
             case R.id.action_help:
-                //Build the dialog
-                AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-                //Get the index of the current fragment
+                //Find the current fragment
                 int currFragment = viewPager.getCurrentItem();
-                //Set the title of the dialog
-                helpBuilder.setTitle(R.string.help_title);
+                //List of help titles and contents
+                String[] titleList;
+                String[] helpList;
+
                 //Switch to dertermine the text of the help
                 switch(currFragment){
                     //If we are in the search fragment
                     case 0:
-                        helpBuilder.setMessage(getResources().getString(R.string.help_search_fragment));
+                        titleList = getResources().getStringArray(R.array.help_search_fragment_titles);
+                        helpList = getResources().getStringArray(R.array.help_search_fragment);
                         break;
                     //If we are in the pick glossary fragment
                     case 1:
-                        helpBuilder.setMessage(getResources().getString(R.string.help_glossary_fragment));
+                        titleList = getResources().getStringArray(R.array.help_glossary_fragment_titles);
+                        helpList = getResources().getStringArray(R.array.help_glossary_fragment);
                         break;
                     //If we are in the pick language fragment
                     case 2:
-                        helpBuilder.setMessage(getResources().getString(R.string.help_language_fragment));
+                        titleList = getResources().getStringArray(R.array.help_language_fragment_titles);
+                        helpList = getResources().getStringArray(R.array.help_language_fragment);
                         break;
+                    default:
+                        titleList = getResources().getStringArray(R.array.help_search_fragment_titles);
+                        helpList = getResources().getStringArray(R.array.help_search_fragment);
                 }
-                //Set cancel button
-                helpBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int id){
+                //Create the help dialog
+                HelpDialog helpDialog = new HelpDialog(this,this.getLayoutInflater(),titleList,helpList);
 
-                    }
-                });
+
                 //Create and show the dialog
-                AlertDialog helpDialog = helpBuilder.create();
                 helpDialog.show();
-
                 return true;
             //If the settings button is pressed
             case R.id.action_settings:
@@ -297,9 +297,6 @@ public class SearchScreen extends FragmentActivity {
                 //Create a popup settings menu that pops up below the settings button
                 settings.createOptionsPopupMenu(v,SearchScreen.class);
                 return true;
-
-
-
         }
         return super.onOptionsItemSelected(item);
 
