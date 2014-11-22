@@ -1,10 +1,11 @@
 package com.example.cthulhu.ordabankiforandroid.unittests;
 
+import android.provider.SearchRecentSuggestions;
 import android.test.ActivityInstrumentationTestCase2;
-import android.widget.EditText;
 
 import com.example.cthulhu.ordabankiforandroid.R;
 import com.example.cthulhu.ordabankiforandroid.ResultsScreen;
+import com.example.cthulhu.ordabankiforandroid.SearchAutoComplete;
 import com.example.cthulhu.ordabankiforandroid.SearchScreen;
 import com.example.cthulhu.ordabankiforandroid.SplashActivity;
 import com.robotium.solo.Solo;
@@ -30,8 +31,17 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
      * method  sets up activity and solo before testing can begin
      */
     public void setUp() throws Exception {
-        solo = new Solo(getInstrumentation(), getActivity());
-
+        /*This way the testPreconditions will work*/
+        solo = new Solo(getInstrumentation());
+        getActivity();
+        //Clear the search history
+        SearchRecentSuggestions suggestions=new SearchRecentSuggestions(getActivity().getApplicationContext(), SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);
+        suggestions.clearHistory();
+        /*This makes sure the settings are cleared before each test, but it makes it start up in the select language screen
+        Context context = getInstrumentation().getTargetContext();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.edit().clear().commit();
+        */
 /*
          The following commented-out code is a workaround used by
         / Kristján for unit tests to work in his system.
@@ -76,12 +86,14 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         // Waits for Tab to load
         solo.sleep(1000);
         // Deselects all
-        solo.clickOnButton(2);
+        solo.clickOnText(solo.getString(R.string.deselect_all));
+
         // Select entries 2,4,7 and 8
         solo.clickInList(2);
         solo.clickInList(4);
+        solo.clickInList(6);
         solo.clickInList(7);
-        solo.clickInList(8);
+
         //search only in selected glossaries
         solo.clickOnText(solo.getString(R.string.search_tab));
         solo.enterText(0, "Sta*");
@@ -119,6 +131,8 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.sleep(5000);
 
         //TODO This test no longer functions
+        //Got get the view for the languages tab
+        solo.clickOnText(solo.getString(R.string.pick_glossary_tab));
         //Click on Languages tab
         solo.clickOnText(solo.getString(R.string.languages_tab_name));
         //Press spinner item 0 (src lang) and language 2 (English)
@@ -145,24 +159,28 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.sleep(5000);
 
         // Validates the Search Bar starts Empty
-        Assert.assertTrue(solo.searchText(""));
+        Assert.assertTrue("search bar is not empty at initialization",solo.searchText(""));
         // Enters a word into the Search Bar
         solo.enterText(0, "Autodefenestration");
         // Asserts the word has been entered
-        Assert.assertTrue(solo.searchText("Autodefenestration"));
+        Assert.assertTrue("word was not entered into search bar",solo.searchText("Autodefenestration"));
         // Clears text
         solo.clearEditText(0);
         // Verifies text has been cleared
-        Assert.assertTrue(solo.searchText(""));
+        Assert.assertTrue("Search bar does not clear properly",solo.searchText(""));
         // Re-enters text
         solo.enterText(0, "Autodefenestration");
         //Clicks the Search button
-        solo.clickOnView(solo.getView(R.id.searchscreen));
+        solo.sendKey(Solo.ENTER);
         //Waits for the Results to load
+        solo.sleep(5000);
         solo.assertCurrentActivity("wrong activity",ResultsScreen.class);
         // Verifies the search term has passed into the ResultsScreen
-        // TODO find a less stupid way to do this
-        Assert.assertTrue(solo.searchText("Engar niðurstöður fyrir Autodefenestration"));
+        /*This tests if the result list is empty, but that wasn't the point of the test
+        ListView list = solo.getCurrentViews(ListView.class).get(0);
+        assertTrue("The result is not empty", list.getChildCount() == 0);
+        */
+        Assert.assertTrue(solo.searchText("Autodefenestration"));
         // Returns to SearchScreen
         solo.goBack();
     }
@@ -177,9 +195,38 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
     public void testSuggestion() {
         solo.sleep(5000);
 
+
+        /*Karl Ásgeir was trying to do a test here*/
+        //Enters a word
+        solo.enterText(0, "Autodefenestration");
+        //Clear it
+        solo.clearEditText(0);
+        //Enter a partial mach
+        solo.enterText(0,"Auto");
+        //Check if the suggestion comes up
+        Assert.assertFalse(solo.waitForText("Autodefenestration"));
+        //Enter the rest of the word
+        solo.enterText(0,"defenestration");
+        //Searches, to save the search term in autocomplete
+        solo.sendKey(Solo.ENTER);
+        //Waits for results
+        // Goes back to search screen
+        solo.goBack();
+        //Enters a part of the word
+        solo.enterText(0, "Auto");
+        //Check if the suggestion comes up
+        Assert.assertTrue(solo.waitForText("Autodefenestration"));
+        //Clears the text
+        solo.clearEditText(0);
+        //Enters another non matching word
+        solo.enterText(0,"Poly");
+        //Check it the suggestion is gone
+        Assert.assertFalse(solo.waitForText("Autodefenestration"));
+
+
+        /*
         //Enters the first word
         solo.enterText(0, "Autodefenestration");
-        //clears the first word
         solo.clearEditText(0);
         //enters the second word
         solo.enterText(0, "Polyester");
@@ -197,7 +244,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.enterText(0, "AutoMobile");
         //Checks that suggestion is no longer made
         Assert.assertFalse(solo.searchText("Autodefenestration"));
-
+        */
 
 
     }
@@ -216,9 +263,9 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         // Waits for Tab to load
         solo.sleep(1000);
         // Deselects all
-        solo.clickOnButton(2);
+        solo.clickOnText(solo.getString(R.string.deselect_all));
         // Selects All
-        solo.clickOnButton(1);
+        solo.clickOnText(solo.getString(R.string.select_all));
         // Selects First entry in list
         solo.clickInList(1);
         // Selects Deselects First entry in list
@@ -229,7 +276,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.clickInList(3);
 
         // Deselects all
-        solo.clickOnButton(2);
+        solo.clickOnText(solo.getString(R.string.deselect_all));
         solo.clickOnText(solo.getString(R.string.search_tab));
         solo.enterText(0, "Asf");
         solo.sendKey(Solo.ENTER);
@@ -240,24 +287,29 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
 
 
     /**
-     * This method tests whether or not search is allowed with 0-2 letters
+     * This method tests whether or not search is allowed with 0 letters or less than two with *
      * Written by Trausti
      * @return nothing
      */
 
     public void testSearchLessThanTwoLetters() {
         solo.sleep(5000);
-        EditText search = (EditText)solo.getView(R.id.searchView);
-        solo.enterText(search,"");
+        solo.enterText(0,"");
         solo.sendKey(Solo.ENTER);
         //user should not be able to search as he has entered 0 letters
-        solo.assertCurrentActivity("wrong activity",SearchScreen.class);
-        solo.clearEditText(search);
-        solo.enterText(search,"a");
+        solo.assertCurrentActivity("wrong activity", SearchScreen.class);
+        solo.clearEditText(0);
+        //Enter *
+        solo.enterText(0,"*");
         solo.sendKey(Solo.ENTER);
-
-        //user should not be able to search as he has entered 1 letter
-        //solo.assertCurrentActivity("wrong activity",SearchScreen.class);
+        //user should not be able to search as he has entered * alone
+        solo.assertCurrentActivity("wrong activity",SearchScreen.class);
+        solo.clearEditText(0);
+        //Enter a*
+        solo.enterText(0,"a*");
+        solo.sendKey(Solo.ENTER);
+        //user should not be able to search as he has entered less than two characters along with *
+        solo.assertCurrentActivity("wrong activity",SearchScreen.class);
     }
 
     /**
@@ -276,7 +328,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         // Selects Icelandic
         solo.clickInList(1);
         // Confirms selection
-        solo.clickOnButton(1);
+        solo.clickOnText(solo.getString(R.string.settings_changelanguage_confirm));
         //waits for new language to load
         solo.sleep(2000);
         // Asserts Icelandic is selected
@@ -288,7 +340,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         // Selects English
         solo.clickInList(0);
         // Cancels selection
-        solo.clickOnButton(0);
+        solo.clickOnText(solo.getString(R.string.close_help));
         //waits for new language to load
         solo.sleep(2000);
         // Asserts Icelandic is still selected
@@ -300,7 +352,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         // Selects English
         solo.clickInList(0);
         // Confirms selection
-        solo.clickOnButton(1);
+        solo.clickOnText(solo.getString(R.string.settings_changelanguage_confirm));
         //waits for new language to load
         solo.sleep(2000);
         // Asserts English is selected
@@ -319,7 +371,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         //Enters search term
         solo.enterText(0, "Polystyrene");
         //Searches, to save the search term in autocomplete
-        solo.clickOnView(solo.getView(R.id.searchscreen));
+        solo.sendKey(Solo.ENTER);
         //Waits for results
         // Goes back to search screen
         solo.goBack();
@@ -328,14 +380,16 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         //Enters partial match
         solo.enterText(0, "Poly");
         //Confirms suggestion is made
-        Assert.assertTrue(solo.searchText("Polystyrene"));
+        Assert.assertTrue("Suggestion was not made initially",solo.searchText("Polystyrene"));
+        //Makes sure search is empty
+        solo.clearEditText(0);
         //Clears the search
         solo.clickOnActionBarItem(R.id.action_settings);
         solo.clickInList(4);
         //Re-enters partial match
         solo.enterText(0, "Poly");
         //Confirms suggestion is no longer made
-        Assert.assertTrue(solo.searchText("Polystyrene"));
+        Assert.assertFalse("suggestion was not cleared", solo.searchText("Polystyrene"));
     }
 
 

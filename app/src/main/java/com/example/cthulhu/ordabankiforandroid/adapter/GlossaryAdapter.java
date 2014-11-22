@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.SectionIndexer;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,10 @@ import com.example.cthulhu.ordabankiforandroid.Glossary;
 import com.example.cthulhu.ordabankiforandroid.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Set;
+
 /**
  * <h1>Glossary adapter</h1>
  * <p>An adapter that implements most of the functions for the
@@ -25,7 +30,11 @@ import java.util.ArrayList;
  * @author Karl Ásgeir Geirsson
  * @since 14.10.2014.
  */
-public class GlossaryAdapter extends ArrayAdapter<Glossary> {
+public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIndexer {
+    //Indexer for the alphabet sorting
+    HashMap<String,Integer> alphaIndexer;
+    //Sections for the alphabet sorting
+    String[] sections;
 
     /**
     *   a list containing glossaries
@@ -46,10 +55,53 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
      */
     public GlossaryAdapter(Context context, int listViewResourceId, ArrayList<Glossary> glossaryList){
         super(context,listViewResourceId,glossaryList);
+        //Sets up the alphabetical scrolling
+        setUpAlphabeticalScrolling(glossaryList);
+
+
         this.glossaryList = new ArrayList<Glossary>();
         this.glossaryList = glossaryList;
         this.context = context;
     }
+
+    /**
+     * Sets up the alphabetical scrolling for the
+     * list
+     * -------------------------------------------
+     * Written by Karl Ásgeir
+     * @since 22.11.14
+     */
+    private void setUpAlphabeticalScrolling(ArrayList<Glossary> glossaryList){
+        //Initialize the indexer
+        alphaIndexer = new HashMap<String, Integer>();
+        //Get the glossary size
+        int size = glossaryList.size();
+        //Go through the glossary list and add a section for each
+        //different first character
+        for(int x = 0;x<size;x++){
+            //Get the name of the glossary
+            String name = glossaryList.get(x).getName();
+            //make sure it exists and isn't an empty string
+            if(name != null) {
+                if(!name.equals("")) {
+                    //Get the first character
+                    String ch = name.substring(0, 1).toUpperCase();
+                    //If it's not in the indexer, put it there
+                    if (!alphaIndexer.containsKey(ch)) {
+                        alphaIndexer.put(ch, x);
+                    }
+                }
+            }
+
+        }
+        //Set up the section list
+        Set <String> sectionLetters = alphaIndexer.keySet();
+        ArrayList<String> sectionList = new ArrayList<String>(sectionLetters);
+        Collections.sort(sectionList);
+        sections = new String[sectionList.size()];
+        sections = sectionList.toArray(sections);
+    }
+
 
     /**
      * A simple class to hold the checkbox
@@ -168,5 +220,23 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> {
         return view;
     }
 
+
+    /**
+     * Gets the position for the correct section
+     */
+    @Override
+    public int getPositionForSection(int section) {
+        return alphaIndexer.get(sections[section]);
+    }
+
+    @Override
+    public int getSectionForPosition(int position) {
+        return 0;
+    }
+
+    @Override
+    public Object[] getSections() {
+        return sections;
+    }
 
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/lightGreen100">
+    <TextView
+        android:id="@+id/help_item_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="About title"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="@color/darkgrey"/>
+    <TextView
+        android:id="@+id/help_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/help_item_title"
+        android:textColor="@color/darkgrey"
+        android:textSize="14dp"
+        android:padding="10dp"
+        android:text="some description of that help"/>
+    <ImageView
+        android:id="@+id/help_image"
+        android:layout_width="fill_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/help_item_title"
+        android:src="@drawable/resultinfo"/>
+</RelativeLayout>

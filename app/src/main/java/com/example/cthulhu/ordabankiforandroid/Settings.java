@@ -147,7 +147,7 @@ public class Settings {
                         return true;
                     //If clear search history is pressed
                     case R.id.settings_clear_search:
-                        //Clear the search histry
+                        //Clear the search history
                         SearchRecentSuggestions suggestions=new SearchRecentSuggestions(context, SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);
                         suggestions.clearHistory();
                 }

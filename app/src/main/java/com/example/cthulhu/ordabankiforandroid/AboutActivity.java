@@ -2,9 +2,13 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+
+import com.example.cthulhu.ordabankiforandroid.adapter.HelpAdapter;
 
 /**
  * This class handles the about activity screen
@@ -28,7 +32,26 @@ public class AboutActivity extends Activity {
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
 
+        String[] titleList = getResources().getStringArray(R.array.about_titles);
+        String[] aboutList = getResources().getStringArray(R.array.about_contents);
+        //Creating a new help adapter
+        HelpAdapter adapter = new HelpAdapter(this, R.layout.about_list, titleList,aboutList);
+        //Getting the glossary list and setting it's adapter to my custom glossary adapter
+        ListView listView = (ListView) this.findViewById(R.id.about_list_view);
+        if(listView == null) {
+            Log.v("ListView", "null");
+        }
+        listView.setAdapter(adapter);
+
+
     }
+
+
+    @Override
+    protected void  onStart(){
+        super.onStart();
+    }
+
 
     /**
      * Runs when menu is created
