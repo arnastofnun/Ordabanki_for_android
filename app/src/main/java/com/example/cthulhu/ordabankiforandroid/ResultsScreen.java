@@ -3,6 +3,7 @@ package com.example.cthulhu.ordabankiforandroid;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +29,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
     OrdabankiJsonHandler jsonHandler;
     private String searchQuery;
     private ListView listView;
+    private Globals global;
     /**
      * Takes search term from intent and passes to Rest client
      * Bill
@@ -39,11 +41,16 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         setContentView(R.layout.activity_results_screen);
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
-
-        jsonHandler = new OrdabankiJsonHandler(this);
-        Bundle data = getIntent().getExtras();
-        searchQuery = data.getString("searchQuery");
-        OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
+        global = (Globals) this.getApplication();
+        if(global == null){
+            Log.v("G","null");
+        }
+        List<Result> rList = global.getResults();
+        if(rList == null){
+            jsonHandler = new OrdabankiJsonHandler(this);
+            Bundle data = getIntent().getExtras();
+            searchQuery = data.getString("searchQuery");
+            OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
             try {
                 client.setResults(OrdabankiURLGen.createWordURL(searchQuery), jsonHandler);
                 //when glossaries and languages implemented in api use:
@@ -51,6 +58,12 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+        else{
+            displayListView(rList);
+        }
+
+
     }
 
     /**
@@ -63,15 +76,12 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         List<Result> resultList = Arrays.asList(resultArr);
         Collections.sort(resultList);
 
-        String searchPreTerm = getResources().getString(R.string.searchpreterm);
         TextView textView = (TextView) findViewById(R.id.resultText);
         if(resultArr == null){
             String databaseError = getResources().getString(R.string.database_error);
             textView.setText(databaseError);
         }
         else {
-            int resultsCount = resultList.size();
-            textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery);
             displayListView(resultList);
         }
     }
@@ -112,19 +122,25 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         //resultList.add(result);
         //result = new Result("blade", "english", "Metallurgy");
         //resultList.add(result);
+        String searchPreTerm = getResources().getString(R.string.searchpreterm);
+        TextView textView = (TextView) findViewById(R.id.resultText);
+        int resultsCount = resultList.size();
+        textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery);
 
         //Creating a new glossary adapter
         ResultsAdapter resultsAdapter = new ResultsAdapter(this, R.layout.results_list, resultList);
+        final List<Result> rList = resultList;
         //Getting the glossary list and setting it's adapter to my custom glossary adapter
         listView = (ListView) findViewById(R.id.resultsList);
         listView.setAdapter(resultsAdapter);
+
 
 
         //Setting the on item click listener to be ready for later use
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                global.setResults(rList);
                 Result result = (Result) parent.getItemAtPosition(position);
                 Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
                 intent.putExtra("idTerm",result.getId_term());
@@ -167,7 +183,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
             case R.id.action_help:
                 String[] titleList = getResources().getStringArray(R.array.help_result_screen_titles);
                 String[] helpList = getResources().getStringArray(R.array.help_result_screen);
-
                 HelpDialog helpDialog = new HelpDialog(this,this.getLayoutInflater(),titleList,helpList);
                 helpDialog.show();
                 return true;
@@ -180,9 +195,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
                 //Create a popup menu with settings, that pops from the action button
                 settings.createOptionsPopupMenu(v);
                 return true;
-
-
-
         }
         return super.onOptionsItemSelected(item);
 

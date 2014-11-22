@@ -3,6 +3,7 @@ package com.example.cthulhu.ordabankiforandroid;
 import android.app.Application;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Holds global variables.
@@ -15,6 +16,13 @@ public class Globals extends Application{
     private ArrayList<Glossary> glossaryState; //Keeps the selected glossary state between searches
     private int tLangPos = -1; //Keeps the position of the selected target language between searches
     private int sLangPos = -1; //Keeps the position of the selected source language between searches
+    private List<Result> results;
+
+
+
+    public void setResults(List<Result> results){
+        this.results = results;
+    }
 
     /**
      * Sets the source and target languages to the current language
@@ -91,6 +99,15 @@ public class Globals extends Application{
      * @return glossaryState
      */
     public ArrayList<Glossary>getGlossaryState(){return glossaryState;}
+
+
+    /**
+     *Written by Karl Ásgeir Geirsson
+     * @return results
+     */
+    public List<Result> getResults(){
+        return results;
+    }
 
     /**
      * Written by Bill
