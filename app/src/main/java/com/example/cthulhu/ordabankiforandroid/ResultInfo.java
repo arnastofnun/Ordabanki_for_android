@@ -330,7 +330,7 @@ public class ResultInfo extends Activity {
                 //Create a new settings instance
                 Settings settings = new Settings(this);
                 //Create a popup menu with settings, that pops from the action button
-                settings.createOptionsPopupMenu(v, SearchScreen.class);
+                settings.createOptionsPopupMenu(v);
                 return true;
         }
 

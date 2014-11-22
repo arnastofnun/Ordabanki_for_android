@@ -7,12 +7,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.SearchRecentSuggestions;
+import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+
+import com.example.cthulhu.ordabankiforandroid.adapter.ChangeLanguageAdapter;
 
 /**
  * @author Karl Ásgeir Geirsson
@@ -31,6 +36,7 @@ public class Settings {
     Context context;
 
 
+
     /**
      * use: Locale settings localeSettings = new LocaleSettings(context)
      * pre:context is of type Context
@@ -46,13 +52,13 @@ public class Settings {
 
     }
 
+
     /**
      * Creates an options popup menu with various options
      * Written by Karl Ásgeir Geirsson
      * @param v the view where the menu should pop down from
-     * @param cl the class of the activity to be started on language change
      */
-    public void createOptionsPopupMenu(View v, final Class cl){
+    public void createOptionsPopupMenu(View v){
         //Create a new popup menu
         PopupMenu popup = new PopupMenu(context,v);
         MenuInflater inflater = popup.getMenuInflater();
@@ -66,37 +72,64 @@ public class Settings {
                         final LocaleSettings localeSettings = new LocaleSettings(context);
                         String lang = localeSettings.getLanguage();
                         //Get the position of the current language
-                        int langPos = getLanguagePos(lang);
-                        //Set up a single choice dialog with the languages
-                        final AlertDialog.Builder languageBuilder = new AlertDialog.Builder(context);
-                        languageBuilder
-                                .setTitle(R.string.change_language)
-                                .setSingleChoiceItems(R.array.language_array, langPos, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                    }
-                                });
-                        //Set cancel button
-                        languageBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener() {
+                        final int langPos = getLanguagePos(lang);
+
+                        //Create the dialog builder
+                        AlertDialog.Builder clangBuilder = new AlertDialog.Builder(context);
+                        //Layout and set the view
+                        View view = LayoutInflater.from(context).inflate(R.layout.change_language_dialog, null);
+                        clangBuilder.setView(view);
+
+
+                        //Creating a new custom adapter and appending the languages to it
+                        String[] languages = context.getResources().getStringArray(R.array.language_array);
+                        final ChangeLanguageAdapter changeLanguageAdapter = new ChangeLanguageAdapter(context, R.layout.change_language_list, languages);
+                        //Finding the list view and setting the adapter
+                        final ListView listView = (ListView) view.findViewById(R.id.change_language_list_view);
+                        listView.setAdapter(changeLanguageAdapter);
+                        //Setting the correct selected language
+                        changeLanguageAdapter.setSelectedIndex(langPos);
+                        //On item click listener for the list view
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                //Change the selected item
+                                changeLanguageAdapter.setSelectedIndex(position);
+                                listView.setItemChecked(position, true);
+                                changeLanguageAdapter.notifyDataSetChanged();
+                            }
+                        });
+                        //Set cancel button (just dismisses the dialog)
+                        clangBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 
                             }
                         });
-                        //set accept button that sets the language to the selected language
-                        languageBuilder.setPositiveButton(R.string.settings_changelanguage_confirm,new DialogInterface.OnClickListener(){
-                            public void onClick(DialogInterface dialog, int id){
+                        //Set positive button (accepts the chosen language)
+                        clangBuilder.setPositiveButton(R.string.settings_changelanguage_confirm, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
                                 //Get the selected position
-                                ListView lw = ((AlertDialog)dialog).getListView();
-                                int pos = lw.getCheckedItemPosition();
-                                //Set the language and return to splash screen to load
-                                localeSettings.setLanguage(getLanguageFromPos(pos),SplashActivity.class);
+                                int pos = listView.getCheckedItemPosition();
+                                //If the language isn't already selected
+                                if(pos != langPos) {
+                                    //Set the language and return to splash screen to load
+                                    LocaleSettings localeSettings = new LocaleSettings(context);
+                                    localeSettings.setLanguage(getLanguageFromPos(pos), SplashActivity.class);
+                                }
                             }
                         });
+
                         //Create and show the dialog
-                        AlertDialog languageDialog = languageBuilder.create();
-                        languageDialog.show();
+                        AlertDialog chLangDialog = clangBuilder.create();
+                        chLangDialog.show();
+
+                        //Change the color of the buttons
+                        Button dismissButton = chLangDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                        Button confirmButton = chLangDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+                        changeButtonColor(dismissButton);
+                        changeButtonColor(confirmButton);
                         return true;
-                    //If the abut button is pressed
+                    //If the about button is pressed
                     case R.id.settings_about:
                         //Start the about activity
                         Intent intent = new Intent(context, AboutActivity.class);
@@ -128,6 +161,13 @@ public class Settings {
     }
 
 
+    private void changeButtonColor(Button button){
+        if(button != null) {
+            button.setBackgroundColor(context.getResources().getColor(R.color.darkgrey));
+            button.setTextColor(context.getResources().getColor(android.R.color.primary_text_dark));
+        }
+    }
+
     /**
      * @param lang the language
      * @return the position of lang
@@ -147,7 +187,7 @@ public class Settings {
             return 3;
         }
         else if(lang.equals("NO")){
-                return 4;
+            return 4;
         }
         else{
             return -1;
@@ -158,7 +198,7 @@ public class Settings {
      * @param pos the position of the lang
      * @return the language in that position
      */
-    private String getLanguageFromPos(int pos){
+    public static String getLanguageFromPos(int pos){
         switch(pos){
             case 0:
                 return "IS";
@@ -174,7 +214,6 @@ public class Settings {
                 return "";
         }
     }
-
 
 
 }

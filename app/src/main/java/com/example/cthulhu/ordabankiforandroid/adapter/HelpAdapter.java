@@ -1,7 +1,6 @@
 package com.example.cthulhu.ordabankiforandroid.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +53,6 @@ public class HelpAdapter extends ArrayAdapter<String>{
             if(img!= null && content !=null && currentHelp.startsWith("image:")){
                 content.setVisibility(View.GONE);
                 String uri = "drawable/" + currentHelp.substring(6);
-                Log.v("URI",uri);
                 int resourceID = context.getResources().getIdentifier(uri,null,context.getPackageName());
                 img.setImageResource(resourceID);
                 img.setVisibility(View.VISIBLE);

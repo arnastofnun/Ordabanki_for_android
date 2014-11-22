@@ -30,12 +30,12 @@ public class HelpDialog {
     private AlertDialog buildDialog(){
         //Build the dialog
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(context);
-//Get the index of the current fragment
+
         View view = layoutInflater.inflate(R.layout.help_dialog,null);
         helpBuilder.setView(view);
 
 
-        //Creating a new glossary adapter
+        //Creating a new help adapter
         HelpAdapter helpAdapter = new HelpAdapter(context, R.layout.help_list, titleList,helpList);
 
         //Getting the glossary list and setting it's adapter to my custom glossary adapter

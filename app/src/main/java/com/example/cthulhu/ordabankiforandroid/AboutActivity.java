@@ -59,7 +59,7 @@ public class AboutActivity extends Activity {
             View v = findViewById(R.id.action_settings);
             //Open up the popup options menu
             Settings settings = new Settings(this);
-            settings.createOptionsPopupMenu(v,AboutActivity.class);
+            settings.createOptionsPopupMenu(v);
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -295,7 +295,7 @@ public class SearchScreen extends FragmentActivity {
                 //Create a new instance of Settings
                 Settings settings = new Settings(this);
                 //Create a popup settings menu that pops up below the settings button
-                settings.createOptionsPopupMenu(v,SearchScreen.class);
+                settings.createOptionsPopupMenu(v);
                 return true;
         }
         return super.onOptionsItemSelected(item);
