@@ -1,6 +1,7 @@
 package com.example.cthulhu.ordabankiforandroid;
 
 import android.app.Application;
+import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,17 @@ public class Globals extends Application{
     private List<Result> results;
 
 
+    public static Context context;
+
+    @Override
+    public void onCreate(){
+        super.onCreate();
+        context = getApplicationContext();
+    }
+
+    public static Context getContext(){
+        return context;
+    }
 
     public void setResults(List<Result> results){
         this.results = results;

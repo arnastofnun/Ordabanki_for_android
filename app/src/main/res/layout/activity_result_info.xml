@@ -1,47 +1,6 @@
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<!-- activity_screen_slide.xml -->
+<android.support.v4.view.ViewPager
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearLayout"
-    android:gravity="center_horizontal">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/termWordView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:typeface="serif"
-        android:text="Word"
-        android:gravity="center"
-        android:textSize="28dp"
-        android:textIsSelectable="false"
-        android:paddingTop="10px"
-        android:paddingBottom="10px" />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Glossary"
-        android:id="@+id/termGlossaryView"
-        android:background="@color/white"
-        android:gravity="center_horizontal"
-        android:typeface="sans"
-        android:textStyle="italic"
-        android:paddingTop="10px"
-        android:paddingBottom="10px"
-        android:textSize="20dp"
-        android:autoText="false"
-        android:clickable="false"
-        android:textColor="@color/darkgrey" />
-
-    <WebView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/webViewTerm"
-        android:layout_below="@+id/termWordView"
-        android:layout_centerHorizontal="true" />
-</LinearLayout>
+    android:id="@+id/result_pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />

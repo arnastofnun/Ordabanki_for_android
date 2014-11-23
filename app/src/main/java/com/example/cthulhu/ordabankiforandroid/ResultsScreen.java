@@ -141,11 +141,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 global.setResults(rList);
-                Result result = (Result) parent.getItemAtPosition(position);
                 Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
-                intent.putExtra("idTerm",result.getId_term());
-                intent.putExtra("idWord",result.getWord());
-                intent.putExtra("dictCode",result.getDictionary_code());
+                intent.putExtra("selectedResultIndex",position);
                 startActivity(intent);
                 //Toast.makeText(getApplicationContext(), "Clicked on: " + result.getWord(), Toast.LENGTH_LONG).show();
             }
