@@ -17,7 +17,7 @@ package com.example.cthulhu.ordabankiforandroid;
  * @author Bill
  * @since 04/11/14
   */
-public class SynonymResult {
+public class SynonymResult implements Comparable<SynonymResult> {
     String synonym;
     Word word;
  /**
@@ -31,4 +31,34 @@ public class SynonymResult {
         String word;
         String dict_code;
     }
+
+
+    public String getWord(){
+        return word.word;
+    }
+
+    public String getTerm_id(){
+        return word.term_id;
+    }
+
+    public String getDict_code(){
+        return word.dict_code;
+    }
+
+    public String getSynonym(){
+        return synonym;
+    }
+
+    /**
+     * Written by Karl Ásgeir Geirsson
+     * use: int cmp = synonymResult.compareTo(synonymResult2);
+     * @param sResult is the SynonymResult to be compared to
+     * @return returns an int indicating how this SynonymResult
+     *          compares to the result other SynonymResult
+     */
+    public int compareTo(SynonymResult sResult){
+        //Compare the words alphabetically
+        return getWord().compareTo(sResult.getWord());
+    }
+
 }

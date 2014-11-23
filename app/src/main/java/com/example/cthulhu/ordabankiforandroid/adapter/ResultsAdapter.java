@@ -1,6 +1,5 @@
 package com.example.cthulhu.ordabankiforandroid.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 import com.example.cthulhu.ordabankiforandroid.Globals;
 import com.example.cthulhu.ordabankiforandroid.R;
 import com.example.cthulhu.ordabankiforandroid.Result;
+import com.example.cthulhu.ordabankiforandroid.SynonymResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +27,10 @@ import static com.example.cthulhu.ordabankiforandroid.Result.Synonym;
  * @since 15.10.2014.
  */
 public class ResultsAdapter extends ArrayAdapter<Result> {
+    //Get global values
+    Globals g = (Globals) Globals.getContext();
     //Initialize a list for the results
-    private List<Result> resultsList;
+    private ArrayList<Result> resultsList;
     private Context context;
 
     /**
@@ -39,9 +41,10 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
      * @param listViewResourceId the resource Id of the list view that the adapter is being added to
      * @param resultsList the glossary list that is to be added to the list view
      */
-    public ResultsAdapter(Context context, int listViewResourceId, List<Result> resultsList){
+    public ResultsAdapter(Context context, int listViewResourceId, List<Result> resultsList, List<SynonymResult> synonymResultList){
         super(context,listViewResourceId,resultsList);
-        this.resultsList = resultsList;
+        this.resultsList = new ArrayList<Result>(resultsList);
+
         this.context = context;
     }
 
@@ -115,8 +118,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
 
 
 
-        //Get global values
-        Globals g = (Globals) ((Activity) parent.getContext()).getApplication();
+
         //Get the languages and dictionaries from global values
         ArrayList<ArrayList<String>> languages = g.getLanguages();
         ArrayList<ArrayList<String>> dictionaries = g.getLoc_dictionaries();
@@ -174,5 +176,8 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
 
         return convertView;
     }
+
+
+
 
 }

@@ -13,13 +13,13 @@ import org.json.JSONObject;
  * @since 04/11/14
  */
 public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
-    AnActivity activity;
+    ResultsScreen activity;
 
     /**
      * initialisation
      * @param activity parent activity
      */
-    public SynonymResultJsonHandler(AnActivity activity)
+    public SynonymResultJsonHandler(ResultsScreen activity)
     {
         this.activity = activity;
     }

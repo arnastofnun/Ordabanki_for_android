@@ -17,7 +17,8 @@ public class Globals extends Application{
     private ArrayList<Glossary> glossaryState; //Keeps the selected glossary state between searches
     private int tLangPos = -1; //Keeps the position of the selected target language between searches
     private int sLangPos = -1; //Keeps the position of the selected source language between searches
-    private List<Result> results;
+    private ArrayList<Result> results;
+    private List<SynonymResult> synonymResults;
 
 
     public static Context context;
@@ -32,8 +33,11 @@ public class Globals extends Application{
         return context;
     }
 
-    public void setResults(List<Result> results){
+    public void setResults(ArrayList<Result> results){
         this.results = results;
+    }
+    public void setSynonymResults(List<SynonymResult> results){
+        this.synonymResults = results;
     }
 
     /**
@@ -117,8 +121,16 @@ public class Globals extends Application{
      *Written by Karl Ásgeir Geirsson
      * @return results
      */
-    public List<Result> getResults(){
+    public ArrayList<Result> getResults(){
         return results;
+    }
+
+    /**
+     *Written by Karl Ásgeir Geirsson
+     * @return results
+     */
+    public List<SynonymResult> getSynonymResults(){
+        return synonymResults;
     }
 
     /**
