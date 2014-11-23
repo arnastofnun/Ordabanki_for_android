@@ -1,138 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources><!--Strings for the about section-->
-    <string name="about_prologue">
-            Ordbanken ägs av Íslensk málstöð (ÍM).\n
-        Den innehåller ett särskilt anpassat program för registrering och publicering av ordlistor.\n
-        Redaktörerna har tillgång till ett särskilt registreringssystem för att arbeta med sina ordlistor
-            och sedan kombinera dem med andra ordlistor som användarna av ordbanken kan söka i. \n
-        Íslensk málstöð har gjort en överenskommelse med ordlistornas redaktörer  som får tillgång till
-            registreringssystemet mot att ÍM får publicera ordlistorna i ordbanken på nätet. \n
-        Redaktörerna har hela rätten till sina verk och kan publicera dem när och var de önskar.
-    </string>
+    <string-array name="about_titles">
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Historia</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Syfte</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Operation</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>The Íðorðabankinn app</item>
+        <item>!skip</item>
+        <item>Infrastruktur orðabankans</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+    </string-array>
 
-    <string name="about_header_addragandi">Historia</string>
-    <string name="about_body_addragandi">
-        	Idén om en isländsk ordbank eller ordbank för fackuttryck presenterades första gången vid ett
+
+    <string-array name="about_contents">
+        <item> Ordbanken ägs av Íslensk málstöð (ÍM). Den innehåller ett särskilt anpassat program för registrering och publicering av ordlistor.</item>
+        <item>Redaktörerna har tillgång till ett särskilt registreringssystem för att arbeta med sina ordlistor och sedan kombinera dem med andra ordlistor som användarna av ordbanken kan söka i.</item>
+        <item>Íslensk málstöð har gjort en överenskommelse med ordlistornas redaktörer  som får tillgång till registreringssystemet mot att ÍM får publicera ordlistorna i ordbanken på nätet.</item>
+        <item>Redaktörerna har hela rätten till sina verk och kan publicera dem när och var de önskar.</item>
+        <!--Aðdragandi-->
+        <item>Idén om en isländsk ordbank eller ordbank för fackuttryck presenterades första gången vid ett
         möte med den isländska språknämnden 22 november 1979.\n
-        	Nämnden beslöt då att tillsätta en utredning om en ordbank redan år 1980 och alltsedan dess har en
-        sådan planerats.\n
-        	Första steget till en ordbank bestod i att göra en genomgång av ordlistor för fackuttryck och lägga
-        in dem för datorbearbetning. Alla ordlistor som tagits fram för språknämndens räkning eller
-        på institutionen för ÍM har lagts in i systemet.\n
-        	I Regler för den Isländska språknämnden och ÍM, nr 159/1987 står det: ,,ÍM skall följa utvecklingen
-        av ordbanker för fackuttryck  i andra länder, förbereda än sådan bank här och ansvara för
-        verksamheten.“  Av olika skäl försenades och försvårades planeringsarbetet om en gemensam bank,
+        Nämnden beslöt då att tillsätta en utredning om en ordbank redan år 1980 och alltsedan dess har en
+        sådan planerats.</item>
+        <item>Första steget till en ordbank bestod i att göra en genomgång av ordlistor för fackuttryck och lägga in dem för datorbearbetning. Alla ordlistor som tagits fram för språknämndens räkning eller
+        på institutionen för ÍM har lagts in i systemet.</item>
+        <item>I Regler för den Isländska språknämnden och ÍM, nr 159/1987 står det: ,,ÍM skall följa utvecklingen av ordbanker för fackuttryck  i andra länder, förbereda än sådan bank här och ansvara för verksamheten.“  Av olika skäl försenades och försvårades planeringsarbetet om en gemensam bank,
         men med tillkomsten av internet blev det tekniskt enklare att sätta igång, så att företag,
-        institutioner och privatpersoner, var de än befann sig i världen, kunde använda sig av ordbanken.\n
-        	Frågan tog ett stort steg framåt när Isländska språknämnden fick ett bidrag på tre miljoner isländska
-        kronor ur fonden Lýðveldisjóður 1995 och sedan tre miljoner ur samma fond för tjänster åt
-        översättare. Dessa bidrag skulle betala sig på tre år. \n
-        	En person anställdes på ÍM i oktober 1995 för att samordna de olika uppgifterna i förberedelserna
-        för en ordbank på nätet.\n
-        	År 1996 fick ÍM ytterligare en miljon kronor i bidrag ur Fonden för språkvård för att utforma ett
-        dataprogram för ordbanken, och år 1997 fick man 400 000 kronor ur samma fond för att föra
-        över ordlistor mellan olika datasystem.\n
-        	Uppgiften underlättades samtidigt av den nya datautrustning som ÍM fick 1994. Det var en gåva från
-        Mjólkursamsalan i Reykjavík som beslutat att avsätta en del av sina annonsbudget för att
-        stödja isländsk språkvård. \n
-        	Efter ett projekt för kulturdepartementets räkning fick ÍM år 2003-2004 ett bidrag av
-        språkteknologifonden för att göra ny programvara åt ordbanken .\n\n
-        	ÍM:s ordbank öppnades för internet den 15 november 1997 samtidigt som dagen för det isländska
+        institutioner och privatpersoner, var de än befann sig i världen, kunde använda sig av ordbanken.</item>
+        <item>Frågan tog ett stort steg framåt när Isländska språknämnden fick ett bidrag på tre miljoner isländska kronor ur fonden Lýðveldisjóður 1995 och sedan tre miljoner ur samma fond för tjänster åt
+        översättare. Dessa bidrag skulle betala sig på tre år.</item>
+        <item>En person anställdes på ÍM i oktober 1995 för att samordna de olika uppgifterna i förberedelserna för en ordbank på nätet.</item>
+        <item>År 1996 fick ÍM ytterligare en miljon kronor i bidrag ur Fonden för språkvård för att utforma ett dataprogram för ordbanken, och år 1997 fick man 400 000 kronor ur samma fond för att föra
+        över ordlistor mellan olika datasystem.</item>
+        <item>Uppgiften underlättades samtidigt av den nya datautrustning som ÍM fick 1994. Det var en gåva från Mjólkursamsalan i Reykjavík som beslutat att avsätta en del av sina annonsbudget för att
+        stödja isländsk språkvård.</item>
+        <item>Efter ett projekt för kulturdepartementets räkning fick ÍM år 2003-2004 ett bidrag av
+        språkteknologifonden för att göra ny programvara åt ordbanken.</item>
+        <item>ÍM:s ordbank öppnades för internet den 15 november 1997 samtidigt som dagen för det isländska
         språket firades, nästan exakt 18 år efter att idén först presenterades vid språknämndens möte.
-        Vid det mötet tänkte man sig att banken skulle ligga i en central databas med klientservrar.
-        Sedan dess har det skett en teknisk revolution inom datavärlden. Trots detta är den ursprungliga
-        idén fortfarande den samma i de grundläggande detaljerna. Skillnaden att kapaciteten är mångdubbelt
-        då den centrala datorn är kopplad till nätet .
-    </string>
-
-    <string name = "about_header_purpose"> Syfte </string>
-    <string name = "about_body_purpose"> 
-			En av ordbankens uppgifter är att samordna ordbruket inom olika områden. Den skall bland annat
-		samla in ord på fackspråk och se till att det inte förekommer får många benämningar på samma sak.\n
-			ÍM:s ordbank sköter denna uppgift. Den kan ge en översikt över de isländska fackuttryck och nya
-		ord i språket som är mest aktuella och bidra till en bättre överensstämmelse både när det
-		gäller ordens användning och definition. Dessutom ger visar den den isländska översättningen
-		av utländska fackuttryck och ger definitioner av orden på isländska och flera språk.\n
-			Ordbanken kan därför vara till stor nytta för dem som arbetar med speciella ämnen, som översättare,
-		lärare, studerande, medieanställda, offentliga institutioner, företag och sist men inte minst
-		ordböksredaktörer.\n\n
-			Ordbanken har också visat sig vara en länge efterlängtad mötesplats för olika ordlisteredaktörer
-		och språkinstitutioner för att jämföra sina resultat. Där ges förklaringar av betydelseområdet
-		av det ord som söks. Om uppslagsordet förekommer i flera ordlistor eller dess betydelse är mer
-		än en, så visas denna information på skärmen och det är möjligt att söka i alla bankens
-		ordlistor samtidigt.\n
-			Detta underlättar för dem som arbetar med ordlistor för fackspråk, att skaffa sig en uppfattning
-		om det isländska ordförrådet på olika områden. De kan samtidigt se betydelsen av orden de
-		söker och om de överlappar andra uppslagsord i banken.\n\n
-			Ordbanken ligger ute på nätet. Många av ordlistorna har översättningar på fler språk än isländska
-		och inget hindrar därför att folk över hela världen kan använda sig av den.\n
-			Det är möjligt att göra listor,  t.ex. över olika fackuttryck i samarbete med utländska språknämnder
-		och komma komma överens om arbetsområde i bankens arbetsdel där parterna kan lägga ut sina
-		resultat på det egna språket.
-     </string>
-
-
-    <string name = "about_header_structure"> Struktur </string>
-    <string name = "about_body_structure"> 
-		Det isländska ordet Banken är uppdelad i två huvuddelar, behandlingssektionen och visa
-		section.Each avsnittet innehåller ordlistor på olika områden. \n \n
-			Avsnittet displayen är offentligt sökbar / tillgänglig på World Wide Web och
-		behandlingssektionen är den del där ägare och redaktörer för olika ordlistor kan uppdatera
-		sitt arbete och skapa nya ordlistor. \n
-			När ägaren av en viss ordlista är redo att publicera hans / hennes arbete redaktör för
-		Word Bank kan kopiera ordlistan från behandlingssektionen till avsnittet display och därmed
-		antingen lägga till en ny ordlista eller uppdatera en befintlig. \n
-			Alla ordlistor innehåller termer på isländska. I tvåspråkiga ordlistor, bortsett från den
-		isländska, är det vanligaste språket engelska, men många av de ordlistor är flerspråkiga och
-		de mest frekventa ytterligare språk är danska, tyska, norska, svenska och franska. \n
-			Idag finns 36 ordlistor innehåller ca 125.000 termer i avsnittet display, alla
-		tillgängliga för användaren i en enda sökning, och ytterligare 13 ordlistor i olika skeden i
-		behandlingssektionen. \n \n
-			Det isländska ordet Bank på World Wide Web kan uppdateras hela tiden oavsett var redaktörerna
-		för sina databaser finns i världen, så länge de är anslutna till Internet, och redaktörerna och
-		andra användare kan använda sina favorit WWW webbläsare för redigering och sökning eftersom
-		de inte är bundna till en plattform.
-     </string>
-
-
-     <string name = "about_header_history"> Historia </string>
-     <string name = "about_body_history"> 
-         År 1979 de första idéerna om ett datoriserat termbanken i ett nätverk växte fram i det isländska
-    Language Institute. Grundtanken var att lagra data i en stordator med åtkomst från terminalerna. \n
-         Sedan dess har det skett en teknisk revolution inom området för databehandling; fortfarande
-    den huvudsakliga idén är densamma, den enda skillnaden ist som nu nätverket är datorn.
-     </string>
-
-    <string name="about_header_resktur">Operation</string>
-    <string name="about_body_rekstur">
-        ÍM sköter driften av ordbanken och verksamheten står under ÍM:s fackordsavdelnings arbetsområde.\n
-        Efter det att ordbanken öppnades hade man gratis tillgång i knappt ett år, men en avgift började tas ut 15 oktober 1998.\n
-        Avgiften slopades den 3 januari 2001 och alla har nu fri tillgång.
-    </string>
-
-    <string name = "about_header_theapp">The Íðorðabankinn app</string>
-    <string name = "about_body_theapp"> 
-    	År 2014 åtog sig fyra studerande vid Islands universitet att ta fram ett program för smartphones åt ordbanken.\n
-    Programmet ger privatpersoner tillgång till en del av ordbanken genom Android smartphones och surfplattor.
-     </string>
-
-    <string name="about_header_innraskipulag">Infrastruktur orðabankans</string>
-    <string name="about_body_innraskipulag">
-			Organisationen av ordbanken förutsätter att dess innehåll växer och hela tiden blir mer varierat.\n
-			Banken är uppdelad i två delar, en arbetsdel och en publiceringsdel.\n\n
-
-			Privatpersoner har ingen tillgång till ordbankens arbetsdel. Där sammanförs material för bearbetning,
-		både nya ordlistor och sådana som skall revideras.\n
-			Arbetsdelen är uppdelad på olika ämnesområden som vart och ett ligger under en redaktion
-		(en enskild person eller en nämnd).\n
-			Chefen för ÍM har läsåtkomlighet till arbetsdelen för kontroll, men bara en specialist på ämnesområdet,
-		ordlistans redaktör, kan gå in och göra ändringar.\n
-			När arbetet med en ordlista avslutats lägger chefen in den i publiceringsdelen, det är också möjligt
-		att publicera valda delar av listan samtidigt som de är klara (på så vis kan nya ord presenteras
-		innan de t.ex förekommer i en bokutgåva).\n\n
-			Ordbankens presentationsdel är den synliga ordbanken, den del av banken som allmänheten har tillgång till.\n
-		Med den snabbverkande sökmotorn kan man här finna både isländska och utländska ord i en eller flera
-		ordlistor, och få många slag av information om uppslagsorden både på isländska eller på det
-		språk som väljs.
-    </string>
+        Vid det mötet tänkte man sig att banken skulle ligga i en central databas med klientservrar.</item>
+        <item>Sedan dess har det skett en teknisk revolution inom datavärlden. Trots detta är den ursprungligaidén fortfarande den samma i de grundläggande detaljerna. Skillnaden att kapaciteten är mångdubbelt då den centrala datorn är kopplad till nätet .</item>
+        <!--Tilgangur orðabankans og notendur hans-->
+        <item>En av ordbankens uppgifter är att samordna ordbruket inom olika områden. Den skall bland annat
+        samla in ord på fackspråk och se till att det inte förekommer får många benämningar på samma sak.</item>
+        <item>ÍM:s ordbank sköter denna uppgift. Den kan ge en översikt över de isländska fackuttryck och nya ord i språket som är mest aktuella och bidra till en bättre överensstämmelse både när det
+        gäller ordens användning och definition. Dessutom ger visar den den isländska översättningen
+        av utländska fackuttryck och ger definitioner av orden på isländska och flera språk.</item>
+        <item>Ordbanken kan därför vara till stor nytta för dem som arbetar med speciella ämnen, som översättare,
+        lärare, studerande, medieanställda, offentliga institutioner, företag och sist men inte minst
+        ordböksredaktörer.</item>
+        <item>Ordbanken har också visat sig vara en länge efterlängtad mötesplats för olika ordlisteredaktöreroch språkinstitutioner för att jämföra sina resultat. Där ges förklaringar av betydelseområdetav det ord som söks. Om uppslagsordet förekommer i flera ordlistor eller dess betydelse är merän en, så visas denna information på skärmen och det är möjligt att söka i alla bankens ordlistor samtidigt.\</item>
+        <item>Detta underlättar för dem som arbetar med ordlistor för fackspråk, att skaffa sig en uppfattning om det isländska ordförrådet på olika områden. De kan samtidigt se betydelsen av orden de söker och om de överlappar andra uppslagsord i banken.</item>
+        <item>Ordbanken ligger ute på nätet. Många av ordlistorna har översättningar på fler språk än isländska och inget hindrar därför att folk över hela världen kan använda sig av den.\n Det är möjligt att göra listor,  t.ex. över olika fackuttryck i samarbete med utländska språknämnder</item>
+        <item>Det är möjligt att göra listor,  t.ex. över olika fackuttryck i samarbete med utländska språknämnder
+        och komma komma överens om arbetsområde i bankens arbetsdel där parterna kan lägga ut sina
+        resultat på det egna språket.</item>
+        <!--Rekstur-->
+        <item>ÍM sköter driften av ordbanken och verksamheten står under ÍM:s fackordsavdelnings arbetsområde.</item>
+        <item>Efter det att ordbanken öppnades hade man gratis tillgång i knappt ett år, men en avgift började tas ut 15 oktober 1998.</item>
+        <item>Avgiften slopades den 3 januari 2001 och alla har nu fri tillgång.</item>
+        <!--Íðorðabanka appið-->
+        <item>År 2014 åtog sig fyra studerande vid Islands universitet att ta fram ett program för smartphones åt ordbanken.</item>
+        <item>Programmet ger privatpersoner tillgång till en del av ordbanken genom Android smartphones och surfplattor.</item>
+        <!--Innra skipulag orðabankans-->
+        <item>Organisationen av ordbanken förutsätter att dess innehåll växer och hela tiden blir mer varierat.\n Banken är uppdelad i två delar, en arbetsdel och en publiceringsdel.</item>
+        <item>Privatpersoner har ingen tillgång till ordbankens arbetsdel. Där sammanförs material för bearbetning, både nya ordlistor och sådana som skall revideras.</item>
+        <item>Arbetsdelen är uppdelad på olika ämnesområden som vart och ett ligger under en redaktion
+        (en enskild person eller en nämnd).</item>
+        <item>Chefen för ÍM har läsåtkomlighet till arbetsdelen för kontroll, men bara en specialist på ämnesområdet, ordlistans redaktör, kan gå in och göra ändringar.</item>
+        <item>När arbetet med en ordlista avslutats lägger chefen in den i publiceringsdelen, det är också möjligt att publicera valda delar av listan samtidigt som de är klara (på så vis kan nya ord presenteras innan de t.ex förekommer i en bokutgåva)</item>
+        <item>Ordbankens presentationsdel är den synliga ordbanken, den del av banken som allmänheten har tillgång till.</item>
+        <item>Med den snabbverkande sökmotorn kan man här finna både isländska och utländska ord i en eller fleraordlistor, och få många slag av information om uppslagsorden både på isländska eller på det
+        språk som väljs.</item>
+    </string-array>
 </resources>
