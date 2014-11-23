@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings used in the results screen-->
+    <string name="searchpreterm">resultater for</string>
+    <string name="no_result">Ingen</string>
+    <string name="definition">Definisjon: </string>
+    <string name="synonyms">Synonymer: </string>
+    <string name="lexical_category">Leksikalsk kategori:</string>
+    <string name="example">Eksempel: </string>
+
+    <!--Strings for the result-information screen-->
+    <string name="word_abbreviation">Forkortelse</string>
+    <string name="word_definition">Definisjon</string>
+    <string name="word_dialect">Dialekt</string>
+    <string name="word_domain">Domene</string>
+    <string name="word_einnig">Se også</string>
+    <string name="word_example">Eksempel</string>
+    <string name="word_explanation">Forklaring</string>
+    <string name="word_othergrammar">Annan grammatik</string>
+    <string name="word_pronunciation">Uttale</string>
+    <string name="word_sbr">Sammenligner:</string>
+    <string name="word_synyonym">Synonymer</string>
+</resources>

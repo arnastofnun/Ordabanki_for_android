@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings used in the search tab-->
+    <string name="search_tab">Søk</string>
+    <string name="search_hint">Tast inn søkeord</string>
+    <string name="targetlang">Målspråk:</string>
+    <string name="sourcelang">Søkespråk:</string>
+    <string name="database_error">Kunne ikke koble til database</string>
+    <string name="no_search_term">Du må skrive inn et søkeord</string>
+    <string name="no_glossary_picked">Du må velge minst en ordliste</string>
+    <string name="ast_char_limit">Du må skrive inn minst to andre tegn når du bruker *</string>
+    <string name="connection_error">Tilkoblingsfeil. Prøv igjen.</string>
+
+    <!--Strings used in the pick glossaries tab-->
+    <string name="pick_glossary_tab">Ordlister</string>
+    <string name="select_all">Velg alt</string>
+    <string name="deselect_all">Avvelge alt</string>
+    <string name="link_unaccessable">Det er ingen nettside for denne ordlisten</string>
+
+    <!--Strings used in the choose language fragment-->
+    <string name="languages_tab_name">Språk</string>
+    <string name="all_languages">Alt</string>
+</resources>

@@ -15,6 +15,5 @@
     <string name="title_activity_an" translatable="false">AnActivity</string>
     <string name="title_activity_result_info">Term info</string>
     <string name="hello_world" translatable="false">Hello world!</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

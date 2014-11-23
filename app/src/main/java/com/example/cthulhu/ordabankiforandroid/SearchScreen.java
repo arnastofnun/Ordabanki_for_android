@@ -74,6 +74,10 @@ public class SearchScreen extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Resets the kept results array so we can search again
+        Globals globals = (Globals) Globals.getContext();
+        globals.setResults(null);
+        //Set the content view
         setContentView(R.layout.activity_search_screen);
         //Get the current locale
         LocaleSettings localeSettings = new LocaleSettings(this);

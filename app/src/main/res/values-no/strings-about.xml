@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="about_titles">
+        <!--<item>Prologue</item>-->
+        <!--<item>Background</item>-->
+        <item>Hensikt</item>
+        <item>!skip</item>
+        <item>Oppbygging</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Historie</item>
+        <item>!skip</item>
+        <item>Appet</item>
+        <item>!skip</item>
+        <!--<item>Innra skipulag orðabankans</item>-->
+        <!--<item>Operations</item>-->
+    </string-array>
+
+    <string-array name="about_contents">
+        <!--TODO:Prologue-->
+        <!--TRANSLATION MISSING<item>Orðabankinn er í eigu Íslenskrar málstöðvar.\n         Hann hefur að geyma sérhæfðan hugbúnað fyrir skráningu og birtingu orðasafna.\n         Höfundar fá aðgang að skráningarkerfi til þess að vinna að söfnum sínum og bætast þau síðan í hóp annarra orðasafna sem almennir notendur orðabankans geta leitað í.\n         Íslensk málstöð gerir samning við höfunda orðasafna um að þeir fái endurgjaldslausan aðgang að skráningarkerfinu gegn því að málstöðin megi birta orðasöfnin í orðabankanum á Netinu.\n         Höfundar hafa eftir sem áður allan rétt til verka sinna og geta birt þau hvar og hvenær sem þeir vilja.</item>-->
+        <!--TODO:Background-->
+        <!--TRANSLATION MISSING<item>Á fundi Íslenskrar málnefndar með orðanefndum 22. nóvember 1979 kom fyrst fram hugmynd um íslenskan orðabanka eða íðorðabanka.\n         Íslensk málnefnd hlutaðist til um að koma á fót undirbúningsnefnd um slíkan orðabanka þegar árið 1980 og hefur verið hugað að gerð hans með hléum allar götur síðan.\n         Fyrsti undirbúningur orðabanka var í því fólginn að gera sér grein fyrir efnisatriðum íðorðasafna og tölvuskráningu þeirra með vélræna úrvinnslu í huga. Öll orðasöfn, sem unnið hefur verið að á vegum málnefndarinnar sjálfrar eða í húsakynnum Íslenskrar málstöðvar, hafa verið tölvuskráð eftir sérstöku kerfi í þessu skyni.\n         Í Reglugerð um Íslenska málnefnd og starfsemi Íslenskrar málstöðvar, nr. 159/1987, segir í 7. gr.: ,,Málstöðin skal fylgjast með þróun íðorðabanka í öðrum löndum, undirbúa slíkan banka hér og sjá um rekstur hans.“ Ýmsar ástæður töfðu og torvelduðu samfellda þróun hugmyndarinnar um orðabanka en með tilkomu Netsins varð til muna einfaldara tæknilega að hrinda verkefninu í framkvæmd þannig að öll fyrirtæki, stofnanir og einstaklingar, hvar sem er í heiminum, gætu nýtt sér slíkan orðabanka á Veraldarvefnum.\n         Skriður komst á málið þegar íslensk málnefnd hlaut þriggja milljóna króna styrk úr Lýðveldissjóði 1995 til að undirbúa íðorðabanka og þriggja milljóna króna styrk úr sama sjóði til þjónustu við þýðendur. Styrkir þessir áttu að greiðast á þremur árum.\n         Einn starfsmaður var ráðinn til Íslenskrar málstöðvar í október 1995 til að sinna þessum verkefnum. Verkefnin tvö eru efnislega samtvinnuð enda lítur málstöðin svo á að orðabanki á tölvuneti geti verið þýðendum ómetanlegt hjálpartæki.\n         Árið 1996 fékk Íslensk málstöð að auki einnar milljónar króna styrk úr Málræktarsjóði til að hanna tölvukerfi fyrir orðabankann og árið 1997 fékkst 400 þús. kr. styrkur úr sama sjóði sem m.a. mátti nota til að færa orðasöfn milli tölvukerfa.\n         Verkefnið naut jafnframt góðs af nýjum tölvubúnaði sem málstöðin eignaðist 1994. Það var gjöf frá Mjólkursamsölunni í Reykjavík sem hafði ákveðið að verja hluta af auglýsingafé sínu til að styrkja íslenska málrækt á þennan hátt.\n         Samkvæmt samningi við tungutækniverkefni á vegum menntamálaráðuneytisins fékk Íslensk málstöð styrk úr tungutæknisjóði 2003–2004 til að endurforrita orðabankann.\n\n         Orðabanki Íslenskrar málstöðvar var opnaður á Vefnum 15. nóvember 1997, í tengslum við dag íslenskrar tungu, nánast réttum 18 árum eftir að hugmyndin um íðorðabanka kom fyrst fram á fundi málnefndarinnar með orðanefndunum. Á þeim fundi hugsuðu menn sér að bankinn yrði geymdur í miðlægri tölvu með nettengdum aðgangi um útstöðvar. Síðan hefur orðið tæknibylting í tölvuheiminum. Þrátt fyrir það er þessi hugmynd um skipulag bankans eins í grundvallaratriðum. Munurinn er sá að tölvunetið er margfalt stærra og útstöðvarnar fleiri því að miðlæga tölvan er tengd Netinu.</item>-->
+        <!--Purpose-->
+        <item>Et av det som ordbanken skal gjøre er å samle sammen begreper som er brukt i like og ulike felt, definere, koordinere og kombinere dem for å unngå ulike navn for samme konseptet. </item>
+        <item>Ordbanken gjør akkurat dette. Den gir en generel oversikt over islandsk terminologi og moderne nelogismer og hjelper til med koordination av både bruk og definition av begrepet</item>
+        <!--Structure-->
+        <item>Ordbanken er delt i to hoveddeler, prosessering sekjson og visnings sekjson. Hver seksjon har ordlister fra ulike felt.</item>
+        <item>Visnings sekjsonen er åpen for alle på nettet, men i prosesserings seskjonen kan de som eier og jobber med forskjellige ordlister oppdatere ordlistene og lage nye ordlister</item>
+        <item>Når den som eier en bestemt ordliste og den er klar til visning kan han redaktøren for ordbankenn kopiere ordlisten fra prosesserings sekjsonen til visnings sekjsonen og dermed oppdatere, eller legge til en ny ordliste  </item>
+        <item>Alle ordlistene har begrep på islandk. Av de ordlistene som har flere en ett språk er engelsk det vanligste språket (utenom islandsk). Mange ordlister har også flere språk, som for eksempel dansk, tysk, norsk, svensk og fransk.</item>
+        <item>Ordbanken kan oppdateres når som helst og de som jobber med ordlistene kan gjøre det igjennom nettleseren på sin egen datamaskin hvor som helst, så lenge som de er koblet til nettet</item>
+        <!--History-->
+        <item>I 1979 kom iddeon om å ha en databasert bank som inneholdt begrep først opp. Ideen var basert på å lagre data i en stormaskin med tilgang fra terminaler</item>
+        <item>Siden da har mye skjedd i den tekniske verden, men iddeen er fortsatt den samm, forskjellen er at nettet er brukt i stedet for stormaskinen</item>
+        <!--TheApp-->
+        <item>Året 2014 laget fire studenter fra det Islandske Universitet et app for Íðorðabankinn </item>
+        <item>Appet gjør visnings sekjsonen av ordbankenn tilgjengelig i et enkelt app for Android telefoner og nettbrett </item>
+        <!--TODO:Innra skipulag orðabankans-->
+        <!--TRANSLATION MISSING<item>Skipulag orðabankans er miðað við að efnið í honum margfaldist og verði sífellt fjölbreytilegra.\n         Bankinn skiptist í tvo meginhluta, vinnsluhluta og birtingarhluta.\n\n          Almennir notendur hafa engan aðgang að vinnsluhluta orðabankans. Þar er efninu safnað saman til úrvinnslu, bæði orðasöfnum í frumvinnslu og söfnum í endurskoðun.\n         Vinnsluhlutinn skiptist í mismunandi svæði sem hvert og eitt tilheyrir höfundi tiltekins orðasafns (einstaklingi eða t.d. orðanefnd) og engum öðrum.\n         Orðabankastjóri í Íslenskri málstöð hefur raunar lesaðgang að vinnsluhlutanum í eftirlitsskyni en aðeins sérfræðingur í viðkomandi grein, höfundur orðasafnsins, getur breytt því.\n         Þegar vinnu við gerð orðasafns lýkur flytur orðabankastjóri það í birtingarhlutann; raunar er unnt að birta einstaka hluta orðasafns jafnóðum og þeir eru tilbúnir (þannig má m.a. kynna ný orð fyrr en tíðkast við hefðbunda (bóka)útgáfu).\n\n          Birtingarhluti orðabankans er hinn sýnilegi orðabanki, þ.e. sá hluti bankans sem almennir notendur hafa aðgang að.\n         Með skjótvirku leitarkerfi má finna þar íslensk eða erlend orð, í einu eða fleiri orðasöfnum í einu, fá margs konar upplýsingar um hvert flettiorð, bæði á íslensku og þeim tungumálum öðrum sem um ræðir.</item> -->
+        <!--TODO:Operations-->
+        <!--TRANSLATION MISSING<item>Íslensk málstöð annast orðabankann og fellur starfsemin undir verksvið íðorðadeildar málstöðvarinnar.\n         Ókeypis aðgangur var að bankanum í tæplega eitt ár frá opnun hans en gjaldtaka hófst 15. október 1998.\n         Gjaldtöku var aflétt 3. janúar 2001 og aðgangur er öllum frjáls.</item>-->
+
+    </string-array>
+</resources>

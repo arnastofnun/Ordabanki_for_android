@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Strings for the help-->
+    <string name="help_title">Hjelp</string>
+    <string name="close_help">Lukk</string>
+
+    <!--Help string arrays-->
+    <!--NOTE There are two string arrays for each section
+    one including the titles and one including the contents.
+    They will be displayed in order (first item in titles
+    will be the title array for the first item in the content array.
+    If you want to skip the title, put in a !skip in an item in the title array-->
+    <!--Titles for search fragment help -->
+    <string-array name="help_search_fragment_titles">
+        <item>!skip</item>
+        <item>Hvordan skal jeg søke?</item>
+        <item>Få flere resultater</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Får du for mange resultater?</item>
+    </string-array>
+    <!--Contents for search fragments-->
+    <string-array name="help_search_fragment">
+        <item>Søket bryr seg ikke om du bruker store eller små bokstaver</item>
+        <item>Skriv ett ord i søkevinduet og søk</item>
+        <item>\'?\' betyr hvilket som helst tegn\n(m?nni blir minni,
+        mynni eller munni)</item>
+        <item>\'*\' betyr 0 eller flere tegn som kan være hva som helst\n(m*nni
+        blir minni, misminni,myndminni,…)</item>
+        <item>Når du bruker \'*\' må du ha i hvertfall to andre tegn i søkeordet</item>
+        <item>Hvis du vil kan søke bare i valgte ordlister i ordliste fanen.\n\n
+            Hvis du vil kan du søke bare i valgt søke og målspråk</item>
+    </string-array>
+
+    <!--Titles for select language fragment-->
+    <string-array name="help_glossary_fragment_titles">
+        <item>!skip</item>
+        <item>Velg ordliste</item>
+        <item>Velge alle ordlister</item>
+        <item>Mer information om ordliste</item>
+        <item>Begrensninger</item>
+    </string-array>
+    <!--Contents for select language fragment-->
+    <string-array name="help_glossary_fragment">
+        <item>Som standard søker du i alle ordlister, men du kan begrense søket til en eller flere ordlister.</item>
+        <item>Trykk på en eller flere ordlister til å velge dem.</item>
+        <item>Du kan trykke på velg allt for å velge alle ordlister</item>
+        <item>På høgere siden av noen ordliter er en knapp som gir deg mer information om ordlisten</item>
+        <item>Du må velge i hvertfall en ordliste</item>
+    </string-array>
+
+    <!--Titles for select language fragment-->
+    <string-array name="help_language_fragment_titles">
+        <item>Søkespråk</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Målspråk</item>
+        <item>!skip</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for select language fragment-->
+    <string-array name="help_language_fragment">
+        <item>Som standard søker du på alle språkm</item>
+        <item>Du kan begrense søket til et bestemt søkespråk med å velge søkespråket.</item>
+        <item>Du kan bare velge alle, eller ett søkespråk</item>
+        <item>Som standard gir søket resultater på alle språk</item>
+        <item>Du kan velge hvilket språk resultatet er på med å velge målspråk.</item>
+        <item>Du kan bare velge ett eller alle målspråk.</item>item>
+    </string-array>
+
+    <!--Titles for the result screen-->
+    <string-array name="help_result_screen_titles">
+        <item> </item>
+        <item>Hva betyr skjermen?</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Få flere opplysinger</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for the result screen-->
+    <string-array name="help_result_screen">
+        <item>Resultat skjermen viser resultatet fra søket ditt.</item>
+        <item>Resultatene vises på denne måten:</item>
+        <item>image:result_help</item>
+        <item>Term: begrepet</item>
+        <item>Language: sier hvilket språk begrepet er på</item>
+        <item>Glossary: sier hvilken ordliste begrepet tilhører</item>
+        <item>Du kan trykke på ett resultat får å få mer informasjon om resultatet.
+            Dette kan være oversettelser, beskrivelser og synonymer.</item>
+    </string-array>
+
+    <!--Titles for the result info screen-->
+    <string-array name = "help_result_info_screen_titles">
+        <item>Hva betyr skjermen?</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>Flere opplysninger</item>
+        <item>!skip</item>
+        <item>!skip</item>
+        <item>!skip</item>
+    </string-array>
+    <!--Contents for the result info screen-->
+    <string-array name ="help_result_info_screen">
+        <item>image:resultinfo</item>
+        <item>1) Begrepet som denne skjermen viser opplysninger om</item>
+        <item>2) Ordlisten som begrept tilhører</item>
+        <item>3) Oversettelser og flere opplysninger om begrepet.</item>
+        <item>Hvis det er flere opplysninger om begrepet vises de i en lysgrøn boks.</item>
+        <item>Det kan for eksempel være beskrivelser av begrepet, exempel om hvordan det er brukt, synonymer og så videre.</item>
+    </string-array>
+
+</resources>

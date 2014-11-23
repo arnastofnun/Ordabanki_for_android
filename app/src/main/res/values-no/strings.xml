@@ -2,68 +2,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <string name="app_name">Íðorðabankinn</string>
-    <string name="title_activity_splash">Orðabankinn</string>
+    <string name="title_activity_splash">Íðorðabankinn</string>
     <string name="action_settings">Innstillinger</string>
     <string name="splashimage">Splash bilde</string>
     <string name="splashtext">Initialiserer</string>
     <string name="welcometext">Velkommen til Íðorðabanki appet</string>
     <string name="selectlanguage">Velg språk</string>
     <string name="title_activity_select_language">Velg språk</string>
-
-    <string name="targetlang">Målspråk:</string>
-    <string name="sourcelang">Søkespråk:</string>
-    <string name="all_languages">Alt</string>
-    <string name="search_tab">Søk</string>
-
-    <string name="searchpreterm">resultater for</string>
-    <string name="search_hint">Tast inn søkeord</string>
-    <string name="pick_glossary_tab">Ordlister</string>
     <string name="title_activity_results_screen">Resultater</string>
-    <string name="action_help">Hjelp</string>
-    <string name="select_all">Velg alle</string>
-    <string name="deselect_all">Avvelge alt</string>
-    <string name="database_error">Kunne ikke koble til database</string>
-    <string name="no_result">Ingen</string>
-    <string name="link_unaccessable">Det er ingen nettside for denne ordlisten</string>
-    <string name="languages_tab_name">Språk</string>
-    <string name="no_search_term">Du må skrive inn et søkeord</string>
-    <string name="no_glossary_picked">Du må velge minst en ordliste</string>
-    <string name="ast_char_limit">Du må skrive inn minst to andre tegn når du bruker *</string>
-    <string name="connection_error">Tilkoblingsfeil. Prøv igjen.</string>
-    <string name="definition">Definisjon: </string>
-
-    <string name="synonyms">Synonymer: </string>
-    <string name="lexical_category">Leksikalsk Kategori:</string>
-    <string name="example">Eksempel: </string>
-    <string name="help_title">Hjelp</string>
-    <string name="close_help">Lukk</string>
-    <string name="settings_changelanguage_confirm">Velg</string>
-    <string name="change_language">Endre språk</string>
-    <string name="settings_about">Om Íðorðabanki</string>
-    <string name="settings_contact">Kontakt oss</string>
-    <string name="settings_clear_search">Tøm søkehistorie</string>
-    <string name="choose_email_client">Velg en e-postklient</string>
-    <string name="error_no_email_client">Du har ingen e-post klient installert</string>
-
-    <string-array name="language_array">
-    <item>Islandsk</item>
-    <item>Engelsk </item>
-    <item>Svensk </item>
-    <item>Dansk </item>
-    <item>Norsk </item>
-    </string-array>
-    <string name="about_header_addragandi"></string>
     <string name="title_activity_result_info">Information om begrep</string>
-    <string name="word_abbreviation">Forkortelse</string>
-    <string name="word_definition">Definisjon</string>
-    <string name="word_dialect">Dialekt</string>
-    <string name="word_domain">Domene</string>
-    <string name="word_einnig">Se også</string>
-    <string name="word_example">Eksempel</string>
-    <string name="word_explanation">Forklaring</string>
-    <string name="word_othergrammar">Annan grammatik</string>
-    <string name="word_pronunciation">Uttale</string>
-    <string name="word_sbr">Sammenligner:</string>
-    <string name="word_synyonym">Synonym</string>
-
 </resources>
