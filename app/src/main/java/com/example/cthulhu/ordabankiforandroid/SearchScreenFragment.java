@@ -47,23 +47,6 @@ public class SearchScreenFragment extends Fragment {
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) rootView.findViewById(R.id.searchView);
 
-        /*
-        searchView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent e) {
-                if(actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    try {
-                        ((SearchScreen)getActivity()).search(v);
-                    } catch (JSONException e1) {
-                        e1.printStackTrace();
-                    }
-                    return true;
-                }
-                return false;
-            }
-        });
-        */
-
         //Set up the search view
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
         searchView.setIconifiedByDefault(false);

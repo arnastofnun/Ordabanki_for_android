@@ -10,7 +10,7 @@ import org.json.JSONException;
  * @author Bill
  * @since 01/11/14
  */
-public class AnActivity extends Activity implements OnTermResultObtainedListener, OnSynonymResultObtainedListener{
+public class AnActivity extends Activity implements OnSynonymResultObtainedListener{
 
     /**
      * real javadoc will be in final class-see ResultScreen
@@ -37,38 +37,6 @@ public class AnActivity extends Activity implements OnTermResultObtainedListener
         }
     }
 
-    /**
-     * real javadoc will be in final class-see ResultScreen
-     * @param sTerm
-     */
-    private void setTermResults(String sTerm){
-        TermResultJsonHandler tJsonHandler = new TermResultJsonHandler(this);
-        OrdabankiRestClientUsage tClient = new OrdabankiRestClientUsage();
-        try {
-            String termURL = OrdabankiURLGen.createTermURL(sTerm);
-            tClient.setTermResults(termURL, tJsonHandler);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * real javadoc will be in final class-see ResultScreen
-     * @param tResult
-     */
-    @Override
-    public void onTermResultObtained(TermResult[] tResult){
-
-    }
-
-    /**
-     * real javadoc will be in final class-see ResultScreen
-     * @param statusCode
-     */
-    @Override
-    public void onTermResultFailure(int statusCode){
-
-    }
 
     /**
      * real javadoc will be in final class-see ResultScreen

@@ -15,15 +15,15 @@ public class TermResultJsonHandler extends JsonHttpResponseHandler {
     /**
      * AnActivity is a placeholder to avoid errors until this is ready to be integrated.
      */    
-    AnActivity activity;
+    ResultsInfoFragment fragment;
 
     /**
      * initialisation
-     * @param activity parent activity
+     * @param fragment the fragment that calls the handler
      */
-    public TermResultJsonHandler(AnActivity activity)
+    public TermResultJsonHandler(ResultsInfoFragment fragment)
     {
-        this.activity = activity;
+        this.fragment = fragment;
     }
 
     /**
@@ -36,7 +36,7 @@ public class TermResultJsonHandler extends JsonHttpResponseHandler {
     public void onSuccess(int statusCode, Header[] headers, JSONArray response){
         Gson gson = new Gson();
         TermResult[] tResult =  gson.fromJson(response.toString(), TermResult[].class);
-        activity.onTermResultObtained(tResult);
+        fragment.onTermResultObtained(tResult);
     }
 
     /**
@@ -48,7 +48,7 @@ public class TermResultJsonHandler extends JsonHttpResponseHandler {
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse){
-        activity.onTermResultFailure(statusCode);
+        fragment.onTermResultFailure(statusCode);
     }
 
     /**
@@ -60,7 +60,7 @@ public class TermResultJsonHandler extends JsonHttpResponseHandler {
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable){
-        activity.onTermResultFailure(statusCode);
+        fragment.onTermResultFailure(statusCode);
     }
 /*    @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBytes, Throwable throwable){
@@ -76,6 +76,6 @@ public class TermResultJsonHandler extends JsonHttpResponseHandler {
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse){
-        activity.onTermResultFailure(statusCode);
+        fragment.onTermResultFailure(statusCode);
     }
 }
