@@ -5,37 +5,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/linearLayout"
     android:gravity="center_horizontal">
-    <LinearLayout
-        android:orientation="horizontal"
+
+    <TextView
+        android:id="@+id/result_count"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_weight="6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/termWordView"
-            android:typeface="serif"
-            android:text="Word"
-            android:gravity="right"
-            android:textSize="28sp"
-            android:textIsSelectable="false"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp" />
-        <TextView
-            android:id="@+id/result_count"
-            android:layout_weight="4"
-            android:layout_width="0dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:typeface="serif"
-            android:textIsSelectable="false"
-            android:gravity="right"
-            android:paddingRight="10dp"
-            android:layout_marginTop="-10dp"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="1 / 2"/>
-    </LinearLayout>
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:typeface="serif"
+        android:textIsSelectable="false"
+        android:gravity="right"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="1 / 2"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/termWordView"
+        android:typeface="serif"
+        android:text="Word"
+        android:textSize="28sp"
+        android:textIsSelectable="false"
+        android:paddingBottom="5dp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="-20dp" />
 
     <TextView
         android:layout_width="fill_parent"
