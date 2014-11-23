@@ -119,8 +119,8 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
 
         //Set holder values
         holder.term.setText(result.getWord());
-        holder.language.setText("(" + languages.get(1).get(lang_index)+")");
-        holder.glossary.setText("["+ dictionaries.get(1).get(gloss_index)+"]");
+        holder.language.setText(languages.get(1).get(lang_index));
+        holder.glossary.setText(dictionaries.get(1).get(gloss_index));
 
 
         return convertView;

@@ -37,7 +37,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     private List<SynonymResult> synonymResultList;
     private boolean wordDone = false;
     private boolean synonymDone = false;
-    private boolean error = false;
+    private boolean wordError = false;
+    private boolean synonymError = false;
 
     /**
      * Takes search term from intent and passes to Rest client
@@ -128,7 +129,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             TextView textView = (TextView) findViewById(R.id.resultText);
             String connectionError = getResources().getString(R.string.connection_error) +": "+ statusCode;
             textView.setText(connectionError);
-            error = true;
+            wordError = true;
         }
     }
 
@@ -171,7 +172,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      */
     @Override
     public void onSynonymResultFailure(int statusCode){
-        error = true;
+        synonymError = true;
     }
 
 
@@ -186,7 +187,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 Looper.prepare();
                 //Deside end time
                 //While we don't get an error
-                while (!error) {
+                while (!(synonymError && wordError)) {
                     //If dictionaries and languages are obtained
                     if (wordDone && synonymDone) {
                         break;
