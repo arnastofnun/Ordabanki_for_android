@@ -41,6 +41,7 @@ public class ResultsInfoFragment extends Fragment {
         int resultIndex = args.getInt("resultIndex");
 
         TextView wordTextView = (TextView) rootView.findViewById(R.id.termWordView);
+        TextView resultCountView = (TextView) rootView.findViewById(R.id.result_count);
         TextView termGlossaryView = (TextView) rootView.findViewById(R.id.termGlossaryView);
         wv = (WebView) rootView.findViewById(R.id.webViewTerm);
 
@@ -80,6 +81,8 @@ public class ResultsInfoFragment extends Fragment {
 
         //Set header text
         wordTextView.setText(word);
+        //Set results count
+        resultCountView.setText(String.valueOf(resultIndex+1) + " / " + String.valueOf(resultList.size()));
         termGlossaryView.setText(glossaryName);
         String url = "http://api.arnastofnun.is/ordabanki.php?term="+idTerm+"&agent=ordabankaapp";
         OrdabankiRESTClient.get(url,null, new JsonHttpResponseHandler(){
