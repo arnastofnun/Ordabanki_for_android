@@ -3,7 +3,6 @@ package com.example.cthulhu.ordabankiforandroid;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,10 +25,11 @@ import java.util.List;
  * @since 08.10.2014
  */
 public class ResultsScreen extends Activity implements OnResultObtainedListener{
+    private Globals global = (Globals) Globals.getContext();
     OrdabankiJsonHandler jsonHandler;
     private String searchQuery;
     private ListView listView;
-    private Globals global;
+
     /**
      * Takes search term from intent and passes to Rest client
      * Bill
@@ -41,10 +41,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         setContentView(R.layout.activity_results_screen);
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
-        global = (Globals) this.getApplication();
-        if(global == null){
-            Log.v("G","null");
-        }
+
+
         List<Result> rList = global.getResults();
         if(rList == null){
             jsonHandler = new OrdabankiJsonHandler(this);
@@ -149,6 +147,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener{
         });
 
     }
+
+
 
 
     /**

@@ -23,6 +23,7 @@ import java.util.List;
  * A fragment for the results info screen
  */
 public class ResultsInfoFragment extends Fragment {
+    private Globals globals = (Globals) Globals.getContext();
 
 
 
@@ -46,7 +47,7 @@ public class ResultsInfoFragment extends Fragment {
         wv = (WebView) rootView.findViewById(R.id.webViewTerm);
 
 
-        Globals globals = (Globals) Globals.getContext();
+
         //Get the result at the right place in the results list
         List<Result> resultList = globals.getResults();
         Result result = resultList.get(resultIndex);
@@ -84,6 +85,13 @@ public class ResultsInfoFragment extends Fragment {
         //Set results count
         resultCountView.setText(String.valueOf(resultIndex+1) + " / " + String.valueOf(resultList.size()));
         termGlossaryView.setText(glossaryName);
+        setupWebView(idTerm,languages);
+        return rootView;
+    }
+
+
+
+    private void setupWebView(String idTerm, final ArrayList<ArrayList<String>> languages){
         String url = "http://api.arnastofnun.is/ordabanki.php?term="+idTerm+"&agent=ordabankaapp";
         OrdabankiRESTClient.get(url,null, new JsonHttpResponseHandler(){
             /**
@@ -259,25 +267,7 @@ public class ResultsInfoFragment extends Fragment {
             }
         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        return rootView;
     }
+
 
 }
