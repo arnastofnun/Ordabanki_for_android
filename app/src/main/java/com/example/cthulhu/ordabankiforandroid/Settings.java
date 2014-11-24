@@ -17,7 +17,9 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.cthulhu.ordabankiforandroid.adapter.ChangeLanguageAdapter;
+import com.example.cthulhu.ordabankiforandroid.activities.AboutActivity;
+import com.example.cthulhu.ordabankiforandroid.activities.SplashActivity;
+import com.example.cthulhu.ordabankiforandroid.adapters.ChangeLanguageAdapter;
 
 /**
  * @author Karl Ásgeir Geirsson

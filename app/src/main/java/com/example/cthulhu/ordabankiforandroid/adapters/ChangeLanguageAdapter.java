@@ -1,4 +1,4 @@
-package com.example.cthulhu.ordabankiforandroid.adapter;
+package com.example.cthulhu.ordabankiforandroid.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -47,14 +47,15 @@ public class ChangeLanguageAdapter extends ArrayAdapter<String> {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        View view = convertView;
         //If the view hasn't been inflated
-        if (convertView == null) { convertView = inflateView(parent);}
+        if (convertView == null) { view = inflateView(parent);}
         //If the item exists
         if (getItem(position) != null) {
-            updateItem(convertView,position);
+            updateItem(view,position);
         }
         //Return the converted view
-        return convertView;
+        return view;
     }
 
 

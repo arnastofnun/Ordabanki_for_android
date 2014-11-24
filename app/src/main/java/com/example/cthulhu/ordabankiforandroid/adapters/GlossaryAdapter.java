@@ -1,4 +1,4 @@
-package com.example.cthulhu.ordabankiforandroid.adapter;
+package com.example.cthulhu.ordabankiforandroid.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.widget.SectionIndexer;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.cthulhu.ordabankiforandroid.AboutGlossaryActivity;
+import com.example.cthulhu.ordabankiforandroid.activities.AboutGlossaryActivity;
 import com.example.cthulhu.ordabankiforandroid.Glossary;
 import com.example.cthulhu.ordabankiforandroid.R;
 
@@ -184,7 +184,11 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         return  vi.inflate(R.layout.glossary_list,parent, false);
     }
 
-
+    /**
+     * A method that set's up a new viewholder
+     * @param view the view that the view holder is set up from
+     * @return the vie holder
+     */
     private ViewHolder setupViewHolder(View view){
         //Set the views to the view holder
         ViewHolder viewHolder = new ViewHolder();

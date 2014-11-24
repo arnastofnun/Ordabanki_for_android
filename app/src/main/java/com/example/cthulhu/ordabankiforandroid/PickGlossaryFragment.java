@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.example.cthulhu.ordabankiforandroid.adapter.GlossaryAdapter;
+import com.example.cthulhu.ordabankiforandroid.adapters.GlossaryAdapter;
 
 import java.util.ArrayList;
 /**
@@ -76,7 +76,7 @@ public class PickGlossaryFragment extends Fragment {
         if(g==null){
            Log.v("Globals","null");
         }
-        if(g.getGlossaryState() ==null){
+        if(g.getGlossaryState() == null){
             Log.v("GlossaryState","null");
         }
         else {

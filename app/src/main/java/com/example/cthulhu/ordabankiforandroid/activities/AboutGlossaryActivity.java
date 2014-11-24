@@ -1,14 +1,17 @@
-package com.example.cthulhu.ordabankiforandroid;
+package com.example.cthulhu.ordabankiforandroid.activities;
 
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import com.loopj.android.http.AsyncHttpClient;
+import com.example.cthulhu.ordabankiforandroid.REST.OrdabankiRESTClient;
+import com.example.cthulhu.ordabankiforandroid.R;
+import com.example.cthulhu.ordabankiforandroid.Settings;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.apache.http.Header;
@@ -44,7 +47,6 @@ public class AboutGlossaryActivity extends Activity {
      * <p>Activity is called when it first starts up</p>
      *
      * @param  savedInstanceState state when activity starts up
-     * @return nothing
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,32 +66,34 @@ public class AboutGlossaryActivity extends Activity {
                 "p{font-family: 'PT Serif', serif;}</style>" +
                 "<h4 style=\"text-align:center;\">Orðabanki Íslenskrar málstöðvar</h1>" ;
 
-       OrdabankiRESTClient.get(url,null, new AsyncHttpResponseHandler() {
+       OrdabankiRESTClient.get(url, null, new AsyncHttpResponseHandler() {
            /*
             *  Called when get request has started
             */
-            @Override
-            public void onStart() {
-            }
+           @Override
+           public void onStart() {
+           }
+
            /**
             * Parses html text with glossary info
             * @param statusCode HTTP status code
             * @param headers headers array
             * @param responseBody response in byte array
             */
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+           @Override
+           public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
-                try{
-                    contents = new String(responseBody,"Windows-1252");
-                    contents = css+contents.substring(contents.indexOf("<p>"),contents.length());
+               try {
+                   contents = new String(responseBody, "Windows-1252");
+                   contents = css + contents.substring(contents.indexOf("<p>"), contents.length());
 
-                    webView.loadDataWithBaseURL(null, contents, "text/html", "UTF-8", null);
+                   webView.loadDataWithBaseURL(null, contents, "text/html", "UTF-8", null);
 
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+           }
+
            /**
             * called when response HTTP status is "4XX" (eg. 401, 403, 404)
             * @param statusCode HTTP status code
@@ -97,18 +101,19 @@ public class AboutGlossaryActivity extends Activity {
             * @param errorResponse error response
             * @param e throws an exception
             */
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+           @Override
+           public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
 
-            }
+           }
+
            /**
             * called when request is retried
             * @param retryNo number of retries
             */
-            @Override
-            public void onRetry(int retryNo) {
-            }
-        });
+           @Override
+           public void onRetry(int retryNo) {
+           }
+       });
 
     }
 
@@ -134,6 +139,10 @@ public class AboutGlossaryActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            View v = findViewById(R.id.action_settings);
+            //Open up the popup options menu
+            Settings settings = new Settings(this);
+            settings.createOptionsPopupMenu(v);
             return true;
         }
         return super.onOptionsItemSelected(item);

@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.cthulhu.ordabankiforandroid.adapter.ResultPagerAdapter;
+import com.example.cthulhu.ordabankiforandroid.adapters.ResultPagerAdapter;
 
 /**
  * ResultInfo displays more info when result has been selected

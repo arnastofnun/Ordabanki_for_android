@@ -1,4 +1,4 @@
-package com.example.cthulhu.ordabankiforandroid;
+package com.example.cthulhu.ordabankiforandroid.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
+
+import com.example.cthulhu.ordabankiforandroid.Dictionary;
+import com.example.cthulhu.ordabankiforandroid.Globals;
+import com.example.cthulhu.ordabankiforandroid.Glossary;
+import com.example.cthulhu.ordabankiforandroid.Language;
+import com.example.cthulhu.ordabankiforandroid.LocaleSettings;
+import com.example.cthulhu.ordabankiforandroid.REST.OrdabankiRestClientUsage;
+import com.example.cthulhu.ordabankiforandroid.R;
+import com.example.cthulhu.ordabankiforandroid.SearchScreen;
+import com.example.cthulhu.ordabankiforandroid.interfaces.OnDictionariesObtainedListener;
+import com.example.cthulhu.ordabankiforandroid.interfaces.OnLanguagesObtainedListener;
+import com.example.cthulhu.ordabankiforandroid.jsonHandlers.DictionaryJsonHandler;
+import com.example.cthulhu.ordabankiforandroid.jsonHandlers.LanguageJsonHandler;
 
 import org.json.JSONException;
 

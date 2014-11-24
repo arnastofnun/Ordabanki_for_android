@@ -13,7 +13,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.cthulhu.ordabankiforandroid.adapter.ResultsAdapter;
+import com.example.cthulhu.ordabankiforandroid.REST.OrdabankiRestClientUsage;
+import com.example.cthulhu.ordabankiforandroid.adapters.ResultsAdapter;
+import com.example.cthulhu.ordabankiforandroid.interfaces.OnResultObtainedListener;
+import com.example.cthulhu.ordabankiforandroid.interfaces.OnSynonymResultObtainedListener;
+import com.example.cthulhu.ordabankiforandroid.jsonHandlers.OrdabankiJsonHandler;
+import com.example.cthulhu.ordabankiforandroid.jsonHandlers.SynonymResultJsonHandler;
 
 import org.json.JSONException;
 
@@ -28,7 +33,7 @@ import java.util.List;
  * @author Trausti
  * @since 08.10.2014
  */
-public class ResultsScreen extends Activity implements OnResultObtainedListener, OnSynonymResultObtainedListener{
+public class ResultsScreen extends Activity implements OnResultObtainedListener, OnSynonymResultObtainedListener {
     private Globals global = (Globals) Globals.getContext();
 
     private String searchQuery;
@@ -239,7 +244,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery);
 
         //Creating a new glossary adapter
-        ResultsAdapter resultsAdapter = new ResultsAdapter(this, R.layout.results_list, resultList, synonymResultList);
+        ResultsAdapter resultsAdapter = new ResultsAdapter(this, R.layout.results_list, resultList);
         final ArrayList<Result> rList = resultList;
         //Getting the glossary list and setting it's adapter to my custom glossary adapter
         listView = (ListView) findViewById(R.id.resultsList);

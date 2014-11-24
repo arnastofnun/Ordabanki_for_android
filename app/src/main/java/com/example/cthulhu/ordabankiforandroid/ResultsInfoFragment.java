@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import com.example.cthulhu.ordabankiforandroid.REST.OrdabankiRestClientUsage;
+import com.example.cthulhu.ordabankiforandroid.interfaces.OnTermResultObtainedListener;
+import com.example.cthulhu.ordabankiforandroid.jsonHandlers.TermResultJsonHandler;
+
 import org.json.JSONException;
 
 import java.util.ArrayList;

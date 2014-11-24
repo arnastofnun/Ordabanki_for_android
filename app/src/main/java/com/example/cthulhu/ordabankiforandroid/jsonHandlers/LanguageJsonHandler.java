@@ -1,7 +1,9 @@
-package com.example.cthulhu.ordabankiforandroid;
+package com.example.cthulhu.ordabankiforandroid.jsonHandlers;
 
 import android.util.Log;
 
+import com.example.cthulhu.ordabankiforandroid.Language;
+import com.example.cthulhu.ordabankiforandroid.activities.SplashActivity;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 

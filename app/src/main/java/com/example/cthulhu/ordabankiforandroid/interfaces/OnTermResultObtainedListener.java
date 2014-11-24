@@ -1,6 +1,9 @@
-package com.example.cthulhu.ordabankiforandroid;
+package com.example.cthulhu.ordabankiforandroid.interfaces;
 
 //TODO: javadocs
+
+import com.example.cthulhu.ordabankiforandroid.TermResult;
+
 /**
  * Listener interface for rest client
  * @author Bill

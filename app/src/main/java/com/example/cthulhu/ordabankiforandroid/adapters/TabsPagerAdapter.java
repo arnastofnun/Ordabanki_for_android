@@ -1,4 +1,4 @@
-package com.example.cthulhu.ordabankiforandroid.adapter;
+package com.example.cthulhu.ordabankiforandroid.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

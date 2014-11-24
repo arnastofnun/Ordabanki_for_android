@@ -1,4 +1,4 @@
-package com.example.cthulhu.ordabankiforandroid;
+package com.example.cthulhu.ordabankiforandroid.REST;
 import com.loopj.android.http.*;
 
 //13/10/14.

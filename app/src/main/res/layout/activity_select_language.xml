@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cthulhu.ordabankiforandroid.SelectLanguageActivity"
+    tools:context="com.example.cthulhu.ordabankiforandroid.activities.SelectLanguageActivity"
     android:padding="20dp"
     android:orientation="vertical"
     android:background="@color/lightGreen100">
 
     <ImageView
         android:contentDescription="@string/splashimage"
-        android:id="@+id/SelectLanguageActivity.logo"
+        android:id="@+id/SelectLanguageActivity_logo"
         android:layout_width="140dp"
         android:layout_height="20dp"
         android:layout_weight="0.3"
@@ -19,7 +19,7 @@
         android:src="@drawable/splash"/>
 
     <TextView
-        android:id="@+id/SelectLanguageActivity.welcometext"
+        android:id="@+id/SelectLanguageActivity_welcometext"
         android:text="@string/welcometext"
         android:layout_width="fill_parent"
 
@@ -47,7 +47,7 @@
             android:id="@+id/linearLayout">
 
             <ImageButton
-                android:id="@+id/SelectLanguageActivity.icelandic"
+                android:id="@+id/SelectLanguageActivity_icelandic"
                 android:layout_width="match_parent"
                 android:layout_weight="0.3"
                 android:layout_height="120dp"
@@ -57,7 +57,7 @@
                 android:contentDescription="Icelandic" />
 
             <ImageButton
-                android:id="@+id/SelectLanguageActivity.english"
+                android:id="@+id/SelectLanguageActivity_english"
                 android:layout_width="match_parent"
                 android:layout_weight="0.3"
                 android:layout_height="120dp"
@@ -67,7 +67,7 @@
                 android:contentDescription="English" />
 
             <ImageButton
-                android:id="@+id/SelectLanguageActivity.danish"
+                android:id="@+id/SelectLanguageActivity_danish"
                 android:layout_width="match_parent"
                 android:layout_weight="0.3"
                 android:layout_height="120dp"
@@ -78,7 +78,7 @@
                 android:contentDescription="Danish" />
 
             <ImageButton
-                android:id="@+id/SelectLanguageActivity.swedish"
+                android:id="@+id/SelectLanguageActivity_swedish"
                 android:layout_width="match_parent"
                 android:layout_weight="0.3"
                 android:layout_height="120dp"
@@ -89,7 +89,7 @@
                 android:contentDescription="Swedish" />
 
             <ImageButton
-                android:id="@+id/SelectLanguageActivity.norwegian"
+                android:id="@+id/SelectLanguageActivity_norwegian"
                 android:layout_width="match_parent"
                 android:layout_weight="0.3"
                 android:layout_height="120dp"
@@ -104,7 +104,7 @@
 
 
     <TextView
-        android:id="@+id/SelectLanguageActivity.selectlanguagetext"
+        android:id="@+id/SelectLanguageActivity_selectlanguagetext"
         android:text="@string/selectlanguage"
         android:layout_width="fill_parent"
         android:layout_height="0dp"

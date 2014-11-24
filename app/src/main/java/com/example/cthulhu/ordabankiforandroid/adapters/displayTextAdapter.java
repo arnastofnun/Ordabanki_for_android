@@ -1,4 +1,4 @@
-package com.example.cthulhu.ordabankiforandroid.adapter;
+package com.example.cthulhu.ordabankiforandroid.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -17,11 +17,11 @@ import com.example.cthulhu.ordabankiforandroid.R;
  * @author Karl Ásgeir Geirsson
  * @since 21.11.2014.
  */
-public class HelpAdapter extends ArrayAdapter<String>{
+public class displayTextAdapter extends ArrayAdapter<String>{
     private String[] titles;
     private Context context;
 
-    public HelpAdapter(Context context, int listViewResourceID, String[] titles, String[] helpDescriptions){
+    public displayTextAdapter(Context context, int listViewResourceID, String[] titles, String[] helpDescriptions){
         super(context,listViewResourceID,helpDescriptions);
         this.titles = titles;
         this.context = context;

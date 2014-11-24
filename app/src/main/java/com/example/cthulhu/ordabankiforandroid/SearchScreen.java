@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-import com.example.cthulhu.ordabankiforandroid.adapter.TabsPagerAdapter;
+import com.example.cthulhu.ordabankiforandroid.adapters.TabsPagerAdapter;
 
 import org.json.JSONException;
 

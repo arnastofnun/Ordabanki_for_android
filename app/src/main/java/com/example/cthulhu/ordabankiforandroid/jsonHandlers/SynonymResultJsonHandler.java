@@ -1,5 +1,7 @@
-package com.example.cthulhu.ordabankiforandroid;
+package com.example.cthulhu.ordabankiforandroid.jsonHandlers;
 
+import com.example.cthulhu.ordabankiforandroid.ResultsScreen;
+import com.example.cthulhu.ordabankiforandroid.SynonymResult;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -8,19 +10,18 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Handler to parse dictionary list JSON or return status code on error.
+ * Handler to parse results from synonym search or return status code on error/no result.
  * @author Bill
- * @since 01/11/14.
+ * @since 04/11/14
  */
-public class DictionaryJsonHandler extends JsonHttpResponseHandler{
-
-    SplashActivity activity;
+public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
+    ResultsScreen activity;
 
     /**
      * initialisation
      * @param activity parent activity
      */
-    public DictionaryJsonHandler(SplashActivity activity)
+    public SynonymResultJsonHandler(ResultsScreen activity)
     {
         this.activity = activity;
     }
@@ -34,8 +35,8 @@ public class DictionaryJsonHandler extends JsonHttpResponseHandler{
     @Override
     public void onSuccess(int statusCode, Header[] headers, JSONArray response){
         Gson gson = new Gson();
-        Dictionary[] dictionaries =  gson.fromJson(response.toString(), Dictionary[].class);
-        activity.onDictionariesObtained(dictionaries);
+        SynonymResult[] sResult =  gson.fromJson(response.toString(), SynonymResult[].class);
+        activity.onSynonymResultObtained(sResult);
     }
 
     /**
@@ -47,7 +48,7 @@ public class DictionaryJsonHandler extends JsonHttpResponseHandler{
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse){
-        activity.onDictionariesFailure(statusCode);
+        activity.onSynonymResultFailure(statusCode);
     }
 
     /**
@@ -59,7 +60,7 @@ public class DictionaryJsonHandler extends JsonHttpResponseHandler{
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable){
-        activity.onDictionariesFailure(statusCode);
+        activity.onSynonymResultFailure(statusCode);
     }
 /*    @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBytes, Throwable throwable){
@@ -75,7 +76,7 @@ public class DictionaryJsonHandler extends JsonHttpResponseHandler{
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse){
-        activity.onDictionariesFailure(statusCode);
+        activity.onSynonymResultFailure(statusCode);
     }
-}
 
+}

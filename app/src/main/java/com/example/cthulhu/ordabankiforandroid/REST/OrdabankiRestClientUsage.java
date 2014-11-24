@@ -1,4 +1,10 @@
-package com.example.cthulhu.ordabankiforandroid;
+package com.example.cthulhu.ordabankiforandroid.REST;
+
+import com.example.cthulhu.ordabankiforandroid.jsonHandlers.DictionaryJsonHandler;
+import com.example.cthulhu.ordabankiforandroid.jsonHandlers.LanguageJsonHandler;
+import com.example.cthulhu.ordabankiforandroid.jsonHandlers.OrdabankiJsonHandler;
+import com.example.cthulhu.ordabankiforandroid.jsonHandlers.SynonymResultJsonHandler;
+import com.example.cthulhu.ordabankiforandroid.jsonHandlers.TermResultJsonHandler;
 
 import org.json.JSONException;
 

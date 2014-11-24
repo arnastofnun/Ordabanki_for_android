@@ -1,4 +1,4 @@
-package com.example.cthulhu.ordabankiforandroid.adapter;
+package com.example.cthulhu.ordabankiforandroid.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.example.cthulhu.ordabankiforandroid.Globals;
 import com.example.cthulhu.ordabankiforandroid.R;
 import com.example.cthulhu.ordabankiforandroid.Result;
-import com.example.cthulhu.ordabankiforandroid.SynonymResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,6 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
     Globals g = (Globals) Globals.getContext();
     //Initialize a list for the results
     private ArrayList<Result> resultsList;
-    private Context context;
 
     /**
      * Invoke the overwritten methods in superclass
@@ -39,11 +37,9 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
      * @param listViewResourceId the resource Id of the list view that the adapter is being added to
      * @param resultsList the glossary list that is to be added to the list view
      */
-    public ResultsAdapter(Context context, int listViewResourceId, List<Result> resultsList, List<SynonymResult> synonymResultList){
+    public ResultsAdapter(Context context, int listViewResourceId, List<Result> resultsList){
         super(context,listViewResourceId,resultsList);
         this.resultsList = new ArrayList<Result>(resultsList);
-
-        this.context = context;
     }
 
     /**
@@ -57,11 +53,6 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
         TextView term;
         TextView language;
         TextView glossary;
-        TextView lexical_category;
-        TextView synonyms;
-        TextView definition;
-        TextView example;
-
     }
 
     /**
@@ -79,54 +70,82 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
     public View getView(int position, View convertView, ViewGroup parent){
         //Initialize
         final ViewHolder holder;
-
         Result result = resultsList.get(position);
-
-
+        //Inflate a new view
         if(convertView == null){
             //inflate the layout
-            LayoutInflater vi;
-            vi = LayoutInflater.from(getContext());
-            convertView = vi.inflate(R.layout.results_list,null);
-
+            convertView = inflateView(parent);
             //Set the view holder
-
-            holder = new ViewHolder();
-
-            holder.term = (TextView) convertView.findViewById(R.id.resultTerm);
-            holder.language = (TextView) convertView.findViewById(R.id.resultLanguage);
-            holder.glossary = (TextView) convertView.findViewById(R.id.resultGlossary);
-
+            holder = setupViewHolder(convertView);
             convertView.setTag(holder);
         }
         else {
             holder = (ViewHolder) convertView.getTag();
         }
-
-
-
-
-        //Get the languages and dictionaries from global values
-        ArrayList<ArrayList<String>> languages = g.getLanguages();
-        ArrayList<ArrayList<String>> dictionaries = g.getLoc_dictionaries();
-
-        /*
-            Find the index if the language and dictionary code set by the current result
-            This is done so we can provide the correct language
-         */
-        int lang_index = languages.get(0).indexOf(result.getLanguage_code());
-        int gloss_index = dictionaries.get(0).indexOf(result.getDictionary_code());
-
         //Set holder values
-        holder.term.setText(result.getWord());
-        holder.language.setText(languages.get(1).get(lang_index));
-        holder.glossary.setText(dictionaries.get(1).get(gloss_index));
-
-
+        setHolder(holder,result);
         return convertView;
     }
 
 
+    /**
+     * Sets the view holder to the correct values
+     * @param viewHolder the view holder to be set
+     * @param result the result that contains the values that
+     *               should be set to the viewholder
+     */
+    private void setHolder(ViewHolder viewHolder, Result result){
+        viewHolder.term.setText(result.getWord());
+        viewHolder.language.setText(getLanguageName(result));
+        viewHolder.glossary.setText(getGlossaryName(result));
+    }
+
+    /**
+     * Gets the language name in the correct language
+     * @param result the result
+     * @return the language name of the result
+     */
+    private String getLanguageName(Result result){
+        ArrayList<ArrayList<String>> languages = g.getLanguages();
+        int lang_index = languages.get(0).indexOf(result.getLanguage_code());
+        return languages.get(1).get(lang_index);
+    }
+
+    /**
+     * Gets the glossary name in the correct language
+     * @param result the result
+     * @return the glossary name of the result
+     */
+    private String getGlossaryName(Result result){
+        ArrayList<ArrayList<String>> dictionaries = g.getLoc_dictionaries();
+        int gloss_index = dictionaries.get(0).indexOf(result.getDictionary_code());
+        return dictionaries.get(1).get(gloss_index);
+    }
+
+
+    /**
+     * A method to inflate a view
+     * @param parent The viewgroup that the inflated view is appended to
+     * @return the inflated view
+     */
+    private View inflateView(ViewGroup parent){
+        LayoutInflater vi = LayoutInflater.from(getContext());
+        return  vi.inflate(R.layout.results_list,parent, false);
+    }
+
+
+    /**
+     * A method that set's up a new viewholder
+     * @param view the view that the view holder is set up from
+     * @return the vie holder
+     */
+    private ViewHolder setupViewHolder(View view){
+        ViewHolder viewHolder = new ViewHolder();
+        viewHolder.term = (TextView) view.findViewById(R.id.resultTerm);
+        viewHolder.language = (TextView) view.findViewById(R.id.resultLanguage);
+        viewHolder.glossary = (TextView) view.findViewById(R.id.resultGlossary);
+        return viewHolder;
+    }
 
 
 }

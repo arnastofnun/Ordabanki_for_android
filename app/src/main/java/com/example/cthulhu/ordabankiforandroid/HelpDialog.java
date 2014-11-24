@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.cthulhu.ordabankiforandroid.adapter.HelpAdapter;
+import com.example.cthulhu.ordabankiforandroid.adapters.displayTextAdapter;
 
 /**
  * Created by karlasgeir on 21.11.2014.
@@ -36,11 +36,11 @@ public class HelpDialog {
 
 
         //Creating a new help adapter
-        HelpAdapter helpAdapter = new HelpAdapter(context, R.layout.help_list, titleList,helpList);
+        displayTextAdapter displayTextAdapter = new displayTextAdapter(context, R.layout.help_list, titleList,helpList);
 
         //Getting the glossary list and setting it's adapter to my custom glossary adapter
         ListView listView = (ListView) view.findViewById(R.id.help_list_view);
-        listView.setAdapter(helpAdapter);
+        listView.setAdapter(displayTextAdapter);
 
         //Set cancel button
         helpBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener(){

@@ -26,7 +26,7 @@
             android:authorities="com.example.cthulhu.ordabankiforandroid.SearchAutoComplete"
             />
         <activity
-            android:name="com.example.cthulhu.ordabankiforandroid.SplashActivity"
+            android:name=".activities.SplashActivity"
             android:label="@string/title_activity_splash"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
             <intent-filter>
@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.cthulhu.ordabankiforandroid.SelectLanguageActivity"
+            android:name=".activities.SelectLanguageActivity"
             android:label="@string/title_activity_select_language"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
         </activity>
@@ -53,7 +53,7 @@
             </meta-data>
         </activity>
         <activity
-            android:name="com.example.cthulhu.ordabankiforandroid.AboutActivity"
+            android:name=".activities.AboutActivity"
             android:label="@string/settings_about"
             android:parentActivityName="com.example.cthulhu.ordabankiforandroid.SearchScreen"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
@@ -62,7 +62,7 @@
                 android:value=".SearchScreen" />
         </activity>
         <activity
-            android:name="com.example.cthulhu.ordabankiforandroid.AboutGlossaryActivity"
+            android:name=".activities.AboutGlossaryActivity"
             android:label="@string/title_activity_about_glossary"
             android:parentActivityName="com.example.cthulhu.ordabankiforandroid.SearchScreen"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >

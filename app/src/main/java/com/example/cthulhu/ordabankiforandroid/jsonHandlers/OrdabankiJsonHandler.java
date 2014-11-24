@@ -1,6 +1,11 @@
-package com.example.cthulhu.ordabankiforandroid;
+package com.example.cthulhu.ordabankiforandroid.jsonHandlers;
 
+
+
+import com.example.cthulhu.ordabankiforandroid.Result;
+import com.example.cthulhu.ordabankiforandroid.ResultsScreen;
 import com.google.gson.Gson;
+
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
@@ -8,18 +13,19 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Handler to parse results from synonym search or return status code on error/no result.
+ * Handles raw Json data or returns HTTP status code if there is an error
  * @author Bill
- * @since 04/11/14
+ * @since 26/10/14.
  */
-public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
+public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
+
     ResultsScreen activity;
 
     /**
      * initialisation
      * @param activity parent activity
      */
-    public SynonymResultJsonHandler(ResultsScreen activity)
+    public OrdabankiJsonHandler(ResultsScreen activity)
     {
         this.activity = activity;
     }
@@ -33,8 +39,8 @@ public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
     @Override
     public void onSuccess(int statusCode, Header[] headers, JSONArray response){
         Gson gson = new Gson();
-        SynonymResult[] sResult =  gson.fromJson(response.toString(), SynonymResult[].class);
-        activity.onSynonymResultObtained(sResult);
+        Result[] result =  gson.fromJson(response.toString(), Result[].class);
+        activity.onResultObtained(result);
     }
 
     /**
@@ -46,7 +52,7 @@ public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse){
-        activity.onSynonymResultFailure(statusCode);
+        activity.onResultFailure(statusCode);
     }
 
     /**
@@ -58,7 +64,7 @@ public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable){
-        activity.onSynonymResultFailure(statusCode);
+        activity.onResultFailure(statusCode);
     }
 /*    @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBytes, Throwable throwable){
@@ -74,7 +80,6 @@ public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse){
-        activity.onSynonymResultFailure(statusCode);
+        activity.onResultFailure(statusCode);
     }
-
 }

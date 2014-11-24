@@ -1,4 +1,6 @@
-package com.example.cthulhu.ordabankiforandroid;
+package com.example.cthulhu.ordabankiforandroid.interfaces;
+
+import com.example.cthulhu.ordabankiforandroid.Dictionary;
 
 /**
  * Interface for dictionary http handler

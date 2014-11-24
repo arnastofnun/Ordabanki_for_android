@@ -1,4 +1,6 @@
-package com.example.cthulhu.ordabankiforandroid;
+package com.example.cthulhu.ordabankiforandroid.interfaces;
+
+import com.example.cthulhu.ordabankiforandroid.Language;
 
 /**
  * Interface for language http calls

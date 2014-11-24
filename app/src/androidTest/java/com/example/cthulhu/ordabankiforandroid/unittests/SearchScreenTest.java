@@ -7,7 +7,7 @@ import com.example.cthulhu.ordabankiforandroid.R;
 import com.example.cthulhu.ordabankiforandroid.ResultsScreen;
 import com.example.cthulhu.ordabankiforandroid.SearchAutoComplete;
 import com.example.cthulhu.ordabankiforandroid.SearchScreen;
-import com.example.cthulhu.ordabankiforandroid.SplashActivity;
+import com.example.cthulhu.ordabankiforandroid.activities.SplashActivity;
 import com.robotium.solo.Solo;
 
 import junit.framework.Assert;
@@ -289,7 +289,6 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
     /**
      * This method tests whether or not search is allowed with 0 letters or less than two with *
      * Written by Trausti
-     * @return nothing
      */
 
     public void testSearchLessThanTwoLetters() {

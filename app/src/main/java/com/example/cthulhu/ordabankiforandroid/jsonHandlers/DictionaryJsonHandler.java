@@ -1,9 +1,8 @@
-package com.example.cthulhu.ordabankiforandroid;
+package com.example.cthulhu.ordabankiforandroid.jsonHandlers;
 
-
-
+import com.example.cthulhu.ordabankiforandroid.Dictionary;
+import com.example.cthulhu.ordabankiforandroid.activities.SplashActivity;
 import com.google.gson.Gson;
-
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
@@ -11,19 +10,19 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Handles raw Json data or returns HTTP status code if there is an error
+ * Handler to parse dictionary list JSON or return status code on error.
  * @author Bill
- * @since 26/10/14.
+ * @since 01/11/14.
  */
-public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
+public class DictionaryJsonHandler extends JsonHttpResponseHandler{
 
-    ResultsScreen activity;
+    SplashActivity activity;
 
     /**
      * initialisation
      * @param activity parent activity
      */
-    public OrdabankiJsonHandler(ResultsScreen activity)
+    public DictionaryJsonHandler(SplashActivity activity)
     {
         this.activity = activity;
     }
@@ -37,8 +36,8 @@ public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
     @Override
     public void onSuccess(int statusCode, Header[] headers, JSONArray response){
         Gson gson = new Gson();
-        Result[] result =  gson.fromJson(response.toString(), Result[].class);
-        activity.onResultObtained(result);
+        Dictionary[] dictionaries =  gson.fromJson(response.toString(), Dictionary[].class);
+        activity.onDictionariesObtained(dictionaries);
     }
 
     /**
@@ -50,7 +49,7 @@ public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse){
-        activity.onResultFailure(statusCode);
+        activity.onDictionariesFailure(statusCode);
     }
 
     /**
@@ -62,7 +61,7 @@ public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable){
-        activity.onResultFailure(statusCode);
+        activity.onDictionariesFailure(statusCode);
     }
 /*    @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBytes, Throwable throwable){
@@ -78,6 +77,7 @@ public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse){
-        activity.onResultFailure(statusCode);
+        activity.onDictionariesFailure(statusCode);
     }
 }
+
