@@ -2,7 +2,6 @@ package com.example.cthulhu.ordabankiforandroid.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import com.example.cthulhu.ordabankiforandroid.R;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Set;
 
 /**
  * <h1>Glossary adapter</h1>
@@ -31,19 +29,10 @@ import java.util.Set;
  * @since 14.10.2014.
  */
 public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIndexer {
-    //Indexer for the alphabet sorting
-    HashMap<String,Integer> alphaIndexer;
-    //Sections for the alphabet sorting
-    String[] sections;
-
-    /**
-    *   a list containing glossaries
-    */    
-    private static ArrayList<Glossary> glossaryList;
-    /**
-    *   current context
-    */       
-    private static Context context;
+    HashMap<String,Integer> alphaIndexer; //Indexer for the alphabet sorting
+    String[] sections; //Sections for the alphabet sorting
+    private static ArrayList<Glossary> glossaryList; //a list containing glossaries
+    private static Context context; //current context
 
     /**
      * Invoke the overwritten methods in superclass
@@ -57,11 +46,11 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         super(context,listViewResourceId,glossaryList);
         //Sets up the alphabetical scrolling
         setUpAlphabeticalScrolling(glossaryList);
-
-
-        this.glossaryList = new ArrayList<Glossary>();
-        this.glossaryList = glossaryList;
-        this.context = context;
+        //Set the glossary
+        GlossaryAdapter.glossaryList = new ArrayList<Glossary>();
+        GlossaryAdapter.glossaryList = glossaryList;
+        //Set the context
+        GlossaryAdapter.context = context;
     }
 
     /**
@@ -72,35 +61,47 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
      * @since 22.11.14
      */
     private void setUpAlphabeticalScrolling(ArrayList<Glossary> glossaryList){
-        //Initialize the indexer
-        alphaIndexer = new HashMap<String, Integer>();
-        //Get the glossary size
-        int size = glossaryList.size();
-        //Go through the glossary list and add a section for each
-        //different first character
-        for(int x = 0;x<size;x++){
+        //Add sections to the alpha indexer
+        alphaIndexer = addSections(glossaryList);
+        //Set up the section list
+        sections = setupSections(alphaIndexer);
+    }
+
+    /**
+     * This method iterates adds the sections needed to the alphaIndexer
+     * @param list the list that should be alphabetically indexed
+     */
+    private HashMap<String, Integer> addSections(ArrayList<Glossary> list){
+        HashMap<String,Integer> alphaIndexer = new HashMap<String, Integer>();
+        //Iterate through the list
+        for(int i = 0;i<list.size();i++){
             //Get the name of the glossary
-            String name = glossaryList.get(x).getName();
-            //make sure it exists and isn't an empty string
-            if(name != null) {
-                if(!name.equals("")) {
-                    //Get the first character
-                    String ch = name.substring(0, 1).toUpperCase();
-                    //If it's not in the indexer, put it there
-                    if (!alphaIndexer.containsKey(ch)) {
-                        alphaIndexer.put(ch, x);
-                    }
+            String name = list.get(i).getName();
+            //If it's not already in the indexer, put it there
+            if(name != null && !name.isEmpty()){
+                String firstLetter = name.substring(0,1).toUpperCase();
+                if(!alphaIndexer.containsKey(firstLetter)){
+                    alphaIndexer.put(firstLetter,i);
                 }
             }
-
         }
-        //Set up the section list
-        Set <String> sectionLetters = alphaIndexer.keySet();
-        ArrayList<String> sectionList = new ArrayList<String>(sectionLetters);
-        Collections.sort(sectionList);
-        sections = new String[sectionList.size()];
-        sections = sectionList.toArray(sections);
+        return alphaIndexer;
     }
+
+    /**
+     * This method sets up the section list
+     * @param alphaIndexer the alpha indexer
+     * @return the section list
+     */
+    private String[] setupSections(HashMap<String, Integer> alphaIndexer){
+        //Create an arraylist from the alpha indexer keys
+        ArrayList<String> sectionList = new ArrayList<String>( alphaIndexer.keySet());
+        //sort the list
+        Collections.sort(sectionList);
+        //Return the section list
+        return sectionList.toArray(new String[sectionList.size()]);
+    }
+
 
 
     /**
@@ -127,79 +128,31 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
      */
     public View getView(int position, View convertView, ViewGroup parent){
         //Initialize
-        View view = convertView;
         ViewHolder holder;
-
         //If view has not been inflated
-        if(view == null){
+        if(convertView== null){
             //inflate the layout
-            LayoutInflater vi;
-            vi = LayoutInflater.from(getContext());
-            view = vi.inflate(R.layout.glossary_list,parent,false);
-
+            convertView = inflateView(parent);
             //Set the view holder
-            holder = new ViewHolder();
-            holder.glossaryName = (TextView) view.findViewById(R.id.GlossaryName);
-            holder.link = (ImageButton) view.findViewById(R.id.GlossaryLink);
-            holder.tick = (ImageView) view.findViewById(R.id.checked_image);
-            view.setTag(holder);
-
-            //Set an on click listener to the glossary
-            holder.glossaryName.setOnClickListener(new View.OnClickListener() {
-                //if the checkbox is clicked set the selected glossary to selected
-                @Override
-                public void onClick(View v) {
-                    //Get the view of the checked image
-                    TextView glossaryName = (TextView) v;
-                    Glossary glossary = (Glossary) glossaryName.getTag();
-                    View row = (View) v.getParent();
-                    ImageView tick = (ImageView) row.findViewById(R.id.checked_image);
-                    //If glossary is selected, deselect it and hide the tick
-                    if(glossary.isSelected()) {
-                        row.setBackgroundResource(R.color.glossary_notselected);
-                        tick.setVisibility(View.INVISIBLE);
-                        glossary.setSelected(false);
-                    }
-                    //If glossary is note selected, select it and show the tick
-                   else{
-                        row.setBackgroundResource(R.color.glossary_selected);
-                        tick.setVisibility(View.VISIBLE);;
-                        glossary.setSelected(true);
-
-                    }
-
-                }
-            });
-
-
-            //Set the on click listener on the link
-            holder.link.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    Glossary glossary = (Glossary) v.getTag();
-                    if(!glossary.getUrl().equals("")) {
-                        Log.v("glossary link",glossary.getUrl());
-                        Intent intent = new Intent(context, AboutGlossaryActivity.class).putExtra("url_string",glossary.getUrl());
-                        context.startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(v.getContext(),v.getResources().getString(R.string.link_unaccessable),Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
+            holder = setupViewHolder(convertView);
         }
         else {
-            holder = (ViewHolder) view.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
-
-
-
-
-        //Set the current glossary name, tick status and link
+        //Set the current glossary name, tick status and link in the viewholder
         Glossary glossary = glossaryList.get(position);
+        setViewHolder(holder,glossary);
+        return convertView;
+    }
+
+    /**
+     * Sets values to the view holder
+     * @param holder the view holder that the values should be bound to
+     * @param glossary the glossary that the values come from
+     */
+    private void setViewHolder(ViewHolder holder,Glossary glossary){
         holder.link.setTag(glossary);
-        //TODO: hide empty urls, this doesn't work any more
-        if(glossary.getUrl().equals("")){
+        if(glossary.getUrl().isEmpty()){
             holder.link.setImageResource(android.R.color.transparent);
         }
         else{
@@ -216,9 +169,91 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
             holder.tick.setVisibility(View.INVISIBLE);
         }
         holder.glossaryName.setTag(glossary);
-
-        return view;
     }
+
+
+
+
+    /**
+     * A method to inflate a view
+     * @param parent The viewgroup that the inflated view is appended to
+     * @return the inflated view
+     */
+    private View inflateView(ViewGroup parent){
+        LayoutInflater vi = LayoutInflater.from(getContext());
+        return  vi.inflate(R.layout.glossary_list,parent, false);
+    }
+
+
+    private ViewHolder setupViewHolder(View view){
+        //Set the views to the view holder
+        ViewHolder viewHolder = new ViewHolder();
+        viewHolder.glossaryName = (TextView) view.findViewById(R.id.GlossaryName);
+        viewHolder.link = (ImageButton) view.findViewById(R.id.GlossaryLink);
+        viewHolder.tick = (ImageView) view.findViewById(R.id.checked_image);
+        view.setTag(viewHolder);
+
+        //Set an on click listener to the glossary
+        viewHolder.glossaryName.setOnClickListener(new View.OnClickListener() {
+            //if the checkbox is clicked set the selected glossary to selected
+            @Override
+            public void onClick(View view) {toggleSelect(view);}
+        });
+
+        //Set the on click listener on the link
+        viewHolder.link.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                openLink(view);
+            }
+        });
+
+        return viewHolder;
+    }
+
+    /**
+     * A method that toogles the selected state of
+     * the glossary on click
+     * @param view the view that was clicked
+     */
+    private void toggleSelect(View view){
+        //Get the view of the checked image
+        Glossary glossary = (Glossary) view.getTag();
+        View row = (View) view.getParent();
+        ImageView tick = (ImageView) row.findViewById(R.id.checked_image);
+        //If glossary is selected, deselect it and hide the tick
+        if(glossary.isSelected()) {
+            row.setBackgroundResource(R.color.glossary_notselected);
+            tick.setVisibility(View.INVISIBLE);
+            glossary.setSelected(false);
+        }
+        //If glossary is note selected, select it and show the tick
+        else{
+            row.setBackgroundResource(R.color.glossary_selected);
+            tick.setVisibility(View.VISIBLE);
+            glossary.setSelected(true);
+
+        }
+    }
+
+    /**
+     * A method that opens a link if a
+     * link was pressed in the glossary list
+     * @param view the view that was clicked
+     */
+    private void openLink(View view){
+        //Get the glossary that was clicked on
+        Glossary glossary = (Glossary) view.getTag();
+        if(!glossary.getUrl().isEmpty()) {
+            //Open the link
+            Intent intent = new Intent(context, AboutGlossaryActivity.class).putExtra("url_string",glossary.getUrl());
+            context.startActivity(intent);
+        }
+        else{
+            Toast.makeText(view.getContext(),view.getResources().getString(R.string.link_unaccessable),Toast.LENGTH_LONG).show();
+        }
+    }
+
 
 
     /**
@@ -229,11 +264,20 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         return alphaIndexer.get(sections[section]);
     }
 
+    /**
+     * Gets the section for a specific positon
+     * @param position the position
+     * @return the section
+     */
     @Override
     public int getSectionForPosition(int position) {
         return 0;
     }
 
+    /**
+     * gets all the sections
+     * @return the sections
+     */
     @Override
     public Object[] getSections() {
         return sections;

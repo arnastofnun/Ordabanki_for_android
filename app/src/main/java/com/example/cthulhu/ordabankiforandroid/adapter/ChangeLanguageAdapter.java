@@ -50,7 +50,9 @@ public class ChangeLanguageAdapter extends ArrayAdapter<String> {
         //If the view hasn't been inflated
         if (convertView == null) { convertView = inflateView(parent);}
         //If the item exists
-        if (getItem(position) != null) { updateItem(convertView,position);}
+        if (getItem(position) != null) {
+            updateItem(convertView,position);
+        }
         //Return the converted view
         return convertView;
     }
