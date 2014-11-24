@@ -266,7 +266,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             for (SynonymResult synonymResult : synonymResultList) {
                 Log.v("Synonym", synonymResult.getWord());
                 Result result = new Result();
-                result.setWord(synonymResult.getSynonym() + " -> " + synonymResult.getWord());
+                result.setWord(synonymResult.getSynonym() + " → " + synonymResult.getWord());
                 result.setId_term(synonymResult.getTerm_id());
                 result.setDictionary_code(synonymResult.getDict_code());
                 //TODO: set language from API
