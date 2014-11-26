@@ -112,19 +112,27 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
 
         while(solo.RIGHT == (int)solo.RIGHT){
             //if correctGlossary is true then we have the correct glossary
+            solo.sleep(2000);
+
             boolean correctGlossary = false;
             TextView glossaryName = (TextView) solo.getView(R.id.termGlossaryView);
+            TextView termName = (TextView) solo.getView(R.id.termWordView);
+
             String glossary = glossaryName.getText().toString();
+            String term = termName.getText().toString();
 
-            for(String expectedGlossary: expectedGlossaries){
-                if(expectedGlossary == glossary){
-                    correctGlossary = true;
+            if(term.contains("→")){
+                solo.scrollToSide(Solo.RIGHT);
+            }else{
+                for(String expectedGlossary: expectedGlossaries){
+                    if(expectedGlossary.equals(glossary)){
+                        correctGlossary = true;
+                    }
                 }
+                assertTrue(correctGlossary);
+                solo.scrollToSide(Solo.RIGHT);
             }
-            assertTrue(correctGlossary);
-            solo.scrollToSide(Solo.RIGHT);
 
-            solo.sleep(2000);
         }
     }
 
