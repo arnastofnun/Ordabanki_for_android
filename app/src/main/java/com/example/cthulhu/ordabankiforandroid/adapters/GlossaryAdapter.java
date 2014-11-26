@@ -197,9 +197,19 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         viewHolder.tick = (ImageView) view.findViewById(R.id.checked_image);
         view.setTag(viewHolder);
 
+        //Set an on click listener to the tick that does the same thing as the one below
+
+        //Set an on click listener to the tick
+        viewHolder.tick.setOnClickListener(new View.OnClickListener() {
+            //if the checkbox is clicked set the selected glossary to selected
+            @Override
+            public void onClick(View view) {toggleSelect(view);}
+        });
+
+
         //Set an on click listener to the glossary
         viewHolder.glossaryName.setOnClickListener(new View.OnClickListener() {
-            //if the checkbox is clicked set the selected glossary to selected
+            //if the name is clicked set the selected glossary to selected
             @Override
             public void onClick(View view) {toggleSelect(view);}
         });
@@ -222,9 +232,12 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
      */
     private void toggleSelect(View view){
         //Get the view of the checked image
-        Glossary glossary = (Glossary) view.getTag();
         View row = (View) view.getParent();
         ImageView tick = (ImageView) row.findViewById(R.id.checked_image);
+        TextView glossname = (TextView) row.findViewById(R.id.GlossaryName);
+        Glossary glossary = (Glossary) glossname.getTag();
+
+
         //If glossary is selected, deselect it and hide the tick
         if(glossary.isSelected()) {
             row.setBackgroundResource(R.color.glossary_notselected);
