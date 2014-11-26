@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,8 +58,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
 
 
         resultList = global.getResults();
-        synonymResultList = global.getSynonymResults();
-        if(resultList == null && synonymResultList == null){
+        if(resultList == null){
             Bundle data = getIntent().getExtras();
             searchQuery = data.getString("searchQuery");
             doWordSearch(searchQuery);
@@ -76,7 +74,10 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
 
     }
 
-
+    /**
+     * Searches for word
+     * @param searchQuery the search query
+     */
     public void doWordSearch(String searchQuery){
         OrdabankiJsonHandler jsonHandler;
         jsonHandler = new OrdabankiJsonHandler(this);
@@ -99,19 +100,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     public void onResultObtained(Result[] resultArr){
         ArrayList<Result> rList = new ArrayList<Result>(Arrays.asList(resultArr));
         Collections.sort(rList);
-
-        TextView textView = (TextView) findViewById(R.id.resultText);
-        if(resultArr == null){
-            String databaseError = getResources().getString(R.string.database_error);
-            textView.setText(databaseError);
-        }
-        else {
-            resultList = rList;
-            wordDone = true;
-        }
-
-
-
+        resultList = rList;
+        wordDone = true;
     }
 
 
@@ -120,7 +110,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      *shows no result screen if connection established and no result or connection error and HTTP
      *error code if connection not established
      *  Bill
-     *  @param statusCode HTTP status code
+     *  @param statusCode HTTP status code. No result on 200, otherwise error.
      */
     @Override
     public void onResultFailure(int statusCode) {
@@ -139,7 +129,10 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     }
 
 
-
+    /**
+     * A method that searches for synonyms
+     * @param searchQuery the search query
+     */
     public void doSynonymSearch(String searchQuery){
         SynonymResultJsonHandler sJsonHandler = new SynonymResultJsonHandler(ResultsScreen.this);
         OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
@@ -152,8 +145,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
 
 
     /**
-     * real javadoc will be in final class-see ResultScreen
-     * @param sResult
+     * A method that is run when the synonym request is finished
+     * @param sResult the synonym result from the api
      */
     @Override
     public void onSynonymResultObtained(SynonymResult[] sResult){
@@ -172,7 +165,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     }
 
     /**
-     * real javadoc will be in final class-see ResultScreen
+     * A method that is run if the synonym request fails
      * @param statusCode HTTP status code. No result on 200, otherwise error.
      */
     @Override
@@ -181,6 +174,10 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     }
 
 
+    /**
+     * A method that waits for the result of the search
+     * Written by Karl Ásgeir Geirsson
+     */
     public void waitForResults(){
         Runnable runnable = new Runnable() {
             /**
@@ -266,10 +263,13 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
 
     }
 
+    /**
+     * A method that combines the results into
+     * one array
+     */
     private void combineResults(){
         if(this.synonymResultList!=null && this.synonymResultList.size()>0) {
             for (SynonymResult synonymResult : synonymResultList) {
-                Log.v("Synonym", synonymResult.getWord());
                 Result result = new Result();
                 result.setWord(synonymResult.getSynonym() + " → " + synonymResult.getWord());
                 result.setId_term(synonymResult.getTerm_id());
@@ -277,10 +277,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 //TODO: set language from API
                 //Just to keep it from crashing, I could remove the language view for it though
                 result.setLanguage_code("IS");
-                Log.v("RESULT", result.getWord());
-                Log.v("Before add", resultList.get(resultList.size() - 1).getWord());
                 resultList.add(result);
-                Log.v("AFTER Add", resultList.get(resultList.size() - 1).getWord());
             }
             Collections.sort(resultList);
         }
