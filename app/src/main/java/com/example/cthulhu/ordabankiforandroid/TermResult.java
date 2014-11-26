@@ -42,12 +42,8 @@ package com.example.cthulhu.ordabankiforandroid;
 public class TermResult {
     Term term;
 
-    /**
-     * @return The ID of the term
-     */
-    public String getTermId(){
-        return term.id;
-    }
+
+
 
 
     
@@ -73,6 +69,7 @@ public class TermResult {
             String explanation;
             Synonym[] synonyms;
 
+
             public static class Synonym{
                 String fkword;
                 String synonym;
@@ -80,7 +77,66 @@ public class TermResult {
                 String othergrammar;
                 String dialect;
                 String abbreviation;
+
+                public String getfkWord(){
+                    return fkword;
+                }
+
+                public String getSynonym(){
+                    return synonym;
+                }
+
+                public String getPronunciation(){
+                    return pronunciation;
+                }
+
+                public String getOtherGrammer(){
+                    return othergrammar;
+                }
+
+                public String getDialect(){
+                    return dialect;
+                }
+
+                public String getAbbreviation(){
+                    return abbreviation;
+                }
             }
+
+            public String getId(){
+                return id;
+            }
+            public String getLangCode(){
+                return lang_code;
+            }
+            public String getWord() {
+                return word;
+            }
+            public String getDomain(){
+                return domain;
+            }
+            public String getDefinition(){
+                return definition;
+            }
+            public String getExample(){
+                return example;
+            }
+            public String getOtherGrammar(){
+                return othergrammar;
+            }
+            public String getDialect(){
+                return dialect;
+            }
+            public String getAbbreviation(){
+                return abbreviation;
+            }
+            public String getExplanation(){
+                return explanation;
+            }
+            public Synonym[] getSynonyms(){
+                return synonyms;
+            }
+
 
         }
 
@@ -91,6 +147,23 @@ public class TermResult {
             public static class Refs{
                 String lang_code;
                 String word;
+
+                public String getLangCode(){
+                    return lang_code;
+                }
+
+                public String getWord(){
+                    return word;
+                }
+
+            }
+
+            public String getTerm(){
+                return sbr_term;
+            }
+
+            public Refs[] getRefs(){
+                return refs;
             }
         }
 
@@ -101,9 +174,55 @@ public class TermResult {
             public static class Refs{
                 String lang_code;
                 String word;
+
+                public String getLangCode(){
+                    return lang_code;
+                }
+
+                public String getWord(){
+                    return word;
+                }
+            }
+
+            public String getTerm(){
+                return einnig_term;
+            }
+
+            public Refs[] getRefs(){
+                return refs;
             }
         }
     }
 
+    /**
+     * @return The ID of the term
+     */
+    public String getTermId(){
+        return term.id;
+    }
+
+    public String getDictCode(){
+        return term.dict_code;
+    }
+
+    public String getCategory(){
+        return term.category;
+    }
+
+    public String getSubcatercory(){
+        return term.subcategory;
+    }
+
+    public Term.Word[] getWords(){
+        return term.words;
+    }
+
+    public Term.Sbr[] getSbr(){
+        return term.sbr;
+    }
+
+    public Term.Einnig[] getEinnig(){
+        return term.einnig;
+    }
 
 }
