@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -65,6 +64,9 @@ public class SearchScreen extends FragmentActivity {
         super.onRestoreInstanceState(savedState);
     }
 
+
+
+
     /**
      * runs when the activity is created
      * does all of the setup for the application
@@ -83,6 +85,86 @@ public class SearchScreen extends FragmentActivity {
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
 
+        checkSearchQuery();
+
+        //Tab titles
+        ArrayList<String> tabs = new ArrayList<String>();
+        tabs.add(this.getString(R.string.search_tab));
+        tabs.add(this.getString(R.string.pick_glossary_tab));
+        tabs.add(this.getString(R.string.languages_tab_name));
+
+        //Setup the viewPager
+        setupViewPager(tabs);
+
+
+        //Disable the homebutton on the action bar
+        ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(false);
+        }
+
+
+    }
+
+    /**
+     * This method sets up the viewpager with the correct tabs
+     * @param tabs the tabs of the viewpager
+     */
+    private void setupViewPager(ArrayList<String> tabs){
+        //Initilize the viewpager
+        viewPager = (ViewPager) findViewById(R.id.searchscreen);
+        //Create a tabs pager adapter
+        TabsPagerAdapter tabsAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+        //Add the tab titles to the tabs pager adapter
+        tabsAdapter.setTabTitles(tabs);
+        //set the adapter to the
+        viewPager.setAdapter(tabsAdapter);
+
+        //Change the keyboard state on swipe
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            /**
+             * Runs when a new page is selected
+             * Written by Karl Ásgeir Geirsson
+             * @param position the position of the new page
+             */
+            @Override
+            public void onPageSelected(int position) {
+                //If it's the search screen
+                if(position == 0){
+                    toogleKeyboard(true);
+                }
+            }
+
+            /**
+             * Runs when the page is scrolled
+             * @param position The position of the active page
+             * @param positionOffset the offset from the active page
+             * @param positionOffsetPixels the offset from the active page in pixels
+             */
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                //If there is movement and we are in the search fragment
+                if(positionOffset > 0 && position == 0){
+                    toogleKeyboard(false);
+                }
+
+            }
+
+            /**
+             * Runs when the page scroll state is changed
+             * @param position the position of the active page
+             */
+            @Override
+            public void onPageScrollStateChanged(int position) {
+            }
+        });
+    }
+
+    /**
+     * Checks if a search has happened
+     * and tries to search
+     */
+    private void checkSearchQuery(){
         //Check for search query
         Intent intent = getIntent();
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
@@ -98,79 +180,21 @@ public class SearchScreen extends FragmentActivity {
                 e.printStackTrace();
             }
         }
+    }
 
-
-        //Tab titles
-        ArrayList<String> tabs = new ArrayList<String>();
-        tabs.add(this.getString(R.string.search_tab));
-        tabs.add(this.getString(R.string.pick_glossary_tab));
-        tabs.add(this.getString(R.string.languages_tab_name));
-
-        //Initilize the viewpager
-        viewPager = (ViewPager) findViewById(R.id.searchscreen);
-        //Disable the homebutton on the action bar
-        ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            actionBar.setHomeButtonEnabled(false);
+    /**
+     * A method that toogles the keyboard
+     * visibility based on a boolean value
+     * @param on turns keyboard on if true, else off
+     */
+    private void toogleKeyboard(boolean on) {
+        View focus = getCurrentFocus();
+        if (focus != null) {
+            //We turn on the keyboard
+            InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            if(on) keyboard.showSoftInput(focus, 0);
+            else keyboard.hideSoftInputFromWindow(focus.getWindowToken(), 0);
         }
-        //Create a tabs pager adapter
-        TabsPagerAdapter tabsAdapter = new TabsPagerAdapter(getSupportFragmentManager());
-        //Add the tab titles to the tabs pager adapter
-        tabsAdapter.setTabTitles(tabs);
-        //set the adapter to the
-        viewPager.setAdapter(tabsAdapter);
-
-
-
-        //Change the tabs when swiping between fragments
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            /**
-             * Runs when a new page is selected
-             * Written by Karl Ásgeir Geirsson
-             * @param position the position of the new page
-             */
-            @Override
-            public void onPageSelected(int position) {
-                //If it's the search screen
-                if(position == 0){
-                    View focus = getCurrentFocus();
-                    if (focus != null) {
-                        //We turn on the keyboard
-                        InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        keyboard.showSoftInput(focus, 0);
-                    }
-                }
-            }
-
-            /**
-             * Runs when the page is scrolled
-             * @param position The position of the active page
-             * @param positionOffset the offset from the active page
-             * @param positionOffsetPixels the offset from the active page in pixels
-             */
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                //If there is movement and we are in the search fragment
-                if(positionOffset > 0 && position == 0){
-                    View focus = getCurrentFocus();
-                    if (focus != null) {
-                        //We hide the keyboard
-                        InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                        keyboard.hideSoftInputFromWindow(focus.getWindowToken(), 0);
-                    }
-                }
-
-            }
-
-            /**
-             * Runs when the page scroll state is changed
-             * @param position the position of the active page
-             */
-            @Override
-            public void onPageScrollStateChanged(int position) {
-            }
-        });
-
     }
 
     /**
@@ -206,7 +230,6 @@ public class SearchScreen extends FragmentActivity {
 
 
         if (PickGlossaryFragment.getSelectedGlossaries().isEmpty()) {
-            Log.v("selected glossaries", "null");
             allowsearch = false;
             Toast.makeText(this, this.getString(R.string.no_glossary_picked), Toast.LENGTH_LONG).show();
         }

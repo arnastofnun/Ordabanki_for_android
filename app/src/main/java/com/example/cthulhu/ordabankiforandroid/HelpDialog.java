@@ -11,34 +11,50 @@ import android.widget.ListView;
 import com.example.cthulhu.ordabankiforandroid.adapters.displayTextAdapter;
 
 /**
- * Created by karlasgeir on 21.11.2014.
+ * This class creates a custom dialog
+ * for the help.
+ * @author Karl Ásgeir Geirsson
+ * @since 21.11.2014.
  */
 public class HelpDialog {
-    Context context;
-    String[] titleList;
-    String[] helpList;
-    LayoutInflater layoutInflater;
+    Context context; //The context that calls the dialog
+    String[] titleList; //List of titles in the dialog
+    String[] helpList; //List of contents in the dialog
+    LayoutInflater layoutInflater; //The layout inflater
 
+    /**
+     * Constructor for the dialog
+     * Written by Karl Ásgeir Geirsso
+     * @param context The context that calls the dialog
+     * @param layoutInflater The layout inflater
+     * @param titleList List of titles in the dialog
+     * @param helpList List of contents in the dialog
+     */
     public HelpDialog(Context context, LayoutInflater layoutInflater,  String[] titleList, String[] helpList){
         super();
+        //Set variables
         this.context = context;
         this.titleList = titleList;
         this.helpList = helpList;
         this.layoutInflater = layoutInflater;
     }
 
+    /**
+     * A method that builds the custom dialog
+     * Written by karl Ásgeir Geirsson
+     * @return returns the built dialog
+     */
     private AlertDialog buildDialog(){
-        //Build the dialog
+        //Construct the builder
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(context);
-
+        //Inflate the view
         View view = layoutInflater.inflate(R.layout.help_dialog,null);
         helpBuilder.setView(view);
 
-
-        //Creating a new help adapter
+        //Construct a new displayTextAdapter (my custom adapter)
         displayTextAdapter displayTextAdapter = new displayTextAdapter(context, R.layout.help_list, titleList,helpList);
 
-        //Getting the glossary list and setting it's adapter to my custom glossary adapter
+        //Setting the adapter to the list view
         ListView listView = (ListView) view.findViewById(R.id.help_list_view);
         listView.setAdapter(displayTextAdapter);
 
@@ -53,13 +69,26 @@ public class HelpDialog {
         return helpBuilder.create();
     }
 
+    /**
+     *  This method shows the dialog
+     *  Written by: Karl Ásgeir Geirsson
+     */
     public void show(){
         AlertDialog dialog = buildDialog();
         dialog.show();
         Button dismissButton = dialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-        if(dismissButton != null){
-            dismissButton.setBackgroundColor(context.getResources().getColor(R.color.darkgrey));
-            dismissButton.setTextColor(context.getResources().getColor(android.R.color.primary_text_dark));
+        changeButtonColor(dismissButton);
+    }
+
+    /**
+     * This method changes the color of a button
+     * Written by: Karl Ásgeir Geirsson
+     * @param button the button to change color
+     */
+    public void changeButtonColor(Button button){
+        if(button != null){
+            button.setBackgroundColor(context.getResources().getColor(R.color.darkgrey));
+            button.setTextColor(context.getResources().getColor(android.R.color.primary_text_dark));
         }
     }
 

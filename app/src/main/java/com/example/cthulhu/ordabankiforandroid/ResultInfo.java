@@ -84,29 +84,14 @@ public class ResultInfo extends FragmentActivity {
         switch(item.getItemId()){
             //If the help button is pressed
             case R.id.action_help:
-                //Build a dialog
-
+                //Get the correct list of helps for this activity
                 String[] titleList = getResources().getStringArray(R.array.help_result_info_screen_titles);
                 String[] helpList = getResources().getStringArray(R.array.help_result_info_screen);
-
+                //Create a new help dialog
                 HelpDialog helpDialog = new HelpDialog(this,this.getLayoutInflater(),titleList,helpList);
+                //Show the help dialog
                 helpDialog.show();
-                /*
-                AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-                helpBuilder
-                        .setTitle(R.string.help_title)
-                        .setMessage(getResources().getString(R.string.help_result_info_screen))
-                        .setView(iv);
-                //Cancel action
-                helpBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int id){
-                        //Do nothing on cancel
-                    }
-                });
-                //Create and show the dialog
-                AlertDialog helpDialog = helpBuilder.create();
 
-                */
                 return true;
             //If the settings button is pressed
             case R.id.action_settings:

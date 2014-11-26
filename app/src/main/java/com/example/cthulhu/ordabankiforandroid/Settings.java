@@ -55,6 +55,7 @@ public class Settings {
     }
 
 
+
     /**
      * Creates an options popup menu with various options
      * Written by Karl Ásgeir Geirsson
@@ -70,66 +71,7 @@ public class Settings {
                 switch (item.getItemId()) {
                     //If change language button is pressed
                     case R.id.settings_change_language:
-                        //Get the current language from the locale settings
-                        final LocaleSettings localeSettings = new LocaleSettings(context);
-                        String lang = localeSettings.getLanguage();
-                        //Get the position of the current language
-                        final int langPos = getLanguagePos(lang);
-
-                        //Create the dialog builder
-                        AlertDialog.Builder clangBuilder = new AlertDialog.Builder(context);
-                        //Layout and set the view
-                        View view = LayoutInflater.from(context).inflate(R.layout.change_language_dialog, null);
-                        clangBuilder.setView(view);
-
-
-                        //Creating a new custom adapter and appending the languages to it
-                        String[] languages = context.getResources().getStringArray(R.array.language_array);
-                        final ChangeLanguageAdapter changeLanguageAdapter = new ChangeLanguageAdapter(context, R.layout.change_language_list, languages);
-                        //Finding the list view and setting the adapter
-                        final ListView listView = (ListView) view.findViewById(R.id.change_language_list_view);
-                        listView.setAdapter(changeLanguageAdapter);
-                        //Setting the correct selected language
-                        changeLanguageAdapter.setSelectedIndex(langPos);
-                        //On item click listener for the list view
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                //Change the selected item
-                                changeLanguageAdapter.setSelectedIndex(position);
-                                listView.setItemChecked(position, true);
-                                changeLanguageAdapter.notifyDataSetChanged();
-                            }
-                        });
-                        //Set cancel button (just dismisses the dialog)
-                        clangBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                            }
-                        });
-                        //Set positive button (accepts the chosen language)
-                        clangBuilder.setPositiveButton(R.string.settings_changelanguage_confirm, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                //Get the selected position
-                                int pos = listView.getCheckedItemPosition();
-                                //If the language isn't already selected
-                                if(pos != langPos) {
-                                    //Set the language and return to splash screen to load
-                                    LocaleSettings localeSettings = new LocaleSettings(context);
-                                    localeSettings.setLanguage(getLanguageFromPos(pos), SplashActivity.class);
-                                }
-                            }
-                        });
-
-                        //Create and show the dialog
-                        AlertDialog chLangDialog = clangBuilder.create();
-                        chLangDialog.show();
-
-                        //Change the color of the buttons
-                        Button dismissButton = chLangDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
-                        Button confirmButton = chLangDialog.getButton(DialogInterface.BUTTON_POSITIVE);
-                        changeButtonColor(dismissButton);
-                        changeButtonColor(confirmButton);
+                        changeLangugeClicked();
                         return true;
                     //If the about button is pressed
                     case R.id.settings_about:
@@ -139,19 +81,11 @@ public class Settings {
                         return true;
                     //If the contact us button is pressed
                     case R.id.settings_contact:
-                        //Open a mail client with mailto set
-                        Intent email = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", context.getResources().getString(R.string.contact_email), null));
-                        try{
-                            context.startActivity(Intent.createChooser(email,context.getResources().getString(R.string.choose_email_client)));
-                        } catch (ActivityNotFoundException e) {
-                            Toast.makeText(context, context.getResources().getString(R.string.error_no_email_client), Toast.LENGTH_LONG).show();
-                        }
+                        sendEmail();
                         return true;
                     //If clear search history is pressed
                     case R.id.settings_clear_search:
-                        //Clear the search history
-                        SearchRecentSuggestions suggestions=new SearchRecentSuggestions(context, SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);
-                        suggestions.clearHistory();
+                        clearSearchSuggestions();
                 }
                 return true;
             }
@@ -163,6 +97,115 @@ public class Settings {
     }
 
 
+    /**
+     * A method to clear the search suggestions
+     */
+    private void clearSearchSuggestions(){
+        //Clear the search history
+        SearchRecentSuggestions suggestions=new SearchRecentSuggestions(context, SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);
+        suggestions.clearHistory();
+    }
+
+    /**
+     * A method to send email to the contact person
+     */
+    private void sendEmail(){
+        //Open a mail client with mailto set
+        Intent email = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", context.getResources().getString(R.string.contact_email), null));
+        try{
+            context.startActivity(Intent.createChooser(email,context.getResources().getString(R.string.choose_email_client)));
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(context, context.getResources().getString(R.string.error_no_email_client), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * This method handles the action when the
+     * change language option is selected
+     */
+    private void changeLangugeClicked(){
+        //Create the dialog builder
+        AlertDialog.Builder clangBuilder = new AlertDialog.Builder(context);
+        //Layout and set the view
+        View view = LayoutInflater.from(context).inflate(R.layout.change_language_dialog, null);
+        clangBuilder.setView(view);
+
+        final ListView listView = setupListView(view);
+
+        //Set cancel button (just dismisses the dialog)
+        clangBuilder.setNegativeButton(R.string.close_help, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+            }
+        });
+        //Set positive button (accepts the chosen language)
+        clangBuilder.setPositiveButton(R.string.settings_changelanguage_confirm, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //Get the selected position
+                int pos = listView.getCheckedItemPosition();
+                //If the language isn't already selected
+                if(pos != getCurrentLanguagePosition()) {
+                    //Set the language and return to splash screen to load
+                    LocaleSettings localeSettings = new LocaleSettings(context);
+                    localeSettings.setLanguage(getLanguageFromPos(pos), SplashActivity.class);
+                }
+            }
+        });
+
+        //Create and show the dialog
+        AlertDialog chLangDialog = clangBuilder.create();
+        chLangDialog.show();
+
+        //Change the color of the buttons
+        Button dismissButton = chLangDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+        Button confirmButton = chLangDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+        changeButtonColor(dismissButton);
+        changeButtonColor(confirmButton);
+    }
+
+
+    /**
+     * A method to get the current language
+     * postion from locale settings
+     * @return the current language position
+     */
+    private int getCurrentLanguagePosition(){
+        LocaleSettings localeSettings = new LocaleSettings(context);
+        return getLanguagePos(localeSettings.getLanguage());
+    }
+
+    /**
+     * A method to setup the list view
+     * @param view the view to attach the listview to
+     * @return the list view
+     */
+    private ListView setupListView(View view){
+        //Creating a new custom adapter and appending the languages to it
+        String[] languages = context.getResources().getStringArray(R.array.language_array);
+        final ChangeLanguageAdapter changeLanguageAdapter = new ChangeLanguageAdapter(context, R.layout.change_language_list, languages);
+        //Finding the list view and setting the adapter
+        final ListView listView = (ListView) view.findViewById(R.id.change_language_list_view);
+        listView.setAdapter(changeLanguageAdapter);
+        //Setting the correct selected language
+        changeLanguageAdapter.setSelectedIndex(getCurrentLanguagePosition());
+        //On item click listener for the list view
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Change the selected item
+                changeLanguageAdapter.setSelectedIndex(position);
+                listView.setItemChecked(position, true);
+                changeLanguageAdapter.notifyDataSetChanged();
+            }
+        });
+
+        return listView;
+    }
+
+    /**
+     * A method to change the color of a button
+     * @param button the button that should change color
+     */
     private void changeButtonColor(Button button){
         if(button != null) {
             button.setBackgroundColor(context.getResources().getColor(R.color.darkgrey));

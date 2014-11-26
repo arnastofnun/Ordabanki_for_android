@@ -27,6 +27,7 @@ public class ChooseLanguagesFragment extends Fragment {
     private static ArrayList<String> codeRef= new ArrayList<String>();
 
 
+
     /**
      * Runs when view is created
      * Written by Trausti and Karl
@@ -51,15 +52,6 @@ public class ChooseLanguagesFragment extends Fragment {
         Globals g = (Globals)this.getActivity().getApplication();
         listSource.addAll(g.getLanguages().get(1));
         codeRef.addAll(g.getLanguages().get(0));
-
-
-        //Adding some placeholder values until we get the API
-
-        //Source languages
-        //String[] src_langs = getString(R.string.src_languages).split("-");
-
-        //Target languages
-        //String[] target_langs = getString(R.string.target_languages).split("-");
 
         //Create an array adapter to put the source list into the spinner
         ArrayAdapter<String> dataAdapterSource = new ArrayAdapter<String>

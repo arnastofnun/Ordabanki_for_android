@@ -76,31 +76,37 @@ public class PickGlossaryFragment extends Fragment {
         if(g==null){
            Log.v("Globals","null");
         }
-        if(g.getGlossaryState() == null){
+        else if(g.getGlossaryState() == null){
             Log.v("GlossaryState","null");
         }
         else {
-            glossaryList = g.getGlossaryState();
-            int index = 0;
-            View listitemview;
-            for (Glossary glossary : glossaryList) {
-                listitemview = listView.getChildAt(index);
-                if (listitemview != null) {
-                    if (glossary.isSelected()) {
-                        ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                        listitemview.setBackgroundResource(R.color.glossary_selected);
-                        tick.setVisibility(View.VISIBLE);
-                    } else {
-                        ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                        listitemview.setBackgroundResource(R.color.glossary_notselected);
-                        tick.setVisibility(View.INVISIBLE);
-                    }
-                }
-                index++;
-            }
+            resumeGlossaryState(g);
         }
 
     }
+
+    public void resumeGlossaryState(Globals globals){
+        glossaryList = globals.getGlossaryState();
+        int index = 0;
+        View listitemview;
+        for (Glossary glossary : glossaryList) {
+            listitemview = listView.getChildAt(index);
+            if (listitemview != null) {
+                if (glossary.isSelected()) {
+                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                    listitemview.setBackgroundResource(R.color.glossary_selected);
+                    tick.setVisibility(View.VISIBLE);
+                } else {
+                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                    listitemview.setBackgroundResource(R.color.glossary_notselected);
+                    tick.setVisibility(View.INVISIBLE);
+                }
+            }
+            index++;
+        }
+    }
+
+
     /**use:displayListView(rootView)
      * pre: rootView is of type View
      * This function is supposed to loop through the glossaries and add them to the glossary list.
@@ -122,8 +128,6 @@ public class PickGlossaryFragment extends Fragment {
             //g = (Globals) this.getActivity().getApplication();
             glossaryList.addAll(g.getDictionaries());
 
-
-
         //Creating a new glossary adapter
         GlossaryAdapter glossaryAdapter = new GlossaryAdapter(this.getActivity(), R.layout.glossary_list, glossaryList);
 
@@ -139,25 +143,7 @@ public class PickGlossaryFragment extends Fragment {
         checkallbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //variables
-                int index=0;
-                View listitemview;
-                //Go through the glossary list
-                for(Glossary glossary : glossaryList){
-                    //If glossary is checked
-                    if(!glossary.isSelected()){
-                        //Set the selected status of the glossary
-                        glossary.setSelected(true);
-                        //Get the correct item in the list
-                        listitemview = listView.getChildAt(index);
-                        if(listitemview != null) {
-                            ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                            listitemview.setBackgroundResource(R.color.glossary_selected);
-                            tick.setVisibility(View.VISIBLE);
-                        }
-                    }
-                    index++;
-                }
+               checkAllGlossaries();
 
             }
         });
@@ -166,59 +152,64 @@ public class PickGlossaryFragment extends Fragment {
         decheckallbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //variables
-                int index=0;
-                View listitemview;
-                //Go through the glossary list
-                for(Glossary glossary : glossaryList){
-                    //If glossary is checked
-                    if(glossary.isSelected()){
-                        //Set the selected status of the glossary
-                        glossary.setSelected(false);
-                        //Get the correct item in the list
-                        listitemview =  listView.getChildAt(index);
-                        if(listitemview != null) {
-                            Log.v("LISTVIEW", listitemview.toString());
-                            ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                            listitemview.setBackgroundResource(R.color.glossary_notselected);
-                            tick.setVisibility(View.INVISIBLE);
-                        }
-
-                    }
-                    index++;
-                }
-
+                decheckAllGlossaries();
             }
         });
-
-
-        //Setting the on item click listener to be ready for later use
-        /*
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Glossary glossary = (Glossary) parent.getItemAtPosition(position);
-                 //For now just display a toast for testing
-                Toast.makeText(getActivity().getApplicationContext(), "Clicked on: " + glossary.getName() + " checked: " + glossary.isSelected(), Toast.LENGTH_LONG).show();
-            }
-        });
-        */
 
     }
 
     /**
-     * use: ArrayList<Glossary> glossaryList = getGlossaryList();
-     * pre: nothing
-     * post: This function returns an array list of all glossaries from the glossary list
-     * ---------------------------------------------------------------------------------
-     * Written by Bill
-     * @since 14.10.2014
-     * @return glossaryList
+     * This method checks all glossaries
+     * Written by Karl Ásgeir Geirsson
      */
-    /*public static ArrayList<Glossary> getGlossaryList(){
-            return glossaryList;
+    private void checkAllGlossaries(){
+        //variables
+        int index=0;
+        View listitemview;
+        //Go through the glossary list
+        for(Glossary glossary : glossaryList){
+            //If glossary is checked
+            if(!glossary.isSelected()){
+                //Set the selected status of the glossary
+                glossary.setSelected(true);
+                //Get the correct item in the list
+                listitemview = listView.getChildAt(index);
+                if(listitemview != null) {
+                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                    listitemview.setBackgroundResource(R.color.glossary_selected);
+                    tick.setVisibility(View.VISIBLE);
+                }
+            }
+            index++;
+        }
     }
-    */
+
+    /**
+     * This method dechecks all glossaries
+     * Written by Karl Ásgeir Geirsson
+     */
+    private void decheckAllGlossaries(){
+        //variables
+        int index=0;
+        View listitemview;
+        //Go through the glossary list
+        for(Glossary glossary : glossaryList){
+            //If glossary is checked
+            if(glossary.isSelected()){
+                //Set the selected status of the glossary
+                glossary.setSelected(false);
+                //Get the correct item in the list
+                listitemview =  listView.getChildAt(index);
+                if(listitemview != null) {
+                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                    listitemview.setBackgroundResource(R.color.glossary_notselected);
+                    tick.setVisibility(View.INVISIBLE);
+                }
+
+            }
+            index++;
+        }
+    }
 
     /**
      * Written by Bill

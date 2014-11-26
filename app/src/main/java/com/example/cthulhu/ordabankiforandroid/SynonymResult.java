@@ -32,19 +32,30 @@ public class SynonymResult implements Comparable<SynonymResult> {
         String dict_code;
     }
 
-
+    /**
+     * @return the word
+     */
     public String getWord(){
         return word.word;
     }
 
+    /**
+     * @return the term id
+     */
     public String getTerm_id(){
         return word.term_id;
     }
 
+    /**
+     * @return the dictionary code
+     */
     public String getDict_code(){
         return word.dict_code;
     }
 
+    /**
+     * @return the synonym
+     */
     public String getSynonym(){
         return synonym;
     }

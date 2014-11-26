@@ -41,6 +41,15 @@ package com.example.cthulhu.ordabankiforandroid;
  */
 public class TermResult {
     Term term;
+
+    /**
+     * @return The ID of the term
+     */
+    public String getTermId(){
+        return term.id;
+    }
+
+
     
     public static class Term{
         String id;
@@ -95,4 +104,6 @@ public class TermResult {
             }
         }
     }
+
+
 }

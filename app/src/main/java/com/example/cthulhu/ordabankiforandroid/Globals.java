@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Holds global variables.
@@ -18,11 +17,14 @@ public class Globals extends Application{
     private int tLangPos = -1; //Keeps the position of the selected target language between searches
     private int sLangPos = -1; //Keeps the position of the selected source language between searches
     private ArrayList<Result> results;
-    private List<SynonymResult> synonymResults;
 
 
     public static Context context;
 
+    /**
+     * A method to get the context
+     * in a easy way
+     */
     @Override
     public void onCreate(){
         super.onCreate();
@@ -35,9 +37,6 @@ public class Globals extends Application{
 
     public void setResults(ArrayList<Result> results){
         this.results = results;
-    }
-    public void setSynonymResults(List<SynonymResult> results){
-        this.synonymResults = results;
     }
 
     /**
@@ -125,13 +124,6 @@ public class Globals extends Application{
         return results;
     }
 
-    /**
-     *Written by Karl Ásgeir Geirsson
-     * @return results
-     */
-    public List<SynonymResult> getSynonymResults(){
-        return synonymResults;
-    }
 
     /**
      * Written by Bill
