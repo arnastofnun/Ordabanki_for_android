@@ -2,6 +2,9 @@ package com.example.cthulhu.ordabankiforandroid.unittests;
 
 import android.provider.SearchRecentSuggestions;
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.R;
 import com.example.cthulhu.ordabankiforandroid.ResultsScreen;
@@ -79,7 +82,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
      * Written by Trausti
      */
     public void testUserStoryGlossary(){
-        solo.sleep(5000);
+        solo.sleep(3000);
 
         //Click on Glossary tab
         solo.clickOnText(solo.getString(R.string.pick_glossary_tab));
@@ -89,17 +92,42 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.clickOnText(solo.getString(R.string.deselect_all));
 
         // Select entries 2,4,7 and 8
-        solo.clickInList(2);
-        solo.clickInList(4);
-        solo.clickInList(6);
-        solo.clickInList(7);
+        solo.clickInList(8);
+        solo.clickInList(10);
+        solo.clickInList(12);
+        solo.clickInList(15);
 
-        //search only in selected glossaries
-        solo.clickOnText(solo.getString(R.string.search_tab));
-        solo.enterText(0, "Sta*");
-        solo.sendKey(Solo.ENTER);
-        //Todo find a way to check if only results in selected glossaries show up
+        solo.scrollToSide(Solo.LEFT);
+        solo.sleep(1000);
+        solo.clickOnEditText(0);
+        solo.enterText(0, "sta*");
+        solo.sleep(1000);
+        solo.sendKey(solo.ENTER);
+        solo.sleep(10000);
+
+        solo.clickInList(1);
+        solo.sleep(5000);
+
+        String[] expectedGlossaries = {"Byggingarlist", "Bílorð", "Bókband", "Efnafræði"};
+
+        while(solo.RIGHT == (int)solo.RIGHT){
+            //if correctGlossary is true then we have the correct glossary
+            boolean correctGlossary = false;
+            TextView glossaryName = (TextView) solo.getView(R.id.termGlossaryView);
+            String glossary = glossaryName.getText().toString();
+
+            for(String expectedGlossary: expectedGlossaries){
+                if(expectedGlossary == glossary){
+                    correctGlossary = true;
+                }
+            }
+            assertTrue(correctGlossary);
+            solo.scrollToSide(Solo.RIGHT);
+
+            solo.sleep(2000);
+        }
     }
+
 
     /**
      * USER STORY TEST:
