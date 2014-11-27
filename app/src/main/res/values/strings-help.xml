@@ -30,7 +30,7 @@
         Go to the languages tab to restrict search to certain search- or target languages</item>
 
     </string-array>
-    <!--Titles for glossart fragment help -->
+    <!--Titles for glossary fragment help -->
     <string-array name="help_glossary_fragment_titles">
         <item>!skip</item>
         <item>Selecting a glossary</item>

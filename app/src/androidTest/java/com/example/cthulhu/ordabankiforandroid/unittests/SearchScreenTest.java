@@ -215,7 +215,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
 
     /**
      * This method tests if a search string can be entered and sent
-     * from the search screen, and if the ResultsScreen recives them
+     * from the search screen, and if the ResultsScreen receives them
      * Written by Kristján
      */
 
@@ -377,7 +377,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
     }
 
     /**
-     * This method tests the langauge select option on the action bar
+     * This method tests the language select option on the action bar
      * This test may give a false negative if previous test doesn't end on SearchScreenActivity
      * Written by Kristján
      */
@@ -458,7 +458,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
 
 
     /**
-     * tearDown exits all opened activites
+     * tearDown exits all opened activities
      */
     @Override
     public void tearDown() throws Exception {

@@ -111,7 +111,7 @@ public class SearchScreen extends FragmentActivity {
      * @param tabs the tabs of the viewpager
      */
     private void setupViewPager(ArrayList<String> tabs){
-        //Initilize the viewpager
+        //Initialize the viewpager
         viewPager = (ViewPager) findViewById(R.id.searchscreen);
         //Create a tabs pager adapter
         TabsPagerAdapter tabsAdapter = new TabsPagerAdapter(getSupportFragmentManager());
@@ -287,7 +287,7 @@ public class SearchScreen extends FragmentActivity {
                 String[] titleList;
                 String[] helpList;
 
-                //Switch to dertermine the text of the help
+                //Switch to determine the text of the help
                 switch(currFragment){
                     //If we are in the search fragment
                     case 0:
