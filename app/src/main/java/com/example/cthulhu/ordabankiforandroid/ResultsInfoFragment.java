@@ -259,7 +259,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
                 if(synonym.getPronunciation() != null){
                     synChild += getString(R.string.word_pronunciation)+" " + synonym.pronunciation + "<br>";
                 }
-                if(synonym.getOtherGrammer() != null){
+                if(synonym.getOtherGrammar() != null){
                     synChild += getString(R.string.word_othergrammar)+" " + synonym.othergrammar + "<br>";
                 }
 

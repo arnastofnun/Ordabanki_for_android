@@ -302,7 +302,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     /**
      * A method that checks if a string is numerical
      */
-    public boolean isInteger(String s) {
+    public static boolean isInteger(String s) {
         try {
             Integer.parseInt(s);
         } catch(NumberFormatException e) {

@@ -1,5 +1,6 @@
 package com.example.cthulhu.ordabankiforandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
@@ -88,6 +89,31 @@ public class ResultInfo extends FragmentActivity {
     }
 
     /**
+     * Handle the back button press
+     */
+    @Override
+    public void onBackPressed() {
+        chooseBackPath();
+    }
+
+    /**
+     * A method that chooses where to go back
+     */
+    private void chooseBackPath(){
+        //If we are doing term search
+        if(termID != null){
+            //We go back to the search screen
+            Intent intent = new Intent(this, SearchScreen.class);
+            this.startActivity(intent);
+        }
+        else{
+            //We go back to the results
+            Intent intent = new Intent(this, ResultsScreen.class);
+            this.startActivity(intent);
+        }
+    }
+
+    /**
      * handles actions when an item in the options menu is clicked
      * Written by Karl Ásgeir Geirsson
      * @param item the clicked item
@@ -122,6 +148,10 @@ public class ResultInfo extends FragmentActivity {
                 Settings settings = new Settings(this);
                 //Create a popup menu with settings, that pops from the action button
                 settings.createOptionsPopupMenu(v);
+                return true;
+
+            case android.R.id.home:
+                chooseBackPath();
                 return true;
         }
 
