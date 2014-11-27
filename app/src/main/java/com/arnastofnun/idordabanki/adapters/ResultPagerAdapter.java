@@ -11,7 +11,7 @@ import com.arnastofnun.idordabanki.ResultsInfoFragment;
  * This adapter handles the switching between
  * the fragments in the results-info screen
  * @author Karl Ásgeir Geirsson
- * @since 23.11.2014.
+ * @since 23.11.2014
  */
 public class ResultPagerAdapter extends FragmentStatePagerAdapter {
 

@@ -5,7 +5,7 @@ import android.content.SearchRecentSuggestionsProvider;
 /**
  * This class holds information necessary to get the search suggestion working
  * @author Karl Ásgeir Geirsson
- * @since 24.10.2014.
+ * @since 24.10.2014
  */
 public class SearchAutoComplete extends SearchRecentSuggestionsProvider {
     //Setup variables

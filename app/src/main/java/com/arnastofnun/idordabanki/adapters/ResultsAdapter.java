@@ -21,7 +21,7 @@ import java.util.List;
  * results list view</p>
  * --------------------------------------------------------
  * @author Karl Ásgeir Geirsson
- * @since 15.10.2014.
+ * @since 15.10.2014
  */
 public class ResultsAdapter extends ArrayAdapter<Result> {
     //Get global values
@@ -32,7 +32,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
     /**
      * Invoke the overwritten methods in superclass
      * -----------------------------------------------
-     * Written by Karl Ásgeir
+     * Written by Karl Ásgeir Geirsson
      * @param context the current context
      * @param listViewResourceId the resource Id of the list view that the adapter is being added to
      * @param resultsList the glossary list that is to be added to the list view
@@ -62,7 +62,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
      * -------------------------------
      * Written by Karl Ásgeir Geirsson
      * @param position position of item in list
-      *@param convertView the list view to convert
+     * @param convertView the list view to convert
      * @param parent the parent view group
      * @return view
      */
@@ -136,9 +136,9 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
 
 
     /**
-     * A method that set's up a new viewholder
+     * A method that sets up a new viewholder
      * @param view the view that the view holder is set up from
-     * @return the vie holder
+     * @return the view holder
      */
     private ViewHolder setupViewHolder(View view){
         ViewHolder viewHolder = new ViewHolder();

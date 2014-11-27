@@ -185,7 +185,7 @@ public class PickGlossaryFragment extends Fragment {
     }
 
     /**
-     * This method dechecks all glossaries
+     * This method unchecks all glossaries
      * Written by Karl Ásgeir Geirsson
      */
     private void decheckAllGlossaries(){

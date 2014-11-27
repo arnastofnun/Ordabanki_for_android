@@ -10,7 +10,8 @@ import junit.framework.Assert;
 
 /**
  * A test that tests the Term ID search
- * Created by karlasgeir on 26.11.2014.
+ * @author Karl Ásgeir Geirsson
+ * @since 26.11.2014
  */
 public class TermIDTests2 extends ActivityInstrumentationTestCase2<SplashActivity> {
 
@@ -24,7 +25,7 @@ public class TermIDTests2 extends ActivityInstrumentationTestCase2<SplashActivit
 
 
     /**
-     * method  sets up activity and solo before testing can begin
+     * method which sets up activity and solo before testing can begin
      */
     public void setUp() throws Exception {
         /*This way the testPreconditions will work*/
@@ -40,7 +41,7 @@ public class TermIDTests2 extends ActivityInstrumentationTestCase2<SplashActivit
 
 
     /**
-     * test if  the getPageCount()
+     * test if the getPageCount()
      * method is functioning correctly
      */
     public void testGetPageCount(){

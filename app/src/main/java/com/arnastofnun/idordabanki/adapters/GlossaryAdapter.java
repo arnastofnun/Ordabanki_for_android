@@ -26,7 +26,7 @@ import java.util.HashMap;
  * glossary list view</p>
  * --------------------------------------------------------
  * @author Karl Ásgeir Geirsson
- * @since 14.10.2014.
+ * @since 14.10.2014
  */
 public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIndexer {
     HashMap<String,Integer> alphaIndexer; //Indexer for the alphabet sorting
@@ -37,7 +37,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
     /**
      * Invoke the overwritten methods in superclass
      * -----------------------------------------------
-     * Written by Karl Ásgeir
+     * Written by Karl Ásgeir Geirsson
      * @param context the current context
      * @param listViewResourceId the resource Id of the list view that the adapter is being added to
      * @param glossaryList the glossary list that is to be added to the list view
@@ -57,7 +57,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
      * Sets up the alphabetical scrolling for the
      * list
      * -------------------------------------------
-     * Written by Karl Ásgeir
+     * Written by Karl Ásgeir Geirsson
      * @since 22.11.14
      */
     private void setUpAlphabeticalScrolling(ArrayList<Glossary> glossaryList){
@@ -109,7 +109,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
      * and text view of each item in the
      * glossary list
      * ------------------------------------
-     * Written by Karl Ásgeir
+     * Written by Karl Ásgeir Geirsson
      * @since 14.10.2014
      */
     private class ViewHolder{
@@ -185,9 +185,9 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
     }
 
     /**
-     * A method that set's up a new viewholder
+     * A method that sets up a new viewholder
      * @param view the view that the view holder is set up from
-     * @return the vie holder
+     * @return the view holder
      */
     private ViewHolder setupViewHolder(View view){
         //Set the views to the view holder
@@ -226,7 +226,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
     }
 
     /**
-     * A method that toogles the selected state of
+     * A method that toggles the selected state of
      * the glossary on click
      * @param view the view that was clicked
      */
@@ -244,7 +244,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
             tick.setVisibility(View.INVISIBLE);
             glossary.setSelected(false);
         }
-        //If glossary is note selected, select it and show the tick
+        //If glossary is not selected, select it and show the tick
         else{
             row.setBackgroundResource(R.color.glossary_selected);
             tick.setVisibility(View.VISIBLE);
@@ -282,7 +282,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
     }
 
     /**
-     * Gets the section for a specific positon
+     * Gets the section for a specific position
      * @param position the position
      * @return the section
      */

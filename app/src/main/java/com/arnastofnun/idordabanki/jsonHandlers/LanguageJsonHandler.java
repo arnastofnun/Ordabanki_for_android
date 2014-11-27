@@ -14,7 +14,7 @@ import org.json.JSONObject;
 /**
  * Handler to parse language list JSON or return status code on error.
  * @author Bill
- * @since 01/11/14.
+ * @since 01.11.2014
  */
 public class LanguageJsonHandler extends JsonHttpResponseHandler{
 

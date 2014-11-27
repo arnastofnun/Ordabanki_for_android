@@ -18,7 +18,7 @@ import com.arnastofnun.idordabanki.adapters.displayTextAdapter;
  * and the history of the Orðabanki
  * This is initiated by the about button in settings in the action bar
  * @author Karl Ásgeir Geirrson
- * @since 24.10.2014.
+ * @since 24.10.2014
  */
 public class AboutActivity extends Activity {
 
@@ -66,7 +66,7 @@ public class AboutActivity extends Activity {
     }
 
     /**
-     * Runs when an item in the action bar is cliced
+     * Runs when an item in the action bar is clicked
      * @param item the menu item that was clicked
      * @return true or false
      */

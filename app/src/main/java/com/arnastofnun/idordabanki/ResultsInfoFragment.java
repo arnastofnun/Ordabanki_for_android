@@ -37,7 +37,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
 
 
     /**
-     * wv interprets and displays the html in it's container
+     * wv interprets and displays the html in its container
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

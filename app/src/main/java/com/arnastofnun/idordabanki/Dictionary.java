@@ -4,7 +4,7 @@ package com.arnastofnun.idordabanki;
 /**
  * Java object for parsing of Dictionary Jsons
  * @author Bill
- * @since 01/11/14.
+ * @since 01.11.2014
  */
 public class Dictionary {
     /**
@@ -24,7 +24,7 @@ public class Dictionary {
      * Info class that contains language code and
      * dictionary name in that language
      * @author Bill
-     * @since 01/11/14
+     * @since 01.11.2014
      */
     public  class Info{
             String lang_code;

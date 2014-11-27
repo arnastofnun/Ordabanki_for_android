@@ -14,7 +14,7 @@ import com.arnastofnun.idordabanki.adapters.displayTextAdapter;
  * This class creates a custom dialog
  * for the help.
  * @author Karl Ásgeir Geirsson
- * @since 21.11.2014.
+ * @since 21.11.2014
  */
 public class HelpDialog {
     Context context; //The context that calls the dialog
@@ -24,7 +24,7 @@ public class HelpDialog {
 
     /**
      * Constructor for the dialog
-     * Written by Karl Ásgeir Geirsso
+     * Written by Karl Ásgeir Geirsson
      * @param context The context that calls the dialog
      * @param layoutInflater The layout inflater
      * @param titleList List of titles in the dialog
@@ -41,7 +41,7 @@ public class HelpDialog {
 
     /**
      * A method that builds the custom dialog
-     * Written by karl Ásgeir Geirsson
+     * Written by Karl Ásgeir Geirsson
      * @return returns the built dialog
      */
     private AlertDialog buildDialog(){

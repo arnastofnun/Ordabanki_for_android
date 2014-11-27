@@ -9,7 +9,7 @@ import android.os.Parcelable;
  * and ways to access result information
  * ------------------------------------------------
  * @author Karl Ásgeir Geirsson, Bill Hayhurst
- * @since 14.10.2014.modified 20/10/14
+ * @since 14.10.2014 modified 20.10.2014
  */
 public class Result implements Comparable<Result>{
     //Data invariants:
@@ -26,7 +26,7 @@ public class Result implements Comparable<Result>{
     /**
      * Keeps the synonym strings
      * @author Bill
-     * @since  20/10/14
+     * @since  20.10.2014
      */
     public static class Synonym {
         public String synonym;
@@ -44,8 +44,8 @@ public class Result implements Comparable<Result>{
          */
         public String getSynonym(){return synonym;}
     }
-/*
 
+   /**
     * getters and setters (setters not really needed but here anyway just in case)
     *  use: result.get*Var*()  where *Var* is the variable of interest
     *  pre: nothing
@@ -54,7 +54,7 @@ public class Result implements Comparable<Result>{
     *  use: result.set*Var*(String *Var*)
     *  pre: *Var* is a string
     *  post: sets *Var* for result
-     */
+    */
 
     /**
      * @return the word id

@@ -8,7 +8,8 @@ import com.robotium.solo.Solo;
 
 /**
  * This is a test that tests the term id search
- * Created by karlasgeir on 26.11.2014.
+ * @author Karl Ásgeir Geirsson
+ * @since 26.11.2014
  */
 public class TermIDTests extends ActivityUnitTestCase<ResultsScreen> {
 

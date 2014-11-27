@@ -43,18 +43,6 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefs.edit().clear().commit();
         */
-/*
-         The following commented-out code is a workaround used by
-        / Kristján for unit tests to work in his system.
-
-        getInstrumentation().runOnMainSync(new Runnable() {
-            @Override
-            public void run() {
-                getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
-            }
-        });
-
-*/
     }
     
     /**
@@ -251,7 +239,8 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
     /**
      *
      * This method tests the suggestion feature
-     * Must be run after the EditText test for first word to be in memory
+     * Note that the word "Autodefenestration" is not in the database
+     * and will not return a full search result
      * written by Kristján
      */
 
@@ -270,7 +259,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         Assert.assertFalse(solo.waitForText("Autodefenestration"));
         //Enter the rest of the word
         solo.enterText(0,"defenestration");
-        //Searches, to save the search term in autocomplete
+        //Searches, to save the search term in search history
         solo.sendKey(Solo.ENTER);
         //Waits for results
         // Goes back to search screen
@@ -375,8 +364,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
     }
 
     /**
-     * This method tests the language select option on the action bar
-     * This test may give a false negative if previous test doesn't end on SearchScreenActivity
+     * This method tests the language select dialog, accessed through the on the action bar
      * Written by Kristján
      */
 
@@ -417,7 +405,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.clickOnText(solo.getString(R.string.settings_changelanguage_confirm));
         //waits for new language to load
         solo.sleep(2000);
-        // Asserts English is selected
+        //Asserts English is selected
         //Assert.assertTrue(solo.searchText("Search"));
     }
 
@@ -432,10 +420,10 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.clearEditText(0);
         //Enters search term
         solo.enterText(0, "Polystyrene");
-        //Searches, to save the search term in autocomplete
+        //Searches, to save the search term in the search history
         solo.sendKey(Solo.ENTER);
         //Waits for results
-        // Goes back to search screen
+        //Goes back to search screen
         solo.goBack();
         //Makes sure search is empty
         solo.clearEditText(0);

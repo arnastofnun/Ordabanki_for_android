@@ -5,7 +5,7 @@ import com.arnastofnun.idordabanki.Result;
 /**
  * Listener interface for rest client
  * @author Bill
- * @since 26/10/14.
+ * @since 26.10.2014
  */
 public interface OnResultObtainedListener {
     //TODO: javadocs

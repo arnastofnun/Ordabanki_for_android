@@ -15,7 +15,7 @@ package com.arnastofnun.idordabanki;
 /**
  * Holder object for parsing synonym results
  * @author Bill
- * @since 04/11/14
+ * @since 04.11.2014
   */
 public class SynonymResult implements Comparable<SynonymResult> {
     String synonym;
@@ -23,7 +23,7 @@ public class SynonymResult implements Comparable<SynonymResult> {
  /**
   * Holder object for parsing word results
   * @author Bill
-  * @since 04/11/14
+  * @since 04.11.2014
   * todo add getters and setters
    */
     public static class Word{

@@ -24,7 +24,7 @@ import org.apache.http.Header;
 public class AboutGlossaryActivity extends Activity {
 
     /**
-     *  url is  the url of the glossary info page
+     *  url is the url of the glossary info page
      */     
     private String url;
     

@@ -21,7 +21,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     /**
      * Invoke the overwritten methods in superclass
      * --------------------------------------------
-     * Written by Karl Ásgeir
+     * Written by Karl Ásgeir Geirsson
      * @param fm the fragment manager for the fragments
      */
     public TabsPagerAdapter(FragmentManager fm){

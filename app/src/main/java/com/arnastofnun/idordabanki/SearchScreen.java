@@ -27,13 +27,13 @@ import java.util.ArrayList;
  * tabbed view.
  * It allows you to swipe and tab between fragments
  * @author Karl Ásgeir Geirsson
- * @since 9.10.2014.
+ * @since 9.10.2014
  */
 public class SearchScreen extends FragmentActivity {
     /*
     *   Data invariants:
     *   viewPager: ViewPager object
-    *   mAdaptar: Adapter for tabs pager
+    *   mAdapter: Adapter for tabs pager
     *   sourceLangSpinner: source language drop down menu items
     *   targetLangSpinner: target language drop down menu items    
     *   resultList: list of search results
@@ -129,9 +129,9 @@ public class SearchScreen extends FragmentActivity {
              */
             @Override
             public void onPageSelected(int position) {
-                //If it's the search screen
+                //If its the search screen
                 if(position == 0){
-                    toogleKeyboard(true);
+                    toggleKeyboard(true);
                 }
             }
 
@@ -145,7 +145,7 @@ public class SearchScreen extends FragmentActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 //If there is movement and we are in the search fragment
                 if(positionOffset > 0 && position == 0){
-                    toogleKeyboard(false);
+                    toggleKeyboard(false);
                 }
 
             }
@@ -183,11 +183,11 @@ public class SearchScreen extends FragmentActivity {
     }
 
     /**
-     * A method that toogles the keyboard
+     * A method that toggles the keyboard
      * visibility based on a boolean value
      * @param on turns keyboard on if true, else off
      */
-    private void toogleKeyboard(boolean on) {
+    private void toggleKeyboard(boolean on) {
         View focus = getCurrentFocus();
         if (focus != null) {
             //We turn on the keyboard

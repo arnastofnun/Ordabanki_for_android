@@ -5,7 +5,7 @@ import com.arnastofnun.idordabanki.Dictionary;
 /**
  * Interface for dictionary http handler
  *  @author Bill
- * @since 01/11/14.
+ * @since 01.11.2014
  */
 public interface OnDictionariesObtainedListener {
     //TODO: javadocs

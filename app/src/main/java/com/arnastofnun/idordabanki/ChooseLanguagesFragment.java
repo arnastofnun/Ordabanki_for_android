@@ -12,12 +12,11 @@ import java.util.ArrayList;
 
 /**
  * A fragment that allows you to choose source and target language
- *
  * @author Trausti
  * @since  ?
  */
 public class ChooseLanguagesFragment extends Fragment {
-    //Data invarians:
+    //Data invariants:
     //sourceSpinner and targetSpinner are UI components;drop down menu list
     //sourceSpinner contains source language selections
     //targetSpinner contains target language selections
@@ -33,7 +32,7 @@ public class ChooseLanguagesFragment extends Fragment {
      * Written by Trausti and Karl
      * @param inflater the layout inflater
      * @param container the containing viewgroup
-     * @param savedInstanceState the saved instaned
+     * @param savedInstanceState the saved instance
      * @return the view that has been created
      */
     @Override
@@ -87,11 +86,7 @@ public class ChooseLanguagesFragment extends Fragment {
 
     /**
      * Saves state to globals when fragment loses focus
-
-     *
-
      * Written by Bill
-
      */
     @Override
     public void onPause(){
@@ -103,11 +98,7 @@ public class ChooseLanguagesFragment extends Fragment {
 
     /**
      * restores state from globals when fragment returns to focus
-
-     *
-
      * Written by Bill
-
      */
     @Override
     public void onResume(){
@@ -124,11 +115,7 @@ public class ChooseLanguagesFragment extends Fragment {
     }
 
     /**
-
-     *
-
      * Written by Bill
-
      * @return language code for source language
      */
     public static String getSourceLanguage(){
@@ -140,11 +127,7 @@ public class ChooseLanguagesFragment extends Fragment {
     }
 
     /**
-
-     *
-
      * Written by Bill
-
      * @return language code for target language
      */
    /*

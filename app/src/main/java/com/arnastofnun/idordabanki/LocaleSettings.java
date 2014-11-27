@@ -16,7 +16,7 @@ import java.util.Locale;
  * and set language locale
  * --------------------------------------------------
  * @author Karl Ásgeir Geirsson
- * @since 28.10.2014.
+ * @since 28.10.2014
  */
 public class LocaleSettings{
     /*

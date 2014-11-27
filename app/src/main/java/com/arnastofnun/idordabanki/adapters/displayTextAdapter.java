@@ -15,7 +15,7 @@ import com.arnastofnun.idordabanki.R;
  * <p>An does most of the work for the help screen</p>
  * --------------------------------------------------------
  * @author Karl Ásgeir Geirsson
- * @since 21.11.2014.
+ * @since 21.11.2014
  */
 public class displayTextAdapter extends ArrayAdapter<String>{
     private String[] titles;

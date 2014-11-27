@@ -13,9 +13,9 @@ import com.arnastofnun.idordabanki.R;
 /**
  * This is an adapter that inflates the
  * views for the language change dialog
- * and toogles the radio buttons
+ * and toggles the radio buttons
  * @author Karl Ásgeir Geirsson
- * @since 21.11.2014.
+ * @since 21.11.2014
  */
 public class ChangeLanguageAdapter extends ArrayAdapter<String> {
     int selectedIndex = -1; //The default index of the selected item
@@ -39,7 +39,7 @@ public class ChangeLanguageAdapter extends ArrayAdapter<String> {
     }
 
     /**
-     * A function that is run once a list item get's into the visible view
+     * A function that is run once a list item gets into the visible view
      * @param position The position of the list item
      * @param convertView The view of the list item
      * @param parent The parent view of the list item
@@ -80,11 +80,11 @@ public class ChangeLanguageAdapter extends ArrayAdapter<String> {
         RadioButton radioButton = (RadioButton) view.findViewById(R.id.change_language_radio);
         TextView language = (TextView) view.findViewById(R.id.change_language_language);
         setLanguage(language, position);
-        toogleRadioButton(radioButton,position);
+        toggleRadioButton(radioButton, position);
     }
 
     /**
-     * A method that set's the language text view
+     * A method that sets the language text view
      * @param languageView the language text view
      * @param position the position of the view in the list
      */
@@ -93,11 +93,11 @@ public class ChangeLanguageAdapter extends ArrayAdapter<String> {
     }
 
     /**
-     * A method to toogle the selected state of the radio buttons
-     * @param button The radio button to toogle
+     * A method to toggle the selected state of the radio buttons
+     * @param button The radio button to toggle
      * @param position the position of the radio button in the list
      */
-    private void toogleRadioButton(RadioButton button, int position){
+    private void toggleRadioButton(RadioButton button, int position){
         button.setChecked(selectedIndex == position);
     }
 

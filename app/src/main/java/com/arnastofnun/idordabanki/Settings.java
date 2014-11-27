@@ -23,7 +23,7 @@ import com.arnastofnun.idordabanki.adapters.ChangeLanguageAdapter;
 
 /**
  * @author Karl Ásgeir Geirsson
- * @since 29.10.2014.
+ * @since 29.10.2014
  */
 public class Settings {
     /*
@@ -71,7 +71,7 @@ public class Settings {
                 switch (item.getItemId()) {
                     //If change language button is pressed
                     case R.id.settings_change_language:
-                        changeLangugeClicked();
+                        changeLanguageClicked();
                         return true;
                     //If the about button is pressed
                     case R.id.settings_about:
@@ -123,7 +123,7 @@ public class Settings {
      * This method handles the action when the
      * change language option is selected
      */
-    private void changeLangugeClicked(){
+    private void changeLanguageClicked(){
         //Create the dialog builder
         AlertDialog.Builder clangBuilder = new AlertDialog.Builder(context);
         //Layout and set the view
@@ -166,7 +166,7 @@ public class Settings {
 
     /**
      * A method to get the current language
-     * postion from locale settings
+     * position from locale settings
      * @return the current language position
      */
     private int getCurrentLanguagePosition(){

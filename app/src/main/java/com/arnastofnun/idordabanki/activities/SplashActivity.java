@@ -27,7 +27,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-//Basically just waits for two secons and then starts the next activity
+//Basically just waits for two seconds and then starts the next activity
 
 /**
  * <h1>Splash screen</h1>
@@ -135,9 +135,9 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         ArrayList<String> dictList = new ArrayList<String>();
         //Toast.makeText(getApplicationContext(), "dLoop", Toast.LENGTH_SHORT).show();
         /*
-            For each dictionary class add it's code
-            to the codeList, it's name to the dictList and
-            create a new instance of the Glossary class with the dict code and name,
+            For each dictionary class add its code
+            to the codeList, its name to the dictList and
+            creates a new instance of the Glossary class with the dict code and name,
             which is added to the glossaries array list
          */
         for (Dictionary dict : dictionaries) {
@@ -180,7 +180,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     public void onLanguagesObtained (Language[]languages){
         //Initialize array list
         localisedLangs = new ArrayList<ArrayList<String>>();
-        //We start on index 2 to save space for the icelandic and english
+        //We start on index 2 to save space for the Icelandic and English
         int index = 2;
         //Initialize the code and name list and add 0 and 1 index to them
         ArrayList<String> codeList = new ArrayList<String>();
@@ -193,10 +193,10 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         List<Language> langarray = Arrays.asList(languages);
         //Sort the languages array
         Collections.sort(langarray);
-        /*
-            For each language put the language code into the codeList
-            put the language name into the nameList
-            Put icelandic first and english second
+        /**
+         *   For each language put the language code into the codeList
+         *   put the language name into the nameList
+         *   Put Icelandic first and English second
          */
         for (Language lang : langarray) {
             if(lang.getLangCode().equals("IS")){

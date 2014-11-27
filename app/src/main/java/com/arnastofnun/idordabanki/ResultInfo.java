@@ -20,8 +20,7 @@ import java.util.List;
  * with more information about the result and translations
  *
  * @author Trausti
- * @since 05/11/14
- *
+ * @since 05.11.2014
  */
 
 public class ResultInfo extends FragmentActivity {
@@ -33,8 +32,8 @@ public class ResultInfo extends FragmentActivity {
 
     /**
      * display activity with info about selected term in results screen
-     * <p> After all info on results has been fetched the data is parsed, HTML is
-     *   generated inside the method and interpeted and displayed on the screen </p>
+     * <p> After all info on results have been fetched the data is parsed, HTML is
+     *   generated inside the method and interpreted and displayed on the screen </p>
      *  written by Trausti
      * 
      * @param  savedInstanceState saved instances

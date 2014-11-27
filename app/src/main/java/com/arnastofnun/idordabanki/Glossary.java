@@ -6,7 +6,7 @@ package com.arnastofnun.idordabanki;
  * and ways to access glossary information
  * ------------------------------------------------
  * @author Karl Ásgeir Geirsson
- * @since 14.10.2014.
+ * @since 14.10.2014
  */
 public class Glossary implements Comparable<Glossary>{
     /*
@@ -28,7 +28,7 @@ public class Glossary implements Comparable<Glossary>{
     /**
      * use: Glossary glossary = new Glossary(code,name,selected,url);
      * Creates a new instance of the Glossary class
-     * Written by Karl Ásgeir
+     * Written by Karl Ásgeir Geirsson
      * @param code is a String and represents the glossary code
      * @param name is a String and represents the glossary name
      */

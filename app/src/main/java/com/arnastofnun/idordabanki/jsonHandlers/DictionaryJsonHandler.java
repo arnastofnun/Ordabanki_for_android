@@ -12,7 +12,7 @@ import org.json.JSONObject;
 /**
  * Handler to parse dictionary list JSON or return status code on error.
  * @author Bill
- * @since 01/11/14.
+ * @since 01.11.2014
  */
 public class DictionaryJsonHandler extends JsonHttpResponseHandler{
 

@@ -11,7 +11,7 @@ import org.json.JSONException;
 /**
  * Creates instances of rest client for different database calls
  * @author Bill 
- * @since 26/10/14
+ * @since 26.10.2014
  */
 public class OrdabankiRestClientUsage {
     /**

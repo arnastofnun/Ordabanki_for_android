@@ -6,7 +6,7 @@ import com.arnastofnun.idordabanki.SynonymResult;
  * Listener interface for rest client
  * returns a SynonymResult array if results are obtained or an HTTP status code otherwise
  * @author Bill
- * @since 26/10/14.
+ * @since 26.10.2014
  */
 public interface OnSynonymResultObtainedListener {
     /**

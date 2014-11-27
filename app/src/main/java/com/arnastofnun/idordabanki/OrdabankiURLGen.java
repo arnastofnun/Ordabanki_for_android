@@ -10,7 +10,7 @@ import java.util.ListIterator;
  * <h1>OrðabankiURLGen</h1>
  * <p>Creates URLs to be passed into the rest client</p>
  * @author Bill
- * @since 13.10.14
+ * @since 13.10.2014
 
  */
 class OrdabankiURLGen {
@@ -53,7 +53,7 @@ class OrdabankiURLGen {
     }
 
     /**
-     * appends extra parameters to  base search string with search term
+     * appends extra parameters to base search string with search term
      * @param relURL base term with main search parameter appended
      * @return relative url
      */

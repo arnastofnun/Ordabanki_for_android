@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
-    <!-- Strings that are used in the inital screens as well as the android manifest -->
+    <!-- Strings that are used in the initial screens as well as the android manifest -->
     <string name="app_name">Íðorðabankinn</string>
     <string name="title_activity_splash">Íðorðabankinn</string>
     <string name="action_settings">Settings</string>

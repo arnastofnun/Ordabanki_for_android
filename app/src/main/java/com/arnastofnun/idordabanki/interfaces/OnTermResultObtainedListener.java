@@ -7,7 +7,7 @@ import com.arnastofnun.idordabanki.TermResult;
 /**
  * Listener interface for rest client
  * @author Bill
- * @since 26/10/14.
+ * @since 26.10.2014
  */
 public interface OnTermResultObtainedListener {
     //TODO: javadocs
