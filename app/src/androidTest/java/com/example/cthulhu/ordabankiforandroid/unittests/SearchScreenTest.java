@@ -2,6 +2,9 @@ package com.example.cthulhu.ordabankiforandroid.unittests;
 
 import android.provider.SearchRecentSuggestions;
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cthulhu.ordabankiforandroid.R;
 import com.example.cthulhu.ordabankiforandroid.ResultsScreen;
@@ -79,7 +82,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
      * Written by Trausti
      */
     public void testUserStoryGlossary(){
-        solo.sleep(5000);
+        solo.sleep(3000);
 
         //Click on Glossary tab
         solo.clickOnText(solo.getString(R.string.pick_glossary_tab));
@@ -89,17 +92,55 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.clickOnText(solo.getString(R.string.deselect_all));
 
         // Select entries 2,4,7 and 8
-        solo.clickInList(2);
-        solo.clickInList(4);
-        solo.clickInList(6);
-        solo.clickInList(7);
+        solo.clickInList(8);
+        solo.clickInList(10);
+        solo.clickInList(12);
+        solo.clickInList(15);
 
-        //search only in selected glossaries
-        solo.clickOnText(solo.getString(R.string.search_tab));
-        solo.enterText(0, "Sta*");
-        solo.sendKey(Solo.ENTER);
-        //Todo find a way to check if only results in selected glossaries show up
+        solo.scrollToSide(Solo.LEFT);
+        solo.sleep(1000);
+        solo.clickOnEditText(0);
+        solo.enterText(0, "sta*");
+        solo.sleep(1000);
+        solo.sendKey(solo.ENTER);
+        solo.sleep(10000);
+
+        TextView resultText = (TextView) solo.getView(R.id.resultText);
+        String[] resultTextArr = resultText.getText().toString().split(" ");
+        int resultsLength = Integer.parseInt(resultTextArr[0]);
+
+        solo.clickInList(1);
+        solo.sleep(5000);
+
+        String[] expectedGlossaries = {"Byggingarlist", "Bílorð", "Bókband", "Efnafræði"};
+
+        for(int i=0; i<resultsLength; i++){
+            //if correctGlossary is true then we have the correct glossary
+            solo.sleep(2000);
+
+            boolean correctGlossary = false;
+            TextView glossaryName = (TextView) solo.getView(R.id.termGlossaryView);
+            TextView termName = (TextView) solo.getView(R.id.termWordView);
+
+            String glossary = glossaryName.getText().toString();
+            String term = termName.getText().toString();
+
+            //check if term is a synonym, if it is restrictions don't apply
+            if(term.contains("→")){
+                solo.scrollToSide(Solo.RIGHT);
+            }else{
+                for(String expectedGlossary: expectedGlossaries){
+                    if(expectedGlossary.equals(glossary)){
+                        correctGlossary = true;
+                    }
+                }
+                assertTrue(correctGlossary);
+                solo.scrollToSide(Solo.RIGHT);
+            }
+
+        }
     }
+
 
     /**
      * USER STORY TEST:
@@ -117,7 +158,31 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
      * Written by Trausti
      */
     public void testUserStoryHelp(){
-        //Todo check if there is a help button displayed in all activities
+        solo.sleep(3000);
+
+        //click on help icon in search screen
+        solo.clickOnActionBarItem(R.id.action_help);
+        solo.sleep(2000); // give it time to change activity
+        solo.clickOnText(solo.getString(R.string.close_help));
+
+        solo.clickOnEditText(0);
+        solo.enterText(0, "stock");
+        solo.sendKey(solo.ENTER);
+        solo.sleep(3000);
+
+        //click on help icon in results screen
+        solo.clickOnActionBarItem(R.id.action_help);
+        solo.sleep(500);
+        solo.clickOnText(solo.getString(R.string.close_help));
+
+        solo.clickInList(1);
+        solo.sleep(3000);
+
+        //click on help icon in results info screen
+        solo.clickOnActionBarItem(R.id.action_help);
+        solo.sleep(500);
+        solo.clickOnText(solo.getString(R.string.close_help));
+
     }
 
 
