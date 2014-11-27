@@ -85,7 +85,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      */
     public void doTermIdSearch(String searchQuery){
         Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
-        intent.putExtra("termID",searchQuery);
+        intent.putExtra("termID", searchQuery);
         startActivity(intent);
     }
 
@@ -167,16 +167,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     public void onSynonymResultObtained(SynonymResult[] sResult){
         List<SynonymResult> sList = Arrays.asList(sResult);
         Collections.sort(sList);
-
-        TextView textView = (TextView) findViewById(R.id.resultText);
-        if(sResult == null){
-            String databaseError = getResources().getString(R.string.database_error);
-            textView.setText(databaseError);
-        }
-        else {
-            synonymResultList = sList;
-            synonymDone = true;
-        }
+        synonymResultList = sList;
+        synonymDone = true;
     }
 
     /**
@@ -184,11 +176,14 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      * @param statusCode HTTP status code. No result on 200, otherwise error.
      */
     @Override
-    public void onSynonymResultFailure(int statusCode){
-        synonymError = true;
+    public void onSynonymResultFailure(int statusCode) {
+        if(statusCode == 200){
+            synonymDone = true;
+        }
+        else {
+            synonymError = true;
+        }
     }
-
-
     /**
      * A method that waits for the result of the search
      * Written by Karl Ásgeir Geirsson
