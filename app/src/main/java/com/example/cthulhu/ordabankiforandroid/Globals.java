@@ -14,7 +14,7 @@ public class Globals extends Application{
     private ArrayList<Glossary> dictionaries; //List of all glossaries, set in the current language
     private ArrayList<ArrayList<String>> loc_dictionaries; //List of all dictionary names in the current language and their codes
     private ArrayList<Glossary> glossaryState; //Keeps the selected glossary state between searches
-    private int tLangPos = -1; //Keeps the position of the selected target language between searches
+    //private int tLangPos = -1; //Keeps the position of the selected target language between searches
     private int sLangPos = -1; //Keeps the position of the selected source language between searches
     private ArrayList<Result> results;
 
@@ -78,9 +78,11 @@ public class Globals extends Application{
      * Written by Bill
      * @param pos the position of the chosen target language
      */
+    /*
     public void setTLangPos(int pos){
         this.tLangPos=pos;
     }
+    */
 
     /**
      * Sets the current position of the chosen source language
@@ -129,7 +131,9 @@ public class Globals extends Application{
      * Written by Bill
      * @return tLangPos
      */
+    /*
     public int getTLangPos(){return tLangPos;}
+    */
 
     /**
      * Written by Bill

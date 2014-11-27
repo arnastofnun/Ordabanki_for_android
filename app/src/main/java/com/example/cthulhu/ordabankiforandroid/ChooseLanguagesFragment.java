@@ -61,7 +61,7 @@ public class ChooseLanguagesFragment extends Fragment {
 
         //Set the adapter to the source language spinner
         sourceSpinner.setAdapter(dataAdapterSource);
-
+        /*
         //Add items to target language dropdown spinner
         targetSpinner = (Spinner) rootView.findViewById(R.id.targetSpinner);
         //Create a list to place the target languages in
@@ -80,7 +80,7 @@ public class ChooseLanguagesFragment extends Fragment {
 
         //Set the adapter to the target language spinner
         targetSpinner.setAdapter(dataAdapterTarget);
-
+        */
 
         return rootView;
     }
@@ -97,7 +97,7 @@ public class ChooseLanguagesFragment extends Fragment {
     public void onPause(){
         super.onPause();
         Globals g = (Globals) this.getActivity().getApplication();
-        g.setTLangPos(targetSpinner.getSelectedItemPosition());
+        //g.setTLangPos(targetSpinner.getSelectedItemPosition());
         g.setSLangPos(sourceSpinner.getSelectedItemPosition());
     }
 
@@ -113,9 +113,11 @@ public class ChooseLanguagesFragment extends Fragment {
     public void onResume(){
         super.onResume();
         Globals g = (Globals) this.getActivity().getApplication();
+        /*
         if(g.getTLangPos() != -1) {
             targetSpinner.setSelection(g.getTLangPos());
         }
+        */
         if(g.getSLangPos() != -1){
             sourceSpinner.setSelection(g.getSLangPos());
         }
