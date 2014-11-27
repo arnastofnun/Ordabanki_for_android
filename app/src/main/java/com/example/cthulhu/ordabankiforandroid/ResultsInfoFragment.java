@@ -2,6 +2,7 @@ package com.example.cthulhu.ordabankiforandroid;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,49 +26,92 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
     private Globals globals = (Globals) Globals.getContext();
     //Language names
     private final ArrayList<ArrayList<String>> languages = globals.getLanguages();
+    private WebView wv;
+    private TextView wordTextView;
+    private TextView resultCountView;
+    private TextView termGlossaryView;
+    private String idTerm;
+    private boolean hasResult;
+
 
 
 
     /**
      * wv interprets and displays the html in it's container
      */
-    private WebView wv;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.fragment_results_info, container, false);
 
-        Bundle args = getArguments();
-        int resultIndex = args.getInt("resultIndex");
 
-        TextView wordTextView = (TextView) rootView.findViewById(R.id.termWordView);
-        TextView resultCountView = (TextView) rootView.findViewById(R.id.result_count);
-        TextView termGlossaryView = (TextView) rootView.findViewById(R.id.termGlossaryView);
+        wordTextView = (TextView) rootView.findViewById(R.id.termWordView);
+        resultCountView = (TextView) rootView.findViewById(R.id.result_count);
+        termGlossaryView = (TextView) rootView.findViewById(R.id.termGlossaryView);
         wv = (WebView) rootView.findViewById(R.id.webViewTerm);
+        Bundle args = getArguments();
+        Log.v("resultIndex",String.valueOf(args.containsKey("resultIndex")));
+        if(args.containsKey("resultIndex")){
+            hasResult = true;
+            int resultIndex = args.getInt("resultIndex");
+            //Get the result at the right place in the results list
+            List<Result> resultList = globals.getResults();
+            Result result = resultList.get(resultIndex);
+            /**
+             * idTerm is the id of the term, it is used to perform a get request
+             * to fetch all info on selected term
+             */
+            idTerm = result.getId_term();
+            /**
+             * idWord is the word that the user selected and is displayed at
+             * the top of the screen
+             */
+            String word = result.getWord();
+            /**
+             * dictCode is the code of the glossary that
+             * the selected term belongs to
+             */
+            String dictCode = result.getDictionary_code();
 
+            //Fetch glossary name of selected term
+            ArrayList<ArrayList<String>> glossaries = globals.getLoc_dictionaries();
+            int dictCodeIndex = glossaries.get(0).indexOf(dictCode);
+            /**
+             * glossaryName is the name of the glossary that
+             * the selected term belongs to
+             */
+            String glossaryName = glossaries.get(1).get(dictCodeIndex);
+            //Set header text
+            wordTextView.setText(word);
+            //Set results count
+            resultCountView.setText(String.valueOf(resultIndex+1) + " / " + String.valueOf(resultList.size()));
+            termGlossaryView.setText(glossaryName);
+        }
+        else{
+            hasResult = false;
+            wordTextView.setVisibility(View.INVISIBLE);
+            //Set results count
+            resultCountView.setVisibility(View.INVISIBLE);
+            termGlossaryView.setVisibility(View.INVISIBLE);
+            idTerm = args.getString("TermID");
+        }
+        getTermResult(idTerm);
 
+        return rootView;
+    }
 
-        //Get the result at the right place in the results list
-        List<Result> resultList = globals.getResults();
-        Result result = resultList.get(resultIndex);
-        /**
-         * idTerm is the id of the term, it is used to perform a get request
-         * to fetch all info on selected term
-         */
-        String idTerm = result.getId_term();
+    public void setupBaseInfo(TermResult[] tResult){
         /**
          * idWord is the word that the user selected and is displayed at
          * the top of the screen
          */
-        String word = result.getWord();
+        String word = tResult[0].getWords()[0].getWord();
         /**
          * dictCode is the code of the glossary that
          * the selected term belongs to
          */
-        String dictCode = result.getDictionary_code();
-
+        String dictCode = tResult[0].getDictCode();
 
         //Fetch glossary name of selected term
         ArrayList<ArrayList<String>> glossaries = globals.getLoc_dictionaries();
@@ -77,19 +121,13 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
          * the selected term belongs to
          */
         String glossaryName = glossaries.get(1).get(dictCodeIndex);
-
-
-
         //Set header text
         wordTextView.setText(word);
+        wordTextView.setVisibility(View.VISIBLE);
         //Set results count
-        resultCountView.setText(String.valueOf(resultIndex+1) + " / " + String.valueOf(resultList.size()));
         termGlossaryView.setText(glossaryName);
-        getTermResult(idTerm);
-
-        return rootView;
+        termGlossaryView.setVisibility(View.VISIBLE);
     }
-
 
 
 
@@ -99,9 +137,9 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
         String wordHTML = initialiseHtmlStyle();
         String sbr_refsHTML = "";
         String einnig_refsHTML = "";
-        TermResult.Term.Word[] termNames = termResult[0].term.words;
-        TermResult.Term.Sbr[] termSamanber = termResult[0].term.sbr;
-        TermResult.Term.Einnig[] termEinnig = termResult[0].term.einnig;
+        TermResult.Term.Word[] termNames = termResult[0].getWords();
+        TermResult.Term.Sbr[] termSamanber = termResult[0].getSbr();
+        TermResult.Term.Einnig[] termEinnig = termResult[0].getEinnig();
         if(termNames[0] != null){
             wordHTML +="<div id=\"container\">";
             for(TermResult.Term.Word word: termNames){
@@ -132,10 +170,10 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
      */
     private String addEinnig(TermResult.Term.Einnig einnig){
         String einnig_refsHTML = "<br><i>"+getString(R.string.word_einnig)+"</i> ";
-        if(einnig.refs[0] != null){
-            for(TermResult.Term.Einnig.Refs ref : einnig.refs){
+        if(einnig.getRefs()[0] != null){
+            for(TermResult.Term.Einnig.Refs ref : einnig.getRefs()){
                 //get language string with index of language name in array languages
-                einnig_refsHTML += ref.word +" - " +getLanguage(ref.lang_code);
+                einnig_refsHTML += ref.getWord() +" - " +getLanguage(ref.getLangCode());
                 einnig_refsHTML += ", ";
             }
         }
@@ -150,10 +188,10 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
      */
     private String addSamanber(TermResult.Term.Sbr sbr){
         String sbr_refsHTML = "<br><i>"+getString(R.string.word_sbr)+"</i> ";
-        if(sbr.refs[0] != null){
-            for(TermResult.Term.Sbr.Refs ref: sbr.refs){
+        if(sbr.getRefs()[0] != null){
+            for(TermResult.Term.Sbr.Refs ref: sbr.getRefs()){
                 //get language string with index of language name in array languages
-                sbr_refsHTML += ref.word +" - " + getLanguage(ref.lang_code);
+                sbr_refsHTML += ref.getWord() +" - " + getLanguage(ref.getLangCode());
                 sbr_refsHTML += ", ";
             }
             sbr_refsHTML = sbr_refsHTML.substring(0,sbr_refsHTML.length()-2)+"</div>";
@@ -169,59 +207,59 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
     private String addWord(TermResult.Term.Word word){
         String synonymHTML = "";
         String wordHTML = "<div id=\"container\"><div id=\"textBlock\">" +
-                "<b><h3>"+word.word + " - " +
-                getLanguage(word.lang_code) + //language of term fetched
+                "<b><h3>"+word.getWord() + " - " +
+                getLanguage(word.getLangCode()) + //language of term fetched
                 "</h3></b>";
 
         wordHTML += "<p>";
-        if(hasSynParent(word)){
+        if(word.hasSynParent()){
             wordHTML+="<div id=\"word\">";
         }
 
-        if(word.abbreviation != null){
+        if(word.getAbbreviation() != null){
             wordHTML += "<b>"+getString(R.string.word_abbreviation)+"</b> "+ word.abbreviation + "<br>";
         }
-        if(word.definition != null){
+        if(word.getDefinition() != null){
             wordHTML += "<b>"+getString(R.string.word_definition)+"</b> "+ word.definition + "<br>";
         }
-        if(word.dialect != null){
+        if(word.getDialect() != null){
             wordHTML += "<b>"+getString(R.string.word_dialect)+"</b> " + word.dialect + "<br>";
 
         }
-        if(word.domain != null){
+        if(word.getDomain() != null){
             wordHTML += "<b>"+getString(R.string.word_domain)+"</b> " +  word.domain + "<br>";
 
         }
-        if(word.example != null) {
+        if(word.getExample() != null) {
             wordHTML += "<b>"+getString(R.string.word_example)+"</b> " +  word.example + "<br>";
         }
-        if(word.explanation != null){
+        if(word.getExplanation() != null){
             wordHTML += "<b>"+getString(R.string.word_explanation)+"</b> "+ word.explanation + "<br>";
         }
-        if(word.othergrammar != null){
+        if(word.getOtherGrammar() != null){
             wordHTML += "<b>"+getString(R.string.word_othergrammar)+"</b> "+ word.othergrammar + "<br>";
         }
-        if(word.synonyms[0] != null){
-            if(hasSynParent(word)){
+        if(word.getSynonyms()[0] != null){
+            if(word.hasSynParent()){
                 synonymHTML += "<div id=\"synonym\"><b>" + getString(R.string.word_synyonym) + " </b>";
             }else{
                 synonymHTML += "<div id=\"synonym\" style=\"color:white;padding:0px;background-color:#616161;margin-top:0px;\"><b>" + getString(R.string.word_synyonym) + " </b>";
             }
 
-            for(TermResult.Term.Word.Synonym synonym: word.synonyms){
+            for(TermResult.Term.Word.Synonym synonym: word.getSynonyms()){
 
                 synonymHTML += "<div id=\"word\" style =\"width:80%;margin-top:5px;font-family:'PT serif';color:#616161;\"><b><i>"+synonym.synonym + "</i></b>";
                 String synChild = "";
-                if(synonym.abbreviation != null){
+                if(synonym.getAbbreviation() != null){
                     synChild +=  getString(R.string.word_abbreviation)+" " + synonym.abbreviation+ "<br>";
                 }
-                if(synonym.dialect != null){
+                if(synonym.getDialect() != null){
                     synChild +=  getString(R.string.word_dialect)+" " + synonym.dialect + "<br>";
                 }
-                if(synonym.pronunciation != null){
+                if(synonym.getPronunciation() != null){
                     synChild += getString(R.string.word_pronunciation)+" " + synonym.pronunciation + "<br>";
                 }
-                if(synonym.othergrammar != null){
+                if(synonym.getOtherGrammer() != null){
                     synChild += getString(R.string.word_othergrammar)+" " + synonym.othergrammar + "<br>";
                 }
 
@@ -238,17 +276,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
     }
 
 
-    /**
-     * This method checks if the word has
-     * synonym parent
-     * @param word the word
-     * @return true if it has,else false
-     */
-    private boolean hasSynParent(TermResult.Term.Word word){
-        return (word.abbreviation != null || word.definition != null || word.dialect != null
-                || word.domain != null|| word.example != null || word.explanation != null
-                || word.othergrammar != null);
-    }
+
 
 
     /**
@@ -293,12 +321,16 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
 
 
 
+
     /**
      * real javadoc will be in final class-see
      * @param tResult the term result from the api
      */
     @Override
     public void onTermResultObtained(TermResult[] tResult){
+        if(!hasResult){
+            setupBaseInfo(tResult);
+        }
         setupWebView(tResult);
     }
 

@@ -134,6 +134,7 @@ public class ResultsAdapter extends ArrayAdapter<Result> {
     }
 
 
+
     /**
      * A method that set's up a new viewholder
      * @param view the view that the view holder is set up from

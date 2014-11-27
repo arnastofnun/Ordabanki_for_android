@@ -10,6 +10,8 @@ import android.view.View;
 
 import com.example.cthulhu.ordabankiforandroid.adapters.ResultPagerAdapter;
 
+import java.util.List;
+
 /**
  * ResultInfo displays more info when result has been selected
  *
@@ -23,6 +25,7 @@ import com.example.cthulhu.ordabankiforandroid.adapters.ResultPagerAdapter;
 
 public class ResultInfo extends FragmentActivity {
     int resultIndex;
+    static String termID;
 
 
 
@@ -42,15 +45,33 @@ public class ResultInfo extends FragmentActivity {
         PagerAdapter resultPagerAdapter;
         ViewPager resultPager;
         Bundle extras = getIntent().getExtras();
-        resultIndex = extras.getInt("selectedResultIndex");
         resultPager = (ViewPager) findViewById(R.id.result_pager);
         resultPagerAdapter = new ResultPagerAdapter(getSupportFragmentManager());
-        resultPager.setAdapter(resultPagerAdapter);
-        resultPager.setCurrentItem(resultIndex);
+        if(extras.containsKey("selectedResultIndex")) {
+            resultIndex = extras.getInt("selectedResultIndex");
+            resultPager.setAdapter(resultPagerAdapter);
+            resultPager.setCurrentItem(resultIndex);
+        }
+        else if(extras.containsKey("termID")){
+            termID = extras.getString("termID");
+            resultPager.setAdapter(resultPagerAdapter);
+            resultPager.setCurrentItem(0);
+        }
+    }
 
+    public static String getTermId(){
+        return termID;
+    }
 
-
-
+    public static int getPageCount(){
+        if(getTermId() != null){
+            return 1;
+        }
+        else{
+            Globals globals = (Globals) Globals.getContext();
+            List<Result> resultList = globals.getResults();
+            return resultList.size();
+        }
     }
 
     /**

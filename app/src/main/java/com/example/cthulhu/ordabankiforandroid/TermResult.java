@@ -137,6 +137,16 @@ public class TermResult {
                 return synonyms;
             }
 
+            /**
+             * This method checks if the word has
+             * synonym parent
+             * @return true if it has,else false
+             */
+            public boolean hasSynParent(){
+                return (abbreviation != null || definition != null || dialect != null
+                        || domain != null|| example != null || explanation != null
+                        || othergrammar != null);
+            }
 
         }
 
@@ -224,5 +234,7 @@ public class TermResult {
     public Term.Einnig[] getEinnig(){
         return term.einnig;
     }
+
+
 
 }

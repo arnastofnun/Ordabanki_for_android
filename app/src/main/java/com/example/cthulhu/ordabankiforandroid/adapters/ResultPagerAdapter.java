@@ -3,12 +3,10 @@ package com.example.cthulhu.ordabankiforandroid.adapters;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
-import com.example.cthulhu.ordabankiforandroid.Globals;
-import com.example.cthulhu.ordabankiforandroid.Result;
+import com.example.cthulhu.ordabankiforandroid.ResultInfo;
 import com.example.cthulhu.ordabankiforandroid.ResultsInfoFragment;
-
-import java.util.List;
 
 /**
  * This adapter handles the switching between
@@ -17,6 +15,7 @@ import java.util.List;
  * @since 23.11.2014.
  */
 public class ResultPagerAdapter extends FragmentStatePagerAdapter {
+
     /**
      * Constructor for the adapter
      * @param fm the fragment manager
@@ -33,14 +32,24 @@ public class ResultPagerAdapter extends FragmentStatePagerAdapter {
      */
     @Override
     public android.support.v4.app.Fragment getItem(int position) {
+        Log.v("position",String.valueOf(position));
         //Create a new results info fragment
         ResultsInfoFragment resultsInfoFragment = new ResultsInfoFragment();
         //Pass the position argument
         Bundle args = new Bundle();
-        args.putInt("resultIndex",position);
+        if(ResultInfo.getTermId() != null){
+            args.putString("TermID",ResultInfo.getTermId());
+        }
+        else{
+            args.putInt("resultIndex",position);
+        }
         resultsInfoFragment.setArguments(args);
         return resultsInfoFragment;
     }
+
+
+
+
 
     /**
      * This method gets the total fragment count
@@ -48,8 +57,6 @@ public class ResultPagerAdapter extends FragmentStatePagerAdapter {
      */
     @Override
     public int getCount() {
-        Globals globals = (Globals) Globals.getContext();
-        List<Result> resultList = globals.getResults();
-        return resultList.size();
+        return ResultInfo.getPageCount();
     }
 }

@@ -61,8 +61,13 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         if(resultList == null){
             Bundle data = getIntent().getExtras();
             searchQuery = data.getString("searchQuery");
-            doWordSearch(searchQuery);
-            doSynonymSearch(searchQuery);
+            if(isInteger(searchQuery)){
+                doTermIdSearch(searchQuery);
+            }
+            else{
+                doWordSearch(searchQuery);
+                doSynonymSearch(searchQuery);
+            }
 
         }
         else{
@@ -72,6 +77,16 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         waitForResults();
 
 
+    }
+
+    /**
+     * This method initiates a term ID search
+     * @param searchQuery the search query to search for
+     */
+    public void doTermIdSearch(String searchQuery){
+        Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
+        intent.putExtra("termID",searchQuery);
+        startActivity(intent);
     }
 
     /**
@@ -263,6 +278,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
 
     }
 
+
     /**
      * A method that combines the results into
      * one array
@@ -283,6 +299,18 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         }
     }
 
+    /**
+     * A method that checks if a string is numerical
+     */
+    public boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch(NumberFormatException e) {
+            return false;
+        }
+        // only got here if we didn't return false
+        return true;
+    }
 
 
 
