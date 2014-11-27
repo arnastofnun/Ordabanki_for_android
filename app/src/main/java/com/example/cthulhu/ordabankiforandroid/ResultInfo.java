@@ -100,6 +100,7 @@ public class ResultInfo extends FragmentActivity {
      * A method that chooses where to go back
      */
     private void chooseBackPath(){
+        super.onBackPressed();
         //If we are doing term search
         if(termID != null){
             //We go back to the search screen
