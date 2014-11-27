@@ -12,8 +12,8 @@ import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.Glossary;
 import com.arnastofnun.idordabanki.Language;
 import com.arnastofnun.idordabanki.LocaleSettings;
-import com.arnastofnun.idordabanki.REST.OrdabankiRestClientUsage;
 import com.arnastofnun.idordabanki.R;
+import com.arnastofnun.idordabanki.REST.OrdabankiRestClientUsage;
 import com.arnastofnun.idordabanki.SearchScreen;
 import com.arnastofnun.idordabanki.interfaces.OnDictionariesObtainedListener;
 import com.arnastofnun.idordabanki.interfaces.OnLanguagesObtainedListener;
@@ -141,14 +141,17 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
             which is added to the glossaries array list
          */
         for (Dictionary dict : dictionaries) {
-            codeList.add(index, dict.getDictCode());
-            dictList.add(index,dict.getDictName());
-            glossary = new Glossary(dict.getDictCode(),dict.getDictName());
-            glossaries.add(index, glossary);
-            index++;
+            if(dict.getDictName() != null && !dict.getDictName().isEmpty()) {
+                codeList.add(index, dict.getDictCode());
+                dictList.add(index, dict.getDictName());
+                glossary = new Glossary(dict.getDictCode(), dict.getDictName());
+                glossaries.add(index, glossary);
+                index++;
+            }
         }
+
         //Add the code list to the 0 index
-        localisedDicts.add(0,codeList);
+        localisedDicts.add(0, codeList);
         //Add the list of dictionary names to the 1 index
         localisedDicts.add(1, dictList);
         //Sort the glossaries in alphabetical order

@@ -3,7 +3,6 @@ package com.arnastofnun.idordabanki.adapters;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
 
 import com.arnastofnun.idordabanki.ResultInfo;
 import com.arnastofnun.idordabanki.ResultsInfoFragment;
@@ -32,7 +31,6 @@ public class ResultPagerAdapter extends FragmentStatePagerAdapter {
      */
     @Override
     public android.support.v4.app.Fragment getItem(int position) {
-        Log.v("position",String.valueOf(position));
         //Create a new results info fragment
         ResultsInfoFragment resultsInfoFragment = new ResultsInfoFragment();
         //Pass the position argument

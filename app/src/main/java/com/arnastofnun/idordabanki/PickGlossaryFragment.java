@@ -125,8 +125,8 @@ public class PickGlossaryFragment extends Fragment {
         //List of glossaries
             Globals g= (Globals) this.getActivity().getApplication();
             glossaryList = new ArrayList<Glossary>();
-            //g = (Globals) this.getActivity().getApplication();
             glossaryList.addAll(g.getDictionaries());
+
 
         //Creating a new glossary adapter
         GlossaryAdapter glossaryAdapter = new GlossaryAdapter(this.getActivity(), R.layout.glossary_list, glossaryList);
