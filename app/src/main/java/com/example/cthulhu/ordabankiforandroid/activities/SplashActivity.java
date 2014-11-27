@@ -290,7 +290,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
              */
             public void run() {
                 Looper.prepare();
-                //Deside end time
+                //Decide end time
                 long endTime = startTime + 2000;
                 long delay = 0;
                 //While we don't get an error

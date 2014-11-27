@@ -197,7 +197,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
              */
             public void run() {
                 Looper.prepare();
-                //Deside end time
+                //Decide end time
                 //While we don't get an error
                 while (!(synonymError && wordError)) {
                     //If dictionaries and languages are obtained

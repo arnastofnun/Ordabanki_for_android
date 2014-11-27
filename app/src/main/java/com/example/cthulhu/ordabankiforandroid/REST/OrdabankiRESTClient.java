@@ -1,9 +1,6 @@
 package com.example.cthulhu.ordabankiforandroid.REST;
 import com.loopj.android.http.*;
 
-//13/10/14.
-
-
 /**
  * <h1>Orðabanki REST Client</h1>
  * <p><A simple REST client to get and post to the orðabanki API/p>
