@@ -226,10 +226,10 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
             wordHTML += "<b>"+getString(R.string.word_dialect)+"</b> " + word.dialect + "<br>";
 
         }
-        if(word.getDomain() != null){
+/*        if(word.getDomain() != null){
             wordHTML += "<b>"+getString(R.string.word_domain)+"</b> " +  word.domain + "<br>";
 
-        }
+        }*/
         if(word.getExample() != null) {
             wordHTML += "<b>"+getString(R.string.word_example)+"</b> " +  word.example + "<br>";
         }
