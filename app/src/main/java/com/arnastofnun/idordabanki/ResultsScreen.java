@@ -248,7 +248,12 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         String searchPreTerm = getResources().getString(R.string.searchpreterm);
         TextView textView = (TextView) findViewById(R.id.resultText);
         int resultsCount = resultList.size();
-        textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery);
+        if(searchQuery!=null){
+            textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery);
+        }else{
+            String topResultWord = resultList.get(0).getWord();
+            textView.setText(resultsCount + " " + searchPreTerm + " " + topResultWord);
+        }
 
         //Creating a new glossary adapter
         ResultsAdapter resultsAdapter = new ResultsAdapter(this, R.layout.results_list, resultList);
