@@ -1,12 +1,18 @@
 package com.arnastofnun.idordabanki.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
+import com.arnastofnun.idordabanki.ConnectionDetector;
+import com.arnastofnun.idordabanki.ConnectionDialogueFragment;
 import com.arnastofnun.idordabanki.Dictionary;
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.Glossary;
@@ -40,7 +46,7 @@ import java.util.List;
  * ------------------------------------------------------------------------------------------
  * @author Karl Ásgeir Geirsson edited 3/11/14 by Bill to implement languages and dictionaries
  */
-public class SplashActivity extends Activity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener {
+public class SplashActivity extends FragmentActivity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener, ConnectionDialogueFragment.ConnectionDialogueListener{
 
     /**
      * localisedLangs is a list of strings that are names of languages
@@ -84,17 +90,23 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
         setContentView(R.layout.activity_splash);
         //Starts the timer
         startTime = System.currentTimeMillis();
-        //check if locale is set
-        isLocaleSet();
-        //Initialize values values
-        dObtained = false;
-        lObtained = false;
-        error =false;
-        //Get the languages
-        getLocalisedLangs();
-        //Get the dictionaries
-        getLocalisedDicts();
-        checkTiming();
+        boolean connected = confirmConnection();
+        if (connected) {
+            //check if locale is set
+            isLocaleSet();
+
+            //Initialize values values
+            dObtained = false;
+            lObtained = false;
+            error =false;
+
+            //Get the languages
+            getLocalisedLangs();
+            //Get the dictionaries
+            getLocalisedDicts();
+
+            checkTiming();
+        }
     }
 
     /**
@@ -103,6 +115,27 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
      * Post: If locale is set it does nothing
      *       If locale is not set it starts the select language activity
      */
+    private boolean confirmConnection(){
+
+            boolean connected = checkConnection();
+            if(!connected){
+                DialogFragment restartQuit = new ConnectionDialogueFragment();
+                restartQuit.show(getFragmentManager(), "NoInternetConnection");
+            }
+        return connected;
+    }
+    public boolean checkConnection(){
+        //check for internet connection
+        ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
+        return cd.isConnectingToInternet();
+    }
+    private void retry(){
+        finish();
+        Intent i = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getBaseContext().getPackageName());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+    }
     private void isLocaleSet(){
         final LocaleSettings localeSettings = new LocaleSettings(this);
         //if no language set in locale go to select language
@@ -167,7 +200,8 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     @Override
     public void onDictionariesFailure (int statusCode){
         error = true;
-        Toast.makeText(getApplicationContext(), "dictionary error", Toast.LENGTH_SHORT).show();
+        //checkConnection();
+        //Toast.makeText(getApplicationContext(), "dictionary error", Toast.LENGTH_SHORT).show();
         //todo handle failure: error message, restart quit options
     }
 
@@ -230,9 +264,11 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     @Override
     public void onLanguagesFailure (int statusCode){
         error= true;
-        Toast.makeText(getApplicationContext(), "languages error", Toast.LENGTH_SHORT).show();
+        //checkConnection();
+        //Toast.makeText(getApplicationContext(), "Database Error: Status Code "+ statusCode, Toast.LENGTH_SHORT).show();
         //todo handle failure: error message, restart quit options
     }
+
 
     /**
      * Written by Bill
@@ -308,6 +344,7 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
                         break;
                     }
                 }
+
                 //Set globals
                 globals.setLanguages(localisedLangs);
                 globals.setDictionaries(glossaries);
@@ -334,5 +371,14 @@ public class SplashActivity extends Activity implements OnDictionariesObtainedLi
     }
 
 
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        retry();
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        finish();
+    }
 }
 
