@@ -136,15 +136,19 @@ public class PickGlossaryFragment extends Fragment {
         listView.setAdapter(glossaryAdapter);
 
         //Button to check all glossaries
-        Button checkallbutton = (Button) rootView.findViewById(R.id.select_all_glossaries);
+        final Button checkallbutton = (Button) rootView.findViewById(R.id.select_all_glossaries);
+
         //Button to uncheck all glossaries
-        Button decheckallbutton = (Button) rootView.findViewById(R.id.deselect_all_glossaries);
+        final Button decheckallbutton = (Button) rootView.findViewById(R.id.deselect_all_glossaries);
+        checkallbutton.setVisibility(View.GONE);
         //On click listener to select all glossaries
-        checkallbutton.setOnClickListener(new View.OnClickListener(){
+        checkallbutton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v){
                checkAllGlossaries();
-
+               checkallbutton.setVisibility(View.GONE);
+               decheckallbutton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -153,6 +157,8 @@ public class PickGlossaryFragment extends Fragment {
             @Override
             public void onClick(View v){
                 decheckAllGlossaries();
+                decheckallbutton.setVisibility(View.GONE);
+                checkallbutton.setVisibility(View.VISIBLE);
             }
         });
 
