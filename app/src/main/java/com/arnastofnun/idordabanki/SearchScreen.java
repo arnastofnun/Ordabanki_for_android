@@ -85,7 +85,9 @@ public class SearchScreen extends FragmentActivity {
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
 
-        checkSearchQuery();
+
+        Intent intent = getIntent();
+        checkSearchQuery(intent);
 
         //Tab titles
         ArrayList<String> tabs = new ArrayList<String>();
@@ -160,13 +162,18 @@ public class SearchScreen extends FragmentActivity {
         });
     }
 
+    @Override
+    public void onNewIntent(Intent intent){
+        checkSearchQuery(intent);
+    }
+
     /**
      * Checks if a search has happened
      * and tries to search
      */
-    private void checkSearchQuery(){
+    private void checkSearchQuery(Intent intent){
         //Check for search query
-        Intent intent = getIntent();
+
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
             //Get the search query
             String query = intent.getStringExtra(SearchManager.QUERY);
