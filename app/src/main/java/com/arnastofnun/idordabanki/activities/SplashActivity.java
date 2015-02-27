@@ -1,15 +1,12 @@
 package com.arnastofnun.idordabanki.activities;
 
-import android.app.Activity;
-import android.app.AlertDialog;
+
 import android.app.DialogFragment;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
 
 import com.arnastofnun.idordabanki.ConnectionDetector;
 import com.arnastofnun.idordabanki.ConnectionDialogueFragment;
@@ -105,7 +102,9 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
             //Get the dictionaries
             getLocalisedDicts();
 
+
             checkTiming();
+
         }
     }
 
@@ -380,5 +379,7 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
     public void onDialogNegativeClick(DialogFragment dialog) {
         finish();
     }
+
+
 }
 

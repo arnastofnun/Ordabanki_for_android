@@ -42,7 +42,6 @@ public class PickGlossaryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         //Load the .xml file for the pick glossary fragment
-
         View rootView = inflater.inflate(R.layout.fragment_pick_glossary,container,false);
             //Display the pick glossary list
             displayListView(rootView);

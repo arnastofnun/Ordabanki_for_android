@@ -55,6 +55,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(R.string.title_activity_results_screen);
         setContentView(R.layout.activity_results_screen);
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();

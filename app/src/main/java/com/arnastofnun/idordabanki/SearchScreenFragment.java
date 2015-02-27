@@ -40,8 +40,10 @@ public class SearchScreenFragment extends Fragment {
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+
         //Inflate the layout
         View rootView = inflater.inflate(R.layout.fragment_search_screen,container,false);
+
 
         //Get the search view and the search manager
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);

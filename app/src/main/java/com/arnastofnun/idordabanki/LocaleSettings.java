@@ -9,6 +9,8 @@ import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
+import com.arnastofnun.idordabanki.activities.SplashActivity;
+
 import java.util.Locale;
 
 /**
@@ -182,7 +184,7 @@ public class LocaleSettings{
         //Set the locale settings to thew new locale
         conf.locale = myLocale;
         //update settings
-        res.updateConfiguration(conf,dm);
+        res.updateConfiguration(conf, dm);
     }
 
     /**
@@ -195,6 +197,13 @@ public class LocaleSettings{
      * @param cl is the class for the activity that should start
      */
     private void setLocale(String lang, Class cl){
+        setLocale(lang);
+        //Start the intent
+        Intent intent = new Intent(context,cl);
+        context.startActivity(intent);
+    }
+
+    private void setLocale(String lang){
         //create new locale
         Locale myLocale = new Locale(lang);
         //Get the configurations
@@ -205,9 +214,6 @@ public class LocaleSettings{
         conf.locale = myLocale;
         //update settings
         res.updateConfiguration(conf,dm);
-        //Start the intent
-        Intent intent = new Intent(context,cl);
-        context.startActivity(intent);
     }
 
 }

@@ -46,6 +46,7 @@ public class SearchScreen extends FragmentActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig){
         super.onConfigurationChanged(newConfig);
+
     }
 
     /**
@@ -80,6 +81,7 @@ public class SearchScreen extends FragmentActivity {
         Globals globals = (Globals) Globals.getContext();
         globals.setResults(null);
         //Set the content view
+        setTitle(R.string.search_tab);
         setContentView(R.layout.activity_search_screen);
         //Get the current locale
         LocaleSettings localeSettings = new LocaleSettings(this);

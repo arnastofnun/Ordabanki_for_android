@@ -29,6 +29,7 @@ public class AboutActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(R.string.settings_about);
         setContentView(R.layout.activity_about_activity);
         //Make sure it is set in the right language
         LocaleSettings localeSettings = new LocaleSettings(this);

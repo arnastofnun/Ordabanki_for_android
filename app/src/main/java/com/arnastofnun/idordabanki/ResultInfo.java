@@ -44,6 +44,7 @@ public class ResultInfo extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(R.string.title_activity_result_info);
         setContentView(R.layout.activity_result_info);
         PagerAdapter resultPagerAdapter;
         ViewPager resultPager;
