@@ -2,7 +2,6 @@ package com.arnastofnun.idordabanki;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +50,6 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
         termGlossaryView = (TextView) rootView.findViewById(R.id.termGlossaryView);
         wv = (WebView) rootView.findViewById(R.id.webViewTerm);
         Bundle args = getArguments();
-        Log.v("resultIndex",String.valueOf(args.containsKey("resultIndex")));
         if(args.containsKey("resultIndex")){
             hasResult = true;
             int resultIndex = args.getInt("resultIndex");

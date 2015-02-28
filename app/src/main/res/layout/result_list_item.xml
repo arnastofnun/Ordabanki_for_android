@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,6 +8,17 @@
     android:paddingTop="5dp"
     android:background="@color/lightGreen100"
     >
+
+    <TextView
+        android:id="@+id/word"
+        android:layout_width="0dp"
+        android:layout_weight="9"
+        android:paddingLeft="15dp"
+        android:singleLine="false"
+        android:text="Header"
+        android:layout_height="fill_parent"
+        android:textSize="25sp"
+        android:textColor="@color/darkgrey" />
     <LinearLayout
         android:id="@+id/lang_gloss_wrapper"
         android:layout_width="wrap_content"
@@ -43,20 +54,17 @@
 
             />
     </LinearLayout>
-    <TextView
-        android:id="@+id/resultTerm"
+    <ImageView
+        android:id="@+id/indicator"
         android:layout_width="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:gravity="center_vertical"
-        android:paddingLeft="15dp"
-        android:singleLine="false"
-        android:text="Term"
-        android:layout_toLeftOf="@id/lang_gloss_wrapper"
-        android:layout_toStartOf="@id/lang_gloss_wrapper"
-        android:layout_height="fill_parent"
-        android:textSize="25sp"
-        android:textColor="@color/darkgrey" />
+        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        />
 
 
-</RelativeLayout>
+</LinearLayout>

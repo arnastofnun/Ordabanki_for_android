@@ -3,6 +3,9 @@ package com.arnastofnun.idordabanki;
 import android.os.Parcel;
 import android.os.Parcelable;
 */
+
+import java.util.ArrayList;
+
 /**
  * This class is the Result object, which holds
  * important information about the results
@@ -190,8 +193,19 @@ public class Result implements Comparable<Result>{
      *          compares to the result r
      */
     public int compareTo(Result r){
+        Globals globals = (Globals) Globals.getContext();
+        ArrayList<ArrayList<String>> dictionaries = globals.getLoc_dictionaries();
+
         //Compare the words alphabetically
-        return getWord().compareTo(r.getWord());
+        int comp1 = getWord().compareTo(r.getWord());
+        if(comp1 == 0){
+            int gloss_index = dictionaries.get(0).indexOf(getDictionary_code());
+            int gloss_index2 = dictionaries.get(0).indexOf(r.getDictionary_code());
+            return dictionaries.get(1).get(gloss_index).compareTo(dictionaries.get(1).get(gloss_index2));
+        }
+        else {
+            return getWord().compareTo(r.getWord());
+        }
     }
 }
 

@@ -7,16 +7,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.arnastofnun.idordabanki.REST.OrdabankiRestClientUsage;
-import com.arnastofnun.idordabanki.adapters.ResultsAdapter;
+import com.arnastofnun.idordabanki.adapters.ResultListAdapter;
 import com.arnastofnun.idordabanki.interfaces.OnResultObtainedListener;
 import com.arnastofnun.idordabanki.interfaces.OnSynonymResultObtainedListener;
 import com.arnastofnun.idordabanki.jsonHandlers.OrdabankiJsonHandler;
@@ -27,6 +28,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -39,8 +41,10 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     private Globals global = (Globals) Globals.getContext();
 
     private String searchQuery;
-    private ListView listView;
+    private ExpandableListView listView;
     private ArrayList<Result> resultList;
+    private HashMap<String, ArrayList<Result>> resultMap;
+    private ArrayList<String> words;
     private List<SynonymResult> synonymResultList;
     private boolean wordDone = false;
     private boolean synonymDone = false;
@@ -75,12 +79,17 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
 
         }
         else{
+            setHashMap(resultList);
             displayListView();
         }
 
+
         waitForResults();
+    }
 
-
+    @Override
+    protected void onRestart(){
+        displayListView();
     }
 
     /**
@@ -220,6 +229,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                     @Override
                     public void run() {
                         combineResults();
+                        setHashMap(resultList);
                         displayListView();
                     }
                 });
@@ -232,23 +242,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
 
 
 
-
-    /**
-     * This function is supposed to loop through the glossaries and add them to the glossary list.
-     * For now it just puts some test glossaries in.
-     * It also sets an on click listener that displays a toast for now.
-     * It should open a link to the url of the glossary later
-     *
-     * -------------------------------------------------------------------------------------------
-     * Written by Karl Ásgeir Geirsson
-     * @since 09.10.2014
-     */
     private void displayListView(){
-        //Placeholder values for the glossaries
-        //Result result = new Result("lobe", "english", "Medicine");
-        //resultList.add(result);
-        //result = new Result("blade", "english", "Metallurgy");
-        //resultList.add(result);
         String searchPreTerm = getResources().getString(R.string.searchpreterm);
         TextView textView = (TextView) findViewById(R.id.resultText);
         int resultsCount = resultList.size();
@@ -259,28 +253,48 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             textView.setText(resultsCount + " " + searchPreTerm + " " + topResultWord);
         }
 
-        //Creating a new glossary adapter
-        ResultsAdapter resultsAdapter = new ResultsAdapter(this, R.layout.results_list, resultList);
-        final ArrayList<Result> rList = resultList;
-        //Getting the glossary list and setting it's adapter to my custom glossary adapter
-        listView = (ListView) findViewById(R.id.resultsList);
-        listView.setAdapter(resultsAdapter);
+        listView = (ExpandableListView) findViewById(R.id.resultsList);
+        final ExpandableListAdapter listAdapter = new ResultListAdapter(this,resultMap,words);
+        listView.setAdapter(listAdapter);
 
+        //setGroupIndicatorToRight(listView);
+        listView.setGroupIndicator(null);
 
-
-        //Setting the on item click listener to be ready for later use
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                global.setResults(rList);
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                global.setResults(resultList);
                 Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
-                intent.putExtra("selectedResultIndex",position);
+                intent.putExtra("selectedResultIndex",parent.getFlatListPosition(ExpandableListView.getPackedPositionForChild(groupPosition, childPosition)));
                 startActivity(intent);
-                //Toast.makeText(getApplicationContext(), "Clicked on: " + result.getWord(), Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
+
+        listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                if(resultMap.get(words.get(groupPosition)).size() == 1){
+                    global.setResults(resultList);
+                    Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
+                    intent.putExtra("selectedResultIndex",parent.getFlatListPosition(ExpandableListView.getPackedPositionForGroup(groupPosition)));
+                    startActivity(intent);
+                }
+                else{
+                    if(listView.isGroupExpanded(groupPosition)){
+                        listView.collapseGroup(groupPosition);
+                    }
+                    else{
+                        listView.expandGroup(groupPosition);
+                    }
+                }
+
+                return true;
             }
         });
 
     }
+
 
 
     /**
@@ -300,6 +314,26 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 resultList.add(result);
             }
             Collections.sort(resultList);
+        }
+    }
+
+    private void setHashMap(ArrayList<Result> resultlist){
+        /**
+         * My attempt to group together the results
+         */
+        resultMap = new HashMap<String, ArrayList<Result>>();
+        words = new ArrayList<String>();
+        for(int i=0;i<resultList.size();i++) {
+            Result item = resultList.get(i);
+
+            if (!resultMap.containsKey(item.getWord())) {
+                ArrayList<Result> tempList = new ArrayList<>();
+                tempList.add(item);
+                resultMap.put(item.getWord(), tempList);
+                words.add(item.getWord());
+            } else {
+                resultMap.get(item.getWord()).add(item);
+            }
         }
     }
 
