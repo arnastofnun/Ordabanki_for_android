@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -373,6 +372,16 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     }
 
     /**
+     * Handle the back button press
+     */
+    @Override
+    public void onBackPressed() {
+        global.setResults(null);
+        Intent intent = new Intent(this, SearchScreen.class);
+        this.startActivity(intent);
+    }
+
+    /**
      * handles actions when an item in the options menu is clicked
      * Written by Karl Ásgeir Geirsson
      * @param item the clicked item
@@ -399,6 +408,12 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 Settings settings = new Settings(this);
                 //Create a popup menu with settings, that pops from the action button
                 settings.createOptionsPopupMenu(v);
+                return true;
+
+            case android.R.id.home:
+                global.setResults(null);
+                Intent intent = new Intent(this, SearchScreen.class);
+                this.startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
