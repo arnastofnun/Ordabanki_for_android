@@ -324,16 +324,14 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         words = new ArrayList<String>();
         for(int i=0;i<resultList.size();i++) {
             Result item = resultList.get(i);
-            Result nextItem = resultList.get(i);
-            if(!(item.getWord().equals(nextItem.getWord())&&item.getDictionary_code().equals(nextItem.getDictionary_code()))) {
-                if (!resultMap.containsKey(item.getWord())) {
-                    ArrayList<Result> tempList = new ArrayList<>();
-                    tempList.add(item);
-                    resultMap.put(item.getWord(), tempList);
-                    words.add(item.getWord());
-                } else {
-                    resultMap.get(item.getWord()).add(item);
-                }
+
+            if (!resultMap.containsKey(item.getWord())) {
+                ArrayList<Result> tempList = new ArrayList<>();
+                tempList.add(item);
+                resultMap.put(item.getWord(), tempList);
+                words.add(item.getWord());
+            } else {
+                resultMap.get(item.getWord()).add(item);
             }
         }
     }
