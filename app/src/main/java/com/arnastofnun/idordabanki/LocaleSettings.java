@@ -147,7 +147,7 @@ public class LocaleSettings{
     public boolean setLanguageFromPref(Class cl){
         if(status){
             //set the language and start the activity
-            setLocale(language,cl, false);
+            setLocale(language, cl, false);
             return true;
         }
         else return false;
@@ -199,15 +199,16 @@ public class LocaleSettings{
      * @param cl is the class for the activity that should start
      */
     private void setLocale(String lang, Class cl, boolean flag){
+        Intent intent = new Intent(context, cl);
         if(!flag) {
+            //intent started from saved preferences
             setLocale(lang);
             //Start the intent
-            Intent intent = new Intent(context, cl);
             context.startActivity(intent);
         }else{
-            Intent mStartActivity = new Intent(context, cl);
+            //restart app with new preferences
             int mPendingIntentId = 123456;
-            PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId,    mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+            PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
             AlarmManager mgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
             System.exit(0);
