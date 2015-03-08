@@ -31,6 +31,7 @@
             android:name=".activities.SplashActivity"
             android:label="@string/title_activity_splash"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            android:clearTaskOnLaunch="true"
            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

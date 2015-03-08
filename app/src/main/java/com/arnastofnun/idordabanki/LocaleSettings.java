@@ -1,5 +1,7 @@
 package com.arnastofnun.idordabanki;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -105,14 +107,14 @@ public class LocaleSettings{
      * @param lang is the language that should be set
      * @param cl is the activity that should be started
      */
-    public void setLanguage(String lang,Class cl){
+    public void setLanguage(String lang,Class cl, boolean flag){
         //Edit the shared preferences
         SharedPreferences.Editor editor = sharedpref.edit();
         //Set lang as the language and apply changes
         editor.putString("lang",lang);
         editor.apply();
         //Set the locale settings and start the activity
-        setLocale(lang,cl);
+        setLocale(lang,cl, flag);
     }
 
     /**
@@ -145,7 +147,7 @@ public class LocaleSettings{
     public boolean setLanguageFromPref(Class cl){
         if(status){
             //set the language and start the activity
-            setLocale(language,cl);
+            setLocale(language,cl, false);
             return true;
         }
         else return false;
@@ -196,11 +198,20 @@ public class LocaleSettings{
      * @param lang is the language locale string ("en", "is" ...)
      * @param cl is the class for the activity that should start
      */
-    private void setLocale(String lang, Class cl){
-        setLocale(lang);
-        //Start the intent
-        Intent intent = new Intent(context,cl);
-        context.startActivity(intent);
+    private void setLocale(String lang, Class cl, boolean flag){
+        if(!flag) {
+            setLocale(lang);
+            //Start the intent
+            Intent intent = new Intent(context, cl);
+            context.startActivity(intent);
+        }else{
+            Intent mStartActivity = new Intent(context, cl);
+            int mPendingIntentId = 123456;
+            PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId,    mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+            AlarmManager mgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+            System.exit(0);
+        }
     }
 
     private void setLocale(String lang){

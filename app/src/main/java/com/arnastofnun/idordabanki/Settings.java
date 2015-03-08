@@ -147,7 +147,7 @@ public class Settings {
                 if(pos != getCurrentLanguagePosition()) {
                     //Set the language and return to splash screen to load
                     LocaleSettings localeSettings = new LocaleSettings(context);
-                    localeSettings.setLanguage(getLanguageFromPos(pos), SplashActivity.class);
+                    localeSettings.setLanguage(getLanguageFromPos(pos), SplashActivity.class, true);
                 }
             }
         });

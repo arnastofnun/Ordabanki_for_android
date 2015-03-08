@@ -173,21 +173,19 @@ public class PickGlossaryFragment extends Fragment {
         View listitemview;
         //Go through the glossary list
         for(Glossary glossary : glossaryList){
-            //If glossary is checked
-            if(!glossary.isSelected()){
-                //Set the selected status of the glossary
-                glossary.setSelected(true);
-                //Get the correct item in the list
-                listitemview = listView.getChildAt(index);
-                if(listitemview != null) {
-                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                    listitemview.setBackgroundResource(R.color.glossary_selected);
-                    tick.setVisibility(View.VISIBLE);
-                }
+            //Set the selected status of the glossary
+            glossary.setSelected(true);
+            //Get the correct item in the list
+            listitemview = listView.getChildAt(index);
+            if(listitemview != null) {
+                ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
+                listitemview.setBackgroundResource(R.color.glossary_selected);
+                tick.setVisibility(View.VISIBLE);
             }
             index++;
         }
     }
+
 
     /**
      * This method unchecks all glossaries
@@ -199,9 +197,6 @@ public class PickGlossaryFragment extends Fragment {
         View listitemview;
         //Go through the glossary list
         for(Glossary glossary : glossaryList){
-            //If glossary is checked
-            if(glossary.isSelected()){
-                //Set the selected status of the glossary
                 glossary.setSelected(false);
                 //Get the correct item in the list
                 listitemview =  listView.getChildAt(index);
@@ -210,8 +205,6 @@ public class PickGlossaryFragment extends Fragment {
                     listitemview.setBackgroundResource(R.color.glossary_notselected);
                     tick.setVisibility(View.INVISIBLE);
                 }
-
-            }
             index++;
         }
     }
