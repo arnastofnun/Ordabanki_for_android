@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,12 +44,14 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     private ExpandableListView listView;
     private ArrayList<Result> resultList;
     private HashMap<String, ArrayList<Result>> resultMap;
+    private HashMap<String, ArrayList<SynonymResult>> synMap;
     private ArrayList<String> words;
-    private List<SynonymResult> synonymResultList;
+    private ArrayList<SynonymResult> synonymResultList;
     private boolean wordDone = false;
     private boolean synonymDone = false;
     private boolean wordError = false;
     private boolean synonymError = false;
+    private int searchMode;
 
     /**
      * Takes search term from intent and passes to Rest client
@@ -64,21 +67,33 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         localeSettings.setCurrLocaleFromPrefs();
 
 
+
         resultList = global.getResults();
         if(resultList == null){
             Bundle data = getIntent().getExtras();
+            searchMode = data.getInt("searchMode");
+            Log.i("resSearchMode", Integer.toString(searchMode));
             searchQuery = data.getString("searchQuery");
             if(isInteger(searchQuery)){
                 doTermIdSearch(searchQuery);
-            }
-            else{
-                doWordSearch(searchQuery);
-                doSynonymSearch(searchQuery);
-            }
+            }else{
+                switch(searchMode) {
+                    case 0:
+                        doWordSearch(searchQuery);
+                        doSynonymSearch(searchQuery);
+                        break;
 
-        }
-        else{
-            setHashMap(resultList);
+                    case 1:
+                        doWordSearch(searchQuery);
+                        break;
+
+                    case 2:
+                        doSynonymSearch(searchQuery);
+                        break;
+                }
+            }
+        }else{
+            setHashMap();
             displayListView();
         }
 
@@ -125,7 +140,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      */
     @Override
     public void onResultObtained(Result[] resultArr){
-        ArrayList<Result> rList = new ArrayList<Result>(Arrays.asList(resultArr));
+        ArrayList<Result> rList = new ArrayList<>(Arrays.asList(resultArr));
         Collections.sort(rList);
         resultList = rList;
         wordDone = true;
@@ -177,7 +192,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      */
     @Override
     public void onSynonymResultObtained(SynonymResult[] sResult){
-        List<SynonymResult> sList = Arrays.asList(sResult);
+        ArrayList<SynonymResult> sList = new ArrayList<>(Arrays.asList(sResult));
         Collections.sort(sList);
         synonymResultList = sList;
         synonymDone = true;
@@ -211,13 +226,38 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 Looper.prepare();
                 //Decide end time
                 //While we don't get an error
-                while (!(synonymError && wordError)) {
-                    //If dictionaries and languages are obtained
-                    if (wordDone && synonymDone) {
-                        break;
+                switch (searchMode) {
+                    case 0:
+                        while (!(synonymError && wordError)) {
+                        //If dictionaries and languages are obtained
+                        if (wordDone && synonymDone) {
+                            break;
+                        }
                     }
-                }
+                    break;
 
+                    case 1:
+                        while (!wordError) {
+                            //If dictionaries and languages are obtained
+                            if (wordDone) {
+                                break;
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        while (!synonymError) {
+                        //If dictionaries and languages are obtained
+                        if (synonymDone) {
+                            break;
+                        }
+                    }
+                    break;
+
+                    default:
+                        //wtf??
+                        break;
+                }
                 //Create a new handler to run after the delay in the main thread
                 Handler mainHandler = new Handler(ResultsScreen.this.getMainLooper());
                 mainHandler.post(new Runnable() {
@@ -227,8 +267,10 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                      */
                     @Override
                     public void run() {
+                    if(searchMode==0){
                         combineResults();
-                        setHashMap(resultList);
+                    }
+                        setHashMap();
                         displayListView();
                     }
                 });
@@ -316,24 +358,43 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         }
     }
 
-    private void setHashMap(ArrayList<Result> resultlist){
+    private void setHashMap(){
         /**
          * My attempt to group together the results
          */
-        resultMap = new HashMap<String, ArrayList<Result>>();
-        words = new ArrayList<String>();
-        for(int i=0;i<resultList.size();i++) {
-            Result item = resultList.get(i);
+        words = new ArrayList<>();
+        if(searchMode==2) {
+            synMap = new HashMap<String, ArrayList<SynonymResult>>();
+            for(int i=0;i<synonymResultList.size();i++) {
+                SynonymResult item = synonymResultList.get(i);
 
-            if (!resultMap.containsKey(item.getWord())) {
-                ArrayList<Result> tempList = new ArrayList<>();
-                tempList.add(item);
-                resultMap.put(item.getWord(), tempList);
-                words.add(item.getWord());
-            } else {
-                resultMap.get(item.getWord()).add(item);
+                if (!synMap.containsKey(item.getWord())) {
+                    ArrayList<SynonymResult> tempList = new ArrayList<>();
+                    tempList.add(item);
+                    synMap.put(item.getWord(), tempList);
+                    words.add(item.getWord());
+                } else {
+                    synMap.get(item.getWord()).add(item);
+                }
+            }
+        }else{
+            resultMap = new HashMap<String, ArrayList<Result>>();
+            for(int i=0;i<resultList.size();i++) {
+                Result item = resultList.get(i);
+
+                if (!resultMap.containsKey(item.getWord())) {
+                    ArrayList<Result> tempList = new ArrayList<>();
+                    tempList.add(item);
+                    resultMap.put(item.getWord(), tempList);
+                    words.add(item.getWord());
+                } else {
+                    resultMap.get(item.getWord()).add(item);
+                }
             }
         }
+
+
+
     }
 
     /**

@@ -9,10 +9,13 @@ import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.arnastofnun.idordabanki.adapters.TabsPagerAdapter;
@@ -39,6 +42,7 @@ public class SearchScreen extends FragmentActivity {
     *   resultList: list of search results
     */
     private ViewPager viewPager;
+    private int searchMode;
 
     /**
      * @param newConfig sets newconfigurations
@@ -99,6 +103,9 @@ public class SearchScreen extends FragmentActivity {
 
         //Setup the viewPager
         setupViewPager(tabs);
+
+        //set search mode to terms and synonyms default
+        searchMode = 0;
 
 
         //Disable the homebutton on the action bar
@@ -229,8 +236,8 @@ public class SearchScreen extends FragmentActivity {
         Boolean allowsearch = true;
         //Create the Intent
         //todo make intent go to term results screen if search term is numeric
-
         Intent intent = new Intent(this, ResultsScreen.class);
+
 
         if (searchQuery.equals("")) {
             allowsearch = false;
@@ -259,8 +266,12 @@ public class SearchScreen extends FragmentActivity {
         }
 
         if (allowsearch) {
+            setSearchMode();
+            Log.i("SearchMode", Integer.toString(searchMode));
             intent.putExtra("searchQuery", searchQuery);
+            intent.putExtra("searchMode", searchMode);
             this.startActivity(intent);
+
         }
     }
 
@@ -336,6 +347,27 @@ public class SearchScreen extends FragmentActivity {
         }
         return super.onOptionsItemSelected(item);
 
+    }
+
+   public void setSearchMode() {
+       RadioGroup optionsGroup = (RadioGroup)findViewById (R.id.optionsGroup);
+       int checked = optionsGroup.getCheckedRadioButtonId();
+
+        // Check which radio button is active
+        switch(checked) {
+            case R.id.radioButton:
+                    //terms and syns
+                    searchMode = 0;
+                    break;
+            case R.id.radioButton2:
+                   //terms only
+                    searchMode = 1;
+                    break;
+            case R.id.radioButton3:
+                    //synonyms only
+                    searchMode = 2;
+                    break;
+        }
     }
 
 }
