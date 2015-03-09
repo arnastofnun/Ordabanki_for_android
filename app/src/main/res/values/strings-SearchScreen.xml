@@ -8,6 +8,9 @@
     <string name="no_glossary_picked">You have to pick at least one glossary</string>
     <string name="ast_char_limit">You have to type in at least two other characters when using *</string>
     <string name="connection_error">Connection Error. Try again.</string>
+    <string name="combined_search">Combined search</string>
+    <string name="term_only_search">Terms only</string>
+    <string name="synonym_only_search">Synonyms only</string>
 
     <!--Strings used in the pick glossaries tab-->
     <string name="pick_glossary_tab">Glossaries</string>

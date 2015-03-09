@@ -8,6 +8,9 @@
     <string name="no_glossary_picked"> Du skal vælge en ordbog </string>
     <string name="ast_char_limit"> Du skal indtaste mindst to andre tegn, når du bruger * </string>
     <string name="connection_error"> Connection Error. Prøv igen. </string>
+    <string name="combined_search">Kombineret søgning</string>
+    <string name="term_only_search">Kun udtryk</string>
+    <string name="synonym_only_search">Kun synonym</string>
 
 
     <!--Strings used in the pick glossaries tab-->

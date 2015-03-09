@@ -8,7 +8,9 @@
     <string name="no_glossary_picked">Þú verður að velja að minnsta kosti eitt orðasafn</string>
     <string name="ast_char_limit">Þú þarft að nota a.m.k. tvo stafi með *</string>
     <string name="connection_error">Sambandsslit. Reyndu aftur.</string>
-
+    <string name="combined_search">Sameinuð leit</string>
+    <string name="term_only_search">Aðeins hugtök</string>
+    <string name="synonym_only_search">Aðeins samheiti</string>
 
     <!--Strings used in the pick glossaries tab-->
     <string name="pick_glossary_tab">Orðasöfn</string>

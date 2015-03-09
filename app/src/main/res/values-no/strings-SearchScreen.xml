@@ -10,6 +10,9 @@
     <string name="no_glossary_picked">Du må velge minst en ordliste</string>
     <string name="ast_char_limit">Du må skrive inn minst to andre tegn når du bruker *</string>
     <string name="connection_error">Tilkoblingsfeil. Prøv igjen.</string>
+    <string name="combined_search">Kombinert søk</string>
+    <string name="term_only_search">Bare termer</string>
+    <string name="synonym_only_search">Bare synonymer</string>
 
     <!--Strings used in the pick glossaries tab-->
     <string name="pick_glossary_tab">Ordlister</string>
