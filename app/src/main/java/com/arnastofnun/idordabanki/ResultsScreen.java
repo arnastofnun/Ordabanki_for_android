@@ -277,7 +277,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         int resultsCount = resultList.size();
         if(searchQuery!=null){
             textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery);
-            searchString = searchQuery;
         }else {
             searchString = getIntent().getExtras().getString("searchString");
             textView.setText(resultsCount + " " + searchPreTerm + " " + searchString);
