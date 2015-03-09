@@ -50,7 +50,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     private boolean synonymError = false;
     //Holds the search mode
     private int searchMode;
-
+    private String searchString;
     /**
      * Takes search term from intent and passes to Rest client
      * Bill
@@ -277,10 +277,12 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         int resultsCount = resultList.size();
         if(searchQuery!=null){
             textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery);
-        }else{
-            String topResultWord = resultList.get(0).getWord();
-            textView.setText(resultsCount + " " + searchPreTerm + " " + topResultWord);
+            searchString = searchQuery;
+        }else {
+            searchString = getIntent().getExtras().getString("searchString");
+            textView.setText(resultsCount + " " + searchPreTerm + " " + searchString);
         }
+
 
         //Find the list view
         listView = (ExpandableListView) findViewById(R.id.resultsList);
@@ -331,6 +333,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                     global.setResults(resultList);
                     Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
                     intent.putExtra("selectedResultIndex",parent.getFlatListPosition(ExpandableListView.getPackedPositionForGroup(groupPosition)));
+                    intent.putExtra("searchQuery",searchQuery);
                     startActivity(intent);
                 }
                 else{

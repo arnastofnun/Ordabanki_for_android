@@ -127,6 +127,8 @@ public class ResultInfo extends FragmentActivity {
         else{
             //We go back to the results
             Intent intent = new Intent(this, ResultsScreen.class);
+            Bundle extras = getIntent().getExtras();
+            intent.putExtra("searchString",extras.getString("searchQuery"));
             this.startActivity(intent);
         }
     }
