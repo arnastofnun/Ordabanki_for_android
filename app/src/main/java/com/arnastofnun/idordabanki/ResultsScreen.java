@@ -332,7 +332,11 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                     global.setResults(resultList);
                     Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
                     intent.putExtra("selectedResultIndex",parent.getFlatListPosition(ExpandableListView.getPackedPositionForGroup(groupPosition)));
-                    intent.putExtra("searchQuery",searchQuery);
+                    if(searchQuery != null){
+                        intent.putExtra("searchQuery",searchQuery);
+                    }else{
+                        intent.putExtra("searchQuery",searchString);
+                    }
                     startActivity(intent);
                 }
                 else{
