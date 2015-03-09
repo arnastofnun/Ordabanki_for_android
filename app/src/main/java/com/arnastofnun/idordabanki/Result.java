@@ -195,6 +195,7 @@ public class Result implements Comparable<Result>{
     public int compareTo(Result r){
         Globals globals = (Globals) Globals.getContext();
         ArrayList<ArrayList<String>> dictionaries = globals.getLoc_dictionaries();
+        ArrayList<ArrayList<String>> languages = globals.getLanguages();
 
         //Compare the words alphabetically
         int comp1 = getWord().compareTo(r.getWord());
@@ -202,11 +203,16 @@ public class Result implements Comparable<Result>{
         if(comp1 == 0){
             int gloss_index = dictionaries.get(0).indexOf(getDictionary_code());
             int gloss_index2 = dictionaries.get(0).indexOf(r.getDictionary_code());
-            return dictionaries.get(1).get(gloss_index).compareTo(dictionaries.get(1).get(gloss_index2));
+            int comp2 = dictionaries.get(1).get(gloss_index).compareTo(dictionaries.get(1).get(gloss_index2));
+            if(comp2 == 0){
+                int lang_index = languages.get(0).indexOf(getLanguage_code());
+                int lang_index2 = languages.get(0).indexOf(r.getLanguage_code());
+                return languages.get(1).get(lang_index).compareTo(languages.get(1).get(lang_index2));
+            }
+            else return comp2;
         }
-        else {
-            return getWord().compareTo(r.getWord());
-        }
+        else return comp1;
+
     }
 }
 

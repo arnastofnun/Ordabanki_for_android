@@ -97,15 +97,18 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
             lObtained = false;
             error =false;
 
-            //Get the languages
-            getLocalisedLangs();
-            //Get the dictionaries
-            getLocalisedDicts();
-
-
-            checkTiming();
+            getLocalizedStuff();
+            Thread waitingThread = setupWaitingThread();
+            waitingThread.start();
 
         }
+    }
+
+    public void getLocalizedStuff(){
+        //Get the languages
+        getLocalisedLangs();
+        //Get the dictionaries
+        getLocalisedDicts();
     }
 
     /**
@@ -125,7 +128,7 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
     }
     public boolean checkConnection(){
         //check for internet connection
-        ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
+        ConnectionDetector cd = new ConnectionDetector(Globals.getContext());
         return cd.isConnectingToInternet();
     }
     private void retry(){
@@ -158,14 +161,13 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
     @Override
     public void onDictionariesObtained (Dictionary[]dictionaries){
         //Create new glossaries and localizedDicts array lists
-        glossaries = new ArrayList<Glossary>();
-        localisedDicts = new ArrayList<ArrayList<String>>();
+        glossaries = new ArrayList<>();
+        localisedDicts = new ArrayList<>();
         int index = 0;
         //Variables for the for loop
         Glossary glossary;
-        ArrayList<String> codeList = new ArrayList<String>();
-        ArrayList<String> dictList = new ArrayList<String>();
-        //Toast.makeText(getApplicationContext(), "dLoop", Toast.LENGTH_SHORT).show();
+        ArrayList<String> codeList = new ArrayList<>();
+        ArrayList<String> dictList = new ArrayList<>();
         /*
             For each dictionary class add its code
             to the codeList, its name to the dictList and
@@ -212,14 +214,14 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
     @Override
     public void onLanguagesObtained (Language[]languages){
         //Initialize array list
-        localisedLangs = new ArrayList<ArrayList<String>>();
+        localisedLangs = new ArrayList<>();
         //We start on index 2 to save space for the Icelandic and English
         int index = 2;
         //Initialize the code and name list and add 0 and 1 index to them
-        ArrayList<String> codeList = new ArrayList<String>();
+        ArrayList<String> codeList = new ArrayList<>();
         codeList.add(0,null);
         codeList.add(1,null);
-        ArrayList<String> nameList = new ArrayList<String>();
+        ArrayList<String> nameList = new ArrayList<>();
         nameList.add(0,null);
         nameList.add(1,null);
         //Convert the languages array to a list
@@ -316,11 +318,11 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
      *       else it crashes
      * //TODO Handle dictionary and languages errors
      */
-    private void checkTiming(){
+    private Thread setupWaitingThread(){
         //Get the globals
-        final Globals globals = (Globals) getApplicationContext();
+        final Globals globals = (Globals) Globals.getContext();
         //Create a new runnable to run in a new thread
-        Runnable runnable = new Runnable() {
+        return new Thread() {
             /**
              * Written by Bill and Karl
              * Checks if languages and dictionaries have been obtained
@@ -328,18 +330,11 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
              */
             public void run() {
                 Looper.prepare();
-                //Decide end time
-                long endTime = startTime + 2000;
-                long delay = 0;
+
                 //While we don't get an error
                 while (!error) {
                     //If dictionaries and languages are obtained
                     if (dObtained && lObtained) {
-                        //We calculate the remaining delay
-                        long now = System.currentTimeMillis();
-                        if (now < endTime) {
-                            delay = endTime - now;
-                        }
                         break;
                     }
                 }
@@ -350,7 +345,7 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
                 globals.setLocalizedDictionaries(localisedDicts);
                 //Create a new handler to run after the delay in the main thread
                 Handler mainHandler = new Handler(SplashActivity.this.getMainLooper());
-                mainHandler.postDelayed(new Runnable() {
+                mainHandler.post(new Runnable() {
                     /**
                      * Written by Karl Ásgeir Geirsson
                      * post: The search screen has been opened in the correct language
@@ -360,12 +355,9 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
                         LocaleSettings localeSettings = new LocaleSettings(SplashActivity.this);
                         localeSettings.setLanguageFromPref(SearchScreen.class);
                     }
-                }, delay);
+                });
             }
         };
-        //Start a new thread with the runnable
-        Thread timingThread = new Thread(runnable);
-        timingThread.start();
 
     }
 

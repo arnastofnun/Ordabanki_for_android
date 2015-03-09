@@ -4,40 +4,50 @@
     android:layout_height="match_parent"
     tools:context="com.arnastofnun.idordabanki.activities.SelectLanguageActivity"
     android:padding="20dp"
+    android:weightSum="1"
     android:orientation="vertical"
     android:background="@color/lightGreen100">
-
-    <ImageView
-        android:contentDescription="@string/splashimage"
-        android:id="@+id/SelectLanguageActivity_logo"
-        android:layout_width="140dp"
-        android:layout_height="20dp"
-        android:layout_weight="0.3"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/splash"/>
-
-    <TextView
-        android:id="@+id/SelectLanguageActivity_welcometext"
-        android:text="@string/welcometext"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-
         android:layout_height="0dp"
-        android:textColor="@color/darkgrey"
-        android:layout_weight="0.2"
-        android:textSize="43dp"
-        android:gravity="center"
-        android:typeface="normal"
-        android:layout_gravity="center_horizontal"
-        android:textStyle="bold|normal"
-        android:textIsSelectable="false" />
+        android:layout_weight="0.5"
+        android:weightSum="0.8"
+        android:id="@+id/logo_wrapper">
+        <ImageView
+            android:contentDescription="@string/splashimage"
+            android:id="@+id/SelectLanguageActivity_logo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/splash"/>
+
+        <TextView
+            android:layout_below="@id/SelectLanguageActivity_logo"
+            android:id="@+id/SelectLanguageActivity_welcometext"
+            android:text="@string/welcometext"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:textColor="@color/darkgrey"
+            android:textSize="43sp"
+            android:gravity="center"
+            android:typeface="normal"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|normal"
+            android:textIsSelectable="false"
+            android:layout_marginBottom="2dp"/>
+    </LinearLayout>
 
     <ScrollView
+        android:layout_weight="0.3"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:id="@+id/scrollView"
-        android:layout_weight="0.3"
         android:fadeScrollbars="false">
 
         <LinearLayout

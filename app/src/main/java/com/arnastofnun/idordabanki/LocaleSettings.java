@@ -49,7 +49,7 @@ public class LocaleSettings{
         super();
         //Set variables
         this.context = context;
-        this.sharedpref = PreferenceManager.getDefaultSharedPreferences(context);
+        this.sharedpref = PreferenceManager.getDefaultSharedPreferences(Globals.getContext());
         this.status = sharedpref.contains("lang");
         this.language = getLanguageFromPref();
         statLang =this.language;
