@@ -48,7 +48,12 @@ public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse){
-        activity.onSynonymResultFailure(statusCode);
+        if(throwable.getMessage().contains("Unterminated object")){
+            activity.onSynonymResultFailure(0);
+        }
+        else {
+            activity.onSynonymResultFailure(statusCode);
+        }
     }
 
     /**
@@ -60,7 +65,12 @@ public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable){
-        activity.onSynonymResultFailure(statusCode);
+        if(throwable.getMessage().contains("Unterminated object")){
+            activity.onSynonymResultFailure(0);
+        }
+        else {
+            activity.onSynonymResultFailure(statusCode);
+        }
     }
 /*    @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBytes, Throwable throwable){
@@ -76,7 +86,12 @@ public class SynonymResultJsonHandler extends JsonHttpResponseHandler{
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse){
-        activity.onSynonymResultFailure(statusCode);
+        if(throwable.getMessage().contains("Unterminated object")){
+            activity.onSynonymResultFailure(0);
+        }
+        else {
+            activity.onSynonymResultFailure(statusCode);
+        }
     }
 
 }

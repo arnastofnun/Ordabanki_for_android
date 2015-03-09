@@ -1,5 +1,6 @@
 package com.arnastofnun.idordabanki;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -11,7 +12,6 @@ import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-import com.arnastofnun.idordabanki.activities.SplashActivity;
 
 import java.util.Locale;
 
@@ -211,7 +211,11 @@ public class LocaleSettings{
             PendingIntent mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
             AlarmManager mgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
-            System.exit(0);
+
+            Activity activity = (Activity) context;
+            activity.finish();
+            System.gc();
+            android.os.Process.killProcess(android.os.Process.myPid());
         }
     }
 

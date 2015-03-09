@@ -2,6 +2,7 @@ package com.arnastofnun.idordabanki.jsonHandlers;
 
 
 
+
 import com.arnastofnun.idordabanki.Result;
 import com.arnastofnun.idordabanki.ResultsScreen;
 import com.google.gson.Gson;
@@ -52,7 +53,12 @@ public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse){
-        activity.onResultFailure(statusCode);
+        if(throwable.getMessage().contains("Unterminated object")){
+            activity.onResultFailure(0);
+        }
+        else {
+            activity.onResultFailure(statusCode);
+        }
     }
 
     /**
@@ -64,7 +70,12 @@ public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable){
-        activity.onResultFailure(statusCode);
+        if(throwable.getMessage().contains("Unterminated object")){
+            activity.onResultFailure(0);
+        }
+        else {
+            activity.onResultFailure(statusCode);
+        }
     }
 /*    @Override
     public void onFailure(int statusCode, Header[] headers, byte[] responseBytes, Throwable throwable){
@@ -80,6 +91,11 @@ public class OrdabankiJsonHandler extends JsonHttpResponseHandler {
      */
     @Override
     public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse){
-        activity.onResultFailure(statusCode);
+        if(throwable.getMessage().contains("Unterminated object")){
+            activity.onResultFailure(0);
+        }
+        else {
+            activity.onResultFailure(statusCode);
+        }
     }
 }
