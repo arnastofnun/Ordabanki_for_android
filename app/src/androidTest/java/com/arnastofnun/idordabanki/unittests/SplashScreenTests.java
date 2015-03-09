@@ -47,14 +47,12 @@ public class SplashScreenTests extends ActivityUnitTestCase<SplashActivity> {
         assertTrue("No connection",splashActivity.checkConnection());
     }
 
-    public void testGetLocalizedStuff(){
-
-    }
-
     /**
      * A method to test the initialize() method
      */
     public void testInitialize() throws Exception{
+        splashActivity.initialize();
+
         Globals globals = (Globals) Globals.getContext();
         assertNotNull("Dictionaries not initialized",globals.getDictionaries());
         assertNotNull("Languages not initialized",globals.getLanguages());

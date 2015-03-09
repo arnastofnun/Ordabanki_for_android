@@ -3,9 +3,8 @@ package com.arnastofnun.idordabanki.activities;
 
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.v4.app.FragmentActivity;
 
 import com.arnastofnun.idordabanki.ConnectionDetector;
@@ -29,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 
 //Basically just waits for two seconds and then starts the next activity
 
@@ -89,27 +89,93 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
         startTime = System.currentTimeMillis();
         boolean connected = confirmConnection();
         if (connected) {
-            //check if locale is set
-            isLocaleSet();
+            initialize();
+        }
+    }
 
+    /**
+     * A method to start the functions
+     */
+    public void initialize(){
+        //check if locale is set
+        isLocaleSet();
+
+
+
+        //Get the localized languages and dictionaries
+        GetLocalisedStuffTask getLocalisedStuffTask = new GetLocalisedStuffTask();
+        getLocalisedStuffTask.execute();
+    }
+
+
+    /**
+     * This is a class that handles getting the localized dictionaries and
+     * languages
+     */
+    private class GetLocalisedStuffTask extends AsyncTask<Void,Integer,Boolean>{
+
+        /**
+         * A method that runs in another thread, not blocking the UI
+         * @param voids - void
+         * @return true
+         */
+        @Override
+        protected Boolean doInBackground(Void ... voids){
+            //While we don't get an error
+            while (!error) {
+                //If dictionaries and languages are obtained
+                if (dObtained && lObtained) {
+                    break;
+                }
+            }
+            return true;
+        }
+
+        /**
+         * A method that is executed before
+         * the background proces begins
+         */
+        @Override
+        protected void onPreExecute(){
             //Initialize values values
             dObtained = false;
             lObtained = false;
             error =false;
 
-            getLocalizedStuff();
-            Thread waitingThread = setupWaitingThread();
-            waitingThread.start();
+            //Get the languages
+            getLocalisedLangs();
+            //Get the dictionaries
+            getLocalisedDicts();
+        }
+
+        /**
+         * A process that updates the progress
+         * of the background progress
+         * @param progress the progress
+         */
+        protected void onProgressUpdate(Integer... progress) {
 
         }
+
+        /**
+         * A method that executes after the background process
+         * is done
+         * @param bool true
+         */
+        @Override
+        protected void onPostExecute(Boolean bool) {
+            //Get the globals
+            final Globals globals = (Globals) Globals.getContext();
+            //Set globals
+            globals.setLanguages(localisedLangs);
+            globals.setDictionaries(glossaries);
+            globals.setLocalizedDictionaries(localisedDicts);
+            LocaleSettings localeSettings = new LocaleSettings(SplashActivity.this);
+            localeSettings.setLanguageFromPref(SearchScreen.class);
+        }
+
     }
 
-    public void getLocalizedStuff(){
-        //Get the languages
-        getLocalisedLangs();
-        //Get the dictionaries
-        getLocalisedDicts();
-    }
 
     /**
      * Written by Karl Ásgeir Geirsson
@@ -306,61 +372,6 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
             e.printStackTrace();
         }
     }
-
-    /**
-     * A class that checks how long the screen has been running
-     * It runs for the time that it takes to get the glossaries and languages or for two seconds
-     * whichever is faster
-     * Written by Bill and Karl
-     * post: If dictionaries and languages were obtained
-     *          Globals for languages, glossaries, and localiseddictionaries have been set
-     *          The search screen has been opened in the correct language
-     *       else it crashes
-     * //TODO Handle dictionary and languages errors
-     */
-    private Thread setupWaitingThread(){
-        //Get the globals
-        final Globals globals = (Globals) Globals.getContext();
-        //Create a new runnable to run in a new thread
-        return new Thread() {
-            /**
-             * Written by Bill and Karl
-             * Checks if languages and dictionaries have been obtained
-             * if so it sets them
-             */
-            public void run() {
-                Looper.prepare();
-
-                //While we don't get an error
-                while (!error) {
-                    //If dictionaries and languages are obtained
-                    if (dObtained && lObtained) {
-                        break;
-                    }
-                }
-
-                //Set globals
-                globals.setLanguages(localisedLangs);
-                globals.setDictionaries(glossaries);
-                globals.setLocalizedDictionaries(localisedDicts);
-                //Create a new handler to run after the delay in the main thread
-                Handler mainHandler = new Handler(SplashActivity.this.getMainLooper());
-                mainHandler.post(new Runnable() {
-                    /**
-                     * Written by Karl Ásgeir Geirsson
-                     * post: The search screen has been opened in the correct language
-                     */
-                    @Override
-                    public void run() {
-                        LocaleSettings localeSettings = new LocaleSettings(SplashActivity.this);
-                        localeSettings.setLanguageFromPref(SearchScreen.class);
-                    }
-                });
-            }
-        };
-
-    }
-
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
