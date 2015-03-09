@@ -37,15 +37,15 @@ package com.arnastofnun.idordabanki;
  * Gson needing the variables to have the same name as json field.
  * @author Bill
  * @since 04.11.2014
- * todo add getters and setters
  */
-
-
 public class TermResult {
     Term term;
 
 
-    
+    /**
+     * A class containing informations about
+     * a term
+     */
     public static class Term{
         String id;
         String dict_code;
@@ -55,6 +55,9 @@ public class TermResult {
         Sbr[] sbr;
         Einnig[] einnig;
 
+        /**
+         * A class containing information about a word
+         */
         public static class Word{
             String id;
             String lang_code;
@@ -68,7 +71,10 @@ public class TermResult {
             String explanation;
             Synonym[] synonyms;
 
-
+            /**
+             * A class containing information
+             * about a synonym
+             */
             public static class Synonym{
                 String fkword;
                 String synonym;

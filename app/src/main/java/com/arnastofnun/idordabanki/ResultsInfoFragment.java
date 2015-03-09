@@ -99,6 +99,10 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
         return rootView;
     }
 
+    /**
+     * A method that sets up the basic info
+     * @param tResult list of term results
+     */
     public void setupBaseInfo(TermResult[] tResult){
         /**
          * idWord is the word that the user selected and is displayed at
@@ -128,9 +132,10 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
     }
 
 
-
-
-
+    /**
+     * A method that sets up the web view
+     * @param termResult a list of term results
+     */
     private void setupWebView(TermResult[] termResult){
         String wordHTML = initialiseHtmlStyle();
         String sbr_refsHTML = "";
@@ -306,7 +311,11 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
     }
 
 
-
+    /**
+     * A method to get the term result for
+     * a term ID
+     * @param idTerm the term ID
+     */
     private void getTermResult(String idTerm){
         TermResultJsonHandler tJsonHandler = new TermResultJsonHandler(this);
         OrdabankiRestClientUsage tClient = new OrdabankiRestClientUsage();
@@ -338,5 +347,6 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
      */
     @Override
     public void onTermResultFailure(int statusCode){
+        //TODO: handle error!
     }
 }

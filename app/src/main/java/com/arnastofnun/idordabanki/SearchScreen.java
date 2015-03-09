@@ -9,12 +9,10 @@ import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -42,7 +40,6 @@ public class SearchScreen extends FragmentActivity {
     *   resultList: list of search results
     */
     private ViewPager viewPager;
-    private int searchMode;
 
     /**
      * @param newConfig sets newconfigurations
@@ -96,16 +93,13 @@ public class SearchScreen extends FragmentActivity {
         checkSearchQuery(intent);
 
         //Tab titles
-        ArrayList<String> tabs = new ArrayList<String>();
+        ArrayList<String> tabs = new ArrayList<>();
         tabs.add(this.getString(R.string.search_tab));
         tabs.add(this.getString(R.string.pick_glossary_tab));
         tabs.add(this.getString(R.string.languages_tab_name));
 
         //Setup the viewPager
         setupViewPager(tabs);
-
-        //set search mode to terms and synonyms default
-        searchMode = 0;
 
 
         //Disable the homebutton on the action bar
@@ -171,6 +165,11 @@ public class SearchScreen extends FragmentActivity {
         });
     }
 
+    /**
+     * A method that runs every
+     * time a new intent comes in
+     * @param intent the intent
+     */
     @Override
     public void onNewIntent(Intent intent){
         checkSearchQuery(intent);
@@ -238,17 +237,18 @@ public class SearchScreen extends FragmentActivity {
         //todo make intent go to term results screen if search term is numeric
         Intent intent = new Intent(this, ResultsScreen.class);
 
-
+        //If the search query is empty
         if (searchQuery.equals("")) {
             allowsearch = false;
             Toast.makeText(this, this.getString(R.string.no_search_term), Toast.LENGTH_LONG).show();
         }
 
-
+        //If no glossary is selected
         if (PickGlossaryFragment.getSelectedGlossaries().isEmpty()) {
             allowsearch = false;
             Toast.makeText(this, this.getString(R.string.no_glossary_picked), Toast.LENGTH_LONG).show();
         }
+        //Check if there are enough letters with the *
         if(searchQuery.contains("*")) {
             int count = 0;
             for(char ch: searchQuery.toCharArray()){
@@ -259,18 +259,17 @@ public class SearchScreen extends FragmentActivity {
                     break;
                 }
             }
+            //We need at least two letters with * to allow search
             if(count < 2) {
                 allowsearch = false;
                 Toast.makeText(this, R.string.ast_char_limit, Toast.LENGTH_LONG).show();
             }
         }
-
+        //Do the search
         if (allowsearch) {
-            setSearchMode();
-            Log.i("SearchMode", Integer.toString(searchMode));
-            intent.putExtra("searchQuery", searchQuery);
-            intent.putExtra("searchMode", searchMode);
-            this.startActivity(intent);
+            intent.putExtra("searchQuery", searchQuery); //Add the search query to the intent
+            intent.putExtra("searchMode", getSearchMode()); //Add the search mode to the intent
+            this.startActivity(intent); //Start the activity
 
         }
     }
@@ -349,24 +348,32 @@ public class SearchScreen extends FragmentActivity {
 
     }
 
-   public void setSearchMode() {
+    /**
+     * A method that returns an integer
+     * indicating what search mode we are in
+     * @return the search mode
+     */
+   public int getSearchMode() {
        RadioGroup optionsGroup = (RadioGroup)findViewById (R.id.optionsGroup);
+       //If we are searching from the action bar, we just use the default search mode
+       if(optionsGroup== null) return 0;
+       //Else
        int checked = optionsGroup.getCheckedRadioButtonId();
 
         // Check which radio button is active
         switch(checked) {
             case R.id.radioButton:
                     //terms and syns
-                    searchMode = 0;
-                    break;
+                    return 0;
             case R.id.radioButton2:
                    //terms only
-                    searchMode = 1;
-                    break;
+                    return 1;
             case R.id.radioButton3:
                     //synonyms only
-                    searchMode = 2;
-                    break;
+                    return 2;
+            default:
+                return 0;
+
         }
     }
 

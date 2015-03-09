@@ -198,6 +198,7 @@ public class Result implements Comparable<Result>{
 
         //Compare the words alphabetically
         int comp1 = getWord().compareTo(r.getWord());
+        //If the words are equal, compare by glossary name
         if(comp1 == 0){
             int gloss_index = dictionaries.get(0).indexOf(getDictionary_code());
             int gloss_index2 = dictionaries.get(0).indexOf(r.getDictionary_code());

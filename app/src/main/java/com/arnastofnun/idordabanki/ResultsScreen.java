@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,18 +36,19 @@ import java.util.HashMap;
  * @since 08.10.2014
  */
 public class ResultsScreen extends Activity implements OnResultObtainedListener, OnSynonymResultObtainedListener {
-    private Globals global = (Globals) Globals.getContext();
-
-    private String searchQuery;
-    private ExpandableListView listView;
-    private ArrayList<Result> resultList;
-    private HashMap<String, ArrayList<Result>> resultMap;
-    private ArrayList<String> words;
-    private ArrayList<SynonymResult> synonymResultList;
+    private Globals global = (Globals) Globals.getContext(); //Get a reference to the globals
+    private String searchQuery; //The search query
+    private ExpandableListView listView; //The list view
+    private ArrayList<Result> resultList; //The list of results
+    private HashMap<String, ArrayList<Result>> resultMap; //A hash map combining results with the same word
+    private ArrayList<String> words; //List of words (headers for the group list items)
+    private ArrayList<SynonymResult> synonymResultList; //List containing the synonym results
+    //Booleans that help with synchronization
     private boolean wordDone = false;
     private boolean synonymDone = false;
     private boolean wordError = false;
     private boolean synonymError = false;
+    //Holds the search mode
     private int searchMode;
 
     /**
@@ -64,17 +64,24 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
 
+        resultList = global.getResults(); //Get the result list from globals
 
-
-        resultList = global.getResults();
+        //If it doesn't exist this is a new search
         if(resultList == null){
+            //Get the data from the intent
             Bundle data = getIntent().getExtras();
-            searchMode = data.getInt("searchMode");
-            Log.i("resSearchMode", Integer.toString(searchMode));
+            //Check if search mode is in the intent
+            if(data.containsKey("searchMode")){
+                searchMode = data.getInt("searchMode");
+            }
+            else searchMode = 0;
             searchQuery = data.getString("searchQuery");
+
+            //If the searchQuery is an integer we go straight to term search
             if(isInteger(searchQuery)){
                 doTermIdSearch(searchQuery);
             }else{
+                //Search in the right search mode
                 switch(searchMode) {
                     case 0:
                         doWordSearch(searchQuery);
@@ -95,14 +102,17 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 }
             }
         }else{
+            //We display the results that we had already gotten
             setHashMap();
             displayListView();
         }
 
-
         waitForResults();
     }
 
+    /**
+     * A method that runs on restart of the activity
+     */
     @Override
     protected void onRestart(){
         displayListView();
@@ -257,8 +267,11 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     }
 
 
-
+    /**
+     * A method that displays the list view
+     */
     private void displayListView(){
+        //Display the number of results
         String searchPreTerm = getResources().getString(R.string.searchpreterm);
         TextView textView = (TextView) findViewById(R.id.resultText);
         int resultsCount = resultList.size();
@@ -269,14 +282,26 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             textView.setText(resultsCount + " " + searchPreTerm + " " + topResultWord);
         }
 
+        //Find the list view
         listView = (ExpandableListView) findViewById(R.id.resultsList);
+
+        //Create and add the adapter to the list view
         final ExpandableListAdapter listAdapter = new ResultListAdapter(this,resultMap,words);
         listView.setAdapter(listAdapter);
 
-        //setGroupIndicatorToRight(listView);
-        listView.setGroupIndicator(null);
+        listView.setGroupIndicator(null); //Hide the automatic indicator
 
+        //An on click listener on each child
         listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            /**
+             * A method that goes to the results info screen on child click
+             * @param parent the parent view
+             * @param v the view of the current child
+             * @param groupPosition the position of the group
+             * @param childPosition the position of the child
+             * @param id the id of the child
+             * @return true
+             */
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 global.setResults(resultList);
@@ -287,16 +312,29 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             }
         });
 
+        //An on click listener on each group
         listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            /**
+             * A method that either goes to the results info screen, if the group only
+             * contains one glossary, else it displays the sublist
+             * @param parent the parent view
+             * @param v the view of the group
+             * @param groupPosition the group position
+             * @param id the id of the group
+             * @return true
+             */
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                //If sublist only has one item
                 if(resultMap.get(words.get(groupPosition)).size() == 1){
+                    //We open the results info screen
                     global.setResults(resultList);
                     Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
                     intent.putExtra("selectedResultIndex",parent.getFlatListPosition(ExpandableListView.getPackedPositionForGroup(groupPosition)));
                     startActivity(intent);
                 }
                 else{
+                    //We expand/collapse the group
                     if(listView.isGroupExpanded(groupPosition)){
                         listView.collapseGroup(groupPosition);
                     }
@@ -333,21 +371,28 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         }
     }
 
+
+    /**
+     * A method that groups items with the same word,
+     * but different glossaries into a hash map
+     * with the word as key, and a list of glossaries as
+     * item
+     */
     private void setHashMap(){
-        /**
-         * My attempt to group together the results
-         */
+        //initialize
         words = new ArrayList<>();
         resultMap = new HashMap<>();
+        //Go through the result list
         for(int i=0;i<resultList.size();i++) {
             Result item = resultList.get(i);
-
+            //If the hash map doesn't contain the word, we need to add it
             if (!resultMap.containsKey(item.getWord())) {
                 ArrayList<Result> tempList = new ArrayList<>();
                 tempList.add(item);
                 resultMap.put(item.getWord(), tempList);
                 words.add(item.getWord());
             } else {
+                //Add to the list
                 resultMap.get(item.getWord()).add(item);
             }
         }

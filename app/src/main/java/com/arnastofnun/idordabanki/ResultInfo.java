@@ -63,10 +63,19 @@ public class ResultInfo extends FragmentActivity {
         }
     }
 
+    /**
+     * a method to get the termID
+     * @return the term ID
+     */
     public static String getTermId(){
         return termID;
     }
 
+    /**
+     * A method to get the total count of pages
+     * in the page viewer
+     * @return the amount of pages
+     */
     public static int getPageCount(){
         if(getTermId() != null){
             return 1;
