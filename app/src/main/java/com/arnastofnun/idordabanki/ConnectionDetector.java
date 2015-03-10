@@ -4,7 +4,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 /**
- * Created by cthulhu on 2/16/15.
+ * Checks if an internet connection is present
+ * @author Bill
  */
 public class ConnectionDetector {
 
@@ -14,6 +15,10 @@ public class ConnectionDetector {
         this._context = context;
     }
 
+    /**
+     *
+     * @return true is connection present, false if not
+     */
     public boolean isConnectingToInternet(){
         ConnectivityManager connectivity = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivity != null)
