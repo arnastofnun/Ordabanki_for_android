@@ -17,6 +17,7 @@ public class Globals extends Application{
     //private int tLangPos = -1; //Keeps the position of the selected target language between searches
     private int sLangPos = -1; //Keeps the position of the selected source language between searches
     private ArrayList<Result> results;
+    private int searchMode = 0;
 
 
     public static Context context;
@@ -37,6 +38,14 @@ public class Globals extends Application{
 
     public void setResults(ArrayList<Result> results){
         this.results = results;
+    }
+
+    public void setSearchMode(int i){
+        this.searchMode = i;
+    }
+
+    public int getSearchMode(){
+        return searchMode;
     }
 
     /**

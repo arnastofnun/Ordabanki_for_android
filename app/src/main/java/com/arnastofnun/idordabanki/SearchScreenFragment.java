@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 import android.widget.SearchView;
 
 
@@ -29,6 +30,7 @@ public class SearchScreenFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
     }
 
     /**
@@ -56,7 +58,48 @@ public class SearchScreenFragment extends Fragment {
         searchView.setQueryRefinementEnabled(true);
 
 
+        searchModeListener(rootView);
+
         return rootView;
+    }
+
+
+    /**
+     * A listener that changes the search mode when
+     * the radio buttons are pressed
+     * @param rootView - the view of the fragment
+     */
+    public void searchModeListener(View rootView){
+        RadioGroup optionsGroup = (RadioGroup) rootView.findViewById(R.id.optionsGroup);
+
+        optionsGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+            public void onCheckedChanged(RadioGroup radioGroup,int id){
+                radioGroup.check(id);
+                int searchMode;
+                // Check which radio button is active
+                switch(id) {
+                    case R.id.radioButton:
+                        //terms and syns
+                        searchMode = 0;
+                        break;
+                    case R.id.radioButton2:
+                        //terms only
+                        searchMode = 1;
+                        break;
+                    case R.id.radioButton3:
+                        //synonyms only
+                        searchMode = 2;
+                        break;
+                    default:
+                        searchMode = 0;
+                        break;
+                }
+
+                Globals globals = (Globals) Globals.getContext();
+
+                globals.setSearchMode(searchMode);
+            }
+        });
     }
 
 

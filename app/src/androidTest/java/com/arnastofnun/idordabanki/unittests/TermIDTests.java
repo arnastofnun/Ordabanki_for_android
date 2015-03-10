@@ -37,6 +37,11 @@ public class TermIDTests extends ActivityUnitTestCase<ResultsScreen> {
 
     }
 
+    public void tearDown() throws Exception{
+        solo.finishOpenedActivities();
+        super.tearDown();
+    }
+
 
     /**
      * Checks if the itInteger method is working

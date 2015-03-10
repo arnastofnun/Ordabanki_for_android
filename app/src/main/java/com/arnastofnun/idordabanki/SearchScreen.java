@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.arnastofnun.idordabanki.adapters.TabsPagerAdapter;
@@ -89,6 +88,8 @@ public class SearchScreen extends FragmentActivity {
         localeSettings.setCurrLocaleFromPrefs();
 
 
+
+
         Intent intent = getIntent();
         checkSearchQuery(intent);
 
@@ -107,6 +108,8 @@ public class SearchScreen extends FragmentActivity {
         if (actionBar != null) {
             actionBar.setHomeButtonEnabled(false);
         }
+
+
 
 
     }
@@ -163,6 +166,7 @@ public class SearchScreen extends FragmentActivity {
             public void onPageScrollStateChanged(int position) {
             }
         });
+
     }
 
     /**
@@ -268,7 +272,6 @@ public class SearchScreen extends FragmentActivity {
         //Do the search
         if (allowsearch) {
             intent.putExtra("searchQuery", searchQuery); //Add the search query to the intent
-            intent.putExtra("searchMode", getSearchMode()); //Add the search mode to the intent
             this.startActivity(intent); //Start the activity
 
         }
@@ -348,33 +351,7 @@ public class SearchScreen extends FragmentActivity {
 
     }
 
-    /**
-     * A method that returns an integer
-     * indicating what search mode we are in
-     * @return the search mode
-     */
-   public int getSearchMode() {
-       RadioGroup optionsGroup = (RadioGroup)findViewById (R.id.optionsGroup);
-       //If we are searching from the action bar, we just use the default search mode
-       if(optionsGroup== null) return 0;
-       //Else
-       int checked = optionsGroup.getCheckedRadioButtonId();
 
-        // Check which radio button is active
-        switch(checked) {
-            case R.id.radioButton:
-                    //terms and syns
-                    return 0;
-            case R.id.radioButton2:
-                   //terms only
-                    return 1;
-            case R.id.radioButton3:
-                    //synonyms only
-                    return 2;
-            default:
-                return 0;
 
-        }
-    }
 
 }

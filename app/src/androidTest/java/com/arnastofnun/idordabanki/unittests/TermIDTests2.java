@@ -37,6 +37,13 @@ public class TermIDTests2 extends ActivityInstrumentationTestCase2<SplashActivit
 
         //Enters a word
         solo.enterText(0, validTermID);
+        solo.pressSoftKeyboardSearchButton();
+        solo.waitForActivity(ResultInfo.class);
+    }
+
+    public void tearDown() throws Exception{
+        solo.finishOpenedActivities();
+        super.tearDown();
     }
 
 
@@ -45,11 +52,6 @@ public class TermIDTests2 extends ActivityInstrumentationTestCase2<SplashActivit
      * method is functioning correctly
      */
     public void testGetPageCount(){
-        solo.sleep(5000);
-        // Asserts the id string has been entered
-        Assert.assertTrue("word was not entered into search bar", solo.searchText(validTermID));
-        solo.sendKey(Solo.ENTER);
-        solo.sleep(5000);
         assertEquals(ResultInfo.getPageCount(), 1);
     }
 
@@ -58,11 +60,6 @@ public class TermIDTests2 extends ActivityInstrumentationTestCase2<SplashActivit
      * Test if the search comes through
      */
     public void testTermIdSearch(){
-        solo.sleep(5000);
-        // Asserts the id string has been entered
-        Assert.assertTrue("word was not entered into search bar", solo.searchText(validTermID));
-        solo.sendKey(Solo.ENTER);
-        solo.sleep(5000);
         assertTrue("Correct term not found", solo.waitForText("initial"));
     }
 

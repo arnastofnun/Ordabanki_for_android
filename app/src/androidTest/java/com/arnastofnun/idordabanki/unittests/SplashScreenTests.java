@@ -47,6 +47,16 @@ public class SplashScreenTests extends ActivityInstrumentationTestCase2<SplashAc
     }
 
     /**
+     * Makes sure that everything is cleared before
+     * the next test starts
+     * @throws Exception
+     */
+    public void tearDown() throws Exception{
+        solo.finishOpenedActivities();
+        super.tearDown();
+    }
+
+    /**
      * A test to check if there is connection
      * to the database
      */

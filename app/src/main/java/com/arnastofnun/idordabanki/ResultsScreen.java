@@ -49,7 +49,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     private boolean wordError = false;
     private boolean synonymError = false;
     //Holds the search mode
-    private int searchMode;
     private String searchString;
     /**
      * Takes search term from intent and passes to Rest client
@@ -71,10 +70,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             //Get the data from the intent
             Bundle data = getIntent().getExtras();
             //Check if search mode is in the intent
-            if(data.containsKey("searchMode")){
-                searchMode = data.getInt("searchMode");
-            }
-            else searchMode = 0;
             searchQuery = data.getString("searchQuery");
 
             //If the searchQuery is an integer we go straight to term search
@@ -82,7 +77,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 doTermIdSearch(searchQuery);
             }else{
                 //Search in the right search mode
-                switch(searchMode) {
+                switch(global.getSearchMode()) {
                     case 0:
                         doWordSearch(searchQuery);
                         doSynonymSearch(searchQuery);
@@ -231,7 +226,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         Runnable runnable = new Runnable() {
             /**
              * Written by Bill and Karl
-             * Checks if languages and dictionaries have been obtained
+             * both synonym and word search is done
              * if so it sets them
              */
             public void run() {
