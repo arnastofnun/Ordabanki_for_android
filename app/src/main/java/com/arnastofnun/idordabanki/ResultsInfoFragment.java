@@ -1,11 +1,14 @@
 package com.arnastofnun.idordabanki;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.arnastofnun.idordabanki.REST.OrdabankiRestClientUsage;
@@ -163,6 +166,13 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
             wordHTML+="</div>";
         }
         wv.loadDataWithBaseURL(null, wordHTML+sbr_refsHTML+einnig_refsHTML, "text/html", "UTF-8", null);
+        wv.setWebViewClient(new WebViewClient(){
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                SearchManager searchManager = (SearchManager)getActivity().getSystemService(Context.SEARCH_SERVICE);
+                searchManager.startSearch(url,true,getActivity().getComponentName(),null,false);
+                return true;
+            }
+        });
     }
 
 
@@ -172,15 +182,16 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
      * @return the html for the einnig section
      */
     private String addEinnig(TermResult.Term.Einnig einnig){
-        String einnig_refsHTML = "<br><i>"+getString(R.string.word_einnig)+"</i> ";
+        String einnig_refsHTML = "<br></br><table>\n" +
+                "<tr><th><i>"+getString(R.string.word_einnig)+"</i></th>";
         if(einnig.getRefs()[0] != null){
             for(TermResult.Term.Einnig.Refs ref : einnig.getRefs()){
                 //get language string with index of language name in array languages
-                einnig_refsHTML += ref.getWord() +" - " +getLanguage(ref.getLangCode());
-                einnig_refsHTML += ", ";
+                einnig_refsHTML += "<tr><td><div id=\"word\"><a href=\""+ref.getWord()+"\">"+ref.getWord()+"</a></div></td>" +
+                        "<td>" +getLanguage(ref.getLangCode())+"</td></tr>";
             }
         }
-        return einnig_refsHTML.substring(0,einnig_refsHTML.length()-2)+"</div>";
+        return einnig_refsHTML.substring(0,einnig_refsHTML.length())+"</table><br></div>";
     }
 
 
@@ -251,7 +262,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
 
             for(TermResult.Term.Word.Synonym synonym: word.getSynonyms()){
 
-                synonymHTML += "<div id=\"word\" style =\"width:80%;margin-top:5px;font-family:'PT serif';color:#616161;\"><b><i>"+synonym.synonym + "</i></b>";
+                synonymHTML += "<div id=\"word\" style =\"width:80%;margin-top:5px;font-family:'PT serif';color:#616161;\"><b><i><a href =\""+synonym.synonym +"\">"+synonym.synonym+ "</a></i></b>";
                 String synChild = "";
                 if(synonym.getAbbreviation() != null){
                     synChild +=  getString(R.string.word_abbreviation)+" " + synonym.abbreviation+ "<br>";
@@ -298,15 +309,17 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
      */
     private String initialiseHtmlStyle(){
         return "<link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>" +
-                "<style>#sbr_refs{text-align:left;color:white;font-family: 'PT Serif', serif;font-size:0.9em} h3{color:white} body{margin-left:auto;margin-right:auto;width:75%;background-color:#616161;color:#616161;}p{margin:0pt;padding:0pt;} " +
+                "<style>#sbr_refs{font-family: 'PT Serif', serif;font-size:1.1em} h3{color:white} body{margin-left:auto;margin-right:auto;width:75%;background-color:#616161;color:#616161;}p{margin:0pt;padding:0pt;} " +
                 "#synonym{padding:5px;background-color:white;margin-top:5px;margin:0px;-webkit-border-radius: 7px;\n" +
                 "-moz-border-radius: 7px;margin-left:auto;margin-right:auto;\n" +
                 "border-radius: 7px;}" +
-                "#word{padding:5px;background-color:#DCEDC8;margin:0px;-webkit-border-radius: 7px;\n" +
+                    "#word{padding:5px;background-color:#DCEDC8;margin:0px;-webkit-border-radius: 7px;\n" +
                 "-moz-border-radius: 7px;margin-left:auto;margin-right:auto;\n" +
                 "border-radius: 7px;}" +
                 "#container{margin-top:6px;margin-left:auto;margin-right:auto} " +
                 "#textBlock{text-align:center;margin-left:auto;margin-right:auto}" +
+                "table{color:white;margin-left:auto; margin-right:auto; } table, th, td { border: 0px solid black; border-collapse: collapse; } th, td { padding: 5px; text-align: left; }"+
+                "a{color:black;text-decoration: none;}"+
                 "</style>";
     }
 
