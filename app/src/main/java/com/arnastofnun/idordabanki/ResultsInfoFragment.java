@@ -182,7 +182,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
      * @return the html for the einnig section
      */
     private String addEinnig(TermResult.Term.Einnig einnig){
-        String einnig_refsHTML = "<br></br><table>\n" +
+        String einnig_refsHTML = "<br><table>\n" +
                 "<tr><th><i>"+getString(R.string.word_einnig)+"</i></th>";
         if(einnig.getRefs()[0] != null){
             for(TermResult.Term.Einnig.Refs ref : einnig.getRefs()){
@@ -318,7 +318,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
                 "border-radius: 7px;}" +
                 "#container{margin-top:6px;margin-left:auto;margin-right:auto} " +
                 "#textBlock{text-align:center;margin-left:auto;margin-right:auto}" +
-                "table{color:white;margin-left:auto; margin-right:auto; } table, th, td { border: 0px solid black; border-collapse: collapse; } th, td { padding: 5px; text-align: left; }"+
+                "table{margin-top:6px;color:white;margin-left:auto; margin-right:auto; } table, th, td { border: 0px solid black; border-collapse: collapse; } th, td { padding: 5px; text-align: left; }"+
                 "a{color:black;text-decoration: none;}"+
                 "</style>";
     }
