@@ -1,10 +1,11 @@
 package com.arnastofnun.idordabanki.unittests;
 
 
-import android.test.ActivityUnitTestCase;
+import android.test.ActivityInstrumentationTestCase2;
 
 import com.arnastofnun.idordabanki.Globals;
 
+import com.arnastofnun.idordabanki.SearchScreen;
 import com.arnastofnun.idordabanki.activities.SplashActivity;
 
 import com.robotium.solo.Solo;
@@ -16,12 +17,12 @@ import com.robotium.solo.Solo;
  * Created by karlasgeir
  * @since 09.03.2015.
  */
-public class SplashScreenTests extends ActivityUnitTestCase<SplashActivity> {
+public class SplashScreenTests extends ActivityInstrumentationTestCase2<SplashActivity> {
     /**
      * solo is used to do access functionalities while app is running
      */
     private Solo solo;
-    private SplashActivity splashActivity;
+    private Globals globals;
 
     /**
      * A constructor for the test class
@@ -36,7 +37,13 @@ public class SplashScreenTests extends ActivityUnitTestCase<SplashActivity> {
     public void setUp() throws Exception {
         /*This way the testPreconditions will work*/
         solo = new Solo(getInstrumentation());
-        splashActivity = new SplashActivity();
+
+        globals = (Globals) Globals.getContext();
+
+        //Make sure the globals are reset
+        globals.setDictionaries(null);
+        globals.setLanguages(null);
+        globals.setLocalizedDictionaries(null);
     }
 
     /**
@@ -44,18 +51,23 @@ public class SplashScreenTests extends ActivityUnitTestCase<SplashActivity> {
      * to the database
      */
     public void testCheckConnection(){
-        assertTrue("No connection",splashActivity.checkConnection());
+       assertTrue("No connection", getActivity().checkConnection());
     }
 
     /**
-     * A method to test the initialize() method
+     * A method to test if everything is initialized correctly
      */
     public void testInitialize() throws Exception{
-        splashActivity.initialize();
-
+        getActivity();
+        solo.waitForActivity(SearchScreen.class);
+        solo.assertCurrentActivity("Wrong activity",SearchScreen.class);
         Globals globals = (Globals) Globals.getContext();
         assertNotNull("Dictionaries not initialized",globals.getDictionaries());
         assertNotNull("Languages not initialized",globals.getLanguages());
         assertNotNull("Localized languages not initialized",globals.getLoc_dictionaries());
     }
+
+
+
+
 }

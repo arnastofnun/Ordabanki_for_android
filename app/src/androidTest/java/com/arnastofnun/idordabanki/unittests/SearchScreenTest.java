@@ -34,6 +34,9 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
     public void setUp() throws Exception {
         /*This way the testPreconditions will work*/
         solo = new Solo(getInstrumentation());
+
+
+
         getActivity();
         //Clear the search history
         SearchRecentSuggestions suggestions=new SearchRecentSuggestions(getActivity().getApplicationContext(), SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);

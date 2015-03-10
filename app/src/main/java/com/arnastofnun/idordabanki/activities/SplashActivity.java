@@ -96,7 +96,7 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
     /**
      * A method to start the functions
      */
-    public void initialize(){
+    private void initialize(){
         //check if locale is set
         isLocaleSet();
 
@@ -204,6 +204,7 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
+
     private void isLocaleSet(){
         final LocaleSettings localeSettings = new LocaleSettings(this);
         //if no language set in locale go to select language
