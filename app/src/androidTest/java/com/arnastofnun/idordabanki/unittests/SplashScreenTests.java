@@ -14,7 +14,7 @@ import com.robotium.solo.Solo;
 /**
  * A test class intended to test the functionality of the
  * splash activity class
- * Created by karlasgeir
+ * @author Karl Ásgeir Geirsson
  * @since 09.03.2015.
  */
 public class SplashScreenTests extends ActivityInstrumentationTestCase2<SplashActivity> {
