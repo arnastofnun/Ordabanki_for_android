@@ -15,7 +15,10 @@ import com.robotium.solo.Solo;
 import junit.framework.Assert;
 
 /**
- * Created by karlasgeir on 2/27/15.
+ * Test search related functionality
+ *
+ *  @author Karl Ásgeir Geirsson
+ *  @since 02.27.2015.
  */
 public class SearchTest extends ActivityInstrumentationTestCase2<SplashActivity> {
 
@@ -75,6 +78,29 @@ public class SearchTest extends ActivityInstrumentationTestCase2<SplashActivity>
         solo.waitForText("niðurstöður");
         Assert.assertTrue("could not search",solo.searchText("7 niðurstöður fyrir leit"));
     }
+
+    /**
+     * Test if a correct search is done when buttons are clicked on in result info
+     */
+    public void testButtonsInResultInfo(){
+        solo.assertCurrentActivity("wrong starting activity",SearchScreen.class);
+        solo.enterText(0, "bla?");
+        solo.pressSoftKeyboardSearchButton();
+        solo.waitForActivity(ResultsScreen.class);
+        solo.clickOnText("blad", 1);
+        solo.waitForActivity(ResultInfo.class);
+        solo.clickOnText("Bogen", 1);
+        Assert.assertTrue("not correct term/button",solo.searchText("Bogen"));
+        solo.pressSoftKeyboardSearchButton();
+        solo.waitForActivity(ResultsScreen.class);
+        solo.clickOnText("Bogen", 1);
+        solo.waitForActivity(ResultInfo.class);
+        solo.clickOnText("Blatt", 1);
+        Assert.assertTrue("not correct term/button",solo.searchText("Blatt"));
+        solo.pressSoftKeyboardSearchButton();
+    }
+
+
 
 
 }

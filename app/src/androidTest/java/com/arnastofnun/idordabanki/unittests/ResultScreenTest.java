@@ -6,7 +6,8 @@ import com.arnastofnun.idordabanki.activities.SplashActivity;
 import com.robotium.solo.Solo;
 
 /**
- * Created by karlasgeir on 3/8/15.
+ * @author Karl Ásgeir Geirsson
+ * @since 03.08.2015
  */
 public class ResultScreenTest extends ActivityInstrumentationTestCase2<SplashActivity> {
 
@@ -43,6 +44,7 @@ public class ResultScreenTest extends ActivityInstrumentationTestCase2<SplashAct
     }
 
     public void testWordResult(){
+
     }
 
 
