@@ -182,12 +182,12 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
      * @return the html for the einnig section
      */
     private String addEinnig(TermResult.Term.Einnig einnig){
-        String einnig_refsHTML = "<br><table>\n" +
+        String einnig_refsHTML = "<table>\n" +
                 "<tr><th><i>"+getString(R.string.word_einnig)+"</i></th>";
         if(einnig.getRefs()[0] != null){
             for(TermResult.Term.Einnig.Refs ref : einnig.getRefs()){
                 //get language string with index of language name in array languages
-                einnig_refsHTML += "<tr><td><div id=\"word\"><a href=\""+ref.getWord()+"\">"+ref.getWord()+"</a></div></td>" +
+                einnig_refsHTML += "<tr><td>"+"<a href=\""+ref.getWord()+"\">"+"<div id=\"word\"><div class=\"link\">"+ref.getWord()+"</div></div></a></td>" +
                         "<td>" +getLanguage(ref.getLangCode())+"</td></tr>";
             }
         }
@@ -261,8 +261,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
             }
 
             for(TermResult.Term.Word.Synonym synonym: word.getSynonyms()){
-
-                synonymHTML += "<div id=\"word\" style =\"width:80%;margin-top:5px;font-family:'PT serif';color:#616161;\"><b><i><a href =\""+synonym.synonym +"\">"+synonym.synonym+ "</a></i></b>";
+                synonymHTML += "<a href =\""+synonym.synonym +"\"><div id=\"word\" style =\"width:80%;margin-top:5px;font-family:'PT serif';color:#616161;\"><b><i><div class=\"link\">"+synonym.synonym+ "</div></a></i></b>";
                 String synChild = "";
                 if(synonym.getAbbreviation() != null){
                     synChild +=  getString(R.string.word_abbreviation)+" " + synonym.abbreviation+ "<br>";
@@ -318,8 +317,8 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
                 "border-radius: 7px;}" +
                 "#container{margin-top:6px;margin-left:auto;margin-right:auto} " +
                 "#textBlock{text-align:center;margin-left:auto;margin-right:auto}" +
-                "table{margin-top:6px;color:white;margin-left:auto; margin-right:auto; } table, th, td { border: 0px solid black; border-collapse: collapse; } th, td { padding: 5px; text-align: left; }"+
-                "a{color:black;text-decoration: none;}"+
+                "table{font-family: 'PT Serif';margin-top:6px;color:white;margin-left:auto; margin-right:auto; } table, th, td { border: 0px solid black; border-collapse: collapse; } th, td { padding: 5px; text-align: left; }"+
+                "a{text-decoration: none;}.link{color:black}"+
                 "</style>";
     }
 
