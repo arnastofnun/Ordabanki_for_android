@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,7 @@ public class SearchScreen extends FragmentActivity {
     *   resultList: list of search results
     */
     private ViewPager viewPager;
+
 
     /**
      * @param newConfig sets newconfigurations
@@ -271,6 +273,8 @@ public class SearchScreen extends FragmentActivity {
         }
         //Do the search
         if (allowsearch) {
+            Log.v("targetLang",ChooseLanguagesFragment.getTargetLanguage());
+            intent.putExtra("targetLang",ChooseLanguagesFragment.getTargetLanguage());
             intent.putExtra("searchQuery", searchQuery); //Add the search query to the intent
             this.startActivity(intent); //Start the activity
 

@@ -38,7 +38,7 @@
             />
 
     </LinearLayout>
-<!--
+
     <LinearLayout
         android:id="@+id/targetWrapper"
         android:layout_marginTop="20dp"
@@ -70,5 +70,5 @@
             android:spinnerMode="dropdown"
             android:textColor="@color/darkgrey"/>
     </LinearLayout>
--->
+
 </RelativeLayout>

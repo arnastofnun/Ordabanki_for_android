@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,10 +18,12 @@ import android.widget.TextView;
 
 import com.arnastofnun.idordabanki.REST.OrdabankiRestClientUsage;
 import com.arnastofnun.idordabanki.adapters.ResultListAdapter;
+import com.arnastofnun.idordabanki.filters.TargetLangFilter;
 import com.arnastofnun.idordabanki.interfaces.OnResultObtainedListener;
 import com.arnastofnun.idordabanki.interfaces.OnSynonymResultObtainedListener;
 import com.arnastofnun.idordabanki.jsonHandlers.OrdabankiJsonHandler;
 import com.arnastofnun.idordabanki.jsonHandlers.SynonymResultJsonHandler;
+import com.google.common.collect.Collections2;
 
 import org.json.JSONException;
 
@@ -43,6 +46,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     private HashMap<String, ArrayList<Result>> resultMap; //A hash map combining results with the same word
     private ArrayList<String> words; //List of words (headers for the group list items)
     private ArrayList<SynonymResult> synonymResultList; //List containing the synonym results
+    private String tLang;
     //Booleans that help with synchronization
     private boolean wordDone = false;
     private boolean synonymDone = false;
@@ -71,6 +75,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             Bundle data = getIntent().getExtras();
             //Check if search mode is in the intent
             searchQuery = data.getString("searchQuery");
+            tLang = data.getString("targetLang");
+            Log.v("targetLang",tLang);
 
             //If the searchQuery is an integer we go straight to term search
             if(isInteger(searchQuery)){
@@ -140,6 +146,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         }
     }
 
+
+
     /**
      * Passes result to list view on successful connection.
      * Bill
@@ -147,9 +155,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      */
     @Override
     public void onResultObtained(Result[] resultArr){
-        ArrayList<Result> rList = new ArrayList<>(Arrays.asList(resultArr));
-        Collections.sort(rList);
-        resultList = rList;
+        resultList = new ArrayList<>(Arrays.asList(resultArr));
         wordDone = true;
     }
 
@@ -199,9 +205,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      */
     @Override
     public void onSynonymResultObtained(SynonymResult[] sResult){
-        ArrayList<SynonymResult> sList = new ArrayList<>(Arrays.asList(sResult));
-        Collections.sort(sList);
-        synonymResultList = sList;
+        synonymResultList = new ArrayList<>(Arrays.asList(sResult));
         synonymDone = true;
     }
 
@@ -367,6 +371,11 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 //Just to keep it from crashing, I could remove the language view for it though
                 result.setLanguage_code("IS");
                 resultList.add(result);
+            }
+            //Only filter if some target language is selected
+            if(!tLang.equals("ALL")) {
+                TargetLangFilter targLangFilt = new TargetLangFilter(tLang);
+                resultList = new ArrayList<>(Collections2.filter(resultList, targLangFilt));
             }
             Collections.sort(resultList);
         }

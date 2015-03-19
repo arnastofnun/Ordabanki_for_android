@@ -22,8 +22,8 @@ public class ChooseLanguagesFragment extends Fragment {
     //targetSpinner contains target language selections
 
     private static Spinner sourceSpinner;
-    //private static Spinner targetSpinner;
-    private static ArrayList<String> codeRef= new ArrayList<String>();
+    private static Spinner targetSpinner;
+    private static ArrayList<String> codeRef= new ArrayList<>();
 
 
 
@@ -43,23 +43,34 @@ public class ChooseLanguagesFragment extends Fragment {
 
         //Get the source language spinner
         sourceSpinner = (Spinner) rootView.findViewById(R.id.sourceSpinner);
+        targetSpinner = (Spinner) rootView.findViewById(R.id.targetSpinner);
         //Create a list to place the source languages in
-        ArrayList<String> listSource = new ArrayList<String>();
+        ArrayList<String> listSource = new ArrayList<>();
+        ArrayList<String> listTarg  = new ArrayList<>();
 
         //Making "All" the first item
         listSource.add(getResources().getString(R.string.all_languages));
+        listTarg.add(getResources().getString(R.string.all_languages));
         Globals g = (Globals)this.getActivity().getApplication();
-        listSource.addAll(g.getLanguages().get(1));
-        codeRef.addAll(g.getLanguages().get(0));
+        ArrayList<ArrayList<String>> langList = g.getLanguages();
+        listTarg.addAll(langList.get(1));
+        listSource.addAll(langList.get(1));
+        codeRef.addAll(langList.get(0));
 
         //Create an array adapter to put the source list into the spinner
-        ArrayAdapter<String> dataAdapterSource = new ArrayAdapter<String>
+        ArrayAdapter<String> dataAdapterSource = new ArrayAdapter<>
                 (this.getActivity(), R.layout.spinner_item,listSource);
         dataAdapterSource.setDropDownViewResource
                 (android.R.layout.simple_spinner_dropdown_item);
 
         //Set the adapter to the source language spinner
         sourceSpinner.setAdapter(dataAdapterSource);
+
+        ArrayAdapter<String> dataAdapterTarget = new ArrayAdapter<> (this.getActivity(),R.layout.spinner_item,listTarg);
+        dataAdapterSource.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        targetSpinner.setAdapter(dataAdapterTarget);
+
         /*
         //Add items to target language dropdown spinner
         targetSpinner = (Spinner) rootView.findViewById(R.id.targetSpinner);
@@ -92,7 +103,7 @@ public class ChooseLanguagesFragment extends Fragment {
     public void onPause(){
         super.onPause();
         Globals g = (Globals) this.getActivity().getApplication();
-        //g.setTLangPos(targetSpinner.getSelectedItemPosition());
+        g.setTLangPos(targetSpinner.getSelectedItemPosition());
         g.setSLangPos(sourceSpinner.getSelectedItemPosition());
     }
 
@@ -104,11 +115,11 @@ public class ChooseLanguagesFragment extends Fragment {
     public void onResume(){
         super.onResume();
         Globals g = (Globals) this.getActivity().getApplication();
-        /*
+
         if(g.getTLangPos() != -1) {
             targetSpinner.setSelection(g.getTLangPos());
         }
-        */
+
         if(g.getSLangPos() != -1){
             sourceSpinner.setSelection(g.getSLangPos());
         }
@@ -130,7 +141,7 @@ public class ChooseLanguagesFragment extends Fragment {
      * Written by Bill
      * @return language code for target language
      */
-   /*
+
     public static String getTargetLanguage(){
         if(targetSpinner == null || targetSpinner.getSelectedItemPosition() == 0) {return "ALL";}
         else {
@@ -138,7 +149,7 @@ public class ChooseLanguagesFragment extends Fragment {
             return codeRef.get(index);
         }
     }
-    */
+
 
 
 
