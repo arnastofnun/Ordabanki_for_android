@@ -378,7 +378,24 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 resultList = new ArrayList<>(Collections2.filter(resultList, targLangFilt));
             }
             Collections.sort(resultList);
+            resultList = removeDuplicates(resultList);
         }
+    }
+
+    /**
+     * A method to remove duplicates from the result list
+     * @param list - the list that should remove duplicates
+     * @return the list without duplicates
+     */
+    public ArrayList<Result> removeDuplicates(ArrayList<Result> list){
+        ArrayList<Result> result = new ArrayList<>();
+        for(int i=1;i<list.size();i++){
+            if(!list.get(i-1).equals(list.get(i))) {
+                result.add(list.get(i));
+            }
+        }
+        return result;
+
     }
 
 

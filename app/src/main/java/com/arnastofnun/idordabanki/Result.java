@@ -185,6 +185,17 @@ public class Result implements Comparable<Result>{
         this.example = example;
     }
 
+
+    /**
+     * A method that tells if this result equals another result
+     * @param r the result to compare
+     * @return true if they are equal, else false
+     */
+    public boolean equals(Result r){
+        return (getWord().equals(r.getWord()) && getDictionary_code().equals(r.getDictionary_code())&&getLanguage_code().equals(r.getLanguage_code()));
+    }
+
+
     /**
      * Written by Karl Ásgeir Geirsson
      * use: int cmp = result.compareTo(result2);
@@ -192,6 +203,7 @@ public class Result implements Comparable<Result>{
      * @return returns an int indicating how this Result
      *          compares to the result r
      */
+    @Override
     public int compareTo(Result r){
         Globals globals = (Globals) Globals.getContext();
         ArrayList<ArrayList<String>> dictionaries = globals.getLoc_dictionaries();
