@@ -66,11 +66,11 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         localeSettings.setCurrLocaleFromPrefs();
 
         resultList = global.getOriginalResults(); //Get the result list from globals
-
+        //Get the data from the intent
+        Bundle data = getIntent().getExtras();
         //If it doesn't exist this is a new search
-        if(resultList == null){
-            //Get the data from the intent
-            Bundle data = getIntent().getExtras();
+        if(resultList == null || data.getBoolean("newSearch")){
+
             //Check if search mode is in the intent
             searchQuery = data.getString("searchQuery");
 
@@ -305,7 +305,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 global.setResults(resultList);
                 Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
-                intent.putExtra("selectedResultIndex",parent.getFlatListPosition(ExpandableListView.getPackedPositionForChild(groupPosition, childPosition)));
+                intent.putExtra("selectedResult",id);
                 startActivity(intent);
                 return true;
             }
@@ -329,7 +329,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                     //We open the results info screen
                     global.setResults(resultList);
                     Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
-                    intent.putExtra("selectedResultIndex",parent.getFlatListPosition(ExpandableListView.getPackedPositionForGroup(groupPosition)));
+                    intent.putExtra("selectedResult",id);
                     if(searchQuery != null){
                         intent.putExtra("searchQuery",searchQuery);
                     }else{
@@ -406,8 +406,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         words = new ArrayList<>();
         resultMap = new HashMap<>();
         //Go through the result list
-        for(int i=0;i<resultList.size();i++) {
-            Result item = resultList.get(i);
+        for(Result item : resultList){
             //If the hash map doesn't contain the word, we need to add it
             if (!resultMap.containsKey(item.getWord())) {
                 ArrayList<Result> tempList = new ArrayList<>();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
 android:orientation="vertical"
     android:layout_margin="0dp"
     android:background="@color/darkgrey">
@@ -23,8 +23,8 @@ android:orientation="vertical"
     android:layout_centerHorizontal="true" />
 
 <ExpandableListView
-    android:layout_width="wrap_content"
-    android:layout_height="385dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:id="@+id/resultsList"
     android:choiceMode="singleChoice"
     android:layout_gravity="center_horizontal"

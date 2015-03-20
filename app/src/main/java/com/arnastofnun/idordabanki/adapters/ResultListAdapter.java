@@ -61,7 +61,8 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
      * @return the child position
      */
     public long getChildId(int groupPosition, int childPosition){
-        return childPosition;
+        Result result = resultMap.get(words.get(groupPosition)).get(childPosition);
+        return Long.valueOf(result.getId_word());
     }
 
 
@@ -140,7 +141,12 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
      * @return the ID of the group
      */
     public long getGroupId(int groupPosition){
-        return groupPosition;
+        Result result = resultMap.get(words.get(groupPosition)).get(0);
+        if(result.getId_word() == null){
+            return Long.valueOf(result.getId_term());
+        }
+
+        return Long.valueOf(result.getId_word());
     }
 
 
@@ -268,6 +274,5 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
         BiMap<String,String> dictionaries = g.getLoc_dictionaries();
         return dictionaries.get(result.getDictionary_code());
     }
-
 
 }

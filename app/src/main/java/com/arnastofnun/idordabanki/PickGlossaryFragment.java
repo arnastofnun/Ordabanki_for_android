@@ -123,7 +123,7 @@ public class PickGlossaryFragment extends Fragment {
     private void displayListView(View rootView){
         //List of glossaries
             Globals g= (Globals) this.getActivity().getApplication();
-            glossaryList = new ArrayList<>();
+            glossaryList = new ArrayList<Glossary>();
             glossaryList.addAll(g.getDictionaries());
 
 
@@ -218,7 +218,7 @@ public class PickGlossaryFragment extends Fragment {
      */
     public static ArrayList<String> getSelectedGlossaries(){
         //Go through the glossaries and add the selected ones to selectedGlossaries
-        ArrayList<String> selectedGlossaries = new ArrayList<>();
+        ArrayList<String> selectedGlossaries = new ArrayList<String>();
         for(Glossary glossary : glossaryList) {
 
             if(glossary.isSelected()){

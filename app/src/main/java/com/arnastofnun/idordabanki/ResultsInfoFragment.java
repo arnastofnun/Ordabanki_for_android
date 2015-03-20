@@ -54,7 +54,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
         Bundle args = getArguments();
         if(args.containsKey("resultIndex")){
             hasResult = true;
-            int resultIndex = args.getInt("resultIndex");
+         int resultIndex = args.getInt("resultIndex");
             //Get the result at the right place in the results list
             List<Result> resultList = globals.getResults();
             Result result = resultList.get(resultIndex);

@@ -89,9 +89,6 @@ public class SearchScreen extends FragmentActivity {
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
 
-
-
-
         Intent intent = getIntent();
         checkSearchQuery(intent);
 
@@ -274,6 +271,7 @@ public class SearchScreen extends FragmentActivity {
         //Do the search
         if (allowsearch) {
             intent.putExtra("searchQuery", searchQuery); //Add the search query to the intent
+            intent.putExtra("newSearch",true);
             this.startActivity(intent); //Start the activity
 
         }
