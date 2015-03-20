@@ -20,12 +20,11 @@ public class ConnectionDetector {
         {
             NetworkInfo[] info = connectivity.getAllNetworkInfo();
             if (info != null)
-                for (int i = 0; i < info.length; i++)
-                    if (info[i].getState() == NetworkInfo.State.CONNECTED)
-                    {
+                for(NetworkInfo item:info){
+                    if(item.getState() == NetworkInfo.State.CONNECTED){
                         return true;
                     }
-
+                }
         }
         return false;
     }

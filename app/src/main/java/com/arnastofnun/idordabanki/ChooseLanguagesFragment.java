@@ -8,7 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.common.collect.BiMap;
+
 import java.util.ArrayList;
+import java.util.Collections;
+
 
 /**
  * A fragment that allows you to choose source and target language
@@ -23,7 +27,7 @@ public class ChooseLanguagesFragment extends Fragment {
 
     private static Spinner sourceSpinner;
     private static Spinner targetSpinner;
-    private static ArrayList<String> codeRef= new ArrayList<>();
+    private Globals g = (Globals) Globals.getContext();
 
 
 
@@ -51,46 +55,33 @@ public class ChooseLanguagesFragment extends Fragment {
         //Making "All" the first item
         listSource.add(getResources().getString(R.string.all_languages));
         listTarg.add(getResources().getString(R.string.all_languages));
-        Globals g = (Globals)this.getActivity().getApplication();
-        ArrayList<ArrayList<String>> langList = g.getLanguages();
-        listTarg.addAll(langList.get(1));
-        listSource.addAll(langList.get(1));
-        codeRef.addAll(langList.get(0));
+        BiMap<String,String> langList = g.getLanguages();
+        ArrayList<String> allLanguages = new ArrayList<>(langList.values());
+        //Make sure icelandic and english are the top languags
+        listTarg.add(langList.get("IS"));
+        listTarg.add(langList.get("EN"));
+        listSource.add(langList.get("IS"));
+        listSource.add(langList.get("EN"));
+        allLanguages.remove(langList.get("IS"));
+        allLanguages.remove(langList.get("EN"));
+        //Sort the languages list
+        Collections.sort(allLanguages);
+        //Add to spinner lists
+        listTarg.addAll(allLanguages);
+        listSource.addAll(allLanguages);
 
-        //Create an array adapter to put the source list into the spinner
+        //Create an array adapter to put the lists into the spinners
         ArrayAdapter<String> dataAdapterSource = new ArrayAdapter<>
                 (this.getActivity(), R.layout.spinner_item,listSource);
         dataAdapterSource.setDropDownViewResource
                 (android.R.layout.simple_spinner_dropdown_item);
 
-        //Set the adapter to the source language spinner
+        //Set the adapters to the spinners
         sourceSpinner.setAdapter(dataAdapterSource);
 
         ArrayAdapter<String> dataAdapterTarget = new ArrayAdapter<> (this.getActivity(),R.layout.spinner_item,listTarg);
-        dataAdapterSource.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        dataAdapterTarget.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         targetSpinner.setAdapter(dataAdapterTarget);
-
-        /*
-        //Add items to target language dropdown spinner
-        targetSpinner = (Spinner) rootView.findViewById(R.id.targetSpinner);
-        //Create a list to place the target languages in
-        ArrayList<String> listTarget = new ArrayList<String>();
-        //Making "All" the first item
-        listTarget.add(getResources().getString(R.string.all_languages));
-        listTarget.addAll(g.getLanguages().get(1));
-        //Adding some placeholder values until we get the API
-
-
-        //Create an array adapter to put the target list into the spinner
-        ArrayAdapter<String> dataAdapterTarget = new ArrayAdapter<String>
-                (this.getActivity(), R.layout.spinner_item,listTarget);
-        dataAdapterTarget.setDropDownViewResource
-                (android.R.layout.simple_spinner_dropdown_item);
-
-        //Set the adapter to the target language spinner
-        targetSpinner.setAdapter(dataAdapterTarget);
-        */
 
         return rootView;
     }
@@ -102,9 +93,23 @@ public class ChooseLanguagesFragment extends Fragment {
     @Override
     public void onPause(){
         super.onPause();
-        Globals g = (Globals) this.getActivity().getApplication();
-        g.setTLangPos(targetSpinner.getSelectedItemPosition());
-        g.setSLangPos(sourceSpinner.getSelectedItemPosition());
+        //Get from globals
+        BiMap<String,String> languages = g.getLanguages();
+        //Get the items from the spinners
+        String tLang = targetSpinner.getSelectedItem().toString();
+        String sLang = sourceSpinner.getSelectedItem().toString();
+        //Check for all selected, and send go globals
+        String allLangString = getResources().getString(R.string.all_languages);
+        if(!tLang.equals(allLangString)) {
+            g.setTLangCode(languages.inverse().get(tLang));
+        } else{
+            g.setTLangCode(allLangString);
+        }
+        if(!sLang.equals(allLangString)) {
+            g.setSLangCode(languages.inverse().get(sLang));
+        } else{
+            g.setSLangCode(allLangString);
+        }
     }
 
     /**
@@ -114,14 +119,29 @@ public class ChooseLanguagesFragment extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
-        Globals g = (Globals) this.getActivity().getApplication();
 
-        if(g.getTLangPos() != -1) {
-            targetSpinner.setSelection(g.getTLangPos());
+        //Get from globals
+        BiMap<String,String> languages = g.getLanguages();
+
+        String allLangString = getResources().getString(R.string.all_languages);
+
+        //Get the language codes
+        String tLangCode = g.getTLangCode();
+        String sLangCode = g.getSLangCode();
+
+        //Set the correct position of the target language spinner
+        if(tLangCode != null && !g.getTLangCode().equals(allLangString)) {
+            @SuppressWarnings("unchecked")
+            ArrayAdapter<String> tAdapter = (ArrayAdapter<String>) targetSpinner.getAdapter();
+            int tLangPos = tAdapter.getPosition(languages.get(g.getTLangCode()));
+            targetSpinner.setSelection(tLangPos);
         }
-
-        if(g.getSLangPos() != -1){
-            sourceSpinner.setSelection(g.getSLangPos());
+        //Set the correct position of the source language spinner
+        if(sLangCode != null && !g.getSLangCode().equals(allLangString)){
+            @SuppressWarnings("unchecked")
+            ArrayAdapter<String> sAdapter = (ArrayAdapter<String>) sourceSpinner.getAdapter();
+            int sLangPos = sAdapter.getPosition(languages.get(g.getSLangCode()));
+            sourceSpinner.setSelection(sLangPos);
         }
     }
 
@@ -132,27 +152,7 @@ public class ChooseLanguagesFragment extends Fragment {
     public static String getSourceLanguage(){
         if(sourceSpinner == null || sourceSpinner.getSelectedItemPosition() == 0) {return "ALL";}
         else {
-            int index =sourceSpinner.getSelectedItemPosition()-1;
-            return codeRef.get(index);
+            return sourceSpinner.getSelectedItem().toString();
         }
     }
-
-    /**
-     * Written by Bill
-     * @return language code for target language
-     */
-
-    public static String getTargetLanguage(){
-        if(targetSpinner == null || targetSpinner.getSelectedItemPosition() == 0) {return "ALL";}
-        else {
-            int index =targetSpinner.getSelectedItemPosition()-1;
-            return codeRef.get(index);
-        }
-    }
-
-
-
-
-
-
 }

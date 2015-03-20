@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.SearchRecentSuggestions;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -63,7 +64,8 @@ public class Settings {
      */
     public void createOptionsPopupMenu(View v){
         //Create a new popup menu
-        PopupMenu popup = new PopupMenu(context,v);
+        Context wrapper = new ContextThemeWrapper(context,R.style.PopupStyle);
+        PopupMenu popup = new PopupMenu(wrapper,v);
         MenuInflater inflater = popup.getMenuInflater();
         //Set on click listener for the menu items
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -92,6 +94,7 @@ public class Settings {
         });
         //Inflate the layout for the popup menu
         inflater.inflate(R.menu.settings_menu,popup.getMenu());
+
         //Show the popup menu
         popup.show();
     }
@@ -219,23 +222,19 @@ public class Settings {
      */
     private int getLanguagePos(String lang){
 
-        if(lang.equals("IS")){
-            return 0;
-        }
-        else if(lang.equals("EN")){
-            return 1;
-        }
-        else if(lang.equals("SV")){
-            return 2;
-        }
-        else if(lang.equals("DA")) {
-            return 3;
-        }
-        else if(lang.equals("NO")){
-            return 4;
-        }
-        else{
-            return -1;
+        switch (lang){
+            case "IS":
+                return 0;
+            case "EN":
+                return 1;
+            case "SV":
+                return 2;
+            case "DA":
+                return 3;
+            case "NO":
+                return 4;
+            default:
+                return -1;
         }
     }
 

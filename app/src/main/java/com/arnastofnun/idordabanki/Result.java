@@ -4,7 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 */
 
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+
+import com.google.common.collect.BiMap;
 
 /**
  * This class is the Result object, which holds
@@ -204,22 +206,18 @@ public class Result implements Comparable<Result>{
      *          compares to the result r
      */
     @Override
-    public int compareTo(Result r){
+    public int compareTo(@NonNull Result r){
         Globals globals = (Globals) Globals.getContext();
-        ArrayList<ArrayList<String>> dictionaries = globals.getLoc_dictionaries();
-        ArrayList<ArrayList<String>> languages = globals.getLanguages();
+        BiMap<String,String> dictionaries = globals.getLoc_dictionaries();
+        BiMap<String,String> languages = globals.getLanguages();
 
         //Compare the words alphabetically
         int comp1 = getWord().compareTo(r.getWord());
         //If the words are equal, compare by glossary name
         if(comp1 == 0){
-            int gloss_index = dictionaries.get(0).indexOf(getDictionary_code());
-            int gloss_index2 = dictionaries.get(0).indexOf(r.getDictionary_code());
-            int comp2 = dictionaries.get(1).get(gloss_index).compareTo(dictionaries.get(1).get(gloss_index2));
+            int comp2 = dictionaries.get(getDictionary_code()).compareTo(dictionaries.get(r.getDictionary_code()));
             if(comp2 == 0){
-                int lang_index = languages.get(0).indexOf(getLanguage_code());
-                int lang_index2 = languages.get(0).indexOf(r.getLanguage_code());
-                return languages.get(1).get(lang_index).compareTo(languages.get(1).get(lang_index2));
+                return languages.get(getLanguage_code()).compareTo(languages.get(r.getLanguage_code()));
             }
             else return comp2;
         }

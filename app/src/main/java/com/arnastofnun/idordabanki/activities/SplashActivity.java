@@ -21,13 +21,13 @@ import com.arnastofnun.idordabanki.interfaces.OnDictionariesObtainedListener;
 import com.arnastofnun.idordabanki.interfaces.OnLanguagesObtainedListener;
 import com.arnastofnun.idordabanki.jsonHandlers.DictionaryJsonHandler;
 import com.arnastofnun.idordabanki.jsonHandlers.LanguageJsonHandler;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 
 //Basically just waits for two seconds and then starts the next activity
@@ -48,13 +48,14 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
     /**
      * localisedLangs is a list of strings that are names of languages
      */
-    public ArrayList<ArrayList<String>> localisedLangs;
+    public BiMap<String,String> localisedLangs;
     /**
      * localisedLangs is list of strings that are dictionary names
      */    
-    public ArrayList<ArrayList<String>> localisedDicts;
+    public BiMap<String,String> localisedDicts;
+
     /**
-     * localisedLangs is a list of glossaries
+     * glossaries is a list of glossaries
      */
     public ArrayList<Glossary> glossaries;
     /**
@@ -229,12 +230,10 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
     public void onDictionariesObtained (Dictionary[]dictionaries){
         //Create new glossaries and localizedDicts array lists
         glossaries = new ArrayList<>();
-        localisedDicts = new ArrayList<>();
+        localisedDicts = HashBiMap.create();
         int index = 0;
         //Variables for the for loop
         Glossary glossary;
-        ArrayList<String> codeList = new ArrayList<>();
-        ArrayList<String> dictList = new ArrayList<>();
         /*
             For each dictionary class add its code
             to the codeList, its name to the dictList and
@@ -242,19 +241,13 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
             which is added to the glossaries array list
          */
         for (Dictionary dict : dictionaries) {
-            if(dict.getDictName() != null && !dict.getDictName().isEmpty()) {
-                codeList.add(index, dict.getDictCode());
-                dictList.add(index, dict.getDictName());
+            if(dict.getDictName() != null && !dict.getDictName().isEmpty() && !localisedDicts.containsKey(dict.getDictCode()) && !localisedDicts.inverse().containsKey(dict.getDictName())) {
+                localisedDicts.put(dict.getDictCode(), dict.getDictName());
                 glossary = new Glossary(dict.getDictCode(), dict.getDictName());
                 glossaries.add(index, glossary);
                 index++;
             }
         }
-
-        //Add the code list to the 0 index
-        localisedDicts.add(0, codeList);
-        //Add the list of dictionary names to the 1 index
-        localisedDicts.add(1, dictList);
         //Sort the glossaries in alphabetical order
         Collections.sort(glossaries);
         dObtained=true;
@@ -280,47 +273,11 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
      */
     @Override
     public void onLanguagesObtained (Language[]languages){
-        //Initialize array list
-        localisedLangs = new ArrayList<>();
-        //We start on index 2 to save space for the Icelandic and English
-        int index = 2;
-        //Initialize the code and name list and add 0 and 1 index to them
-        ArrayList<String> codeList = new ArrayList<>();
-        codeList.add(0,null);
-        codeList.add(1,null);
-        ArrayList<String> nameList = new ArrayList<>();
-        nameList.add(0,null);
-        nameList.add(1,null);
-        //Convert the languages array to a list
-        List<Language> langarray = Arrays.asList(languages);
-        //Sort the languages array
-        Collections.sort(langarray);
-        /**
-         *   For each language put the language code into the codeList
-         *   put the language name into the nameList
-         *   Put Icelandic first and English second
-         */
-        for (Language lang : langarray) {
-            if(lang.getLangCode().equals("IS")){
-                codeList.set(0,lang.getLangCode());
-                nameList.set(0,lang.getLangName());
-            }
-            else if(lang.getLangCode().equals("EN")){
-                codeList.set(1,lang.getLangCode());
-                nameList.set(1,lang.getLangName());
-            }
-            else {
-                codeList.add(index, lang.getLangCode());
-                nameList.add(index, lang.getLangName());
-                index++;
-            }
-
+        localisedLangs = HashBiMap.create();
+        //Put the language code and name into the BiMap
+        for (Language lang : languages) {
+            localisedLangs.put(lang.getLangCode(),lang.getLangName());
         }
-        //Add the codes list to index 0
-        localisedLangs.add(0,codeList);
-        //Add the names list to index 1
-        localisedLangs.add(1,nameList);
-
         lObtained=true;
     }
 

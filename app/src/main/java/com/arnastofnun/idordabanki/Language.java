@@ -1,6 +1,8 @@
 package com.arnastofnun.idordabanki;
 
 
+import android.support.annotation.NonNull;
+
 /**
  * Java object for parsing of language Jsons
  * @author Bill
@@ -71,8 +73,8 @@ public class Language implements Comparable<Language>{
      * @param l is the language that this language should be compared to
      * @return returns an integer the alphabetical order of the languages
      */
-    public int compareTo(Language l){
-        return getLangName().compareTo(l.getLangName());
+    public int compareTo(@NonNull Language l){
+            return getLangName().compareTo(l.getLangName());
     }
 
 }

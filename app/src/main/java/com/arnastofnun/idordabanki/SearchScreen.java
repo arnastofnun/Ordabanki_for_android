@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,7 +63,7 @@ public class SearchScreen extends FragmentActivity {
      * @param savedState the state that was saved
      */
     @Override
-    protected void onRestoreInstanceState(Bundle savedState){
+    protected void onRestoreInstanceState(@NonNull Bundle savedState){
         super.onRestoreInstanceState(savedState);
     }
 
@@ -273,8 +273,6 @@ public class SearchScreen extends FragmentActivity {
         }
         //Do the search
         if (allowsearch) {
-            Log.v("targetLang",ChooseLanguagesFragment.getTargetLanguage());
-            intent.putExtra("targetLang",ChooseLanguagesFragment.getTargetLanguage());
             intent.putExtra("searchQuery", searchQuery); //Add the search query to the intent
             this.startActivity(intent); //Start the activity
 

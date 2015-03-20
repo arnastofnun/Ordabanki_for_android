@@ -15,7 +15,6 @@
         android:id="@+id/settings_contact"
         android:title="@string/settings_contact"
         android:icon="@drawable/ic_action_email"
-
         />
     <item
         android:id="@+id/settings_clear_search"

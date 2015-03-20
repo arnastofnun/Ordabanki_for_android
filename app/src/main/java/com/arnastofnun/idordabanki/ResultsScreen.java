@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,15 +17,15 @@ import android.widget.TextView;
 
 import com.arnastofnun.idordabanki.REST.OrdabankiRestClientUsage;
 import com.arnastofnun.idordabanki.adapters.ResultListAdapter;
+import com.arnastofnun.idordabanki.filters.FilterDialog;
+import com.arnastofnun.idordabanki.filters.GlossaryFilter;
 import com.arnastofnun.idordabanki.filters.TargetLangFilter;
 import com.arnastofnun.idordabanki.interfaces.OnResultObtainedListener;
 import com.arnastofnun.idordabanki.interfaces.OnSynonymResultObtainedListener;
 import com.arnastofnun.idordabanki.jsonHandlers.OrdabankiJsonHandler;
 import com.arnastofnun.idordabanki.jsonHandlers.SynonymResultJsonHandler;
 import com.google.common.collect.Collections2;
-
 import org.json.JSONException;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -46,7 +45,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     private HashMap<String, ArrayList<Result>> resultMap; //A hash map combining results with the same word
     private ArrayList<String> words; //List of words (headers for the group list items)
     private ArrayList<SynonymResult> synonymResultList; //List containing the synonym results
-    private String tLang;
     //Booleans that help with synchronization
     private boolean wordDone = false;
     private boolean synonymDone = false;
@@ -67,7 +65,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
 
-        resultList = global.getResults(); //Get the result list from globals
+        resultList = global.getOriginalResults(); //Get the result list from globals
 
         //If it doesn't exist this is a new search
         if(resultList == null){
@@ -75,8 +73,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             Bundle data = getIntent().getExtras();
             //Check if search mode is in the intent
             searchQuery = data.getString("searchQuery");
-            tLang = data.getString("targetLang");
-            Log.v("targetLang",tLang);
 
             //If the searchQuery is an integer we go straight to term search
             if(isInteger(searchQuery)){
@@ -104,7 +100,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             }
         }else{
             //We display the results that we had already gotten
-            setHashMap();
             displayListView();
         }
 
@@ -269,7 +264,11 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     /**
      * A method that displays the list view
      */
-    private void displayListView(){
+    public void displayListView(){
+        String tLangCode = global.getTLangCode();
+        String glossCode = global.getGlossCode();
+        filterResults(glossCode,tLangCode);
+        setHashMap();
         //Display the number of results
         String searchPreTerm = getResources().getString(R.string.searchpreterm);
         TextView textView = (TextView) findViewById(R.id.resultText);
@@ -372,13 +371,10 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 result.setLanguage_code("IS");
                 resultList.add(result);
             }
-            //Only filter if some target language is selected
-            if(!tLang.equals("ALL")) {
-                TargetLangFilter targLangFilt = new TargetLangFilter(tLang);
-                resultList = new ArrayList<>(Collections2.filter(resultList, targLangFilt));
-            }
             Collections.sort(resultList);
             resultList = removeDuplicates(resultList);
+            FilterDialog.setFilterPossibilities(resultList);
+            global.setOriginalResults(resultList);
         }
     }
 
@@ -423,9 +419,24 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 resultMap.get(item.getWord()).add(item);
             }
         }
+    }
 
 
+    private void filterResults(String glossaryCode, String languageCode){
+        ArrayList<Result> rList = global.getOriginalResults();
+        String allLangString = getResources().getString(R.string.all_languages);
+        if(rList!=null) {
+            if (glossaryCode != null &&!glossaryCode.equals(allLangString)) {
+                GlossaryFilter glossaryFilter = new GlossaryFilter(glossaryCode);
+                rList = new ArrayList<>(Collections2.filter(rList, glossaryFilter));
+            }
 
+            if (languageCode != null && !languageCode.equals(allLangString)) {
+                TargetLangFilter langFilter = new TargetLangFilter(languageCode);
+                rList = new ArrayList<>(Collections2.filter(rList, langFilter));
+            }
+            resultList = rList;
+        }
     }
 
     /**
@@ -468,7 +479,12 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      */
     @Override
     public void onBackPressed() {
+        handleBackPress();
+    }
+
+    private void handleBackPress(){
         global.setResults(null);
+        global.setOriginalResults(null);
         Intent intent = new Intent(this, SearchScreen.class);
         this.startActivity(intent);
     }
@@ -492,6 +508,13 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 HelpDialog helpDialog = new HelpDialog(this,this.getLayoutInflater(),titleList,helpList);
                 helpDialog.show();
                 return true;
+
+            case R.id.action_filter:
+                FilterDialog filterDialog = new FilterDialog(this,this.getLayoutInflater());
+                filterDialog.show();
+                return true;
+
+
             //If the settings button is pressed
             case R.id.action_settings:
                 //Find the view for the settings button
@@ -503,9 +526,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 return true;
 
             case android.R.id.home:
-                global.setResults(null);
-                Intent intent = new Intent(this, SearchScreen.class);
-                this.startActivity(intent);
+                handleBackPress();
                 return true;
         }
         return super.onOptionsItemSelected(item);

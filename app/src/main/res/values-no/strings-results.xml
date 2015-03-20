@@ -6,6 +6,8 @@
     <string name="definition">Definisjon: </string>
     <string name="synonyms">Synonymer: </string>
     <string name="lexical_category">Leksikalsk kategori:</string>
+    <string name="gloss_filter">Filter ordliste</string>
+    <string name="lang_filter">Filter språk</string>
     <string name="example">Eksempel: </string>
 
     <!--Strings for the result-information screen-->

@@ -14,10 +14,10 @@ import android.widget.TextView;
 import com.arnastofnun.idordabanki.REST.OrdabankiRestClientUsage;
 import com.arnastofnun.idordabanki.interfaces.OnTermResultObtainedListener;
 import com.arnastofnun.idordabanki.jsonHandlers.TermResultJsonHandler;
+import com.google.common.collect.BiMap;
 
 import org.json.JSONException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,12 +27,10 @@ import java.util.List;
 public class ResultsInfoFragment extends Fragment implements OnTermResultObtainedListener {
     private Globals globals = (Globals) Globals.getContext();
     //Language names
-    private final ArrayList<ArrayList<String>> languages = globals.getLanguages();
     private WebView wv;
     private TextView wordTextView;
-    private TextView resultCountView;
+
     private TextView termGlossaryView;
-    private String idTerm;
     private boolean hasResult;
 
 
@@ -49,9 +47,10 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
 
 
         wordTextView = (TextView) rootView.findViewById(R.id.termWordView);
-        resultCountView = (TextView) rootView.findViewById(R.id.result_count);
+        TextView resultCountView = (TextView) rootView.findViewById(R.id.result_count);
         termGlossaryView = (TextView) rootView.findViewById(R.id.termGlossaryView);
         wv = (WebView) rootView.findViewById(R.id.webViewTerm);
+        String idTerm;
         Bundle args = getArguments();
         if(args.containsKey("resultIndex")){
             hasResult = true;
@@ -76,13 +75,12 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
             String dictCode = result.getDictionary_code();
 
             //Fetch glossary name of selected term
-            ArrayList<ArrayList<String>> glossaries = globals.getLoc_dictionaries();
-            int dictCodeIndex = glossaries.get(0).indexOf(dictCode);
+            BiMap<String,String> glossaries = globals.getLoc_dictionaries();
             /**
              * glossaryName is the name of the glossary that
              * the selected term belongs to
              */
-            String glossaryName = glossaries.get(1).get(dictCodeIndex);
+            String glossaryName = glossaries.get(dictCode);
             //Set header text
             wordTextView.setText(word);
             //Set results count
@@ -119,13 +117,12 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
         String dictCode = tResult[0].getDictCode();
 
         //Fetch glossary name of selected term
-        ArrayList<ArrayList<String>> glossaries = globals.getLoc_dictionaries();
-        int dictCodeIndex = glossaries.get(0).indexOf(dictCode);
+        BiMap<String,String> glossaries = globals.getLoc_dictionaries();
         /**
          * glossaryName is the name of the glossary that
          * the selected term belongs to
          */
-        String glossaryName = glossaries.get(1).get(dictCodeIndex);
+        String glossaryName = glossaries.get(dictCode);
         //Set header text
         wordTextView.setText(word);
         wordTextView.setVisibility(View.VISIBLE);
@@ -299,7 +296,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
      * @return the language name in the correct language
      */
     private String getLanguage(String langCode){
-        return languages.get(1).get(languages.get(0).indexOf(langCode));
+        return globals.getLanguages().get(langCode);
     }
 
     /**

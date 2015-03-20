@@ -5,6 +5,8 @@
     <string name="no_result">Engar</string>
     <string name="synonyms">Samheiti: </string>
     <string name="lexical_category">Orðaflokkur: </string>
+    <string name="gloss_filter">Sía orðasafn</string>
+    <string name="lang_filter">Sía tungumál</string>
     <string name="example">Dæmi: </string>
 
     <!--Strings for the result-information screen-->

@@ -12,6 +12,8 @@ package com.arnastofnun.idordabanki;
 *
  */
 
+import android.support.annotation.NonNull;
+
 /**
  * Holder object for parsing synonym results
  * @author Bill
@@ -67,7 +69,7 @@ public class SynonymResult implements Comparable<SynonymResult> {
      * @return returns an int indicating how this SynonymResult
      *          compares to the result other SynonymResult
      */
-    public int compareTo(SynonymResult sResult){
+    public int compareTo(@NonNull SynonymResult sResult){
         //Compare the words alphabetically
         return getWord().compareTo(sResult.getWord());
     }

@@ -6,6 +6,7 @@
     <string name="change_language"> Skift sprog </string>
     <string name="settings_about">Om Íðorðabanki</string>
     <string name="settings_contact">Kontakt </string>
+    <string name="filter">Filter</string>
     <string name="settings_clear_search">Klar søgehistorik</string>
     
     <!--Strings for changing language-->
