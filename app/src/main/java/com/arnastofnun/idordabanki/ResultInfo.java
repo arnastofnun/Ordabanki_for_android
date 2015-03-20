@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,8 +56,6 @@ public class ResultInfo extends FragmentActivity {
             resultPager.setAdapter(resultPagerAdapter);
             Globals globals = (Globals) Globals.getContext();
             for(Result item: globals.getResults()){
-                Log.v(item.getId_term(),wID);
-                Log.v("equals","" + item.getId_term().equals(wID));
                 if(item.getId_term().equals(wID)){
                     resultIndex = globals.getResults().indexOf(item);
                 }

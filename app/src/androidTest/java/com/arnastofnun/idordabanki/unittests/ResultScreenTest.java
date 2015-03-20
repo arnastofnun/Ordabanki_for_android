@@ -11,7 +11,6 @@ import com.arnastofnun.idordabanki.SearchAutoComplete;
 import com.arnastofnun.idordabanki.activities.SplashActivity;
 import com.robotium.solo.Solo;
 
-import java.util.Locale;
 
 /**
  * A test that tests if the ResultScreen is functioning correctly
@@ -72,7 +71,7 @@ public class ResultScreenTest extends ActivityInstrumentationTestCase2<SplashAct
      * amount of results comes up
      */
     public void testAmountOfResults() {
-        assertTrue("Wrong amount of results",solo.searchText("56 results for hest*"));
+        assertTrue("Wrong amount of results",solo.searchText("57 results for hest*"));
     }
 
     /**
@@ -81,7 +80,7 @@ public class ResultScreenTest extends ActivityInstrumentationTestCase2<SplashAct
     public void testSublistsOpenClose(){
         assertFalse("sublist initially open",solo.searchText("Aviation"));
         solo.scrollListToTop(0);
-        solo.clickInList(2);
+        solo.clickInList(3);
         solo.sleep(500);
         assertTrue("sublist did not open",solo.searchText("Aviation",true));
     }
@@ -91,7 +90,7 @@ public class ResultScreenTest extends ActivityInstrumentationTestCase2<SplashAct
      * is functioning correctly
      */
     public void testClickOnSubItem(){
-        solo.clickInList(2);
+        solo.clickInList(3);
         solo.clickOnText("Aviation");
         solo.waitForActivity(ResultInfo.class);
         solo.assertCurrentActivity("Didn't get to results info",ResultInfo.class);

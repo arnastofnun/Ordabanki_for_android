@@ -33,6 +33,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
     String[] sections; //Sections for the alphabet sorting
     private static ArrayList<Glossary> glossaryList; //a list containing glossaries
     private static Context context; //current context
+    private static ArrayList<String> selectedGlossCodes;
 
     /**
      * Invoke the overwritten methods in superclass
@@ -49,6 +50,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         //Set the glossary
         GlossaryAdapter.glossaryList = new ArrayList<Glossary>();
         GlossaryAdapter.glossaryList = glossaryList;
+        selectedGlossCodes = new ArrayList<>();
         //Set the context
         GlossaryAdapter.context = context;
     }
@@ -242,12 +244,14 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         if(glossary.isSelected()) {
             row.setBackgroundResource(R.color.glossary_notselected);
             tick.setVisibility(View.INVISIBLE);
+            selectedGlossCodes.remove(glossary.getDictCode());
             glossary.setSelected(false);
         }
         //If glossary is not selected, select it and show the tick
         else{
             row.setBackgroundResource(R.color.glossary_selected);
             tick.setVisibility(View.VISIBLE);
+            selectedGlossCodes.add(glossary.getDictCode());
             glossary.setSelected(true);
 
         }
@@ -271,6 +275,9 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         }
     }
 
+    public static ArrayList<String> getSelectedGlossCodes(){
+        return selectedGlossCodes;
+    }
 
 
     /**

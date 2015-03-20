@@ -1,6 +1,5 @@
 package com.arnastofnun.idordabanki.jsonHandlers;
 
-import android.util.Log;
 
 import com.arnastofnun.idordabanki.Language;
 import com.arnastofnun.idordabanki.activities.SplashActivity;
@@ -38,7 +37,6 @@ public class LanguageJsonHandler extends JsonHttpResponseHandler{
         @Override
         public void onSuccess(int statusCode, Header[] headers, JSONArray response){
             Gson gson = new Gson();
-            Log.v("SUCCESS","HERE");
             Language[] languages =  gson.fromJson(response.toString(), Language[].class);
             activity.onLanguagesObtained(languages);
         }

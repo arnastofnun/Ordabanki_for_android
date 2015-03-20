@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -232,12 +233,13 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 Looper.prepare();
                 //Decide end time
                 //While we don't get an error
-                        while (!(synonymError && wordError)) {
+                while (!(synonymError && wordError)) {
                         //If dictionaries and languages are obtained
                         if (wordDone && synonymDone) {
                             break;
                         }
-                    }
+
+                }
 
                 //Create a new handler to run after the delay in the main thread
                 Handler mainHandler = new Handler(ResultsScreen.this.getMainLooper());
@@ -305,7 +307,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 global.setResults(resultList);
                 Intent intent = new Intent(ResultsScreen.this, ResultInfo.class);
-                intent.putExtra("selectedResult",id);
+                intent.putExtra("selectedResult", id);
                 startActivity(intent);
                 return true;
             }
@@ -387,8 +389,11 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         ArrayList<Result> result = new ArrayList<>();
         for(int i=1;i<list.size();i++){
             if(!list.get(i-1).equals(list.get(i))) {
-                result.add(list.get(i));
+                result.add(list.get(i-1));
             }
+        }
+        if(!list.get(list.size()-1).equals(list.get(list.size()-2))){
+            result.add(list.get(list.size()-1));
         }
         return result;
 

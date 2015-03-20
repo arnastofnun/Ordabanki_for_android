@@ -57,9 +57,6 @@ public class PickGlossaryFragment extends Fragment {
     public void onPause(){
         super.onPause();
         Globals g= (Globals) this.getActivity().getApplication();
-        if(glossaryList == null){
-            Log.v("GlossaryList","null");
-        }
         g.setGlossaryState(glossaryList);
     }
 
@@ -122,8 +119,8 @@ public class PickGlossaryFragment extends Fragment {
      */
     private void displayListView(View rootView){
         //List of glossaries
-            Globals g= (Globals) this.getActivity().getApplication();
-            glossaryList = new ArrayList<Glossary>();
+            Globals g= (Globals) Globals.getContext();
+            glossaryList = new ArrayList<>();
             glossaryList.addAll(g.getDictionaries());
 
 
@@ -178,12 +175,14 @@ public class PickGlossaryFragment extends Fragment {
             //Get the correct item in the list
             listitemview = listView.getChildAt(index);
             if(listitemview != null) {
+                listitemview.setSelected(true);
                 ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
                 listitemview.setBackgroundResource(R.color.glossary_selected);
                 tick.setVisibility(View.VISIBLE);
             }
             index++;
         }
+        allSelected = true;
     }
 
 
@@ -201,12 +200,14 @@ public class PickGlossaryFragment extends Fragment {
                 //Get the correct item in the list
                 listitemview =  listView.getChildAt(index);
                 if(listitemview != null) {
+                    listitemview.setSelected(false);
                     ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
                     listitemview.setBackgroundResource(R.color.glossary_notselected);
                     tick.setVisibility(View.INVISIBLE);
                 }
             index++;
         }
+        allSelected = false;
     }
 
     /**
@@ -218,6 +219,7 @@ public class PickGlossaryFragment extends Fragment {
      */
     public static ArrayList<String> getSelectedGlossaries(){
         //Go through the glossaries and add the selected ones to selectedGlossaries
+
         ArrayList<String> selectedGlossaries = new ArrayList<String>();
         for(Glossary glossary : glossaryList) {
 
