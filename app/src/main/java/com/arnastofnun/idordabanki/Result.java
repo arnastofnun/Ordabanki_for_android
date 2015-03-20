@@ -215,9 +215,17 @@ public class Result implements Comparable<Result>{
         int comp1 = getWord().compareTo(r.getWord());
         //If the words are equal, compare by glossary name
         if(comp1 == 0){
-            int comp2 = dictionaries.get(getDictionary_code()).compareTo(dictionaries.get(r.getDictionary_code()));
+            int comp2;
+            if(getDictionary_code()!=null && r.getDictionary_code()!=null) {
+                comp2 = dictionaries.get(getDictionary_code()).compareTo(dictionaries.get(r.getDictionary_code()));
+            } else{
+                comp2 = 0;
+            }
             if(comp2 == 0){
-                return languages.get(getLanguage_code()).compareTo(languages.get(r.getLanguage_code()));
+                if(getLanguage_code()!= null && r.getLanguage_code() !=null) {
+                    return languages.get(getLanguage_code()).compareTo(languages.get(r.getLanguage_code()));
+                }
+                else return 0;
             }
             else return comp2;
         }
