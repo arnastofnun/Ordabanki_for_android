@@ -150,9 +150,10 @@ public class ChooseLanguagesFragment extends Fragment {
      * @return language code for source language
      */
     public static String getSourceLanguage(){
+        Globals globals = (Globals) Globals.getContext();
         if(sourceSpinner == null || sourceSpinner.getSelectedItemPosition() == 0) {return "ALL";}
         else {
-            return sourceSpinner.getSelectedItem().toString();
+            return globals.getLanguages().inverse().get(sourceSpinner.getSelectedItem().toString());
         }
     }
 }
