@@ -135,9 +135,10 @@ public class ResultInfo extends FragmentActivity {
         }
         else{
             //We go back to the results
+            Globals global = (Globals) Globals.getContext();
             Intent intent = new Intent(this, ResultsScreen.class);
-            Bundle extras = getIntent().getExtras();
-            intent.putExtra("searchString",extras.getString("searchQuery"));
+            intent.putExtra("searchQuery",global.getSTerm());
+            intent.putExtra("newSearch",true);
             this.startActivity(intent);
         }
     }

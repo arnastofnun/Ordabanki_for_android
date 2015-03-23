@@ -69,13 +69,9 @@ public class PickGlossaryFragment extends Fragment {
     public void onResume(){
         super.onResume();
         Globals g= (Globals) this.getActivity().getApplication();
-        if(g==null){
-           Log.v("Globals","null");
-        }
-        else if(g.getGlossaryState() == null){
-            Log.v("GlossaryState","null");
-        }
-        else {
+        if(g==null || g.getGlossaryState() == null ){
+            //do nothing
+        }else{
             resumeGlossaryState(g);
         }
 

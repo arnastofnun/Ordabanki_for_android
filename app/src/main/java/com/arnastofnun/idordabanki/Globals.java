@@ -24,6 +24,7 @@ public class Globals extends Application{
     private int searchMode = 0;
     private BiMap<String,String> filterGlossaries;
     private BiMap<String,String> filterLanguages;
+    private String sTerm;
 
 
     public static Context context;
@@ -131,7 +132,7 @@ public class Globals extends Application{
         this.glossCode=code;
     }
 
-
+    public void setSTerm(String term) {this.sTerm = term;}
     /**
      * Written by Bill
      * @return languages
@@ -217,5 +218,7 @@ public class Globals extends Application{
     public BiMap<String,String> getFilterLanguages(){
         return this.filterLanguages;
     }
+
+    public String getSTerm() {return this.sTerm;}
 
 }
