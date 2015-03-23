@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/lightGreen100">
+    android:layout_width="match_parent" android:layout_height="match_parent">
     <TextView
         android:id="@+id/help_item_title"
         android:layout_width="fill_parent"
@@ -14,13 +13,12 @@
         android:textSize="18sp"
         android:gravity="center"
         android:padding="10dp"
-        android:textColor="@color/darkgrey"/>
+        />
     <TextView
         android:id="@+id/help_content"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/help_item_title"
-        android:textColor="@color/darkgrey"
         android:textSize="14dp"
         android:padding="10dp"
         android:text="some description of that help"/>

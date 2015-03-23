@@ -3,6 +3,7 @@
     <!--Strings for settings menu-->
     <string name="action_help">Help</string>
     <string name="change_language">Change language</string>
+    <string name="settings_theme">Change theme</string>
     <string name="settings_about">About Íðorðabanki</string>
     <string name="settings_contact">Contact us</string>
     <string name="filter">Filter</string>

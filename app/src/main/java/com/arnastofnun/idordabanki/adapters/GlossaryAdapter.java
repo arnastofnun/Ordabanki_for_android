@@ -12,6 +12,7 @@ import android.widget.SectionIndexer;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.arnastofnun.idordabanki.ThemeHelper;
 import com.arnastofnun.idordabanki.activities.AboutGlossaryActivity;
 import com.arnastofnun.idordabanki.Glossary;
 import com.arnastofnun.idordabanki.R;
@@ -34,6 +35,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
     private static ArrayList<Glossary> glossaryList; //a list containing glossaries
     private static Context context; //current context
     private static ArrayList<String> selectedGlossCodes;
+    ThemeHelper themeHelper;
 
     /**
      * Invoke the overwritten methods in superclass
@@ -48,11 +50,12 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         //Sets up the alphabetical scrolling
         setUpAlphabeticalScrolling(glossaryList);
         //Set the glossary
-        GlossaryAdapter.glossaryList = new ArrayList<Glossary>();
+        GlossaryAdapter.glossaryList = new ArrayList<>();
         GlossaryAdapter.glossaryList = glossaryList;
         selectedGlossCodes = new ArrayList<>();
         //Set the context
         GlossaryAdapter.context = context;
+        themeHelper = new ThemeHelper(context);
     }
 
     /**
@@ -158,16 +161,16 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
             holder.link.setImageResource(android.R.color.transparent);
         }
         else{
-            holder.link.setImageResource(R.drawable.ic_action_web_site);
+            holder.link.setImageResource(themeHelper.getAttrDrawable(R.attr.webIcon));
         }
         holder.glossaryName.setText(glossary.getName());
         View row = (View) holder.glossaryName.getParent();
         if(glossary.isSelected()){
-            row.setBackgroundResource(R.color.glossary_selected);
+            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.primaryBackgroundColor));
             holder.tick.setVisibility(View.VISIBLE);
         }
         else{
-            row.setBackgroundResource(R.color.glossary_notselected);
+            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.thirdBackgroundColor));
             holder.tick.setVisibility(View.INVISIBLE);
         }
         holder.glossaryName.setTag(glossary);
@@ -240,16 +243,17 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         Glossary glossary = (Glossary) glossname.getTag();
 
 
+
         //If glossary is selected, deselect it and hide the tick
         if(glossary.isSelected()) {
-            row.setBackgroundResource(R.color.glossary_notselected);
+            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.thirdBackgroundColor));
             tick.setVisibility(View.INVISIBLE);
             selectedGlossCodes.remove(glossary.getDictCode());
             glossary.setSelected(false);
         }
         //If glossary is not selected, select it and show the tick
         else{
-            row.setBackgroundResource(R.color.glossary_selected);
+            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.primaryBackgroundColor));
             tick.setVisibility(View.VISIBLE);
             selectedGlossCodes.add(glossary.getDictCode());
             glossary.setSelected(true);

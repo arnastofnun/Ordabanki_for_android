@@ -5,9 +5,9 @@
     tools:context="com.arnastofnun.idordabanki.ChooseLanguagesFragment"
     android:gravity="center"
     android:layout_gravity="center"
-    android:background="@color/lightGreen100"
     android:padding="20dp"
-    android:id="@+id/filterDialog">
+    android:id="@+id/filterDialog"
+    android:background="?primaryColor">
 
     <LinearLayout
         android:id="@+id/langWrapper"
@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="10dp"
         android:gravity="center">
         <TextView
             android:layout_width="0dp"
@@ -25,7 +26,6 @@
             android:singleLine="false"
             android:gravity="center_vertical"
             android:textSize="20sp"
-            android:textColor="@color/darkgrey"
             />
 
         <Spinner
@@ -35,8 +35,8 @@
             android:id="@+id/filterLanguageSpinner"
             android:textSize="20sp"
             android:padding="5dp"
+            android:gravity="end"
             android:spinnerMode="dropdown"
-            android:textColor="@color/darkgrey"
             />
 
     </LinearLayout>
@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/langWrapper"
         android:orientation="horizontal"
+        android:padding="10dp"
         android:gravity="center">
 
         <TextView
@@ -59,7 +60,6 @@
             android:singleLine="false"
             android:gravity="center_vertical"
             android:textSize="20sp"
-            android:textColor="@color/darkgrey"
             />
 
         <Spinner
@@ -69,8 +69,9 @@
             android:id="@+id/filterGlossarySpinner"
             android:textSize="20sp"
             android:padding="5dp"
+            android:gravity="end"
             android:spinnerMode="dropdown"
-            android:textColor="@color/darkgrey"/>
+         />
     </LinearLayout>
 
 </RelativeLayout>

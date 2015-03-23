@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:paddingBottom="5dp"
     android:paddingTop="5dp"
-    android:background="@color/lightGreen100"
+    android:background="?primaryBackgroundColor"
     >
 
         <TextView
@@ -19,7 +19,6 @@
             android:text="Language"
             android:textSize="16sp"
             android:layout_centerVertical="true"
-            android:textColor="@color/darkgrey"
             android:gravity="center"
             />
 
@@ -33,7 +32,6 @@
             android:layout_height="wrap_content"
             android:text="Glossary"
             android:textSize="16sp"
-            android:textColor="@color/darkgrey"
             android:singleLine="false"
 
             />

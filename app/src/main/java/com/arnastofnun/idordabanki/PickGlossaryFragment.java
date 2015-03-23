@@ -30,6 +30,7 @@ public class PickGlossaryFragment extends Fragment {
     private static ArrayList<Glossary> glossaryList;
     private static boolean allSelected = true;
     private static ListView listView;
+    private ThemeHelper themeHelper;
 
     /**
      * Written by Karl Ásgeir Geirsson
@@ -45,6 +46,7 @@ public class PickGlossaryFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_pick_glossary,container,false);
             //Display the pick glossary list
             displayListView(rootView);
+        themeHelper = new ThemeHelper(this.getActivity());
         return rootView;
     }
 
@@ -82,6 +84,7 @@ public class PickGlossaryFragment extends Fragment {
     }
 
     public void resumeGlossaryState(Globals globals){
+
         glossaryList = globals.getGlossaryState();
         int index = 0;
         View listitemview;
@@ -90,11 +93,11 @@ public class PickGlossaryFragment extends Fragment {
             if (listitemview != null) {
                 if (glossary.isSelected()) {
                     ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                    listitemview.setBackgroundResource(R.color.glossary_selected);
+                    listitemview.setBackgroundColor(themeHelper.getAttrColor(R.attr.primaryBackgroundColor));
                     tick.setVisibility(View.VISIBLE);
                 } else {
                     ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                    listitemview.setBackgroundResource(R.color.glossary_notselected);
+                    listitemview.setBackgroundColor(themeHelper.getAttrColor(R.attr.thirdBackgroundColor));
                     tick.setVisibility(View.INVISIBLE);
                 }
             }
@@ -177,7 +180,7 @@ public class PickGlossaryFragment extends Fragment {
             if(listitemview != null) {
                 listitemview.setSelected(true);
                 ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                listitemview.setBackgroundResource(R.color.glossary_selected);
+                listitemview.setBackgroundColor(themeHelper.getAttrColor(R.attr.primaryBackgroundColor));
                 tick.setVisibility(View.VISIBLE);
             }
             index++;
@@ -202,7 +205,7 @@ public class PickGlossaryFragment extends Fragment {
                 if(listitemview != null) {
                     listitemview.setSelected(false);
                     ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                    listitemview.setBackgroundResource(R.color.glossary_notselected);
+                    listitemview.setBackgroundColor(themeHelper.getAttrColor(R.attr.thirdBackgroundColor));
                     tick.setVisibility(View.INVISIBLE);
                 }
             index++;

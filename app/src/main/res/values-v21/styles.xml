@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="autocomplete" parent="@android:style/Widget.Material.AutoCompleteTextView">
+        <item name="android:background">?secondaryBackgroundColor</item>
+        <item name="android:popupBackground">?thirdBackgroundColor</item>
+    </style>
+
+</resources>

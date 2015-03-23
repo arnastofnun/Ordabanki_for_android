@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.arnastofnun.idordabanki.R;
 
+import java.util.ArrayList;
+
 /**
  * This is an adapter that inflates the
  * views for the language change dialog
@@ -26,7 +28,7 @@ public class ChangeLanguageAdapter extends ArrayAdapter<String> {
      * @param listViewResourceID The resource id of the list view
      * @param languages The languages to be listed
      */
-    public ChangeLanguageAdapter(Context context, int listViewResourceID, String[] languages) {
+    public ChangeLanguageAdapter(Context context, int listViewResourceID, ArrayList<String> languages) {
         super(context, listViewResourceID, languages);
     }
 

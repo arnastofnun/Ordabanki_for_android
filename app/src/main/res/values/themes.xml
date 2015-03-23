@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Splash screen and select language theme -->
+    <style name="AppTheme.Light.NoActionBar.FullScreen" parent="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/lightGreen100</item>
+        <item name="android:textColor">@color/darkgrey</item>
+    </style>
+
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.Light" parent="android:Theme.Holo.Light.DarkActionBar">
+        <!-- Theme name -->
+        <item name="themeName">Normal</item>
+
+        <!-- Main theme colors. -->
+        <item name="android:textColorPrimary">@color/girlyTextColorPrimary</item>
+        <item name="primaryBackgroundColor">@color/lightGreen100</item>
+        <item name="secondaryBackgroundColor">@color/darkgrey</item>
+        <item name="thirdBackgroundColor">@color/white</item>
+        <item name="primaryTextColor">@color/darkgrey</item>
+        <item name="secondaryTextColor">@color/white</item>
+        <item name="android:textColor">@color/darkgrey</item>
+        <item name="android:textColorHint">@android:color/tertiary_text_dark</item>
+        <item name="android:windowBackground">@color/lightGreen100</item>
+        <item name="primaryColor">@color/holoDarkActionBar</item>
+
+        <!--Widget styles -->
+        <item name="android:buttonStyle">@style/normalButton</item>
+        <item name="android:radioButtonStyle">@style/normalRadioButton</item>
+        <item name="android:listViewStyle">@style/normalListView</item>
+        <item name="android:autoCompleteTextViewStyle">@style/autocomplete</item>
+        <item name="android:spinnerDropDownItemStyle">@style/spinners</item>
+
+
+
+        <!-- Action bar style-->
+        <item name="android:actionBarStyle">@style/actionBar</item>
+        <item name="actionBarBackground">@color/holoDarkActionBar</item>
+        <item name="actionBarTextColor">@color/white</item>
+
+        <!-- Action bar icons -->
+        <item name="helpIcon">@drawable/ic_action_help</item>
+        <item name="aboutIcon">@drawable/ic_action_about</item>
+        <item name="tickIcon">@drawable/ic_action_accept</item>
+        <item name="collapseIcon">@drawable/ic_action_collapse</item>
+        <item name="emailIcon">@drawable/ic_action_email</item>
+        <item name="expandIcon">@drawable/ic_action_expand</item>
+        <item name="filterIcon">@drawable/ic_action_filter</item>
+        <item name="searchIcon">@drawable/ic_action_search</item>
+        <item name="searchIconSecondary">@drawable/ic_action_search_light</item>
+        <item name="settingsIcon">@drawable/ic_action_settings</item>
+        <item name="webIcon">@drawable/ic_action_web_site</item>
+    </style>
+
+    <!-- Splash screen and select language theme -->
+    <style name="AppTheme.Girly.NoActionBar.FullScreen" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/girlyPrimary</item>
+        <item name="android:textColor">@color/girlyWindowBackground</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.Girly" parent="android:Theme.Holo">
+        <!-- Theme name -->
+        <item name="themeName">Girly</item>
+
+        <!-- Main theme colors. -->
+        <item name="android:textColorPrimary">@color/girlyTextColorPrimary</item>
+        <item name="primaryBackgroundColor">@color/girlyWindowBackground</item>
+        <item name="secondaryBackgroundColor">@color/girlyTextColorPrimary</item>
+        <item name="thirdBackgroundColor">@color/girlyPrimary</item>
+        <item name="primaryTextColor">@color/girlyTextColorPrimary</item>
+        <item name="secondaryTextColor">@color/girlyPrimary</item>
+        <item name="android:textColor">@color/girlyTextColorPrimary</item>
+        <item name="android:textColorHint">@color/girlyTextColorPrimary</item>
+        <item name="android:windowBackground">@color/girlyWindowBackground</item>
+        <item name="primaryColor">@color/girlyPrimary</item>
+
+        <!--Widget styles -->
+        <item name="android:buttonStyle">@style/normalButton</item>
+        <item name="android:radioButtonStyle">@style/normalRadioButton</item>
+        <item name="android:listViewStyle">@style/normalListView</item>
+        <item name="android:autoCompleteTextViewStyle">@style/autocomplete</item>
+        <item name="android:spinnerDropDownItemStyle">@style/spinners</item>
+
+        <!-- Action bar style-->
+        <item name="android:actionBarStyle">@style/actionBar</item>
+        <item name="actionBarBackground">@color/girlyPrimary</item>
+        <item name="actionBarTextColor">@color/girlyTextColorPrimary</item>
+
+        <!-- Action bar icons -->
+        <item name="helpIcon">@drawable/ic_action_help</item>
+        <item name="aboutIcon">@drawable/ic_action_about</item>
+        <item name="tickIcon">@drawable/ic_action_accept</item>
+        <item name="collapseIcon">@drawable/ic_action_collapse</item>
+        <item name="emailIcon">@drawable/ic_action_email</item>
+        <item name="expandIcon">@drawable/ic_action_expand</item>
+        <item name="filterIcon">@drawable/ic_action_filter</item>
+        <item name="searchIcon">@drawable/ic_action_search</item>
+        <item name="searchIconSecondary">@drawable/ic_action_search_light</item>
+        <item name="settingsIcon">@drawable/ic_action_settings</item>
+        <item name="webIcon">@drawable/ic_action_web_site</item>
+    </style>
+
+
+</resources>

@@ -10,6 +10,7 @@ import android.widget.ListView;
 import com.arnastofnun.idordabanki.LocaleSettings;
 import com.arnastofnun.idordabanki.R;
 import com.arnastofnun.idordabanki.Settings;
+import com.arnastofnun.idordabanki.ThemeHelper;
 import com.arnastofnun.idordabanki.adapters.displayTextAdapter;
 
 /**
@@ -28,6 +29,7 @@ public class AboutActivity extends Activity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeHelper.setCurrentTheme(this);
         super.onCreate(savedInstanceState);
         setTitle(R.string.settings_about);
         setContentView(R.layout.activity_about_activity);

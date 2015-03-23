@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 
 import com.arnastofnun.idordabanki.LocaleSettings;
 import com.arnastofnun.idordabanki.R;
+import com.arnastofnun.idordabanki.ThemeHelper;
 
 /*
 *   Holds the functions that are implemented in
@@ -32,6 +33,7 @@ public class SelectLanguageActivity extends Activity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeHelper.setCurrentTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_language);
         //initTypeFace();

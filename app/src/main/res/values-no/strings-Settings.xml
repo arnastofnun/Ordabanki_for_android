@@ -4,6 +4,7 @@
     <string name="action_help">Hjelp</string>
     <string name="settings_changelanguage_confirm">Velg</string>
     <string name="change_language">Endre språk</string>
+    <string name="settings_theme">Endre tema</string>
     <string name="filter">Filter</string>
     <string name="settings_about">Om Íðorðabanki</string>
     <string name="settings_contact">Kontakt oss</string>

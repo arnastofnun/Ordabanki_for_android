@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     tools:context="com.arnastofnun.idordabanki.ChooseLanguagesFragment"
     android:gravity="center"
-    android:background="@color/lightGreen100"
     android:id="@+id/choose_language_fragment">
 
     <LinearLayout
@@ -23,7 +22,6 @@
             android:singleLine="false"
             android:gravity="center"
             android:textSize="20sp"
-            android:textColor="@color/darkgrey"
             />
 
         <Spinner
@@ -34,7 +32,6 @@
             android:textSize="20sp"
             android:padding="5dp"
             android:spinnerMode="dropdown"
-            android:textColor="@color/darkgrey"
             />
 
     </LinearLayout>
@@ -57,7 +54,6 @@
             android:singleLine="false"
             android:gravity="center"
             android:textSize="20sp"
-            android:textColor="@color/darkgrey"
             />
 
         <Spinner
@@ -68,7 +64,7 @@
             android:textSize="20sp"
             android:padding="5dp"
             android:spinnerMode="dropdown"
-            android:textColor="@color/darkgrey"/>
+/>
     </LinearLayout>
 
 </RelativeLayout>

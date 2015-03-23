@@ -7,6 +7,10 @@
         android:showAsAction="never"
         />
     <item
+        android:id="@+id/settings_change_theme"
+        android:title="@string/settings_theme"
+        ></item>
+    <item
         android:id="@+id/settings_about"
         android:title="@string/settings_about"
         android:icon="@drawable/ic_action_about"
@@ -14,7 +18,7 @@
     <item
         android:id="@+id/settings_contact"
         android:title="@string/settings_contact"
-        android:icon="@drawable/ic_action_email"
+        android:icon="?emailIcon"
         />
     <item
         android:id="@+id/settings_clear_search"

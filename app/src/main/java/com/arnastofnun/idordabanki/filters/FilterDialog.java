@@ -12,6 +12,7 @@ import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
 import com.arnastofnun.idordabanki.Result;
 import com.arnastofnun.idordabanki.ResultsScreen;
+import com.arnastofnun.idordabanki.ThemeHelper;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
@@ -160,8 +161,11 @@ public class FilterDialog {
      */
     public void changeButtonColor(Button button){
         if(button != null){
-            button.setBackgroundColor(activity.getResources().getColor(R.color.darkgrey));
-            button.setTextColor(activity.getResources().getColor(android.R.color.primary_text_dark));
+            ThemeHelper themeHelper = new ThemeHelper(activity);
+            if(button != null){
+                button.setBackgroundColor(themeHelper.getAttrColor(R.attr.secondaryBackgroundColor));
+                button.setTextColor(themeHelper.getAttrColor(R.attr.secondaryTextColor));
+            }
         }
     }
 

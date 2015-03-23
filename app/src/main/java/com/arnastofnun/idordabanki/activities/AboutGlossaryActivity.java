@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import com.arnastofnun.idordabanki.REST.OrdabankiRESTClient;
 import com.arnastofnun.idordabanki.R;
 import com.arnastofnun.idordabanki.Settings;
+import com.arnastofnun.idordabanki.ThemeHelper;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.apache.http.Header;
@@ -51,6 +52,7 @@ public class AboutGlossaryActivity extends Activity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeHelper.setCurrentTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_glossary);
 
@@ -129,7 +131,6 @@ public class AboutGlossaryActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.about_glossary, menu);
         return true;
     }
 

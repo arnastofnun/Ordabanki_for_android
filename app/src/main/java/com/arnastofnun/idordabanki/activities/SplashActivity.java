@@ -17,6 +17,7 @@ import com.arnastofnun.idordabanki.LocaleSettings;
 import com.arnastofnun.idordabanki.R;
 import com.arnastofnun.idordabanki.REST.OrdabankiRestClientUsage;
 import com.arnastofnun.idordabanki.SearchScreen;
+import com.arnastofnun.idordabanki.ThemeHelper;
 import com.arnastofnun.idordabanki.interfaces.OnDictionariesObtainedListener;
 import com.arnastofnun.idordabanki.interfaces.OnLanguagesObtainedListener;
 import com.arnastofnun.idordabanki.jsonHandlers.DictionaryJsonHandler;
@@ -84,6 +85,7 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeHelper.setCurrentTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         //Starts the timer

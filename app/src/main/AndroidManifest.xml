@@ -21,7 +21,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+        android:theme="@style/AppTheme.Light" >
         <provider android:name="com.arnastofnun.idordabanki.SearchAutoComplete"
             android:authorities="com.example.cthulhu.ordabankiforandroid.SearchAutoComplete"
             />
@@ -30,7 +30,7 @@
         <activity
             android:name=".activities.SplashActivity"
             android:label="@string/title_activity_splash"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            android:theme="@style/AppTheme.Light.NoActionBar.FullScreen"
             android:clearTaskOnLaunch="true"
            >
             <intent-filter>
@@ -42,12 +42,11 @@
         <activity
             android:name=".activities.SelectLanguageActivity"
             android:label="@string/title_activity_select_language"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+            android:theme="@style/AppTheme.Light.NoActionBar.FullScreen" >
         </activity>
         <activity
             android:name=".SearchScreen"
             android:label="@string/search_tab"
-            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>
@@ -60,8 +59,7 @@
         <activity
             android:name=".activities.AboutActivity"
             android:label="@string/settings_about"
-            android:parentActivityName=".SearchScreen"
-            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+            android:parentActivityName=".SearchScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".SearchScreen" />
@@ -69,8 +67,7 @@
         <activity
             android:name=".activities.AboutGlossaryActivity"
             android:label="@string/title_activity_about_glossary"
-            android:parentActivityName=".SearchScreen"
-            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+            android:parentActivityName=".SearchScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".SearchScreen" />
@@ -79,7 +76,7 @@
             android:name=".ResultInfo"
             android:label="@string/title_activity_result_info"
             android:parentActivityName=".ResultsScreen"
-            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+ >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ResultsScreen" />
@@ -93,7 +90,7 @@
             android:label="@string/title_activity_results_screen"
             android:parentActivityName=".SearchScreen"
             android:noHistory="true"
-            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
+ >
 >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

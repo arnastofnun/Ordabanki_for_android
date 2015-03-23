@@ -1,13 +1,52 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+
+    <style name="PopupStyle" parent="android:style/Widget.PopupMenu">
+        <item name="android:background">?primaryColor</item>
+        <item name="android:textColor">?primaryTextColor</item>
+        <item name="android:popupBackground">?primaryColor</item>
     </style>
 
-    <style name="PopupStyle" parent="android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:background">#222222</item>
-        <item name="android:textColor">@android:color/primary_text_dark</item>
+    <style name="actionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">?actionBarBackground</item>
+        <item name="android:textColor">?actionBarTextColor</item>
     </style>
+
+    <style name="normalButton" parent="@android:style/Widget.Holo.Light.Button">
+        <item name="android:textColor">?primaryTextColor</item>
+        <item name="android:background">?primaryBackgroundColor</item>
+    </style>
+
+    <style name="normalRadioButton" parent="@android:style/Widget.Holo.Light.CompoundButton.RadioButton">
+        <item name="android:textColor">?primaryTextColor</item>
+    </style>
+
+    <style name="flagStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_weight">0.3</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:background">@null</item>
+        <item name="android:focusableInTouchMode">false</item>
+    </style>
+
+    <style name="normalListView" parent="@android:style/Widget.ListView">
+        <item name="android:background">?primaryBackgroundColor</item>
+    </style>
+
+
+
+    <style name="autocomplete" parent="@android:style/Widget.AutoCompleteTextView">
+        <item name="android:background">?secondaryBackgroundColor</item>
+        <item name="android:popupBackground">?thirdBackgroundColor</item>
+    </style>
+
+    <style name="spinners" parent="@android:style/Widget.TextView.SpinnerItem">
+        <item name="android:background">?secondaryBackgroundColor</item>
+        <item name="android:textColor">?secondaryTextColor</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+
 
 </resources>

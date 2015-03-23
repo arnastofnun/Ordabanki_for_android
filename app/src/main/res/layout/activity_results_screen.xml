@@ -4,7 +4,7 @@ android:layout_width="fill_parent"
 android:layout_height="fill_parent"
 android:orientation="vertical"
     android:layout_margin="0dp"
-    android:background="@color/darkgrey">
+    android:background="?secondaryBackgroundColor">
 
 
 <TextView
@@ -15,7 +15,7 @@ android:orientation="vertical"
     android:textSize="20sp"
     android:textIsSelectable="true"
     android:textStyle="bold"
-    android:textColor="@color/grey200"
+    android:textColor="?secondaryTextColor"
     android:typeface="normal"
     android:singleLine="true"
     android:layout_gravity="center_horizontal"

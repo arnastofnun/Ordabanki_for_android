@@ -86,9 +86,10 @@ public class HelpDialog {
      * @param button the button to change color
      */
     public void changeButtonColor(Button button){
+        ThemeHelper themeHelper = new ThemeHelper(context);
         if(button != null){
-            button.setBackgroundColor(context.getResources().getColor(R.color.darkgrey));
-            button.setTextColor(context.getResources().getColor(android.R.color.primary_text_dark));
+            button.setBackgroundColor(themeHelper.getAttrColor(R.attr.secondaryBackgroundColor));
+            button.setTextColor(themeHelper.getAttrColor(R.attr.secondaryTextColor));
         }
     }
 

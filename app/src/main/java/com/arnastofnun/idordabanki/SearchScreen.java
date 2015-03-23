@@ -78,6 +78,7 @@ public class SearchScreen extends FragmentActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeHelper.setCurrentTheme(this);
         super.onCreate(savedInstanceState);
         //Resets the kept results array so we can search again
         Globals globals = (Globals) Globals.getContext();

@@ -20,4 +20,11 @@
     <color name="darkred">#8C4646</color>
     <color name="glossary_selected">@color/lightGreen100</color>
     <color name="glossary_notselected">@color/lightGreen50</color>
+    <color name="holoDarkActionBar">#222222</color>
+
+    <!-- Girly theme -->
+    <color name="girlyPrimary">#E91E63</color>
+    <color name="girlyPrimaryDark">#C2185B</color>
+    <color name="girlyTextColorPrimary">#FCE4EC</color>
+    <color name="girlyWindowBackground">#651FFF</color>
 </resources>

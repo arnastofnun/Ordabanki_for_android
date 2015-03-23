@@ -239,8 +239,10 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
         }
 /*        if(word.getDomain() != null){
             wordHTML += "<b>"+getString(R.string.word_domain)+"</b> " +  word.domain + "<br>";
-
         }*/
+        ThemeHelper themeHelper = new ThemeHelper(this.getActivity());
+        String thirdBackground = themeHelper.getHexColorFromAttr(R.attr.thirdBackgroundColor);
+        String mainText = themeHelper.getHexColorFromAttr(R.attr.primaryTextColor);
         if(word.getExample() != null) {
             wordHTML += "<b>"+getString(R.string.word_example)+"</b> " +  word.example + "<br>";
         }
@@ -254,11 +256,11 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
             if(word.hasSynParent()){
                 synonymHTML += "<div id=\"synonym\"><b>" + getString(R.string.word_synyonym) + " </b>";
             }else{
-                synonymHTML += "<div id=\"synonym\" style=\"color:white;padding:0px;background-color:#616161;margin-top:0px;\"><b>" + getString(R.string.word_synyonym) + " </b>";
+                synonymHTML += "<div id=\"synonym\" style=\"color:"+mainText+";padding:0px;background-color:"+thirdBackground+";margin-top:0px;\"><b>" + getString(R.string.word_synyonym) + " </b>";
             }
 
             for(TermResult.Term.Word.Synonym synonym: word.getSynonyms()){
-                synonymHTML += "<a href =\""+synonym.synonym +"\"><div id=\"word\" style =\"width:80%;margin-top:5px;font-family:'PT serif';color:#616161;\"><b><i><div class=\"link\">"+synonym.synonym+ "</div></a></i></b>";
+                synonymHTML += "<a href =\""+synonym.synonym +"\"><div id=\"word\" style =\"width:80%;margin-top:5px;font-family:'PT serif';color:+"+thirdBackground+";\"><b><i><div class=\"link\">"+synonym.synonym+ "</div></a></i></b>";
                 String synChild = "";
                 if(synonym.getAbbreviation() != null){
                     synChild +=  getString(R.string.word_abbreviation)+" " + synonym.abbreviation+ "<br>";
@@ -299,23 +301,30 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
         return globals.getLanguages().get(langCode);
     }
 
+
     /**
      * This method contains the style for the css styling for the webview
      * @return the css styling
      */
     private String initialiseHtmlStyle(){
+        ThemeHelper themeHelper = new ThemeHelper(this.getActivity());
+        String primaryText = themeHelper.getHexColorFromAttr(R.attr.primaryTextColor);
+        String primaryBackground = themeHelper.getHexColorFromAttr(R.attr.primaryBackgroundColor);
+        String secondaryText = themeHelper.getHexColorFromAttr(R.attr.secondaryTextColor);
+        String secondaryBackground = themeHelper.getHexColorFromAttr(R.attr.secondaryBackgroundColor);
+        String thirdBackground = themeHelper.getHexColorFromAttr(R.attr.thirdBackgroundColor);
         return "<link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>" +
-                "<style>#sbr_refs{font-family: 'PT Serif', serif;font-size:1.1em} h3{color:white} body{margin-left:auto;margin-right:auto;width:75%;background-color:#616161;color:#616161;}p{margin:0pt;padding:0pt;} " +
-                "#synonym{padding:5px;background-color:white;margin-top:5px;margin:0px;-webkit-border-radius: 7px;\n" +
+                "<style>#sbr_refs{font-family: 'PT Serif', serif;font-size:1.1em} h3{color:" + secondaryText + "} body{margin-left:auto;margin-right:auto;width:75%;background-color:"+secondaryBackground+";color:"+primaryText+";}p{margin:0pt;padding:0pt;} " +
+                "#synonym{padding:5px;background-color:" + thirdBackground + ";margin-top:5px;margin:0px;-webkit-border-radius: 7px;\n" +
                 "-moz-border-radius: 7px;margin-left:auto;margin-right:auto;\n" +
                 "border-radius: 7px;}" +
-                "#word{padding:5px;background-color:#DCEDC8;margin:0px;-webkit-border-radius: 7px;\n" +
+                "#word{padding:5px;background-color:"+primaryBackground+";margin:0px;-webkit-border-radius: 7px;\n" +
                 "-moz-border-radius: 7px;margin-left:auto;margin-right:auto;\n" +
                 "border-radius: 7px;}" +
                 "#container{margin-top:6px;margin-left:auto;margin-right:auto} " +
                 "#textBlock{text-align:center;margin-left:auto;margin-right:auto}" +
-                "table{font-family: 'PT Serif';margin-top:6px;color:white;margin-left:auto; margin-right:auto; } table, th, td { border: 0px solid black; border-collapse: collapse; } th, td { padding: 5px; text-align: left; }"+
-                "a{text-decoration: none;}.link{color:black}"+
+                "table{font-family: 'PT Serif';margin-top:6px;color:"+secondaryText + ";margin-left:auto; margin-right:auto; } table, th, td { border: 0px solid black; border-collapse: collapse; } th, td { padding: 5px; text-align: left; }"+
+                "a{text-decoration: none;}.link{color:"+primaryText+"}"+
                 "</style>";
     }
 

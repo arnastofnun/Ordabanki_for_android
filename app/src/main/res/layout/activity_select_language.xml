@@ -5,8 +5,7 @@
     tools:context="com.arnastofnun.idordabanki.activities.SelectLanguageActivity"
     android:padding="20dp"
     android:weightSum="1"
-    android:orientation="vertical"
-    android:background="@color/lightGreen100">
+    android:orientation="vertical">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
@@ -33,7 +32,6 @@
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="0.4"
-            android:textColor="@color/darkgrey"
             android:textSize="43sp"
             android:gravity="center"
             android:typeface="normal"
@@ -57,55 +55,33 @@
             android:id="@+id/linearLayout">
 
             <ImageButton
+                style="@style/flagStyle"
                 android:id="@+id/SelectLanguageActivity_icelandic"
-                android:layout_width="match_parent"
-                android:layout_weight="0.3"
-                android:layout_height="120dp"
                 android:src="@drawable/ic_iceland"
-                android:scaleType="fitCenter"
-                android:background="@null"
                 android:contentDescription="Icelandic" />
 
             <ImageButton
+                style="@style/flagStyle"
                 android:id="@+id/SelectLanguageActivity_english"
-                android:layout_width="match_parent"
-                android:layout_weight="0.3"
-                android:layout_height="120dp"
                 android:src="@drawable/ic_united_kingdom"
-                android:background="@null"
-                android:scaleType="fitCenter"
                 android:contentDescription="English" />
 
             <ImageButton
+                style="@style/flagStyle"
                 android:id="@+id/SelectLanguageActivity_danish"
-                android:layout_width="match_parent"
-                android:layout_weight="0.3"
-                android:layout_height="120dp"
                 android:src="@drawable/ic_denmark"
-                android:scaleType="fitCenter"
-                android:background="@null"
-                android:focusableInTouchMode="false"
                 android:contentDescription="Danish" />
 
             <ImageButton
+                style="@style/flagStyle"
                 android:id="@+id/SelectLanguageActivity_swedish"
-                android:layout_width="match_parent"
-                android:layout_weight="0.3"
-                android:layout_height="120dp"
                 android:src="@drawable/ic_sweden"
-                android:background="@null"
-                android:scaleType="fitCenter"
-                android:focusableInTouchMode="false"
                 android:contentDescription="Swedish" />
 
             <ImageButton
+                style="@style/flagStyle"
                 android:id="@+id/SelectLanguageActivity_norwegian"
-                android:layout_width="match_parent"
-                android:layout_weight="0.3"
-                android:layout_height="120dp"
                 android:src="@drawable/ic_norway"
-                android:scaleType="fitCenter"
-                android:background="@null"
                 android:contentDescription="Norwegian" />
 
 
@@ -119,7 +95,6 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="0.2"
-        android:textColor="@color/darkgrey"
         android:textStyle="bold"
         android:textSize="20sp"
         android:gravity="center"

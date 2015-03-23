@@ -4,6 +4,7 @@
     <string name="action_help">Hjálp</string>
     <string name="settings_changelanguage_confirm">Velja</string>
     <string name="change_language">Breyta tungumáli</string>
+    <string name="settings_theme">Breyta þema</string>
     <string name="settings_about">Um Íðorðabankann</string>
     <string name="settings_contact">Hafið samband</string>
     <string name="filter">Sía</string>
