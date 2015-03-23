@@ -43,6 +43,7 @@ public class ResultInfo extends FragmentActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeHelper.setCurrentTheme(this);
         super.onCreate(savedInstanceState);
         setTitle(R.string.title_activity_result_info);
         setContentView(R.layout.activity_result_info);
