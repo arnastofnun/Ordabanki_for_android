@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -68,9 +69,14 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
 
         resultList = global.getOriginalResults(); //Get the result list from globals
         //Get the data from the intent
+
         Bundle data = getIntent().getExtras();
+        boolean newSearch = false;
+        if(data != null && data.containsKey("newSearch")){
+            newSearch = data.getBoolean("newSearch");
+        }
         //If it doesn't exist this is a new search
-        if(resultList == null || data.getBoolean("newSearch")){
+        if(resultList == null || newSearch){
 
             //Check if search mode is in the intent
             searchQuery = data.getString("searchQuery");
@@ -112,6 +118,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      */
     @Override
     protected void onRestart(){
+        super.onRestart();
+        searchQuery = global.getSTerm();
         displayListView();
     }
 
@@ -262,6 +270,21 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         timingThread.start();
     }
 
+    @Override
+    protected void onPause() {
+        Log.v("sterm",searchQuery);
+        global.setSTerm(searchQuery);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        if(global.getSTerm() != null) {
+            searchQuery = global.getSTerm();
+            Log.v("sterm", searchQuery);
+        }
+        super.onResume();
+    }
 
     /**
      * A method that displays the list view
@@ -278,7 +301,12 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         if(searchQuery!=null){
             textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery);
         }else {
-            searchString = getIntent().getExtras().getString("searchString");
+            Bundle bundle = getIntent().getExtras();
+            if(bundle != null && bundle.containsKey("searchString")) {
+                searchString = getIntent().getExtras().getString("searchString");
+            } else{
+                searchString = global.getSTerm();
+            }
             textView.setText(resultsCount + " " + searchPreTerm + " " + searchString);
         }
 

@@ -7,6 +7,7 @@
         <item name="android:popupBackground">?primaryColor</item>
     </style>
 
+
     <style name="actionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">?actionBarBackground</item>
         <item name="android:textColor">?actionBarTextColor</item>
@@ -40,6 +41,7 @@
         <item name="android:background">?secondaryBackgroundColor</item>
         <item name="android:popupBackground">?thirdBackgroundColor</item>
     </style>
+
 
     <style name="spinners" parent="@android:style/Widget.TextView.SpinnerItem">
         <item name="android:background">?secondaryBackgroundColor</item>
