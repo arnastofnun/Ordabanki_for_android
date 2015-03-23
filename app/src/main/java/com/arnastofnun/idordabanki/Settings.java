@@ -45,7 +45,6 @@ public class Settings {
      */
 
     Activity context;
-    private int[] splashThemes = {R.style.AppTheme_Girly_NoActionBar_FullScreen,R.style.AppTheme_Light_NoActionBar_FullScreen};
     private BiMap<Integer,String> themes;
 
 
@@ -271,7 +270,7 @@ public class Settings {
     }
 
     private ListView setupThemeListView(View view){
-        int[] splashThemes = {R.style.AppTheme_Girly_NoActionBar_FullScreen,R.style.AppTheme_Light_NoActionBar_FullScreen};
+
         BiMap<Integer,String> themes =HashBiMap.create();
         themes.put(R.style.AppTheme_Girly,"Girly");
         themes.put(R.style.AppTheme_Light,"Normal");

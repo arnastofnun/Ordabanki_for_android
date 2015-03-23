@@ -85,7 +85,7 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ThemeHelper.setCurrentTheme(this);
+        ThemeHelper.setCurrentNoActionBar(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         //Starts the timer

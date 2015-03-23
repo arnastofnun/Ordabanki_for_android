@@ -8,6 +8,9 @@ import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.util.TypedValue;
 
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+
 /**
  * Created by karlasgeir on 3/23/15.
  */
@@ -47,6 +50,18 @@ public class ThemeHelper {
 
     public String getHexColorFromAttr(int attrID){
         return convertColorToHex(getAttrColor(attrID));
+    }
+
+    public static void setCurrentNoActionBar(Activity act){
+        BiMap<Integer,Integer> themes = HashBiMap.create();
+        themes.put(R.style.AppTheme_Girly,R.style.AppTheme_Girly_NoActionBar_FullScreen);
+        themes.put(R.style.AppTheme_Light,R.style.AppTheme_Light_NoActionBar_FullScreen);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Globals.getContext());
+        if(sharedPreferences.contains("currentTheme")){
+            int currentTheme = sharedPreferences.getInt("currentTheme",0);
+            act.setTheme(themes.get(currentTheme));
+        }
     }
 
     public static void setCurrentTheme(Activity act){

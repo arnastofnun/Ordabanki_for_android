@@ -33,7 +33,7 @@ public class SelectLanguageActivity extends Activity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ThemeHelper.setCurrentTheme(this);
+        ThemeHelper.setCurrentNoActionBar(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_language);
         //initTypeFace();
