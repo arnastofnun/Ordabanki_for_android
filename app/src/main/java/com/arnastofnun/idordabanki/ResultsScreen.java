@@ -74,7 +74,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
 
             //Check if search mode is in the intent
             searchQuery = data.getString("searchQuery");
-
+            global.setSTerm(searchQuery);
             //If the searchQuery is an integer we go straight to term search
             if(isInteger(searchQuery)){
                 doTermIdSearch(searchQuery);

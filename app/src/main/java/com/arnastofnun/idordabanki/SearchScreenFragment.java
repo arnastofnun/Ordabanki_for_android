@@ -96,7 +96,6 @@ public class SearchScreenFragment extends Fragment {
                 }
 
                 Globals globals = (Globals) Globals.getContext();
-
                 globals.setSearchMode(searchMode);
             }
         });
