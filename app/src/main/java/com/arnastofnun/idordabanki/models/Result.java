@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 import com.arnastofnun.idordabanki.Globals;
+import com.arnastofnun.idordabanki.preferences.SharedPrefs;
 import com.google.common.collect.BiMap;
 
 /**
@@ -209,8 +210,8 @@ public class Result implements Comparable<Result>{
     @Override
     public int compareTo(@NonNull Result r){
         Globals globals = (Globals) Globals.getContext();
-        BiMap<String,String> dictionaries = globals.getLoc_dictionaries();
-        BiMap<String,String> languages = globals.getLanguages();
+        BiMap<String,String> dictionaries = SharedPrefs.getStringBiMap("loc_dictionaries");
+        BiMap<String,String> languages = SharedPrefs.getStringBiMap("languages");
 
         //Compare the words alphabetically
         int comp1 = getWord().compareTo(r.getWord());

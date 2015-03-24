@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
 import com.arnastofnun.idordabanki.models.Result;
+import com.arnastofnun.idordabanki.preferences.SharedPrefs;
 import com.google.common.collect.BiMap;
 
 import java.util.ArrayList;
@@ -261,7 +262,7 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
      * @return the language name of the result
      */
     private String getLanguageName(Result result){
-        BiMap<String,String> languages = g.getLanguages();
+        BiMap<String,String> languages = SharedPrefs.getStringBiMap("languages");
         return languages.get(result.getLanguage_code());
     }
 
@@ -271,7 +272,7 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
      * @return the glossary name of the result
      */
     private String getGlossaryName(Result result){
-        BiMap<String,String> dictionaries = g.getLoc_dictionaries();
+        BiMap<String,String> dictionaries = SharedPrefs.getStringBiMap("loc_dictionaries");
         return dictionaries.get(result.getDictionary_code());
     }
 

@@ -93,7 +93,6 @@ public class AboutGlossaryActivity extends Activity {
                             replace("blockquote","section").
                             replace("font-size","font-weight") + css;
 
-               Log.v("css",css);
                     webView.loadDataWithBaseURL(null, contents, "text/html", "UTF-8", null);
 
                 } catch (Exception e) {
@@ -124,29 +123,6 @@ public class AboutGlossaryActivity extends Activity {
 
     }
 
-    public String filterHTMLBody(String bodyHTML){
-        String substring = "";
-        try{
-            substring = contents.substring(contents.indexOf("<p>"), contents.length());
-        }catch(StringIndexOutOfBoundsException e1){
-               e1.printStackTrace();
-            try{
-                int pos = nthOccurrence(bodyHTML,"<p",2);
-                substring = contents.substring(pos, contents.length());
-
-            }catch(StringIndexOutOfBoundsException e2){
-
-            }
-        }
-        return substring;
-    }
-
-    public int nthOccurrence(String str, String c, int n) {
-        int pos = str.indexOf(c, 0);
-        while (n-- > 0 && pos != -1)
-            pos = str.indexOf(c, pos+1);
-        return pos;
-    }
     /**
      *@param menu the menu
      *@return true or false

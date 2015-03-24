@@ -14,9 +14,6 @@ import java.util.ArrayList;
  * @author Bill
  */
 public class Globals extends Application{
-    private BiMap<String,String> languages; //List of all languages in the current language and their codes
-    private ArrayList<Glossary> dictionaries; //List of all glossaries, set in the current language
-    private BiMap<String,String> loc_dictionaries; //List of all dictionary names in the current language and their codes
     private ArrayList<Glossary> glossaryState; //Keeps the selected glossary state between searches
     private String tLangCode = null; //Keeps the position of the selected target language between searches
     private String glossCode = null; //Keeps the position of the selected glossary filter
@@ -27,7 +24,6 @@ public class Globals extends Application{
     private BiMap<String,String> filterGlossaries;
     private BiMap<String,String> filterLanguages;
     private String sTerm;
-
 
     public static Context context;
 
@@ -75,31 +71,6 @@ public class Globals extends Application{
     }
 
     /**
-     * Sets the source and target languages to the current language
-     * Written by Bill
-     * @param langs List of all languages in the current language and their codes
-     */
-    public void setLanguages(BiMap<String,String> langs){
-     this.languages=langs;
-    }
-
-    /**
-     * Sets the dictionaries to the current language
-     * Written by Bill
-     * @param dicts List of all glossaries, set in the current language
-     */
-    public void setDictionaries(ArrayList<Glossary> dicts){
-        this.dictionaries=dicts;
-    }
-
-    /**
-     * Sets the loc_dictionaries to the current language
-     * Written by Karl Ásgeir Geirsson
-     * @param dicts List of all dictionary names in the current language and their codes
-     */
-    public void setLocalizedDictionaries(BiMap<String,String> dicts){this.loc_dictionaries=dicts;}
-
-    /**
      * Sets the glossary state
      * Written by Bill
      * @param glossaryList the current glossary list
@@ -138,23 +109,8 @@ public class Globals extends Application{
      * @param term the search term
      */
     public void setSTerm(String term) {this.sTerm = term;}
-    /**
-     * Written by Bill
-     * @return languages
-     */
-    public BiMap<String,String> getLanguages(){return languages;}
 
-    /**
-     * Written by Bill
-     * @return loc_dictionaries
-     */
-    public BiMap<String,String> getLoc_dictionaries(){return loc_dictionaries;}
 
-    /**
-     * Written by Bill
-     * @return dictionaries
-     */
-    public ArrayList<Glossary>getDictionaries(){return dictionaries;}
 
     /**
      * Written by Bill

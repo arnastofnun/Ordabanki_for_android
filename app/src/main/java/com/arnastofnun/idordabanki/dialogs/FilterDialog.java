@@ -13,6 +13,7 @@ import com.arnastofnun.idordabanki.R;
 import com.arnastofnun.idordabanki.models.Result;
 import com.arnastofnun.idordabanki.activities.ResultsScreen;
 import com.arnastofnun.idordabanki.helpers.ThemeHelper;
+import com.arnastofnun.idordabanki.preferences.SharedPrefs;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
@@ -125,8 +126,8 @@ public class FilterDialog {
         filterDialog.setPositiveButton(R.string.settings_changelanguage_confirm,new DialogInterface.OnClickListener(){
            public void onClick(DialogInterface dialog, int id){
                //Get the lists
-               BiMap<String,String> glossaries = globals.getLoc_dictionaries();
-               BiMap<String,String> languages = globals.getLanguages();
+               BiMap<String,String> glossaries = SharedPrefs.getStringBiMap("loc_dictionaries");
+               BiMap<String,String> languages = SharedPrefs.getStringBiMap("languages");
                //Get the selected items from the spinners
                String glossCode = glossSpinner.getSelectedItem().toString();
                String langCode = langSpinner.getSelectedItem().toString();
@@ -181,8 +182,8 @@ public class FilterDialog {
     public static void setFilterPossibilities(ArrayList<Result> resultList){
         //Get the lists from globals
         Globals globals = (Globals) Globals.getContext();
-        BiMap<String,String> langList = globals.getLanguages();
-        BiMap<String,String> glossList = globals.getLoc_dictionaries();
+        BiMap<String,String> glossList = SharedPrefs.getStringBiMap("loc_dictionaries");
+        BiMap<String,String> langList = SharedPrefs.getStringBiMap("languages");
 
         //Create new maps
         BiMap<String,String> filtLangList = HashBiMap.create();

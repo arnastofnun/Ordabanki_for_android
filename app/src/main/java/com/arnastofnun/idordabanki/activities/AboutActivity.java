@@ -44,8 +44,6 @@ public class AboutActivity extends Activity {
         //Getting the glossary list and setting it's adapter to my custom glossary adapter
         ListView listView = (ListView) this.findViewById(R.id.about_list_view);
         listView.setAdapter(adapter);
-
-
     }
 
     /**

@@ -32,9 +32,9 @@ import java.util.HashMap;
 public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIndexer {
     HashMap<String,Integer> alphaIndexer; //Indexer for the alphabet sorting
     String[] sections; //Sections for the alphabet sorting
-    private static ArrayList<Glossary> glossaryList; //a list containing glossaries
-    private static Context context; //current context
-    private static ArrayList<String> selectedGlossCodes;
+    private ArrayList<Glossary> glossaryList; //a list containing glossaries
+    private Context context; //current context
+    private ArrayList<String> selectedGlossCodes;
     ThemeHelper themeHelper;
 
     /**
@@ -50,11 +50,11 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         //Sets up the alphabetical scrolling
         setUpAlphabeticalScrolling(glossaryList);
         //Set the glossary
-        GlossaryAdapter.glossaryList = new ArrayList<>();
-        GlossaryAdapter.glossaryList = glossaryList;
+        this.glossaryList = new ArrayList<>();
+        this.glossaryList = glossaryList;
         selectedGlossCodes = new ArrayList<>();
         //Set the context
-        GlossaryAdapter.context = context;
+        this.context = context;
         themeHelper = new ThemeHelper(context);
     }
 
@@ -176,6 +176,14 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         holder.glossaryName.setTag(glossary);
     }
 
+    /**
+     * Sets the checked state of a glossary
+     * @param index - the index of the glossary
+     * @param state - the checked state of the glossary
+     */
+    public void setChecked(int index,boolean state){
+        glossaryList.get(index).setSelected(state);
+    }
 
 
 
@@ -280,11 +288,11 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
     }
 
     /**
-     * A method to return the selected glossary code
-     * @return the selected glossary code
+     * A method to return the glossary list
+     * @return - the glossary list
      */
-    public static ArrayList<String> getSelectedGlossCodes(){
-        return selectedGlossCodes;
+    public ArrayList<Glossary> getGlossaryList(){
+        return glossaryList;
     }
 
 

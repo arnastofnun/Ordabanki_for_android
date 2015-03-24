@@ -3,7 +3,6 @@ package com.arnastofnun.idordabanki.activities;
 
 import android.app.DialogFragment;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
@@ -11,8 +10,6 @@ import com.arnastofnun.idordabanki.helpers.LocalizedValues;
 import com.arnastofnun.idordabanki.sync.ConnectionDetector;
 import com.arnastofnun.idordabanki.dialogs.ConnectionDialogueFragment;
 import com.arnastofnun.idordabanki.models.Dictionary;
-import com.arnastofnun.idordabanki.Globals;
-import com.arnastofnun.idordabanki.models.Glossary;
 import com.arnastofnun.idordabanki.models.Language;
 import com.arnastofnun.idordabanki.preferences.LocaleSettings;
 import com.arnastofnun.idordabanki.R;
@@ -22,13 +19,8 @@ import com.arnastofnun.idordabanki.interfaces.OnDictionariesObtainedListener;
 import com.arnastofnun.idordabanki.interfaces.OnLanguagesObtainedListener;
 import com.arnastofnun.idordabanki.sync.jsonHandlers.DictionaryJsonHandler;
 import com.arnastofnun.idordabanki.sync.jsonHandlers.LanguageJsonHandler;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
 
 import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.Collections;
 
 
 //Basically just waits for two seconds and then starts the next activity

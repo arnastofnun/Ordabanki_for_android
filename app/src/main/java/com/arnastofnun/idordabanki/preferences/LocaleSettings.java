@@ -5,7 +5,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
@@ -32,7 +31,6 @@ public class LocaleSettings{
         status is true if there is a language in shared preferences, else false
         language contains the language in shared preferences, else null
      */
-    SharedPreferences sharedpref;
     Context context;
     boolean status;
     String language;
@@ -50,8 +48,7 @@ public class LocaleSettings{
         super();
         //Set variables
         this.context = context;
-        this.sharedpref = PreferenceManager.getDefaultSharedPreferences(Globals.getContext());
-        this.status = sharedpref.contains("lang");
+        this.status = SharedPrefs.contains("lang");
         this.language = getLanguageFromPref();
         statLang =this.language;
 
@@ -87,11 +84,9 @@ public class LocaleSettings{
      * @return language, the current language in shared preferences, or null
      */
     public String getLanguageFromPref(){
-        //if language is set in shared prefs
-        this.status = sharedpref.contains("lang");
-        if(status){
+        if(SharedPrefs.contains("lang")){
             //get the language string
-            return sharedpref.getString("lang","DEFAULT");
+            return SharedPrefs.getString("lang");
         }
         else{
             return null;
@@ -110,10 +105,7 @@ public class LocaleSettings{
      */
     public void setLanguage(String lang,Class cl, boolean flag){
         //Edit the shared preferences
-        SharedPreferences.Editor editor = sharedpref.edit();
-        //Set lang as the language and apply changes
-        editor.putString("lang",lang);
-        editor.apply();
+        SharedPrefs.putString("lang",lang);
         //Set the locale settings and start the activity
         setLocale(lang,cl, flag);
     }
@@ -127,10 +119,7 @@ public class LocaleSettings{
      */
     public void setLanguageInit(String lang){
         //Edit the shared preferences
-        SharedPreferences.Editor editor = sharedpref.edit();
-        //Set lang as the language and apply changes
-        editor.putString("lang",lang);
-        editor.apply();
+        SharedPrefs.putString("lang",lang);
         //Set the locale settings and start the activity
         setCurrLocaleFromPrefs();
     }
@@ -163,6 +152,7 @@ public class LocaleSettings{
      * @return true if language is set in shared preferences, else false
      */
     public boolean getLocaleStatus(){
+        status=SharedPrefs.contains("lang");
         return status;
     }
 
