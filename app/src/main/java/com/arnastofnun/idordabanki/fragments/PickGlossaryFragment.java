@@ -7,15 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-
-import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
-import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 import com.arnastofnun.idordabanki.adapters.GlossaryAdapter;
 import com.arnastofnun.idordabanki.models.Glossary;
-
+import com.arnastofnun.idordabanki.preferences.SharedPrefs;
+import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 /**
  * This class contains functions for the
@@ -30,10 +27,10 @@ public class PickGlossaryFragment extends Fragment {
     *   glossaryList is a list that contains all the glossaries to be used
     *   in the Orðabanki app
     */
-    private static ArrayList<Glossary> glossaryList;
-    private static boolean allSelected = true;
+    private ArrayList<Glossary> glossaryList;
     private static ListView listView;
-    private ThemeHelper themeHelper;
+    private static GlossaryAdapter glossaryAdapter;
+    private View rootView;
 
     /**
      * Written by Karl Ásgeir Geirsson
@@ -46,10 +43,9 @@ public class PickGlossaryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         //Load the .xml file for the pick glossary fragment
-        View rootView = inflater.inflate(R.layout.fragment_pick_glossary,container,false);
-            //Display the pick glossary list
-            displayListView(rootView);
-        themeHelper = new ThemeHelper(this.getActivity());
+        rootView = inflater.inflate(R.layout.fragment_pick_glossary,container,false);
+        //Display the pick glossary list
+        displayListView();
         return rootView;
     }
 
@@ -61,8 +57,8 @@ public class PickGlossaryFragment extends Fragment {
     @Override
     public void onPause(){
         super.onPause();
-        Globals g= (Globals) this.getActivity().getApplication();
-        g.setGlossaryState(glossaryList);
+        GlossaryAdapter glossaryAdapter = (GlossaryAdapter) listView.getAdapter();
+        SharedPrefs.putParcelableArray("glossary_state", glossaryAdapter.getGlossaryList());
     }
 
     /**
@@ -73,43 +69,13 @@ public class PickGlossaryFragment extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
-        Globals g= (Globals) this.getActivity().getApplication();
-        if(g==null || g.getGlossaryState() == null ){
-            //do nothing
-        }else{
-            resumeGlossaryState(g);
-        }
-
-    }
-
-    /**
-     * A method that resumes the glossary state
-     * @param globals - globals
-     */
-    public void resumeGlossaryState(Globals globals){
-
-        glossaryList = globals.getGlossaryState();
-        int index = 0;
-        View listitemview;
-        for (Glossary glossary : glossaryList) {
-            listitemview = listView.getChildAt(index);
-            if (listitemview != null) {
-                if (glossary.isSelected()) {
-                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                    listitemview.setBackgroundColor(themeHelper.getAttrColor(R.attr.primaryBackgroundColor));
-                    tick.setVisibility(View.VISIBLE);
-                } else {
-                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                    listitemview.setBackgroundColor(themeHelper.getAttrColor(R.attr.thirdBackgroundColor));
-                    tick.setVisibility(View.INVISIBLE);
-                }
-            }
-            index++;
+        if(SharedPrefs.contains("glossary_state")){
+            glossaryList = SharedPrefs.getParcelableArray("glossary_state", new TypeToken<ArrayList<Glossary>>() {
+            }.getType());
         }
     }
 
-
-    /**use:displayListView(rootView)
+    /**use:displayListView()
      * pre: rootView is of type View
      * This function is supposed to loop through the glossaries and add them to the glossary list.
      * For now it just puts some test glossaries in.
@@ -120,18 +86,19 @@ public class PickGlossaryFragment extends Fragment {
      * It also sets an on click listener that displays a toast for now.
      * -------------------------------------------------------------------------------------------
      * Written by Karl Ásgeir Geirsson
-     * @param rootView the root view
      * @since 09.10.2014
      */
-    private void displayListView(View rootView){
+    private void displayListView(){
         //List of glossaries
-            Globals g= (Globals) Globals.getContext();
-            glossaryList = new ArrayList<>();
-            glossaryList.addAll(g.getDictionaries());
-
+        if(SharedPrefs.contains("glossary_state")){
+            glossaryList = SharedPrefs.getParcelableArray("glossary_state",new TypeToken<ArrayList<Glossary>>(){}.getType());
+        } else {
+            glossaryList = SharedPrefs.getParcelableArray("dictionaries", new TypeToken<ArrayList<Glossary>>() {
+            }.getType());
+        }
 
         //Creating a new glossary adapter
-        GlossaryAdapter glossaryAdapter = new GlossaryAdapter(this.getActivity(), R.layout.glossary_list, glossaryList);
+        glossaryAdapter = new GlossaryAdapter(this.getActivity(), R.layout.glossary_list, glossaryList);
 
         //Getting the glossary list and setting it's adapter to my custom glossary adapter
         listView = (ListView) rootView.findViewById(R.id.GlossaryList);
@@ -142,7 +109,13 @@ public class PickGlossaryFragment extends Fragment {
 
         //Button to uncheck all glossaries
         final Button decheckallbutton = (Button) rootView.findViewById(R.id.deselect_all_glossaries);
-        checkallbutton.setVisibility(View.GONE);
+        if(areAllSelected()){
+            checkallbutton.setVisibility(View.GONE);
+            decheckallbutton.setVisibility(View.VISIBLE);
+        } else{
+            decheckallbutton.setVisibility(View.GONE);
+            checkallbutton.setVisibility(View.VISIBLE);
+        }
         //On click listener to select all glossaries
         checkallbutton.setOnClickListener(new View.OnClickListener()
         {
@@ -171,24 +144,11 @@ public class PickGlossaryFragment extends Fragment {
      * Written by Karl Ásgeir Geirsson
      */
     private void checkAllGlossaries(){
-        //variables
-        int index=0;
-        View listitemview;
-        //Go through the glossary list
-        for(Glossary glossary : glossaryList){
-            //Set the selected status of the glossary
-            glossary.setSelected(true);
-            //Get the correct item in the list
-            listitemview = listView.getChildAt(index);
-            if(listitemview != null) {
-                listitemview.setSelected(true);
-                ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                listitemview.setBackgroundColor(themeHelper.getAttrColor(R.attr.primaryBackgroundColor));
-                tick.setVisibility(View.VISIBLE);
-            }
-            index++;
+        for(int i=0;i<glossaryAdapter.getCount();i++){
+            listView.setItemChecked(i, true);
+            glossaryAdapter.setChecked(i,true);
         }
-        allSelected = true;
+        glossaryAdapter.notifyDataSetChanged();
     }
 
 
@@ -197,23 +157,11 @@ public class PickGlossaryFragment extends Fragment {
      * Written by Karl Ásgeir Geirsson
      */
     private void decheckAllGlossaries(){
-        //variables
-        int index=0;
-        View listitemview;
-        //Go through the glossary list
-        for(Glossary glossary : glossaryList){
-                glossary.setSelected(false);
-                //Get the correct item in the list
-                listitemview =  listView.getChildAt(index);
-                if(listitemview != null) {
-                    listitemview.setSelected(false);
-                    ImageView tick = (ImageView) listitemview.findViewById(R.id.checked_image);
-                    listitemview.setBackgroundColor(themeHelper.getAttrColor(R.attr.thirdBackgroundColor));
-                    tick.setVisibility(View.INVISIBLE);
-                }
-            index++;
+        for(int i=0;i<glossaryAdapter.getCount();i++){
+            listView.setItemChecked(i,false);
+            glossaryAdapter.setChecked(i,false);
         }
-        allSelected = false;
+        glossaryAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -227,13 +175,9 @@ public class PickGlossaryFragment extends Fragment {
         //Go through the glossaries and add the selected ones to selectedGlossaries
 
         ArrayList<String> selectedGlossaries = new ArrayList<>();
-        for(Glossary glossary : glossaryList) {
-
+        for(Glossary glossary : glossaryAdapter.getGlossaryList()) {
             if(glossary.isSelected()){
                 selectedGlossaries.add(glossary.getDictCode());
-            }
-            else {
-                allSelected = false;
             }
         }
 
@@ -245,5 +189,5 @@ public class PickGlossaryFragment extends Fragment {
      * use: boolean selected = areAllSelected();
      * @return true if all glossaries are selected, else false
      */
-    public static boolean areAllSelected(){return allSelected;}
+    public static boolean areAllSelected(){return (listView.getCheckedItemCount()==glossaryAdapter.getCount());}
 }

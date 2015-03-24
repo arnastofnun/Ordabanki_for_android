@@ -10,6 +10,7 @@ import android.widget.Spinner;
 
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
+import com.arnastofnun.idordabanki.preferences.SharedPrefs;
 import com.google.common.collect.BiMap;
 
 import java.util.ArrayList;
@@ -57,8 +58,11 @@ public class ChooseLanguagesFragment extends Fragment {
         //Making "All" the first item
         listSource.add(getResources().getString(R.string.all_languages));
         listTarg.add(getResources().getString(R.string.all_languages));
-        BiMap<String,String> langList = g.getLanguages();
-        ArrayList<String> allLanguages = new ArrayList<>(langList.values());
+        BiMap<String,String> langList = SharedPrefs.getStringBiMap("languages");
+        ArrayList<String>  allLanguages = new ArrayList<>();
+        if(langList != null) {
+            allLanguages.addAll(langList.values());
+        }
         //Make sure icelandic and english are the top languags
         listTarg.add(langList.get("IS"));
         listTarg.add(langList.get("EN"));
@@ -96,7 +100,7 @@ public class ChooseLanguagesFragment extends Fragment {
     public void onPause(){
         super.onPause();
         //Get from globals
-        BiMap<String,String> languages = g.getLanguages();
+        BiMap<String,String> languages = SharedPrefs.getStringBiMap("languages");
         //Get the items from the spinners
         String tLang = targetSpinner.getSelectedItem().toString();
         String sLang = sourceSpinner.getSelectedItem().toString();
@@ -123,7 +127,7 @@ public class ChooseLanguagesFragment extends Fragment {
         super.onResume();
 
         //Get from globals
-        BiMap<String,String> languages = g.getLanguages();
+        BiMap<String,String> languages = SharedPrefs.getStringBiMap("languages");
 
         String allLangString = getResources().getString(R.string.all_languages);
 
@@ -155,7 +159,8 @@ public class ChooseLanguagesFragment extends Fragment {
         Globals globals = (Globals) Globals.getContext();
         if(sourceSpinner == null || sourceSpinner.getSelectedItemPosition() == 0) {return "ALL";}
         else {
-            return globals.getLanguages().inverse().get(sourceSpinner.getSelectedItem().toString());
+            return SharedPrefs.getStringBiMap("languages").inverse().get(sourceSpinner.getSelectedItem().toString());
         }
     }
+
 }

@@ -2,6 +2,8 @@ package com.arnastofnun.idordabanki.helpers;
 
 import android.app.Activity;
 import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Parcelable;
 
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.activities.SearchScreen;
@@ -10,6 +12,7 @@ import com.arnastofnun.idordabanki.models.Dictionary;
 import com.arnastofnun.idordabanki.models.Glossary;
 import com.arnastofnun.idordabanki.models.Language;
 import com.arnastofnun.idordabanki.preferences.LocaleSettings;
+import com.arnastofnun.idordabanki.preferences.SharedPrefs;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
@@ -95,9 +98,9 @@ public class LocalizedValues extends AsyncTask<Void,Integer,Boolean> {
         //Get the globals
         Globals globals = (Globals) Globals.getContext();
         //Set globals
-        globals.setLanguages(localisedLangs);
-        globals.setDictionaries(glossaries);
-        globals.setLocalizedDictionaries(localisedDicts);
+        SharedPrefs.putStringBiMap("languages",localisedLangs);
+        SharedPrefs.putParcelableArray("dictionaries", glossaries);
+        SharedPrefs.putStringBiMap("loc_dictionaries",localisedDicts);
         LocaleSettings localeSettings = new LocaleSettings(activity);
         localeSettings.setLanguageFromPref(SearchScreen.class);
     }

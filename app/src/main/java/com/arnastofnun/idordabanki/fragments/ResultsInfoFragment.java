@@ -16,6 +16,7 @@ import com.arnastofnun.idordabanki.R;
 import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 import com.arnastofnun.idordabanki.models.Result;
 import com.arnastofnun.idordabanki.models.TermResult;
+import com.arnastofnun.idordabanki.preferences.SharedPrefs;
 import com.arnastofnun.idordabanki.sync.OrdabankiURLGen;
 import com.arnastofnun.idordabanki.sync.REST.OrdabankiRestClientUsage;
 import com.arnastofnun.idordabanki.interfaces.OnTermResultObtainedListener;
@@ -81,7 +82,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
             String dictCode = result.getDictionary_code();
 
             //Fetch glossary name of selected term
-            BiMap<String,String> glossaries = globals.getLoc_dictionaries();
+            BiMap<String,String> glossaries = SharedPrefs.getStringBiMap("loc_dictionaries");
             /**
              * glossaryName is the name of the glossary that
              * the selected term belongs to
@@ -123,7 +124,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
         String dictCode = tResult[0].getDictCode();
 
         //Fetch glossary name of selected term
-        BiMap<String,String> glossaries = globals.getLoc_dictionaries();
+        BiMap<String,String> glossaries = SharedPrefs.getStringBiMap("loc_dictionaries");
         /**
          * glossaryName is the name of the glossary that
          * the selected term belongs to
@@ -304,7 +305,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
      * @return the language name in the correct language
      */
     private String getLanguage(String langCode){
-        return globals.getLanguages().get(langCode);
+        return SharedPrefs.getStringBiMap("languages").get(langCode);
     }
 
 

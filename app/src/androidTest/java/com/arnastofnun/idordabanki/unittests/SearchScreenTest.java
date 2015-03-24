@@ -8,6 +8,7 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import com.arnastofnun.idordabanki.Globals;
+import com.arnastofnun.idordabanki.models.Glossary;
 import com.arnastofnun.idordabanki.preferences.LocaleSettings;
 import com.arnastofnun.idordabanki.fragments.PickGlossaryFragment;
 import com.arnastofnun.idordabanki.R;
@@ -16,8 +17,12 @@ import com.arnastofnun.idordabanki.activities.ResultsScreen;
 import com.arnastofnun.idordabanki.helpers.SearchAutoComplete;
 import com.arnastofnun.idordabanki.activities.SearchScreen;
 import com.arnastofnun.idordabanki.activities.SplashActivity;
+import com.arnastofnun.idordabanki.preferences.SharedPrefs;
+import com.google.common.reflect.TypeToken;
 import com.robotium.solo.Solo;
 import junit.framework.Assert;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -340,7 +345,8 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         // Selects All
         solo.clickOnText(solo.getString(R.string.select_all));
         solo.sleep(1000);
-        assertEquals("All glossaries weren't reselected",globals.getDictionaries().size(),PickGlossaryFragment.getSelectedGlossaries().size());
+        assertEquals("All glossaries weren't reselected", SharedPrefs.getParcelableArray("dictionaries", new com.google.gson.reflect.TypeToken<ArrayList<Glossary>>() {
+        }.getType()).size(),PickGlossaryFragment.getSelectedGlossaries().size());
 
         solo.clickOnText(solo.getString(R.string.deselect_all));
 

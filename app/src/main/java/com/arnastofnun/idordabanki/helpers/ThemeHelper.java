@@ -3,13 +3,12 @@ package com.arnastofnun.idordabanki.helpers;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.preference.PreferenceManager;
 import android.util.TypedValue;
 
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
+import com.arnastofnun.idordabanki.preferences.SharedPrefs;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
@@ -17,7 +16,7 @@ import com.google.common.collect.HashBiMap;
  * This is a helper class to help with
  * theme changes, and other things connected
  * to themes
- * @karlasgeir
+ * @author karlasgeir
  * @since 3/23/15.
  */
 public class ThemeHelper {
@@ -25,7 +24,7 @@ public class ThemeHelper {
 
     /**
      * Simple constructor
-     * @param context
+     * @param context - the context calling
      */
     public ThemeHelper(Context context){
         this.context= context;
@@ -82,9 +81,8 @@ public class ThemeHelper {
         themes.put(R.style.AppTheme_Girly,R.style.AppTheme_Girly_NoActionBar_FullScreen);
         themes.put(R.style.AppTheme_Light,R.style.AppTheme_Light_NoActionBar_FullScreen);
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Globals.getContext());
-        if(sharedPreferences.contains("currentTheme")){
-            int currentTheme = sharedPreferences.getInt("currentTheme",0);
+        if(SharedPrefs.contains("currentTheme")){
+            int currentTheme = SharedPrefs.getInt("currentTheme");
             act.setTheme(themes.get(currentTheme));
         }
     }
@@ -94,9 +92,8 @@ public class ThemeHelper {
      * @param act the activity that should get the theme
      */
     public static void setCurrentTheme(Activity act){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Globals.getContext());
-        if(sharedPreferences.contains("currentTheme")){
-            int currentTheme = sharedPreferences.getInt("currentTheme",0);
+        if(SharedPrefs.contains("currentTheme")){
+            int currentTheme = SharedPrefs.getInt("currentTheme");
             act.setTheme(currentTheme);
         }
 
@@ -108,11 +105,8 @@ public class ThemeHelper {
      * @param themeID the theme ID
      */
     public void setTheme(Activity act, int themeID){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Globals.getContext());
-        SharedPreferences.Editor editor = sharedPreferences.edit();
         //Save the theme
-        editor.putInt("currentTheme", themeID);
-        editor.apply();
+        SharedPrefs.putInt("currentTheme", themeID);
         act.setTheme(themeID);
         act.finish();
         //Create an intent and restart the activity

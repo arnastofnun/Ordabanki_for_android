@@ -1,5 +1,7 @@
 package com.arnastofnun.idordabanki.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 /**
@@ -10,7 +12,7 @@ import android.support.annotation.NonNull;
  * @author Karl Ásgeir Geirsson
  * @since 14.10.2014
  */
-public class Glossary implements Comparable<Glossary>{
+public class Glossary implements Comparable<Glossary>, Parcelable{
     /*
     * Data invariants:
     *   code is id of glossary
@@ -25,7 +27,7 @@ public class Glossary implements Comparable<Glossary>{
     String dict_code;
     String name = null;
     String url = null;
-    boolean selected = false;
+    boolean selected = true;
 
     /**
      * use: Glossary glossary = new Glossary(code,name,selected,url);
@@ -146,5 +148,46 @@ public class Glossary implements Comparable<Glossary>{
     public int compareTo(@NonNull Glossary g){
         return getName().compareTo(g.getName());
     }
+
+
+    public static final Parcelable.Creator<Glossary> CREATOR = new Parcelable.ClassLoaderCreator<Glossary>(){
+
+        @Override
+        public Glossary createFromParcel(Parcel in){
+            return new Glossary(in);
+        }
+
+        @Override
+        public Glossary createFromParcel(Parcel in,ClassLoader classLoader){
+            return new Glossary(in);
+        }
+
+        @Override
+        public Glossary[] newArray(int size) {
+            return new Glossary[size];
+        }
+    };
+
+    @Override
+    public int describeContents(){
+        return hashCode();
+    }
+
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags){
+        dest.writeString(dict_code);
+        dest.writeString(name);
+        dest.writeString(url);
+        dest.writeInt((selected) ? 1:0);
+    }
+
+    private Glossary(Parcel in){
+        dict_code = in.readString();
+        name = in.readString();
+        url = in.readString();
+        selected = (in.readInt() == 1);
+    }
+
 
 }
