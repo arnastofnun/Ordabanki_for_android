@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+import com.arnastofnun.idordabanki.helpers.LocalizedValues;
 import com.arnastofnun.idordabanki.sync.ConnectionDetector;
 import com.arnastofnun.idordabanki.dialogs.ConnectionDialogueFragment;
 import com.arnastofnun.idordabanki.models.Dictionary;
@@ -44,36 +45,12 @@ import java.util.Collections;
  * @author Karl Ásgeir Geirsson edited 3/11/14 by Bill to implement languages and dictionaries
  */
 public class SplashActivity extends FragmentActivity implements OnDictionariesObtainedListener, OnLanguagesObtainedListener, ConnectionDialogueFragment.ConnectionDialogueListener{
-
-    /**
-     * localisedLangs is a list of strings that are names of languages
-     */
-    public BiMap<String,String> localisedLangs;
-    /**
-     * localisedLangs is list of strings that are dictionary names
-     */    
-    public BiMap<String,String> localisedDicts;
-
-    /**
-     * glossaries is a list of glossaries
-     */
-    public ArrayList<Glossary> glossaries;
-    /**
-     * dObtained is true if dictionary values have been obtained
-     */
-    private boolean dObtained;
-    /**
-     * lObtained is true if language values have been obtained
-     */
-    private boolean lObtained;
-    /**
-     * error is true if an error appears while the app is running
-     */
-    private boolean error;
     /**
      * startTime is the current time im milliseconds
      */
     long startTime;
+    private LocalizedValues localizedValues;
+    private ConnectionDetector connectionDetector;
     /**
      * dJsonHandler is handles json files that contain dictionary values
      */
@@ -87,9 +64,10 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
         ThemeHelper.setCurrentNoActionBar(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        connectionDetector = new ConnectionDetector(this);
         //Starts the timer
         startTime = System.currentTimeMillis();
-        boolean connected = confirmConnection();
+        boolean connected = connectionDetector.confirmConnection();
         if (connected) {
             initialize();
         }
@@ -101,119 +79,9 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
     private void initialize(){
         //check if locale is set
         isLocaleSet();
-
-
-
         //Get the localized languages and dictionaries
-        GetLocalisedStuffTask getLocalisedStuffTask = new GetLocalisedStuffTask();
-        getLocalisedStuffTask.execute();
-    }
-
-
-    /**
-     * This is a class that handles getting the localized dictionaries and
-     * languages
-     */
-    private class GetLocalisedStuffTask extends AsyncTask<Void,Integer,Boolean>{
-
-        /**
-         * A method that runs in another thread, not blocking the UI
-         * @param voids - void
-         * @return true
-         */
-        @Override
-        protected Boolean doInBackground(Void ... voids){
-            //While we don't get an error
-            while (!error) {
-                //If dictionaries and languages are obtained
-                if (dObtained && lObtained) {
-                    break;
-                }
-            }
-            return true;
-        }
-
-        /**
-         * A method that is executed before
-         * the background proces begins
-         */
-        @Override
-        protected void onPreExecute(){
-            //Initialize values values
-            dObtained = false;
-            lObtained = false;
-            error =false;
-
-            //Get the languages
-            getLocalisedLangs();
-            //Get the dictionaries
-            getLocalisedDicts();
-        }
-
-        /**
-         * A process that updates the progress
-         * of the background progress
-         * @param progress the progress
-         */
-        protected void onProgressUpdate(Integer... progress) {
-
-        }
-
-        /**
-         * A method that executes after the background process
-         * is done
-         * @param bool true
-         */
-        @Override
-        protected void onPostExecute(Boolean bool) {
-            //Get the globals
-            final Globals globals = (Globals) Globals.getContext();
-            //Set globals
-            globals.setLanguages(localisedLangs);
-            globals.setDictionaries(glossaries);
-            globals.setLocalizedDictionaries(localisedDicts);
-            LocaleSettings localeSettings = new LocaleSettings(SplashActivity.this);
-            localeSettings.setLanguageFromPref(SearchScreen.class);
-        }
-
-    }
-
-
-    /**
-     * Written by Karl Ásgeir Geirsson
-     * Checks if locale is manually set or if this is the first startup of the app
-     * Post: If locale is set it does nothing
-     *       If locale is not set it starts the select language activity
-     */
-    private boolean confirmConnection(){
-
-            boolean connected = checkConnection();
-            if(!connected){
-                DialogFragment restartQuit = new ConnectionDialogueFragment();
-                restartQuit.show(getFragmentManager(), "NoInternetConnection");
-            }
-        return connected;
-    }
-
-    /**
-     * A method to check the connection
-     * @return true if is connected, else false
-     */
-    public boolean checkConnection(){
-        //check for internet connection
-        ConnectionDetector cd = new ConnectionDetector(Globals.getContext());
-        return cd.isConnectingToInternet();
-    }
-
-    /**
-     * A method that tries to connect again
-     */
-    private void retry(){
-        finish();
-        Intent i = getBaseContext().getPackageManager()
-                .getLaunchIntentForPackage(getBaseContext().getPackageName());
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(i);
+        localizedValues = new LocalizedValues(this);
+        localizedValues.execute();
     }
 
 
@@ -228,7 +96,6 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
             SplashActivity.this.startActivity(intent);
             SplashActivity.this.finish();
         }
-
     }
 
     /**
@@ -242,29 +109,7 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
      */
     @Override
     public void onDictionariesObtained (Dictionary[]dictionaries){
-        //Create new glossaries and localizedDicts array lists
-        glossaries = new ArrayList<>();
-        localisedDicts = HashBiMap.create();
-        int index = 0;
-        //Variables for the for loop
-        Glossary glossary;
-        /*
-            For each dictionary class add its code
-            to the codeList, its name to the dictList and
-            creates a new instance of the Glossary class with the dict code and name,
-            which is added to the glossaries array list
-         */
-        for (Dictionary dict : dictionaries) {
-            if(dict.getDictName() != null && !dict.getDictName().isEmpty() && !localisedDicts.containsKey(dict.getDictCode()) && !localisedDicts.inverse().containsKey(dict.getDictName())) {
-                localisedDicts.put(dict.getDictCode(), dict.getDictName());
-                glossary = new Glossary(dict.getDictCode(), dict.getDictName());
-                glossaries.add(index, glossary);
-                index++;
-            }
-        }
-        //Sort the glossaries in alphabetical order
-        Collections.sort(glossaries);
-        dObtained=true;
+        localizedValues.dictsObtained(dictionaries);
     }
 
     /**
@@ -274,10 +119,7 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
      */
     @Override
     public void onDictionariesFailure (int statusCode){
-        error = true;
-        //checkConnection();
-        //Toast.makeText(getApplicationContext(), "dictionary error", Toast.LENGTH_SHORT).show();
-        //todo handle failure: error message, restart quit options
+        localizedValues.throwError(statusCode);
     }
 
     /**
@@ -287,12 +129,7 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
      */
     @Override
     public void onLanguagesObtained (Language[]languages){
-        localisedLangs = HashBiMap.create();
-        //Put the language code and name into the BiMap
-        for (Language lang : languages) {
-            localisedLangs.put(lang.getLangCode(),lang.getLangName());
-        }
-        lObtained=true;
+        localizedValues.langsObtained(languages);
     }
 
     /**
@@ -302,10 +139,16 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
      */
     @Override
     public void onLanguagesFailure (int statusCode){
-        error= true;
-        //checkConnection();
-        //Toast.makeText(getApplicationContext(), "Database Error: Status Code "+ statusCode, Toast.LENGTH_SHORT).show();
-        //todo handle failure: error message, restart quit options
+        localizedValues.throwError(statusCode);
+    }
+
+    /**
+     * A method that starts getting the
+     * localised values
+     */
+    public void getLocalisedValues(){
+        this.getLocalisedDicts();
+        this.getLocalisedLangs();
     }
 
 
@@ -352,7 +195,7 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
      */
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
-        retry();
+        connectionDetector.retry();
     }
 
     /**
