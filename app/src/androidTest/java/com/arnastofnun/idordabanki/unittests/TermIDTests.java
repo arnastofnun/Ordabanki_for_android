@@ -3,7 +3,7 @@ package com.arnastofnun.idordabanki.unittests;
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 
-import com.arnastofnun.idordabanki.ResultsScreen;
+import com.arnastofnun.idordabanki.activities.ResultsScreen;
 import com.robotium.solo.Solo;
 
 /**

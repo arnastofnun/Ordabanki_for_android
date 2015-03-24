@@ -1,6 +1,6 @@
 package com.arnastofnun.idordabanki.interfaces;
 
-import com.arnastofnun.idordabanki.Dictionary;
+import com.arnastofnun.idordabanki.models.Dictionary;
 
 /**
  * Interface for dictionary http handler
@@ -9,7 +9,7 @@ import com.arnastofnun.idordabanki.Dictionary;
  */
 public interface OnDictionariesObtainedListener {
     //TODO: javadocs
-    public void onDictionariesObtained(Dictionary[] dictionaries);
+    void onDictionariesObtained(Dictionary[] dictionaries);
     //TODO: javadocs
-    public void onDictionariesFailure(int statusCode);
+    void onDictionariesFailure(int statusCode);
 }

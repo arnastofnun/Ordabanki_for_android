@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
-import com.arnastofnun.idordabanki.Result;
+import com.arnastofnun.idordabanki.models.Result;
 import com.google.common.collect.BiMap;
 
 import java.util.ArrayList;

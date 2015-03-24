@@ -1,6 +1,6 @@
 package com.arnastofnun.idordabanki.interfaces;
 
-import com.arnastofnun.idordabanki.Result;
+import com.arnastofnun.idordabanki.models.Result;
 
 /**
  * Listener interface for rest client
@@ -9,7 +9,7 @@ import com.arnastofnun.idordabanki.Result;
  */
 public interface OnResultObtainedListener {
     //TODO: javadocs
-    public void onResultObtained(Result[] result);
+    void onResultObtained(Result[] result);
     //TODO: javadocs
-    public void onResultFailure(int statusCode);
+    void onResultFailure(int statusCode);
 }

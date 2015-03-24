@@ -13,7 +13,7 @@
         <item name="themeName">Normal</item>
 
         <!-- Main theme colors. -->
-        <item name="android:textColorPrimary">@color/girlyTextColorPrimary</item>
+        <item name="android:textColorPrimary">@color/darkgrey</item>
         <item name="primaryBackgroundColor">@color/lightGreen100</item>
         <item name="secondaryBackgroundColor">@color/darkgrey</item>
         <item name="thirdBackgroundColor">@color/white</item>
@@ -24,14 +24,13 @@
         <item name="android:windowBackground">@color/lightGreen100</item>
         <item name="primaryColor">@color/holoDarkActionBar</item>
 
+
         <!--Widget styles -->
         <item name="android:buttonStyle">@style/normalButton</item>
         <item name="android:radioButtonStyle">@style/normalRadioButton</item>
         <item name="android:listViewStyle">@style/normalListView</item>
         <item name="android:autoCompleteTextViewStyle">@style/autocomplete</item>
         <item name="android:spinnerDropDownItemStyle">@style/spinners</item>
-
-
 
         <!-- Action bar style-->
         <item name="android:actionBarStyle">@style/actionBar</item>

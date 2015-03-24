@@ -2,7 +2,7 @@ package com.arnastofnun.idordabanki.unittests;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import com.arnastofnun.idordabanki.ResultInfo;
+import com.arnastofnun.idordabanki.activities.ResultInfo;
 import com.arnastofnun.idordabanki.activities.SplashActivity;
 import com.robotium.solo.Solo;
 

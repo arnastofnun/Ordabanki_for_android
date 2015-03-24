@@ -4,9 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.arnastofnun.idordabanki.ChooseLanguagesFragment;
-import com.arnastofnun.idordabanki.PickGlossaryFragment;
-import com.arnastofnun.idordabanki.SearchScreenFragment;
+import com.arnastofnun.idordabanki.fragments.ChooseLanguagesFragment;
+import com.arnastofnun.idordabanki.fragments.PickGlossaryFragment;
+import com.arnastofnun.idordabanki.fragments.SearchScreenFragment;
 
 import java.util.ArrayList;
 
@@ -32,7 +32,7 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
     private final int count = 3;
 
     //Tab titles
-    private ArrayList<String> tabtitles = new ArrayList<String>();
+    private ArrayList<String> tabtitles = new ArrayList<>();
 
 
     //Gets the fragment at a specific index
@@ -46,7 +46,6 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public Fragment getItem(int index){
-        Fragment fragment = null;
         //Simply select a fragment based on the index
         switch(index){
             case 0:
@@ -57,8 +56,8 @@ public class TabsPagerAdapter extends FragmentPagerAdapter {
                 return new PickGlossaryFragment();
             case 2:
                 return new ChooseLanguagesFragment();
+            default: return null;
         }
-        return fragment;
     }
 
     /**

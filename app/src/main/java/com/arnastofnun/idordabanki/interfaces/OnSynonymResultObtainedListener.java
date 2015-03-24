@@ -1,6 +1,6 @@
 package com.arnastofnun.idordabanki.interfaces;
 
-import com.arnastofnun.idordabanki.SynonymResult;
+import com.arnastofnun.idordabanki.models.SynonymResult;
 
 /**
  * Listener interface for rest client
@@ -13,11 +13,11 @@ public interface OnSynonymResultObtainedListener {
      * Called on successful HTTP call
      * @param SynResult results array
      */
-    public void onSynonymResultObtained(SynonymResult[] SynResult);
+    void onSynonymResultObtained(SynonymResult[] SynResult);
 
     /**
      * Called on failure
      * @param statusCode HTTP status code. No result on 200, otherwise error.
      */
-    public void onSynonymResultFailure(int statusCode);
+    void onSynonymResultFailure(int statusCode);
 }

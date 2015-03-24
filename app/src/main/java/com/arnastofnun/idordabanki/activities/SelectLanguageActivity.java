@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.arnastofnun.idordabanki.LocaleSettings;
+import com.arnastofnun.idordabanki.preferences.LocaleSettings;
 import com.arnastofnun.idordabanki.R;
-import com.arnastofnun.idordabanki.ThemeHelper;
+import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 
 /*
 *   Holds the functions that are implemented in

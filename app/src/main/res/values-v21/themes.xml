@@ -14,7 +14,7 @@
         <!-- Main theme colors. -->
         <item name="android:colorPrimary">@color/holoDarkActionBar</item>
         <item name="android:colorPrimaryDark">@android:color/black</item>
-        <item name="android:textColorPrimary">@color/girlyTextColorPrimary</item>
+        <item name="android:textColorPrimary">@color/darkgrey</item>
         <item name="primaryBackgroundColor">@color/lightGreen100</item>
         <item name="secondaryBackgroundColor">@color/darkgrey</item>
         <item name="thirdBackgroundColor">@color/white</item>
