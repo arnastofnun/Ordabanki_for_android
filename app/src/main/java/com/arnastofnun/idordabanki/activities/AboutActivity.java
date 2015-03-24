@@ -48,7 +48,9 @@ public class AboutActivity extends Activity {
 
     }
 
-
+    /**
+     * A method that's run on every activity start
+     */
     @Override
     protected void  onStart(){
         super.onStart();

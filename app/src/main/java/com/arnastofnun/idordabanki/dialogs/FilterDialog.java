@@ -31,6 +31,11 @@ public class FilterDialog {
     LayoutInflater layoutInflater; //The layout inflater
     Globals globals = (Globals) Globals.getContext(); //Global variables
 
+    /**
+     * A simple constructor
+     * @param activity - the activity calling the filter
+     * @param layoutInflater - the inflater
+     */
     public FilterDialog(ResultsScreen activity, LayoutInflater layoutInflater){
         super();
         //Set variables

@@ -11,6 +11,10 @@ public class ConnectionDetector {
 
     private Context _context;
 
+    /**
+     * Simple constructor
+     * @param context - the context
+     */
     public ConnectionDetector(Context context){
         this._context = context;
     }

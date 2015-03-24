@@ -219,6 +219,10 @@ public class LocaleSettings{
         }
     }
 
+    /**
+     * A method to set the locale
+     * @param lang - the locale string
+     */
     private void setLocale(String lang){
         //create new locale
         Locale myLocale = new Locale(lang);

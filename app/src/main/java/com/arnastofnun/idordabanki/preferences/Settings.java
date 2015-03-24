@@ -188,6 +188,9 @@ public class Settings {
         changeButtonColor(confirmButton);
     }
 
+    /**
+     * A method that is run when
+     */
     private void changeThemeClicked(){
         //Create the dialog builder
         AlertDialog.Builder clangBuilder = new AlertDialog.Builder(context);
@@ -271,6 +274,11 @@ public class Settings {
         return listView;
     }
 
+    /**
+     * A method that sets up the theme list view
+     * @param view - the list view
+     * @return the list view
+     */
     private ListView setupThemeListView(View view){
 
         BiMap<Integer,String> themes =HashBiMap.create();

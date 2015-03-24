@@ -279,6 +279,10 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         }
     }
 
+    /**
+     * A method to return the selected glossary code
+     * @return the selected glossary code
+     */
     public static ArrayList<String> getSelectedGlossCodes(){
         return selectedGlossCodes;
     }

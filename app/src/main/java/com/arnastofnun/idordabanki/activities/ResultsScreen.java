@@ -279,6 +279,9 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         timingThread.start();
     }
 
+    /**
+     * A method that's run on activity pause
+     */
     @Override
     protected void onPause() {
         Log.v("sterm",searchQuery);
@@ -286,11 +289,13 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         super.onPause();
     }
 
+    /**
+     * A method that's run on activity resume
+     */
     @Override
     protected void onResume() {
         if(global.getSTerm() != null) {
             searchQuery = global.getSTerm();
-            Log.v("sterm", searchQuery);
         }
         super.onResume();
     }
@@ -462,7 +467,11 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         }
     }
 
-
+    /**
+     * A method that filters the result list
+     * @param glossaryCode - the glossary code to filter by
+     * @param languageCode - the language code to filter by
+     */
     private void filterResults(String glossaryCode, String languageCode){
         ArrayList<Result> rList = global.getOriginalResults();
         String allLangString = getResources().getString(R.string.all_languages);
@@ -523,6 +532,9 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         handleBackPress();
     }
 
+    /**
+     * A method that handles going back
+     */
     private void handleBackPress(){
         global.setResults(null);
         global.setOriginalResults(null);

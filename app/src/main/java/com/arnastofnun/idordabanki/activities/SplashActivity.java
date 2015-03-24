@@ -194,11 +194,20 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
             }
         return connected;
     }
+
+    /**
+     * A method to check the connection
+     * @return true if is connected, else false
+     */
     public boolean checkConnection(){
         //check for internet connection
         ConnectionDetector cd = new ConnectionDetector(Globals.getContext());
         return cd.isConnectingToInternet();
     }
+
+    /**
+     * A method that tries to connect again
+     */
     private void retry(){
         finish();
         Intent i = getBaseContext().getPackageManager()
@@ -207,6 +216,10 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
         startActivity(i);
     }
 
+
+    /**
+     * A method to check if locale is set
+     */
     private void isLocaleSet(){
         final LocaleSettings localeSettings = new LocaleSettings(this);
         //if no language set in locale go to select language
@@ -332,11 +345,21 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
         }
     }
 
+    /**
+     * A method that's run when the connection
+     * dialog positive button is clicked
+     * @param dialog the dialog
+     */
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
         retry();
     }
 
+    /**
+     * A method that's run when the connection
+     * dialog negative button is clicked
+     * @param dialog the dialog
+     */
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
         finish();

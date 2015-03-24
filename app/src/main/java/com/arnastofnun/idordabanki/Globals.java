@@ -134,6 +134,9 @@ public class Globals extends Application{
         this.glossCode=code;
     }
 
+    /**
+     * @param term the search term
+     */
     public void setSTerm(String term) {this.sTerm = term;}
     /**
      * Written by Bill
@@ -221,6 +224,10 @@ public class Globals extends Application{
         return this.filterLanguages;
     }
 
+
+    /**
+     * @return the search term
+     */
     public String getSTerm() {return this.sTerm;}
 
 }

@@ -82,6 +82,10 @@ public class PickGlossaryFragment extends Fragment {
 
     }
 
+    /**
+     * A method that resumes the glossary state
+     * @param globals - globals
+     */
     public void resumeGlossaryState(Globals globals){
 
         glossaryList = globals.getGlossaryState();
