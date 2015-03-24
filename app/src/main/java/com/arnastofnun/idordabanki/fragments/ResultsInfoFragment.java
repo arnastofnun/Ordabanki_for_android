@@ -230,7 +230,12 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
 
         wordHTML += "<p>";
         if(word.hasSynParent()){
-            wordHTML+="<div id=\"word\">";
+            if(word.getSynonyms()[0]==null && word.getAbbreviation() == null
+                    && word.getDefinition() == null && word.getDialect() == null){
+                wordHTML+="<div id=\"word\" style=\"padding:0pt;\">";
+            }else{
+                wordHTML+="<div id=\"word\">";
+            }
         }
 
         if(word.getAbbreviation() != null){
@@ -262,7 +267,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
             if(word.hasSynParent()){
                 synonymHTML += "<div id=\"synonym\"><b>" + getString(R.string.word_synyonym) + " </b>";
             }else{
-                synonymHTML += "<div id=\"synonym\" style=\"color:"+mainText+";padding:0px;background-color:"+thirdBackground+";margin-top:0px;\"><b>" + getString(R.string.word_synyonym) + " </b>";
+                synonymHTML += "<div id=\"synonym\" style=\"color:"+mainText+";background-color:"+thirdBackground+";margin-top:0px;\"><b>" + getString(R.string.word_synyonym) + " </b>";
             }
 
             for(TermResult.Term.Word.Synonym synonym: word.getSynonyms()){
