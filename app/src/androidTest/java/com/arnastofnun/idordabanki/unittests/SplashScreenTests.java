@@ -5,7 +5,7 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import com.arnastofnun.idordabanki.Globals;
 
-import com.arnastofnun.idordabanki.SearchScreen;
+import com.arnastofnun.idordabanki.activities.SearchScreen;
 import com.arnastofnun.idordabanki.activities.SplashActivity;
 
 import com.robotium.solo.Solo;

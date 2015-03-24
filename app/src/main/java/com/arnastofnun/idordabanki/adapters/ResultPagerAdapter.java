@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.arnastofnun.idordabanki.ResultInfo;
-import com.arnastofnun.idordabanki.ResultsInfoFragment;
+import com.arnastofnun.idordabanki.activities.ResultInfo;
+import com.arnastofnun.idordabanki.fragments.ResultsInfoFragment;
 
 /**
  * This adapter handles the switching between

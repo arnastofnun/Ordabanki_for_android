@@ -3,6 +3,8 @@ package com.arnastofnun.idordabanki;
 import android.app.Application;
 import android.content.Context;
 
+import com.arnastofnun.idordabanki.models.Glossary;
+import com.arnastofnun.idordabanki.models.Result;
 import com.google.common.collect.BiMap;
 
 import java.util.ArrayList;

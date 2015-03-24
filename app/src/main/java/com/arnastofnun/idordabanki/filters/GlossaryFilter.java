@@ -1,6 +1,6 @@
 package com.arnastofnun.idordabanki.filters;
 
-import com.arnastofnun.idordabanki.Result;
+import com.arnastofnun.idordabanki.models.Result;
 import com.google.common.base.Predicate;
 import java.util.regex.Pattern;
 

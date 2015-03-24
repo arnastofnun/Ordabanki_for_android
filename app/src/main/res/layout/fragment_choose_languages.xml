@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.arnastofnun.idordabanki.ChooseLanguagesFragment"
+    tools:context="com.arnastofnun.idordabanki.fragments.ChooseLanguagesFragment"
     android:gravity="center"
     android:id="@+id/choose_language_fragment">
 

@@ -7,10 +7,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
-import com.arnastofnun.idordabanki.LocaleSettings;
+import com.arnastofnun.idordabanki.preferences.LocaleSettings;
 import com.arnastofnun.idordabanki.R;
-import com.arnastofnun.idordabanki.Settings;
-import com.arnastofnun.idordabanki.ThemeHelper;
+import com.arnastofnun.idordabanki.preferences.Settings;
+import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 import com.arnastofnun.idordabanki.adapters.displayTextAdapter;
 
 /**

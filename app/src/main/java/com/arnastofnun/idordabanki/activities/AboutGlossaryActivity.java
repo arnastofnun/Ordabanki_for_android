@@ -9,10 +9,10 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import com.arnastofnun.idordabanki.REST.OrdabankiRESTClient;
+import com.arnastofnun.idordabanki.sync.REST.OrdabankiRESTClient;
 import com.arnastofnun.idordabanki.R;
-import com.arnastofnun.idordabanki.Settings;
-import com.arnastofnun.idordabanki.ThemeHelper;
+import com.arnastofnun.idordabanki.preferences.Settings;
+import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.apache.http.Header;

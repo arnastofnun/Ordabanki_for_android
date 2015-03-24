@@ -2,7 +2,7 @@ package com.arnastofnun.idordabanki.interfaces;
 
 //TODO: javadocs
 
-import com.arnastofnun.idordabanki.TermResult;
+import com.arnastofnun.idordabanki.models.TermResult;
 
 /**
  * Listener interface for rest client
@@ -11,7 +11,7 @@ import com.arnastofnun.idordabanki.TermResult;
  */
 public interface OnTermResultObtainedListener {
     //TODO: javadocs
-    public void onTermResultObtained(TermResult[] tResult);
+    void onTermResultObtained(TermResult[] tResult);
     //TODO: javadocs
-    public void onTermResultFailure(int statusCode);
+    void onTermResultFailure(int statusCode);
 }

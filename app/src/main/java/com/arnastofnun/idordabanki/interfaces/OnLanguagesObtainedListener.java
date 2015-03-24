@@ -1,6 +1,6 @@
 package com.arnastofnun.idordabanki.interfaces;
 
-import com.arnastofnun.idordabanki.Language;
+import com.arnastofnun.idordabanki.models.Language;
 
 /**
  * Interface for language http calls
@@ -8,7 +8,7 @@ import com.arnastofnun.idordabanki.Language;
  */
 public interface OnLanguagesObtainedListener {
     //TODO: javadocs
-    public void onLanguagesObtained(Language[] languages);
+    void onLanguagesObtained(Language[] languages);
     //TODO: javadocs
-    public void onLanguagesFailure(int statusCode);
+    void onLanguagesFailure(int statusCode);
 }

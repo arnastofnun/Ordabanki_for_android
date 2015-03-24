@@ -12,9 +12,9 @@ import android.widget.SectionIndexer;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.arnastofnun.idordabanki.ThemeHelper;
+import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 import com.arnastofnun.idordabanki.activities.AboutGlossaryActivity;
-import com.arnastofnun.idordabanki.Glossary;
+import com.arnastofnun.idordabanki.models.Glossary;
 import com.arnastofnun.idordabanki.R;
 
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
      * @param list the list that should be alphabetically indexed
      */
     private HashMap<String, Integer> addSections(ArrayList<Glossary> list){
-        HashMap<String,Integer> alphaIndexer = new HashMap<String, Integer>();
+        HashMap<String,Integer> alphaIndexer = new HashMap<>();
         //Iterate through the list
         for(int i = 0;i<list.size();i++){
             //Get the name of the glossary
@@ -100,7 +100,7 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
      */
     private String[] setupSections(HashMap<String, Integer> alphaIndexer){
         //Create an arraylist from the alpha indexer keys
-        ArrayList<String> sectionList = new ArrayList<String>( alphaIndexer.keySet());
+        ArrayList<String> sectionList = new ArrayList<>( alphaIndexer.keySet());
         //sort the list
         Collections.sort(sectionList);
         //Return the section list

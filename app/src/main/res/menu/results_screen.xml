@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.arnastofnun.idordabanki.ResultsScreen" >
+    tools:context="com.arnastofnun.idordabanki.activities.ResultsScreen" >
     <item android:id="@+id/search"
         android:title="@string/search_hint"
         android:icon="?searchIconSecondary"
