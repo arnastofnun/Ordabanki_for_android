@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -145,6 +146,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
      */
     private void setupWebView(TermResult[] termResult){
         String wordHTML = initialiseHtmlStyle();
+        wordHTML += "<div class=\"wordPic\"> <img src = \"http://lorempixel.com/400/200/\" style=\"50%\"></div>";
         String sbr_refsHTML = "";
         String einnig_refsHTML = "";
         TermResult.Term.Word[] termNames = termResult[0].getWords();
@@ -178,7 +180,6 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
             }
         });
     }
-
 
     /**
      * This method sets up the einnig section of the html
@@ -231,7 +232,14 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
 
         wordHTML += "<p>";
         if(word.hasSynParent()){
-            wordHTML+="<div id=\"word\">";
+            if(word.getSynonyms()[0]==null && word.getAbbreviation() == null
+                    && word.getDefinition() == null && word.getDialect() == null
+                    && word.getExample() == null && word.getExplanation() == null
+                    && word.getOtherGrammar() == null){
+                wordHTML+="<div id=\"word\" style=\"padding:0pt;\">";
+            }else{
+                wordHTML+="<div id=\"word\">";
+            }
         }
 
         if(word.getAbbreviation() != null){
@@ -263,7 +271,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
             if(word.hasSynParent()){
                 synonymHTML += "<div id=\"synonym\"><b>" + getString(R.string.word_synyonym) + " </b>";
             }else{
-                synonymHTML += "<div id=\"synonym\" style=\"color:"+mainText+";padding:0px;background-color:"+thirdBackground+";margin-top:0px;\"><b>" + getString(R.string.word_synyonym) + " </b>";
+                synonymHTML += "<div id=\"synonym\" style=\"color:"+mainText+";background-color:"+thirdBackground+";margin-top:0px;\"><b>" + getString(R.string.word_synyonym) + " </b>";
             }
 
             for(TermResult.Term.Word.Synonym synonym: word.getSynonyms()){
@@ -293,8 +301,6 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
         wordHTML+="</p></div>";
         return wordHTML;
     }
-
-
 
 
 
@@ -331,7 +337,8 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
                 "#container{margin-top:6px;margin-left:auto;margin-right:auto} " +
                 "#textBlock{text-align:center;margin-left:auto;margin-right:auto}" +
                 "table{font-family: 'PT Serif';margin-top:6px;color:"+secondaryText + ";margin-left:auto; margin-right:auto; } table, th, td { border: 0px solid black; border-collapse: collapse; } th, td { padding: 5px; text-align: left; }"+
-                "a{text-decoration: none;}.link{color:"+primaryText+"}"+
+                "a{text-decoration: none !important;}.link{color:"+primaryText+"}"+
+                ".wordPic{ text-align:center;margin-bottom:5pt}"+
                 "</style>";
     }
 

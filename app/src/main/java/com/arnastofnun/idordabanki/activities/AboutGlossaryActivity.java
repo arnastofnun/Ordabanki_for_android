@@ -3,6 +3,7 @@ package com.arnastofnun.idordabanki.activities;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,7 +43,6 @@ public class AboutGlossaryActivity extends Activity {
      */
     private String css;
 
-    private String header;
 
     /**
      * display activity with info about selected glossary
@@ -63,12 +63,11 @@ public class AboutGlossaryActivity extends Activity {
         WebSettings settings = webView.getSettings();
         settings.setDefaultTextEncodingName("UTF-8");
 
-        header = "<h2 style=\"text-align:center;\">Orðabanki Íslenskrar málstöðvar</h2>" ;
         css = "<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>" +
                 "<link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>" +
                 "<style>body {padding:4pt;margin:4pt;color:black;background-color: #DCEDC8;" +
-                "font-family: 'Droid Sans', sans-serif;font-size:13pt; } a{color:#16A085;font-weight:bold;font-family: 'Droid Sans', sans-serif;}" +
-                "p{font-family: 'PT Serif', serif;} </style>";
+                "font-family: 'Droid Sans', sans-serif;font-size:13pt !important; } a{color:#16A085 !important;font-weight:bold;font-family: 'Droid Sans' , sans-serif !important;}" +
+                "p{font-family: 'PT Serif', serif !important;padding:6pt !important;margin:7pt !important} h2{margin:8pt !important} blockquote{margin:1pt !important} img{display:none !important}</style>";
         OrdabankiRESTClient.get(url, null, new AsyncHttpResponseHandler() {
             /*
              *  Called when get request has started
@@ -89,11 +88,11 @@ public class AboutGlossaryActivity extends Activity {
                 try {
 
                     contents = new String(responseBody, "Windows-1252");
-                    contents = header + contents.substring(contents.indexOf("<p>"), contents.length());
 
                     contents = contents.replace("&nbsp;","").
                             replace("blockquote","section").
                             replace("font-size","font-weight") + css;
+
                     webView.loadDataWithBaseURL(null, contents, "text/html", "UTF-8", null);
 
                 } catch (Exception e) {
