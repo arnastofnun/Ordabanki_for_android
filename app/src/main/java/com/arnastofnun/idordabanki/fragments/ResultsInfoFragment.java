@@ -231,7 +231,9 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
         wordHTML += "<p>";
         if(word.hasSynParent()){
             if(word.getSynonyms()[0]==null && word.getAbbreviation() == null
-                    && word.getDefinition() == null && word.getDialect() == null){
+                    && word.getDefinition() == null && word.getDialect() == null
+                    && word.getExample() == null && word.getExplanation() == null
+                    && word.getOtherGrammar() == null){
                 wordHTML+="<div id=\"word\" style=\"padding:0pt;\">";
             }else{
                 wordHTML+="<div id=\"word\">";
