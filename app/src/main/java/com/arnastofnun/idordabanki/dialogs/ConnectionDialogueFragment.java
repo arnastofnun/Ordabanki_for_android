@@ -10,10 +10,8 @@ import android.os.Bundle;
 import com.arnastofnun.idordabanki.R;
 
 /**
- * This class creates a dialog if there
- * is no internet connection
- * @author cthulhu
- * @since 2/16/15.
+ * Creates a dialogue box when no internet connection present
+ * @author Bill
  */
 public class ConnectionDialogueFragment extends DialogFragment {
     /* The activity that creates an instance of this dialog fragment must
@@ -27,7 +25,9 @@ public class ConnectionDialogueFragment extends DialogFragment {
     // Use this instance of the interface to deliver action events
     ConnectionDialogueListener mListener;
 
-    // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
+    /** Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
+     * @param activity
+     */
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -42,9 +42,14 @@ public class ConnectionDialogueFragment extends DialogFragment {
         }
     }
 
+    /**
+     * Builds the dialog and set up the button click handlers
+     * @param savedInstanceState
+     * @return Alert dialogue
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Build the dialog and set up the button click handlers
+        //
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             setCancelable(false);
             builder.setMessage(R.string.No_Internet)
