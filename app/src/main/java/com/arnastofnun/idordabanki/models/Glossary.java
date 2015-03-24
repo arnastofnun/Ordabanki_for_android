@@ -149,31 +149,57 @@ public class Glossary implements Comparable<Glossary>, Parcelable{
         return getName().compareTo(g.getName());
     }
 
-
+    /**
+     * A createor for the parcelable interface
+     */
     public static final Parcelable.Creator<Glossary> CREATOR = new Parcelable.ClassLoaderCreator<Glossary>(){
-
+        /**
+         * a method to create the glossary from parcel
+         * @param in - the parcel
+         * @return the glossary
+         */
         @Override
         public Glossary createFromParcel(Parcel in){
             return new Glossary(in);
         }
 
+        /**
+         * A method to create the glossary from parcel
+         * @param in - the parcel
+         * @param classLoader - the class loader
+         * @return - the glossary
+         */
         @Override
         public Glossary createFromParcel(Parcel in,ClassLoader classLoader){
             return new Glossary(in);
         }
 
+        /**
+         * creates a glossary array
+         * @param size - size of the array
+         * @return array of glossaries
+         */
         @Override
         public Glossary[] newArray(int size) {
             return new Glossary[size];
         }
     };
 
+    /**
+     * A method to describe the contents
+     * @return - content description
+     */
     @Override
     public int describeContents(){
         return hashCode();
     }
 
 
+    /**
+     * A method to write the glossary to parcel
+     * @param dest - the parcel
+     * @param flags - flags
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags){
         dest.writeString(dict_code);
@@ -182,6 +208,10 @@ public class Glossary implements Comparable<Glossary>, Parcelable{
         dest.writeInt((selected) ? 1:0);
     }
 
+    /**
+     * A constructor to construct glossary from Parcel
+     * @param in - the parcel
+     */
     private Glossary(Parcel in){
         dict_code = in.readString();
         name = in.readString();

@@ -176,7 +176,11 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         holder.glossaryName.setTag(glossary);
     }
 
-
+    /**
+     * Sets the checked state of a glossary
+     * @param index - the index of the glossary
+     * @param state - the checked state of the glossary
+     */
     public void setChecked(int index,boolean state){
         glossaryList.get(index).setSelected(state);
     }
@@ -283,6 +287,10 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         }
     }
 
+    /**
+     * A method to return the glossary list
+     * @return - the glossary list
+     */
     public ArrayList<Glossary> getGlossaryList(){
         return glossaryList;
     }
