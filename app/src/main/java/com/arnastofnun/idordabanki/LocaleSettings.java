@@ -10,7 +10,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
 
 import java.util.Locale;
@@ -126,7 +125,6 @@ public class LocaleSettings{
      */
     public void setLanguageInit(String lang){
         //Edit the shared preferences
-        Log.v("setting language",lang);
         SharedPreferences.Editor editor = sharedpref.edit();
         //Set lang as the language and apply changes
         editor.putString("lang",lang);

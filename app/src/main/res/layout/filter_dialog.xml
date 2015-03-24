@@ -1,26 +1,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     tools:context="com.arnastofnun.idordabanki.ChooseLanguagesFragment"
     android:gravity="center"
-    android:id="@+id/choose_language_fragment">
+    android:layout_gravity="center"
+    android:padding="20dp"
+    android:id="@+id/filterDialog"
+    android:background="?primaryColor">
 
     <LinearLayout
-        android:id="@+id/sourceWrapper"
-        android:layout_marginBottom="20dp"
+        android:id="@+id/langWrapper"
+        android:layout_marginBottom="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_centerInParent="true">
+        android:padding="10dp"
+        android:gravity="center">
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="fill_parent"
-            android:text="@string/sourcelang"
-            android:id="@+id/sourceLang"
+            android:text="@string/lang_filter"
+            android:id="@+id/filterLanguage"
             android:singleLine="false"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:textSize="20sp"
             />
 
@@ -28,43 +32,46 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:id="@+id/sourceSpinner"
+            android:id="@+id/filterLanguageSpinner"
             android:textSize="20sp"
             android:padding="5dp"
+            android:gravity="end"
             android:spinnerMode="dropdown"
             />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/targetWrapper"
-        android:layout_marginTop="20dp"
+        android:id="@+id/glossWrapper"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sourceWrapper"
+        android:layout_below="@id/langWrapper"
         android:orientation="horizontal"
-        android:layout_centerInParent="true">
+        android:padding="10dp"
+        android:gravity="center">
 
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="fill_parent"
-            android:text="@string/targetlang"
-            android:id="@+id/targetLang"
+            android:text="@string/gloss_filter"
+            android:id="@+id/glossFilter"
             android:singleLine="false"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:textSize="20sp"
             />
 
         <Spinner
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:layout_height="wrap_content"
-            android:id="@+id/targetSpinner"
+            android:id="@+id/filterGlossarySpinner"
             android:textSize="20sp"
             android:padding="5dp"
+            android:gravity="end"
             android:spinnerMode="dropdown"
-/>
+         />
     </LinearLayout>
 
 </RelativeLayout>

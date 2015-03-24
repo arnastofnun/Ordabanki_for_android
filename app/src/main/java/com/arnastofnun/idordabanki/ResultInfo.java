@@ -43,6 +43,7 @@ public class ResultInfo extends FragmentActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeHelper.setCurrentTheme(this);
         super.onCreate(savedInstanceState);
         setTitle(R.string.title_activity_result_info);
         setContentView(R.layout.activity_result_info);
@@ -51,9 +52,18 @@ public class ResultInfo extends FragmentActivity {
         Bundle extras = getIntent().getExtras();
         resultPager = (ViewPager) findViewById(R.id.result_pager);
         resultPagerAdapter = new ResultPagerAdapter(getSupportFragmentManager());
-        if(extras.containsKey("selectedResultIndex")) {
-            resultIndex = extras.getInt("selectedResultIndex");
+        if(extras.containsKey("selectedResult")) {
+            String wID = Long.toString(extras.getLong("selectedResult"));
             resultPager.setAdapter(resultPagerAdapter);
+            Globals globals = (Globals) Globals.getContext();
+            for(Result item: globals.getResults()){
+                if(item.getId_term().equals(wID)){
+                    resultIndex = globals.getResults().indexOf(item);
+                }
+                if(item.getId_word() != null && item.getId_word().equals(wID)){
+                    resultIndex = globals.getResults().indexOf(item);
+                }
+            }
             resultPager.setCurrentItem(resultIndex);
         }
         else if(extras.containsKey("termID")){
@@ -126,9 +136,10 @@ public class ResultInfo extends FragmentActivity {
         }
         else{
             //We go back to the results
+            Globals global = (Globals) Globals.getContext();
             Intent intent = new Intent(this, ResultsScreen.class);
-            Bundle extras = getIntent().getExtras();
-            intent.putExtra("searchString",extras.getString("searchQuery"));
+            intent.putExtra("searchQuery",global.getSTerm());
+            intent.putExtra("newSearch",true);
             this.startActivity(intent);
         }
     }

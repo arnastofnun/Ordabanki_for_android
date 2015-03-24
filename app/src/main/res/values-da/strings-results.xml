@@ -5,6 +5,8 @@
     <string name="no_result"> Nej </string>
     <string name="synonyms">Synonymer: </string>
     <string name="lexical_category">Leksikalsk kategori::</string>
+    <string name="gloss_filter">Filter ordliste</string>
+    <string name="lang_filter">Filter sprog</string>
     <string name="example">Exempel: </string>
 
     <!--Strings for the result-information screen-->

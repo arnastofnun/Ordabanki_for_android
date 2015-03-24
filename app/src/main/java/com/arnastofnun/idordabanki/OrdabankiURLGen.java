@@ -1,6 +1,8 @@
 package com.arnastofnun.idordabanki;
 
 
+
+
 import java.util.ArrayList;
 import java.util.ListIterator;
 
@@ -65,18 +67,21 @@ class OrdabankiURLGen {
         if(!ChooseLanguagesFragment.getTargetLanguage().equals("ALL"))
             relURL = relURL + "&tlang=" + ChooseLanguagesFragment.getTargetLanguage();
              */
+
         if(!PickGlossaryFragment.areAllSelected()) {
-                relURL = relURL + "&dicts=";
-                ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
-        if (selectedGlossaries.size() == 1) {
-            relURL = relURL + selectedGlossaries.get(0);
-        } else {
-            ListIterator<String> it = selectedGlossaries.listIterator();
-            //iterate until last but one member,
-            while (it.hasNext() && it.nextIndex() != selectedGlossaries.size() - 1) {
-                relURL = relURL + it.next() + delim;
-            }
-            relURL = relURL + selectedGlossaries.get(selectedGlossaries.size() - 1);
+            ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
+            relURL = relURL + "&dicts=";
+            if (selectedGlossaries.size() == 1) {
+                relURL = relURL + selectedGlossaries.get(0);
+            } else {
+                ListIterator<String> it = selectedGlossaries.listIterator();
+                //iterate until last but one member,
+                while (it.hasNext()) {
+                    relURL = relURL + it.next();
+                    if(it.nextIndex() != selectedGlossaries.size()){
+                        relURL += delim;
+                    }
+                }
         }
     }
     return relURL+"&agent=ordabankaapp";

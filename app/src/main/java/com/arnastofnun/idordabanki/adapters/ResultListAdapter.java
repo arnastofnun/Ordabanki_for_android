@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
 import com.arnastofnun.idordabanki.Result;
+import com.google.common.collect.BiMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,7 +61,8 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
      * @return the child position
      */
     public long getChildId(int groupPosition, int childPosition){
-        return childPosition;
+        Result result = resultMap.get(words.get(groupPosition)).get(childPosition);
+        return Long.valueOf(result.getId_word());
     }
 
 
@@ -139,7 +141,12 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
      * @return the ID of the group
      */
     public long getGroupId(int groupPosition){
-        return groupPosition;
+        Result result = resultMap.get(words.get(groupPosition)).get(0);
+        if(result.getId_word() == null){
+            return Long.valueOf(result.getId_term());
+        }
+
+        return Long.valueOf(result.getId_word());
     }
 
 
@@ -254,9 +261,8 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
      * @return the language name of the result
      */
     private String getLanguageName(Result result){
-        ArrayList<ArrayList<String>> languages = g.getLanguages();
-        int lang_index = languages.get(0).indexOf(result.getLanguage_code());
-        return languages.get(1).get(lang_index);
+        BiMap<String,String> languages = g.getLanguages();
+        return languages.get(result.getLanguage_code());
     }
 
     /**
@@ -265,10 +271,8 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
      * @return the glossary name of the result
      */
     private String getGlossaryName(Result result){
-        ArrayList<ArrayList<String>> dictionaries = g.getLoc_dictionaries();
-        int gloss_index = dictionaries.get(0).indexOf(result.getDictionary_code());
-        return dictionaries.get(1).get(gloss_index);
+        BiMap<String,String> dictionaries = g.getLoc_dictionaries();
+        return dictionaries.get(result.getDictionary_code());
     }
-
 
 }

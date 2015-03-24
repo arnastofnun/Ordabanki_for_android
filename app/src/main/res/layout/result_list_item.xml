@@ -2,67 +2,67 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:weightSum="20"
     android:paddingBottom="5dp"
     android:paddingTop="5dp"
-    android:background="@color/lightGreen100"
+    android:background="?primaryBackgroundColor"
     >
 
     <TextView
         android:id="@+id/word"
         android:layout_width="0dp"
-        android:layout_weight="9"
+        android:layout_weight="15"
         android:paddingLeft="15dp"
         android:singleLine="false"
         android:text="Header"
         android:layout_height="fill_parent"
-        android:textSize="25sp"
-        android:textColor="@color/darkgrey" />
-    <LinearLayout
+        android:textSize="25sp" />
+    <RelativeLayout
         android:id="@+id/lang_gloss_wrapper"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="5"
         android:layout_height="fill_parent"
-        android:layout_alignParentEnd="true"
         android:gravity="center_vertical"
+        android:layout_gravity="end"
         android:paddingRight="10dp"
+        android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:layout_alignParentRight="true"
+        android:paddingLeft="10dp"
         android:orientation="vertical">
         <TextView
             android:id="@+id/resultLanguage"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:text="Language"
-            android:textSize="16sp"
-            android:textColor="@color/darkgrey"
-            android:gravity="center"
+            android:textSize="14sp"
+            android:gravity="end"
             />
 
         <TextView
             android:id="@+id/resultGlossary"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/resultLanguage"
             android:text="Glossary"
-            android:textSize="16sp"
-            android:textColor="@color/darkgrey"
+            android:textSize="14sp"
             android:singleLine="false"
-            android:gravity="center"
+            android:gravity="end"
 
             />
-    </LinearLayout>
+    </RelativeLayout>
     <ImageView
         android:id="@+id/indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:gravity="center_vertical"
         android:paddingRight="10dp"
+        android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:layout_alignParentRight="true"
+        android:paddingLeft="10dp"
+        android:contentDescription="collapse indicator"
         android:orientation="vertical"
         />
 

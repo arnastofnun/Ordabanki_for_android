@@ -3,9 +3,11 @@
     <!--Strings for settings menu-->
     <string name="action_help"> Hjælp </string>
     <string name="settings_changelanguage_confirm">Vælg</string>
+    <string name="settings_theme">Skift tema</string>
     <string name="change_language"> Skift sprog </string>
     <string name="settings_about">Om Íðorðabanki</string>
     <string name="settings_contact">Kontakt </string>
+    <string name="filter">Filter</string>
     <string name="settings_clear_search">Klar søgehistorik</string>
     
     <!--Strings for changing language-->

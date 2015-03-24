@@ -37,7 +37,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Glossary"
         android:id="@+id/termGlossaryView"
-        android:background="@color/white"
+        android:background="?thirdBackgroundColor"
         android:gravity="center_horizontal"
         android:typeface="sans"
         android:textStyle="italic"
@@ -45,8 +45,7 @@
         android:paddingBottom="5dp"
         android:textSize="20sp"
         android:autoText="false"
-        android:clickable="false"
-        android:textColor="@color/darkgrey" />
+        android:clickable="false"/>
 
     <WebView
         android:layout_width="match_parent"

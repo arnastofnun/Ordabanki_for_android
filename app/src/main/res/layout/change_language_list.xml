@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightGreen100"
     android:padding="5dp">
     <RelativeLayout
         android:layout_width="0dp"
@@ -24,9 +23,9 @@
         <TextView
             android:id="@+id/change_language_language"
             android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_width="0dp"
             android:textSize="20sp"
-            android:textColor="@color/darkgrey"
             android:text="Íslenska"
             android:gravity="center"
             android:layout_weight="8"

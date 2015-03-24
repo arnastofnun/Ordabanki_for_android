@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
@@ -40,6 +41,7 @@ public class SearchScreen extends FragmentActivity {
     */
     private ViewPager viewPager;
 
+
     /**
      * @param newConfig sets newconfigurations
      */
@@ -61,7 +63,7 @@ public class SearchScreen extends FragmentActivity {
      * @param savedState the state that was saved
      */
     @Override
-    protected void onRestoreInstanceState(Bundle savedState){
+    protected void onRestoreInstanceState(@NonNull Bundle savedState){
         super.onRestoreInstanceState(savedState);
     }
 
@@ -76,6 +78,7 @@ public class SearchScreen extends FragmentActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeHelper.setCurrentTheme(this);
         super.onCreate(savedInstanceState);
         //Resets the kept results array so we can search again
         Globals globals = (Globals) Globals.getContext();
@@ -86,9 +89,6 @@ public class SearchScreen extends FragmentActivity {
         //Get the current locale
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
-
-
-
 
         Intent intent = getIntent();
         checkSearchQuery(intent);
@@ -272,6 +272,7 @@ public class SearchScreen extends FragmentActivity {
         //Do the search
         if (allowsearch) {
             intent.putExtra("searchQuery", searchQuery); //Add the search query to the intent
+            intent.putExtra("newSearch",true);
             this.startActivity(intent); //Start the activity
 
         }

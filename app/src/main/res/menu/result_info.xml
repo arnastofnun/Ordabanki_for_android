@@ -3,18 +3,18 @@
     tools:context="com.arnastofnun.idordabanki.ResultInfo" >
     <item android:id="@+id/search"
         android:title="@string/search_hint"
-        android:icon="@drawable/ic_action_search_light"
+        android:icon="?searchIconSecondary"
         android:showAsAction="collapseActionView|ifRoom"
         android:actionViewClass="android.widget.SearchView" />
 
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        android:icon="@drawable/ic_action_settings"
+        android:icon="?settingsIcon"
         android:orderInCategory="100"
         android:showAsAction="ifRoom" />
     <item android:id="@+id/action_help"
         android:title="@string/action_help"
-        android:icon="@drawable/ic_action_help"
+        android:icon="?helpIcon"
         android:orderInCategory="99"
         android:showAsAction="ifRoom"/>
 </menu>

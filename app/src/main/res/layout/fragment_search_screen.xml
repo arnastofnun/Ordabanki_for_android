@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightGreen100"
     android:orientation="vertical"
     >
 
@@ -14,15 +13,13 @@
         android:layout_marginTop="20dp"
         android:singleLine="true"
         android:gravity="center"
-        android:drawableRight="@drawable/ic_action_search"
-        android:drawableEnd="@drawable/ic_action_search"
+        android:drawableRight="?searchIcon"
+        android:drawableEnd="?searchIcon"
         android:imeOptions="actionSearch"
         android:layout_alignParentTop="true"
-        android:textColorHint="@android:color/tertiary_text_dark"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:hint="@string/search_hint"
-        android:textColor="@color/darkgrey"
         />
 
 <View
@@ -52,7 +49,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/combined_search"
-        android:textColor="@color/darkgrey"
         android:id="@+id/radioButton"
         android:checked="true"
  />
@@ -61,7 +57,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/term_only_search"
-        android:textColor="@color/darkgrey"
         android:id="@+id/radioButton2"
 
 />
@@ -69,7 +64,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/synonym_only_search"
-        android:textColor="@color/darkgrey"
         android:id="@+id/radioButton3" />
     </RadioGroup>
     </RelativeLayout>

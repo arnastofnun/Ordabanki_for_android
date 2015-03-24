@@ -12,15 +12,14 @@
         android:textSize="30sp"
         android:gravity="center"
         android:padding="10dp"
-        android:background="@color/darkgrey"
-        android:textColor="@android:color/primary_text_dark"/>
+        android:background="?secondaryBackgroundColor"
+        android:textColor="?secondaryTextColor"/>
 
     <ListView
         android:layout_below="@id/change_language_titlebar"
         android:id="@+id/change_language_list_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/lightGreen100"
         android:choiceMode="singleChoice"
         android:descendantFocusability="beforeDescendants"
         >

@@ -1,5 +1,7 @@
 package com.arnastofnun.idordabanki;
 
+import android.support.annotation.NonNull;
+
 /**
  * This class is the Glossary object, which holds
  * important information about the glossaries
@@ -141,7 +143,7 @@ public class Glossary implements Comparable<Glossary>{
      * @param g is of type Glossary, to compare with this glossary
      * @return integer that indicates the order these should be compared in
      */
-    public int compareTo(Glossary g){
+    public int compareTo(@NonNull Glossary g){
         return getName().compareTo(g.getName());
     }
 

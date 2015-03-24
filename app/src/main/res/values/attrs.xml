@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme name -->
+    <attr name="themeName" format="string"></attr>
+
+    <!-- colors -->
+    <attr name="primaryBackgroundColor" format="color"></attr>
+    <attr name="secondaryBackgroundColor" format="color"></attr>
+    <attr name="thirdBackgroundColor"></attr>
+    <attr name="primaryTextColor" format="color"></attr>
+    <attr name="secondaryTextColor" format="color"></attr>
+    <attr name="primaryColor" format="color"></attr>
+
+    <!-- action bar attrs -->
+    <attr name="actionBarBackground" format="color"></attr>
+    <attr name="actionBarTextColor" format="color"></attr>
+
+    <!-- action bar icons -->
+    <attr name="helpIcon" format="reference"></attr>
+    <attr name="aboutIcon" format="reference"></attr>
+    <attr name="tickIcon" format="reference"></attr>
+    <attr name="collapseIcon" format="reference"></attr>
+    <attr name="emailIcon" format="reference"></attr>
+    <attr name="expandIcon" format="reference"></attr>
+    <attr name="filterIcon" format="reference"></attr>
+    <attr name="searchIcon" format="reference"></attr>
+    <attr name="searchIconSecondary" format="reference"></attr>
+    <attr name="settingsIcon" format="reference"></attr>
+    <attr name="webIcon" format="reference"></attr>
+</resources>
