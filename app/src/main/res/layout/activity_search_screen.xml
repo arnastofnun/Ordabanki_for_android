@@ -8,8 +8,8 @@
         android:layout_gravity="top"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:background="?secondaryBackgroundColor"
-        android:textColor="?secondaryTextColor"
+        android:background="?tabBackgroundColor"
+        android:textColor="?tabTextColor"
         >
     </android.support.v4.view.PagerTabStrip>
 

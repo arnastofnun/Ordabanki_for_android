@@ -9,6 +9,7 @@ import android.util.TypedValue;
 
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
+import com.arnastofnun.idordabanki.activities.ResultInfo;
 import com.arnastofnun.idordabanki.preferences.SharedPrefs;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
@@ -79,13 +80,13 @@ public class ThemeHelper {
      */
     public static void setCurrentNoActionBar(Activity act){
         BiMap<Integer,Integer> themes = HashBiMap.create();
+        themes.put(R.style.AppTheme_DarkBlue,R.style.AppTheme_DarkBlue_NoActionBar_FullScreen);
         themes.put(R.style.AppTheme_DarkOrange,R.style.AppTheme_DarkOrange_NoActionBar_FullScreen);
+        themes.put(R.style.AppTheme_DarkPink,R.style.AppTheme_DarkPink_NoActionBar_FullScreen);
         themes.put(R.style.AppTheme_Light,R.style.AppTheme_Light_NoActionBar_FullScreen);
 
         if(SharedPrefs.contains("currentTheme")){
             int currentTheme = SharedPrefs.getInt("currentTheme");
-            Log.v("darkOrange","" + R.style.AppTheme_DarkOrange);
-            Log.v("current",""+currentTheme);
             act.setTheme(themes.get(currentTheme));
         }
     }
@@ -112,8 +113,13 @@ public class ThemeHelper {
         SharedPrefs.putInt("currentTheme", themeID);
         act.setTheme(themeID);
         act.finish();
+
         //Create an intent and restart the activity
         Intent intent = new Intent(context,context.getClass());
+        if(act.getClass() == ResultInfo.class){
+            ResultInfo resultInfo = (ResultInfo) act;
+            intent.putExtra("selectedResult",resultInfo.getSelected());
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         act.startActivity(intent);

@@ -35,6 +35,7 @@ import java.util.List;
 public class ResultInfo extends FragmentActivity {
     int resultIndex;
     static String termID;
+    String wID;
 
 
 
@@ -59,7 +60,7 @@ public class ResultInfo extends FragmentActivity {
         resultPager = (ViewPager) findViewById(R.id.result_pager);
         resultPagerAdapter = new ResultPagerAdapter(getSupportFragmentManager());
         if(extras.containsKey("selectedResult")) {
-            String wID = Long.toString(extras.getLong("selectedResult"));
+            wID = Long.toString(extras.getLong("selectedResult"));
             resultPager.setAdapter(resultPagerAdapter);
             Globals globals = (Globals) Globals.getContext();
             for(Result item: globals.getResults()){
@@ -148,6 +149,14 @@ public class ResultInfo extends FragmentActivity {
             intent.putExtra("newSearch",true);
             this.startActivity(intent);
         }
+    }
+
+    /**
+     * A method to get the selected value
+     * @return the selected value
+     */
+    public Long getSelected(){
+        return Long.valueOf(wID);
     }
 
     /**

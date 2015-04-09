@@ -7,6 +7,13 @@
         <item name="android:popupBackground">?primaryColor</item>
     </style>
 
+    <style name="Dialog" parent="android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+
 
     <style name="actionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">?actionBarBackground</item>
@@ -44,8 +51,8 @@
 
 
     <style name="spinners" parent="@android:style/Widget.TextView.SpinnerItem">
-        <item name="android:background">?secondaryBackgroundColor</item>
-        <item name="android:textColor">?secondaryTextColor</item>
+        <item name="android:background">?spinnerBackground</item>
+        <item name="android:textColor">?spinnerText</item>
         <item name="android:padding">10dp</item>
     </style>
 

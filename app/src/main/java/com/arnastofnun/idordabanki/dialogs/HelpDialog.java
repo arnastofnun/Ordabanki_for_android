@@ -48,7 +48,7 @@ public class HelpDialog {
      */
     private AlertDialog buildDialog(){
         //Construct the builder
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(context);
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(context,R.style.Dialog);
         //Inflate the view
         View view = layoutInflater.inflate(R.layout.help_dialog,null);
         helpBuilder.setView(view);
@@ -90,8 +90,8 @@ public class HelpDialog {
     public void changeButtonColor(Button button){
         ThemeHelper themeHelper = new ThemeHelper(context);
         if(button != null){
-            button.setBackgroundColor(themeHelper.getAttrColor(R.attr.secondaryBackgroundColor));
-            button.setTextColor(themeHelper.getAttrColor(R.attr.secondaryTextColor));
+            button.setBackgroundColor(themeHelper.getAttrColor(R.attr.buttonBackground));
+            button.setTextColor(themeHelper.getAttrColor(R.attr.buttonText));
         }
     }
 

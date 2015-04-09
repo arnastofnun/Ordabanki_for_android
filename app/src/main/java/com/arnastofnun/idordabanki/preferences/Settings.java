@@ -69,7 +69,9 @@ public class Settings {
         //Set variables
         this.context = context;
         themes = HashBiMap.create();
+        themes.put(R.style.AppTheme_DarkBlue,"DarkBlue");
         themes.put(R.style.AppTheme_DarkOrange,"DarkOrange");
+        themes.put(R.style.AppTheme_DarkPink,"DarkPink");
         themes.put(R.style.AppTheme_Light,"Normal");
         themeNames= new ArrayList<>(themes.values());
 
@@ -151,7 +153,7 @@ public class Settings {
      */
     private void changeLanguageClicked(){
         //Create the dialog builder
-        AlertDialog.Builder clangBuilder = new AlertDialog.Builder(context);
+        AlertDialog.Builder clangBuilder = new AlertDialog.Builder(context, R.style.Dialog);
         //Layout and set the view
         View view = LayoutInflater.from(context).inflate(R.layout.change_language_dialog, null);
         clangBuilder.setView(view);
@@ -194,7 +196,7 @@ public class Settings {
      */
     private void changeThemeClicked(){
         //Create the dialog builder
-        AlertDialog.Builder clangBuilder = new AlertDialog.Builder(context);
+        AlertDialog.Builder clangBuilder = new AlertDialog.Builder(context, R.style.Dialog);
         //Layout and set the view
         View view = LayoutInflater.from(context).inflate(R.layout.change_language_dialog, null);
         clangBuilder.setView(view);
@@ -283,7 +285,9 @@ public class Settings {
     private ListView setupThemeListView(View view){
 
         BiMap<Integer,String> themes =HashBiMap.create();
+        themes.put(R.style.AppTheme_DarkBlue,"Dark Blue");
         themes.put(R.style.AppTheme_DarkOrange,"Dark Orange");
+        themes.put(R.style.AppTheme_DarkPink,"Dark Pink");
         themes.put(R.style.AppTheme_Light,"Normal");
 
         ArrayList<String> themeNames = new ArrayList<>(themes.values());
@@ -316,8 +320,8 @@ public class Settings {
     private void changeButtonColor(Button button){
         ThemeHelper themeHelper = new ThemeHelper(context);
         if(button != null){
-            button.setBackgroundColor(themeHelper.getAttrColor(R.attr.secondaryBackgroundColor));
-            button.setTextColor(themeHelper.getAttrColor(R.attr.secondaryTextColor));
+            button.setBackgroundColor(themeHelper.getAttrColor(R.attr.buttonBackground));
+            button.setTextColor(themeHelper.getAttrColor(R.attr.buttonText));
         }
     }
 

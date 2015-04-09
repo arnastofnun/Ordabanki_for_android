@@ -52,7 +52,7 @@ public class FilterDialog {
     private AlertDialog buildDialog() {
 
         //Construct the builder
-        AlertDialog.Builder filterDialog = new AlertDialog.Builder(activity);
+        AlertDialog.Builder filterDialog = new AlertDialog.Builder(activity,R.style.Dialog);
         //Inflate the view
         View view = layoutInflater.inflate(R.layout.filter_dialog, null);
         filterDialog.setView(view);
@@ -168,8 +168,8 @@ public class FilterDialog {
     public void changeButtonColor(Button button){
         if(button != null){
             ThemeHelper themeHelper = new ThemeHelper(activity);
-            button.setBackgroundColor(themeHelper.getAttrColor(R.attr.secondaryBackgroundColor));
-            button.setTextColor(themeHelper.getAttrColor(R.attr.secondaryTextColor));
+            button.setBackgroundColor(themeHelper.getAttrColor(R.attr.buttonBackground));
+            button.setTextColor(themeHelper.getAttrColor(R.attr.buttonText));
         }
     }
 

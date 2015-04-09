@@ -3,6 +3,7 @@ package com.arnastofnun.idordabanki.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,7 +103,10 @@ public class PickGlossaryFragment extends Fragment {
 
         //Getting the glossary list and setting it's adapter to my custom glossary adapter
         listView = (ListView) rootView.findViewById(R.id.GlossaryList);
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setAdapter(glossaryAdapter);
+
+        checkAllGlossaries();
 
         //Button to check all glossaries
         final Button checkallbutton = (Button) rootView.findViewById(R.id.select_all_glossaries);
@@ -189,5 +193,6 @@ public class PickGlossaryFragment extends Fragment {
      * use: boolean selected = areAllSelected();
      * @return true if all glossaries are selected, else false
      */
-    public static boolean areAllSelected(){return (listView.getCheckedItemCount()==glossaryAdapter.getCount());}
+    public static boolean areAllSelected(){
+        return (listView.getCheckedItemCount()==glossaryAdapter.getCount());}
 }

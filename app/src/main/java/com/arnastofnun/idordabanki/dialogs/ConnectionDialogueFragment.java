@@ -26,7 +26,7 @@ public class ConnectionDialogueFragment extends DialogFragment {
     ConnectionDialogueListener mListener;
 
     /** Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
-     * @param activity
+     * @param activity the activity
      */
     @Override
     public void onAttach(Activity activity) {
@@ -44,13 +44,13 @@ public class ConnectionDialogueFragment extends DialogFragment {
 
     /**
      * Builds the dialog and set up the button click handlers
-     * @param savedInstanceState
-     * @return Alert dialogue
+     * @param savedInstanceState the saved instance state
+     * @return Alert dialogue the alert dialogue
      */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         //
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.Dialog);
             setCancelable(false);
             builder.setMessage(R.string.No_Internet)
                 .setPositiveButton(R.string.Retry, new DialogInterface.OnClickListener() {

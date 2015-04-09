@@ -24,6 +24,19 @@
         <item name="android:windowBackground">@color/lightGreen100</item>
         <item name="primaryColor">@color/holoDarkActionBar</item>
 
+        <item name="tabBackgroundColor">@color/darkgrey</item>
+        <item name="tabTextColor">@color/white</item>
+        <item name="selectedGlossary">@color/lightGreen100</item>
+        <item name="nonSelectedGlossary" >@color/white</item>
+        <item name="dialogHeaderBackground">@color/darkgrey</item>
+        <item name="dialogHeaderText">@color/white</item>
+        <item name="dialogText" >@color/darkgrey</item>
+        <item name="dialogBackground" >@color/lightGreen100</item>
+        <item name="spinnerBackground" >@color/darkgrey</item>
+        <item name="spinnerText" >@color/white</item>
+        <item name="buttonBackground" >@color/darkgrey</item>
+        <item name="buttonText" >@color/white</item>
+
 
         <!--Widget styles -->
         <item name="android:buttonStyle">@style/normalButton</item>
@@ -38,18 +51,20 @@
         <item name="actionBarTextColor">@color/white</item>
 
         <!-- Action bar icons -->
-        <item name="helpIcon">@drawable/ic_action_help</item>
-        <item name="aboutIcon">@drawable/ic_action_about</item>
+        <item name="helpIcon">@drawable/ic_action_help_light</item>
+        <item name="aboutIcon">@drawable/ic_action_about_light</item>
         <item name="tickIcon">@drawable/ic_action_accept</item>
         <item name="collapseIcon">@drawable/ic_action_collapse</item>
-        <item name="emailIcon">@drawable/ic_action_email</item>
+        <item name="emailIcon">@drawable/ic_action_email_light</item>
         <item name="expandIcon">@drawable/ic_action_expand</item>
-        <item name="filterIcon">@drawable/ic_action_filter</item>
+        <item name="filterIcon">@drawable/ic_action_filter_light</item>
         <item name="searchIcon">@drawable/ic_action_search</item>
         <item name="searchIconSecondary">@drawable/ic_action_search_light</item>
-        <item name="settingsIcon">@drawable/ic_action_settings</item>
+        <item name="settingsIcon">@drawable/ic_action_settings_light</item>
         <item name="webIcon">@drawable/ic_action_web_site</item>
     </style>
+
+    <!-- Dark Orange Theme -->
 
     <!-- Splash screen and select language theme -->
     <style name="AppTheme.DarkOrange.NoActionBar.FullScreen" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
@@ -74,6 +89,19 @@
         <item name="android:windowBackground">@color/darkOrangeWindowBackground</item>
         <item name="primaryColor">@color/darkOrangePrimary</item>
 
+        <item name="tabBackgroundColor">@color/darkOrangeTextColorPrimary</item>
+        <item name="tabTextColor">@color/darkOrangePrimary</item>
+        <item name="selectedGlossary">@color/darkOrangePrimary</item>
+        <item name="nonSelectedGlossary" >@color/darkOrangeWindowBackground</item>
+        <item name="dialogHeaderBackground">@color/darkOrangePrimary</item>
+        <item name="dialogHeaderText">@color/darkOrangeTextColorPrimary</item>
+        <item name="dialogText" >@color/darkOrangeTextColorPrimary</item>
+        <item name="dialogBackground" >@color/darkOrangeWindowBackground</item>
+        <item name="spinnerBackground" >@color/darkOrangePrimary</item>
+        <item name="spinnerText" >@color/darkOrangeTextColorPrimary</item>
+        <item name="buttonBackground" >@color/darkOrangePrimary</item>
+        <item name="buttonText" >@color/darkOrangeTextColorPrimary</item>
+
         <!--Widget styles -->
         <item name="android:buttonStyle">@style/normalButton</item>
         <item name="android:radioButtonStyle">@style/normalRadioButton</item>
@@ -89,15 +117,143 @@
         <!-- Action bar icons -->
         <item name="helpIcon">@drawable/ic_action_help</item>
         <item name="aboutIcon">@drawable/ic_action_about</item>
-        <item name="tickIcon">@drawable/ic_action_accept</item>
-        <item name="collapseIcon">@drawable/ic_action_collapse</item>
+        <item name="tickIcon">@drawable/ic_action_accept_light</item>
+        <item name="collapseIcon">@drawable/ic_action_collapse_light</item>
         <item name="emailIcon">@drawable/ic_action_email</item>
-        <item name="expandIcon">@drawable/ic_action_expand</item>
+        <item name="expandIcon">@drawable/ic_action_expand_light</item>
         <item name="filterIcon">@drawable/ic_action_filter</item>
-        <item name="searchIcon">@drawable/ic_action_search</item>
+        <item name="searchIcon">@drawable/ic_action_search_light</item>
         <item name="searchIconSecondary">@drawable/ic_action_search_light</item>
         <item name="settingsIcon">@drawable/ic_action_settings</item>
-        <item name="webIcon">@drawable/ic_action_web_site</item>
+        <item name="webIcon">@drawable/ic_action_web_site_light</item>
+    </style>
+
+    <!-- Dark Blue Theme -->
+
+    <!-- Splash screen and select language theme -->
+    <style name="AppTheme.DarkBlue.NoActionBar.FullScreen" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/darkBluePrimary</item>
+        <item name="android:textColor">@color/darkBlueWindowBackground</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.DarkBlue" parent="android:Theme.Holo">
+        <!-- Theme name -->
+        <item name="themeName">DarkBlue</item>
+
+        <!-- Main theme colors. -->
+        <item name="android:textColorPrimary">@color/darkBlueTextColorPrimary</item>
+        <item name="primaryBackgroundColor">@color/darkBlueWindowBackground</item>
+        <item name="secondaryBackgroundColor">@color/darkBlueTextColorPrimary</item>
+        <item name="thirdBackgroundColor">@color/darkBluePrimary</item>
+        <item name="primaryTextColor">@color/darkBlueTextColorPrimary</item>
+        <item name="secondaryTextColor">@color/darkBluePrimary</item>
+        <item name="android:textColor">@color/darkBlueTextColorPrimary</item>
+        <item name="android:textColorHint">@color/darkBlueTextColorPrimary</item>
+        <item name="android:windowBackground">@color/darkBlueWindowBackground</item>
+        <item name="primaryColor">@color/darkBluePrimary</item>
+
+        <item name="tabBackgroundColor">@color/darkBlueTextColorPrimary</item>
+        <item name="tabTextColor">@color/darkBluePrimary</item>
+        <item name="selectedGlossary">@color/darkBluePrimary</item>
+        <item name="nonSelectedGlossary" >@color/darkBlueWindowBackground</item>
+        <item name="dialogHeaderBackground">@color/darkBluePrimary</item>
+        <item name="dialogHeaderText">@color/darkBlueTextColorPrimary</item>
+        <item name="dialogText" >@color/darkBlueTextColorPrimary</item>
+        <item name="dialogBackground" >@color/darkBlueWindowBackground</item>
+        <item name="spinnerBackground" >@color/darkBluePrimary</item>
+        <item name="spinnerText" >@color/darkBlueTextColorPrimary</item>
+        <item name="buttonBackground" >@color/darkBluePrimary</item>
+        <item name="buttonText" >@color/darkBlueTextColorPrimary</item>
+
+        <!--Widget styles -->
+        <item name="android:buttonStyle">@style/normalButton</item>
+        <item name="android:radioButtonStyle">@style/normalRadioButton</item>
+        <item name="android:listViewStyle">@style/normalListView</item>
+        <item name="android:autoCompleteTextViewStyle">@style/autocomplete</item>
+        <item name="android:spinnerDropDownItemStyle">@style/spinners</item>
+
+        <!-- Action bar style-->
+        <item name="android:actionBarStyle">@style/actionBar</item>
+        <item name="actionBarBackground">@color/darkBluePrimary</item>
+        <item name="actionBarTextColor">@color/darkBlueTextColorPrimary</item>
+
+        <!-- Action bar icons -->
+        <item name="helpIcon">@drawable/ic_action_help</item>
+        <item name="aboutIcon">@drawable/ic_action_about</item>
+        <item name="tickIcon">@drawable/ic_action_accept_light</item>
+        <item name="collapseIcon">@drawable/ic_action_collapse_light</item>
+        <item name="emailIcon">@drawable/ic_action_email</item>
+        <item name="expandIcon">@drawable/ic_action_expand_light</item>
+        <item name="filterIcon">@drawable/ic_action_filter</item>
+        <item name="searchIcon">@drawable/ic_action_search_light</item>
+        <item name="searchIconSecondary">@drawable/ic_action_search_light</item>
+        <item name="settingsIcon">@drawable/ic_action_settings</item>
+        <item name="webIcon">@drawable/ic_action_web_site_light</item>
+    </style>
+
+    <!-- Dark Pink Theme -->
+
+    <!-- Splash screen and select language theme -->
+    <style name="AppTheme.DarkPink.NoActionBar.FullScreen" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/darkPinkPrimary</item>
+        <item name="android:textColor">@color/darkPinkWindowBackground</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.DarkPink" parent="android:Theme.Holo">
+        <!-- Theme name -->
+        <item name="themeName">DarkPink</item>
+
+        <!-- Main theme colors. -->
+        <item name="android:textColorPrimary">@color/darkPinkTextColorPrimary</item>
+        <item name="primaryBackgroundColor">@color/darkPinkWindowBackground</item>
+        <item name="secondaryBackgroundColor">@color/darkPinkTextColorPrimary</item>
+        <item name="thirdBackgroundColor">@color/darkPinkPrimary</item>
+        <item name="primaryTextColor">@color/darkPinkTextColorPrimary</item>
+        <item name="secondaryTextColor">@color/darkPinkPrimary</item>
+        <item name="android:textColor">@color/darkPinkTextColorPrimary</item>
+        <item name="android:textColorHint">@color/darkPinkTextColorPrimary</item>
+        <item name="android:windowBackground">@color/darkPinkWindowBackground</item>
+        <item name="primaryColor">@color/darkPinkPrimary</item>
+
+        <item name="tabBackgroundColor">@color/darkPinkTextColorPrimary</item>
+        <item name="tabTextColor">@color/darkPinkPrimary</item>
+        <item name="selectedGlossary">@color/darkPinkPrimary</item>
+        <item name="nonSelectedGlossary" >@color/darkPinkWindowBackground</item>
+        <item name="dialogHeaderBackground">@color/darkPinkPrimary</item>
+        <item name="dialogHeaderText">@color/darkPinkTextColorPrimary</item>
+        <item name="dialogText" >@color/darkPinkTextColorPrimary</item>
+        <item name="dialogBackground" >@color/darkPinkWindowBackground</item>
+        <item name="spinnerBackground" >@color/darkPinkPrimary</item>
+        <item name="spinnerText" >@color/darkPinkTextColorPrimary</item>
+        <item name="buttonBackground" >@color/darkPinkPrimary</item>
+        <item name="buttonText" >@color/darkPinkTextColorPrimary</item>
+
+        <!--Widget styles -->
+        <item name="android:buttonStyle">@style/normalButton</item>
+        <item name="android:radioButtonStyle">@style/normalRadioButton</item>
+        <item name="android:listViewStyle">@style/normalListView</item>
+        <item name="android:autoCompleteTextViewStyle">@style/autocomplete</item>
+        <item name="android:spinnerDropDownItemStyle">@style/spinners</item>
+
+        <!-- Action bar style-->
+        <item name="android:actionBarStyle">@style/actionBar</item>
+        <item name="actionBarBackground">@color/darkPinkPrimary</item>
+        <item name="actionBarTextColor">@color/darkPinkTextColorPrimary</item>
+
+        <!-- Action bar icons -->
+        <item name="helpIcon">@drawable/ic_action_help</item>
+        <item name="aboutIcon">@drawable/ic_action_about</item>
+        <item name="tickIcon">@drawable/ic_action_accept_light</item>
+        <item name="collapseIcon">@drawable/ic_action_collapse_light</item>
+        <item name="emailIcon">@drawable/ic_action_email</item>
+        <item name="expandIcon">@drawable/ic_action_expand_light</item>
+        <item name="filterIcon">@drawable/ic_action_filter</item>
+        <item name="searchIcon">@drawable/ic_action_search_light</item>
+        <item name="searchIconSecondary">@drawable/ic_action_search_light</item>
+        <item name="settingsIcon">@drawable/ic_action_settings</item>
+        <item name="webIcon">@drawable/ic_action_web_site_light</item>
     </style>
 
 

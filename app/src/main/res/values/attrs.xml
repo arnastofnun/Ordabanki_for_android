@@ -10,6 +10,18 @@
     <attr name="primaryTextColor" format="color"></attr>
     <attr name="secondaryTextColor" format="color"></attr>
     <attr name="primaryColor" format="color"></attr>
+    <attr name="tabBackgroundColor" format="color"></attr>
+    <attr name="tabTextColor" format="color"></attr>
+    <attr name="selectedGlossary" format="color"></attr>
+    <attr name="nonSelectedGlossary" format="color"></attr>
+    <attr name="dialogHeaderBackground" format="color"></attr>
+    <attr name="dialogHeaderText" format="color"></attr>
+    <attr name="dialogText" format="color"></attr>
+    <attr name="dialogBackground" format="color"></attr>
+    <attr name="spinnerBackground" format="color"></attr>
+    <attr name="spinnerText" format="color"></attr>
+    <attr name="buttonBackground" format="color"></attr>
+    <attr name="buttonText" format="color"></attr>
 
     <!-- action bar attrs -->
     <attr name="actionBarBackground" format="color"></attr>

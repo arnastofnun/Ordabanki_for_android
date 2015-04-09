@@ -166,15 +166,17 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
         holder.glossaryName.setText(glossary.getName());
         View row = (View) holder.glossaryName.getParent();
         if(glossary.isSelected()){
-            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.primaryBackgroundColor));
+            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.selectedGlossary));
             holder.tick.setVisibility(View.VISIBLE);
         }
         else{
-            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.thirdBackgroundColor));
+            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.nonSelectedGlossary));
             holder.tick.setVisibility(View.INVISIBLE);
         }
         holder.glossaryName.setTag(glossary);
     }
+
+
 
     /**
      * Sets the checked state of a glossary
@@ -254,14 +256,14 @@ public class GlossaryAdapter extends ArrayAdapter<Glossary> implements SectionIn
 
         //If glossary is selected, deselect it and hide the tick
         if(glossary.isSelected()) {
-            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.thirdBackgroundColor));
+            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.nonSelectedGlossary));
             tick.setVisibility(View.INVISIBLE);
             selectedGlossCodes.remove(glossary.getDictCode());
             glossary.setSelected(false);
         }
         //If glossary is not selected, select it and show the tick
         else{
-            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.primaryBackgroundColor));
+            row.setBackgroundColor(themeHelper.getAttrColor(R.attr.selectedGlossary));
             tick.setVisibility(View.VISIBLE);
             selectedGlossCodes.add(glossary.getDictCode());
             glossary.setSelected(true);
