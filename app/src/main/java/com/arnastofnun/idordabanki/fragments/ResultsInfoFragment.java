@@ -146,7 +146,7 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
      */
     private void setupWebView(TermResult[] termResult){
         String wordHTML = initialiseHtmlStyle();
-        wordHTML += "<div class=\"wordPic\"> <img src = \"http://lorempixel.com/400/200/\" style=\"50%\"></div>";
+        //wordHTML += "<div class=\"wordPic\"> <img src = \"http://lorempixel.com/400/200/\" style=\"50%\"></div>";
         String sbr_refsHTML = "";
         String einnig_refsHTML = "";
         TermResult.Term.Word[] termNames = termResult[0].getWords();
