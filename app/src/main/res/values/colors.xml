@@ -22,9 +22,9 @@
     <color name="glossary_notselected">@color/lightGreen50</color>
     <color name="holoDarkActionBar">#222222</color>
 
-    <!-- Girly theme -->
-    <color name="girlyPrimary">#E91E63</color>
-    <color name="girlyPrimaryDark">#C2185B</color>
-    <color name="girlyTextColorPrimary">#FCE4EC</color>
-    <color name="girlyWindowBackground">#651FFF</color>
+    <!-- Dark orange theme -->
+    <color name="darkOrangePrimary">#FF5722</color>
+    <color name="darkOrangePrimaryDark">#D84315</color>
+    <color name="darkOrangeTextColorPrimary">#F5F5F5</color>
+    <color name="darkOrangeWindowBackground">#212121</color>
 </resources>

@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.SearchRecentSuggestions;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -68,7 +69,7 @@ public class Settings {
         //Set variables
         this.context = context;
         themes = HashBiMap.create();
-        themes.put(R.style.AppTheme_Girly,"Girly");
+        themes.put(R.style.AppTheme_DarkOrange,"DarkOrange");
         themes.put(R.style.AppTheme_Light,"Normal");
         themeNames= new ArrayList<>(themes.values());
 
@@ -282,7 +283,7 @@ public class Settings {
     private ListView setupThemeListView(View view){
 
         BiMap<Integer,String> themes =HashBiMap.create();
-        themes.put(R.style.AppTheme_Girly,"Girly");
+        themes.put(R.style.AppTheme_DarkOrange,"Dark Orange");
         themes.put(R.style.AppTheme_Light,"Normal");
 
         ArrayList<String> themeNames = new ArrayList<>(themes.values());
@@ -293,6 +294,7 @@ public class Settings {
         listView.setAdapter(themeAdapter);
         TypedValue typedValue = new TypedValue();
         context.getTheme().resolveAttribute(R.attr.themeName,typedValue,true);
+        Log.v("in settings",""+ typedValue.string);
         themeAdapter.setSelectedIndex(themeNames.indexOf(typedValue.string));
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -49,30 +49,30 @@
     </style>
 
     <!-- Splash screen and select language theme -->
-    <style name="AppTheme.Girly.NoActionBar.FullScreen" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
-        <item name="android:windowBackground">@color/girlyPrimary</item>
-        <item name="android:textColor">@color/girlyWindowBackground</item>
+    <style name="AppTheme.DarkOrange.NoActionBar.FullScreen" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/darkOrangePrimary</item>
+        <item name="android:textColor">@color/darkOrangeWindowBackground</item>
     </style>
 
 
     <!-- Base application theme. -->
     <style name="AppTheme.Girly" parent="android:Theme.Material">
         <!-- Theme name -->
-        <item name="themeName">Girly</item>
+        <item name="themeName">Dark Orange</item>
         <!-- Main theme colors. -->
-        <item name="android:colorPrimary">@color/girlyPrimary</item>
-        <item name="android:colorPrimaryDark">@color/girlyPrimaryDark</item>
-        <item name="android:textColorPrimary">@color/girlyTextColorPrimary</item>
-        <item name="primaryBackgroundColor">@color/girlyWindowBackground</item>
-        <item name="secondaryBackgroundColor">@color/girlyTextColorPrimary</item>
-        <item name="thirdBackgroundColor">@color/girlyPrimary</item>
-        <item name="primaryTextColor">@color/girlyTextColorPrimary</item>
-        <item name="secondaryTextColor">@color/girlyPrimary</item>
-        <item name="android:textColor">@color/girlyTextColorPrimary</item>
-        <item name="android:textColorHint">@color/girlyTextColorPrimary</item>
-        <item name="android:windowBackground">@color/girlyWindowBackground</item>
-        <item name="android:colorAccent">@color/girlyPrimary</item>
-        <item name="primaryColor">@color/girlyPrimary</item>
+        <item name="android:colorPrimary">@color/darkOrangePrimary</item>
+        <item name="android:colorPrimaryDark">@color/darkOrangePrimaryDark</item>
+        <item name="android:textColorPrimary">@color/darkOrangeTextColorPrimary</item>
+        <item name="primaryBackgroundColor">@color/darkOrangeWindowBackground</item>
+        <item name="secondaryBackgroundColor">@color/darkOrangeTextColorPrimary</item>
+        <item name="thirdBackgroundColor">@color/darkOrangePrimary</item>
+        <item name="primaryTextColor">@color/darkOrangeTextColorPrimary</item>
+        <item name="secondaryTextColor">@color/darkOrangePrimary</item>
+        <item name="android:textColor">@color/darkOrangeTextColorPrimary</item>
+        <item name="android:textColorHint">@color/darkOrangeTextColorPrimary</item>
+        <item name="android:windowBackground">@color/darkOrangeWindowBackground</item>
+        <item name="android:colorAccent">@color/darkOrangePrimary</item>
+        <item name="primaryColor">@color/darkOrangePrimary</item>
 
         <!--Widget styles -->
         <item name="android:buttonStyle">@style/normalButton</item>

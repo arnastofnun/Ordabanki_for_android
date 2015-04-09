@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.util.Log;
 import android.util.TypedValue;
 
 import com.arnastofnun.idordabanki.Globals;
@@ -78,11 +79,13 @@ public class ThemeHelper {
      */
     public static void setCurrentNoActionBar(Activity act){
         BiMap<Integer,Integer> themes = HashBiMap.create();
-        themes.put(R.style.AppTheme_Girly,R.style.AppTheme_Girly_NoActionBar_FullScreen);
+        themes.put(R.style.AppTheme_DarkOrange,R.style.AppTheme_DarkOrange_NoActionBar_FullScreen);
         themes.put(R.style.AppTheme_Light,R.style.AppTheme_Light_NoActionBar_FullScreen);
 
         if(SharedPrefs.contains("currentTheme")){
             int currentTheme = SharedPrefs.getInt("currentTheme");
+            Log.v("darkOrange","" + R.style.AppTheme_DarkOrange);
+            Log.v("current",""+currentTheme);
             act.setTheme(themes.get(currentTheme));
         }
     }
