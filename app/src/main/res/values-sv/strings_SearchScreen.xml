@@ -25,5 +25,6 @@
     <string name="targetlang">Målspråket:</string>
     <string name="sourcelang">Källspråk:</string>
     <string name="all_languages">Allt</string>
+    <string name="decCheckbox">Sök efter deklinationer (endast på isländska)</string>
 
 </resources>
