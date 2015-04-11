@@ -1,13 +1,18 @@
 package com.arnastofnun.idordabanki.sync;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.widget.Button;
 
+import com.arnastofnun.idordabanki.R;
 import com.arnastofnun.idordabanki.dialogs.ConnectionDialogueFragment;
+import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 
 /**
  * Checks if an internet connection is present
@@ -55,7 +60,12 @@ public class ConnectionDetector {
         boolean connected = isConnectingToInternet();
         if(!connected){
             DialogFragment restartQuit = new ConnectionDialogueFragment();
+
+
+
             restartQuit.show(_activity.getFragmentManager(), "NoInternetConnection");
+
+
         }
         return connected;
     }
@@ -70,4 +80,9 @@ public class ConnectionDetector {
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         _activity.startActivity(i);
     }
+
+
+
+
+
 }

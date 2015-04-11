@@ -12,4 +12,8 @@
     <string name="title_activity_select_language">Veldu tungumál</string>
     <string name="title_activity_results_screen">Niðurstöður</string>
     <string name="title_activity_result_info">Upplýsingar um hugtak</string>
+    <string name="no_internet_title">Gat ekki tengst netinu</string>
+    <string name="quit">Hætta</string>
+    <string name="Retry">Reyna aftur</string>
+    <string name="No_Internet">Engin nettenging. Athugaðu hvort síminn þinn sé tengdur netinu.</string>
 </resources>

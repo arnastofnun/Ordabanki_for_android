@@ -2,6 +2,7 @@ package com.arnastofnun.idordabanki.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
+import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 import com.arnastofnun.idordabanki.models.Result;
 import com.arnastofnun.idordabanki.preferences.SharedPrefs;
 import com.google.common.collect.BiMap;
@@ -191,8 +193,9 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
             //We want the header to be bold
             termView.setTypeface(null, Typeface.BOLD);
             //Make sure the dropdown/pullup indicator is visible, and correct
-            int imageResourceId = isExpanded ? R.drawable.ic_action_collapse : R.drawable.ic_action_expand;
-            ind.setImageResource(imageResourceId);
+            int imageResourceId = isExpanded ? R.attr.collapseIcon : R.attr.expandIcon;
+            ThemeHelper themeHelper = new ThemeHelper(context);
+            ind.setImageResource(themeHelper.getAttrDrawable(imageResourceId));
             //Show the indicator
             ind.setVisibility(View.VISIBLE);
             //Hide the language and glossary views

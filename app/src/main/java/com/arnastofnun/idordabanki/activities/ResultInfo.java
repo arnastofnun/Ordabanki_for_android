@@ -1,5 +1,6 @@
 package com.arnastofnun.idordabanki.activities;
 
+import android.app.DialogFragment;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -14,11 +15,13 @@ import android.widget.SearchView;
 
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
+import com.arnastofnun.idordabanki.dialogs.ConnectionDialogueFragment;
 import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 import com.arnastofnun.idordabanki.adapters.ResultPagerAdapter;
 import com.arnastofnun.idordabanki.dialogs.HelpDialog;
 import com.arnastofnun.idordabanki.models.Result;
 import com.arnastofnun.idordabanki.preferences.Settings;
+import com.arnastofnun.idordabanki.sync.ConnectionDetector;
 
 import java.util.List;
 
@@ -32,10 +35,11 @@ import java.util.List;
  * @since 05.11.2014
  */
 
-public class ResultInfo extends FragmentActivity {
+public class ResultInfo extends FragmentActivity implements ConnectionDialogueFragment.ConnectionDialogueListener {
     int resultIndex;
     static String termID;
     String wID;
+    private ConnectionDetector connectionDetector;
 
 
 
@@ -56,6 +60,7 @@ public class ResultInfo extends FragmentActivity {
         setContentView(R.layout.activity_result_info);
         PagerAdapter resultPagerAdapter;
         ViewPager resultPager;
+        connectionDetector = new ConnectionDetector(this);
         Bundle extras = getIntent().getExtras();
         resultPager = (ViewPager) findViewById(R.id.result_pager);
         resultPagerAdapter = new ResultPagerAdapter(getSupportFragmentManager());
@@ -202,5 +207,34 @@ public class ResultInfo extends FragmentActivity {
         }
 
             return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * A method so the fragment can get the connections
+     * detector
+     */
+    public ConnectionDetector getConnectionsDetector(){
+        return this.connectionDetector;
+    }
+
+
+    /**
+     * A method that's run when the connection
+     * dialog positive button is clicked
+     * @param dialog the dialog
+     */
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        connectionDetector.retry();
+    }
+
+    /**
+     * A method that's run when the connection
+     * dialog negative button is clicked
+     * @param dialog the dialog
+     */
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        finish();
     }
 }

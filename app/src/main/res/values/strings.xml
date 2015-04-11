@@ -15,8 +15,9 @@
     <string name="title_activity_an" translatable="false">AnActivity</string>
     <string name="title_activity_result_info">Term info</string>
     <string name="hello_world" translatable="false">Hello world!</string>
-    <string name="No_Internet">No Internet Connection</string>
+    <string name="No_Internet">No Internet Connection. Check that your phone is connected to the internet</string>
     <string name="Retry">Retry</string>
     <string name="quit">Quit</string>
+    <string name="no_internet_title">Error connecting to the Internet</string>
 
 </resources>

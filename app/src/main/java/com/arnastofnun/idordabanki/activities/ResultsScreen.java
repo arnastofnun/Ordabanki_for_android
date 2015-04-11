@@ -87,6 +87,11 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         //If it doesn't exist this is a new search
         if(resultList == null || newSearch){
             if(data != null && data.containsKey("searchQuery")) {
+                wordDone = false;
+                wordError = false;
+                synonymDone = false;
+                synonymError = false;
+
                 searchQuery = data.getString("searchQuery");
             }
             global.setSTerm(searchQuery);
@@ -118,7 +123,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             //We display the results that we had already gotten
             displayListView();
         }
-
         waitForResults();
     }
 
@@ -151,6 +155,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         jsonHandler = new OrdabankiJsonHandler(this);
         OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
         try {
+            Log.v("DOIG search",searchQuery);
             client.setResults(OrdabankiURLGen.createWordURL(searchQuery), jsonHandler);
             //when glossaries and languages implemented in api use:
             //client.setResults(OrdabankiRestClientActions.createURL(searchQuery), jsonHandler);
@@ -268,7 +273,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                     @Override
                     public void run() {
                         combineResults();
-                        setHashMap();
                         displayListView();
                     }
                 });
@@ -284,7 +288,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      */
     @Override
     protected void onPause() {
-        Log.v("sterm",searchQuery);
         global.setSTerm(searchQuery);
         super.onPause();
     }
@@ -415,11 +418,13 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 result.setLanguage_code("IS");
                 resultList.add(result);
             }
-            Collections.sort(resultList);
-            resultList = removeDuplicates(resultList);
-            FilterDialog.setFilterPossibilities(resultList);
-            global.setOriginalResults(resultList);
         }
+        Collections.sort(resultList);
+        if(resultList.size() > 1) {
+            resultList = removeDuplicates(resultList);
+        }
+        FilterDialog.setFilterPossibilities(resultList);
+        global.setOriginalResults(resultList);
     }
 
     /**
@@ -452,6 +457,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         //initialize
         words = new ArrayList<>();
         resultMap = new HashMap<>();
+        Log.v("hashmap",resultList.get(0).getWord());
         //Go through the result list
         for(Result item : resultList){
             //If the hash map doesn't contain the word, we need to add it

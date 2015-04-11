@@ -11,4 +11,8 @@
     <string name="title_activity_select_language">Velg språk</string>
     <string name="title_activity_results_screen">Resultater</string>
     <string name="title_activity_result_info">Information om begrep</string>
+    <string name="no_internet_title">Feil ved tilkobling til Internett</string>
+    <string name="quit">Slutt</string>
+    <string name="Retry">Prøv igjen</string>
+    <string name="No_Internet">Ingen Internett-tilkobling. Sjekk at telefonen er koblet til internett</string>
 </resources>

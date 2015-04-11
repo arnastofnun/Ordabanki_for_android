@@ -80,10 +80,8 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.ResultsScreen" />
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable">
-            </meta-data>
+            <meta-data android:name="android.app.default_searchable"
+                android:value=".activities.SearchScreen" />
         </activity>
         <activity
             android:name=".activities.ResultsScreen"
@@ -95,10 +93,8 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.SearchScreen" />
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable">
-            </meta-data>
+            <meta-data android:name="android.app.default_searchable"
+                android:value=".activities.SearchScreen" />
         </activity>
 
     </application>

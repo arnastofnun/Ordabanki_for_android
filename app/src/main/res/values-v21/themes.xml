@@ -4,6 +4,13 @@
     <style name="AppTheme.Light.NoActionBar.FullScreen" parent="@android:style/Theme.Material.Light.NoActionBar.Fullscreen">
         <item name="android:windowBackground">@color/lightGreen100</item>
         <item name="android:textColor">@color/darkgrey</item>
+
+        <item name="dialogHeaderBackground">@color/darkgrey</item>
+        <item name="dialogHeaderText">@color/white</item>
+        <item name="dialogText" >@color/darkgrey</item>
+        <item name="dialogBackground" >@color/lightGreen100</item>
+        <item name="buttonBackground" >@color/white</item>
+        <item name="buttonText" >@color/darkgrey</item>
     </style>
 
 
@@ -68,6 +75,12 @@
     <style name="AppTheme.DarkOrange.NoActionBar.FullScreen" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
         <item name="android:windowBackground">@color/darkOrangePrimary</item>
         <item name="android:textColor">@color/darkOrangeWindowBackground</item>
+        <item name="dialogHeaderBackground">@color/darkOrangePrimary</item>
+        <item name="dialogHeaderText">@color/darkOrangeTextColorPrimary</item>
+        <item name="dialogText" >@color/darkOrangeTextColorPrimary</item>
+        <item name="dialogBackground" >@color/darkOrangeWindowBackground</item>
+        <item name="buttonBackground" >@color/darkOrangeWindowBackground</item>
+        <item name="buttonText" >@color/darkOrangeTextColorPrimary</item>
     </style>
 
 
@@ -134,6 +147,12 @@
     <style name="AppTheme.DarkBlue.NoActionBar.FullScreen" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
         <item name="android:windowBackground">@color/darkBluePrimary</item>
         <item name="android:textColor">@color/darkBlueWindowBackground</item>
+        <item name="dialogHeaderBackground">@color/darkBluePrimary</item>
+        <item name="dialogHeaderText">@color/darkBlueTextColorPrimary</item>
+        <item name="dialogText" >@color/darkBlueTextColorPrimary</item>
+        <item name="dialogBackground" >@color/darkBlueWindowBackground</item>
+        <item name="buttonBackground" >@color/darkBlueWindowBackground</item>
+        <item name="buttonText" >@color/darkBlueTextColorPrimary</item>
     </style>
 
 
@@ -199,6 +218,12 @@
     <style name="AppTheme.DarkPink.NoActionBar.FullScreen" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
         <item name="android:windowBackground">@color/darkPinkPrimary</item>
         <item name="android:textColor">@color/darkPinkWindowBackground</item>
+        <item name="dialogHeaderBackground">@color/darkPinkPrimary</item>
+        <item name="dialogHeaderText">@color/darkPinkTextColorPrimary</item>
+        <item name="dialogText" >@color/darkPinkTextColorPrimary</item>
+        <item name="dialogBackground" >@color/darkPinkWindowBackground</item>
+        <item name="buttonBackground" >@color/darkPinkWindowBackground</item>
+        <item name="buttonText" >@color/darkPinkTextColorPrimary</item>
     </style>
 
 

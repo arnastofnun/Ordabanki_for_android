@@ -6,8 +6,12 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.arnastofnun.idordabanki.R;
+import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 
 /**
  * Creates a dialogue box when no internet connection present
@@ -51,19 +55,47 @@ public class ConnectionDialogueFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         //
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.Dialog);
+        View view = getActivity().getLayoutInflater().inflate(R.layout.connection_dialog, null);
+
+        builder.setView(view);
             setCancelable(false);
-            builder.setMessage(R.string.No_Internet)
-                .setPositiveButton(R.string.Retry, new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(R.string.Retry, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Send the positive button event back to the host activity
                         mListener.onDialogPositiveClick(ConnectionDialogueFragment.this);
                     }
                 }).setNegativeButton(R.string.quit, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // Send the negative button event back to the host activity
-                        mListener.onDialogNegativeClick(ConnectionDialogueFragment.this);
-            }
-        });
+                public void onClick(DialogInterface dialog, int id) {
+                    // Send the negative button event back to the host activity
+                    mListener.onDialogNegativeClick(ConnectionDialogueFragment.this);
+                }
+            });
         return builder.create();
     }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        changeButtonColor(((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_POSITIVE));
+        changeButtonColor(((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_NEGATIVE));
+    }
+
+    /**
+     * This method changes the color of a button
+     * Written by: Karl Ásgeir Geirsson
+     * @param button the button to change color
+     */
+    public void changeButtonColor(Button button){
+        if(button != null){
+            ThemeHelper themeHelper = new ThemeHelper(getActivity());
+            button.setBackgroundColor(themeHelper.getAttrColor(R.attr.buttonBackground));
+            button.setTextColor(themeHelper.getAttrColor(R.attr.buttonText));
+        }
+    }
+
 }
+
+
+
+
+

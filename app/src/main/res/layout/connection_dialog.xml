@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="?dialogBackground">
+    <TextView
+        android:id="@+id/connection_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/no_internet_title"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="?dialogHeaderBackground"
+        android:textColor="?dialogHeaderText"/>
+        />
+    <TextView
+        android:id="@+id/connection_error_message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/connection_title"
+        android:textSize="14dp"
+        android:padding="10dp"
+        android:textColor="?dialogText"
+        android:text="@string/No_Internet"/>
+</RelativeLayout>

@@ -1,6 +1,7 @@
 package com.arnastofnun.idordabanki.activities;
 
 import android.app.ActionBar;
+import android.app.DialogFragment;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.provider.SearchRecentSuggestions;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
+import com.arnastofnun.idordabanki.dialogs.ConnectionDialogueFragment;
 import com.arnastofnun.idordabanki.helpers.SearchAutoComplete;
 import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 import com.arnastofnun.idordabanki.adapters.TabsPagerAdapter;
@@ -25,9 +28,11 @@ import com.arnastofnun.idordabanki.dialogs.HelpDialog;
 import com.arnastofnun.idordabanki.fragments.PickGlossaryFragment;
 import com.arnastofnun.idordabanki.preferences.LocaleSettings;
 import com.arnastofnun.idordabanki.preferences.Settings;
+import com.arnastofnun.idordabanki.sync.ConnectionDetector;
 
 import org.json.JSONException;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 
@@ -38,7 +43,7 @@ import java.util.ArrayList;
  * @author Karl Ásgeir Geirsson
  * @since 9.10.2014
  */
-public class SearchScreen extends FragmentActivity {
+public class SearchScreen extends FragmentActivity implements ConnectionDialogueFragment.ConnectionDialogueListener {
     /*
     *   Data invariants:
     *   viewPager: ViewPager object
@@ -48,6 +53,8 @@ public class SearchScreen extends FragmentActivity {
     *   resultList: list of search results
     */
     private ViewPager viewPager;
+
+    private ConnectionDetector connectionDetector;
 
 
     /**
@@ -146,7 +153,7 @@ public class SearchScreen extends FragmentActivity {
             @Override
             public void onPageSelected(int position) {
                 //If its the search screen
-                if(position == 0){
+                if (position == 0) {
                     toggleKeyboard(true);
                 }
             }
@@ -160,7 +167,7 @@ public class SearchScreen extends FragmentActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 //If there is movement and we are in the search fragment
-                if(positionOffset > 0 && position == 0){
+                if (positionOffset > 0 && position == 0) {
                     toggleKeyboard(false);
                 }
 
@@ -200,11 +207,15 @@ public class SearchScreen extends FragmentActivity {
             //Save it to search suggestions
             SearchRecentSuggestions suggestions = new SearchRecentSuggestions(this, SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);
             suggestions.saveRecentQuery(query,null);
-            //Try searching
-            try {
-                search(query);
-            } catch(JSONException e){
-                e.printStackTrace();
+            connectionDetector = new ConnectionDetector(this);
+            boolean connected = connectionDetector.confirmConnection();
+            if (connected) {
+                //Try searching
+                try {
+                    search(query);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -248,7 +259,6 @@ public class SearchScreen extends FragmentActivity {
         //Create the Intent
         //todo make intent go to term results screen if search term is numeric
         Intent intent = new Intent(this, ResultsScreen.class);
-
         //If the search query is empty
         if (searchQuery.equals("")) {
             allowsearch = false;
@@ -360,6 +370,26 @@ public class SearchScreen extends FragmentActivity {
 
     }
 
+
+    /**
+     * A method that's run when the connection
+     * dialog positive button is clicked
+     * @param dialog the dialog
+     */
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        connectionDetector.retry();
+    }
+
+    /**
+     * A method that's run when the connection
+     * dialog negative button is clicked
+     * @param dialog the dialog
+     */
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        finish();
+    }
 
 
 

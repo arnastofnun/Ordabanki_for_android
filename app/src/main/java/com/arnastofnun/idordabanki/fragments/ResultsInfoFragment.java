@@ -1,7 +1,9 @@
 package com.arnastofnun.idordabanki.fragments;
 
+import android.app.DialogFragment;
 import android.app.SearchManager;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,10 +16,13 @@ import android.widget.TextView;
 
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.R;
+import com.arnastofnun.idordabanki.activities.ResultInfo;
+import com.arnastofnun.idordabanki.dialogs.ConnectionDialogueFragment;
 import com.arnastofnun.idordabanki.helpers.ThemeHelper;
 import com.arnastofnun.idordabanki.models.Result;
 import com.arnastofnun.idordabanki.models.TermResult;
 import com.arnastofnun.idordabanki.preferences.SharedPrefs;
+import com.arnastofnun.idordabanki.sync.ConnectionDetector;
 import com.arnastofnun.idordabanki.sync.OrdabankiURLGen;
 import com.arnastofnun.idordabanki.sync.REST.OrdabankiRestClientUsage;
 import com.arnastofnun.idordabanki.interfaces.OnTermResultObtainedListener;
@@ -26,13 +31,16 @@ import com.google.common.collect.BiMap;
 
 import org.json.JSONException;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.Charset;
 import java.util.List;
 
 
 /**
  * A fragment for the results info screen
  */
-public class ResultsInfoFragment extends Fragment implements OnTermResultObtainedListener {
+public class ResultsInfoFragment extends Fragment  implements OnTermResultObtainedListener {
     private Globals globals = (Globals) Globals.getContext();
     //Language names
     private WebView wv;
@@ -171,12 +179,19 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
             }
             wordHTML+="</div>";
         }
-        wv.loadDataWithBaseURL(null, wordHTML+sbr_refsHTML+einnig_refsHTML, "text/html", "UTF-8", null);
-        wv.setWebViewClient(new WebViewClient(){
+        wv.loadData(wordHTML + sbr_refsHTML + einnig_refsHTML, "text/html; charset=utf-8", "UTF-8");
+        wv.setWebViewClient(new WebViewClient() {
+            @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                SearchManager searchManager = (SearchManager)getActivity().getSystemService(Context.SEARCH_SERVICE);
-                searchManager.startSearch(url,true,getActivity().getComponentName(),null,false);
-                return true;
+                String search = url.substring(6,url.length());
+                Log.v("Clicked url", search);
+                SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+                try {
+                    searchManager.startSearch(URLDecoder.decode(search, "UTF-8"), true, getActivity().getComponentName(), null, false);
+                } catch(UnsupportedEncodingException e){
+                    e.printStackTrace();
+                }
+                    return true;
             }
         });
     }
@@ -192,8 +207,9 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
         if(einnig.getRefs()[0] != null){
             for(TermResult.Term.Einnig.Refs ref : einnig.getRefs()){
                 //get language string with index of language name in array languages
-                einnig_refsHTML += "<tr><td>"+"<a href=\""+ref.getWord()+"\">"+"<div id=\"word\"><div class=\"link\">"+ref.getWord()+"</div></div></a></td>" +
-                        "<td>" +getLanguage(ref.getLangCode())+"</td></tr>";
+                einnig_refsHTML += "<tr><td>" + "<a href=\"ref://" + ref.getWord() + "\">" + "<div id=\"word\"><div class=\"link\">" + ref.getWord() + "</div></div></a></td>" +
+                            "<td>" + getLanguage(ref.getLangCode()) + "</td></tr>";
+
             }
         }
         return einnig_refsHTML.substring(0,einnig_refsHTML.length())+"</table><br></div>";
@@ -275,7 +291,8 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
             }
 
             for(TermResult.Term.Word.Synonym synonym: word.getSynonyms()){
-                synonymHTML += "<a href =\""+synonym.getSynonym() +"\"><div id=\"word\" style =\"width:80%;margin-top:5px;font-family:'PT serif';color:+"+thirdBackground+";\"><b><i><div class=\"link\">"+synonym.getSynonym()+ "</div></a></i></b>";
+                    synonymHTML += "<a href =\"ref://"+synonym.getSynonym() +"\"><div id=\"word\" style =\"width:80%;margin-top:5px;font-family:'PT serif';color:+"+thirdBackground+";\"><b><i><div class=\"link\">"+synonym.getSynonym()+ "</div></a></i></b>";
+
                 String synChild = "";
                 if(synonym.getAbbreviation() != null){
                     synChild +=  getString(R.string.word_abbreviation)+" " + synonym.getAbbreviation()+ "<br>";
@@ -351,10 +368,13 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
     private void getTermResult(String idTerm){
         TermResultJsonHandler tJsonHandler = new TermResultJsonHandler(this);
         OrdabankiRestClientUsage tClient = new OrdabankiRestClientUsage();
-        try{
-            tClient.setTermResults(OrdabankiURLGen.createTermURL(idTerm),tJsonHandler);
-        } catch(JSONException e){
-            e.printStackTrace();
+        boolean connected = ((ResultInfo) getActivity()).getConnectionsDetector().confirmConnection();
+        if (connected) {
+            try {
+                tClient.setTermResults(OrdabankiURLGen.createTermURL(idTerm), tJsonHandler);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -381,4 +401,6 @@ public class ResultsInfoFragment extends Fragment implements OnTermResultObtaine
     public void onTermResultFailure(int statusCode){
         //TODO: handle error!
     }
+
+
 }
