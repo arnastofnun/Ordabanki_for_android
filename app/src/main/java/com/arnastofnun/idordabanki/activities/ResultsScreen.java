@@ -155,7 +155,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         jsonHandler = new OrdabankiJsonHandler(this);
         OrdabankiRestClientUsage client = new OrdabankiRestClientUsage();
         try {
-            Log.v("DOIG search",searchQuery);
             client.setResults(OrdabankiURLGen.createWordURL(searchQuery), jsonHandler);
             //when glossaries and languages implemented in api use:
             //client.setResults(OrdabankiRestClientActions.createURL(searchQuery), jsonHandler);
@@ -457,7 +456,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         //initialize
         words = new ArrayList<>();
         resultMap = new HashMap<>();
-        Log.v("hashmap",resultList.get(0).getWord());
         //Go through the result list
         for(Result item : resultList){
             //If the hash map doesn't contain the word, we need to add it
