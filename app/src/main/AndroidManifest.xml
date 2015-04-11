@@ -46,8 +46,7 @@
         </activity>
         <activity
             android:name=".activities.SearchScreen"
-            android:label="@string/search_tab"
-            android:launchMode="singleTop">
+            android:label="@string/search_tab">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>
             </intent-filter>

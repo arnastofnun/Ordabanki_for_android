@@ -298,7 +298,6 @@ public class Settings {
         listView.setAdapter(themeAdapter);
         TypedValue typedValue = new TypedValue();
         context.getTheme().resolveAttribute(R.attr.themeName,typedValue,true);
-        Log.v("in settings",""+ typedValue.string);
         themeAdapter.setSelectedIndex(themeNames.indexOf(typedValue.string));
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
