@@ -23,4 +23,6 @@
     <string name="targetlang">Target language:</string>
     <string name="sourcelang">Source language:</string>
     <string name="all_languages">All</string>
+
+    <string name="decCheckbox">Find declensions (Icelandic only)</string>
 </resources>

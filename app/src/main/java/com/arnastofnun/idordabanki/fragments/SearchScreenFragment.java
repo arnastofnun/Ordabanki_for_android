@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.SearchView;
 
@@ -62,7 +63,7 @@ public class SearchScreenFragment extends Fragment {
 
 
         searchModeListener(rootView);
-
+        decListener(rootView);
         return rootView;
     }
 
@@ -102,6 +103,22 @@ public class SearchScreenFragment extends Fragment {
                 globals.setSearchMode(searchMode);
             }
         });
+    }
+
+    public void decListener(View rootView){
+
+        CheckBox decCheckbox=(CheckBox)rootView.findViewById(R.id.decCheckbox);
+        decCheckbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Globals globals = (Globals) Globals.getContext();
+                boolean decSet = (((CheckBox)v).isChecked());
+                globals.setDec(decSet);
+            }
+        });
+
+
+
     }
 
 

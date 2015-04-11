@@ -63,10 +63,17 @@ public class AboutGlossaryActivity extends Activity {
         WebSettings settings = webView.getSettings();
         settings.setDefaultTextEncodingName("UTF-8");
 
+        ThemeHelper themeHelper = new ThemeHelper(this);
+        String primaryText = themeHelper.getHexColorFromAttr(R.attr.primaryTextColor);
+        String primaryBackground = themeHelper.getHexColorFromAttr(R.attr.primaryBackgroundColor);
+        String secondaryText = themeHelper.getHexColorFromAttr(R.attr.secondaryTextColor);
+        String secondaryBackground = themeHelper.getHexColorFromAttr(R.attr.secondaryBackgroundColor);
+        String thirdBackground = themeHelper.getHexColorFromAttr(R.attr.thirdBackgroundColor);
+
         css = "<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>" +
                 "<link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>" +
-                "<style>body {padding:4pt;margin:4pt;color:black;background-color: #DCEDC8;" +
-                "font-family: 'Droid Sans', sans-serif;font-size:13pt !important; } a{color:#16A085 !important;font-weight:bold;font-family: 'Droid Sans' , sans-serif !important;}" +
+                "<style>body {padding:4pt;margin:4pt;color:"+primaryText+";background-color: "+primaryBackground+";" +
+                "font-family: 'Droid Sans', sans-serif;font-size:13pt !important; } a{text-decoration:none !important;border-radius:5pt !important;padding:5pt;margin:5pt !important;background-color:"+secondaryBackground+";color:"+secondaryText+" !important;font-weight:bold;font-family: 'Droid Sans' , sans-serif !important;}" +
                 "p{font-family: 'PT Serif', serif !important;padding:6pt !important;margin:7pt !important} h2{margin:8pt !important} blockquote{margin:1pt !important} img{display:none !important}</style>";
         OrdabankiRESTClient.get(url, null, new AsyncHttpResponseHandler() {
             /*

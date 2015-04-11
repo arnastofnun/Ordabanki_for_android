@@ -24,6 +24,7 @@ public class Globals extends Application{
     private BiMap<String,String> filterGlossaries;
     private BiMap<String,String> filterLanguages;
     private String sTerm;
+    private Boolean dec;
 
     public static Context context;
 
@@ -186,4 +187,6 @@ public class Globals extends Application{
      */
     public String getSTerm() {return this.sTerm;}
 
+    public Boolean getDec() {return this.dec;}
+    public void setDec(Boolean decVal) {this.dec = decVal;}
 }
