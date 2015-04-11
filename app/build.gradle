@@ -26,5 +26,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.android.support:support-v4:21.0.0'
     compile 'com.google.guava:guava:18.0'
+    androidTestCompile 'io.divide:client-android-mock:0.5.3'
 }
 

@@ -3,6 +3,8 @@ package com.arnastofnun.idordabanki.sync;
 
 
 
+import android.util.Log;
+
 import com.arnastofnun.idordabanki.fragments.PickGlossaryFragment;
 import com.arnastofnun.idordabanki.fragments.ChooseLanguagesFragment;
 
@@ -70,7 +72,7 @@ public class OrdabankiURLGen {
         if(!ChooseLanguagesFragment.getTargetLanguage().equals("ALL"))
             relURL = relURL + "&tlang=" + ChooseLanguagesFragment.getTargetLanguage();
              */
-
+        Log.v("allSelected", "" + PickGlossaryFragment.areAllSelected());
         if(!PickGlossaryFragment.areAllSelected()) {
             ArrayList<String> selectedGlossaries = PickGlossaryFragment.getSelectedGlossaries();
             relURL = relURL + "&dicts=";

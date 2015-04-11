@@ -1,11 +1,8 @@
 package com.arnastofnun.idordabanki.helpers;
 
-import android.app.Activity;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Parcelable;
+import android.util.Log;
 
-import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.activities.SearchScreen;
 import com.arnastofnun.idordabanki.activities.SplashActivity;
 import com.arnastofnun.idordabanki.models.Dictionary;
@@ -98,9 +95,8 @@ public class LocalizedValues extends AsyncTask<Void,Integer,Boolean> {
      */
     @Override
     protected void onPostExecute(Boolean bool) {
-        //Get the globals
-        Globals globals = (Globals) Globals.getContext();
         //Set globals
+        SharedPrefs.getEditor().remove("glossary_state");
         SharedPrefs.putStringBiMap("languages",localisedLangs);
         SharedPrefs.putParcelableArray("dictionaries", glossaries);
         SharedPrefs.putStringBiMap("loc_dictionaries",localisedDicts);

@@ -1,6 +1,8 @@
 package com.arnastofnun.idordabanki.models;
 
 
+import android.util.Log;
+
 import com.arnastofnun.idordabanki.preferences.LocaleSettings;
 
 /**

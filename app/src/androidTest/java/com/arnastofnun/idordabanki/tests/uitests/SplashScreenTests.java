@@ -1,4 +1,4 @@
-package com.arnastofnun.idordabanki.unittests;
+package com.arnastofnun.idordabanki.tests.uitests;
 
 
 import android.test.ActivityInstrumentationTestCase2;

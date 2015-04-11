@@ -74,7 +74,7 @@
     <!-- Splash screen and select language theme -->
     <style name="AppTheme.DarkOrange.NoActionBar.FullScreen" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
         <item name="android:windowBackground">@color/darkOrangePrimary</item>
-        <item name="android:textColor">@color/darkOrangeWindowBackground</item>
+        <item name="android:textColor">@color/darkOrangeTextColorPrimary</item>
         <item name="dialogHeaderBackground">@color/darkOrangePrimary</item>
         <item name="dialogHeaderText">@color/darkOrangeTextColorPrimary</item>
         <item name="dialogText" >@color/darkOrangeTextColorPrimary</item>
@@ -146,7 +146,7 @@
     <!-- Splash screen and select language theme -->
     <style name="AppTheme.DarkBlue.NoActionBar.FullScreen" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
         <item name="android:windowBackground">@color/darkBluePrimary</item>
-        <item name="android:textColor">@color/darkBlueWindowBackground</item>
+        <item name="android:textColor">@color/darkBlueTextColorPrimary</item>
         <item name="dialogHeaderBackground">@color/darkBluePrimary</item>
         <item name="dialogHeaderText">@color/darkBlueTextColorPrimary</item>
         <item name="dialogText" >@color/darkBlueTextColorPrimary</item>
@@ -217,7 +217,7 @@
     <!-- Splash screen and select language theme -->
     <style name="AppTheme.DarkPink.NoActionBar.FullScreen" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
         <item name="android:windowBackground">@color/darkPinkPrimary</item>
-        <item name="android:textColor">@color/darkPinkWindowBackground</item>
+        <item name="android:textColor">@color/darkPinkTextColorPrimary</item>
         <item name="dialogHeaderBackground">@color/darkPinkPrimary</item>
         <item name="dialogHeaderText">@color/darkPinkTextColorPrimary</item>
         <item name="dialogText" >@color/darkPinkTextColorPrimary</item>

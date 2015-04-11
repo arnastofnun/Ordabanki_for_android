@@ -84,9 +84,9 @@ public class SplashActivity extends FragmentActivity implements OnDictionariesOb
         final LocaleSettings localeSettings = new LocaleSettings(this);
         //if no language set in locale go to select language
         if (!localeSettings.getLocaleStatus()) {
-            Intent intent = new Intent(SplashActivity.this, SelectLanguageActivity.class);
-            SplashActivity.this.startActivity(intent);
-            SplashActivity.this.finish();
+            Intent intent = new Intent(this, SelectLanguageActivity.class);
+            startActivity(intent);
+            this.finish();
         }
     }
 

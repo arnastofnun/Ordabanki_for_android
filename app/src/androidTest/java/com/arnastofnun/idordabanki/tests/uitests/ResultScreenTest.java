@@ -1,6 +1,7 @@
-package com.arnastofnun.idordabanki.unittests;
+package com.arnastofnun.idordabanki.tests.uitests;
 
 
+import android.content.Intent;
 import android.provider.SearchRecentSuggestions;
 import android.test.ActivityInstrumentationTestCase2;
 import com.arnastofnun.idordabanki.Globals;
@@ -9,6 +10,7 @@ import com.arnastofnun.idordabanki.activities.ResultInfo;
 import com.arnastofnun.idordabanki.activities.ResultsScreen;
 import com.arnastofnun.idordabanki.helpers.SearchAutoComplete;
 import com.arnastofnun.idordabanki.activities.SplashActivity;
+import com.arnastofnun.idordabanki.preferences.SharedPrefs;
 import com.robotium.solo.Solo;
 
 
@@ -38,10 +40,9 @@ public class ResultScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         super.setUp();
         solo = new Solo(getInstrumentation());
 
-        //Make the app start up in english
-        LocaleSettings localeSettings = new LocaleSettings(Globals.getContext());
-        localeSettings.setLanguageInit("EN");
+        SharedPrefs.getEditor().putString("lang","EN");
 
+        getActivity();
 
         //Clear the search history
         SearchRecentSuggestions suggestions=new SearchRecentSuggestions(getActivity().getApplicationContext(), SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);
@@ -71,18 +72,18 @@ public class ResultScreenTest extends ActivityInstrumentationTestCase2<SplashAct
      * amount of results comes up
      */
     public void testAmountOfResults() {
-        assertTrue("Wrong amount of results",solo.searchText("57 results for hest*"));
+        assertTrue("Wrong amount of results",solo.waitForText("57 results for"));
     }
 
     /**
      * A test that tests if the sublists open and close correctly
      */
     public void testSublistsOpenClose(){
-        assertFalse("sublist initially open",solo.searchText("Aviation"));
+        assertFalse("sublist initially open",solo.waitForText("Aviation"));
         solo.scrollListToTop(0);
         solo.clickInList(3);
         solo.sleep(500);
-        assertTrue("sublist did not open",solo.searchText("Aviation",true));
+        assertTrue("sublist did not open",solo.waitForText("Aviation"));
     }
 
     /**

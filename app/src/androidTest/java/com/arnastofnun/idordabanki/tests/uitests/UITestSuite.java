@@ -1,4 +1,4 @@
-package com.arnastofnun.idordabanki.unittests;
+package com.arnastofnun.idordabanki.tests.uitests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -12,7 +12,7 @@ import java.util.Iterator;
  * @author karlasgeir
  * @since 3/10/15.
  */
-public class AllTestsTestSuite {
+public class UITestSuite {
     public static Test suite(){
         ArrayList<Class> testClasses = new ArrayList<>();
         testClasses.addAll(Arrays.asList(ResultScreenTest.class, SearchScreenTest.class,

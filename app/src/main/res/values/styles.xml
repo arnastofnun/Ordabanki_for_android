@@ -2,9 +2,9 @@
 
 
     <style name="PopupStyle" parent="android:style/Widget.PopupMenu">
-        <item name="android:background">?primaryColor</item>
-        <item name="android:textColor">?primaryTextColor</item>
-        <item name="android:popupBackground">?primaryColor</item>
+        <item name="android:background">?dialogHeaderBackground</item>
+        <item name="android:textColor">?dialogHeaderText</item>
+        <item name="android:popupBackground">?dialogBackground</item>
     </style>
 
     <style name="Dialog" parent="android:style/Theme.Holo.Light.Dialog">
@@ -18,7 +18,9 @@
     <style name="actionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">?actionBarBackground</item>
         <item name="android:textColor">?actionBarTextColor</item>
+        <item name="android:titleTextStyle">?actionBarTextColor</item>
     </style>
+
 
     <style name="normalButton" parent="@android:style/Widget.Holo.Light.Button">
         <item name="android:textColor">?primaryTextColor</item>

@@ -75,7 +75,7 @@
     <!-- Splash screen and select language theme -->
     <style name="AppTheme.DarkOrange.NoActionBar.FullScreen" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
         <item name="android:windowBackground">@color/darkOrangePrimary</item>
-        <item name="android:textColor">@color/darkOrangeWindowBackground</item>
+        <item name="android:textColor">@color/darkOrangeTextColorPrimary</item>
         <item name="buttonBackground" >@color/darkOrangePrimary</item>
         <item name="buttonText" >@color/darkOrangeTextColorPrimary</item>
         <item name="dialogHeaderBackground">@color/darkOrangePrimary</item>
@@ -127,8 +127,8 @@
         <item name="actionBarTextColor">@color/darkOrangeTextColorPrimary</item>
 
         <!-- Action bar icons -->
-        <item name="helpIcon">@drawable/ic_action_help</item>
-        <item name="aboutIcon">@drawable/ic_action_about</item>
+        <item name="helpIcon">@drawable/ic_action_help_light</item>
+        <item name="aboutIcon">@drawable/ic_action_about_light</item>
         <item name="tickIcon">@drawable/ic_action_accept_light</item>
         <item name="collapseIcon">@drawable/ic_action_collapse_light</item>
         <item name="emailIcon">@drawable/ic_action_email</item>
@@ -136,7 +136,7 @@
         <item name="filterIcon">@drawable/ic_action_filter</item>
         <item name="searchIcon">@drawable/ic_action_search_light</item>
         <item name="searchIconSecondary">@drawable/ic_action_search_light</item>
-        <item name="settingsIcon">@drawable/ic_action_settings</item>
+        <item name="settingsIcon">@drawable/ic_action_settings_light</item>
         <item name="webIcon">@drawable/ic_action_web_site_light</item>
     </style>
 
@@ -145,7 +145,7 @@
     <!-- Splash screen and select language theme -->
     <style name="AppTheme.DarkBlue.NoActionBar.FullScreen" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
         <item name="android:windowBackground">@color/darkBluePrimary</item>
-        <item name="android:textColor">@color/darkBlueWindowBackground</item>
+        <item name="android:textColor">@color/darkBlueTextColorPrimary</item>
         <item name="buttonBackground" >@color/darkBluePrimary</item>
         <item name="buttonText" >@color/darkBlueTextColorPrimary</item>
         <item name="dialogHeaderBackground">@color/darkBluePrimary</item>
@@ -197,8 +197,8 @@
         <item name="actionBarTextColor">@color/darkBlueTextColorPrimary</item>
 
         <!-- Action bar icons -->
-        <item name="helpIcon">@drawable/ic_action_help</item>
-        <item name="aboutIcon">@drawable/ic_action_about</item>
+        <item name="helpIcon">@drawable/ic_action_help_light</item>
+        <item name="aboutIcon">@drawable/ic_action_about_light</item>
         <item name="tickIcon">@drawable/ic_action_accept_light</item>
         <item name="collapseIcon">@drawable/ic_action_collapse_light</item>
         <item name="emailIcon">@drawable/ic_action_email</item>
@@ -206,7 +206,7 @@
         <item name="filterIcon">@drawable/ic_action_filter</item>
         <item name="searchIcon">@drawable/ic_action_search_light</item>
         <item name="searchIconSecondary">@drawable/ic_action_search_light</item>
-        <item name="settingsIcon">@drawable/ic_action_settings</item>
+        <item name="settingsIcon">@drawable/ic_action_settings_light</item>
         <item name="webIcon">@drawable/ic_action_web_site_light</item>
     </style>
 
@@ -215,7 +215,7 @@
     <!-- Splash screen and select language theme -->
     <style name="AppTheme.DarkPink.NoActionBar.FullScreen" parent="@android:style/Theme.Holo.NoActionBar.Fullscreen">
         <item name="android:windowBackground">@color/darkPinkPrimary</item>
-        <item name="android:textColor">@color/darkPinkWindowBackground</item>
+        <item name="android:textColor">@color/darkPinkTextColorPrimary</item>
         <item name="buttonBackground" >@color/darkPinkPrimary</item>
         <item name="buttonText" >@color/darkPinkTextColorPrimary</item>
         <item name="dialogHeaderBackground">@color/darkPinkPrimary</item>
@@ -267,8 +267,8 @@
         <item name="actionBarTextColor">@color/darkPinkTextColorPrimary</item>
 
         <!-- Action bar icons -->
-        <item name="helpIcon">@drawable/ic_action_help</item>
-        <item name="aboutIcon">@drawable/ic_action_about</item>
+        <item name="helpIcon">@drawable/ic_action_help_light</item>
+        <item name="aboutIcon">@drawable/ic_action_about_light</item>
         <item name="tickIcon">@drawable/ic_action_accept_light</item>
         <item name="collapseIcon">@drawable/ic_action_collapse_light</item>
         <item name="emailIcon">@drawable/ic_action_email</item>
@@ -276,7 +276,7 @@
         <item name="filterIcon">@drawable/ic_action_filter</item>
         <item name="searchIcon">@drawable/ic_action_search_light</item>
         <item name="searchIconSecondary">@drawable/ic_action_search_light</item>
-        <item name="settingsIcon">@drawable/ic_action_settings</item>
+        <item name="settingsIcon">@drawable/ic_action_settings_light</item>
         <item name="webIcon">@drawable/ic_action_web_site_light</item>
     </style>
 

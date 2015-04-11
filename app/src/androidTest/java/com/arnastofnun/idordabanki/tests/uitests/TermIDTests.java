@@ -1,8 +1,9 @@
-package com.arnastofnun.idordabanki.unittests;
+package com.arnastofnun.idordabanki.tests.uitests;
 
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 
+import com.arnastofnun.idordabanki.activities.ResultInfo;
 import com.arnastofnun.idordabanki.activities.ResultsScreen;
 import com.robotium.solo.Solo;
 
@@ -69,7 +70,7 @@ public class TermIDTests extends ActivityUnitTestCase<ResultsScreen> {
         getActivity().doTermIdSearch(validTermID);
         Intent launchIntent = getStartedActivityIntent();
         assertNotNull("Intent was null", launchIntent);
-        assertEquals(launchIntent.getComponent().getShortClassName(),".ResultInfo");
+        assertEquals(launchIntent.getComponent().getClassName(),ResultInfo.class.getName());
     }
 
 

@@ -1,6 +1,7 @@
-package com.arnastofnun.idordabanki.unittests;
+package com.arnastofnun.idordabanki.tests.uitests;
 
 
+import android.content.Intent;
 import android.provider.SearchRecentSuggestions;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
@@ -18,7 +19,6 @@ import com.arnastofnun.idordabanki.helpers.SearchAutoComplete;
 import com.arnastofnun.idordabanki.activities.SearchScreen;
 import com.arnastofnun.idordabanki.activities.SplashActivity;
 import com.arnastofnun.idordabanki.preferences.SharedPrefs;
-import com.google.common.reflect.TypeToken;
 import com.robotium.solo.Solo;
 import junit.framework.Assert;
 
@@ -44,22 +44,25 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
     /**
      * method  sets up activity and solo before testing can begin
      */
+    @Override
     public void setUp() throws Exception {
+        super.setUp();
         /*This way the testPreconditions will work*/
         solo = new Solo(getInstrumentation());
 
         //Make the app start up in english
-        LocaleSettings localeSettings = new LocaleSettings(Globals.getContext());
-        localeSettings.setLanguageInit("EN");
-
-        getActivity();
+        SharedPrefs.getEditor().putString("lang","EN");
         //Clear the search history
         SearchRecentSuggestions suggestions=new SearchRecentSuggestions(getActivity().getApplicationContext(), SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);
         suggestions.clearHistory();
 
+        Globals globals = (Globals) Globals.getContext();
+        globals.setTLangCode(null);
+        globals.setSLangCode(null);
+
         solo.waitForActivity(SearchScreen.class);
     }
-
+    @Override
     public void tearDown() throws Exception{
         solo.finishOpenedActivities();
         super.tearDown();
@@ -69,7 +72,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
      * Checks if we are testing the current activity
      */
     public void testPreconditions() {
-        solo.assertCurrentActivity("wrong activity",SearchScreen.class);
+        solo.assertCurrentActivity("wrong activity", SearchScreen.class);
     }
 
     /**
@@ -102,10 +105,10 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         expectedGlossaries.addAll(Arrays.asList("Archeology", "Architecture", "Arts", "Astronomy"));
 
         //Select them
-        solo.clickInList(4);
-        solo.clickInList(5);
-        solo.clickInList(8);
-        solo.clickInList(9);
+        solo.clickInList(2);
+        solo.clickInList(3);
+        solo.clickInList(6);
+        solo.clickInList(7);
 
         //Scroll to the search fragment
         solo.scrollToSide(Solo.LEFT);
@@ -115,9 +118,10 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.clickOnEditText(0);
         solo.enterText(0, "sta*");
         solo.pressSoftKeyboardSearchButton();
-
+        solo.waitForActivity(ResultsScreen.class);
         //Wait until results are displayed
-        solo.waitForText("67 results for sta*");
+        solo.waitForText("60 results for sta*");
+        assertTrue("incorrect amount of results",solo.searchText("60 results for sta*"));
 
         //Get the list view, and adapter
         ExpandableListView listView = (ExpandableListView) solo.getView(R.id.resultsList);
@@ -166,29 +170,31 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
 
         //click on help icon in search screen
         solo.clickOnActionBarItem(R.id.action_help);
-        solo.sleep(500); // give it time to change activity
-        assertNotNull("Didn't open help",solo.getButton("Close",true));
+        solo.waitForDialogToOpen(1000);
+        assertNotNull("Didn't open help", solo.getButton("Close", true));
         solo.clickOnButton("Close");
+        solo.waitForDialogToClose(1000);
 
         solo.clickOnEditText(0);
         solo.enterText(0, "stock");
         solo.pressSoftKeyboardSearchButton();
         solo.waitForActivity(ResultsScreen.class);
-
+        solo.assertCurrentActivity("Wrong activity", ResultsScreen.class);
         //click on help icon in results screen
         solo.clickOnActionBarItem(R.id.action_help);
-        solo.sleep(500);
+        solo.waitForDialogToOpen(1000);
         assertNotNull("Didn't open help", solo.getButton("Close", true));
         solo.clickOnButton("Close");
+        solo.waitForDialogToClose(1000);
 
         solo.clickInList(2);
         solo.waitForActivity(ResultInfo.class);
+        solo.assertCurrentActivity("Wrong activity",ResultInfo.class);
 
         //click on help icon in results info screen
         solo.clickOnActionBarItem(R.id.action_help);
-        solo.sleep(500);
+        solo.waitForDialogToOpen(1000);
         assertNotNull("Didn't open help", solo.getButton("Close", true));
-        solo.clickOnButton("Close");
     }
 
 
@@ -198,23 +204,31 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
      * Written by Trausti
      */
     public void testSourceLanguageSpinner() {
+        solo.waitForActivity(SearchScreen.class);
         //Get the view for the languages tab
         solo.scrollToSide(Solo.RIGHT);
+        solo.waitForFragmentById(R.id.pick_glossary_fragment, 1000);
         solo.scrollToSide(Solo.RIGHT);
+        solo.waitForFragmentById(R.id.choose_language_fragment, 1000);
         //Press spinner item 0 (src lang) and language 2 (English)
-        solo.pressSpinnerItem(0,2);
+        solo.pressSpinnerItem(0, 2);
+        //Press spinner item 0 (targ lang) and language 1 (Icelandic)
+        solo.pressSpinnerItem(1, 1);
 
         //Go to the search tab
         solo.scrollToSide(Solo.LEFT);
+        solo.waitForFragmentById(R.id.pick_glossary_fragment, 1000);
         solo.scrollToSide(Solo.LEFT);
-
+        solo.waitForFragmentById(R.layout.fragment_search_screen, 1000);
         //Go back to the languages tab
         //Get the view for the languages tab
         solo.scrollToSide(Solo.RIGHT);
+        solo.waitForFragmentById(R.id.pick_glossary_fragment, 1000);
         solo.scrollToSide(Solo.RIGHT);
-
+        solo.waitForFragmentById(R.id.choose_language_fragment, 1000);
         //check if spinner items still have the same values
         assertTrue("Spinner changed languages on swipe",solo.isSpinnerTextSelected("English"));
+        assertTrue("Spinner change languages on swipe",solo.isSpinnerTextSelected("Icelandic"));
     }
 
     public void testSourceLanguageFunctionality(){
@@ -223,12 +237,14 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
 
         //Get the view for the languages tab
         solo.scrollToSide(Solo.RIGHT);
+        solo.sleep(500);
         solo.scrollToSide(Solo.RIGHT);
 
         solo.pressSpinnerItem(0,2);
 
         //Go to the search tab
         solo.scrollToSide(Solo.LEFT);
+        solo.sleep(500);
         solo.scrollToSide(Solo.LEFT);
 
         solo.enterText(0,"hor*");
@@ -305,17 +321,20 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         //Clear it
         solo.clearEditText(0);
         //Enter a partial mach
-        solo.enterText(0,"Auto");
+        solo.enterText(0, "Auto");
         //Check if the suggestion comes up
-        Assert.assertFalse(solo.waitForText("Autodefenestration",1,1000));
+        Assert.assertFalse(solo.waitForText("Autodefenestration", 1, 1000));
         //Enter the rest of the word
-        solo.enterText(0,"defenestration");
+        solo.enterText(0, "defenestration");
         //Searches, to save the search term in search history
         solo.pressSoftKeyboardSearchButton();
         //Waits for results
         solo.waitForActivity(ResultsScreen.class);
+        solo.assertCurrentActivity("Wrong activity", ResultsScreen.class);
         // Goes back to search screen
         solo.goBack();
+        solo.waitForActivity(SearchScreen.class);
+        solo.assertCurrentActivity("Wrong activity", SearchScreen.class);
         //Enters a part of the word
         solo.enterText(0, "Auto");
         //Check if the suggestion comes up
@@ -378,7 +397,7 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
      */
 
     public void testSearchLessThanTwoLetters() {
-        solo.enterText(0,"");
+        solo.enterText(0, "");
         solo.pressSoftKeyboardSearchButton();
         //user should not be able to search as he has entered 0 letters
         solo.assertCurrentActivity("wrong activity", SearchScreen.class);
@@ -398,15 +417,18 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         //Enter aa*
         solo.enterText(0,"aa*");
         solo.pressSoftKeyboardSearchButton();
-        solo.waitForActivity(ResultsScreen.class,1000);
-        solo.assertCurrentActivity("* search not working",ResultsScreen.class);
+        solo.waitForActivity(ResultsScreen.class, 1000);
+        solo.assertCurrentActivity("* search not working", ResultsScreen.class);
     }
 
     /**
      * This method tests the language select dialog, accessed through the on the action bar
+     * For now it only checks if the cancel button works, since the app is restarted on language
+     * selection, and the test will crash because of that
      * Written by Kristján
      * TODO: find another way to test this, it won't work since the test crashes when the app restarts
      */
+    /*
     public void testLanguageSelection() {
         // Selects the action bar menu
         solo.clickOnActionBarItem(R.id.action_settings);
@@ -433,19 +455,9 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.sleep(2000);
         // Asserts Icelandic is still selected
         Assert.assertTrue(solo.searchText("Leita"));
-        // Repeats, but this time confirms English selection
-        solo.clickOnActionBarItem(R.id.action_settings);
-        // Clicks on the Language select option
-        solo.clickInList(0);
-        // Selects English
-        solo.clickInList(0);
-        // Confirms selection
-        solo.clickOnText(solo.getString(R.string.settings_changelanguage_confirm));
-        //waits for new language to load
-        solo.sleep(2000);
-        //Asserts English is selected
-        //Assert.assertTrue(solo.searchText("Search"));
+
     }
+    /*
 
     /*
     * This method test if search history can be cleared
@@ -460,19 +472,25 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.pressSoftKeyboardSearchButton();
         //Waits for results
         solo.waitForActivity(ResultsScreen.class);
+        solo.assertCurrentActivity("Wrong activity", ResultsScreen.class);
         //Goes back to search screen
-        solo.goBack();
+        solo.goBackToActivity("SearchScreen");
+        //Wait for it to go back
+        solo.waitForActivity(SearchScreen.class);
+        solo.assertCurrentActivity("Wrong activity", SearchScreen.class);
         //Makes sure search is empty
         solo.clearEditText(0);
         //Enters partial match
         solo.enterText(0, "Poly");
         //Confirms suggestion is made
-        Assert.assertTrue("Suggestion was not made initially",solo.searchText("Polystyrene"));
+        Assert.assertTrue("Suggestion was not made initially", solo.searchText("Polystyrene"));
         //Makes sure search is empty
         solo.clearEditText(0);
         //Clears the search
         solo.clickOnActionBarItem(R.id.action_settings);
-        solo.clickInList(4);
+        solo.waitForDialogToOpen(1000);
+        solo.clickInList(5);
+        solo.waitForDialogToClose(1000);
         //Re-enters partial match
         solo.enterText(0, "Poly");
         //Confirms suggestion is no longer made

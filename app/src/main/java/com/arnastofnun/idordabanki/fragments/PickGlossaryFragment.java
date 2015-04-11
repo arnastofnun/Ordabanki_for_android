@@ -58,7 +58,6 @@ public class PickGlossaryFragment extends Fragment {
     @Override
     public void onPause(){
         super.onPause();
-        GlossaryAdapter glossaryAdapter = (GlossaryAdapter) listView.getAdapter();
         SharedPrefs.putParcelableArray("glossary_state", glossaryAdapter.getGlossaryList());
     }
 
@@ -90,13 +89,18 @@ public class PickGlossaryFragment extends Fragment {
      * @since 09.10.2014
      */
     private void displayListView(){
+
         //List of glossaries
         if(SharedPrefs.contains("glossary_state")){
             glossaryList = SharedPrefs.getParcelableArray("glossary_state",new TypeToken<ArrayList<Glossary>>(){}.getType());
         } else {
             glossaryList = SharedPrefs.getParcelableArray("dictionaries", new TypeToken<ArrayList<Glossary>>() {
             }.getType());
+
         }
+
+
+
 
         //Creating a new glossary adapter
         glossaryAdapter = new GlossaryAdapter(this.getActivity(), R.layout.glossary_list, glossaryList);
@@ -106,7 +110,9 @@ public class PickGlossaryFragment extends Fragment {
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView.setAdapter(glossaryAdapter);
 
-        checkAllGlossaries();
+        if (!SharedPrefs.contains("glossary_state")) {
+            checkAllGlossaries();
+        }
 
         //Button to check all glossaries
         final Button checkallbutton = (Button) rootView.findViewById(R.id.select_all_glossaries);
@@ -184,7 +190,6 @@ public class PickGlossaryFragment extends Fragment {
                 selectedGlossaries.add(glossary.getDictCode());
             }
         }
-
         return selectedGlossaries;
     }
 

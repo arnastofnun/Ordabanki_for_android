@@ -1,5 +1,6 @@
-package com.arnastofnun.idordabanki.unittests;
+package com.arnastofnun.idordabanki.tests.uitests;
 
+import android.content.Intent;
 import android.provider.SearchRecentSuggestions;
 import android.test.ActivityInstrumentationTestCase2;
 import com.arnastofnun.idordabanki.R;
@@ -8,6 +9,7 @@ import com.arnastofnun.idordabanki.activities.ResultsScreen;
 import com.arnastofnun.idordabanki.helpers.SearchAutoComplete;
 import com.arnastofnun.idordabanki.activities.SearchScreen;
 import com.arnastofnun.idordabanki.activities.SplashActivity;
+import com.arnastofnun.idordabanki.preferences.SharedPrefs;
 import com.robotium.solo.Solo;
 import junit.framework.Assert;
 
@@ -36,7 +38,8 @@ public class SearchTest extends ActivityInstrumentationTestCase2<SplashActivity>
     public void setUp() throws Exception {
         /*This way the testPreconditions will work*/
         solo = new Solo(getInstrumentation());
-        getActivity();
+        SharedPrefs.getEditor().putString("lang","EN");
+
         //Clear the search history
         SearchRecentSuggestions suggestions=new SearchRecentSuggestions(getActivity().getApplicationContext(), SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);
         suggestions.clearHistory();
@@ -61,11 +64,12 @@ public class SearchTest extends ActivityInstrumentationTestCase2<SplashActivity>
         solo.enterText(0, "bla?");
         solo.pressSoftKeyboardSearchButton();
         solo.waitForActivity(ResultsScreen.class);
+        solo.waitForText("results for leit",1,1000);
         solo.clickOnActionBarItem(R.id.search);
         solo.enterText(0, "leit");
         solo.pressSoftKeyboardSearchButton();
-        solo.waitForText("7 niðurstöður fyrir leit",1,1000);
-        Assert.assertTrue("could not search", solo.searchText("7 niðurstöður fyrir leit"));
+        solo.waitForText("results for leit",1,1000);
+        Assert.assertTrue("could not search", solo.waitForText("results for leit"));
     }
 
     /**
@@ -76,14 +80,15 @@ public class SearchTest extends ActivityInstrumentationTestCase2<SplashActivity>
         solo.enterText(0, "bla?");
         solo.pressSoftKeyboardSearchButton();
         solo.waitForActivity(ResultsScreen.class);
+        solo.waitForText("results for bla?");
         solo.clickInList(0);
-        solo.clickOnText("danska");
+        solo.clickOnText("Danish");
         solo.waitForActivity(ResultInfo.class);
         solo.clickOnActionBarItem(R.id.search);
         solo.enterText(0,"leit");
         solo.pressSoftKeyboardSearchButton();
-        solo.waitForText("niðurstöður");
-        Assert.assertTrue("could not search",solo.searchText("7 niðurstöður fyrir leit"));
+        solo.waitForText("results for leit");
+        Assert.assertTrue("could not search",solo.searchText("results for leit"));
     }
 
 
