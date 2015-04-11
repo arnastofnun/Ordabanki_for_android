@@ -63,7 +63,6 @@ public class SearchScreenFragment extends Fragment {
 
 
         searchModeListener(rootView);
-        decListener(rootView);
         return rootView;
     }
 
@@ -94,6 +93,10 @@ public class SearchScreenFragment extends Fragment {
                         //synonyms only
                         searchMode = 2;
                         break;
+                    case R.id.radioButton4:
+                        //declensions
+                        searchMode = 3;
+                        break;
                     default:
                         searchMode = 0;
                         break;
@@ -105,21 +108,8 @@ public class SearchScreenFragment extends Fragment {
         });
     }
 
-    public void decListener(View rootView){
-
-        CheckBox decCheckbox=(CheckBox)rootView.findViewById(R.id.decCheckbox);
-        decCheckbox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Globals globals = (Globals) Globals.getContext();
-                boolean decSet = (((CheckBox)v).isChecked());
-                globals.setDec(decSet);
-            }
-        });
 
 
-
-    }
 
 
 
