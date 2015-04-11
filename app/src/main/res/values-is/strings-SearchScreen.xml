@@ -23,4 +23,6 @@
     <string name="targetlang">Markmál:</string>
     <string name="sourcelang">Leitarmál:</string>
     <string name="all_languages">Öll</string>
+    <string name="decCheckbox">Leita að beygingarmyndum (aðeins til á íslensku)</string>
+
 </resources>
