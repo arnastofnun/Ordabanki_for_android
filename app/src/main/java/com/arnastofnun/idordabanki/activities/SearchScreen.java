@@ -6,6 +6,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
 import android.support.annotation.NonNull;
@@ -16,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.WebView;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.arnastofnun.idordabanki.Globals;
@@ -104,7 +107,6 @@ public class SearchScreen extends FragmentActivity implements ConnectionDialogue
         //Get the current locale
         LocaleSettings localeSettings = new LocaleSettings(this);
         localeSettings.setCurrLocaleFromPrefs();
-
         Intent intent = getIntent();
         checkSearchQuery(intent);
 
@@ -289,10 +291,19 @@ public class SearchScreen extends FragmentActivity implements ConnectionDialogue
         }
         //Do the search
         if (allowsearch) {
-            intent.putExtra("searchQuery", searchQuery); //Add the search query to the intent
-            intent.putExtra("newSearch",true);
-            this.startActivity(intent); //Start the activity
+            Globals globals = (Globals) Globals.getContext();
+            Log.v("decSet",Boolean.toString(globals.getDec()));
+            if (globals.getDec()) {
+                Uri uri = Uri.parse("http://bin.arnastofnun.is/leit/?q=" + searchQuery);
+                Intent decIntent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(decIntent);
 
+            } else {
+                intent.putExtra("searchQuery", searchQuery); //Add the search query to the intent
+                intent.putExtra("newSearch", true);
+                this.startActivity(intent); //Start the activity
+
+            }
         }
     }
 
@@ -390,6 +401,7 @@ public class SearchScreen extends FragmentActivity implements ConnectionDialogue
     public void onDialogNegativeClick(DialogFragment dialog) {
         finish();
     }
+
 
 
 
