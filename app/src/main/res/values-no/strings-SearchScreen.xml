@@ -23,4 +23,6 @@
     <!--Strings used in the choose language fragment-->
     <string name="languages_tab_name">Språk</string>
     <string name="all_languages">Alt</string>
+    <string name="decCheckbox">Søk etter frafall (bare i islandsk)</string>
+
 </resources>
