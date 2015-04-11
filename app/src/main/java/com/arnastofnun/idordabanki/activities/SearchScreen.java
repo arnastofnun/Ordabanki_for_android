@@ -242,6 +242,7 @@ public class SearchScreen extends FragmentActivity implements ConnectionDialogue
      */
     @Override
     public void onBackPressed() {
+
     }
 
 
@@ -292,8 +293,8 @@ public class SearchScreen extends FragmentActivity implements ConnectionDialogue
         //Do the search
         if (allowsearch) {
             Globals globals = (Globals) Globals.getContext();
-            Log.v("decSet",Boolean.toString(globals.getDec()));
             if (globals.getDec()) {
+                globals.setDec(false);
                 Uri uri = Uri.parse("http://bin.arnastofnun.is/leit/?q=" + searchQuery);
                 Intent decIntent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(decIntent);
