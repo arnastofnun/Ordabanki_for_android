@@ -141,21 +141,27 @@ ADDED from AndroidManifest.xml:66:9
 		ADDED from AndroidManifest.xml:69:13
 	android:name
 		ADDED from AndroidManifest.xml:67:13
-activity#com.arnastofnun.idordabanki.activities.ResultInfo
+activity#com.arnastofnun.idordabanki.activities.Beygingar
 ADDED from AndroidManifest.xml:74:9
 	android:label
-		ADDED from AndroidManifest.xml:76:13
-	android:parentActivityName
-		ADDED from AndroidManifest.xml:77:13
-	android:name
 		ADDED from AndroidManifest.xml:75:13
-activity#com.arnastofnun.idordabanki.activities.ResultsScreen
-ADDED from AndroidManifest.xml:85:9
-	android:label
-		ADDED from AndroidManifest.xml:87:13
-	android:parentActivityName
-		ADDED from AndroidManifest.xml:88:13
-	android:noHistory
-		ADDED from AndroidManifest.xml:89:13
 	android:name
-		ADDED from AndroidManifest.xml:86:13
+		ADDED from AndroidManifest.xml:74:19
+activity#com.arnastofnun.idordabanki.activities.ResultInfo
+ADDED from AndroidManifest.xml:76:9
+	android:label
+		ADDED from AndroidManifest.xml:78:13
+	android:parentActivityName
+		ADDED from AndroidManifest.xml:79:13
+	android:name
+		ADDED from AndroidManifest.xml:77:13
+activity#com.arnastofnun.idordabanki.activities.ResultsScreen
+ADDED from AndroidManifest.xml:87:9
+	android:label
+		ADDED from AndroidManifest.xml:89:13
+	android:parentActivityName
+		ADDED from AndroidManifest.xml:90:13
+	android:noHistory
+		ADDED from AndroidManifest.xml:91:13
+	android:name
+		ADDED from AndroidManifest.xml:88:13

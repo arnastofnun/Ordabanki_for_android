@@ -25,5 +25,5 @@
     <string name="sourcelang">Kilde sprog:</string>
     <string name="all_languages">Alle</string>
     <string name="decCheckbox">Søg efter bøjninger (kun på islandsk)</string>
-
+    <string name="beygingar">Bøjninger</string>
 </resources>

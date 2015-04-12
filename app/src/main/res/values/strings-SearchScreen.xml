@@ -25,5 +25,5 @@
     <string name="all_languages">All</string>
 
     <string name="decCheckbox">Find declensions (Icelandic only)</string>
-    <string name="beygingar">beygingar</string>
+    <string name="beygingar">Declension</string>
 </resources>
