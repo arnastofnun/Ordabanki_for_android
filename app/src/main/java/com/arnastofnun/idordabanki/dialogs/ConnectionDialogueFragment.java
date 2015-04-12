@@ -73,9 +73,13 @@ public class ConnectionDialogueFragment extends DialogFragment {
         return builder.create();
     }
 
+    /**
+     * A method that runs when the dialogue has started
+     */
     @Override
     public void onStart(){
         super.onStart();
+        //Set the button colors
         changeButtonColor(((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_POSITIVE));
         changeButtonColor(((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_NEGATIVE));
     }

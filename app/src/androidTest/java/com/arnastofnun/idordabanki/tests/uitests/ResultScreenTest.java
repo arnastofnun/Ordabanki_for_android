@@ -19,7 +19,7 @@ import com.robotium.solo.Solo;
  * @author karlasgeir
  * @since 08/03/2015
  */
-public class ResultScreenTest extends ActivityInstrumentationTestCase2<SplashActivity> {
+public class ResultScreenTest extends ActivityInstrumentationTestCase2<com.arnastofnun.idordabanki.activities.SplashActivity> {
 
     /**
      * solo is used to do access functionalities while app is running
@@ -30,7 +30,7 @@ public class ResultScreenTest extends ActivityInstrumentationTestCase2<SplashAct
      * Basic constructor
      */
     public ResultScreenTest() {
-        super(SplashActivity.class);
+        super(com.arnastofnun.idordabanki.activities.SplashActivity.class);
     }
 
     /**
@@ -41,8 +41,6 @@ public class ResultScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo = new Solo(getInstrumentation());
 
         SharedPrefs.getEditor().putString("lang","EN");
-
-        getActivity();
 
         //Clear the search history
         SearchRecentSuggestions suggestions=new SearchRecentSuggestions(getActivity().getApplicationContext(), SearchAutoComplete.AUTHORITY, SearchAutoComplete.MODE);

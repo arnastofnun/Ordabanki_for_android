@@ -85,22 +85,11 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" scope="TEST" name="hugo-annotations-1.1.0" level="project" />
     <orderEntry type="library" exported="" name="guava-18.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-21.0.0" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="timber-2.2.2" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="client-mock-0.5.2" level="project" />
     <orderEntry type="library" exported="" name="gson-2.3" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="butterknife-5.0.1" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="scalpel-1.1.1" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="debugdrawer-0.5.1" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="robotium-solo-5.2.1" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="support-annotations-20.0.0" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="support-v13-20.0.0" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="support-v4-20.0.0" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="client-android-mock-0.5.3" level="project" />
-    <orderEntry type="library" exported="" scope="TEST" name="madge-1.1.1" level="project" />
     <orderEntry type="library" exported="" name="android-async-http-1.4.5" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="robotium-solo-5.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-21.0.0" level="project" />
   </component>
 </module>

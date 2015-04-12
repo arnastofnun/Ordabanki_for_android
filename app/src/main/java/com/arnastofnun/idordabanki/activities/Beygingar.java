@@ -47,33 +47,39 @@ public class Beygingar extends Activity {
 
 
     /**
-     * display activity with info about selected glossary
+     * Runs when the activity is created and loads the declensions website
      * <p>Activity is called when it first starts up</p>
      *
      * @param  savedInstanceState state when activity starts up
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ThemeHelper.setCurrentTheme(this);
+        ThemeHelper.setCurrentTheme(this); //Set the current theme
         super.onCreate(savedInstanceState);
+        //We use the same layout as in the about glossary layout (contains only a webview
         setContentView(R.layout.activity_about_glossary);
+        //Hide the action bar
         if (getActionBar() != null){
             getActionBar().hide();
         }
+        //Get the url from the intent
         url = getIntent().getStringExtra("url_string");
         url = Uri.parse(url).toString();
 
+        //Find, and hide the webview (to be displayed when ready)
         webView = (WebView) findViewById(R.id.webView);
         webView.setVisibility(View.INVISIBLE);
+        //Set a few settings for the web view
         WebSettings settings = webView.getSettings();
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-                webView.setVisibility(View.VISIBLE);
+                webView.setVisibility(View.VISIBLE); //Display the webview when the page has been loaded
             }
         });
-        settings.setDefaultTextEncodingName("UTF-8");
-        settings.setJavaScriptEnabled(true);
+        settings.setDefaultTextEncodingName("UTF-8"); //Set encoding
+        settings.setJavaScriptEnabled(true); //Enable javascript
+        //Get the colors from the theme
         ThemeHelper themeHelper = new ThemeHelper(this);
         String primaryText = themeHelper.getHexColorFromAttr(R.attr.primaryTextColor);
         String primaryBackground = themeHelper.getHexColorFromAttr(R.attr.primaryBackgroundColor);
@@ -81,16 +87,15 @@ public class Beygingar extends Activity {
         String secondaryBackground = themeHelper.getHexColorFromAttr(R.attr.secondaryBackgroundColor);
         String thirdBackground = themeHelper.getHexColorFromAttr(R.attr.thirdBackgroundColor);
 
-        Log.v("url",url);
-
+        //Custom css to make the page look as a part of our app
         css = "<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>" +
                 "<link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>" +
                 "<style>body {padding:4pt;margin:4pt;color:"+primaryText+";background-color: "+primaryBackground+";" +
                 "font-family: 'Droid Sans', sans-serif;font-size:13pt !important; } a{text-decoration:none !important;border-radius:5pt !important;padding:5pt;margin:5pt !important;background-color:"+secondaryBackground+";color:"+secondaryText+" !important;font-weight:bold;font-family: 'Droid Sans' , sans-serif !important;}" +
                 "p{font-family: 'PT Serif', serif !important;padding:6pt !important;margin:7pt !important} h2{margin:8pt !important} blockquote{margin:1pt !important} img, #header, #colOne, #leit_form, #footer{display:none !important;} ul{list-style:none; width:100%; margin-left:-10px;} li{padding:5pt;} li strong a{display: inline-block; margin-right:10pt;}" +
                 ".page-header{padding:4pt; margin-top:-4pt; margin-left: -4pt width:100%; text-align:center; color:" + primaryText +"; background-color:" + thirdBackground+ ";} " +
-                "h4{color:" + secondaryText +"; background-color:" + secondaryBackground+ "; padding:2pt; border-radius:5pt; text-align:center} table{width:100%;} th{background-color: "+secondaryBackground + "; color:" + primaryBackground + ";}" +
-                ".VO_beygingarmynd{color:"+primaryText+"; background-color:"+thirdBackground+"; padding:3pt;border-radius:5pt;}</style>";
+                "h4{font-size:1.2em;color:" + primaryText +"; background-color:none; padding:2pt; margin-bottom:2pt; text-align:center} table{width:100%;} th{background-color: "+secondaryBackground + "; color:" + primaryBackground + ";}" +
+                ".VO_beygingarmynd{color:"+primaryText+"; background-color:"+thirdBackground+"; padding:3pt ;border-radius:5pt;}</style>";
         OrdabankiRESTClient.get(url, null, new AsyncHttpResponseHandler() {
             /*
              *  Called when get request has started
@@ -144,38 +149,6 @@ public class Beygingar extends Activity {
             }
         });
 
-    }
-
-
-
-    /**
-     *@param menu the menu
-     *@return true or false
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        return true;
-    }
-
-    /**
-     * @param item the menu item that was clicked
-     * @return true or false
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            View v = findViewById(R.id.action_settings);
-            //Open up the popup options menu
-            Settings settings = new Settings(this);
-            settings.createOptionsPopupMenu(v);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 }
