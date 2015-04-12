@@ -204,9 +204,9 @@ public class ResultInfo extends FragmentActivity implements ConnectionDialogueFr
 
             case R.id.action_declension:
                 Globals globals = (Globals) Globals.getContext();
-                Uri uri = Uri.parse("http://bin.arnastofnun.is/leit/?q=" + globals.getSTerm());
-                Intent decIntent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(decIntent);
+                String uri = "http://bin.arnastofnun.is/leit/?q=" + globals.getSTerm();
+                Intent intent  = new Intent(this, Beygingar.class).putExtra("url_string",uri);
+                this.startActivity(intent);
                 return true;
 
             case android.R.id.home:

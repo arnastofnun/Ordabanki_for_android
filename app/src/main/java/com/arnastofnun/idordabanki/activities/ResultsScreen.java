@@ -584,9 +584,9 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 return true;
 
             case R.id.action_declension:
-                Uri uri = Uri.parse("http://bin.arnastofnun.is/leit/?q=" + searchQuery);
-                Intent decIntent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(decIntent);
+                String uri = "http://bin.arnastofnun.is/leit/?q=" + searchQuery;
+                Intent intent = new Intent(this, Beygingar.class).putExtra("url_string",uri);
+                this.startActivity(intent);
                 return true;
 
             case android.R.id.home:

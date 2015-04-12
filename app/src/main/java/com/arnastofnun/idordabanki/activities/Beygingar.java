@@ -10,6 +10,7 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.arnastofnun.idordabanki.sync.REST.OrdabankiRESTClient;
 import com.arnastofnun.idordabanki.R;
@@ -23,7 +24,7 @@ import org.apache.http.Header;
  * @author Trausti
  * @since 29.10.2014
  */
-public class AboutGlossaryActivity extends Activity {
+public class Beygingar extends Activity {
 
     /**
      *  url is the url of the glossary info page
@@ -56,13 +57,21 @@ public class AboutGlossaryActivity extends Activity {
         ThemeHelper.setCurrentTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_glossary);
-
+        getActionBar().hide();
         url = getIntent().getStringExtra("url_string");
         url = Uri.parse(url).toString();
 
         webView = (WebView) findViewById(R.id.webView);
+        webView.setVisibility(View.INVISIBLE);
         WebSettings settings = webView.getSettings();
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                webView.setVisibility(View.VISIBLE);
+            }
+        });
         settings.setDefaultTextEncodingName("UTF-8");
+        settings.setJavaScriptEnabled(true);
         ThemeHelper themeHelper = new ThemeHelper(this);
         String primaryText = themeHelper.getHexColorFromAttr(R.attr.primaryTextColor);
         String primaryBackground = themeHelper.getHexColorFromAttr(R.attr.primaryBackgroundColor);
@@ -76,7 +85,10 @@ public class AboutGlossaryActivity extends Activity {
                 "<link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>" +
                 "<style>body {padding:4pt;margin:4pt;color:"+primaryText+";background-color: "+primaryBackground+";" +
                 "font-family: 'Droid Sans', sans-serif;font-size:13pt !important; } a{text-decoration:none !important;border-radius:5pt !important;padding:5pt;margin:5pt !important;background-color:"+secondaryBackground+";color:"+secondaryText+" !important;font-weight:bold;font-family: 'Droid Sans' , sans-serif !important;}" +
-                "p{font-family: 'PT Serif', serif !important;padding:6pt !important;margin:7pt !important} h2{margin:8pt !important} blockquote{margin:1pt !important} img{display:none !important}</style>";
+                "p{font-family: 'PT Serif', serif !important;padding:6pt !important;margin:7pt !important} h2{margin:8pt !important} blockquote{margin:1pt !important} img, #header, #colOne, #leit_form, #footer{display:none !important;} ul{list-style:none; width:100%; margin-left:-10px;} li{padding:10pt;} li strong{margin-right:10pt; margin-bottom:15pt}" +
+                ".page-header{padding:4pt; margin-top:-4pt; margin-left: -4pt width:100%; text-align:center; color:" + primaryText +"; background-color:" + thirdBackground+ ";} " +
+                "h4{color:" + secondaryText +"; background-color:" + secondaryBackground+ "; padding:2pt; border-radius:5pt; text-align:center} table{width:100%;} th{background-color: "+secondaryBackground + "; color:" + primaryBackground + ";}" +
+                ".VO_beygingarmynd{color:"+primaryText+"; background-color:"+thirdBackground+"; padding:3pt;border-radius:5pt;}</style>";
         OrdabankiRESTClient.get(url, null, new AsyncHttpResponseHandler() {
             /*
              *  Called when get request has started
@@ -96,13 +108,13 @@ public class AboutGlossaryActivity extends Activity {
 
                 try {
 
-                    contents = new String(responseBody, "Windows-1252");
+                    contents = new String(responseBody, "UTF-8");
 
-                    contents = contents.replace("&nbsp;","").
-                            replace("blockquote","section").
-                            replace("font-size","font-weight") + css;
+                    contents = contents + css;
 
                     webView.loadDataWithBaseURL(null, contents, "text/html", "UTF-8", null);
+
+
 
                 } catch (Exception e) {
                     e.printStackTrace();

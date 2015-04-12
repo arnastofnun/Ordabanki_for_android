@@ -71,6 +71,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.SearchScreen" />
         </activity>
+        <activity android:name=".activities.Beygingar"
+            android:label="@string/beygingar"></activity>
         <activity
             android:name=".activities.ResultInfo"
             android:label="@string/title_activity_result_info"

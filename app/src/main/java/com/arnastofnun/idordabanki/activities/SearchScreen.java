@@ -295,9 +295,9 @@ public class SearchScreen extends FragmentActivity implements ConnectionDialogue
             Globals globals = (Globals) Globals.getContext();
             if (globals.getSearchMode()==3) {
                 globals.setSearchMode(0);
-                Uri uri = Uri.parse("http://bin.arnastofnun.is/leit/?q=" + searchQuery);
-                Intent decIntent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(decIntent);
+                String uri = "http://bin.arnastofnun.is/leit/?q=" + searchQuery;
+                intent = new Intent(this, Beygingar.class).putExtra("url_string",uri);
+                this.startActivity(intent);
 
             } else {
                 intent.putExtra("searchQuery", searchQuery); //Add the search query to the intent
