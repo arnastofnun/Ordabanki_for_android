@@ -186,7 +186,4 @@ public class Globals extends Application{
      * @return the search term
      */
     public String getSTerm() {return this.sTerm;}
-
-    public Boolean getDec() {return this.dec;}
-    public void setDec(Boolean decVal) {this.dec = decVal;}
 }
