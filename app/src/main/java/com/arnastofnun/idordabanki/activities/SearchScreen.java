@@ -259,6 +259,8 @@ public class SearchScreen extends FragmentActivity implements ConnectionDialogue
      */
     public void search(String searchQuery) throws JSONException {
         Boolean allowsearch = true;
+        //remove leading and trailing whitespace from search query
+        searchQuery = searchQuery.trim();
         //Create the Intent
         //todo make intent go to term results screen if search term is numeric
         Intent intent = new Intent(this, ResultsScreen.class);
@@ -290,6 +292,8 @@ public class SearchScreen extends FragmentActivity implements ConnectionDialogue
                 Toast.makeText(this, R.string.ast_char_limit, Toast.LENGTH_LONG).show();
             }
         }
+
+
         //Do the search
         if (allowsearch) {
             Globals globals = (Globals) Globals.getContext();
