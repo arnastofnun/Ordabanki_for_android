@@ -57,7 +57,9 @@ public class Beygingar extends Activity {
         ThemeHelper.setCurrentTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_glossary);
-        getActionBar().hide();
+        if (getActionBar() != null){
+            getActionBar().hide();
+        }
         url = getIntent().getStringExtra("url_string");
         url = Uri.parse(url).toString();
 
