@@ -184,7 +184,6 @@ public class ResultsInfoFragment extends Fragment  implements OnTermResultObtain
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 String search = url.substring(6,url.length());
-                Log.v("Clicked url", search);
                 SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
                 try {
                     searchManager.startSearch(URLDecoder.decode(search, "UTF-8"), true, getActivity().getComponentName(), null, false);

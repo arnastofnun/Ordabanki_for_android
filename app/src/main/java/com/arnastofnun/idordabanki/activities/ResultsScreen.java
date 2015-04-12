@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -580,6 +581,12 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 Settings settings = new Settings(this);
                 //Create a popup menu with settings, that pops from the action button
                 settings.createOptionsPopupMenu(v);
+                return true;
+
+            case R.id.action_declension:
+                Uri uri = Uri.parse("http://bin.arnastofnun.is/leit/?q=" + searchQuery);
+                Intent decIntent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(decIntent);
                 return true;
 
             case android.R.id.home:

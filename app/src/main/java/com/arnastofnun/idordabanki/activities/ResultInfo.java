@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
@@ -199,6 +200,13 @@ public class ResultInfo extends FragmentActivity implements ConnectionDialogueFr
                 Settings settings = new Settings(this);
                 //Create a popup menu with settings, that pops from the action button
                 settings.createOptionsPopupMenu(v);
+                return true;
+
+            case R.id.action_declension:
+                Globals globals = (Globals) Globals.getContext();
+                Uri uri = Uri.parse("http://bin.arnastofnun.is/leit/?q=" + globals.getSTerm());
+                Intent decIntent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(decIntent);
                 return true;
 
             case android.R.id.home:

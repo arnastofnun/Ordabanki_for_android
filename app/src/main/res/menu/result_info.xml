@@ -17,5 +17,10 @@
         android:icon="?helpIcon"
         android:orderInCategory="99"
         android:showAsAction="ifRoom"/>
+    <item android:id="@+id/action_declension"
+        android:title="@string/decCheckbox"
+        android:orderInCategory="98"
+        android:showAsAction="withText"
+        />
 </menu>
 
