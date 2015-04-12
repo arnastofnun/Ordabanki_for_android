@@ -146,6 +146,8 @@ public class Beygingar extends Activity {
 
     }
 
+
+
     /**
      *@param menu the menu
      *@return true or false
