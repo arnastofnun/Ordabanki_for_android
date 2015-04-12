@@ -94,10 +94,8 @@ public class Beygingar extends Activity {
                 "font-family: 'Droid Sans', sans-serif;font-size:13pt !important; } a{text-decoration:none !important;border-radius:5pt !important;padding:5pt;margin:5pt !important;background-color:"+secondaryBackground+";color:"+secondaryText+" !important;font-weight:bold;font-family: 'Droid Sans' , sans-serif !important;}" +
                 "p{font-family: 'PT Serif', serif !important;padding:6pt !important;margin:7pt !important} h2{margin:8pt !important} blockquote{margin:1pt !important} img, #header, #colOne, #leit_form, #footer{display:none !important;} ul{list-style:none; width:100%; margin-left:-10px;} li{padding:5pt;} li strong a{display: inline-block; margin-right:10pt;}" +
                 ".page-header{padding:4pt; margin-top:-4pt; margin-left: -4pt width:100%; text-align:center; color:" + primaryText +"; background-color:" + thirdBackground+ ";} " +
-                "h4{color:" + secondaryText +"; background-color:" + secondaryBackground+ "; padding:2pt; border-radius:5pt; text-align:center} table{width:100%;} th{background-color: "+secondaryBackground + "; color:" + primaryBackground + ";}" +
-                ".VO_beygingarmynd{color:"+primaryText+"; background-color:"+thirdBackground+"; padding:3pt;border-radius:5pt;}</style>";
-
-       //Get the web page
+                "h4{font-size:1.2em;color:" + primaryText +"; background-color:none; padding:2pt; margin-bottom:2pt; text-align:center} table{width:100%;} th{background-color: "+secondaryBackground + "; color:" + primaryBackground + ";}" +
+                ".VO_beygingarmynd{color:"+primaryText+"; background-color:"+thirdBackground+"; padding:3pt ;border-radius:5pt;}</style>";
         OrdabankiRESTClient.get(url, null, new AsyncHttpResponseHandler() {
             /*
              *  Called when get request has started
