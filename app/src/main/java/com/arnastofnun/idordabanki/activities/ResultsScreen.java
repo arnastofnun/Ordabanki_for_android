@@ -337,9 +337,9 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
      * A method that displays the list view
      */
     public void displayListView(){
-        String tLangCode = global.getTLangCode();
+        String sLangCode = global.getSLangCode();
         String glossCode = global.getGlossCode();
-        filterResults(glossCode,tLangCode);
+        filterResults(glossCode,sLangCode);
         setHashMap();
         //Display the number of results
         String searchPreTerm = getResources().getString(R.string.searchpreterm);

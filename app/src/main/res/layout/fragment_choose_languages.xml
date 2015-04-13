@@ -37,6 +37,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/targetWrapper"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
