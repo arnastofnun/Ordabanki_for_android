@@ -5,6 +5,7 @@ import android.os.Parcelable;
 */
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.arnastofnun.idordabanki.Globals;
 import com.arnastofnun.idordabanki.preferences.SharedPrefs;
@@ -209,7 +210,6 @@ public class Result implements Comparable<Result>{
      */
     @Override
     public int compareTo(@NonNull Result r){
-        Globals globals = (Globals) Globals.getContext();
         BiMap<String,String> dictionaries = SharedPrefs.getStringBiMap("loc_dictionaries");
         BiMap<String,String> languages = SharedPrefs.getStringBiMap("languages");
 
@@ -219,13 +219,19 @@ public class Result implements Comparable<Result>{
         if(comp1 == 0){
             int comp2;
             if(getDictionary_code()!=null && r.getDictionary_code()!=null) {
-                comp2 = dictionaries.get(getDictionary_code()).compareTo(dictionaries.get(r.getDictionary_code()));
+                    comp2 = dictionaries.get(getDictionary_code()).compareTo(dictionaries.get(r.getDictionary_code()));
             } else{
                 comp2 = 0;
             }
             if(comp2 == 0){
-                if(getLanguage_code()!= null && r.getLanguage_code() !=null) {
-                    return languages.get(getLanguage_code()).compareTo(languages.get(r.getLanguage_code()));
+                if((getLanguage_code()!= null && r.getLanguage_code() !=null)){
+                    if (getLanguage_code().equals("") && r.getLanguage_code().equals("")){
+                        return 0;
+                    } else if(getLanguage_code().equals("") || r.getLanguage_code().equals("")){
+                        return getLanguage_code().compareTo(r.getLanguage_code());
+                    } else{
+                        return languages.get(getLanguage_code()).compareTo(languages.get(r.getLanguage_code()));
+                    }
                 }
                 else return 0;
             }

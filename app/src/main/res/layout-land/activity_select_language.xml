@@ -1,0 +1,100 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.arnastofnun.idordabanki.activities.SelectLanguageActivity"
+    android:padding="20dp"
+    android:weightSum="1"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:weightSum="0.8"
+        android:id="@+id/logo_wrapper">
+        <ImageView
+            android:contentDescription="@string/splashimage"
+            android:id="@+id/SelectLanguageActivity_logo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/splash"/>
+
+        <TextView
+            android:id="@+id/SelectLanguageActivity_welcometext"
+            android:text="@string/welcometext"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:typeface="normal"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold|normal"
+            android:textIsSelectable="false"
+            android:layout_marginBottom="2dp"/>
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_weight="0.3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/scrollView"
+        android:fadeScrollbars="false">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayout">
+
+            <ImageButton
+                style="@style/flagStyle"
+                android:id="@+id/SelectLanguageActivity_icelandic"
+                android:src="@drawable/ic_iceland"
+                android:contentDescription="Icelandic" />
+
+            <ImageButton
+                style="@style/flagStyle"
+                android:id="@+id/SelectLanguageActivity_english"
+                android:src="@drawable/ic_united_kingdom"
+                android:contentDescription="English" />
+
+            <ImageButton
+                style="@style/flagStyle"
+                android:id="@+id/SelectLanguageActivity_danish"
+                android:src="@drawable/ic_denmark"
+                android:contentDescription="Danish" />
+
+            <ImageButton
+                style="@style/flagStyle"
+                android:id="@+id/SelectLanguageActivity_swedish"
+                android:src="@drawable/ic_sweden"
+                android:contentDescription="Swedish" />
+
+            <ImageButton
+                style="@style/flagStyle"
+                android:id="@+id/SelectLanguageActivity_norwegian"
+                android:src="@drawable/ic_norway"
+                android:contentDescription="Norwegian" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <TextView
+        android:id="@+id/SelectLanguageActivity_selectlanguagetext"
+        android:text="@string/selectlanguage"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:autoText="false" />
+
+</LinearLayout>

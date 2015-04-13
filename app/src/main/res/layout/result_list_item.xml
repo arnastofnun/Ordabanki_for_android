@@ -13,7 +13,7 @@
     <TextView
         android:id="@+id/word"
         android:layout_width="0dp"
-        android:layout_weight="15"
+        android:layout_weight="13"
         android:paddingLeft="15dp"
         android:singleLine="false"
         android:text="Header"
@@ -22,7 +22,7 @@
     <RelativeLayout
         android:id="@+id/lang_gloss_wrapper"
         android:layout_width="0dp"
-        android:layout_weight="5"
+        android:layout_weight="7"
         android:layout_height="fill_parent"
         android:gravity="center_vertical"
         android:layout_gravity="end"

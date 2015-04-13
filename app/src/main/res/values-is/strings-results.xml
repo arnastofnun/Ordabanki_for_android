@@ -2,6 +2,9 @@
 <resources>
     <!--Strings used in the results screen-->
     <string name="searchpreterm">niðurstöður fyrir</string>
+    <string name="whilesearching">Leita að</string>
+    <string name="too_many_results">Of margar niðurstöður. Vinsamlegast breyttu leitarskilyrðum.</string>
+
     <string name="no_result">Engar</string>
     <string name="synonyms">Samheiti: </string>
     <string name="lexical_category">Orðaflokkur: </string>

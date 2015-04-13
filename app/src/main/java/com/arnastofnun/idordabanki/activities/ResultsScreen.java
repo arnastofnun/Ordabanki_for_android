@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -63,6 +65,8 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
     private boolean synonymError = false;
     //Holds the search mode
     private String searchString;
+    private int resultLimit = 500;
+
     /**
      * Takes search term from intent and passes to Rest client
      * Bill
@@ -94,6 +98,12 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 synonymError = false;
 
                 searchQuery = data.getString("searchQuery");
+                ExpandableListView listView =(ExpandableListView) findViewById(R.id.resultsList);
+                listView.setVisibility(View.GONE);
+                RelativeLayout progressBarWrapper = (RelativeLayout) findViewById(R.id.progress_wrapper);
+                progressBarWrapper.setVisibility(View.VISIBLE);
+                TextView textView = (TextView) findViewById(R.id.resultText);
+                textView.setText(getResources().getText(R.string.whilesearching) + " " + searchQuery);
             }
             global.setSTerm(searchQuery);
             //If the searchQuery is an integer we go straight to term search
@@ -253,7 +263,6 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
              */
             public void run() {
                 Looper.prepare();
-                //Decide end time
                 //While we don't get an error
                 while (!(synonymError && wordError)) {
                         //If dictionaries and languages are obtained
@@ -262,6 +271,13 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                         }
 
                 }
+
+
+
+                if(!resultTooBig()){
+                    combineResults();
+                }
+
 
                 //Create a new handler to run after the delay in the main thread
                 Handler mainHandler = new Handler(ResultsScreen.this.getMainLooper());
@@ -272,8 +288,11 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                      */
                     @Override
                     public void run() {
-                        combineResults();
-                        displayListView();
+                        if(!resultTooBig()){
+                            displayListView();
+                        } else{
+                            tooManyresultserror();
+                        }
                     }
                 });
             }
@@ -281,6 +300,17 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
         //Start a new thread with the runnable
         Thread timingThread = new Thread(runnable);
         timingThread.start();
+    }
+
+    private boolean resultTooBig(){
+        int size = 0;
+        if(synonymResultList != null){
+            size += synonymResultList.size();
+        }
+        if(resultList != null){
+            size += resultList.size();
+        }
+        return size > resultLimit;
     }
 
     /**
@@ -398,6 +428,28 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
             }
         });
 
+        RelativeLayout progressBarWrapper = (RelativeLayout) findViewById(R.id.progress_wrapper);
+        progressBarWrapper.setVisibility(View.GONE);
+        listView.setVisibility(View.VISIBLE);
+
+
+    }
+
+
+    /**
+     * A method to display an error message when we get too many results from the database
+     */
+    private void tooManyresultserror(){
+        RelativeLayout progressBarWrapper = (RelativeLayout) findViewById(R.id.progress_wrapper);
+        progressBarWrapper.setVisibility(View.GONE);
+        TextView textView = (TextView) findViewById(R.id.resultText);
+        int resultsCount = synonymResultList.size() + resultList.size();
+        String searchPreTerm = getResources().getString(R.string.searchpreterm);
+        String tooManyResults = getResources().getString(R.string.too_many_results);
+        textView.setSingleLine(false);
+        textView.setGravity(1);
+        textView.setText(resultsCount + " " + searchPreTerm + " " + searchQuery + "\n "+ tooManyResults);
+
     }
 
 
@@ -415,7 +467,7 @@ public class ResultsScreen extends Activity implements OnResultObtainedListener,
                 result.setDictionary_code(synonymResult.getDict_code());
                 //TODO: set language from API
                 //Just to keep it from crashing, I could remove the language view for it though
-                result.setLanguage_code("IS");
+                result.setLanguage_code("");
                 resultList.add(result);
             }
         }

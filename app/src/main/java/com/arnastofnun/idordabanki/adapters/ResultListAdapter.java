@@ -188,7 +188,12 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
             langView.setText(getLanguageName(resultlist.get(0)));
             //Make the glossary and language views visible
             glossView.setVisibility(View.VISIBLE);
-            langView.setVisibility(View.VISIBLE);
+            if(resultlist.get(0).getLanguage_code().equals("")){
+                langView.setVisibility(View.GONE);
+            } else {
+                langView.setVisibility(View.VISIBLE);
+            }
+
         }else{
             //We want the header to be bold
             termView.setTypeface(null, Typeface.BOLD);
@@ -255,7 +260,12 @@ public class ResultListAdapter extends BaseExpandableListAdapter{
      *               should be set to the viewholder
      */
     private void setHolder(ViewHolder viewHolder, Result result){
-        viewHolder.language.setText(getLanguageName(result));
+        if(!result.getLanguage_code().equals("")) {
+            viewHolder.language.setText(getLanguageName(result));
+            viewHolder.language.setVisibility(View.VISIBLE);
+        } else{
+            viewHolder.language.setVisibility(View.GONE);
+        }
         viewHolder.glossary.setText(getGlossaryName(result));
     }
 

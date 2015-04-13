@@ -2,6 +2,9 @@
 <resources>
     <!--Strings used in the results screen-->
     <string name="searchpreterm">resultater for</string>
+    <string name="whilesearching">Søker etter</string>
+    <string name="too_many_results">For mange resultater. Vennligst finjuster søkeparametere.</string>
+
     <string name="no_result">Ingen</string>
     <string name="definition">Definisjon: </string>
     <string name="synonyms">Synonymer: </string>

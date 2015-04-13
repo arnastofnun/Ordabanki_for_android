@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <android.widget.SearchView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchView"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:singleLine="true"
+        android:gravity="center"
+        android:drawableRight="?searchIcon"
+        android:drawableEnd="?searchIcon"
+        android:imeOptions="actionSearch"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:hint="@string/search_hint"
+        />
+
+<View
+    android:id="@+id/seperator"
+    android:layout_below="@id/searchView"
+    android:layout_width="fill_parent"
+    android:layout_height="2dp"
+    android:background="?secondaryBackgroundColor"
+    />
+
+    <RelativeLayout
+        android:layout_marginTop="2dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seperator"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:layout_alignParentStart="true"
+        android:id="@+id/relativeLayout">
+
+    <RadioGroup
+        android:id="@+id/optionsGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:orientation="horizontal">
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/combined_search"
+        android:id="@+id/radioButton"
+        android:checked="true"
+ />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/term_only_search"
+        android:id="@+id/radioButton2"
+
+/>
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/synonym_only_search"
+        android:id="@+id/radioButton3" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/decCheckbox"
+        android:id="@+id/radioButton4" />
+
+    </RadioGroup>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+

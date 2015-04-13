@@ -2,6 +2,10 @@
 <resources>
     <!--Strings used in the results screen-->
     <string name="searchpreterm">resultater for </string>
+    <string name="whilesearching">Søger efter</string>
+    <string name="too_many_results">Alt for mange resultater. Venligst forfine dine søgeparametre.</string>
+
+
     <string name="no_result"> Nej </string>
     <string name="synonyms">Synonymer: </string>
     <string name="lexical_category">Leksikalsk kategori::</string>

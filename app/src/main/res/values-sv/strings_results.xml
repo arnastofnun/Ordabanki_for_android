@@ -2,6 +2,8 @@
 <resources>
     <!--Strings used in the results screen-->
     <string name="searchpreterm">resultat för</string>
+    <string name="whilesearching">Söka efter</string>
+    <string name="too_many_results">Alltför många resultat. Vänligen förbättra din sökning parametrar.</string>
     <string name="no_result">No</string>
     <string name="synonyms">Synonymer: </string>
     <string name="lexical_category">Lexikal kategori:</string>
