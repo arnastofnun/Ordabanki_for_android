@@ -212,8 +212,6 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.waitForFragmentById(R.id.choose_language_fragment, 1000);
         //Press spinner item 0 (src lang) and language 2 (English)
         solo.pressSpinnerItem(0, 2);
-        //Press spinner item 0 (targ lang) and language 1 (Icelandic)
-        solo.pressSpinnerItem(1, 1);
 
         //Go to the search tab
         solo.scrollToSide(Solo.LEFT);
@@ -228,7 +226,6 @@ public class SearchScreenTest extends ActivityInstrumentationTestCase2<SplashAct
         solo.waitForFragmentById(R.id.choose_language_fragment, 1000);
         //check if spinner items still have the same values
         assertTrue("Spinner changed languages on swipe",solo.isSpinnerTextSelected("English"));
-        assertTrue("Spinner change languages on swipe",solo.isSpinnerTextSelected("Icelandic"));
     }
 
     public void testSourceLanguageFunctionality(){
