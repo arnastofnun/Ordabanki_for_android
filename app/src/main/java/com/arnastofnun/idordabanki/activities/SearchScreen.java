@@ -261,6 +261,8 @@ public class SearchScreen extends FragmentActivity implements ConnectionDialogue
         Boolean allowsearch = true;
         //remove leading and trailing whitespace from search query
         searchQuery = searchQuery.trim();
+        //remove upper case characters
+        searchQuery = searchQuery.toLowerCase();
         //Create the Intent
         //todo make intent go to term results screen if search term is numeric
         Intent intent = new Intent(this, ResultsScreen.class);
